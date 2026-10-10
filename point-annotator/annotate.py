@@ -25,7 +25,9 @@ CSV_HEADER = ["image", "x", "y", "region_id", "label"]
 IMAGE_EXTS = {".tif", ".tiff", ".png", ".jpg", ".jpeg"}
 
 STRIP_H = 66  # HUD strip below the image (3 text lines)
-HUD_MIN_W = 640
+HUD_MIN_W = 640  # wide enough for the one-line key legend (~450 px)
+# no Qt toolbar / status bar / built-in wheel zoom
+WINDOW_FLAGS = cv2.WINDOW_AUTOSIZE | cv2.WINDOW_GUI_NORMAL
 ZOOM = 4
 ZOOM_HALF = 64  # crop is 128x128 original pixels -> 512x512 window
 LO_PCT, HI_PCT = 0.5, 99.5
@@ -371,7 +373,7 @@ class Annotator:
             self.status = "move the cursor over the image first"
             return
         if self.zoom_center is None:
-            cv2.namedWindow(self.ZOOMWIN, cv2.WINDOW_AUTOSIZE)
+            cv2.namedWindow(self.ZOOMWIN, WINDOW_FLAGS)
             cv2.setMouseCallback(self.ZOOMWIN, self.on_zoom_mouse)
         self.zoom_center = self.cursor
         self.zoom_bounds = zoom_crop_bounds(*self.zoom_center, ZOOM_HALF, self.w, self.h)
@@ -461,7 +463,7 @@ class Annotator:
         )
         draw_text(
             canvas,
-            "m/t/p label  space region  u undo  s save  n/b next/prev  z/Z zoom  g gamma  q quit",
+            "m/t/p label  space new region  u undo  z zoom  g gamma  s save  n/b next/prev  q quit",
             (8, dh + 60), (180, 180, 180), 0.4,
         )
         return canvas
@@ -481,7 +483,7 @@ class Annotator:
     # -- main loop
 
     def run(self) -> None:
-        cv2.namedWindow(self.MAIN, cv2.WINDOW_AUTOSIZE)
+        cv2.namedWindow(self.MAIN, WINDOW_FLAGS)
         cv2.setMouseCallback(self.MAIN, self.on_main_mouse)
         try:
             while True:
