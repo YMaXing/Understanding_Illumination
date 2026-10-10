@@ -2,8 +2,9 @@
 
 Usage: uv run annotate.py <image_dir> <out_dir> [--max-size WxH]
 
-Keys: m/t/p label, space new region, u undo, s save, n/b next/prev,
-z zoom (re-center), Z/esc close zoom, g gamma, q quit.
+Keys: m/t/p label, space new region, [/] or right-click select region,
+x delete hovered dot, u undo, s save, n/b next/prev, z zoom (re-center), Z/esc close zoom,
+g gamma, q quit.
 """
 
 from __future__ import annotations
@@ -25,11 +26,12 @@ CSV_HEADER = ["image", "x", "y", "region_id", "label"]
 IMAGE_EXTS = {".tif", ".tiff", ".png", ".jpg", ".jpeg"}
 
 STRIP_H = 66  # HUD strip below the image (3 text lines)
-HUD_MIN_W = 640  # wide enough for the one-line key legend (~450 px)
+HUD_MIN_W = 640  # wide enough for the one-line key legend (~610 px)
 # no Qt toolbar / status bar / built-in wheel zoom
 WINDOW_FLAGS = cv2.WINDOW_AUTOSIZE | cv2.WINDOW_GUI_NORMAL
 ZOOM = 4
 ZOOM_HALF = 64  # crop is 128x128 original pixels -> 512x512 window
+SELECT_RADIUS = 10  # right-click / hover-delete pick radius, canvas px (both windows)
 LO_PCT, HI_PCT = 0.5, 99.5
 GAMMA = 1 / 2.2
 
@@ -52,11 +54,22 @@ class Point:
     label: str
 
 
+@dataclass(frozen=True)
+class Action:
+    """One undoable edit. prev_* is the current region/label before it."""
+    kind: str  # "add" | "delete"
+    point: Point
+    index: int  # position in AnnotationState.points
+    prev_region: int
+    prev_label: str
+
+
 @dataclass
 class AnnotationState:
     points: list[Point] = field(default_factory=list)
     region_id: int = 1
     label: str = "material"
+    history: list[Action] = field(default_factory=list)
 
     def region_points(self, region_id: int | None = None) -> list[Point]:
         rid = self.region_id if region_id is None else region_id
@@ -69,18 +82,43 @@ class AnnotationState:
         """Add a point to the current region; reject pixels used by any region."""
         if self.is_used(x, y):
             return False
-        self.points.append(Point(x, y, self.region_id, self.label))
+        p = Point(x, y, self.region_id, self.label)
+        self.history.append(Action("add", p, len(self.points), self.region_id, self.label))
+        self.points.append(p)
         return True
 
+    def delete_point(self, x: int, y: int) -> Point | None:
+        """Delete the point at (x, y); the current region is left unchanged,
+        even if this empties it."""
+        for i, p in enumerate(self.points):
+            if p.x == x and p.y == y:
+                del self.points[i]
+                self.history.append(Action("delete", p, i, self.region_id, self.label))
+                return p
+        return None
+
+    # Invariant: region_id is an existing region, next_region_id(), or a region
+    # just emptied by a delete; an empty current region acts as the "new" one.
+
+    def region_ids(self) -> list[int]:
+        return sorted({p.region_id for p in self.points})
+
+    def next_region_id(self) -> int:
+        return max(self.region_ids(), default=0) + 1
+
+    def is_existing(self) -> bool:
+        return bool(self.region_points())
+
     def new_region(self) -> bool:
-        """Start a new region; no-op if the current region is empty."""
-        if not self.region_points():
+        """Start region max+1; no-op if the current region is empty."""
+        if not self.is_existing():
             return False
-        self.region_id = max([self.region_id] + [p.region_id for p in self.points]) + 1
+        self.region_id = self.next_region_id()
         return True
 
     def set_label(self, label: str) -> None:
-        """Relabel an empty region, or start a new region if it has points."""
+        """Same label: no-op. Otherwise relabel the empty new region, or open
+        max+1 with the label; a region with points is never relabeled."""
         if label not in LABELS:
             raise ValueError(f"unknown label: {label}")
         if label == self.label:
@@ -88,26 +126,58 @@ class AnnotationState:
         self.new_region()
         self.label = label
 
-    def undo(self) -> bool:
-        """Remove the most recent point; fall back to the previous region if emptied."""
-        if not self.points:
+    def select_region(self, region_id: int) -> bool:
+        """Make an existing region current, taking its label."""
+        pts = self.region_points(region_id)
+        if not pts:
             return False
-        p = self.points.pop()
-        self.region_id, self.label = p.region_id, p.label
-        if not self.region_points() and self.points:
-            last = self.points[-1]
-            self.region_id, self.label = last.region_id, last.label
+        self.region_id, self.label = region_id, pts[0].label
         return True
+
+    def cycle_region(self, step: int) -> int:
+        """Move through 1..k, (new), wrapping; (new) keeps the current label."""
+        slots = self.region_ids() + [self.next_region_id()]
+        i = slots.index(self.region_id) if self.is_existing() else len(slots) - 1
+        target = slots[(i + step) % len(slots)]
+        if not self.select_region(target):
+            self.region_id = target
+        return self.region_id
+
+    def undo(self) -> str | None:
+        """Revert the last action; return its kind, or None if there is none.
+
+        Undoing an add removes the point; region/label follow the new last
+        point (region 1 / material if none). Undoing a delete restores the
+        point at its old position and the region/label from before the delete.
+        Actions are undone newest-first, so the index and pixel are always free.
+        """
+        if not self.history:
+            return None
+        a = self.history.pop()
+        if a.kind == "add":
+            del self.points[a.index]
+            if self.points:
+                last = self.points[-1]
+                self.region_id, self.label = last.region_id, last.label
+            else:
+                self.region_id, self.label = 1, "material"
+        else:
+            self.points.insert(a.index, a.point)
+            self.region_id, self.label = a.prev_region, a.prev_label
+        return a.kind
 
 
 def state_from_points(points: list[Point]) -> AnnotationState:
-    """State for a reopened image: a fresh empty region after the existing ones."""
+    """State for a reopened image: a fresh empty region after the existing ones.
+    History is seeded with one add per loaded point, so undo removes them last-row-first."""
     if not points:
         return AnnotationState()
+    points = list(points)
     return AnnotationState(
-        points=list(points),
+        points=points,
         region_id=max(p.region_id for p in points) + 1,
         label=points[-1].label,
+        history=[Action("add", p, i, p.region_id, p.label) for i, p in enumerate(points)],
     )
 
 
@@ -117,6 +187,28 @@ def renumber_regions(points: list[Point]) -> list[Point]:
     for p in points:
         mapping.setdefault(p.region_id, len(mapping) + 1)
     return [Point(p.x, p.y, mapping[p.region_id], p.label) for p in points]
+
+
+def rows_for_save(points: list[Point]) -> list[Point]:
+    """Sort by (region_id, insertion order), then renumber ids to 1..k."""
+    return renumber_regions(sorted(points, key=lambda p: p.region_id))
+
+
+def nearest_point(points, click, to_canvas, radius) -> Point | None:
+    """Point whose drawn position is nearest the click, within radius canvas px.
+
+    to_canvas maps original -> canvas coords (None = not drawn). Ties go to the
+    most recently added point, which is drawn on top.
+    """
+    best, best_d2 = None, radius * radius
+    for p in points:
+        c = to_canvas(p.x, p.y)
+        if c is None:
+            continue
+        d2 = (c[0] - click[0]) ** 2 + (c[1] - click[1]) ** 2
+        if d2 <= best_d2:
+            best, best_d2 = p, d2
+    return best
 
 
 def region_first_points(points: list[Point]) -> dict[int, tuple[int, int]]:
@@ -140,7 +232,7 @@ def write_csv(path: Path, image_name: str, points: list[Point]) -> None:
     with open(tmp, "w", newline="") as f:
         w = csv.writer(f)
         w.writerow(CSV_HEADER)
-        for p in renumber_regions(points):
+        for p in rows_for_save(points):
             w.writerow([image_name, p.x, p.y, p.region_id, p.label])
     os.replace(tmp, path)
 
@@ -266,19 +358,18 @@ def original_to_zoom(
 # ---------------------------------------------------------------- drawing
 
 
-def draw_marker(canvas, c, shape, color, r):
+def draw_marker(canvas, c, shape, color, r, outline=(0, 0, 0), thickness=1):
     cx, cy = c
-    outline = (0, 0, 0)
     if shape == "circle":
         cv2.circle(canvas, c, r, color, -1, cv2.LINE_AA)
-        cv2.circle(canvas, c, r, outline, 1, cv2.LINE_AA)
+        cv2.circle(canvas, c, r, outline, thickness, cv2.LINE_AA)
     elif shape == "square":
         cv2.rectangle(canvas, (cx - r, cy - r), (cx + r, cy + r), color, -1)
-        cv2.rectangle(canvas, (cx - r, cy - r), (cx + r, cy + r), outline, 1)
+        cv2.rectangle(canvas, (cx - r, cy - r), (cx + r, cy + r), outline, thickness)
     else:
         tri = np.array([[cx, cy - r - 1], [cx - r - 1, cy + r], [cx + r + 1, cy + r]], np.int32)
         cv2.fillPoly(canvas, [tri], color, cv2.LINE_AA)
-        cv2.polylines(canvas, [tri], True, outline, 1, cv2.LINE_AA)
+        cv2.polylines(canvas, [tri], True, outline, thickness, cv2.LINE_AA)
 
 
 def draw_text(canvas, text, org, color=(255, 255, 255), scale=0.45):
@@ -286,11 +377,22 @@ def draw_text(canvas, text, org, color=(255, 255, 255), scale=0.45):
     cv2.putText(canvas, text, org, cv2.FONT_HERSHEY_SIMPLEX, scale, color, 1, cv2.LINE_AA)
 
 
-def draw_markers(canvas, points, to_canvas, r):
-    """Shape by label, color by region, region_id beside each region's first point."""
+def draw_ring(canvas, c, r):
+    """Delete-preview ring around a marker of radius r: cyan on black."""
+    cv2.circle(canvas, c, r + 5, (0, 0, 0), 3, cv2.LINE_AA)
+    cv2.circle(canvas, c, r + 5, (255, 255, 0), 1, cv2.LINE_AA)
+
+
+def draw_markers(canvas, points, to_canvas, r, current_region=None):
+    """Shape by label, color by region, region_id beside each region's first point.
+    The current region's dots get a thicker white outline."""
     for p in points:
         c = to_canvas(p.x, p.y)
-        if c is not None:
+        if c is None:
+            continue
+        if p.region_id == current_region:
+            draw_marker(canvas, c, MARKERS[p.label], region_color(p.region_id), r, (255, 255, 255), 2)
+        else:
             draw_marker(canvas, c, MARKERS[p.label], region_color(p.region_id), r)
     for rid, (x, y) in region_first_points(points).items():
         c = to_canvas(x, y)
@@ -336,6 +438,7 @@ class Annotator:
         self._scaled: dict[bool, np.ndarray] = {}
         self.state = state_from_points(points)
         self.cursor: tuple[int, int] | None = None
+        self.hover: tuple[str, tuple[int, int]] | None = None  # (window, canvas pos)
         self.close_zoom()
         self.status = f"loaded {len(points)} pts" if points else ""
 
@@ -383,24 +486,59 @@ class Annotator:
             cv2.destroyWindow(self.ZOOMWIN)
         self.zoom_center = None
         self.zoom_bounds = None
+        if getattr(self, "hover", None) and self.hover[0] == self.ZOOMWIN:
+            self.hover = None
 
     # -- mouse
 
     def on_main_mouse(self, event, x, y, flags, param) -> None:
         p = display_to_original(x, y, self.disp, (self.w, self.h))
-        if event == cv2.EVENT_MOUSEMOVE and p is not None:
-            self.cursor = p
+        if event == cv2.EVENT_MOUSEMOVE:
+            self.hover = (self.MAIN, (x, y))
+            if p is not None:
+                self.cursor = p
         elif event == cv2.EVENT_LBUTTONDOWN:
             self.add(p)
+        elif event == cv2.EVENT_RBUTTONDOWN:
+            self.select_at((x, y), self.to_display)
 
     def on_zoom_mouse(self, event, x, y, flags, param) -> None:
         if self.zoom_bounds is None:
             return
         p = zoom_to_original(x, y, self.zoom_bounds, ZOOM)
-        if event == cv2.EVENT_MOUSEMOVE and p is not None:
-            self.cursor = p
+        if event == cv2.EVENT_MOUSEMOVE:
+            self.hover = (self.ZOOMWIN, (x, y))
+            if p is not None:
+                self.cursor = p
         elif event == cv2.EVENT_LBUTTONDOWN:
             self.add(p)
+        elif event == cv2.EVENT_RBUTTONDOWN:
+            self.select_at((x, y), self.to_zoom)
+
+    def to_display(self, x: int, y: int) -> tuple[int, int]:
+        return original_to_display(x, y, self.disp, (self.w, self.h))
+
+    def to_zoom(self, x: int, y: int) -> tuple[int, int] | None:
+        return original_to_zoom(x, y, self.zoom_bounds, ZOOM)
+
+    def hover_target(self) -> Point | None:
+        """Dot that x would delete: nearest to the mouse in the window it is over."""
+        if self.hover is None:
+            return None
+        window, pos = self.hover
+        if window == self.ZOOMWIN:
+            if self.zoom_bounds is None:
+                return None
+            return nearest_point(self.state.points, pos, self.to_zoom, SELECT_RADIUS)
+        return nearest_point(self.state.points, pos, self.to_display, SELECT_RADIUS)
+
+    def select_at(self, click: tuple[int, int], to_canvas) -> None:
+        p = nearest_point(self.state.points, click, to_canvas, SELECT_RADIUS)
+        if p is None:
+            self.status = f"no dot within {SELECT_RADIUS} px"
+        else:
+            self.state.select_region(p.region_id)
+            self.status = f"selected region {p.region_id} ({p.label})"
 
     # -- keys
 
@@ -412,8 +550,19 @@ class Annotator:
         elif k == ord(" "):
             if not st.new_region():
                 self.status = "current region is empty"
+        elif k in (ord("["), ord("]")):
+            rid = st.cycle_region(-1 if k == ord("[") else 1)
+            self.status = f"region {rid} ({'existing' if st.is_existing() else 'new'})"
         elif k == ord("u"):
-            self.status = "undone" if st.undo() else "nothing to undo"
+            kind = st.undo()
+            self.status = f"undid {kind}" if kind else "nothing to undo"
+        elif k == ord("x"):
+            t = self.hover_target()
+            if t is None:
+                self.status = f"no dot within {SELECT_RADIUS} px of the cursor"
+            else:
+                st.delete_point(t.x, t.y)
+                self.status = f"deleted ({t.x},{t.y}) from region {t.region_id}"
         elif k == ord("s"):
             self.save()
         elif k in (ord("n"), ord("b")):
@@ -442,15 +591,18 @@ class Annotator:
         dw, dh = self.disp
         canvas = np.zeros((dh + STRIP_H, max(dw, HUD_MIN_W), 3), np.uint8)
         canvas[:dh, :dw] = self.scaled_img()
-        size = (self.w, self.h)
-        draw_markers(canvas, self.state.points, lambda x, y: original_to_display(x, y, self.disp, size), r=4)
-
         st = self.state
+        draw_markers(canvas, st.points, self.to_display, r=4, current_region=st.region_id)
+        target = self.hover_target()
+        if target is not None:
+            draw_ring(canvas, self.to_display(target.x, target.y), 4)
+
         n_region = len(st.region_points())
+        region = f"region {st.region_id} (existing, {n_region} pts)" if n_region else f"region {st.region_id} (new)"
         draw_marker(canvas, (12, dh + 15), MARKERS[st.label], region_color(st.region_id), 6)
         draw_text(
             canvas,
-            f"{st.label}  region {st.region_id} ({n_region} pts)  total {len(st.points)}"
+            f"{st.label}  {region}  total {len(st.points)}"
             f"   [{self.idx + 1}/{len(self.images)}] {self.images[self.idx].name}",
             (26, dh + 20),
         )
@@ -463,7 +615,7 @@ class Annotator:
         )
         draw_text(
             canvas,
-            "m/t/p label  space new region  u undo  z zoom  g gamma  s save  n/b next/prev  q quit",
+            "m/t/p label  space new region  [/] r-click select region  x delete  u undo  z zoom  g gamma  s save  n/b next/prev  q quit",
             (8, dh + 60), (180, 180, 180), 0.4,
         )
         return canvas
@@ -472,7 +624,12 @@ class Annotator:
         x0, y0, x1, y1 = self.zoom_bounds
         crop = self.full_img()[y0:y1, x0:x1]
         big = cv2.resize(crop, None, fx=ZOOM, fy=ZOOM, interpolation=cv2.INTER_NEAREST)
-        draw_markers(big, self.state.points, lambda x, y: original_to_zoom(x, y, self.zoom_bounds, ZOOM), r=6)
+        draw_markers(big, self.state.points, self.to_zoom, r=6, current_region=self.state.region_id)
+        target = self.hover_target()
+        if target is not None:
+            c = self.to_zoom(target.x, target.y)
+            if c is not None:
+                draw_ring(big, c, 6)
         if self.cursor is not None:
             c = original_to_zoom(*self.cursor, self.zoom_bounds, ZOOM)
             if c is not None:

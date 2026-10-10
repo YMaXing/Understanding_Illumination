@@ -11,10 +11,12 @@ from annotate import (
     display_to_original,
     fit_display_size,
     original_to_display,
+    nearest_point,
     original_to_zoom,
     read_csv,
     region_first_points,
     renumber_regions,
+    rows_for_save,
     state_from_points,
     stretch_params,
     to_display_8bit,
@@ -254,12 +256,12 @@ def test_undo_on_empty_state():
     assert (st.region_id, st.label, st.points) == (1, "material", [])
 
 
-def test_undo_last_point_keeps_its_region():
+def test_undo_last_point_resets_to_region_1_material():
     st = AnnotationState()
     st.set_label("texture")
     st.add_point(1, 1)
     st.undo()
-    assert (st.region_id, st.label, st.points) == (1, "texture", [])
+    assert (st.region_id, st.label, st.points) == (1, "material", [])
 
 
 def test_region_first_points():
@@ -292,7 +294,8 @@ def test_csv_write_renumbers_regions(tmp_path):
     pts = [Point(0, 0, 3, "texture"), Point(1, 1, 7, "material"), Point(2, 2, 3, "texture")]
     path = tmp_path / "img.csv"
     write_csv(path, "img.tif", pts)
-    assert [p.region_id for p in read_csv(path)] == [1, 2, 1]
+    # sorted by region, insertion order kept within a region, ids renumbered
+    assert [(p.x, p.region_id) for p in read_csv(path)] == [(0, 1), (2, 1), (1, 2)]
 
 
 def test_renumber_regions():
@@ -326,3 +329,295 @@ def test_state_from_points():
     assert (st.region_id, st.label) == (3, "specular")
     assert st.region_points() == []
     assert not st.add_point(1, 1)  # loaded pixels count as used
+
+
+# ---------------------------------------------------------------- region selection
+
+
+def _ident(x, y):
+    return x, y
+
+
+def test_nearest_point_hit_and_miss():
+    pts = [Point(100, 100, 1, "material"), Point(200, 200, 2, "texture")]
+    assert nearest_point(pts, (100, 100), _ident, 10) == pts[0]
+    assert nearest_point(pts, (106, 108), _ident, 10) == pts[0]  # distance 10: hit
+    assert nearest_point(pts, (111, 100), _ident, 10) is None  # distance 11: miss
+    assert nearest_point(pts, (195, 198), _ident, 10) == pts[1]
+    assert nearest_point([], (0, 0), _ident, 10) is None
+
+
+def test_nearest_point_tie_goes_to_most_recent():
+    pts = [Point(90, 100, 1, "material"), Point(110, 100, 2, "texture")]
+    assert nearest_point(pts, (100, 100), _ident, 10) == pts[1]
+    pts.reverse()
+    assert nearest_point(pts, (100, 100), _ident, 10) == pts[1]
+
+
+def test_nearest_point_tie_at_same_display_pixel():
+    disp = fit_display_size(W, H, 800, 600)  # ~0.52 scale: neighbors share a display pixel
+    def to_canvas(x, y):
+        return original_to_display(x, y, disp, (W, H))
+    x = next(x for x in range(300, 310) if to_canvas(x, 400) == to_canvas(x + 1, 400))
+    pts = [Point(x, 400, 1, "material"), Point(x + 1, 400, 2, "specular")]
+    assert nearest_point(pts, to_canvas(x, 400), to_canvas, 10) == pts[1]
+
+
+def test_nearest_point_through_display_mapping():
+    disp = fit_display_size(W, H, 800, 600)
+    pts = [Point(100, 100, 1, "material"), Point(140, 100, 2, "texture")]  # ~21 display px apart
+    def to_canvas(x, y):
+        return original_to_display(x, y, disp, (W, H))
+    cx, cy = to_canvas(140, 100)
+    assert nearest_point(pts, (cx - 3, cy + 2), to_canvas, 10) == pts[1]
+    assert nearest_point(pts, (cx + 15, cy), to_canvas, 10) is None
+
+
+def test_nearest_point_skips_undrawn_points():
+    b = zoom_crop_bounds(300, 400, ZOOM_HALF, W, H)
+    pts = [Point(300, 400, 1, "material"), Point(10, 10, 2, "texture")]  # second is outside the crop
+    def to_canvas(x, y):
+        return original_to_zoom(x, y, b, ZOOM)
+    assert nearest_point(pts, (0, 0), to_canvas, 10_000) == pts[0]
+
+
+def _three_regions():
+    st = AnnotationState()
+    st.add_point(1, 1)             # region 1 material
+    st.set_label("texture")
+    st.add_point(2, 2)             # region 2 texture
+    st.set_label("specular")
+    st.add_point(3, 3)             # region 3 specular
+    return st
+
+
+def test_select_region_takes_its_label():
+    st = _three_regions()
+    assert st.select_region(2)
+    assert (st.region_id, st.label, st.is_existing()) == (2, "texture", True)
+    assert not st.select_region(9)
+    assert (st.region_id, st.label) == (2, "texture")
+
+
+def test_cycle_regions_wraps_through_new():
+    st = _three_regions()
+    st.new_region()
+    assert st.region_id == 4 and not st.is_existing()
+    assert st.cycle_region(1) == 1 and st.label == "material"
+    assert st.cycle_region(1) == 2 and st.label == "texture"
+    assert st.cycle_region(1) == 3
+    assert st.cycle_region(1) == 4 and not st.is_existing()
+    assert st.label == "specular"  # (new) keeps the current label
+    assert st.cycle_region(-1) == 3  # [ from (new) -> k
+    assert st.cycle_region(-1) == 2
+    assert st.cycle_region(-1) == 1
+    assert st.cycle_region(-1) == 4  # wrap to (new)
+
+
+def test_cycle_with_no_points_stays_on_region_1():
+    st = AnnotationState()
+    assert st.cycle_region(1) == 1 and st.cycle_region(-1) == 1
+
+
+def test_space_after_selecting_low_region_gives_max_plus_1():
+    st = _three_regions()
+    st.select_region(1)
+    assert st.new_region()
+    assert st.region_id == 4
+    st.add_point(4, 4)
+    assert st.region_ids() == [1, 2, 3, 4]
+
+
+def test_label_key_after_selecting_existing_region():
+    st = _three_regions()
+    st.select_region(1)
+    st.set_label("material")  # same label: stay
+    assert (st.region_id, st.label) == (1, "material")
+    st.set_label("texture")  # different label: open max+1, never relabel region 1
+    assert (st.region_id, st.label, st.is_existing()) == (4, "texture", False)
+    assert {p.label for p in st.region_points(1)} == {"material"}
+    st.set_label("specular")  # new empty region: just relabel it
+    assert (st.region_id, st.label) == (4, "specular")
+
+
+def test_add_to_reselected_region_then_undo():
+    st = _three_regions()
+    st.select_region(1)
+    st.add_point(5, 5)
+    assert [p.region_id for p in st.points] == [1, 2, 3, 1]
+    st.undo()  # last remaining point is region 3's
+    assert (st.region_id, st.label) == (3, "specular")
+    st.undo()
+    assert (st.region_id, st.label) == (2, "texture")
+
+
+def test_csv_sorted_and_round_trip(tmp_path):
+    st = _three_regions()
+    st.select_region(1)
+    st.add_point(5, 5)
+    st.select_region(2)
+    st.add_point(6, 6)
+    path = tmp_path / "img.csv"
+    write_csv(path, "img.tif", st.points)
+    got = read_csv(path)
+    assert [(p.x, p.region_id) for p in got] == [(1, 1), (5, 1), (2, 2), (6, 2), (3, 3)]
+    first = path.read_bytes()
+    write_csv(path, "img.tif", got)
+    assert path.read_bytes() == first
+
+
+def test_rows_for_save_renumbering():
+    pts = [Point(0, 0, 6, "texture"), Point(1, 1, 2, "material")]
+    assert [(p.x, p.region_id) for p in rows_for_save(pts)] == [(1, 1), (0, 2)]
+    pts = [Point(0, 0, 1, "material"), Point(1, 1, 6, "texture"), Point(2, 2, 2, "specular")]
+    assert [(p.x, p.region_id) for p in rows_for_save(pts)] == [(0, 1), (2, 2), (1, 3)]  # 2 survives
+
+
+# ---------------------------------------------------------------- delete + action undo
+
+
+def test_delete_target_hit_miss_tie_display_mapping():
+    disp = fit_display_size(W, H, 800, 600)
+    def to_canvas(x, y):
+        return original_to_display(x, y, disp, (W, H))
+    pts = [Point(100, 100, 1, "material"), Point(140, 100, 2, "texture")]
+    c0 = to_canvas(100, 100)
+    assert nearest_point(pts, (c0[0] + 6, c0[1] + 8), to_canvas, 10) == pts[0]  # hit at 10
+    assert nearest_point(pts, (c0[0] - 11, c0[1]), to_canvas, 10) is None  # miss at 11
+    # nearest wins even when an older dot is also in range
+    c1 = to_canvas(140, 100)
+    mid = (c0[0] + c1[0]) // 2
+    near0 = (mid - 2, c0[1])
+    assert nearest_point(pts, near0, to_canvas, 15) == pts[0]
+    # exact tie -> most recently added
+    tied = [Point(100, 100, 1, "material"), Point(100, 100 + 2 * 3, 2, "texture")]
+    def ident(x, y):
+        return x, y
+    assert nearest_point(tied, (100, 103), ident, 10) == tied[1]
+
+
+def test_delete_target_through_zoom_mapping():
+    b = zoom_crop_bounds(300, 400, ZOOM_HALF, W, H)
+    def to_canvas(x, y):
+        return original_to_zoom(x, y, b, ZOOM)
+    pts = [Point(300, 400, 1, "material"), Point(302, 400, 2, "texture")]  # 8 zoom px apart
+    c0, c1 = to_canvas(300, 400), to_canvas(302, 400)
+    assert nearest_point(pts, (c0[0] + 1, c0[1]), to_canvas, 10) == pts[0]
+    assert nearest_point(pts, ((c0[0] + c1[0]) // 2, c0[1]), to_canvas, 10) == pts[1]  # tie
+    assert nearest_point(pts, (c1[0] + 11, c1[1]), to_canvas, 10) is None
+
+
+def test_delete_from_non_current_region():
+    st = _three_regions()
+    st.add_point(4, 4)  # region 3 has 2 points; current = 3 specular
+    assert st.delete_point(2, 2) == Point(2, 2, 2, "texture")
+    assert (st.region_id, st.label) == (3, "specular")
+    assert [(p.x, p.region_id) for p in st.points] == [(1, 1), (3, 3), (4, 3)]
+    assert not st.is_used(2, 2)
+
+
+def test_delete_only_point_of_current_region_keeps_it_current():
+    st = _three_regions()
+    st.select_region(2)
+    st.delete_point(2, 2)
+    assert (st.region_id, st.label, st.is_existing()) == (2, "texture", False)
+    assert not st.new_region()  # space on empty region: no-op
+    assert st.region_id == 2
+    st.add_point(7, 7)  # refills the same region with its label
+    assert st.region_points(2) == [Point(7, 7, 2, "texture")]
+
+
+def test_delete_only_point_of_current_region_then_label_key_relabels():
+    st = _three_regions()
+    st.select_region(2)
+    st.delete_point(2, 2)
+    st.set_label("material")
+    assert (st.region_id, st.label) == (2, "material")
+
+
+def test_delete_only_point_of_non_current_region():
+    st = _three_regions()
+    st.select_region(1)
+    st.delete_point(3, 3)  # empties region 3 (the max)
+    assert (st.region_id, st.label) == (1, "material")
+    assert st.region_ids() == [1, 2]
+    assert st.new_region() and st.region_id == 3  # new max+1
+
+
+def test_delete_missing_pixel_returns_none():
+    st = _three_regions()
+    n = len(st.history)
+    assert st.delete_point(99, 99) is None
+    assert len(st.history) == n
+
+
+def test_undo_restores_deleted_point_and_prior_region():
+    st = _three_regions()
+    st.select_region(1)
+    st.delete_point(2, 2)  # current was region 1 / material at delete time
+    st.select_region(3)  # move elsewhere before undoing
+    assert st.add_point(2, 2)  # pixel is free after delete...
+    assert st.undo() == "add"
+    assert st.undo() == "delete"
+    assert st.points[1] == Point(2, 2, 2, "texture")  # original index, region, label
+    assert (st.region_id, st.label) == (1, "material")  # pre-delete current region
+    assert not st.add_point(2, 2)  # ...and taken again after undo
+
+
+def test_undo_restores_emptied_region():
+    st = _three_regions()
+    st.delete_point(3, 3)  # only point of current region 3
+    st.select_region(1)
+    st.undo()
+    assert st.region_points(3) == [Point(3, 3, 3, "specular")]
+    assert (st.region_id, st.label) == (3, "specular")
+
+
+def test_undo_after_mixed_add_and_delete():
+    st = AnnotationState()
+    st.add_point(1, 1)  # r1 material
+    st.add_point(2, 2)  # r1 material
+    st.set_label("texture")
+    st.add_point(3, 3)  # r2 texture
+    st.select_region(1)
+    st.delete_point(2, 2)
+    st.add_point(4, 4)  # r1 material
+    assert [(p.x, p.region_id) for p in st.points] == [(1, 1), (3, 2), (4, 1)]
+
+    assert st.undo() == "add"  # remove (4,4); follow new last point (3,3)
+    assert [(p.x, p.y) for p in st.points] == [(1, 1), (3, 3)]
+    assert (st.region_id, st.label) == (2, "texture")
+    assert st.undo() == "delete"  # restore (2,2) at index 1; region 1 was current
+    assert [(p.x, p.y) for p in st.points] == [(1, 1), (2, 2), (3, 3)]
+    assert (st.region_id, st.label) == (1, "material")
+    assert st.undo() == "add"  # remove (3,3)
+    assert (st.region_id, st.label) == (1, "material")
+    assert st.undo() == "add" and st.undo() == "add"
+    assert st.points == [] and (st.region_id, st.label) == (1, "material")
+    assert st.undo() is None
+
+
+def test_reloaded_history_undoes_last_row_first():
+    pts = [Point(0, 0, 1, "material"), Point(1, 1, 2, "specular"), Point(2, 2, 2, "specular")]
+    st = state_from_points(pts)
+    assert st.undo() == "add"
+    assert [(p.x, p.y) for p in st.points] == [(0, 0), (1, 1)]
+    assert (st.region_id, st.label) == (2, "specular")
+    assert AnnotationState().undo() is None
+
+
+def test_csv_contiguous_after_deleting_whole_region(tmp_path):
+    st = _three_regions()
+    st.select_region(2)
+    st.add_point(5, 5)
+    st.delete_point(2, 2)
+    st.delete_point(5, 5)  # region 2 is gone
+    path = tmp_path / "img.csv"
+    write_csv(path, "img.tif", st.points)
+    got = read_csv(path)
+    assert [(p.x, p.region_id, p.label) for p in got] == [(1, 1, "material"), (3, 2, "specular")]
+    # reloaded region-id text is drawn from the renumbered ids
+    assert region_first_points(state_from_points(got).points) == {1: (1, 1), 2: (3, 3)}
+    first = path.read_bytes()
+    write_csv(path, "img.tif", got)
+    assert path.read_bytes() == first
