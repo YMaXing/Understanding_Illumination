@@ -24,7 +24,10 @@ uv run annotate.py samples out
 
 - `samples`: the folder of images to annotate. Files ending in `.tif`, `.tiff`, `.png`, `.jpg` or `.jpeg` are loaded in name order. Subfolders are ignored.
 - `out`: where the CSVs go. It's created if it doesn't exist.
-- `--max-size WxH` (optional, default `1600x900`): the largest the main window may be, status strip included. Larger images are shrunk to fit and never enlarged. Use it on small screens, e.g. `--max-size 1200x800`.
+- `--max-size WxH` (optional, default `1600x900`): the largest the main window may be, help panel included. Larger images are shrunk to fit and never enlarged. Use it on small screens, e.g. `--max-size 1200x800`.
+- `--panel auto|right|bottom` (optional, default `auto`): where the status/help panel goes. `auto` puts it to the right of portrait images and below landscape ones.
+- `--debug-mouse` (optional): prints the GUI backend, the window flags and every mouse click to the terminal. Use it if clicks don't seem to do anything.
+- `uv run annotate.py --palette-preview colors.png` writes a picture of the region colors 1–40 and exits.
 
 On the full dataset:
 
@@ -35,43 +38,56 @@ uv run annotate.py ../material_clustering_data/original_data out
 ## The window
 
 ```
-┌───────────────────────────────┐
-│                               │
-│            image              │  ← click here to place points
-│   ●1  ●      ■2               │    (color = region, shape = label,
-│                ▲3             │     number = region id)
-├───────────────────────────────┤
-│ ● material  region 1 (existing, 2 pts)  total 4  [1/3] adke_neel_050.tif
-│ gamma on  zoom off  cursor (412,630)   added (412,630)
-│ m/t/p label  space new region  [/] r-click select region  x delete  u undo  z zoom  g gamma  s save  n/b next/prev  q quit
-└───────────────────────────────┘
+portrait image (panel on the right)          landscape image (panel below)
+┌──────────────┬─────────────────────────┐   ┌──────────────────────────────────┐
+│              │ Status                  │   │                                  │
+│    image     │ ● material              │   │              image               │
+│  ●1  ●  ■2   │ region 1 (existing, 2)  │   │        ●1  ●      ■2   ▲3        │
+│       ▲3     │ regions 3   points 4    │   │                                  │
+│              │ image 1/3 (n = next,    │   ├───────────┬───────────┬──────────┤
+│              │   b = previous) a.tif   │   │ Status    │ Labels    │ Edit     │
+│              │ gamma 2.2 on  zoom off  │   │ …         │ Regions   │ View     │
+│              │ mode ADD - ADDING TO    │   │           │           │ Files    │
+│              │   existing region 1     │   └───────────┴───────────┴──────────┘
+│              │ saved                   │
+│              │ Labels / Regions / Edit │
+│              │ / View / Files help     │
+└──────────────┴─────────────────────────┘
 ```
 
-- **Markers:** the shape shows the label (● material, ■ texture, ▲ specular) and the color shows the region. Each region's number is drawn next to its first point. The **current region's** dots have a thicker white outline, in both the main and zoom windows.
-- **Status strip** (below the image; clicks there do nothing):
-  1. The current label and region: `region 3 (existing, 5 pts)` if it already has points, `region 4 (new)` if your next click starts it. Then the image's total point count, and the image's position and filename.
-  2. Gamma and zoom on/off, the cursor position in original-image pixels, and the result of the last action (e.g. `pixel (412,630) already used`).
-  3. The key legend.
+- **Markers:** the shape shows the label (● material, ■ texture, ▲ specular) and the color shows the region. Each region's number is drawn next to its first point. The **current region's** dots have a thick white outline, in both the main and zoom windows.
+- **Status block:**
+  - the current label (with its marker in the region's color)
+  - `region 3 (existing, 5 pts)` or `region 4 (new)`
+  - the image's total regions and points
+  - `image i/N (n = next, b = previous)` and the filename
+  - gamma value and on/off, zoom on/off
+  - the mode: `mode ADD - ADDING TO existing region N`, or `mode PICK` (orange) while you're choosing a region
+- **Message line** (yellow): the result of your last action, e.g. `saved`, `region 9 started`, `selected region 4`, `deleted point`, `last image`, `no dot near click`. It disappears after about 3 seconds.
+- **Help:** every key, grouped under Labels, Regions, Edit, View and Files.
+- Clicks in the panel do nothing.
 
 ## Controls
 
-Keys are lowercase letters (plus `space`, `[`, `]` and `Esc`). Keep **Caps Lock off**: `Z` means something else, and the status strip warns you about unmapped capital letters. The image window needs keyboard focus, so click it first if keys seem to do nothing.
+Keys are lowercase letters (plus `space`, `[`, `]`, `+`, `-` and `Esc`). Keep **Caps Lock off**: the panel warns you about unmapped capital letters. The image window needs keyboard focus, so click it first if keys seem to do nothing. Only `q` quits; `Esc` never does.
 
 | Key | Action |
 |---|---|
-| Left click | Add a point to the current region |
-| Right click | Select the region of the nearest dot (within 10 px), in the main or zoom window |
+| Left click | Add a point to the current region (in PICK mode: select the clicked dot's region) |
+| `r` | PICK mode: your next left click on (or near) a dot selects its region; `r` again or `Esc` cancels |
+| Right click / Ctrl+left click | Select the region of the nearest dot (within 10 px), in the main or zoom window |
 | `[` / `]` | Cycle back / forward through regions 1…k and a new one, wrapping around |
-| `m` / `t` / `p` | Set the label to material / texture / specular (opens a new region if the current one has points) |
+| `m` / `t` / `p` | Set the label: **material** (one reflectance, no variation: paint, a single brick, plastic), **texture** (fine-scale variation: grass, asphalt, speckled concrete), **specular** (shiny/metal). Opens a new region if the current one has points |
 | `space` | Start a new region (does nothing if the current region is empty) |
 | `x` | Delete the dot with the cyan ring (the nearest one within 10 px of the cursor) |
 | `u` | Undo the last add or delete |
 | `z` | Open the zoom window at the cursor; press again to re-center it |
-| `Z` or `Esc` | Close the zoom window |
-| `g` | Turn display gamma on or off |
+| `Esc` | Cancel PICK mode, otherwise close the zoom window (works from either window) |
+| `g` | Turn display gamma on or off (keeps the value) |
+| `+` / `-` | Gamma up / down by 0.2 (`=` and `_` also work); if gamma is off, the first press just turns it on |
 | `s` | Save |
-| `n` / `b` | Next / previous image (saves first) |
-| `q` | Save and quit (closing the window also saves) |
+| `n` / `b` | Next / previous image (saves first); does nothing on the last / first image |
+| `q` | Save and quit (closing the main window also saves and quits) |
 
 ### Regions and labels
 
@@ -83,7 +99,7 @@ A **region** is a group of points on one surface that share one label.
 
 New regions always get the next unused number (the highest existing number + 1), wherever you are.
 
-**Going back to a region.** To add more points to a region you've already left, **right-click** one of its dots, or step to it with `[` / `]` if the dot is hard to hit. That region becomes current, with its own label, and your next left clicks go into it. The cycle runs 1, 2, …, k, then a new empty region, then back to 1. A region's label can't be changed once it has points: pressing a different label key while an existing region is selected opens a new region with that label instead.
+**Going back to a region.** To add more points to a region you've already left, press **`r`** and click one of its dots (the cyan ring shows which dot you'll get), or step to it with `[` / `]`. Right-click and Ctrl+click are shortcuts for the same thing. That region becomes current, with its own label; the panel says `ADDING TO existing region N`, and your next left clicks go into it. If your click misses every dot, you stay in PICK mode and nothing is added. The cycle runs 1, 2, …, k, then a new empty region, then back to 1. A region's label can't be changed once it has points: pressing a different label key while an existing region is selected opens a new region with that label instead, and the panel says `new region N started`.
 
 **Each pixel can be used once per image.** A click on a pixel that already has a point (in any region) is ignored and reported in the status strip.
 
@@ -106,12 +122,27 @@ When the image is shrunk to fit the screen, use zoom to place points precisely, 
 
 - `z` opens a second window showing a 128×128-pixel area around the cursor, enlarged 4× with no smoothing, so every image pixel is visible.
 - The zoom view stays where you opened it while you move the mouse, so you can click inside it. Press `z` again to move it to the cursor's current position.
-- Left-clicks in the zoom window add points, right-clicks select a region, and `x` deletes the ringed dot, exactly like in the main window. The pixel under the cursor is outlined in white, and existing points are drawn there too, with the current region highlighted. Right-click is often easier here, because dots that overlap in the main view are spread apart.
+- Left-clicks in the zoom window add points, PICK / right-click / Ctrl+click select a region, and `x` deletes the ringed dot, exactly like in the main window. The pixel under the cursor is outlined in white, and existing points are drawn there too, with the current region highlighted. Right-click is often easier here, because dots that overlap in the main view are spread apart.
+- `Esc` closes it, whichever window has focus. Closing it with its title-bar X is fine too.
 - Moving to another image closes the zoom window.
 
 ### Display
 
-The source TIFFs are 16-bit linear images, so they're adjusted for viewing. Brightness is stretched between the 0.5th and 99.5th percentiles, using the same range for all three channels so colors don't shift, and gamma 1/2.2 is applied. `g` turns the gamma off if dark areas look washed out. **This only affects the display, never the saved coordinates.**
+The source TIFFs are 16-bit linear images, so they're adjusted for viewing:
+
+```
+display = clip((v - lo) / (hi - lo), 0, 1) ** (1 / gamma)
+```
+
+- `lo` / `hi` are the 0.5th and 99.5th percentiles, using the same range for all three channels so colors don't shift.
+- `gamma` starts at 2.2. A **larger** gamma brightens the shadows; `+` / `-` change it by 0.2 within 1.0–5.0, and `g` turns it off (linear) and on again.
+- The gamma setting carries over to the next image and applies to the zoom window too.
+
+**This only affects the display, never the saved coordinates.**
+
+### Region colors
+
+Regions 1–20 use a fixed palette of bright, clearly different colors; regions above 20 get colors computed from the region number. A region always has the same color, in every session. `uv run annotate.py --palette-preview colors.png` shows them.
 
 ## Output
 
@@ -150,7 +181,7 @@ uv run check_csv.py samples out
 uv run pytest -q
 ```
 
-Everything in `annotate.py` that doesn't need a window is a plain function with pytest tests in `tests/test_annotate.py`. That covers CSV reading and writing, click-to-pixel mapping, zoom mapping, display tone mapping, the region/label rules, the add/delete undo stack, right-click and delete dot picking, and `[`/`]` cycling. The pytest settings are in `pyproject.toml`. See `CLAUDE.md` for the design spec.
+Everything in `annotate.py` that doesn't need a window is a plain function with pytest tests in `tests/test_annotate.py`. That covers CSV reading and writing, click-to-pixel mapping, zoom mapping, display tone mapping and the gamma lookup table, the region/label rules, the add/delete undo stack, dot picking (PICK mode, right-click, Ctrl+click) and deleting, `[`/`]` cycling, the palette, panel layout and key handling. The pytest settings are in `pyproject.toml`. See `CLAUDE.md` for the design spec.
 
 ## Troubleshooting
 
@@ -160,9 +191,10 @@ Everything in `annotate.py` that doesn't need a window is a plain function with 
 | `The function is not implemented … GTK/Qt` | You have `opencv-python-headless`; this tool needs `opencv-python` (run `uv sync`) |
 | No window appears (WSL/SSH) | Make sure a display is available (WSLg on Windows 11, or X forwarding) |
 | Keys do nothing | Click the image window to give it focus; check Caps Lock |
-| Right-click says `no dot within 10 px` | Click closer to the dot, open zoom (`z`) and right-click there, or use `[` / `]` |
-| `x` says `no dot within 10 px of the cursor` | Move until the cyan ring shows on the dot (in zoom if dots are crowded), then press `x` |
-| Right-click opens a menu instead of selecting | Your OpenCV build ignored `WINDOW_GUI_NORMAL`; use `[` / `]` instead, and report the OpenCV version |
+| Right-click doesn't select anything | Use `r` and then a left click (or Ctrl+click, or `[` / `]`). To see what's happening, run with `--debug-mouse`: if no `event=RBUTTONDOWN` line appears when you right-click, your window system isn't passing right-clicks to OpenCV |
+| `no dot near click` | The click wasn't within 10 px of a dot. Click closer (watch for the cyan ring), or open zoom (`z`) and pick there |
+| `x` says `no dot near cursor` | Move until the cyan ring shows on the dot (in zoom if dots are crowded), then press `x` |
+| Image too dark / washed out | Press `+` / `-` to change gamma, or `g` to turn it off |
 | `CSV name collision: a.tif and a.png` | Two images share a filename stem and would write the same CSV; rename one |
 | `…csv:N: unknown label …` on load | That CSV was edited by hand and has a bad row; fix line N (the tool refuses to drop data silently) |
 | `cannot read image` | The file is corrupt or not a real image; move it out of the input folder |
