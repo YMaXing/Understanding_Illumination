@@ -3,7 +3,8 @@ import pytest
 
 from annotate import (
     CSV_HEADER,
-    STRIP_H,
+    PANEL_BOTTOM_H,
+    PANEL_RIGHT_W,
     ZOOM,
     ZOOM_HALF,
     AnnotationState,
@@ -39,7 +40,7 @@ def _ordered_image():
     return img.astype(np.uint16)
 
 
-@pytest.mark.parametrize("gamma", [True, False])
+@pytest.mark.parametrize("gamma", [2.2, None, 4.0])
 def test_joint_stretch_preserves_channel_ordering(gamma):
     img = _ordered_image()
     out = to_display_8bit(img, *stretch_params(img), gamma).astype(int)
@@ -51,7 +52,7 @@ def test_joint_stretch_preserves_channel_ordering(gamma):
 
 def test_joint_stretch_keeps_gray_gray():
     img = _ordered_image()
-    out = to_display_8bit(img, *stretch_params(img), True)
+    out = to_display_8bit(img, *stretch_params(img), 2.2)
     gray = out[0, :4]
     assert np.all(gray[:, 0] == gray[:, 1]) and np.all(gray[:, 1] == gray[:, 2])
 
@@ -70,14 +71,14 @@ def test_constant_image_does_not_divide_by_zero():
     img = np.full((8, 8, 3), 1234, np.uint16)
     lo, hi = stretch_params(img)
     assert hi > lo
-    out = to_display_8bit(img, lo, hi, True)
+    out = to_display_8bit(img, lo, hi, 2.2)
     assert out.dtype == np.uint8 and np.all(np.isfinite(out))
 
 
 @pytest.mark.parametrize("dtype,shape", [(np.uint16, (5, 7, 3)), (np.uint8, (5, 7, 3)), (np.uint16, (5, 7))])
 def test_display_shape_and_dtype(dtype, shape):
     img = np.arange(np.prod(shape)).reshape(shape).astype(dtype)
-    out = to_display_8bit(img, *stretch_params(img), False)
+    out = to_display_8bit(img, *stretch_params(img), None)
     assert out.shape == shape and out.dtype == np.uint8
     assert out.min() == 0 and out.max() == 255
 
@@ -85,7 +86,7 @@ def test_display_shape_and_dtype(dtype, shape):
 def test_gamma_brightens_midtones():
     img = np.linspace(0, 65535, 300, dtype=np.uint16).reshape(10, 10, 3)
     lo, hi = stretch_params(img)
-    assert to_display_8bit(img, lo, hi, True).mean() > to_display_8bit(img, lo, hi, False).mean()
+    assert to_display_8bit(img, lo, hi, 2.2).mean() > to_display_8bit(img, lo, hi, None).mean()
 
 
 # ---------------------------------------------------------------- main-view mapping
@@ -95,16 +96,16 @@ def test_fit_never_upscales():
     assert fit_display_size(100, 80, 1600, 900) == (100, 80)
 
 
-def test_fit_accounts_for_strip():
-    dw, dh = fit_display_size(W, H, 800, 600)
-    assert dh + STRIP_H <= 600 and dw <= 800
-    assert dh == round(H * (600 - STRIP_H) / H)
+def test_fit_accounts_for_bottom_panel():
+    dw, dh = fit_display_size(W, H, 800, 600, "bottom")
+    assert dh + PANEL_BOTTOM_H <= 600 and dw <= 800
+    assert dh == round(H * (600 - PANEL_BOTTOM_H) / H)
 
 
-def test_strip_and_outside_clicks_are_ignored():
-    disp = fit_display_size(W, H, 800, 600)
+def test_bottom_panel_and_outside_clicks_are_ignored():
+    disp = fit_display_size(W, H, 800, 600, "bottom")
     dw, dh = disp
-    for dy in (dh, dh + 1, dh + STRIP_H - 1):
+    for dy in (dh, dh + 1, dh + PANEL_BOTTOM_H - 1):
         assert display_to_original(10, dy, disp, (W, H)) is None
     assert display_to_original(dw, 10, disp, (W, H)) is None
     assert display_to_original(-1, 10, disp, (W, H)) is None
@@ -124,7 +125,7 @@ def test_mapping_round_trip(max_size):
 
 
 def test_identity_mapping_at_native_scale():
-    disp = fit_display_size(W, H, 1600, 1200)
+    disp = fit_display_size(W, H, 2000, 1400)
     assert disp == (W, H)
     for x, y in [(0, 0), (5, 9), (W - 1, H - 1)]:
         assert display_to_original(*original_to_display(x, y, disp, (W, H)), disp, (W, H)) == (x, y)
@@ -621,3 +622,399 @@ def test_csv_contiguous_after_deleting_whole_region(tmp_path):
     first = path.read_bytes()
     write_csv(path, "img.tif", got)
     assert path.read_bytes() == first
+
+
+# ---------------------------------------------------------------- palette / colors
+
+import itertools  # noqa: E402
+
+import cv2  # noqa: E402
+
+from annotate import (  # noqa: E402
+    BOTTOM_MIN_W,
+    GAMMA_DEFAULT,
+    GOLDEN_ANGLE,
+    MSG_SECONDS,
+    PALETTE_20,
+    Annotator,
+    color_for_region,
+    compute_scale,
+    gamma_lut,
+    palette_preview,
+    panel_side,
+    step_gamma,
+    text_width,
+    wrap_text,
+)
+
+ORIGINAL_8 = [
+    (75, 25, 230), (75, 180, 60), (25, 225, 255), (200, 130, 0),
+    (48, 130, 245), (180, 30, 145), (240, 240, 70), (230, 50, 240),
+]
+
+
+def _lab(bgr):
+    px = np.array(bgr, np.float32).reshape(1, 1, 3) / 255
+    return cv2.cvtColor(px, cv2.COLOR_BGR2Lab).reshape(3).astype(float)
+
+
+def test_palette_20_keeps_first_8_and_is_distinct():
+    assert len(PALETTE_20) == 20
+    assert PALETTE_20[:8] == ORIGINAL_8
+    assert len(set(PALETTE_20)) == 20
+    assert all(all(isinstance(v, int) and 0 <= v <= 255 for v in c) for c in PALETTE_20)
+
+
+def test_palette_new_colors_are_bright():
+    for c in PALETTE_20[8:]:
+        assert _lab(c)[0] >= 45, c
+
+
+def test_palette_min_pairwise_cielab_distance():
+    labs = [_lab(c) for c in PALETTE_20]
+    d = min(np.linalg.norm(a - b) for a, b in itertools.combinations(labs, 2))
+    assert d >= 25
+
+
+def test_color_for_region_palette_and_determinism():
+    for rid in range(1, 21):
+        assert color_for_region(rid) == PALETTE_20[rid - 1]
+    first = [color_for_region(r) for r in range(1, 200)]
+    assert first == [color_for_region(r) for r in range(1, 200)]  # stable across calls
+
+
+def test_color_for_region_beyond_palette_golden_angle():
+    import colorsys
+    for rid in (21, 22, 57, 1000):
+        b, g, r = color_for_region(rid)
+        h, s, v = colorsys.rgb_to_hsv(r / 255, g / 255, b / 255)
+        assert v == pytest.approx(1.0, abs=1 / 255)
+        assert s == pytest.approx(0.85, abs=0.01)
+        expect = (rid * GOLDEN_ANGLE) % 360
+        assert min(abs(h * 360 - expect), 360 - abs(h * 360 - expect)) < 1.0
+    assert color_for_region(21) != color_for_region(22)
+
+
+def test_palette_preview_grid():
+    img = palette_preview(40)
+    assert img.shape == (5 * 80, 8 * 80, 3) and img.dtype == np.uint8
+    # cell for region 1 is filled with its color
+    assert tuple(int(v) for v in img[8, 8]) == PALETTE_20[0]
+
+
+# ---------------------------------------------------------------- gamma LUT
+
+
+def test_gamma_lut_gamma_1_is_linear_identity():
+    lo, hi = 1000.0, 50000.0
+    assert np.array_equal(gamma_lut(lo, hi, 1.0), gamma_lut(lo, hi, None))
+    lut = gamma_lut(0.0, 65535.0, None)
+    v = np.arange(65536)
+    assert np.all(np.abs(lut.astype(int) - np.round(v / 65535 * 255)) <= 1)
+
+
+@pytest.mark.parametrize("gamma", [None, 1.0, 2.2, 5.0])
+def test_gamma_lut_monotonic_and_clamped(gamma):
+    lo, hi = 1000.0, 50000.0
+    lut = gamma_lut(lo, hi, gamma)
+    assert lut.shape == (65536,) and lut.dtype == np.uint8
+    assert np.all(np.diff(lut.astype(int)) >= 0)
+    assert np.all(lut[:1001] == 0) and np.all(lut[50000:] == 255)
+
+
+def test_larger_gamma_brightens_shadows():
+    a, b = gamma_lut(0, 65535, 2.2), gamma_lut(0, 65535, 3.0)
+    assert b[3000] > a[3000] > gamma_lut(0, 65535, None)[3000]
+
+
+def test_lut_matches_direct_formula():
+    img = np.random.default_rng(1).integers(0, 65536, (20, 20, 3)).astype(np.uint16)
+    lo, hi = stretch_params(img)
+    x = np.clip((img.astype(np.float64) - lo) / (hi - lo), 0, 1) ** (1 / 2.2)
+    out = to_display_8bit(img, lo, hi, 2.2)
+    assert np.all(np.abs(out.astype(int) - np.round(x * 255)) <= 1)
+    # float images take the direct path and agree
+    assert np.all(np.abs(to_display_8bit(img.astype(np.float32), lo, hi, 2.2).astype(int) - out) <= 1)
+
+
+def test_step_gamma():
+    assert step_gamma(2.2, 1) == 2.4 and step_gamma(2.2, -1) == 2.0
+    assert step_gamma(5.0, 1) == 5.0 and step_gamma(1.0, -1) == 1.0
+    g = GAMMA_DEFAULT
+    for _ in range(20):
+        g = step_gamma(g, 1)
+    assert g == 5.0
+    for _ in range(20):
+        g = step_gamma(g, -1)
+    assert g == 1.0
+    g = 1.0
+    for _ in range(6):
+        g = step_gamma(g, 1)
+    assert g == 2.2  # no float drift
+
+
+# ---------------------------------------------------------------- panel layout
+
+
+def test_panel_side():
+    assert panel_side(768, 1023) == "right"  # portrait
+    assert panel_side(1023, 768) == "bottom"  # landscape
+    assert panel_side(500, 500) == "bottom"
+    assert panel_side(768, 1023, "bottom") == "bottom"
+    assert panel_side(1023, 768, "right") == "right"
+
+
+def test_compute_scale_with_panel():
+    # right panel: width budget loses PANEL_RIGHT_W
+    s = compute_scale(768, 1023, 1000, 2000, "right")
+    assert s == pytest.approx((1000 - PANEL_RIGHT_W) / 768)
+    # bottom panel: height budget loses PANEL_BOTTOM_H
+    s = compute_scale(1023, 768, 3000, 600, "bottom")
+    assert s == pytest.approx((600 - PANEL_BOTTOM_H) / 768)
+    # never upscales
+    assert compute_scale(100, 80, 3000, 3000, "right") == 1.0
+    assert compute_scale(100, 80, 3000, 3000, "bottom") == 1.0
+    # degenerate max-size stays positive
+    assert compute_scale(768, 1023, 100, 100, "right") > 0
+
+
+def test_wrap_text_fits_and_keeps_words():
+    text = "m = material (one reflectance, no variation: paint, a single brick, plastic)"
+    lines = wrap_text(text, 200)
+    assert len(lines) > 1
+    assert all(text_width(ln) <= 200 for ln in lines)
+    assert " ".join(lines).split() == text.split()
+    assert wrap_text("", 100) == [""]
+    assert wrap_text("supercalifragilistic", 10) == ["supercalifragilistic"]
+
+
+# ---------------------------------------------------------------- Annotator (no windows)
+
+
+class FakeClock:
+    def __init__(self):
+        self.t = 100.0
+
+    def __call__(self):
+        return self.t
+
+
+def _annotator(tmp_path, n=2, size=(120, 90), panel="auto", **kw):
+    """Annotator over n synthetic uint16 images; never opens a window."""
+    img_dir = tmp_path / "imgs"
+    img_dir.mkdir(parents=True)
+    w, h = size
+    rng = np.random.default_rng(0)
+    for i in range(n):
+        img = rng.integers(0, 65535, (h, w, 3)).astype(np.uint16)
+        cv2.imwrite(str(img_dir / f"im{i}.png"), img)
+    out = tmp_path / "out"
+    out.mkdir(parents=True)
+    clock = FakeClock()
+    an = Annotator(sorted(img_dir.iterdir()), out, 1600, 900, panel=panel, clock=clock, **kw)
+    return an, clock
+
+
+def _click(an, x, y, flags=0, event=cv2.EVENT_LBUTTONDOWN):
+    an.on_main_mouse(cv2.EVENT_MOUSEMOVE, x, y, 0, None)
+    an.on_main_mouse(event, x, y, flags, None)
+
+
+def _two_regions(an):
+    _click(an, 10, 10)
+    _click(an, 20, 10)
+    an.handle_key(ord(" "))
+    _click(an, 60, 50)
+    assert an.state.region_ids() == [1, 2] and an.state.region_id == 2
+
+
+def test_pick_mode_hit_selects_and_returns_to_add(tmp_path):
+    an, _ = _annotator(tmp_path)
+    _two_regions(an)
+    an.handle_key(ord("r"))
+    assert an.mode == an.PICK
+    _click(an, 12, 11)  # near region 1's dot
+    assert an.mode == an.ADD and an.state.region_id == 1
+    assert an.message() == "selected region 1"
+    _click(an, 30, 30)  # further left-clicks add to region 1
+    assert an.state.region_points(1)[-1].x == 30
+
+
+def test_pick_mode_miss_stays_in_pick_and_adds_nothing(tmp_path):
+    an, _ = _annotator(tmp_path)
+    _two_regions(an)
+    n = len(an.state.points)
+    an.handle_key(ord("r"))
+    _click(an, 100, 80)
+    assert an.mode == an.PICK and len(an.state.points) == n
+    assert an.message() == "no dot near click"
+    an.handle_key(27)  # Esc cancels pick
+    assert an.mode == an.ADD
+
+
+def test_pick_tie_goes_to_most_recent(tmp_path):
+    an, _ = _annotator(tmp_path)
+    _click(an, 10, 10)
+    an.handle_key(ord(" "))
+    _click(an, 16, 10)  # region 2, equidistant from (13,10)
+    an.handle_key(ord(" "))
+    an.handle_key(ord("r"))
+    _click(an, 13, 10)
+    assert an.state.region_id == 2
+
+
+def test_ctrl_click_and_right_click_pick(tmp_path):
+    an, _ = _annotator(tmp_path)
+    _two_regions(an)
+    _click(an, 11, 10, flags=cv2.EVENT_FLAG_CTRLKEY)
+    assert an.state.region_id == 1 and an.mode == an.ADD
+    assert len(an.state.points) == 3  # ctrl-click did not add a point
+    _click(an, 61, 50, event=cv2.EVENT_RBUTTONDOWN)
+    assert an.state.region_id == 2
+
+
+def test_panel_clicks_ignored(tmp_path):
+    an, _ = _annotator(tmp_path)  # 120x90 landscape -> bottom panel
+    assert an.side == "bottom"
+    dw, dh = an.disp
+    _click(an, 10, dh + 5)
+    _click(an, dw + 50, 10)
+    assert an.state.points == []
+    an.handle_key(ord("r"))
+    _click(an, 10, dh + 5)
+    assert an.mode == an.PICK  # panel click in pick mode ignored, no message change
+
+
+def test_esc_never_quits(tmp_path):
+    an, _ = _annotator(tmp_path)
+    assert an.handle_key(27) is True
+    an.handle_key(ord("r"))
+    assert an.handle_key(27) is True and an.mode == an.ADD
+    assert an.handle_key(ord("q")) is False
+
+
+def test_esc_closes_zoom_state(tmp_path):
+    an, _ = _annotator(tmp_path)
+    an.zoom_center = (10, 10)  # as if open, without creating a window
+    an.zoom_bounds = zoom_crop_bounds(10, 10, ZOOM_HALF, an.w, an.h)
+    an.handle_key(27)
+    assert an.zoom_center is None and an.zoom_bounds is None
+
+
+def test_zoom_x_close_resets_state(tmp_path):
+    an, _ = _annotator(tmp_path)
+    an.zoom_center = (10, 10)
+    an.zoom_bounds = zoom_crop_bounds(10, 10, ZOOM_HALF, an.w, an.h)
+    an.hover = (an.ZOOMWIN, (5, 5))
+    an.zoom_closed()  # what run() does when the zoom window's X is clicked
+    assert an.zoom_center is None and an.hover is None
+    assert an.hover_target() is None
+    an.on_zoom_mouse(cv2.EVENT_LBUTTONDOWN, 5, 5, 0, None)  # late event: no crash
+    assert an.state.points == []
+
+
+def test_next_on_last_and_back_on_first(tmp_path):
+    an, _ = _annotator(tmp_path, n=2)
+    an.handle_key(ord("b"))
+    assert an.idx == 0 and an.message() == "first image"
+    an.handle_key(ord("n"))
+    assert an.idx == 1
+    an.handle_key(ord("n"))
+    assert an.idx == 1 and an.message() == "last image"
+
+
+def test_gamma_keys(tmp_path):
+    an, _ = _annotator(tmp_path)
+    assert an.gamma() == 2.2
+    an.handle_key(ord("+"))
+    assert an.gamma() == 2.4
+    an.handle_key(ord("_"))
+    an.handle_key(ord("-"))
+    assert an.gamma() == 2.0
+    an.handle_key(ord("g"))
+    assert an.gamma() is None and an.gamma_value == 2.0  # off keeps the value
+    an.handle_key(ord("="))
+    assert an.gamma() == 2.0  # + while off only turns gamma on
+    an.handle_key(ord("="))
+    assert an.gamma() == 2.2
+
+
+def test_gamma_persists_across_images_and_caches(tmp_path):
+    an, _ = _annotator(tmp_path, n=2)
+    an.handle_key(ord("+"))
+    a = an.full_img()
+    assert an.full_img() is a  # cached per gamma
+    an.handle_key(ord("n"))
+    assert an.idx == 1 and an.gamma() == 2.4
+    assert set(an._full) == set()  # caches reset per image
+    an.render()
+    assert set(an._full) == {2.4}
+
+
+def test_message_expires(tmp_path):
+    an, clock = _annotator(tmp_path)
+    an.handle_key(ord("s"))
+    assert an.message() == "saved"
+    clock.t += MSG_SECONDS - 0.1
+    assert an.message() == "saved"
+    clock.t += 0.2
+    assert an.message() == ""
+
+
+def test_label_key_on_existing_region_message(tmp_path):
+    an, _ = _annotator(tmp_path)
+    _two_regions(an)
+    an.handle_key(ord("r"))
+    _click(an, 10, 10)  # select region 1 (material)
+    an.handle_key(ord("t"))
+    assert an.state.region_id == 3 and an.message() == "new region 3 started (texture)"
+    an.handle_key(ord("p"))  # empty new region: just relabel
+    assert an.state.region_id == 3 and an.message() == "label specular"
+    an.handle_key(ord(" "))
+    assert an.message() == "current region is empty"
+
+
+def test_space_message(tmp_path):
+    an, _ = _annotator(tmp_path)
+    _click(an, 5, 5)
+    an.handle_key(ord(" "))
+    assert an.message() == "region 2 started"
+
+
+def test_render_layout_bottom_and_right(tmp_path):
+    an, _ = _annotator(tmp_path, size=(120, 90))
+    canvas = an.render()
+    dw, dh = an.disp
+    assert an.side == "bottom" and canvas.shape[1] == max(dw, BOTTOM_MIN_W)
+    assert canvas.shape[0] >= dh + PANEL_BOTTOM_H
+    assert np.array_equal(canvas[:dh, :dw], an.scaled_img())  # image at the origin
+
+    an2, _ = _annotator(tmp_path / "p", size=(90, 160))
+    canvas = an2.render()
+    dw, dh = an2.disp
+    assert an2.side == "right" and canvas.shape[1] == dw + PANEL_RIGHT_W
+    assert canvas.shape[0] >= dh
+    assert np.array_equal(canvas[:dh, :dw], an2.scaled_img())
+
+
+def test_debug_mouse_prints(tmp_path, capsys):
+    an, _ = _annotator(tmp_path, debug_mouse=True)
+    an.on_main_mouse(cv2.EVENT_MOUSEMOVE, 5, 5, 0, None)  # plain move: not logged
+    an.on_main_mouse(cv2.EVENT_RBUTTONDOWN, 5, 5, cv2.EVENT_FLAG_RBUTTON, None)
+    out = capsys.readouterr().out
+    assert "event=RBUTTONDOWN" in out and "flags=RBUTTON" in out
+    assert "MOUSEMOVE" not in out
+
+
+def test_compute_scale_with_measured_panel():
+    nominal = compute_scale(1023, 768, 3000, 900, "bottom")
+    measured = compute_scale(1023, 768, 3000, 900, "bottom", panel=264)
+    assert measured == pytest.approx((900 - 264) / 768) and measured < nominal
+
+
+def test_landscape_window_fits_max_size(tmp_path):
+    an, _ = _annotator(tmp_path, size=(1023, 768))
+    an.max_w, an.max_h = 1600, 900
+    an.load(0)
+    canvas = an.render()
+    assert an.side == "bottom" and canvas.shape[0] <= 900 and canvas.shape[1] <= 1600
