@@ -9,6 +9,9 @@ Keys (also listed in the on-screen help panel):
   r pick a region by clicking one of its dots (right-click / Ctrl+click also work),
   x delete the ringed dot, u undo, z zoom (Esc closes), g gamma on/off,
   + / - gamma up/down, s save, n/b next/previous image, q quit.
+  Super-regions (same material/texture across separate regions): c create from
+  the current region, a add the current region to the selected super, d drop it,
+  , . previous/next super, y pick a super by clicking a dot, v show/hide.
 """
 
 from __future__ import annotations
@@ -28,7 +31,8 @@ import numpy as np
 LABELS = ("material", "texture", "specular")
 LABEL_KEYS = {ord("m"): "material", ord("t"): "texture", ord("p"): "specular"}
 MARKERS = {"material": "circle", "texture": "square", "specular": "triangle"}
-CSV_HEADER = ["image", "x", "y", "region_id", "label"]
+CSV_HEADER_V1 = ["image", "x", "y", "region_id", "label"]  # older files, still readable
+CSV_HEADER = CSV_HEADER_V1 + ["super_region_id"]  # 0 = in no super-region
 IMAGE_EXTS = {".tif", ".tiff", ".png", ".jpg", ".jpeg"}
 
 # no Qt toolbar / status bar / built-in wheel zoom
@@ -41,7 +45,7 @@ LO_PCT, HI_PCT = 0.5, 99.5
 # status/help panel: right of portrait images, below landscape ones
 PANEL_RIGHT_W = 560
 PANEL_BOTTOM_H = 220  # nominal; grows if the text needs more room
-BOTTOM_MIN_W = 1200  # canvas width for the 3-column bottom layout
+BOTTOM_MIN_W = 1400  # canvas width for the 5-column bottom layout (capped by --max-size)
 PANEL_PAD = 12
 LINE_H = 20
 FONT = cv2.FONT_HERSHEY_SIMPLEX
@@ -64,6 +68,15 @@ PALETTE_20 = [
 ]
 GOLDEN_ANGLE = 137.50776  # degrees; hue step for region ids beyond the palette
 
+# Super-region ring colors (BGR), indexed (super_id - 1) % 12. Saturated and
+# bright (L* >= 55, visible on shadows), pairwise >= 25 apart in CIELAB (checked
+# in tests), chosen to sit away from PALETTE_20 so rings read as a separate layer.
+PALETTE_SUPER = [
+    (119, 255, 0), (0, 150, 204), (255, 197, 38), (0, 255, 238),
+    (190, 230, 34), (38, 96, 255), (197, 38, 255), (255, 139, 38),
+    (111, 38, 255), (0, 255, 136), (255, 38, 226), (31, 204, 146),
+]
+
 # ---------------------------------------------------------------- state
 
 
@@ -77,12 +90,14 @@ class Point:
 
 @dataclass(frozen=True)
 class Action:
-    """One undoable edit. prev_* is the current region/label before it."""
-    kind: str  # "add" | "delete"
-    point: Point
-    index: int  # position in AnnotationState.points
+    """One undoable edit. prev_* is the current region/label before it;
+    supers is the super-region snapshot before it (see AnnotationState.snapshot)."""
+    kind: str  # "add" | "delete" | "super"
+    point: Point | None  # None for "super"
+    index: int  # position in AnnotationState.points (-1 for "super")
     prev_region: int
     prev_label: str
+    supers: tuple | None = None
 
 
 @dataclass
@@ -91,6 +106,13 @@ class AnnotationState:
     region_id: int = 1
     label: str = "material"
     history: list[Action] = field(default_factory=list)
+    # Super-regions group regions of the same material/texture across gaps.
+    # Membership lives beside the points: region_id -> super_id (absent = none).
+    # Super-region operations never touch points, region ids/labels or the
+    # current region.
+    super_of: dict[int, int] = field(default_factory=dict)
+    current_super: int | None = None
+    show_supers: bool = True  # display only; never affects data or CSV
 
     def region_points(self, region_id: int | None = None) -> list[Point]:
         rid = self.region_id if region_id is None else region_id
@@ -110,11 +132,14 @@ class AnnotationState:
 
     def delete_point(self, x: int, y: int) -> Point | None:
         """Delete the point at (x, y); the current region is left unchanged,
-        even if this empties it."""
+        even if this empties it. A region emptied this way leaves its super-region
+        (the undo record keeps the membership)."""
         for i, p in enumerate(self.points):
             if p.x == x and p.y == y:
+                snap = self.snapshot()
                 del self.points[i]
-                self.history.append(Action("delete", p, i, self.region_id, self.label))
+                self.history.append(Action("delete", p, i, self.region_id, self.label, snap))
+                self.prune_supers()
                 return p
         return None
 
@@ -169,7 +194,9 @@ class AnnotationState:
 
         Undoing an add removes the point; region/label follow the new last
         point (region 1 / material if none). Undoing a delete restores the
-        point at its old position and the region/label from before the delete.
+        point at its old position and the region/label from before the delete,
+        plus its super-region membership. Undoing a super-region change restores
+        the membership and selected super from before it.
         Actions are undone newest-first, so the index and pixel are always free.
         """
         if not self.history:
@@ -182,24 +209,133 @@ class AnnotationState:
                 self.region_id, self.label = last.region_id, last.label
             else:
                 self.region_id, self.label = 1, "material"
-        else:
+            self.prune_supers()
+        elif a.kind == "delete":
             self.points.insert(a.index, a.point)
             self.region_id, self.label = a.prev_region, a.prev_label
+            self.restore(a.supers)
+        else:
+            self.restore(a.supers)
         return a.kind
 
+    # -- super-regions
 
-def state_from_points(points: list[Point]) -> AnnotationState:
+    def snapshot(self) -> tuple:
+        return tuple(sorted(self.super_of.items())), self.current_super
+
+    def restore(self, snap: tuple | None) -> None:
+        if snap is not None:
+            self.super_of, self.current_super = dict(snap[0]), snap[1]
+
+    def prune_supers(self) -> None:
+        """Regions without points leave their super; a super without members
+        ceases to exist (and is deselected)."""
+        live = {p.region_id for p in self.points}
+        self.super_of = {r: s for r, s in self.super_of.items() if r in live}
+        if self.current_super not in self.super_of.values():
+            self.current_super = None
+
+    def super_ids(self) -> list[int]:
+        return sorted(set(self.super_of.values()))
+
+    def next_super_id(self) -> int:
+        return max(self.super_ids(), default=0) + 1
+
+    def super_members(self, super_id: int) -> list[int]:
+        return sorted(r for r, s in self.super_of.items() if s == super_id)
+
+    def region_label(self, region_id: int) -> str | None:
+        pts = self.region_points(region_id)
+        return pts[0].label if pts else None
+
+    def super_label(self, super_id: int) -> str | None:
+        members = self.super_members(super_id)
+        return self.region_label(members[0]) if members else None
+
+    def _record_super(self) -> None:
+        self.history.append(Action("super", None, -1, self.region_id, self.label, self.snapshot()))
+
+    def create_super(self) -> tuple[bool, str]:
+        """New super-region (id max+1) from the current region; selects it."""
+        rid = self.region_id
+        if not self.is_existing():
+            return False, f"region {rid} has no points"
+        if rid in self.super_of:
+            return False, f"region {rid} is already in S{self.super_of[rid]} (use a to move it)"
+        sid = self.next_super_id()
+        self._record_super()
+        self.super_of[rid] = sid
+        self.current_super = sid
+        return True, f"created S{sid} ({self.region_label(rid)}) from region {rid}"
+
+    def add_to_super(self) -> tuple[bool, str]:
+        """Add the current region to current_super, moving it out of another super."""
+        rid, sid = self.region_id, self.current_super
+        if sid is None:
+            return False, "no super-region selected"
+        if not self.is_existing():
+            return False, f"region {rid} has no points"
+        old = self.super_of.get(rid)
+        if old == sid:
+            return False, f"region {rid} is already in S{sid}"
+        rl, sl = self.region_label(rid), self.super_label(sid)
+        if rl != sl:
+            return False, f"label mismatch: region {rid} is {rl}, S{sid} is {sl}"
+        self._record_super()
+        self.super_of[rid] = sid
+        self.prune_supers()  # the old super disappears if this was its last member
+        if old is not None:
+            return True, f"moved from S{old} to S{sid}"
+        return True, f"added region {rid} to S{sid}"
+
+    def drop_from_super(self) -> tuple[bool, str]:
+        """Remove the current region from its super; the region and its points stay."""
+        rid = self.region_id
+        sid = self.super_of.get(rid)
+        if sid is None:
+            return False, f"region {rid} is in no super-region"
+        self._record_super()
+        del self.super_of[rid]
+        self.prune_supers()
+        gone = "" if sid in self.super_of.values() else f" (S{sid} removed)"
+        return True, f"dropped region {rid} from S{sid}{gone}"
+
+    def select_super(self, super_id: int) -> bool:
+        if super_id not in self.super_of.values():
+            return False
+        self.current_super = super_id
+        return True
+
+    def cycle_super(self, step: int) -> int | None:
+        """Select the previous/next super by id, wrapping; with none selected,
+        +1 starts at the lowest id and -1 at the highest. None if there are none."""
+        ids = self.super_ids()
+        if not ids:
+            return None
+        if self.current_super in ids:
+            target = ids[(ids.index(self.current_super) + step) % len(ids)]
+        else:
+            target = ids[0] if step > 0 else ids[-1]
+        self.current_super = target
+        return target
+
+
+def state_from_points(points: list[Point], super_of: dict[int, int] | None = None) -> AnnotationState:
     """State for a reopened image: a fresh empty region after the existing ones.
-    History is seeded with one add per loaded point, so undo removes them last-row-first."""
+    History is seeded with one add per loaded point, so undo removes them last-row-first.
+    No super-region is selected; the next new super id is max+1."""
     if not points:
         return AnnotationState()
     points = list(points)
-    return AnnotationState(
+    st = AnnotationState(
         points=points,
         region_id=max(p.region_id for p in points) + 1,
         label=points[-1].label,
         history=[Action("add", p, i, p.region_id, p.label) for i, p in enumerate(points)],
+        super_of=dict(super_of or {}),
     )
+    st.prune_supers()
+    return st
 
 
 def renumber_regions(points: list[Point]) -> list[Point]:
@@ -213,6 +349,24 @@ def renumber_regions(points: list[Point]) -> list[Point]:
 def rows_for_save(points: list[Point]) -> list[Point]:
     """Sort by (region_id, insertion order), then renumber ids to 1..k."""
     return renumber_regions(sorted(points, key=lambda p: p.region_id))
+
+
+def rows_for_save_supers(
+    points: list[Point], super_of: dict[int, int]
+) -> list[tuple[Point, int]]:
+    """rows_for_save plus each row's super id (0 = none). Supers are renumbered
+    1..K in order of their smallest (renumbered) member region; membership follows."""
+    ordered = sorted(points, key=lambda p: p.region_id)
+    region_map: dict[int, int] = {}
+    for p in ordered:
+        region_map.setdefault(p.region_id, len(region_map) + 1)
+    new_super_of = {region_map[r]: s for r, s in super_of.items() if r in region_map}
+    first_member: dict[int, int] = {}
+    for r in sorted(new_super_of):
+        first_member.setdefault(new_super_of[r], r)
+    super_map = {s: i + 1 for i, s in enumerate(sorted(first_member, key=first_member.get))}
+    rows = renumber_regions(ordered)
+    return [(p, super_map.get(new_super_of.get(p.region_id), 0)) for p in rows]
 
 
 def nearest_point(points, click, to_canvas, radius) -> Point | None:
@@ -266,41 +420,67 @@ def palette_preview(n: int = 40, cols: int = 8, cell: int = 80) -> np.ndarray:
 # ---------------------------------------------------------------- CSV I/O
 
 
-def write_csv(path: Path, image_name: str, points: list[Point]) -> None:
+def write_csv(
+    path: Path, image_name: str, points: list[Point], super_of: dict[int, int] | None = None
+) -> None:
     """Atomically write one row per point (header only if there are none)."""
     path = Path(path)
     tmp = path.with_name(path.name + ".tmp")
     with open(tmp, "w", newline="") as f:
         w = csv.writer(f)
         w.writerow(CSV_HEADER)
-        for p in rows_for_save(points):
-            w.writerow([image_name, p.x, p.y, p.region_id, p.label])
+        for p, sid in rows_for_save_supers(points, super_of or {}):
+            w.writerow([image_name, p.x, p.y, p.region_id, p.label, sid])
     os.replace(tmp, path)
 
 
-def read_csv(path: Path) -> list[Point]:
+def read_csv_supers(path: Path) -> tuple[list[Point], dict[int, int]]:
+    """Points plus super-region membership (region -> super). Also reads the
+    older 5-column files (no super-regions)."""
     with open(path, newline="") as f:
         reader = csv.reader(f)
         header = next(reader, None)
-        if header != CSV_HEADER:
+        if header == CSV_HEADER:
+            ncols = len(CSV_HEADER)
+        elif header == CSV_HEADER_V1:
+            ncols = len(CSV_HEADER_V1)
+        else:
             raise ValueError(f"{path}: expected header {CSV_HEADER}, got {header}")
         points = []
+        region_super: dict[int, tuple[int, int]] = {}  # region -> (super, first line)
+        super_label: dict[int, tuple[str, int]] = {}  # super -> (label, first line)
         for lineno, row in enumerate(reader, start=2):
             if not row:
                 continue
-            if len(row) != len(CSV_HEADER):
-                raise ValueError(f"{path}:{lineno}: expected {len(CSV_HEADER)} columns")
-            _, xs, ys, rs, label = row
+            if len(row) != ncols:
+                raise ValueError(f"{path}:{lineno}: expected {ncols} columns")
+            _, xs, ys, rs, label = row[:5]
+            ss = row[5] if ncols == 6 else "0"
             try:
-                x, y, rid = int(xs), int(ys), int(rs)
+                x, y, rid, sid = int(xs), int(ys), int(rs), int(ss)
             except ValueError:
-                raise ValueError(f"{path}:{lineno}: non-integer x/y/region_id") from None
+                raise ValueError(f"{path}:{lineno}: non-integer x/y/region_id/super_region_id") from None
             if label not in LABELS:
                 raise ValueError(f"{path}:{lineno}: unknown label {label!r}")
-            if x < 0 or y < 0 or rid < 1:
+            if x < 0 or y < 0 or rid < 1 or sid < 0:
                 raise ValueError(f"{path}:{lineno}: out-of-range value")
+            prev_sid, prev_line = region_super.setdefault(rid, (sid, lineno))
+            if prev_sid != sid:
+                raise ValueError(
+                    f"{path}:{lineno}: region {rid} has super_region_id {sid}, "
+                    f"but {prev_sid} on line {prev_line}")
+            if sid:
+                prev_label, prev_line = super_label.setdefault(sid, (label, lineno))
+                if prev_label != label:
+                    raise ValueError(
+                        f"{path}:{lineno}: super-region {sid} mixes labels "
+                        f"{prev_label!r} (line {prev_line}) and {label!r}")
             points.append(Point(x, y, rid, label))
-    return points
+    return points, {r: s for r, (s, _) in region_super.items() if s}
+
+
+def read_csv(path: Path) -> list[Point]:
+    return read_csv_supers(path)[0]
 
 
 def list_images(image_dir: Path) -> list[Path]:
@@ -482,14 +662,41 @@ def wrap_text(text: str, width_px: int, scale: float = FONT_SCALE, thickness: in
 
 
 def draw_ring(canvas, c, r):
-    """Delete-preview ring around a marker of radius r: cyan on black."""
-    cv2.circle(canvas, c, r + 5, (0, 0, 0), 3, cv2.LINE_AA)
-    cv2.circle(canvas, c, r + 5, (255, 255, 0), 1, cv2.LINE_AA)
+    """Hover ring (dot that x deletes / a pick selects) around a marker of
+    radius r: cyan on black, outside any super-region ring."""
+    cv2.circle(canvas, c, r + 9, (0, 0, 0), 3, cv2.LINE_AA)
+    cv2.circle(canvas, c, r + 9, (255, 255, 0), 1, cv2.LINE_AA)
 
 
-def draw_markers(canvas, points, to_canvas, r, current_region=None):
+def color_for_super(super_id: int) -> tuple[int, int, int]:
+    return PALETTE_SUPER[(super_id - 1) % len(PALETTE_SUPER)]
+
+
+def draw_markers(canvas, points, to_canvas, r, current_region=None,
+                 super_of=None, current_super=None):
     """Shape by label, color by region, region_id beside each region's first point.
-    The current region's dots get a thicker white outline."""
+    The current region's dots get a thicker white outline.
+
+    With super_of (super-region display on): every member dot gets an outer ring
+    in its super's color (thicker for current_super), drawn under the markers;
+    the id text becomes "6>S2"; current_super's members are linked to the first
+    point of its lowest-id member."""
+    super_of = super_of or {}
+    firsts = region_first_points(points)
+    if current_super is not None:
+        members = sorted(rid for rid, s in super_of.items() if s == current_super and rid in firsts)
+        anchor = to_canvas(*firsts[members[0]]) if members else None
+        for rid in members[1:]:
+            c = to_canvas(*firsts[rid])
+            if anchor is not None and c is not None:
+                cv2.line(canvas, anchor, c, color_for_super(current_super), 1, cv2.LINE_AA)
+    for p in points:
+        sid = super_of.get(p.region_id)
+        c = to_canvas(p.x, p.y) if sid is not None else None
+        if c is not None:
+            t = 5 if sid == current_super else 3
+            cv2.circle(canvas, c, r + 4, (0, 0, 0), t + 2, cv2.LINE_AA)
+            cv2.circle(canvas, c, r + 4, color_for_super(sid), t, cv2.LINE_AA)
     for p in points:
         c = to_canvas(p.x, p.y)
         if c is None:
@@ -498,10 +705,15 @@ def draw_markers(canvas, points, to_canvas, r, current_region=None):
             draw_marker(canvas, c, MARKERS[p.label], color_for_region(p.region_id), r, (255, 255, 255), 2)
         else:
             draw_marker(canvas, c, MARKERS[p.label], color_for_region(p.region_id), r)
-    for rid, (x, y) in region_first_points(points).items():
+    for rid, (x, y) in firsts.items():
         c = to_canvas(x, y)
-        if c is not None:
+        if c is None:
+            continue
+        sid = super_of.get(rid)
+        if sid is None:
             draw_text(canvas, str(rid), (c[0] + r + 3, c[1] - r - 3), color_for_region(rid))
+        else:
+            draw_text(canvas, f"{rid}>S{sid}", (c[0] + r + 8, c[1] - r - 6), color_for_super(sid))
 
 
 # ---------------------------------------------------------------- GUI
@@ -550,7 +762,32 @@ HELP_GROUPS = [
     ("Edit", ["x = delete point under the ring", "u = undo last action"]),
     ("View", ["z = zoom (Esc closes)", "g = gamma on/off", "+ / - = gamma up/down"]),
     ("Files", ["s = save", "n / b = next / previous image (autosaves)", "q = quit"]),
+    ("Super-regions (same material/texture across separate regions)", [
+        "c = create from current region",
+        "a = add current region to selected super",
+        "d = drop current region from its super (region stays)",
+        ", . = select prev/next super",
+        "y = pick super by clicking a dot",
+        "v = show/hide",
+    ]),
 ]
+SUPER_LIST_LINES = 4  # panel lines reserved for the super-region list
+
+
+def super_list_lines(st: "AnnotationState", max_lines: int = SUPER_LIST_LINES,
+                     max_ids: int = 10) -> list[str]:
+    """One line per super ("S1 material: 2,6,9"); over max_lines the last line
+    becomes "+N more". Long member lists are cut to max_ids ids."""
+    lines = []
+    for sid in st.super_ids():
+        members = st.super_members(sid)
+        ids = ",".join(map(str, members[:max_ids])) + ("..." if len(members) > max_ids else "")
+        lines.append(f"S{sid} {st.super_label(sid)}: {ids}")
+    if not lines:
+        return ["(none yet)"]
+    if len(lines) > max_lines:
+        lines = lines[:max_lines - 1] + [f"+{len(lines) - (max_lines - 1)} more"]
+    return lines
 
 PANEL_BG = (40, 40, 40)
 C_TEXT = (235, 235, 235)
@@ -603,7 +840,7 @@ def draw_lines(canvas, lines: list[PanelLine], x: int, y: int) -> None:
 class Annotator:
     MAIN = "annotate"
     ZOOMWIN = "zoom"
-    ADD, PICK = "ADD", "PICK"
+    ADD, PICK, SUPER_PICK = "ADD", "PICK", "SUPER-PICK"
 
     def __init__(self, images: list[Path], out_dir: Path, max_w: int, max_h: int,
                  panel: str = "auto", debug_mouse: bool = False, clock=time.monotonic):
@@ -642,7 +879,7 @@ class Annotator:
         if raw is None:
             raise RuntimeError(f"cannot read image: {path}")
         csv_path = self.csv_path(path)
-        points = read_csv(csv_path) if csv_path.exists() else []
+        points, super_of = read_csv_supers(csv_path) if csv_path.exists() else ([], {})
 
         self.idx = idx
         self.raw = to_bgr(raw)
@@ -651,19 +888,21 @@ class Annotator:
         self._luts: dict[float | None, np.ndarray] = {}
         self._full: dict[float | None, np.ndarray] = {}
         self._scaled: dict[float | None, np.ndarray] = {}
-        self.state = state_from_points(points)
+        show_supers = self.state.show_supers if hasattr(self, "state") else True
+        self.state = state_from_points(points, super_of)
+        self.state.show_supers = show_supers  # a view preference: carries over
         self.mode = self.ADD
         self.cursor: tuple[int, int] | None = None
         self.hover = None
         self.close_zoom()
         self.side = panel_side(self.w, self.h, self.panel_mode)
-        panel = PANEL_RIGHT_W if self.side == "right" else self.bottom_columns(BOTTOM_MIN_W)[1]
+        panel = PANEL_RIGHT_W if self.side == "right" else self.bottom_layout(self.bottom_width())[1]
         self.disp = fit_display_size(self.w, self.h, self.max_w, self.max_h, self.side, panel)
         self.say(f"loaded {len(points)} points" if points else f"image {idx + 1}/{len(self.images)}")
 
     def save(self) -> None:
         path = self.images[self.idx]
-        write_csv(self.csv_path(path), path.name, self.state.points)
+        write_csv(self.csv_path(path), path.name, self.state.points, self.state.super_of)
         self.say("saved")
 
     def gamma(self) -> float | None:
@@ -757,7 +996,9 @@ class Annotator:
         if p is None:  # clicks in the panel / outside the image are ignored
             return
         if event == cv2.EVENT_LBUTTONDOWN:
-            if self.mode == self.PICK or flags & cv2.EVENT_FLAG_CTRLKEY:
+            if self.mode == self.SUPER_PICK:
+                self.pick_super_at((x, y), to_canvas)
+            elif self.mode == self.PICK or flags & cv2.EVENT_FLAG_CTRLKEY:
                 self.pick_at((x, y), to_canvas)
             else:
                 self.add(p)
@@ -793,6 +1034,29 @@ class Annotator:
         self.say(f"selected region {p.region_id}")
         return True
 
+    def pick_super_at(self, click: tuple[int, int], to_canvas) -> bool:
+        """Select the super-region of the nearest dot's region (current region
+        unchanged); stay in SUPER-PICK on a miss or a region in no super."""
+        p = nearest_point(self.state.points, click, to_canvas, SELECT_RADIUS)
+        if p is None:
+            self.say("no dot near click")
+            return False
+        sid = self.state.super_of.get(p.region_id)
+        if sid is None:
+            self.say(f"region {p.region_id} is in no super-region")
+            return False
+        self.state.select_super(sid)
+        self.mode = self.ADD
+        self.super_say(f"selected S{sid} ({self.state.super_label(sid)})")
+        return True
+
+    def super_say(self, text: str) -> None:
+        """Message for a super-region key; these keys also turn the display on."""
+        if not self.state.show_supers:
+            self.state.show_supers = True
+            text += " - super display on"
+        self.say(text)
+
     # -- keys
 
     def handle_key(self, k: int) -> bool:
@@ -815,6 +1079,29 @@ class Annotator:
             rid = st.cycle_region(-1 if k == ord("[") else 1)
             self.mode = self.ADD
             self.say(f"selected region {rid}" if st.is_existing() else f"new region {rid}")
+        elif k == ord("c"):
+            self.super_say(st.create_super()[1])
+        elif k == ord("a"):
+            self.super_say(st.add_to_super()[1])
+        elif k == ord("d"):
+            self.super_say(st.drop_from_super()[1])
+        elif k in (ord(","), ord(".")):
+            sid = st.cycle_super(-1 if k == ord(",") else 1)
+            if sid is None:
+                self.super_say("no super-regions yet")
+            else:
+                members = ",".join(map(str, st.super_members(sid)))
+                self.super_say(f"selected S{sid} ({st.super_label(sid)}): regions {members}")
+        elif k == ord("y"):
+            if self.mode == self.SUPER_PICK:
+                self.mode = self.ADD
+                self.say("super pick cancelled")
+            else:
+                self.mode = self.SUPER_PICK
+                self.super_say("super pick: click a dot")
+        elif k == ord("v"):
+            st.show_supers = not st.show_supers
+            self.say(f"super display {'ON' if st.show_supers else 'OFF'}")
         elif k == ord("r"):
             if self.mode == self.PICK:
                 self.mode = self.ADD
@@ -824,7 +1111,8 @@ class Annotator:
                 self.say("pick mode on")
         elif k == ord("u"):
             kind = st.undo()
-            self.say(f"undid {kind}" if kind else "nothing to undo")
+            names = {"add": "undid add", "delete": "undid delete", "super": "undid super-region change"}
+            self.say(names.get(kind, "nothing to undo"))
         elif k == ord("x"):
             t = self.hover_target()
             if t is None:
@@ -851,7 +1139,7 @@ class Annotator:
         elif k == ord("z"):
             self.open_zoom()
         elif k == 27:  # Esc: cancel pick, else close zoom; never quits
-            if self.mode == self.PICK:
+            if self.mode in (self.PICK, self.SUPER_PICK):
                 self.mode = self.ADD
                 self.say("pick cancelled")
             elif self._zoom_open or self.zoom_center is not None:
@@ -881,6 +1169,9 @@ class Annotator:
         region = f"region {st.region_id} (existing, {n} pts)" if existing else f"region {st.region_id} (new)"
         if self.mode == self.PICK:
             mode = PanelLine("mode PICK - click a dot to select its region (r / Esc cancels)", C_PICK, heading=True)
+        elif self.mode == self.SUPER_PICK:
+            mode = PanelLine("mode SUPER-PICK - click a dot to select its super-region (y / Esc cancels)",
+                             C_PICK, heading=True)
         else:
             mode = PanelLine(
                 f"mode ADD - ADDING TO {'existing' if existing else 'new'} region {st.region_id}",
@@ -900,48 +1191,94 @@ class Annotator:
             PanelLine(self.message() or " ", C_MSG),
         ]
 
-    def bottom_columns(self, cw: int) -> tuple[list[list[PanelLine]], int]:
-        """3-column bottom layout (status | labels+regions | edit+view+files) and
-        its height: at least PANEL_BOTTOM_H, more if the text needs it."""
-        col_w = (cw - 4 * PANEL_PAD) // 3
-        cols = [
-            layout_lines(self.state_items(), col_w),
-            layout_lines(help_items(HELP_GROUPS[:2]), col_w),
-            layout_lines(help_items(HELP_GROUPS[2:]), col_w),
-        ]
+    def super_items(self) -> list[PanelLine]:
+        """Super-region status and list; fixed line count so the panel keeps its size."""
+        st = self.state
+        rid, sid = st.region_id, st.current_super
+        in_sup = st.super_of.get(rid)
+        if sid is None:
+            cur = PanelLine("super: none selected")
+        else:
+            members = ",".join(map(str, st.super_members(sid)))
+            cur = PanelLine(f"super: S{sid} ({st.super_label(sid)}), regions {members}",
+                            color_for_super(sid))
+        lines = super_list_lines(st)
+        lines += [" "] * (SUPER_LIST_LINES - len(lines))
+        return [
+            PanelLine("Super-regions", C_HEAD, heading=True),
+            PanelLine(f"region {rid}: in S{in_sup}" if in_sup else f"region {rid}: in no super"),
+            cur,
+            PanelLine(f"display {'ON' if st.show_supers else 'OFF'} (v)", C_DIM),
+        ] + [PanelLine(t, C_TEXT, indent=12) for t in lines]
+
+    # help split for the right panel: A = labels/regions/edit, B = view/files/supers
+    HELP_A, HELP_B = HELP_GROUPS[:3], HELP_GROUPS[3:]
+    # bottom panel: labels+regions | edit+view+files | super-regions
+    HELP_BOTTOM = (HELP_GROUPS[:2], HELP_GROUPS[2:5], HELP_GROUPS[5:])
+    BOTTOM_COLS = 5
+
+    def bottom_width(self) -> int:
+        return min(BOTTOM_MIN_W, self.max_w)
+
+    def bottom_layout(self, cw: int) -> tuple[list[list[PanelLine]], int]:
+        """5-column bottom layout (status | super-regions | 3 x help) and its
+        height: at least PANEL_BOTTOM_H, more if the text needs it."""
+        col_w = (cw - (self.BOTTOM_COLS + 1) * PANEL_PAD) // self.BOTTOM_COLS
+        cols = [layout_lines(self.state_items(), col_w), layout_lines(self.super_items(), col_w)]
+        cols += [layout_lines(help_items(g), col_w) for g in self.HELP_BOTTOM]
         ph = max(PANEL_BOTTOM_H, 2 * PANEL_PAD + max(len(c) for c in cols) * LINE_H)
         return cols, ph
+
+    def right_layout(self) -> tuple[list[PanelLine], list[list[PanelLine]], int]:
+        """Right panel: status + super-regions on top, help in two sub-columns."""
+        width = PANEL_RIGHT_W - 2 * PANEL_PAD
+        top = layout_lines(self.state_items() + self.super_items(), width)
+        sub_w = (width - PANEL_PAD) // 2
+        helps = [layout_lines(help_items(self.HELP_A), sub_w),
+                 layout_lines(help_items(self.HELP_B), sub_w)]
+        ph = 2 * PANEL_PAD + (len(top) + 1 + max(len(h) for h in helps)) * LINE_H
+        return top, helps, ph
 
     def render(self) -> np.ndarray:
         dw, dh = self.disp
         if self.side == "right":
-            width = PANEL_RIGHT_W - 2 * PANEL_PAD
-            lines = layout_lines(self.state_items() + [PanelLine(" ")] + help_items(HELP_GROUPS), width)
-            ph = 2 * PANEL_PAD + len(lines) * LINE_H
+            top, helps, ph = self.right_layout()
             canvas = np.zeros((max(dh, ph), dw + PANEL_RIGHT_W, 3), np.uint8)
             canvas[:, dw:] = PANEL_BG
-            draw_lines(canvas, lines, dw + PANEL_PAD, PANEL_PAD)
+            draw_lines(canvas, top, dw + PANEL_PAD, PANEL_PAD)
+            y = PANEL_PAD + (len(top) + 1) * LINE_H
+            sub_w = (PANEL_RIGHT_W - 3 * PANEL_PAD) // 2
+            for i, h in enumerate(helps):
+                draw_lines(canvas, h, dw + PANEL_PAD + i * (sub_w + PANEL_PAD), y)
         else:
-            cw = max(dw, BOTTOM_MIN_W)
-            cols, ph = self.bottom_columns(cw)
-            col_w = (cw - 4 * PANEL_PAD) // 3
+            cw = max(dw, self.bottom_width())
+            cols, ph = self.bottom_layout(cw)
+            col_w = (cw - (self.BOTTOM_COLS + 1) * PANEL_PAD) // self.BOTTOM_COLS
             canvas = np.zeros((dh + ph, cw, 3), np.uint8)
             canvas[dh:] = PANEL_BG
             for i, col in enumerate(cols):
                 draw_lines(canvas, col, PANEL_PAD + i * (col_w + PANEL_PAD), dh + PANEL_PAD)
         canvas[:dh, :dw] = self.scaled_img()  # image at the origin: mapping unchanged
         st = self.state
-        draw_markers(canvas, st.points, self.to_display, r=4, current_region=st.region_id)
+        draw_markers(canvas, st.points, self.to_display, r=4, current_region=st.region_id,
+                     **self.super_draw_args())
         target = self.hover_target()
         if target is not None:
             draw_ring(canvas, self.to_display(target.x, target.y), 4)
         return canvas
 
+    def super_draw_args(self) -> dict:
+        st = self.state
+        if not st.show_supers:
+            return {}
+        return {"super_of": st.super_of, "current_super": st.current_super}
+
     def render_zoom(self) -> np.ndarray:
         x0, y0, x1, y1 = self.zoom_bounds
         crop = self.full_img()[y0:y1, x0:x1]
         big = cv2.resize(crop, None, fx=ZOOM, fy=ZOOM, interpolation=cv2.INTER_NEAREST)
-        draw_markers(big, self.state.points, self.to_zoom, r=6, current_region=self.state.region_id)
+        draw_markers(big, self.state.points, self.to_zoom, r=6, current_region=self.state.region_id,
+                     **self.super_draw_args())
         target = self.hover_target()
         if target is not None:
             c = self.to_zoom(target.x, target.y)

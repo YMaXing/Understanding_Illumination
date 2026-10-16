@@ -22,6 +22,18 @@ Modes: ADD (default) and PICK. Only q quits (main window X also saves + quits); 
 - s: save. n / b: next / previous image (autosave); on the last / first image they show "last image" / "first image" and do nothing
 - q: quit (autosave)
 
+### Super-regions (same material/texture across separate regions)
+A region stays single-surface (material segmentation). A super-region groups several regions of the same material or texture even when other surfaces lie between them (intrinsic imaging), e.g. one region per red brick, all bricks in one super-region.
+- Membership is stored beside the points (`super_of: region_id -> super_id`); Point is unchanged. A region is in at most one super; only regions with >= 1 point can join. A super's label is its members' label; adding a region with a different label is rejected. Super ids are per image, one id space across labels; new id = max + 1. A single-member super is kept; a super that loses its last member ceases to exist (and is deselected if it was current_super)
+- Super-region operations never change points, region ids, region labels or the current region
+- c: create a new super from the current region and select it. Rejected if the region is empty or already in a super (use a to move it)
+- a: add the current region to current_super; if it is in another super it moves ("moved from S3 to S5"). Rejected: no super selected ("no super-region selected"), label mismatch, empty region, already a member
+- d: drop the current region from its super (region and points stay)
+- , / .: select previous / next super by id, wrapping; with none selected, . starts at the lowest id and , at the highest. Not undoable
+- y: SUPER-PICK mode: the next left-click near a dot (nearest within ~10 display px, ties to the most recent, hover ring shown) selects that dot's region's super; the current region does not change. A miss ("no dot near click") or a region in no super ("region N is in no super-region") stays in SUPER-PICK; y again or Esc cancels. r and y switch between the two pick modes. Not undoable
+- v: show/hide the super-region display (carries over to the next image; never affects state or CSV). c/a/d/,/./y turn the display on and say so
+- u undoes c/a/d on the same chronological stack as point add/delete (restores the previous memberships and current_super). Deleting a region's last point (x, or undo of an add) removes the region from its super; undoing that delete restores the membership
+
 ## Command line
 `uv run annotate.py <image_dir> <out_dir> [--max-size WxH] [--panel auto|right|bottom] [--debug-mouse]`
 - --max-size: window budget incl. the panel (default 1600x900)
@@ -30,7 +42,7 @@ Modes: ADD (default) and PICK. Only q quits (main window X also saves + quits); 
 - `uv run annotate.py --palette-preview out.png`: write a swatch grid of region colors 1-40 and exit
 
 ## Output
-One CSV per image: `<out_dir>/<image_stem>.csv`, columns `image,x,y,region_id,label`
+One CSV per image: `<out_dir>/<image_stem>.csv`, columns `image,x,y,region_id,label,super_region_id`
 - One row per point, sorted by (region_id, insertion order); region ids renumbered contiguously 1..k in id order on save
 - x = column, y = row, integer pixels in ORIGINAL image resolution
 - region_id is per image, starting at 1
@@ -38,6 +50,10 @@ One CSV per image: `<out_dir>/<image_stem>.csv`, columns `image,x,y,region_id,la
 - Each region has exactly one label: switching label while the current region has points starts a new region
 - Reopening an image loads its existing CSV
 - Ids are not renumbered in memory: after deleting a whole region, on-screen region ids can differ from the CSV until the image is reloaded (region id text is then drawn from the renumbered ids)
+- super_region_id is appended as the 6th column; 0 = in no super-region. Older 5-column files still load (all 0)
+- On load, a clear error (file:line) if one region's rows carry different super_region_id values, or one super's regions have different labels. After load no super is selected; the next new super id is max + 1
+- On save: region ids renumbered 1..k (as before), then super ids renumbered 1..K in order of their smallest member region id, membership remapped consistently. Saves stay atomic, rows sorted as before
+- check_csv.py also checks: one super_region_id per region, one label per super, super ids contiguous 1..K (ignoring 0)
 
 ## Display
 - Image at canvas origin (0,0) so coordinate mapping is unchanged; downscale to fit --max-size minus the panel (compute_scale subtracts the panel width/height); map clicks back via the display size
@@ -45,7 +61,9 @@ One CSV per image: `<out_dir>/<image_stem>.csv`, columns `image,x,y,region_id,la
 - Display value = clip((v-lo)/(hi-lo), 0, 1) ** (1/gamma), one joint lo/hi (0.5/99.5 pct) over all channels, computed once per image; a cached 65536-entry LUT per gamma (numpy indexing). Display only, CSV unaffected
 - Region colors: PALETTE_20 (first 8 original; 9-20 bright, L* >= 45; min pairwise CIELAB dE >= 25). region_id > 20: golden-angle hue (137.50776 deg * id), S 0.85, V 1.0 - a function of region_id only
 - Marker shape by label, color by region, region id text beside each region's first point
-- Ring: cyan ring around the hovered dot that x would delete / a pick would select (both windows)
+- Ring: cyan ring around the hovered dot that x would delete / a pick would select (both windows), drawn outside any super ring
+- Super-regions (when shown, both windows): an outer ring around every dot of every member region in its super's color (~3 px; ~5 px for current_super), under the current-region white outline; the id text beside each member region's first point becomes "6>S2"; for current_super only, thin lines from each member's first point to the first point of its lowest-id member. PALETTE_SUPER: 12 explicit bright saturated colors (L* >= 55), indexed (super_id-1) % 12, pairwise CIELAB dE >= 25, chosen away from PALETTE_20
+- Panel: "region N: in S2 / in no super", "super: S2 (texture), regions 3,5,9" or "super: none selected", display ON/OFF, and a list of supers (one line each, "+N more" past 4 lines). Bottom layout has 5 columns (status | super-regions | 3 help columns, up to 1400 px wide, capped by --max-size); the right panel puts help in two sub-columns
 
 ## Rules
 - Keep CSV I/O and coordinate mapping in pure functions, tested with pytest

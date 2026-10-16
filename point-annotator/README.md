@@ -88,6 +88,12 @@ Keys are lowercase letters (plus `space`, `[`, `]`, `+`, `-` and `Esc`). Keep **
 | `s` | Save |
 | `n` / `b` | Next / previous image (saves first); does nothing on the last / first image |
 | `q` | Save and quit (closing the main window also saves and quits) |
+| `c` | Create a super-region from the current region (see below) |
+| `a` | Add the current region to the selected super-region (moves it if it's in another one) |
+| `d` | Drop the current region from its super-region (the region and its points stay) |
+| `,` / `.` | Select the previous / next super-region |
+| `y` | Super-pick: click a dot to select its region's super-region |
+| `v` | Show / hide the super-region rings |
 
 ### Regions and labels
 
@@ -102,6 +108,17 @@ New regions always get the next unused number (the highest existing number + 1),
 **Going back to a region.** To add more points to a region you've already left, press **`r`** and click one of its dots (the cyan ring shows which dot you'll get), or step to it with `[` / `]`. Right-click and Ctrl+click are shortcuts for the same thing. That region becomes current, with its own label; the panel says `ADDING TO existing region N`, and your next left clicks go into it. If your click misses every dot, you stay in PICK mode and nothing is added. The cycle runs 1, 2, …, k, then a new empty region, then back to 1. A region's label can't be changed once it has points: pressing a different label key while an existing region is selected opens a new region with that label instead, and the panel says `new region N started`.
 
 **Each pixel can be used once per image.** A click on a pixel that already has a point (in any region) is ignored and reported in the status strip.
+
+### Super-regions
+
+A region is one surface. A **super-region** says "these separate regions are the same material or texture", even when other surfaces lie between them. Example: one region per red brick, then all the bricks in one super-region.
+
+1. Select a region (click its dots with `r`, or use `[` / `]`) and press **`c`**. That creates a new super-region (S1, S2, …) with the region's label and selects it.
+2. Select the next region that belongs with it and press **`a`**. Repeat for each one. A region with a different label is refused, and a region already in another super-region is moved ("moved from S3 to S5").
+3. **`d`** takes the current region out of its super-region. A super-region that loses its last region disappears.
+4. To switch to another super-region, press **`,`** / **`.`** or press **`y`** and click one of its dots. Neither changes your current region.
+
+Each member dot gets a ring in its super-region's color, which is thicker for the selected one. The labels read `6>S2` (region 6 in S2), and the selected super-region's regions are joined by thin lines. **`v`** hides or shows all of this; it never changes the data. `u` undoes `c`, `a` and `d` like any other edit. Deleting a region's last point takes it out of its super-region, and undoing that delete puts it back.
 
 ### Deleting points
 
@@ -149,10 +166,11 @@ Regions 1–20 use a fixed palette of bright, clearly different colors; regions 
 One CSV per image: `<out_dir>/<image_stem>.csv`, e.g. `out/adke_neel_050.csv`.
 
 ```csv
-image,x,y,region_id,label
-adke_neel_050.tif,412,630,1,material
-adke_neel_050.tif,415,641,1,material
-adke_neel_050.tif,201,88,2,specular
+image,x,y,region_id,label,super_region_id
+adke_neel_050.tif,412,630,1,texture,1
+adke_neel_050.tif,415,641,1,texture,1
+adke_neel_050.tif,201,88,2,specular,0
+adke_neel_050.tif,330,512,3,texture,1
 ```
 
 | Column | Meaning |
@@ -161,15 +179,17 @@ adke_neel_050.tif,201,88,2,specular
 | `x`, `y` | Column and row, as integer pixels in the **original** resolution (whatever the display scale) |
 | `region_id` | Region number within the image: 1, 2, 3, … |
 | `label` | `material`, `texture` or `specular` |
+| `super_region_id` | Super-region number within the image: 1, 2, 3, …; `0` = in no super-region |
 
 - An image you visited but didn't annotate gets a CSV with just the header line. That's how you tell "checked, nothing to mark" apart from "not visited yet".
 - **Reopening an image loads its CSV**, so you can stop and continue later. New points go into a new region after the existing ones; right-click or `[` / `]` to add to an old one. After reopening, undo removes points in file order (last row first); deletes made after reopening can be undone as usual.
 - Rows are sorted by region, keeping the order you placed them within each region. Region numbers are renumbered 1, 2, 3, … in order when saving, so gaps left by undo or by deleting a whole region are never saved. On screen the old numbers stay until you reopen the image (e.g. `n` then `b`), so they can differ from the CSV in the meantime.
+- Super-region numbers are also renumbered 1, 2, 3, … when saving, in order of their lowest region. Older CSVs without the `super_region_id` column still load (no super-regions).
 - Saves first write to a temporary file and then replace the old CSV, so a crash mid-save can't leave a half-written file.
 
 ### Checking your output
 
-`check_csv.py` checks every CSV in an output folder: points are inside the image, no pixel is used twice, each region has a single label, and region ids are 1..k.
+`check_csv.py` checks every CSV in an output folder: points are inside the image, no pixel is used twice, each region has a single label, and region ids are 1..k. For super-regions it checks that each region has one `super_region_id`, each super-region has one label, and super-region ids are 1..K.
 
 ```bash
 uv run check_csv.py samples out
@@ -196,5 +216,6 @@ Everything in `annotate.py` that doesn't need a window is a plain function with 
 | `x` says `no dot near cursor` | Move until the cyan ring shows on the dot (in zoom if dots are crowded), then press `x` |
 | Image too dark / washed out | Press `+` / `-` to change gamma, or `g` to turn it off |
 | `CSV name collision: a.tif and a.png` | Two images share a filename stem and would write the same CSV; rename one |
+| `…csv:N: region R has super_region_id …` or `super-region S mixes labels …` on load | The CSV was edited by hand so a region is in two super-regions, or a super-region mixes labels; fix line N |
 | `…csv:N: unknown label …` on load | That CSV was edited by hand and has a bad row; fix line N (the tool refuses to drop data silently) |
 | `cannot read image` | The file is corrupt or not a real image; move it out of the input folder |

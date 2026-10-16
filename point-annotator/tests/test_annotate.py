@@ -280,7 +280,7 @@ def test_csv_round_trip(tmp_path):
     assert read_csv(path) == pts
     lines = path.read_text().splitlines()
     assert lines[0] == ",".join(CSV_HEADER)
-    assert lines[1] == "img.tif,1,2,1,material"
+    assert lines[1] == "img.tif,1,2,1,material,0"
     assert not list(tmp_path.glob("*.tmp"))
 
 
@@ -1018,3 +1018,449 @@ def test_landscape_window_fits_max_size(tmp_path):
     an.load(0)
     canvas = an.render()
     assert an.side == "bottom" and canvas.shape[0] <= 900 and canvas.shape[1] <= 1600
+
+
+# ---------------------------------------------------------------- super-regions
+
+from annotate import (  # noqa: E402
+    CSV_HEADER_V1,
+    PALETTE_SUPER,
+    color_for_super,
+    read_csv_supers,
+    rows_for_save_supers,
+    super_list_lines,
+)
+
+
+def _bricks():
+    """Regions 1, 2, 4 texture; region 3 material; region 1 current at the end."""
+    st = AnnotationState()
+    st.set_label("texture")
+    st.add_point(10, 10)            # r1 texture
+    st.new_region()
+    st.add_point(20, 10)            # r2 texture
+    st.set_label("material")
+    st.add_point(30, 10)            # r3 material
+    st.set_label("texture")
+    st.add_point(40, 10)            # r4 texture
+    st.add_point(41, 10)            # r4 second point
+    st.select_region(1)
+    return st
+
+
+def _frozen(st):
+    return list(st.points), st.region_id, st.label
+
+
+def test_create_super_from_current_region():
+    st = _bricks()
+    before = _frozen(st)
+    ok, msg = st.create_super()
+    assert ok and st.super_of == {1: 1} and st.current_super == 1
+    assert st.super_label(1) == "texture" and "S1" in msg
+    assert _frozen(st) == before  # points, current region and label untouched
+
+
+def test_create_rejected_for_member_and_empty_region():
+    st = _bricks()
+    st.create_super()
+    n = len(st.history)
+    ok, msg = st.create_super()
+    assert not ok and "use a to move it" in msg and len(st.history) == n
+    st.cycle_region(-1)  # wraps to the empty (new) region
+    assert not st.is_existing()
+    ok, msg = st.create_super()
+    assert not ok and "no points" in msg and st.super_of == {1: 1}
+
+
+def test_add_to_super_and_label_mismatch():
+    st = _bricks()
+    st.create_super()            # S1 = {1}
+    st.select_region(2)
+    ok, _ = st.add_to_super()
+    assert ok and st.super_members(1) == [1, 2]
+    st.select_region(3)          # material
+    n = len(st.history)
+    ok, msg = st.add_to_super()
+    assert not ok and "label mismatch" in msg
+    assert st.super_members(1) == [1, 2] and len(st.history) == n
+
+
+def test_add_rejections():
+    st = _bricks()
+    ok, msg = st.add_to_super()
+    assert not ok and msg == "no super-region selected"
+    st.create_super()
+    ok, msg = st.add_to_super()  # already a member
+    assert not ok and "already in S1" in msg
+    st.new_region()              # empty current region
+    ok, msg = st.add_to_super()
+    assert not ok and "no points" in msg
+
+
+def test_move_between_supers():
+    st = _bricks()
+    st.create_super()            # S1 = {1}
+    st.select_region(2)
+    st.add_to_super()            # S1 = {1, 2}
+    st.select_region(4)
+    st.create_super()            # S2 = {4}, current
+    st.select_region(2)
+    ok, msg = st.add_to_super()
+    assert ok and msg == "moved from S1 to S2"
+    assert st.super_members(1) == [1] and st.super_members(2) == [2, 4]
+
+
+def test_move_last_member_dissolves_old_super():
+    st = _bricks()
+    st.create_super()            # S1 = {1}
+    st.select_region(2)
+    st.create_super()            # S2 = {2}, current
+    st.select_region(1)
+    ok, msg = st.add_to_super()  # move region 1 from S1 to S2
+    assert ok and msg == "moved from S1 to S2"
+    assert st.super_ids() == [2] and st.current_super == 2
+
+
+def test_drop_leaves_points_and_regions():
+    st = _bricks()
+    st.create_super()
+    st.select_region(2)
+    st.add_to_super()
+    before = _frozen(st)
+    ok, msg = st.drop_from_super()
+    assert ok and st.super_of == {1: 1} and st.current_super == 1
+    assert _frozen(st) == before
+    ok, msg = st.drop_from_super()
+    assert not ok and "no super-region" in msg
+
+
+def test_super_vanishes_with_last_member_and_deselects():
+    st = _bricks()
+    st.create_super()
+    ok, msg = st.drop_from_super()
+    assert ok and "(S1 removed)" in msg
+    assert st.super_of == {} and st.current_super is None and st.super_ids() == []
+
+
+def test_next_super_id_is_max_plus_one_across_labels():
+    st = _bricks()
+    st.create_super()            # S1 texture
+    st.select_region(3)
+    st.create_super()            # S2 material: one id space
+    assert st.super_ids() == [1, 2]
+    st.select_region(1)
+    st.drop_from_super()         # S1 gone
+    st.select_region(4)
+    st.create_super()
+    assert st.super_ids() == [2, 3]
+
+
+def test_single_member_super_is_kept():
+    st = _bricks()
+    st.create_super()
+    st.select_region(2)
+    assert st.super_ids() == [1] and st.current_super == 1
+
+
+def test_deleting_last_point_leaves_super_and_undo_restores():
+    st = _bricks()
+    st.create_super()            # S1 = {1}
+    st.select_region(2)
+    st.add_to_super()            # S1 = {1, 2}
+    st.select_region(4)          # current region elsewhere
+    st.delete_point(20, 10)      # region 2's only point
+    assert st.super_of == {1: 1} and st.region_ids() == [1, 3, 4]
+    assert st.undo() == "delete"
+    assert st.points[1] == Point(20, 10, 2, "texture")
+    assert st.super_of == {1: 1, 2: 1} and st.current_super == 1
+    assert (st.region_id, st.label) == (4, "texture")
+
+
+def test_deleting_last_member_clears_current_super_and_undo_restores():
+    st = _bricks()
+    st.create_super()            # S1 = {1}, current
+    st.delete_point(10, 10)      # region 1's only point
+    assert st.super_of == {} and st.current_super is None
+    st.undo()
+    assert st.super_of == {1: 1} and st.current_super == 1
+
+
+def test_deleting_non_last_point_keeps_membership():
+    st = _bricks()
+    st.select_region(4)
+    st.create_super()
+    st.delete_point(41, 10)
+    assert st.super_of == {4: 1}
+
+
+def test_undo_of_seeded_add_prunes_loaded_member():
+    pts = [Point(0, 0, 1, "texture"), Point(5, 5, 2, "texture")]
+    st = state_from_points(pts, {1: 1, 2: 1})
+    assert st.current_super is None and st.next_super_id() == 2
+    st.undo()                    # removes (5,5): region 2 gone
+    assert st.super_of == {1: 1}
+    st.undo()
+    assert st.super_of == {} and st.super_ids() == []
+
+
+def test_undo_super_actions_on_one_stack():
+    st = _bricks()
+    snaps = []
+    def snap():
+        snaps.append((dict(st.super_of), st.current_super, list(st.points)))
+    snap(); st.create_super()                          # c
+    snap(); st.select_region(2); st.add_to_super()     # a
+    snap(); st.add_point(50, 50)                       # point add in region 2
+    snap(); st.select_region(4); st.create_super()     # c (S2)
+    snap(); st.select_region(2); st.add_to_super()     # a = move S1 -> S2
+    snap(); st.drop_from_super()                       # d
+    for kind in ("super", "super", "super", "add", "super", "super"):
+        assert st.undo() == kind
+        s, cur, pts = snaps.pop()
+        assert (st.super_of, st.current_super, st.points) == (s, cur, pts)
+    assert snaps == []
+
+
+def test_select_and_cycle_supers_not_undoable():
+    st = _bricks()
+    st.create_super()
+    st.select_region(3)
+    st.create_super()
+    st.select_region(4)
+    st.create_super()            # S1, S2, S3; current S3
+    n = len(st.history)
+    assert st.cycle_super(1) == 1     # wraps
+    assert st.cycle_super(-1) == 3    # wraps back
+    assert st.cycle_super(-1) == 2
+    assert st.select_super(1) and not st.select_super(9)
+    assert len(st.history) == n
+
+
+def test_cycle_supers_from_none_and_empty():
+    st = _bricks()
+    assert st.cycle_super(1) is None and st.current_super is None
+    st.create_super()
+    st.select_region(4)
+    st.add_to_super()
+    st.select_region(3)
+    st.create_super()            # S1 {1,4}, S2 {3}
+    st.current_super = None
+    assert st.cycle_super(1) == 1
+    st.current_super = None
+    assert st.cycle_super(-1) == 2
+
+
+def test_no_supers_means_identical_behavior():
+    st = _bricks()
+    assert st.super_of == {} and st.current_super is None
+    assert all(a.supers in (None, ((), None)) for a in st.history)
+
+
+# ---------------------------------------------------------------- super-regions: CSV
+
+
+def test_csv_round_trip_with_supers(tmp_path):
+    st = _bricks()
+    st.create_super()
+    st.select_region(4)
+    st.add_to_super()
+    st.select_region(3)
+    st.create_super()
+    path = tmp_path / "img.csv"
+    write_csv(path, "img.tif", st.points, st.super_of)
+    pts, sup = read_csv_supers(path)
+    assert pts == rows_for_save(st.points)
+    assert sup == {1: 1, 4: 1, 3: 2}
+    lines = path.read_text().splitlines()
+    assert lines[0] == ",".join(CSV_HEADER) and lines[0].endswith(",super_region_id")
+    assert lines[1] == "img.tif,10,10,1,texture,1"
+    assert lines[2] == "img.tif,20,10,2,texture,0"
+    first = path.read_bytes()
+    write_csv(path, "img.tif", pts, sup)
+    assert path.read_bytes() == first
+
+
+def test_csv_reads_5_column_files(tmp_path):
+    path = tmp_path / "old.csv"
+    path.write_text(",".join(CSV_HEADER_V1) + "\nimg.tif,1,2,1,material\nimg.tif,3,4,2,texture\n")
+    pts, sup = read_csv_supers(path)
+    assert pts == [Point(1, 2, 1, "material"), Point(3, 4, 2, "texture")] and sup == {}
+    assert read_csv(path) == pts
+
+
+def test_csv_region_with_two_super_ids_raises(tmp_path):
+    path = tmp_path / "bad.csv"
+    path.write_text(",".join(CSV_HEADER) + "\nimg.tif,1,2,1,texture,1\nimg.tif,3,4,1,texture,2\n")
+    with pytest.raises(ValueError, match=r"bad.csv:3: region 1 has super_region_id 2, but 1 on line 2"):
+        read_csv_supers(path)
+
+
+def test_csv_super_with_mixed_labels_raises(tmp_path):
+    path = tmp_path / "bad.csv"
+    path.write_text(",".join(CSV_HEADER) + "\nimg.tif,1,2,1,texture,1\nimg.tif,3,4,2,material,1\n")
+    with pytest.raises(ValueError, match=r"bad.csv:3: super-region 1 mixes labels 'texture' \(line 2\)"):
+        read_csv_supers(path)
+
+
+@pytest.mark.parametrize("sid", ["-1", "x", "1.5"])
+def test_csv_bad_super_value_raises(tmp_path, sid):
+    path = tmp_path / "bad.csv"
+    path.write_text(",".join(CSV_HEADER) + f"\nimg.tif,1,2,1,texture,{sid}\n")
+    with pytest.raises(ValueError, match="bad.csv:2"):
+        read_csv_supers(path)
+
+
+def test_save_renumbers_regions_and_supers_with_gaps():
+    # regions 3, 7, 9, 12 with gaps; supers 5 = {9, 12} (texture), 2 = {7} (material)
+    pts = [Point(0, 0, 12, "texture"), Point(1, 1, 3, "texture"), Point(2, 2, 9, "texture"),
+           Point(3, 3, 7, "material"), Point(4, 4, 12, "texture")]
+    rows = rows_for_save_supers(pts, {9: 5, 12: 5, 7: 2})
+    got = [(p.x, p.region_id, sid) for p, sid in rows]
+    # regions -> 3:1, 7:2, 9:3, 12:4 ; supers ordered by smallest member: 2 ({2}) -> 1, 5 ({3,4}) -> 2
+    assert got == [(1, 1, 0), (3, 2, 1), (2, 3, 2), (0, 4, 2), (4, 4, 2)]
+
+
+def test_save_after_loaded_supers_round_trip(tmp_path):
+    pts = [Point(0, 0, 1, "texture"), Point(1, 1, 2, "material"), Point(2, 2, 3, "texture")]
+    path = tmp_path / "img.csv"
+    write_csv(path, "img.tif", pts, {3: 4, 1: 4, 2: 9})
+    p2, s2 = read_csv_supers(path)
+    assert s2 == {1: 1, 3: 1, 2: 2}
+    st = state_from_points(p2, s2)
+    assert st.current_super is None and st.next_super_id() == 3
+
+
+# ---------------------------------------------------------------- super-regions: display
+
+
+def test_palette_super_distinct_and_spread():
+    assert len(PALETTE_SUPER) == 12 and len(set(PALETTE_SUPER)) == 12
+    labs = [_lab(c) for c in PALETTE_SUPER]
+    d = min(np.linalg.norm(a - b) for a, b in itertools.combinations(labs, 2))
+    assert d >= 25
+    assert color_for_super(1) == PALETTE_SUPER[0] and color_for_super(13) == PALETTE_SUPER[0]
+    assert color_for_super(12) == PALETTE_SUPER[11]
+
+
+def test_super_list_lines_and_truncation():
+    st = _bricks()
+    assert super_list_lines(st) == ["(none yet)"]
+    st.create_super()
+    st.select_region(4)
+    st.add_to_super()
+    assert super_list_lines(st) == ["S1 texture: 1,4"]
+    for rid in (2, 3):
+        st.select_region(rid)
+        st.create_super()
+    lines = super_list_lines(st, max_lines=2)
+    assert lines == ["S1 texture: 1,4", "+2 more"]
+    assert super_list_lines(st, max_lines=3) == ["S1 texture: 1,4", "S2 texture: 2", "S3 material: 3"]
+
+
+def _super_annotator(tmp_path):
+    an, clock = _annotator(tmp_path)
+    _two_regions(an)             # region 1: (10,10),(20,10); region 2: (60,50); current = 2
+    an.handle_key(ord("c"))      # S1 = {2}
+    return an, clock
+
+
+def test_display_toggle_leaves_state_unchanged(tmp_path):
+    an, _ = _super_annotator(tmp_path)
+    st = an.state
+    before = (list(st.points), dict(st.super_of), st.current_super, list(st.history), st.region_id)
+    an.handle_key(ord("v"))
+    assert st.show_supers is False and an.message() == "super display OFF"
+    assert (list(st.points), dict(st.super_of), st.current_super, list(st.history), st.region_id) == before
+    an.render()
+    an.handle_key(ord("v"))
+    assert st.show_supers is True
+
+
+def test_super_keys_turn_display_on(tmp_path):
+    an, _ = _super_annotator(tmp_path)
+    an.handle_key(ord("v"))
+    an.handle_key(ord("."))
+    assert an.state.show_supers and an.message().endswith("super display on")
+
+
+def test_show_supers_carries_over_images(tmp_path):
+    an, _ = _annotator(tmp_path, n=2)
+    an.handle_key(ord("v"))
+    an.handle_key(ord("n"))
+    assert an.idx == 1 and an.state.show_supers is False
+
+
+def test_super_pick_hit_sets_current_super_not_region(tmp_path):
+    an, _ = _super_annotator(tmp_path)
+    an.handle_key(ord("["))      # current region 1
+    assert an.state.region_id == 1
+    an.handle_key(ord("y"))
+    assert an.mode == an.SUPER_PICK
+    an.state.current_super = None
+    _click(an, 61, 50)           # region 2's dot (in S1)
+    assert an.state.current_super == 1 and an.state.region_id == 1 and an.mode == an.ADD
+    assert len(an.state.points) == 3
+
+
+def test_super_pick_miss_and_region_without_super_stay(tmp_path):
+    an, _ = _super_annotator(tmp_path)
+    an.state.current_super = None
+    an.handle_key(ord("y"))
+    _click(an, 100, 80)
+    assert an.mode == an.SUPER_PICK and an.message() == "no dot near click"
+    _click(an, 11, 10)           # region 1, in no super
+    assert an.mode == an.SUPER_PICK and an.message() == "region 1 is in no super-region"
+    assert an.state.current_super is None and len(an.state.points) == 3
+    an.handle_key(27)
+    assert an.mode == an.ADD
+
+
+def test_super_pick_tie_goes_to_most_recent(tmp_path):
+    an, _ = _annotator(tmp_path)
+    _click(an, 10, 10)
+    an.handle_key(ord("c"))      # S1 = {1}
+    an.handle_key(ord(" "))
+    _click(an, 16, 10)
+    an.handle_key(ord("c"))      # S2 = {2}
+    an.state.current_super = None
+    an.handle_key(ord("y"))
+    _click(an, 13, 10)           # equidistant
+    assert an.state.current_super == 2
+
+
+def test_super_keys_messages(tmp_path):
+    an, _ = _super_annotator(tmp_path)
+    an.handle_key(ord("c"))
+    assert "use a to move it" in an.message()
+    an.handle_key(ord("["))      # region 1
+    an.handle_key(ord("a"))
+    assert an.message() == "added region 1 to S1"
+    an.handle_key(ord("d"))
+    assert an.message() == "dropped region 1 from S1"
+    an.handle_key(ord("u"))
+    assert an.message() == "undid super-region change" and an.state.super_of == {1: 1, 2: 1}
+    an.handle_key(ord(","))
+    assert an.message() == "selected S1 (material): regions 1,2"
+
+
+def test_panel_super_lines(tmp_path):
+    an, _ = _super_annotator(tmp_path)
+    texts = [ln.text for ln in an.super_items()]
+    assert "region 2: in S1" in texts
+    assert "super: S1 (material), regions 2" in texts
+    assert "display ON (v)" in texts and "S1 material: 2" in texts
+    an.handle_key(ord("["))
+    an.state.current_super = None
+    texts = [ln.text for ln in an.super_items()]
+    assert "region 1: in no super" in texts and "super: none selected" in texts
+
+
+def test_saved_csv_from_annotator_has_supers(tmp_path):
+    an, _ = _super_annotator(tmp_path)
+    an.handle_key(ord("s"))
+    pts, sup = read_csv_supers(an.csv_path(an.images[0]))
+    assert sup == {2: 1} and len(pts) == 3
+    an.handle_key(ord("n"))
+    an.handle_key(ord("b"))
+    assert an.state.super_of == {2: 1} and an.state.current_super is None
