@@ -221,7 +221,9 @@ __marimo__/
 .streamlit/secrets.toml
 
 # original data
-/material_clustering_data/
+/image_data/
+/geometry/data/
+/geometry/baseline_output/
 
-# Temporary or miscellaneous files
-depth_network_RINDNet/
+# Local clone of depth networks
+DA3/

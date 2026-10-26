@@ -1,0 +1,34 @@
+[project]
+name = "illum-baseline"
+version = "0.1.0"
+description = "Baseline geometric-edge weights for an illumination smoothness loss"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "depth-anything-3",
+    "geocalib",
+    "addict",  # imported by depth_anything_3 but not declared in its pyproject
+    "numpy",
+    "scipy",
+    "opencv-python-headless",
+    "tifffile",
+    "imagecodecs",
+    "matplotlib",
+    "pandas",
+    "pyarrow<26",  # pyarrow 26 needs numpy>=2 at runtime; DA3 pins numpy<2
+    "pyyaml",
+    "tqdm",
+    "pytest",
+]
+
+[tool.uv]
+package = false
+
+[tool.uv.sources]
+depth-anything-3 = { path = "../DA3/Depth-Anything-3", editable = true }
+geocalib = { git = "https://github.com/cvg/GeoCalib" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-m 'not slow'"
+markers = ["slow: long-running", "gpu: needs CUDA and model weights"]
