@@ -225,7 +225,8 @@ __marimo__/
 /geometry/baseline/data/
 /geometry/baseline/baseline_output*/
 
-*.zip
+# Log chromaticity and model weights
+/log_chromaticity
 *.pth
 
 # Local clone of depth networks
