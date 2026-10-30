@@ -16,7 +16,6 @@ import matplotlib.pyplot as plt  # noqa: E402
 import numpy as np  # noqa: E402
 
 from .config import Config  # noqa: E402
-from .stage_a import stage_a_dir  # noqa: E402
 
 LOR_LIM = 20.0
 LOGQ_LIM = (-1.0, 3.0)
@@ -31,7 +30,9 @@ def render(cfg: Config, rd: Path, stem: str) -> Path:
     prm = meta["params"]["detector"]
     k_tau, k_eps, w_min = prm["k_tau"], prm["k_eps"], prm["w_min"]
     s_hat = det["s_hat"]
-    srgb = cv2.cvtColor(cv2.imread(str(stage_a_dir(cfg) / "srgb" / f"{stem}.png")), cv2.COLOR_BGR2RGB)
+    t1, t2 = det["tau"] / s_hat, (det["tau"] + det["eps"]) / s_hat  # effective threshold (= k_tau unless floored)
+    sa_json = cfg.out_dir / meta["provenance"]["stage_a_json"]
+    srgb = cv2.cvtColor(cv2.imread(str(sa_json.parent / "srgb" / f"{stem}.png")), cv2.COLOR_BGR2RGB)
 
     S = a["sky_mask"]
     H_n, W_n = S.shape
@@ -66,9 +67,9 @@ def render(cfg: Config, rd: Path, stem: str) -> Path:
     with np.errstate(divide="ignore"):
         logq = np.clip(np.log10(q_s), *LOGQ_LIM)
     im = ax[3].imshow(logq, cmap="magma", vmin=LOGQ_LIM[0], vmax=LOGQ_LIM[1], extent=ext)
-    ax[3].contour(logq, levels=[np.log10(k_tau), np.log10(k_tau + k_eps)], colors=["cyan", "lime"], linewidths=0.6)
+    ax[3].contour(logq, levels=[np.log10(t1), np.log10(t2)], colors=["cyan", "lime"], linewidths=0.6)
     fig.colorbar(im, ax=ax[3], fraction=0.046, label="log10(q / s_hat)")
-    ax[3].set_title(f"log10(q/s_hat), contours at {k_tau:g} (cyan), {k_tau + k_eps:g} (green)")
+    ax[3].set_title(f"log10(q/s_hat), contours at tau {t1:.3g} (cyan), tau+eps {t2:.3g} (green)")
 
     im = ax[4].imshow(w_net, cmap="gray", vmin=w_min, vmax=1.0, extent=ext)
     fig.colorbar(im, ax=ax[4], fraction=0.046, label="w")
@@ -84,7 +85,7 @@ def render(cfg: Config, rd: Path, stem: str) -> Path:
     ax[6].hist(np.clip(vals[vals > 0], HIST_BINS[0], HIST_BINS[-1]), bins=HIST_BINS, color="0.35")
     ax[6].set_xscale("log")
     ax[6].set_yscale("log")
-    for x, c, lab in [(1, "k", "1"), (k_tau, "c", "k_tau"), (k_tau + k_eps, "g", "k_tau+k_eps")]:
+    for x, c, lab in [(1, "k", "1"), (t1, "c", "tau/s_hat"), (t2, "g", "(tau+eps)/s_hat")]:
         ax[6].axvline(x, color=c, ls="--", lw=1, label=f"{lab} = {x:g}")
     ax[6].legend(fontsize=8)
     ax[6].set_xlabel("q / s_hat (non-sky, clipped to [1e-2, 1e4])")
@@ -109,6 +110,8 @@ def render(cfg: Config, rd: Path, stem: str) -> Path:
         f"median Z  {np.median(Z[~S]):.2f} m",
         "",
         f"k_tau {k_tau:g}  k_eps {k_eps:g}  w_min {w_min:g}",
+        *([f"a_min {prm['a_min']:g} -> tau_min {det['tau_min']:.3e} ({det['tau_min_over_tau_noise']:.2f}x)"]
+          if det.get("tau_min") is not None else []),
         f"sigma {prm['sigma']:g}  sigma_w {prm['sigma_w_prior']:g}",
         f"s_x, s_y  {geo['s_x']:.5f}, {geo['s_y']:.5f}",
         f"orientation {geo['orientation_tag']}",

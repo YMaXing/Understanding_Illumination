@@ -263,3 +263,113 @@ def test_smooth_preserves_affine():
     rs, L = smooth_and_laplacian(rho, 1.25, 4.0)
     np.testing.assert_allclose(rs, rho, atol=1e-14)
     assert np.abs(L).max() < 1e-14
+
+
+# T4 threshold floor
+def test_threshold_floor_matches_ripple_response_and_off_by_default():
+    from illum_baseline.detector import threshold_floor
+
+    lam, a = 15.0, 0.005
+    y, x = np.mgrid[0:120, 0:150].astype(np.float64)
+    rho = 0.3 * (1 + a * np.sin(2 * np.pi * y / lam))
+    out = compute_weights(1.0 / rho, None, Params(a_min=a, lambda_ref=lam))
+    q_peak = out["q"][20:-20, 20:-20].max()
+    tmin = threshold_floor(a, lam, P.sigma)
+    assert out["scalars"]["tau_min"] == pytest.approx(tmin)
+    assert q_peak == pytest.approx(tmin, rel=0.05)  # discrete kernels vs the continuous formula
+    # The ripple sits at the floor, so q - tau <= 0 (up to the 5%) and w stays 1 where q <= tau_min.
+    assert np.all(out["w"][out["q"] <= out["scalars"]["tau"]] == 1.0)
+    # a_min = None leaves tau and the outputs untouched.
+    D, _ = box_scene()
+    a0, b0 = compute_weights(D, None, P), compute_weights(D, None, Params(a_min=None))
+    assert "tau_min" not in a0["scalars"]
+    np.testing.assert_array_equal(a0["w"], b0["w"])
+
+
+def test_eps_floor_scales_with_tau_floor_and_is_off_by_default():
+    D = noisy(box_scene()[0], 1e-3, seed=3)
+    off = compute_weights(D, None, Params(a_min=0.005))
+    on = compute_weights(D, None, Params(a_min=0.005, eps_floor=True))
+    s_off, s_on = off["scalars"], on["scalars"]
+    assert "eps_min" not in s_off and s_off["eps"] == pytest.approx(P.k_eps * s_off["s_hat"])
+    assert s_on["eps"] == pytest.approx(max(P.k_eps * s_on["s_hat"], (P.k_eps / P.k_tau) * s_on["tau_min"]))
+    np.testing.assert_array_equal(off["q_pool"], on["q_pool"])  # tau unchanged, only the falloff changes
+    assert (on["w"] >= off["w"]).all()                          # a larger eps never lowers w
+
+
+# Trilateral prefilter (stripe alternative)
+TRI = Params(prefilter="trilateral")
+
+
+def test_trilateral_planes_exact():
+    rng = np.random.default_rng(11)
+    for _ in range(3):
+        D = random_plane_D(rng, 504, 378)
+        assert compute_weights(D, None, TRI)["q"].max() < 1e-9
+
+
+def test_trilateral_scale_invariance():
+    D = noisy(box_scene()[0], 1e-3, seed=4)
+    a, b = compute_weights(D, None, TRI), compute_weights(2.9 * D, None, TRI)
+    np.testing.assert_allclose(b["w"], a["w"], rtol=0, atol=1e-9)
+
+
+def test_trilateral_attenuates_7px_ripple_and_keeps_features():
+    D0 = random_plane_D(np.random.default_rng(12), 504, 378)
+    v = np.arange(378)[:, None]
+    D = 1.0 / ((1.0 / D0) * (1 + 0.003 * np.sin(2 * np.pi * v / 7.0)))
+    q0 = compute_weights(D, None, P)["q"][20:-20, 20:-20].max()
+    q1 = compute_weights(D, None, TRI)["q"][20:-20, 20:-20].max()
+    assert q1 < q0 / 10
+    Db, sid = box_scene()
+    out = compute_weights(Db, None, TRI)
+    feat, _ = features_and_interior(sid, P.R)
+    far = ndimage.distance_transform_cdt(~feat, metric="chessboard") > P.R + 9 + 13  # + filter + gradient support
+    assert out["q"][far].max() < 1e-9
+    assert np.median(out["q"][feat]) > 1e-4
+
+
+# Scale-ratio test (band-pass Laplacian)
+BAND = Params(scale_band=True)
+
+
+def test_scale_band_planes_exact_and_quadratic_cancels():
+    rng = np.random.default_rng(13)
+    for _ in range(3):
+        assert compute_weights(random_plane_D(rng, 504, 378), None, BAND)["q"].max() < 1e-9
+    # A quadratic disparity (constant curvature, like a large cylinder or sphere) cancels in the interior.
+    v, u = np.mgrid[0:200, 0:240].astype(np.float64)
+    rho = 0.3 + 1e-4 * u + 2e-6 * (u - 120) ** 2 + 1e-6 * (v - 100) ** 2
+    L1 = compute_weights(1.0 / rho, None, P)["L"]
+    Lb = compute_weights(1.0 / rho, None, BAND)["L"]
+    b = int(np.ceil(4.0 * 2 * P.sigma)) + 1
+    assert np.abs(Lb[b:-b, b:-b]).max() < 1e-9 * np.abs(L1[b:-b, b:-b]).max()  # cancels to rounding
+    assert np.abs(L1[b:-b, b:-b]).min() > 1e-6  # the plain Laplacian does respond everywhere
+
+
+def test_scale_band_keeps_about_half_of_a_fold_and_is_scale_invariant():
+    v, u = np.mgrid[0:120, 0:160].astype(np.float64)
+    rho = 0.3 + 4e-3 * np.abs(u - 80.0)  # a fold (roof) along v
+    q1 = compute_weights(1.0 / rho, None, P)["q"][60, 76:85].max()
+    qb = compute_weights(1.0 / rho, None, BAND)["q"][60, 76:85].max()
+    assert 0.4 < qb / q1 < 0.6
+    D = noisy(box_scene()[0], 1e-3, seed=5)
+    a, c = compute_weights(D, None, BAND), compute_weights(0.37 * D, None, BAND)
+    np.testing.assert_allclose(c["w"], a["w"], rtol=0, atol=1e-9)
+
+
+def test_scale_band_veto_removes_curvature_keeps_fold_and_texture():
+    veto = Params(scale_band=True, scale_band_mode="veto", band_factor=4.0)
+    v, u = np.mgrid[0:200, 0:240].astype(np.float64)
+    b = int(np.ceil(4.0 * 4 * P.sigma)) + 1
+    curved = 0.3 + 1e-4 * u + 2e-6 * (u - 120) ** 2
+    assert compute_weights(1.0 / curved, None, veto)["q"][b:-b, b:-b].max() < 1e-9 * compute_weights(
+        1.0 / curved, None, P)["q"][b:-b, b:-b].max()
+    fold = 0.3 + 4e-3 * np.abs(u - 120.0)
+    q1 = compute_weights(1.0 / fold, None, P)["q"][100, 116:125].max()
+    qv = compute_weights(1.0 / fold, None, veto)["q"][100, 116:125].max()
+    assert qv == pytest.approx(q1, rel=0.1)  # an ideal fold is restored by the gain
+    D = noisy(random_plane_D(np.random.default_rng(14), 504, 378), 1e-3, seed=6)  # fine "texture"
+    a, c = compute_weights(D, None, P), compute_weights(D, None, veto)
+    assert np.median(c["q"]) / np.median(a["q"]) > 0.9  # high-frequency content passes the veto
+    assert c["scalars"]["s_hat"] == a["scalars"]["s_hat"]  # noise from the non-band response

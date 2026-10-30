@@ -19,7 +19,6 @@ from pathlib import Path
 from typing import Any
 
 import numpy as np
-import yaml
 from tqdm import tqdm
 
 from .config import Config, detector_params
@@ -40,10 +39,15 @@ def cached_stems(cfg: Config) -> list[str]:
     return sorted(p.stem for p in d.glob("*.npz") if (d / f"{p.stem}.json").exists() and not p.stem.endswith(".tmp"))
 
 
-def select_stems(cfg: Config, sample: int | None, limit: int | None) -> list[str]:
+def select_stems(cfg: Config, sample: int | None, limit: int | None, only: list[str] | None = None) -> list[str]:
     stems = cached_stems(cfg)
     if not stems:
         raise FileNotFoundError(f"no Stage A cache under {stage_a_dir(cfg)}; run stage-a first")
+    if only:
+        missing = sorted(set(only) - set(stems))
+        if missing:
+            raise FileNotFoundError(f"no Stage A cache for {missing} under {stage_a_dir(cfg)}")
+        return sorted(only)
     from .audit import list_files
 
     missing = sorted({f.stem for f in list_files(cfg)} - set(stems))
@@ -65,17 +69,55 @@ def _sha256(path: Path) -> str:
 
 
 def _params_record(cfg: Config) -> dict[str, Any]:
-    return {"detector": dataclasses.asdict(cfg.detector), "sky": dataclasses.asdict(cfg.sky)}
+    det = dataclasses.asdict(cfg.detector)
+    if det["a_min"] is None:  # threshold floor off: keep the record identical to pre-T4 runs
+        det.pop("a_min")
+        det.pop("lambda_ref")
+    if not det.get("eps_floor"):  # eps floor off: identical to pre-eps-floor runs
+        det.pop("eps_floor")
+    if not det.get("scale_band"):  # scale-ratio test off: identical to earlier runs
+        det.pop("scale_band", None)
+        det.pop("band_factor", None)
+        det.pop("scale_band_mode", None)
+    elif det.get("scale_band_mode") == "replace":  # identical to runs made before the veto mode existed
+        det.pop("scale_band_mode", None)
+    if det.get("prefilter", "none") == "none":  # prefilter off: identical to pre-prefilter runs
+        for k in ("prefilter", "tri_sigma_s", "tri_sigma_r", "tri_sigma_g", "tri_shat"):
+            det.pop(k, None)
+    return {"detector": det, "sky": dataclasses.asdict(cfg.sky)}
+
+
+def _inherit_stage_a_settings(cfg: Config) -> None:
+    """For a Stage A variant, take preprocess/network/geocalib/focal/da3 from the variant's own snapshot,
+    so the Stage B run config records what actually produced its inputs."""
+    if not cfg.paths.stage_a_variant:
+        return
+    from .config import load_config
+
+    snap = stage_a_dir(cfg) / "config_resolved.yaml"
+    if not snap.exists():
+        raise FileNotFoundError(f"{snap} missing; run stage-a for variant {cfg.paths.stage_a_variant!r} first")
+    sa_cfg = load_config(snap)
+    for section in ("preprocess", "network", "geocalib", "focal", "da3"):
+        setattr(cfg, section, getattr(sa_cfg, section))
 
 
 def _check_run_config(cfg: Config, rd: Path, force: bool) -> None:
     """A run directory holds exactly one parameter set; refuse to mix unless --force."""
+    from .config import load_config
+
+    v = cfg.paths.stage_a_variant
+    if v and v not in rd.name:
+        raise ValueError(f"run name {rd.name!r} must include the Stage A variant {v!r}")
     snap = rd / "config_resolved.yaml"
     if snap.exists() and not force:
-        old = yaml.safe_load(snap.read_text())
-        new = cfg.to_dict()
-        if {k: old.get(k) for k in ("detector", "sky")} != {k: new[k] for k in ("detector", "sky")}:
-            raise ValueError(f"run {rd.name!r} exists with different detector/sky params; "
+        old, new = load_config(snap).to_dict(), cfg.to_dict()  # load_config fills keys added since
+
+        def key(d):
+            return {k: d[k] for k in ("detector", "sky", "preprocess")} | {"variant": d["paths"]["stage_a_variant"]}
+
+        if key(old) != key(new):
+            raise ValueError(f"run {rd.name!r} exists with different detector/sky/preprocess/variant settings; "
                              "use another --run-name or --force")
     cfg.snapshot(snap)
 
@@ -118,7 +160,11 @@ def process_one(cfg: Config, stem: str, rd: Path) -> dict[str, Any]:
         "run": rd.name,
         "detector": {k: sc[k] for k in (
             "s_hat", "s_hat_raw", "s_hat_clamped", "tau", "eps", "rho_floor", "r", "R", "sky_frac",
-            "n_bad_depth", "n_noise_valid", "frac_w_lt_0.5", "frac_w_lt_0.9", "frac_w_lt_1")},
+            "n_bad_depth", "n_noise_valid", "frac_w_lt_0.5", "frac_w_lt_0.9", "frac_w_lt_1")}
+        | {k: sc[k] for k in ("tau_noise", "tau_min", "tau_min_over_tau_noise", "a_min", "lambda_ref",
+                              "eps_noise", "eps_min", "eps_floor", "prefilter", "tri_shat",
+                              "s_hat_filtered_response", "scale_band", "band_factor", "scale_band_mode",
+                              "band_gain") if k in sc},
         "focal": {
             "f_active": fo["f_active"], "f_n": fo["f_n"], "mode": fo["mode"],
             "f_per_image": fo["f_per_image"], "f_pooled": fo["f_pooled"],
@@ -154,14 +200,16 @@ def process_one(cfg: Config, stem: str, rd: Path) -> dict[str, Any]:
 
 
 def run_stage_b(cfg: Config, run_name: str | None = None, force: bool = False,
-                sample: int | None = None, limit: int | None = None, viz: bool = True) -> dict[str, Any]:
+                sample: int | None = None, limit: int | None = None, viz: bool = True,
+                stems: list[str] | None = None) -> dict[str, Any]:
     from .manifest import write_manifest
     from .viz import render
 
     rd = run_dir(cfg, run_name)
+    _inherit_stage_a_settings(cfg)
     rd.mkdir(parents=True, exist_ok=True)
     _check_run_config(cfg, rd, force)
-    stems = select_stems(cfg, sample, limit)
+    stems = select_stems(cfg, sample, limit, stems)
     status = {"run": rd.name, "n_images": len(stems), "n_done": 0, "n_skipped": 0}
     for stem in tqdm(stems, desc=f"stage-b {rd.name}"):
         if not force and (rd / f"{stem}.npz").exists() and (rd / f"{stem}.json").exists():

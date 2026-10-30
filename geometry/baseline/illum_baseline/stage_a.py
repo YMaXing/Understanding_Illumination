@@ -12,6 +12,7 @@ from __future__ import annotations
 import datetime as dt
 import json
 import subprocess
+import zlib
 import warnings
 from importlib import metadata
 from pathlib import Path
@@ -27,14 +28,15 @@ from .audit import list_files
 from .config import Config
 from .geometry import focal_at_network, network_size, scale_factors
 from .io_tiff import load_tiff, orientation_of, to_upright, upright_size
-from .preprocess import linear_to_srgb, resolve_layout
+from .preprocess import linear_to_srgb_float, quantize, resolve_layout
 
 INTERP = {"area": cv2.INTER_AREA, "linear": cv2.INTER_LINEAR, "cubic": cv2.INTER_CUBIC}
 STAGE_A_VERSION = 2  # 2: GeoCalib reseeded per image
 
 
 def stage_a_dir(cfg: Config) -> Path:
-    return cfg.out_dir / "stage_a"
+    v = cfg.paths.stage_a_variant
+    return cfg.out_dir / "stage_a" / v if v else cfg.out_dir / "stage_a"
 
 
 def resolve_device(name: str) -> torch.device:
@@ -84,18 +86,31 @@ def prepare(cfg: Config, path: Path) -> dict[str, Any]:
     layout = resolve_layout(raw, tags, p.layout)
     if layout != "rgb":
         raise NotImplementedError("mosaic input: demosaic is not implemented (the M1 audit found RGB data)")
-    srgb, rec = linear_to_srgb(
+    srgb_f, rec = linear_to_srgb_float(
         raw, black_level=p.black_level, white_level=p.white_level, white_balance=p.white_balance,
         exposure_percentile=p.exposure_percentile, exposure_target=p.exposure_target,
-        exposure_gain_max=p.exposure_gain_max,
+        exposure_gain_max=p.exposure_gain_max, exposure_mode=p.exposure_mode,
     )
     orient = orientation_of(tags) if p.respect_orientation_tag else 1
-    up = to_upright(srgb, orient)
     h_s, w_s = raw.shape[:2]
     w_up, h_up = upright_size(w_s, h_s, orient)
-    assert up.shape[:2] == (h_up, w_up)
     w_n, h_n = network_size(w_up, h_up, cfg.network.long_side, cfg.network.multiple)
-    net = cv2.resize(up, (w_n, h_n), interpolation=INTERP[cfg.network.resize_interp])
+    interp = INTERP[cfg.network.resize_interp]
+    if p.dither == "none":
+        # Baseline path: quantize at full res, resize the uint8 image.
+        up = to_upright(quantize(srgb_f), orient)
+        net = cv2.resize(up, (w_n, h_n), interpolation=interp)
+        rec["dither"] = "none"
+    else:
+        # Dither at each final quantization: full res (GeoCalib, viz) and network res (DA3). The network
+        # input is resized in float so the second quantization does not undo the first dither.
+        seed = [cfg.seed, zlib.crc32(path.stem.encode())]
+        rng_full, rng_net = (np.random.default_rng(seed + [k]) for k in (0, 1))
+        up = to_upright(quantize(srgb_f, p.dither, rng_full), orient)
+        net_f = cv2.resize(to_upright(srgb_f, orient).astype(np.float32), (w_n, h_n), interpolation=interp)
+        net = quantize(net_f.astype(np.float64), p.dither, rng_net)
+        rec.update({"dither": p.dither, "dither_seed": seed, "dither_applied_at": ["full_res", "network_res"]})
+    assert up.shape[:2] == (h_up, w_up)
     s_x, s_y = scale_factors(w_up, h_up, w_n, h_n)
     meta = {
         "frames": {
@@ -156,11 +171,17 @@ def update_focal(cfg: Config) -> dict[str, Any]:
     return summary
 
 
-def run_stage_a(cfg: Config, force: bool = False, limit: int | None = None) -> dict[str, Any]:
+def run_stage_a(cfg: Config, force: bool = False, limit: int | None = None,
+                stems: list[str] | None = None) -> dict[str, Any]:
     d = stage_a_dir(cfg)
     (d / "srgb").mkdir(parents=True, exist_ok=True)
     cfg.snapshot(d / "config_resolved.yaml")
     files = list_files(cfg)
+    if stems:
+        missing = set(stems) - {f.stem for f in files}
+        if missing:
+            raise FileNotFoundError(f"stems not found under data_dir: {sorted(missing)}")
+        files = [f for f in files if f.stem in set(stems)]
     if limit is not None:
         files = files[:limit]
     todo = [f for f in files if force or not ((d / f"{f.stem}.npz").exists() and (d / f"{f.stem}.json").exists())]
@@ -183,7 +204,13 @@ def run_stage_a(cfg: Config, force: bool = False, limit: int | None = None) -> d
 
         def flush(shape: tuple) -> None:
             chunk = pending.pop(shape)
-            preds = depth.predict([item["net"] for _, item in chunk])
+            if cfg.da3.tta == "none":
+                preds = depth.predict([item["net"] for _, item in chunk])
+            else:
+                from .depth import tta_predict
+
+                preds = [tta_predict(depth, item["net"], cfg.da3.tta_shift_set, cfg.da3.tta_feather_px)
+                         for _, item in chunk]
             for (f, item), pred in zip(chunk, preds):
                 _save(cfg, f, item, pred, prov)
                 status["n_done"] += 1
@@ -223,6 +250,15 @@ def _save(cfg: Config, f: Path, item: dict[str, Any], pred: dict[str, Any], prov
     arrays = {"D": pred["D"]}
     if pred["sky_prob"] is not None:
         arrays["sky_prob"] = pred["sky_prob"]
+    if "passes" in pred:  # TTA: keep every pass, unshifted/unflipped, NaN where not covered
+        (d / "tta").mkdir(exist_ok=True)
+        np.savez_compressed(
+            d / "tta" / f"{f.stem}_passes.npz",
+            D=np.stack([p["D"] for p in pred["passes"]]).astype(np.float32),
+            sky_prob=np.stack([p["sky"] for p in pred["passes"]]).astype(np.float16)
+            if pred["passes"][0]["sky"] is not None else np.zeros(0),
+            dx=np.array([p["dx"] for p in pred["passes"]]), dy=np.array([p["dy"] for p in pred["passes"]]),
+            flip=np.array([p["flip"] for p in pred["passes"]]), scale=np.array([p["scale"] for p in pred["passes"]]))
     tmp = d / f"{f.stem}.tmp.npz"
     np.savez_compressed(tmp, **arrays)
     tmp.replace(d / f"{f.stem}.npz")

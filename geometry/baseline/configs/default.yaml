@@ -1,6 +1,7 @@
-paths:
-  data_dir: /mnt/f/NEU_Seattle/CS_7980 Research Capstone/Project/codebase/geometry/data
-  out_dir: /mnt/f/NEU_Seattle/CS_7980 Research Capstone/Project/codebase/geometry/baseline_output
+# Default pipeline (since 2026-10-27): candidate tri + veto4. The original baseline is configs/baseline_v0.yaml.
+paths:                    # relative paths are relative to this file; override with --input/-i, --output/-o
+  data_dir: ../data        # input folder of TIFFs (searched recursively with `glob`)
+  out_dir: ../baseline_output   # outputs: stage_a/, stage_b/<run.name>/ (must not be inside data_dir)
   glob: "**/*.tif*"
 device: cuda
 seed: 0
@@ -52,8 +53,17 @@ detector:
   w_min: 0.05
   s_hat_min: 1.0e-6
   s_hat_max: null
+  # Candidate "tri (s_hat after filtering) + veto, band factor 4" (docs/pipeline_tri_veto4.md):
+  prefilter: trilateral   # tangent-plane bilateral on disparity before the Laplacian: removes DA3's 7-px grid ripple
+  tri_sigma_s: 3.0        # px, spatial scale (attenuates a 7-px ripple ~40x)
+  tri_sigma_r: 0.01       # relative deviation from the local tangent plane
+  tri_sigma_g: 3.0        # px, scale of the tangent-plane gradient
+  tri_shat: filtered      # noise scale s_hat from the filtered response (keeps folds strong)
+  scale_band: true        # scale-ratio veto: removes responses of smooth curvature (cylinders, spheres)
+  scale_band_mode: veto   # q' = min(q, g |L_sigma - L_{4 sigma}| / rho), g = 1 / (1 - 1/4)
+  band_factor: 4.0
 
 run:
-  name: baseline_v0
+  name: tri_veto4
   limit: null
   force: false

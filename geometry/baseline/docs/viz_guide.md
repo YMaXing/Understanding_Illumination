@@ -2,6 +2,14 @@
 
 Each file `baseline_output/stage_b/<run>/viz/<stem>.png` is one image's diagnostic sheet. It is rendered by `illum_baseline/viz.py: render()` from saved outputs only, and can be re-rendered with `python -m illum_baseline.cli viz --run-name <run> [stems...]`.
 
+**Default pipeline note (since 2026-10-27, `tri_veto4`, see `docs/pipeline_tri_veto4.md`):**
+
+- `q` and `L_over_rho` are computed from the trilateral-filtered disparity.
+- `q` passes through the scale-ratio veto, min(q, g·|band response|).
+- The sign in panel 3 is the sign of the un-vetoed Laplacian.
+- ŝ is the noise scale of the filtered response.
+- The formulas below describe the `baseline_v0` detector. They still hold with q replaced by this vetoed response.
+
 Layout: 2 rows × 4 panels, always in the **upright** frame. Panels 1–5 are in network pixel coordinates (504×378 or 378×504), the resolution the detector runs at. Panel 6 is at the original resolution, and panel 7 is a histogram.
 
 The sheet follows the pipeline in order: input image, depth, signed detector response, response magnitude against the threshold, weight, weight on the photo, response statistics, then the numbers.

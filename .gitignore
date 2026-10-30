@@ -222,8 +222,11 @@ __marimo__/
 
 # original data
 /image_data/
-/geometry/data/
-/geometry/baseline_output/
+/geometry/baseline/data/
+/geometry/baseline/baseline_output*/
+
+*.zip
+*.pth
 
 # Local clone of depth networks
 DA3/
