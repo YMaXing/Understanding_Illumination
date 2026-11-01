@@ -260,7 +260,11 @@ def _process_one_geometry(cfg: Config, stem: str, rd: Path, meta_a: dict[str, An
     common = _meta_common(cfg, stem, meta_a)
     common["geometry"]["frames"] += ("; n_hat vector components are in the upright camera frame (x right, y down, "
                                      "z forward); candidate tables use upright network-resolution pixel coordinates")
-    common["params"]["geometry"] = dataclasses.asdict(cfg.geometry)
+    from .geom.fold import params_record
+
+    geo = dataclasses.asdict(cfg.geometry)
+    geo["fold"] = params_record(geo["fold"])
+    common["params"]["geometry"] = geo
     common["provenance"]["geometry_version"] = GEOMETRY_VERSION
     meta = {
         "stem": stem,

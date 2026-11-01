@@ -65,6 +65,9 @@ class FoldParams:
     local_min_samples: int = 50         # additive_local: fewer valid null samples in a tile -> global sigma_geo
     veto_k_factor: float = 2.0
     C_min: float = 0.85
+    veto_mode: str = "fixed"            # fixed (k2 = 2 k1, C >= C_min) | capped (TASK_FOLD_V2 F7)
+    veto_curv_coef: float = 0.4         # capped: C_min_eff = 1 - coef (1 - C_curv)
+    veto_curv_max: float = 0.8          # capped: decidable iff C_curv <= this (task 0.7; calibrated 0.8, F7)
     J_min: float = 0.0872
     J0: float = 0.25
     w_min: float = 0.05
@@ -94,6 +97,19 @@ def _solve_sig2(d: np.ndarray, S: np.ndarray, lam_n: float) -> float:
         mid = 0.5 * (lo + hi)
         lo, hi = (mid, hi) if med(10.0**mid) > target else (lo, mid)
     return 10.0 ** (0.5 * (lo + hi))
+
+
+V2_VETO_KEYS = ("veto_mode", "veto_curv_coef", "veto_curv_max")
+
+
+def params_record(p: dict) -> dict:
+    """The fold parameters as recorded in the outputs: TASK_FOLD_V2 keys only when their feature is on, so runs with
+    the new options off keep the records of the runs made before they existed."""
+    d = dict(p)
+    if d.get("veto_mode", "fixed") == "fixed":
+        for k in V2_VETO_KEYS:
+            d.pop(k, None)
+    return d
 
 
 def _J(dtheta: np.ndarray) -> np.ndarray:
@@ -204,6 +220,14 @@ class FoldChannel:
         with np.errstate(invalid="ignore", divide="ignore"):
             C = dtheta1 / dtheta2
             veto_pass = gate & (no_veto | (C >= p.C_min))
+        if p.veto_mode not in ("fixed", "capped"):
+            raise ValueError(f"unknown veto_mode {p.veto_mode!r}")
+        capped = None
+        if p.veto_mode == "capped":
+            capped = self._capped_veto(ctx, p, cands, gate, x0, e1, width, k1, r1, dtheta1, eps_hat, tri, fitkw,
+                                       rms_max)
+            dtheta2, valid2, k2_clean, no_veto, C, veto_pass = (capped.pop(k) for k in (
+                "dtheta2", "valid2", "k2_clean", "no_veto", "C", "veto_pass"))
 
         # F2.8 component size (8-connected, on the NMS pixels)
         u, v = cands.ij[:, 0], cands.ij[:, 1]
@@ -250,6 +274,8 @@ class FoldChannel:
         reason[~veto_pass] = "veto"
         reason[~gate] = "gate"
         reason[~r1.valid] = "invalid_window"
+        if capped is not None:
+            reason[capped["veto_undecidable"]] = "veto_undecidable"
 
         df = pd.DataFrame({
             "u": u, "v": v, "u0": x0[:, 0], "v0": x0[:, 1], "e1_u": e1[:, 0], "e1_v": e1[:, 1],
@@ -266,6 +292,10 @@ class FoldChannel:
             "d_rho": r1.d_rho, "d_rho_se": r1.d_rho_se, "s_gap": r1.s_gap, "planes_cross": r1.planes_cross,
             "d_rho_x0": r1.d_rho_x0, "rho_p_gap": r1.rho_p_gap, "rho_m_gap": r1.rho_m_gap, "dZ_rel": r1.dZ_rel, "depth_jump": depth_jump, "convexity": convexity, "L_over_rho_x0": L0,
         })
+        if capped is not None:  # capped-veto records (the fixed mode's table is unchanged)
+            for k_ in ("k2_p", "k2_m", "d_next_p", "d_next_m", "C_curv", "C_min_eff", "decidable", "strict_planar",
+                       "narrow_face", "veto_undecidable", "C_high"):
+                df[k_] = capped[k_]
         T_null_add, T_null_add_local = np.full(len(xn), np.nan), np.full(len(xn), np.nan)
         if np.isfinite(sig2) and nv.any():
             T_null_add[nv] = quad_form(dn, Sn, p.lambda_n, sig2)
@@ -288,10 +318,95 @@ class FoldChannel:
             "n_fallback": int((r1.valid & (r1.p.fallback | r1.m.fallback)).sum()),
             "n_accepted_depth_jump": int((accepted & depth_jump).sum()),
             "frac_w_lt_0.5": float((w_fold < 0.5).mean()), "frac_w_lt_0.9": float((w_fold < 0.9).mean()),
-            "params": dataclasses.asdict(p),
+            "params": params_record(dataclasses.asdict(p)),
         }
+        if capped is not None:
+            scalars |= {"veto_mode": "capped", "n_narrow_face": int(capped["narrow_face"].sum()),
+                        "n_veto_undecidable": int(capped["veto_undecidable"].sum()),
+                        "n_C_high": int(capped["C_high"].sum())}
         scalars["context_s"] = t_ctx
         scalars["runtime_s"] = time.perf_counter() - t_start - t_ctx
         return ChannelResult(name=self.name, w_net=w_fold, strength=strength, candidates=df,
                              arrays={"r_n": cands.rate_map}, scalars=scalars, w_min=p.w_min,
                              tables={"null": null_df})
+
+    @staticmethod
+    def _capped_veto(ctx, p, cands, gate, x0, e1, width, k1, r1, dtheta1, eps_hat, tri, fitkw, rms_max) -> dict:
+        """TASK_FOLD_V2 F7: the veto with k2 capped by the next obstacle on each side.
+
+        d_next+- = distance along +-e1 from x0 to the first obstacle, checked over the window's width (|t| <= w_t,
+        nearest pixel): an invalid normal or the outside of the image beyond the candidate's own rounding
+        (|s| > width/2 + 1), or another gate-passed candidate (NMS pixels dilated by 1 px) beyond the whole rounding
+        band (|s| > width + 1: a rounded fold has parallel sibling ridges inside its band, which are not a next face).
+        k2+- = clamp(min(veto_k_factor k1, d_next+- - m - 2), k1, veto_k_factor k1);
+        C_curv = (2 k1 + m) / (k2+ + k2- + m) (the constant-curvature ratio for these skips);
+        C_min_eff = 1 - veto_curv_coef (1 - C_curv); decidable iff C_curv <= veto_curv_max.
+        Decidable and both k2 windows valid: accept iff C >= C_min_eff (C_high: C > 1 / C_min_eff, a flag).
+        Otherwise accept only if both k1 sides are strictly planar (planar fit, not fallback, rms/alpha <=
+        max(3 eps_hat, b_tri_margin b_tri(k1, m_used))): narrow_face; else reject: veto_undecidable.
+        Records: no_veto (column, n_no_veto) keeps its name but means here "gate-passed with an invalid capped k2
+        window"; such candidates are never accepted on that ground (they go to the narrow_face rule).
+        """
+        H, W = ctx.shape
+        N = len(x0)
+        gp = np.zeros((H, W), dtype=bool)
+        gp[cands.ij[gate, 1], cands.ij[gate, 0]] = True
+        gpd = ndimage.binary_dilation(gp, structure=np.ones((3, 3), dtype=bool))
+        bad = ~ctx.normal_valid
+        k_cap = np.rint(p.veto_k_factor * k1).astype(int)
+        g = np.nonzero(gate)[0]
+        d_next = {+1: np.full(N, np.inf), -1: np.full(N, np.inf)}
+        if g.size:
+            et = np.stack([-e1[g, 1], e1[g, 0]], -1)
+            t = np.arange(-p.w_t, p.w_t + 1, dtype=np.float64)
+            s_lo = width[g] / 2 + 1     # invalid normals, outside
+            s_lo_c = width[g] + 1       # other gate-passed candidates
+            s_hi = float((k_cap[g] + p.m + 2).max())
+            for sign in (+1, -1):
+                d = np.full(g.size, np.inf)
+                for sv in np.arange(0.5, s_hi + 0.51, 0.5):
+                    active = np.isinf(d) & (sv > s_lo)
+                    if not active.any():
+                        continue
+                    pts = (x0[g, None, :] + sign * sv * e1[g, None, :] + t[None, :, None] * et[:, None, :])
+                    uu, vv = np.rint(pts[..., 0]).astype(int), np.rint(pts[..., 1]).astype(int)
+                    inside = (uu >= 0) & (uu < W) & (vv >= 0) & (vv < H)
+                    uc, vc = np.clip(uu, 0, W - 1), np.clip(vv, 0, H - 1)
+                    hit = (~inside | bad[vc, uc]).any(1) | ((sv > s_lo_c) & gpd[vc, uc].any(1))
+                    d[active & hit] = sv
+                d_next[sign][g] = d
+        cap = lambda dn: np.clip(np.minimum(k_cap, np.floor(dn - p.m - 2)), k1, k_cap).astype(int)  # noqa: E731
+        with np.errstate(invalid="ignore"):
+            k2p, k2m = cap(d_next[+1]), cap(d_next[-1])
+        C_curv = (2 * k1 + p.m) / (k2p + k2m + p.m)
+        C_min_eff = 1 - p.veto_curv_coef * (1 - C_curv)
+        decidable = C_curv <= p.veto_curv_max
+
+        dtheta2 = np.full(N, np.nan)
+        valid2 = np.zeros(N, dtype=bool)
+        k2_clean = np.zeros(N, dtype=bool)
+        if g.size:
+            r2 = two_sided_fit(ctx, x0[g], e1[g], k2p[g], rms_max=None, fallback=False, k_m=k2m[g], **fitkw)
+            dtheta2[g], valid2[g] = r2.dtheta, r2.valid
+            with np.errstate(invalid="ignore"):
+                k2_clean[g] = (r2.valid & (r2.p.rms_rel <= rms_max(k2p[g].astype(float), p.m))
+                               & (r2.m.rms_rel <= rms_max(k2m[g].astype(float), p.m)))
+
+        def strict_tol(side) -> np.ndarray:
+            bt = np.where(side.m_used == 4, b_tri(k1, 4, tri), b_tri(k1, p.m, tri))
+            return np.fmax(p.planarity_factor * eps_hat, p.b_tri_margin * bt)
+
+        with np.errstate(invalid="ignore", divide="ignore"):
+            strict = (r1.p.planar & r1.m.planar & (r1.p.rms_rel <= strict_tol(r1.p))
+                      & (r1.m.rms_rel <= strict_tol(r1.m)))
+            C = dtheta1 / dtheta2
+            decided = gate & decidable & valid2
+            undecided = gate & ~(decidable & valid2)
+            veto_pass = (decided & (C >= C_min_eff)) | (undecided & strict)
+            C_high = decided & (C > 1 / C_min_eff)
+        return {"dtheta2": dtheta2, "valid2": valid2, "k2_clean": k2_clean, "no_veto": gate & ~valid2, "C": C,
+                "veto_pass": veto_pass, "k2_p": np.where(gate, k2p, -1), "k2_m": np.where(gate, k2m, -1),
+                "d_next_p": d_next[+1], "d_next_m": d_next[-1], "C_curv": np.where(gate, C_curv, np.nan),
+                "C_min_eff": np.where(gate, C_min_eff, np.nan), "decidable": gate & decidable,
+                "strict_planar": strict, "narrow_face": undecided & strict,
+                "veto_undecidable": undecided & ~strict, "C_high": C_high}

@@ -184,17 +184,19 @@ def chi2_statistic(n_p: np.ndarray, n_m: np.ndarray, S_p: np.ndarray, S_m: np.nd
 
 def two_sided_fit(ctx: GeometryContext, x0: np.ndarray, e1: np.ndarray, k: np.ndarray | int, m: int, w_t: int, *,
                   rms_max: RmsMax | None = None, m_min: int = 4, max_excluded: float = 0.2,
-                  fallback: bool = True) -> TwoSidedResult:
+                  fallback: bool = True, k_m: np.ndarray | int | None = None) -> TwoSidedResult:
     """Vectorized over N candidates: x0 (N, 2) (u, v), e1 (N, 2) unit, k (N,) or scalar int.
 
     rms_max None skips the contamination check (calibration passes, the veto's k2 windows).
+    k_m: a separate skip for the - side (the + side uses k); the plane-gap span is then [-k_m, k]. None: k on both.
     """
     x0 = np.asarray(x0, dtype=np.float64).reshape(-1, 2)
     e1 = np.asarray(e1, dtype=np.float64).reshape(-1, 2)
     k = np.broadcast_to(np.asarray(k), (len(x0),)).astype(np.float64)
+    km = k if k_m is None else np.broadcast_to(np.asarray(k_m), (len(x0),)).astype(np.float64)
     kw = dict(m=m, w_t=w_t, rms_max=rms_max, m_min=m_min, max_excluded=max_excluded, fallback=fallback)
     P = _side(ctx, x0, e1, k, +1, **kw)
-    M = _side(ctx, x0, e1, k, -1, **kw)
+    M = _side(ctx, x0, e1, km, -1, **kw)
 
     def plane_at(sd: SideResult, x: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
         a = np.concatenate([np.ones((len(x), 1)), x - sd.c], -1)
@@ -209,8 +211,12 @@ def two_sided_fit(ctx: GeometryContext, x0: np.ndarray, e1: np.ndarray, k: np.nd
     g1 = np.sum((P.beta - M.beta) * e1, -1)
     with np.errstate(divide="ignore", invalid="ignore"):
         root = -g0 / g1
-    planes_cross = np.isfinite(root) & (np.abs(root) <= k)
-    end = np.where(np.abs(g0 + g1 * k) <= np.abs(g0 - g1 * k), k, -k)
+    if k_m is None:
+        planes_cross = np.isfinite(root) & (np.abs(root) <= k)
+        end = np.where(np.abs(g0 + g1 * k) <= np.abs(g0 - g1 * k), k, -k)
+    else:
+        planes_cross = np.isfinite(root) & (root <= k) & (root >= -km)
+        end = np.where(np.abs(g0 + g1 * k) <= np.abs(g0 - g1 * km), k, -km)
     s_gap = np.where(planes_cross, root, end)
     s_gap = np.where(np.isfinite(g0), s_gap, np.nan)
     xg = x0 + np.nan_to_num(s_gap)[:, None] * e1

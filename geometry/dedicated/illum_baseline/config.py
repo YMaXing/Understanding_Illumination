@@ -138,6 +138,9 @@ class FoldCfg:
     local_min_samples: int = 50         # additive_local: fewer valid null samples -> the global sigma_geo
     veto_k_factor: float = 2.0
     C_min: float = 0.85
+    veto_mode: str = "fixed"            # fixed | capped (k2 capped by the next obstacle; TASK_FOLD_V2 F7)
+    veto_curv_coef: float = 0.4         # capped: C_min_eff = 1 - coef (1 - C_curv)
+    veto_curv_max: float = 0.8          # capped: decidable iff C_curv <= this (task 0.7; calibrated 0.8, F7)
     J_min: float = 0.0872
     J0: float = 0.25
     w_min: float = 0.05
@@ -315,6 +318,10 @@ def _validate_geometry(g: GeometryCfg) -> None:
         raise ValueError("geometry.dense_fit: scales and cond_max must be > 0, refit >= 0")
     if f.null_model not in ("multiplicative", "additive", "additive_local"):
         raise ValueError(f"geometry.fold.null_model must be multiplicative|additive|additive_local, got {f.null_model!r}")
+    if f.veto_mode not in ("fixed", "capped"):
+        raise ValueError(f"geometry.fold.veto_mode must be fixed|capped, got {f.veto_mode!r}")
+    if not 0 < f.veto_curv_coef < 1 or not 0 < f.veto_curv_max < 1:
+        raise ValueError("geometry.fold: veto_curv_coef and veto_curv_max must be in (0, 1)")
     if f.local_tile < 4 or f.local_min_samples < 1:
         raise ValueError("geometry.fold: local_tile >= 4, local_min_samples >= 1")
     if not 0 < f.p_fa < 1:

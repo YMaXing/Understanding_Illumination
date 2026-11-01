@@ -152,15 +152,12 @@ def objects_run():
     return ctx, res, cls, names, sid
 
 
-def test_3_veto_cylinders_vetoed_box_folds_pass(objects_run, capsys):
-    """Deep interior (every sample of the k1 and k2 windows >= R_s + 2 px from the cylinder's rim (ends) and limb
-    (side silhouettes)): 100% vetoed. Passes nearer the rim or limb are reported."""
-    ctx, res, cls, names, sid = objects_run
-    df = res.candidates
+def _veto_classes(df, names, sid):
+    """(deep, near, rim) masks: candidates on a cylinder whose nominal k1 and 2 k1 windows are all >= R_s + 2 px from its
+    rim (ends) and limb (side silhouettes); the other on-cylinder candidates; rim if the nearest boundary is an end."""
     x0, e1 = df[["u0", "v0"]].to_numpy(), df[["e1_u", "e1_v"]].to_numpy()
     k1, k2 = df["k1"].to_numpy(), df["k2"].to_numpy()
     et = np.stack([-e1[:, 1], e1[:, 0]], -1)
-    gate, vp = df["gate"].to_numpy(), df["veto_pass"].to_numpy()
     deep = np.zeros(len(df), dtype=bool)
     on_cyl = np.zeros(len(df), dtype=bool)
     rim = np.zeros(len(df), dtype=bool)
@@ -178,7 +175,6 @@ def test_3_veto_cylinders_vetoed_box_folds_pass(objects_run, capsys):
         here = at(mask, x0) & at(mask, x0 + (k1 + FP.m / 2)[:, None] * e1) & at(mask, x0 - (k1 + FP.m / 2)[:, None] * e1)
         on_cyl |= here
         deep |= here & (d_min >= R_S + 2)
-        # rim if the nearest boundary is a cylinder end (row extent), limb if a side silhouette (column extent)
         vv, uu = np.nonzero(mask)
         v_top, v_bot = vv.min(), vv.max()
         rows = np.clip(np.rint(x0[:, 1]).astype(int), 0, sid.shape[0] - 1)
@@ -187,7 +183,17 @@ def test_3_veto_cylinders_vetoed_box_folds_pass(objects_run, capsys):
         u_r = np.array([uu[vv == r].max() if (vv == r).any() else 1e9 for r in rows])
         d_side = np.minimum(np.abs(x0[:, 0] - u_l), np.abs(x0[:, 0] - u_r))
         rim |= here & (d_end < d_side)
-    near = on_cyl & ~deep & gate
+    return deep, on_cyl & ~deep, rim
+
+
+def test_3_veto_cylinders_vetoed_box_folds_pass(objects_run, capsys):
+    """Deep interior (every sample of the k1 and k2 windows >= R_s + 2 px from the cylinder's rim (ends) and limb
+    (side silhouettes)): 100% vetoed. Passes nearer the rim or limb are reported."""
+    ctx, res, cls, names, sid = objects_run
+    df = res.candidates
+    deep, near_c, rim = _veto_classes(df, names, sid)
+    gate, vp = df["gate"].to_numpy(), df["veto_pass"].to_numpy()
+    near = near_c & gate
     box = cls["box_fold"] & gate & ~df["no_veto"].to_numpy()
     with capsys.disabled():
         print(f"\n[F2 test 3] cylinder deep interior: {(deep & gate).sum()} gate-passed, {(deep & gate & vp).sum()} pass the "
@@ -196,6 +202,55 @@ def test_3_veto_cylinders_vetoed_box_folds_pass(objects_run, capsys):
               f"with veto, C min {df['C'][box].min():.3f}")
     assert (deep & gate).sum() > 50 and not (deep & gate & vp).any()
     assert box.sum() > 50 and df["C"][box].min() >= 0.95
+
+
+# ---------------------------------------------------------------- F7: capped veto
+
+FIXED_RIM_LIMB = (32, 217)  # rim / limb passes of the fixed veto (test 3), the capped veto may not exceed them
+
+
+def test_7_capped_veto_cylinders_and_box_folds(objects_run, capsys):
+    """Capped veto on the same scene: deep interior still 0 passes, rim / limb passes not above the fixed veto's,
+    box folds with a decided veto C >= 0.95."""
+    ctx, _, cls, names, sid = objects_run
+    df = FoldChannel().run(ctx, {"veto_mode": "capped"}).candidates
+    deep, near_c, rim = _veto_classes(df, names, sid)
+    gate, vp = df["gate"].to_numpy(), df["veto_pass"].to_numpy()
+    near = near_c & gate
+    box = cls["box_fold"] & gate & df["decidable"].to_numpy() & ~df["no_veto"].to_numpy()
+    with capsys.disabled():
+        print(f"\n[F7 capped veto] cylinder deep interior: {(deep & gate).sum()} gate-passed, {(deep & gate & vp).sum()} "
+              f"pass; near rim/limb: {near.sum()} gate-passed, passes rim {(near & vp & rim).sum()} / limb "
+              f"{(near & vp & ~rim).sum()} (narrow_face {(near & df['narrow_face']).sum()}); box folds: {box.sum()} decided, "
+              f"C min {df['C'][box].min():.3f}, narrow_face {(cls['box_fold'] & df['narrow_face']).sum()}, "
+              f"veto_undecidable {(cls['box_fold'] & df['veto_undecidable']).sum()}")
+    assert (deep & gate).sum() > 50 and not (deep & gate & vp).any()
+    assert (near & vp & rim).sum() <= FIXED_RIM_LIMB[0] and (near & vp & ~rim).sum() <= FIXED_RIM_LIMB[1]
+    assert box.sum() > 50 and df["C"][box].min() >= 0.95
+
+
+@pytest.mark.parametrize("width_px", [12, 18, 24, 32])
+def test_7_capped_veto_narrow_faces(width_px, capsys):
+    """Faces 12-32 px wide between two folds: which edges each veto accepts. With the capped veto both edges of faces
+    >= 18 px are accepted; a 12-px face is narrower than the k1 windows (k1 = 8, m = 8), its edges are reported."""
+    D, sid, ns, (c_ab, c_bc) = chamfer_scene(width_px)
+    ctx = GeometryContext(noisy(D, NOISE, 1), None, K, TRI)
+    out = {}
+    for mode in ("fixed", "capped"):
+        df = FoldChannel().run(ctx, {"veto_mode": mode}).candidates
+        for nm, c in (("A|B", c_ab), ("B|C", c_bc)):
+            near = (np.abs(df["u0"] - c) < 2.5).to_numpy()
+            g = near & df["gate"].to_numpy()
+            out[mode, nm] = (int(g.sum()), int((near & df["accepted"]).sum()),
+                             int((near & df["narrow_face"]).sum()) if mode == "capped" else 0)
+    with capsys.disabled():
+        print(f"\n[F7 narrow face {width_px} px] " + "; ".join(
+            f"{m} {e}: gate {g}, accepted {a}" + (f" (narrow_face {nf})" if m == "capped" else "")
+            for (m, e), (g, a, nf) in out.items()))
+    if width_px >= 18:
+        for e in ("A|B", "B|C"):
+            g, a, _ = out["capped", e]
+            assert g > 100 and a >= 0.95 * g
 
 
 def test_5_depth_jump_not_at_folds(objects_run, capsys):
