@@ -1,6 +1,6 @@
 # Depth-edge channel: design (draft, D0)
 
-Status 2026-11-01: **design draft, no code yet** (TASK_DEPTH_CHANNEL D0). The math is settled in
+Status 2026-11-01: **design draft** (TASK_DEPTH_CHANNEL D0), with D1 (field) and D2 (candidates, calibration) implemented; section 7 records what D2 changed. The math is settled in
 `TASK_DEPTH_CHANNEL.md` (D-K, D-1 … D-7) and only referenced here; this draft fixes the module map, the data flow, the
 use of the shared two-sided fit (and the one change to it), the context's laziness for `[depth]`, and where the
 evaluation classes and ROIs come from. It is finalized in D6 in the style of `docs/fold_channel.md`.
@@ -154,3 +154,31 @@ and `tri_veto4_fold_v2` to `test_baseline_repro.py`.
 9. **ΔZ₀ = 0.10 m** and `symmetry: off`, as the task leans; D3 reports ΔZ₀ ∈ {0.05, 0.10, 0.20} m.
 10. **The `[depth, fold]` configuration** takes the fold_v2 settings (capped veto, multiplicative gate); the channels
     order is `[depth, fold]` as specified; the order only matters for saving, not for results.
+
+## 7. D2 record (candidates, calibration)
+
+- **Gradient floor** (replaces k_g × median |∇Dd|): g_n = |∇Dd| / max(ρ_σ, ρ_floor), σ̂_g = median(g_n over Ω) / 1.1774
+  (Rayleigh median), valid where g_n > 3 σ̂_g. A crossing is kept when g_n, linearly interpolated between its two
+  pixels, is above the floor. No recall loss on synthetic steps with r ≥ 5 % (edge coverage 1.000 with and without);
+  on the real images 24–38 % of Ω is valid (g_n is far from Rayleigh there: real slopes and edges, not noise).
+- **ŝ_q sample:** Ω at least R = ⌈4σ⌉ px from the sky and the border, *not* the gradient-valid pixels (with the new
+  floor those are mostly edges).
+- **q on the sky:** not zeroed. ρ = 0 there (the far limit), so a sky boundary is a doublet like any step; D-6 decides
+  what it means (ΔZ = inf, sky_near).
+- **D-3 implementation:** sign changes of q between 4-neighbour pixel pairs with at least one pixel in Ω; merged within
+  0.5 px (single linkage, mean position); n at x₀ bilinear and renormalized; lobes are the runs of one sign *contiguous
+  with x₀* along ±n (step 0.25 px, to ±8 px), peaks parabola-refined.
+- **Centring stage (added):** |s_p + s_m| ≤ s_sep/3. Beyond a step's core the detrended n flips sign
+  (−∇ρ_{σ_L} dominates) and the trilateral filter leaves small wiggles 5–7 px out; a crossing there borrows the step's
+  own lobe ~5 px away (|s_p + s_m|/s_sep ≈ 0.54) and, with the prior smear bound, passed D-3 as a parallel ghost line
+  (hundreds per step). Real unambiguous occlusions: max 0.29. Residual noise doublets 6–10 px from large noisy steps
+  carry the flipped n, so their two-sided jump is negative (D-4 `sign` rejects them; checked in D2).
+- **σ_w,max = 0.83 px** (P95 of σ_w,c over 576 unambiguous occlusions on the 10 images; P50 0, P99 1.05), so
+  s_hi = 3.0 px. Real DA3 edges at network resolution are sharper than an ideal pixel-sampled step (s_sep 2.45 vs
+  2.72 at P50): DA3 slightly over-sharpens.
+- **λ̂_Δρ:** synthetic noise ≈ 98–106 (median-based; MC mean 106–119), flat in k ∈ {11, 13, 16}; real images 660–1391.
+- **ρ_f vs ρ (070 floor ROI):** ρ_f leaves 0 candidates in the floor ROI after the height test, raw ρ 193 after all of
+  D-3. ρ_f stays the default.
+- **Shared fit:** `two_sided_fit(..., gap_mode, usable)` and the new `d_rho_x0_se`, `d_rho_min_span` fields (section 3).
+- Scripts: `scripts/calibrate_depth.py` → `geom/data/depth_calibration.json`; `scripts/depth_d2_report.py` →
+  `baseline_output/diag/depth_v1/d2/` (counts, ablation, DA3-vs-RGB alignment).

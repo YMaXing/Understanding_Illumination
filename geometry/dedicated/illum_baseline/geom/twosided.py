@@ -11,9 +11,14 @@ window_fit), the contamination check (rms/alpha > rms_max(k, m): retry with m/2,
 supplies rms_max, e.g. max(3 eps_hat, b_tri(k, m), Q95 of null rms)), and N2 normals at its centroid. Invalid windows
 fall back to the dense normal at the pixel nearest the nominal window centre (flag `fallback`) when fallback=True.
 
-Delta rho* is the smallest gap between the two fitted planes along the candidate's normal line, s in [-k, k]
-(closed form for affine functions); planes_cross marks a sign change of the gap inside that span (a fold-like
-intersection: Delta rho* = 0).
+Delta rho* (gap_mode "min_span", the default and the fold channel's) is the smallest gap between the two fitted planes
+along the candidate's normal line, s in [-k, k] (closed form for affine functions); planes_cross marks a sign change of
+the gap inside that span (a fold-like intersection: Delta rho* = 0). gap_mode "at_x0" (the depth channel's) takes the
+gap at x0 itself: Delta rho* = rho_+(x0) - rho_-(x0), s_gap = 0. Both gaps (d_rho_min_span, d_rho_x0 with its SE) and
+planes_cross are recorded in either mode.
+
+usable: the sample mask (bilinear corners); None means Omega and valid dense normals (the fold channel's rule, which
+builds the dense fit); the depth channel passes Omega so that it never touches the normals.
 
 This module makes no decisions: thresholds, gates, vetoes and weights belong to the channels.
 """
@@ -70,6 +75,8 @@ class TwoSidedResult:
     dtheta: np.ndarray        # (N,) rad, atan2(|n+ x n-|, n+ . n-)
     T: np.ndarray             # (N,) delta^T (Sigma_+ + Sigma_-)^-1 delta in the tangent basis at n_bar
     valid: np.ndarray         # (N,) both sides usable
+    d_rho_x0_se: np.ndarray   # (N,) SE of d_rho_x0 (record)
+    d_rho_min_span: np.ndarray  # (N,) the min-span gap (= d_rho in gap_mode "min_span"; record)
 
     def side_fields(self) -> dict[str, np.ndarray]:
         """Flat per-candidate columns: <field>_p / <field>_m for scalar side fields."""
@@ -86,10 +93,11 @@ RmsMax = Callable[[np.ndarray, int], np.ndarray]  # (k per row, m) -> maximum rm
 
 
 def _side(ctx: GeometryContext, x0: np.ndarray, e1: np.ndarray, k: np.ndarray, sign: int, m: int, w_t: int,
-          rms_max: RmsMax | None, m_min: int, max_excluded: float, fallback: bool) -> SideResult:
+          rms_max: RmsMax | None, m_min: int, max_excluded: float, fallback: bool,
+          usable: np.ndarray | None = None) -> SideResult:
     N = len(x0)
     et = np.stack([-e1[:, 1], e1[:, 0]], -1)
-    usable_px = ctx.omega & ctx.normal_valid
+    usable_px = ctx.omega & ctx.normal_valid if usable is None else usable
     alpha, rms_rel, excl = np.full(N, np.nan), np.full(N, np.nan), np.full(N, np.nan)
     beta, c, cov = np.full((N, 2), np.nan), np.full((N, 2), np.nan), np.full((N, 3, 3), np.nan)
     n_used, m_used = np.zeros(N, dtype=int), np.zeros(N, dtype=int)
@@ -184,17 +192,22 @@ def chi2_statistic(n_p: np.ndarray, n_m: np.ndarray, S_p: np.ndarray, S_m: np.nd
 
 def two_sided_fit(ctx: GeometryContext, x0: np.ndarray, e1: np.ndarray, k: np.ndarray | int, m: int, w_t: int, *,
                   rms_max: RmsMax | None = None, m_min: int = 4, max_excluded: float = 0.2,
-                  fallback: bool = True, k_m: np.ndarray | int | None = None) -> TwoSidedResult:
+                  fallback: bool = True, k_m: np.ndarray | int | None = None, gap_mode: str = "min_span",
+                  usable: np.ndarray | None = None) -> TwoSidedResult:
     """Vectorized over N candidates: x0 (N, 2) (u, v), e1 (N, 2) unit, k (N,) or scalar int.
 
     rms_max None skips the contamination check (calibration passes, the veto's k2 windows).
     k_m: a separate skip for the - side (the + side uses k); the plane-gap span is then [-k_m, k]. None: k on both.
+    gap_mode: "min_span" (default) or "at_x0" (see the module docstring). usable: the sample mask (None: Omega and
+    valid dense normals); with usable given and fallback=False the dense fit is never read.
     """
+    if gap_mode not in ("min_span", "at_x0"):
+        raise ValueError(f"unknown gap_mode {gap_mode!r}; expected min_span or at_x0")
     x0 = np.asarray(x0, dtype=np.float64).reshape(-1, 2)
     e1 = np.asarray(e1, dtype=np.float64).reshape(-1, 2)
     k = np.broadcast_to(np.asarray(k), (len(x0),)).astype(np.float64)
     km = k if k_m is None else np.broadcast_to(np.asarray(k_m), (len(x0),)).astype(np.float64)
-    kw = dict(m=m, w_t=w_t, rms_max=rms_max, m_min=m_min, max_excluded=max_excluded, fallback=fallback)
+    kw = dict(m=m, w_t=w_t, rms_max=rms_max, m_min=m_min, max_excluded=max_excluded, fallback=fallback, usable=usable)
     P = _side(ctx, x0, e1, k, +1, **kw)
     M = _side(ctx, x0, e1, km, -1, **kw)
 
@@ -205,8 +218,8 @@ def two_sided_fit(ctx: GeometryContext, x0: np.ndarray, e1: np.ndarray, k: np.nd
         return np.where(sd.planar, val, np.nan), np.where(sd.planar, var, np.nan)
 
     # gap(s) = g0 + g1 s along x0 + s e1, affine: smallest |gap| on [-k, k] is 0 if the root lies inside
-    rp0, _ = plane_at(P, x0)
-    rm0, _ = plane_at(M, x0)
+    rp0, vp0 = plane_at(P, x0)
+    rm0, vm0 = plane_at(M, x0)
     g0 = rp0 - rm0
     g1 = np.sum((P.beta - M.beta) * e1, -1)
     with np.errstate(divide="ignore", invalid="ignore"):
@@ -227,13 +240,21 @@ def two_sided_fit(ctx: GeometryContext, x0: np.ndarray, e1: np.ndarray, k: np.nd
     with np.errstate(invalid="ignore"):
         d_rho_se = np.sqrt(vp + vm)
         dZ_rel = np.abs(d_rho) / np.minimum(rp, rm)
+        d_rho_x0_se = np.sqrt(vp0 + vm0)
+    d_rho_min_span = d_rho
+    if gap_mode == "at_x0":
+        s_gap = np.where(np.isfinite(g0), 0.0, np.nan)
+        rp, rm, d_rho, d_rho_se = rp0, rm0, g0, d_rho_x0_se
+        with np.errstate(invalid="ignore", divide="ignore"):
+            dZ_rel = np.abs(d_rho) / np.minimum(rp, rm)
     valid = P.usable & M.usable
     dtheta = np.where(valid, fold_angle(P.nhat, M.nhat), np.nan)
     T = np.full(len(x0), np.nan)
     if valid.any():
         T[valid] = chi2_statistic(P.nhat[valid], M.nhat[valid], P.Sigma_n[valid], M.Sigma_n[valid])
     return TwoSidedResult(p=P, m=M, d_rho=d_rho, d_rho_se=d_rho_se, s_gap=s_gap, planes_cross=planes_cross,
-                          rho_p_gap=rp, rho_m_gap=rm, dZ_rel=dZ_rel, d_rho_x0=g0, dtheta=dtheta, T=T, valid=valid)
+                          rho_p_gap=rp, rho_m_gap=rm, dZ_rel=dZ_rel, d_rho_x0=g0, dtheta=dtheta, T=T, valid=valid,
+                          d_rho_x0_se=d_rho_x0_se, d_rho_min_span=d_rho_min_span)
 
 
 def window_rms(res: TwoSidedResult) -> np.ndarray:
