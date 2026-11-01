@@ -1,6 +1,6 @@
 # Geometric-edge channels: architecture
 
-Status as of 2026-10-31: **as built** (TASK_FOLD_CHANNEL F0–F5). Project root `geometry/dedicated/`. The fold channel's
+Status as of 2026-10-31: **as built** (TASK_FOLD_CHANNEL F0–F5, TASK_FOLD_V2 F6–F9). Project root `geometry/dedicated/`. The fold channel's
 math, parameters and results are in `docs/fold_channel.md`; this document covers the architecture shared by all
 channels, the Stage B integration, the bit-for-bit guarantees, and how to add the planned depth channel.
 
@@ -303,6 +303,14 @@ Settled in F0 (leans agreed) and revised in F1–F4; current state:
 | F2 | λ clamp [0.5, 10⁴]; Δρ* as the smallest plane gap | as built |
 | F2–F4 | null model: multiplicative default; additive and additive_local recorded | as built (neither additive model met the switching rule) |
 | F3 | normals saved only when computed (`normals_computed` recorded); detector sheet only with `laplacian`, fold sheet with `fold` | as built |
+| V2 F6 | targets pinned (`scripts/fold_null_rois.py` TARGETS): narrow-face edges (079, 076, 090 plinths; 080 side face) and two confirmed creases (076 façade ledge, 088 rock ridge); the 070 seam and the 083 collar groove rejected (no plateau–step profile) | as built |
+| V2 F6 | the fold runs `fold_only`, `tri_veto4_fold` reproduce bit-for-bit with the v2 options off (repro test); v2 keys are left out of the JSON parameter records when their feature is off (`fold.params_record`) | as built |
+| V2 F7 | capped veto (`veto_mode: capped`): k₂± capped by the next obstacle (invalid normals or outside beyond the own rounding, other gate-passed candidates beyond the whole rounding band, so sibling ridges of a rounded fold do not cap); C_min,eff = 1 − 0.4 (1 − C_curv); decidable iff C_curv ≤ **0.8** (task 0.7; calibrated by `scripts/calibrate_veto.py`, margins positive to 0.925 on synthetic data, and one-side-capped skips have C_curv 0.75–0.77); undecidable → strictly planar k₁ sides (`narrow_face`) or `veto_undecidable` | as built; default stays `fixed` |
+| V2 F7 | `two_sided_fit(..., k_m=)`: a separate skip for the − side | as built |
+| V2 F8 | gate arms with the capped veto: A0 multiplicative, A1 `additive_cand` (candidate-centred σ_geo), A2 `additive_local` 24-px tiles; no arm meets the switching rule, the gate stays multiplicative | as built |
+| V2 F7–F9 | **`fold_v2` / `tri_veto4_fold_v2` are the fold reference for the depth channel and for integration**; the built-in default stays `veto_mode: fixed` (and `configs/default.yaml` keeps the geometry channels off) | decided 2026-11-01 |
+| V2 F7–F9 | moderate creases: combined w of `tri_veto4_fold_v2` along the confirmed creases equals tri_veto4's (076 façade ledge median 0.747, 088 rock ridge 0.252); not both below 0.5, so the crease gate is **not** parked; open item in `fold_channel.md` §7 | as measured |
+| V2 F9 | runs `fold_v2`, `tri_veto4_fold_v2` (`configs/candidate_fold_v2.yaml`, `candidate_lap_fold_v2.yaml`); fold sheet marks `narrow_face` / `veto_undecidable` and plots C / C_min,eff; `eval-fold` classes fold, step, limb, texture (not_fold kept) | as built |
 
 ## 8. Runtime (CPU, measured in F4)
 

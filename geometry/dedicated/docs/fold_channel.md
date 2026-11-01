@@ -1,11 +1,13 @@
 # The fold channel: surface-normal discontinuities as a geometric-edge weight
 
-Status as of 2026-10-31 (TASK_FOLD_CHANNEL F0–F5):
+Status as of 2026-10-31 (TASK_FOLD_CHANNEL F0–F5; TASK_FOLD_V2 F6–F9, sections 4.5, 4.6, 5–7):
 
 - **Code:** `illum_baseline/geom/` (pure numpy/scipy, float64, network resolution, upright frame). Architecture and the
   channel interface: `docs/geometry_channels.md`.
 - **Runs:** `configs/candidate_fold_only.yaml` (Stage B run `fold_only`) and `configs/candidate_lap_fold.yaml`
-  (run `tri_veto4_fold`: the tri_veto4 Laplacian weight and the fold weight, combined by the elementwise minimum).
+  (run `tri_veto4_fold`: the tri_veto4 Laplacian weight and the fold weight, combined by the elementwise minimum);
+  with the capped veto of section 4.6 (v2): `configs/candidate_fold_v2.yaml` (run `fold_v2`) and
+  `configs/candidate_lap_fold_v2.yaml` (run `tri_veto4_fold_v2`).
 - **Default pipeline unchanged:** `configs/default.yaml` (= tri_veto4) has the geometry channels off. `baseline_v0`
   and `tri_veto4` reproduce bit-for-bit, and `channels: [laplacian]` reproduces `tri_veto4` bit-for-bit (tests).
 - **Visualization:** the fold sheet and the profile tool, `docs/viz_guide.md`.
@@ -269,6 +271,7 @@ check, fallback) as the candidates; most pixels are not folds, so medians over i
 | **multiplicative (default)** | T | λ̂ = median(T_null)/(2 ln 2) (the χ²₂ median is 2 ln 2), clamped to [0.5, 10⁴] | T > 13.8 λ̂ |
 | additive | T_add = δᵀ(λ_n(Σ₊ + Σ₋) + σ_geo² I)⁻¹δ | σ_geo solved so that median(T_add, null) = 2 ln 2 | T_add > 13.8 |
 | additive_local | as additive | σ_geo per 48-px tile (≥ 50 null samples, else the global value), bilinear between tile centres | T_add,local > 13.8 |
+| additive_cand (v2) | as additive | σ_geo per candidate from the null samples within 32 px of x₀ (≥ 50, else 48 px, else global), excluding those within k_min + m px of the candidate's own ridge component | T_add,cand > 13.8 |
 
 - **What the data say.** On synthetic noisy planes the inflation is λ ≈ 90 (the trilateral filter and bilinear
   sampling correlate the noise; λ̂ matches the Monte-Carlo E[T]/2 to 8%). On the 10 real images λ̂ = 625–1480: real
@@ -286,6 +289,21 @@ check, fallback) as the candidates; most pixels are not folds, so medians over i
   candidate's own σ and spreads by P90/P10 = 8–24 within an image (median 13–133°). The additive models separate
   noise from roughness and spread less (P90/P10 2.9–9.4), but on rough grass a σ_geo set by the smoother surfaces is
   too permissive (section 6.3). The default stays multiplicative.
+- **Local roughness (v2, F8).** With the capped veto, three gate arms were compared under the switching rule (every
+  ROI's share of w_fold < 0.5 ≤ the multiplicative arm + 0.02, 079 box folds w ≤ 0.25, 083 bollard median w_fold
+  ≥ 0.95, at least half of the confirmed crease targets accepted):
+
+  | arm | ROIs | box rows | bollard | creases | accepted Δθ < 5 / 5–20 / 20–50 / > 50° (10 images) |
+  |---|---|---|---|---|---|
+  | A0 multiplicative | reference | 0.216 / 0.215 | 1.00 | 0 / 2 | 74 / 46 / 363 / 7270 |
+  | A1 additive_cand | sunlit grass 0.026 (> 0.000 + 0.02) | 0.216 / 0.215 | 1.00 | 0 / 2 | 64 / 142 / 647 / 7539 |
+  | A2 additive_local, 24-px tiles, ≥ 30 | ok | **1.00 / 1.00** (box folds lost) | 1.00 | 0 / 2 | 18 / 21 / 102 / 2015 |
+
+  No arm meets the rule; the gate stays multiplicative. A1 is the closest: it doubles the 5–50° acceptances, but a
+  local null is dominated by the object around the candidate, not by the candidate's own faces: around the 088 rock
+  ridge the null samples lie on the rest of the faceted rock (σ_geo,cand 24.8° against 1.2° globally, T_add falls from
+  49.7 to 1.3), around the 076 façade ledge on a busy façade (10.6° against 2.5°). The share of pixels with w_fold in
+  [0.5, 0.9) stays ≤ 0.003 per image in every arm.
 
 ### 4.6 The veto against smooth curvature (F2.6)
 
@@ -307,6 +325,33 @@ invalid k₂ window means `no_veto` (accept), which let 703 of 913 cylinder cand
 next to a face narrower than about 2k₂ + m is vetoed, because the k₂ window then reaches the next face (079 box region:
 41 gate-passed candidates under the multiplicative null, 64 under the additive one, 58 of these along the plinth edge;
 none has both adjacent faces ≥ 2k₂ + m wide).
+
+**Capped veto (v2, `veto_mode: capped`; TASK_FOLD_V2 F7).** The fixed k₂ = 2k₁ reaches past a narrow face into the
+next one (079 plinth edge: Δθ(k₁) 30°, Δθ(k₂) 94°, C 0.32), and invalid k₂ windows near the image border, the sky or a
+step's 1-px invalid-normal band (a 1-px band becomes 2 excluded samples under the corner rule: 2/9 = 22% > 20%) were
+accepted blindly as `no_veto` (2–12% of accepted). The capped veto measures how far each side can go:
+
+- d_next± = distance along ±e₁ from x₀ to the first obstacle over the window's width (|t| ≤ w_t): an invalid normal or
+  the outside of the image beyond the candidate's own rounding (|s| > width/2 + 1), or another gate-passed candidate
+  (NMS pixels dilated by 1 px) beyond the whole rounding band (|s| > width + 1: DA3-rounded folds have parallel sibling
+  ridges inside the band, which would otherwise cap almost every candidate).
+- k₂± = clamp(min(2k₁, d_next± − m − 2), k₁, 2k₁); the constant-curvature ratio for these skips is
+  C_curv = (2k₁ + m)/(k₂₊ + k₂₋ + m), and the threshold C_min,eff = 1 − 0.4 (1 − C_curv) (0.85 at k₂ = 2k₁, k₁ = 6).
+- Decidable iff C_curv ≤ 0.8 and both k₂ windows are valid: accept iff C ≥ C_min,eff; C > 1/C_min,eff is flagged
+  `C_high` (no rejection).
+- Undecidable: accept only if both k₁ sides are strictly planar (planar fit, not fallback, rms/α ≤ max(3ε̂,
+  1.25 b_tri(k₁, m)), i.e. without the Q_0.95 term): `narrow_face`; otherwise reject as `veto_undecidable`.
+- `no_veto` (table column, `n_no_veto`) keeps its name in capped mode but means only "gate-passed with an invalid
+  capped k₂ window" (076: 102, against 35 invalid uncapped k₂ windows under the fixed veto, because capped windows sit
+  closer to obstacles). Unlike the fixed veto, such a candidate is never accepted on that ground: it goes to the
+  `narrow_face` / `veto_undecidable` rule.
+
+Calibration (`scripts/calibrate_veto.py`, synthetic cylinders' deep interior and single folds, k₂ forced over all
+skips): cylinder C tracks C_curv (P95 ≈ C_curv + 0.01, max + 0.03), fold C ≥ 0.97. With the coefficient 0.4 the
+margins to the cylinder maximum / fold minimum are 0.19 / 0.12 at C_curv 0.625 and 0.10 / 0.07 at 0.775, positive up to
+C_curv 0.925. The decidability limit is **0.8** rather than the task's 0.7: one-side-capped skips (the common case next
+to a narrow face) have C_curv 0.75–0.77, and at 0.7 they were all undecidable (the strict-planarity rule then
+rejected most real folds: accepted −17% to −77% per image).
 
 ### 4.7 Magnitude: the shading jump J (F2.7)
 
@@ -370,6 +415,9 @@ The convexity record: the sign of the un-vetoed L/ρ at x₀ (disparity ridge: c
 | null_model | multiplicative | gate | section 6.3 |
 | λ_n, local tile, min samples | 93.2, 48 px, 50 | additive nulls | λ_n per k_min (section 4.5) |
 | veto_k_factor, C_min | 2, 0.85 | veto | cylinders 0.52–0.63, folds ≥ 0.95: wide margin both ways |
+| veto_mode | fixed (v2 runs: capped) | veto | section 4.6 |
+| veto_curv_coef, veto_curv_max | 0.4, 0.8 | capped veto threshold and decidability | calibrated (section 4.6); at 0.7 most one-side-capped real folds were undecidable |
+| cand_radius, cand_radius_wide, cand_min_samples | 32, 48 px, 50 | additive_cand null | not adopted (section 4.5) |
 | J_min, J₀, w_min | 0.0872, 0.25, 0.05 | weight | table in section 4.7 |
 | band_min, min_component_px | 2, 5 | rasterization | not varied |
 | depth_jump_rel | 2% | record only | — |
@@ -436,19 +484,79 @@ limb = step, neither planar; texture = no step, not both planar.) Under the mult
 are vertical lines on the kiosk's curved surface (possibly panel seams) and the façade behind it; additive_local
 removes both and keeps the base contour, the silhouette and the curb.
 
+### 6.4 Version 2: capped veto (TASK_FOLD_V2)
+
+Synthetic (tests): cylinder deep interior 0/217 accepted (as before); passes near the rim / limb 5 / 61 (fixed veto
+32 / 217); box folds with a decided veto C ≥ 0.990, 18 undecidable; faces between two folds:
+
+| face width | fixed veto: edges accepted | capped veto |
+|---|---|---|
+| 12 px | both (by accident: a fallback normal and k₂ windows beyond both folds) | both (340 / 352, 352 / 352) |
+| 18 px | neither (C 0.54) | both |
+| 24 px | 281 / 353, 311 / 353 | both, all |
+| 32 px | both | both |
+
+Real targets (coverage of the polyline by accepted candidates, `scripts/fold_null_rois.py` TARGETS):
+
+| target | fixed | capped |
+|---|---|---|
+| 079 plinth edge | 0.00 | **0.83** |
+| 080 side face edge L | 0.88 | **1.00** |
+| 076 plinth top edge L; 090 plinth edge upper | 0.18; 0.20 | 0.18; 0.20 |
+| other plinth edges (076 bottom L, top R, bottom R; 090 lower) | 0.00 | 0.00 (gate: the k₁ windows already span the narrow face, out of scope) |
+| 080 side face edge R | 0.00 | 0.00 (no candidates: a 2.3× depth step's invalid normals void the structure tensor) |
+| 076 façade ledge, 088 rock ridge (creases) | 0.00, 0.03 | 0.00, 0.03 (gate) |
+
+The former `no_veto` acceptances split into decided passes (3–79 per image), decided vetoes (0–22), `narrow_face`
+(0–1) and `veto_undecidable` (10–68). The 083 bollard limbs lose 125 of 325 acceptances (steps; acceptable). Losses
+beyond them are mostly rim-class silhouettes (44–179 per image), which the Laplacian channel and the planned depth
+channel cover.
+
+Runs `fold_v2` / `tri_veto4_fold_v2` (multiplicative gate, capped veto):
+
+| | fold_v2 | fold_only (v1) |
+|---|---|---|
+| cand → valid → gate → veto → component | e.g. 079: 3915 → 3712 → 1043 → 888 → 822 | 079: … → 972 → 908 |
+| narrow_face / veto_undecidable / C_high per image | 0–35 / 28–288 / 11–530 | — |
+| share w_fold < 0.5 | 0.024–0.062 | 0.026–0.069 |
+| depth_jump share of accepted | 0.02–0.28 | 0.02–0.34 |
+| combined w < 0.5 (tri_veto4_fold_v2), Δ vs tri_veto4 | +0.000 to +0.025 | +0.001 to +0.025 |
+| runtime (context + fold, CPU) | 5.5–6.2 s | 5.3–7.5 s |
+
+ROIs and spot checks are unchanged by the capped veto: 070 floor, 079 grass 0.000, 079 sunlit grass 0.009 → 0.000,
+083 bollard 0.059 (median w_fold 1.00), 079 box rows 0.216 / 0.215.
+
 ## 7. Limitations and open items
 
-- **Local σ_geo.** One σ_geo (or λ̂) per image treats grass and boxes alike. additive_local is closer (sunlit grass
-  0.033 vs 0.054) but misses the rule by 0.005; tile size and minimum samples are not tuned.
-- **Narrow-face veto.** Folds next to faces narrower than about 2k₂ + m (≈ 30–40 px) are vetoed, e.g. the 079 plinth
-  edge. A veto that tolerates a second fold inside the k₂ window is open.
+- **Local σ_geo.** One σ_geo (or λ̂) per image treats grass and boxes alike. Neither local variant meets the switching
+  rule: additive_local (48-px tiles: sunlit grass 0.033; 24-px tiles: box folds lost) and the candidate-centred
+  additive_cand (sunlit grass 0.026, no crease accepted); section 4.5.
+- **Narrow faces (v2).** The capped veto recovers folds next to faces ≥ 12–18 px (079 plinth edge 0.83, 080 side face
+  1.00). Plinth edges whose narrow face is narrower than the k₁ windows (076, 090) still fail at the gate (out of
+  scope: geometry narrower than the windows).
+- **Moderate creases (v2).** The weight stays effectively binary (w_fold in [0.5, 0.9) on ≤ 0.003 of the pixels);
+  neither confirmed crease (076 façade ledge 14°, 088 rock ridge 22°) is accepted by any gate arm. A local null built
+  from the surroundings is dominated by the object's other geometry; a null that separates the candidate's own faces
+  from their surroundings is open. The combined w of `tri_veto4_fold_v2` along the creases equals tri_veto4's (the fold
+  channel adds nothing there): 076 façade ledge median 0.747 (19% of the polyline below 0.5), 088 rock ridge median
+  0.252 (79% below 0.5); so the Laplacian covers the ridge but not most of the ledge, and the crease gate is not
+  parked.
+- **Silhouettes in the capped veto.** A step's own 1-px invalid-normal band caps k₂ at once, so silhouettes usually
+  become undecidable and are rejected unless strictly planar (rim-class losses, 083 limbs). Silhouette ownership is
+  the integration step's; the Laplacian keeps them down-weighted in the combined w.
+- **080 side face, right edge.** No candidates at depth steps of about 2× and more (the structure tensor needs valid
+  normals over its 4-px support).
+- **C_high** (C > 1/C_min,eff) is a flag only: mostly thin structures narrower than the windows (084 handrails) and
+  silhouettes whose k₂ window lands on another background.
 - **Silhouette depth_jump recall** is 0.75 at k_min = 6 (misses sit a median 4.9 px off the edge, and k = 6 windows
   next to a step often fail the contamination check). The strict requirement (≥ 90% at k ≥ 11) belongs to the depth
   channel's tests (`docs/geometry_channels.md` section 5).
 - **Curved surfaces with panel seams** (075 kiosk) produce fold candidates that pass the veto under the multiplicative
   null; possibly real creases, to be settled by annotations.
-- **Evaluation.** The hook (`eval-fold`, `annotations/folds/<stem>.json`) is in place; no image is annotated yet, and
-  point-annotator writes CSV points (labels material/texture/specular) and needs fold/not_fold polylines.
+- **Evaluation.** The hook (`eval-fold`, `annotations/folds/<stem>.json`) takes polylines labelled fold, step, limb or
+  texture (not_fold kept for older files) and reports fold precision / recall plus per-class recall and precision
+  (`docs/viz_guide.md`, "Fold evaluation"). No image is annotated yet; point-annotator writes CSV points (labels
+  material/texture/specular) and would need these polyline classes.
 - **Runtime.** The context's dense fit costs about 5 s per image on the CPU; the fold measure itself 0.6–0.9 s. The
   torch/CUDA backend follows as a separate step, checked against this numpy reference.
 - **n_hat frames.** Saved arrays are in the stored frame, the normal components in the upright camera frame (every
@@ -462,8 +570,9 @@ removes both and keeps the base contour, the silhouette and the curb.
 | candidates, rounding width | `geom/candidates.py` |
 | two-sided fits, contamination bound, χ² | `geom/twosided.py`, `geom/data/b_tri.json` |
 | fold channel | `geom/fold.py` (`FoldParams`), `geom/data/lambda_n.json` |
-| calibration | `scripts/calibrate_fold.py` (b_tri, λ_n; rerun when N1, the candidates or the trilateral filter change) |
-| reports | `scripts/fold_arms_report.py` (F2 arms), `scripts/fold_null_rois.py`, `scripts/fold_f4_report.py` |
+| calibration | `scripts/calibrate_fold.py` (b_tri, λ_n; rerun when N1, the candidates or the trilateral filter change); `scripts/calibrate_veto.py` (capped veto: C_min,eff coefficient and decidability limit) |
+| reports | `scripts/fold_arms_report.py` (F2 arms), `scripts/fold_null_rois.py` (ROIs, line TARGETS), `scripts/fold_f4_report.py`; v2: `scripts/fold_v2_f6.py`, `scripts/fold_v2_crease_search.py`, `scripts/fold_v2_f7_report.py`, `scripts/fold_v2_f8_report.py`, `scripts/fold_v2_f9_report.py` |
+| configs | v1: `configs/candidate_fold_only.yaml` (`fold_only`), `configs/candidate_lap_fold.yaml` (`tri_veto4_fold`); v2 (capped veto): `configs/candidate_fold_v2.yaml` (`fold_v2`), `configs/candidate_lap_fold_v2.yaml` (`tri_veto4_fold_v2`) |
 | viz, profile, evaluation | `viz_fold.py`, `diag_fold.py`, `geom/evaluate.py`; CLI `viz`, `diag-fold`, `eval-fold` |
 | synthetic scenes | `geom/synthetic.py` |
 | tests | `tests/test_geom_normals.py` (N1, N2), `tests/test_geom_fold.py` (fold measure), `tests/test_geom_stage_b.py` (Stage B), `tests/test_geom_viz_eval.py` |
@@ -476,4 +585,10 @@ env -u PYTHONPATH uv run python -m illum_baseline diag-fold --config configs/can
     --stem taiwei_cui_079 --u 197 --v 230                                                               # profile tool
 env -u PYTHONPATH uv run python -m illum_baseline stage-b --config configs/candidate_lap_fold.yaml \
     --run-name lap_fold_local --set geometry.fold.null_model=additive_local                             # another null
+env -u PYTHONPATH uv run python -m illum_baseline stage-b --config configs/candidate_fold_v2.yaml       # run fold_v2
+env -u PYTHONPATH uv run python -m illum_baseline stage-b --config configs/candidate_lap_fold_v2.yaml   # run tri_veto4_fold_v2
+env -u PYTHONPATH uv run python -m illum_baseline diag-fold --config configs/candidate_fold_v2.yaml \
+    --stem taiwei_cui_079 --u 224 --v 311                                                               # v2 profile
+env -u PYTHONPATH uv run python -m illum_baseline eval-fold --config configs/candidate_lap_fold_v2.yaml # with annotations
+env -u PYTHONPATH uv run python scripts/calibrate_veto.py                                               # veto calibration
 ```

@@ -183,8 +183,11 @@ centred at its subpixel position x₀.
 ## Panel 1: accepted folds on the sRGB
 
 - Accepted candidates coloured by the fold angle Δθ(k₁) in degrees (plasma, 0–120°).
-- **Dashed** segments: accepted with `no_veto` (the veto windows were invalid, e.g. off the image).
-- **Gray** segments: passed the gate but were rejected by the curvature veto.
+- **Dashed** segments (fixed veto): accepted with `no_veto` (the veto windows were invalid, e.g. off the image).
+  **Dotted** segments (capped veto): accepted as `narrow_face` (the veto was undecidable, both k₁ sides strictly
+  planar).
+- **Gray** segments: passed the gate but were rejected by the curvature veto (capped veto: dark gray for
+  `veto_undecidable`).
 - Use it to see *what* the channel calls a fold: box edges and plinth steps should be orange/yellow (60–100°),
   shallow creases purple; gray lines on curved objects show the veto working.
 
@@ -228,8 +231,13 @@ centred at its subpixel position x₀.
 
 ## Panel 7: concentration veto
 
-- C = Δθ(k₁)/Δθ(k₂) against Δθ(k₁), for the gate-passed candidates whose veto windows were valid; blue passed,
-  gray vetoed; red line C_min = 0.85.
+- **Fixed veto** (`veto_mode: fixed`, runs `fold_only`, `tri_veto4_fold`): C = Δθ(k₁)/Δθ(k₂) against Δθ(k₁), for the
+  gate-passed candidates whose veto windows were valid; blue passed, gray vetoed; red line C_min = 0.85.
+- **Capped veto** (`veto_mode: capped`, runs `fold_v2`, `tri_veto4_fold_v2`): C / C_min,eff against Δθ(k₁) for the
+  decided candidates (red line at 1: below it the candidate is vetoed). C_min,eff = 1 − 0.4 (1 − C_curv) depends on
+  each candidate's capped skips k₂±; C_curv = (2k₁ + m)/(k₂₊ + k₂₋ + m) is what constant curvature would give.
+  Undecidable candidates are drawn at the bottom: green triangles `narrow_face` (accepted: both k₁ sides strictly
+  planar), red crosses `veto_undecidable` (rejected). The title counts `C_high` (C > 1/C_min,eff, a flag only).
 - A fold keeps its angle when the windows move out (C ≈ 1); constant curvature gives C ≈ 0.6. A cloud near 1 is
   folds; points far below are curved surfaces or folds next to a narrow face.
 
@@ -247,13 +255,13 @@ centred at its subpixel position x₀.
 
 | entry | meaning |
 |---|---|
-| null model | which gate the run used (multiplicative, additive, additive_local) |
+| null model (gate arm) | which gate the run used (multiplicative, additive, additive_local, additive_cand) |
 | `lambda_hat` (raw) | multiplicative inflation median(T_null)/(2 ln 2) (clamped to [0.5, 10⁴]) |
 | `sigma_geo` global / local | additive models: geometric roughness solved from the null sample; local: per 48-px tile (min–max, number of tiles) |
 | `lambda_n` | noise-only inflation used by the additive models |
 | `eps_hat`, `null rms Q` | median and 95th percentile of the null windows' relative residual (contamination check) |
 | `null` | valid / total null samples |
-| candidates by stage | cand → valid (two-sided fits usable) → gate (with the counts under all three nulls) → veto (no_veto) → component (accepted); fallback sides; accepted with `depth_jump` |
+| candidates by stage | cand → valid (two-sided fits usable) → gate (with the counts under all three nulls) → veto (fixed veto: `no_veto`, accepted without a veto; capped veto: "k2 invalid", never accepted on that ground) → component (accepted); capped veto: `narrow_face`, `veto_undecidable`, `C_high`; fallback sides; accepted with `depth_jump` |
 | `w_fold < 0.5`, `< 0.9`, combined | shares of pixels |
 | parameters | k_min, m, w_t, p_fa, C_min, J_min, J0, w_min, b_tri_margin, dense-fit gradient init |
 | `f_active`, `f unc`, `f_n`, orientation | GeoCalib focal (full-res px), its uncertainty, focal at network res, TIFF orientation |
@@ -277,3 +285,13 @@ recomputes the fold channel for one image (same configuration as the run), takes
   `depth_jump`, convexity, the k₂ normals, and the image's λ̂, σ_geo and local σ_geo.
 
 Typical use: pick a pixel on a suspicious line in panel 1 or 8 of the fold sheet and run the tool there.
+
+## Fold evaluation (`eval-fold`)
+
+`python -m illum_baseline eval-fold --config <config> [--run-name <run>]` compares the accepted fold candidates of a run
+with `annotations/folds/<stem>.json`: polylines in upright network px with a `tolerance_px` and a label per polyline,
+`fold`, `step`, `limb`, `texture` (or `not_fold` in older files). Each accepted candidate is assigned to the class of the
+nearest labelled polyline within the tolerance (ties: fold first). Per image (`<run>/eval_fold.csv`): fold recall
+(share of the fold polylines covered by accepted candidates), fold precision (fold / all labelled acceptances),
+`precision_all` (fold / all acceptances), and per class `<class>_recall` (for step, limb, texture: how often the fold
+channel fires on them) and `<class>_precision` (that class's share of the labelled acceptances).

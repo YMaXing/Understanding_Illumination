@@ -25,8 +25,9 @@ SIGMA_LOG_LIM = (-2.0, 1.0)      # log10 deg
 RATE_LOG_LIM = (-4.0, 0.0)       # log10 rad/px
 HIST_BINS = np.logspace(-3, 4, 141)
 STAT = {"multiplicative": ("T_over_lambda", "T / lambda_hat"), "additive": ("T_add", "T_add (global sigma_geo)"),
-        "additive_local": ("T_add_local", "T_add_local (tile sigma_geo)")}
-NULL_STAT = {"multiplicative": "T", "additive": "T_add", "additive_local": "T_add_local"}
+        "additive_local": ("T_add_local", "T_add_local (tile sigma_geo)"),
+        "additive_cand": ("T_add_cand", "T_add_cand (candidate sigma_geo; null: global T_add)")}
+NULL_STAT = {"multiplicative": "T", "additive": "T_add", "additive_local": "T_add_local", "additive_cand": "T_add"}
 
 
 def _segments(df: pd.DataFrame, half: float) -> np.ndarray:
@@ -70,16 +71,28 @@ def render_fold(cfg: Config, rd: Path, stem: str) -> Path:
     norm = plt.Normalize(*DTHETA_LIM)
     if len(vetoed):
         ax[0].add_collection(LineCollection(_segments(vetoed, 0.7), colors="0.6", linewidths=1.2))
-    solid, dashed = acc[~acc["no_veto"]], acc[acc["no_veto"]]
+    capped = "narrow_face" in cand.columns  # TASK_FOLD_V2 capped veto
+    if capped:  # dotted: accepted as narrow_face (veto undecidable, both k1 sides strictly planar)
+        solid, dashed = acc[~acc["narrow_face"]], acc[acc["narrow_face"]]
+        und = cand[cand["veto_undecidable"]]
+        if len(und):
+            ax[0].add_collection(LineCollection(_segments(und, 0.7), colors="0.3", linewidths=1.0))
+    else:
+        solid, dashed = acc[~acc["no_veto"]], acc[acc["no_veto"]]
     lc = LineCollection(_segments(solid, 0.7), cmap="plasma", norm=norm, linewidths=1.6)
     lc.set_array(np.degrees(solid["dtheta"].to_numpy()))
     ax[0].add_collection(lc)
     if len(dashed):
-        lcd = LineCollection(_segments(dashed, 1.2), cmap="plasma", norm=norm, linewidths=1.6, linestyles="--")
+        lcd = LineCollection(_segments(dashed, 1.2), cmap="plasma", norm=norm, linewidths=1.6,
+                             linestyles=":" if capped else "--")
         lcd.set_array(np.degrees(dashed["dtheta"].to_numpy()))
         ax[0].add_collection(lcd)
     fig.colorbar(lc, ax=ax[0], fraction=0.046, label="dtheta(k1) [deg]")
-    ax[0].set_title(f"accepted folds by dtheta ({len(acc)}; dashed: no_veto {len(dashed)})\ngray: vetoed {len(vetoed)}")
+    if capped:
+        ax[0].set_title(f"accepted folds by dtheta ({len(acc)}; dotted: narrow_face {len(dashed)})\n"
+                        f"gray: vetoed {len(vetoed)} (dark: veto_undecidable {len(und)})")
+    else:
+        ax[0].set_title(f"accepted folds by dtheta ({len(acc)}; dashed: no_veto {len(dashed)})\ngray: vetoed {len(vetoed)}")
 
     # 2. normal map
     n = a["n_hat"].astype(np.float64)
@@ -132,15 +145,30 @@ def render_fold(cfg: Config, rd: Path, stem: str) -> Path:
     ax[5].legend(fontsize=8)
     ax[5].set_title(f"gate statistic ({model} null)")
 
-    # 7. C vs dtheta for gate-passed candidates
-    g = cand[cand["gate"] & ~cand["no_veto"]]
-    ax[6].scatter(np.degrees(g["dtheta"]), g["C"], s=3, c=np.where(g["veto_pass"], "tab:blue", "0.5"), linewidths=0)
-    ax[6].axhline(prm["C_min"], color="tab:red", ls="--", label=f"C_min {prm['C_min']:g}")
+    # 7. veto: C vs dtheta (fixed veto) or C / C_min_eff vs dtheta (capped veto)
+    if capped:
+        dec = cand[cand["gate"] & cand["decidable"] & ~cand["no_veto"]]
+        ratio = dec["C"] / dec["C_min_eff"]
+        ax[6].scatter(np.degrees(dec["dtheta"]), ratio, s=3, c=np.where(dec["veto_pass"], "tab:blue", "0.5"),
+                      linewidths=0, label=f"decided ({len(dec)})")
+        for col, key, mk in (("tab:green", "narrow_face", "^"), ("tab:red", "veto_undecidable", "x")):
+            u_ = cand[cand[key]]
+            ax[6].scatter(np.degrees(u_["dtheta"]), np.full(len(u_), 0.05), s=8, c=col, marker=mk, linewidths=0.6,
+                          label=f"{key} ({len(u_)}, at 0.05)")
+        hi = dec[dec["C_high"]]
+        ax[6].axhline(1.0, color="tab:red", ls="--", label="C = C_min_eff")
+        ax[6].set_ylabel("C / C_min_eff")
+        ax[6].set_title(f"capped veto: {len(dec)} decided, C_high {len(hi)}\n"
+                        f"narrow_face {int(cand['narrow_face'].sum())}, veto_undecidable {int(cand['veto_undecidable'].sum())}")
+    else:
+        g = cand[cand["gate"] & ~cand["no_veto"]]
+        ax[6].scatter(np.degrees(g["dtheta"]), g["C"], s=3, c=np.where(g["veto_pass"], "tab:blue", "0.5"), linewidths=0)
+        ax[6].axhline(prm["C_min"], color="tab:red", ls="--", label=f"C_min {prm['C_min']:g}")
+        ax[6].set_ylabel("C = dtheta(k1) / dtheta(k2)")
+        ax[6].set_title(f"concentration veto: {len(g)} gate-passed with k2 windows\n({int(cand['no_veto'].sum())} no_veto)")
     ax[6].set_xlabel("dtheta(k1) [deg]")
-    ax[6].set_ylabel("C = dtheta(k1) / dtheta(k2)")
     ax[6].set_ylim(0, 1.5)
-    ax[6].legend(fontsize=8)
-    ax[6].set_title(f"concentration veto: {len(g)} gate-passed with k2 windows\n({int(cand['no_veto'].sum())} no_veto)")
+    ax[6].legend(fontsize=7)
 
     # 8. w_fold
     im = ax[7].imshow(w_fold, cmap="gray", vmin=w_min, vmax=1.0, extent=ext)
@@ -164,7 +192,7 @@ def render_fold(cfg: Config, rd: Path, stem: str) -> Path:
                f"({fo['sigma_geo_local_tiles']} tiles)" if fo.get("sigma_geo_local_tiles") else "-")
     txt = "\n".join([
         f"run         {rd.name}",
-        f"null model  {model}",
+        f"null model  {model} (gate arm)",
         f"lambda_hat  {fo['lambda_hat']:.1f} (raw {fo['lambda_hat_raw']:.1f})",
         f"sigma_geo   {math.degrees(fo['sigma_geo']):.2f} deg (global)",
         f"sigma_geo   {sig_loc} (local)",
@@ -178,7 +206,11 @@ def render_fold(cfg: Config, rd: Path, stem: str) -> Path:
         f"  valid     {fo['n_valid']}",
         f"  gate      {fo['n_gate']}  (mult {fo['n_gate_mult']}, add {fo['n_gate_add']},",
         f"            add_local {fo.get('n_gate_add_local', '-')})",
-        f"  veto      {fo['n_veto']}  (no_veto {fo['n_no_veto']})",
+        *([f"  veto      {fo['n_veto']}  (k2 invalid {fo['n_no_veto']}: not accepted",
+           f"            on that ground; narrow_face rule)",
+           f"  veto mode capped: narrow_face {fo['n_narrow_face']},",
+           f"            veto_undecidable {fo['n_veto_undecidable']}, C_high {fo['n_C_high']}"]
+          if fo.get("veto_mode") == "capped" else [f"  veto      {fo['n_veto']}  (no_veto {fo['n_no_veto']})"]),
         f"  component {fo['n_accepted']}",
         f"  fallback  {fo['n_fallback']}",
         f"  depth_jump (accepted) {fo['n_accepted_depth_jump']}",
@@ -189,7 +221,9 @@ def render_fold(cfg: Config, rd: Path, stem: str) -> Path:
         "",
         "parameters",
         f"  k_min {prm['k_min']}  m {prm['m']}  w_t {prm['w_t']}",
-        f"  p_fa {prm['p_fa']:g}  C_min {prm['C_min']:g}",
+        f"  p_fa {prm['p_fa']:g}  C_min {prm['C_min']:g}" + (
+            f"  veto capped coef {prm['veto_curv_coef']:g} max {prm['veto_curv_max']:g}"
+            if prm.get("veto_mode") == "capped" else ""),
         f"  J_min {prm['J_min']:g}  J0 {prm['J0']:g}  w_min {w_min:g}",
         f"  b_tri_margin {prm['b_tri_margin']:g}",
         f"  dense fit g_init {meta['params']['geometry']['dense_fit']['g_init']}",
