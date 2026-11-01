@@ -183,6 +183,37 @@ As specified in `TASK_FOLD_CHANNEL.md`, as dataclasses whose built-in defaults a
 
 - *Note:* the JSON already has a `geometry` block (s_x, s_y, orientation). The new config section is also called `geometry` (settled). They live in different places (`params.geometry` vs top-level `geometry`), so there is no key clash, but the doc will say which is which.
 
+### 3.7 As implemented (F3)
+
+- **Code:** `geom/channels.py` (`ChannelResult`, `Channel`, `combine`, `CHANNELS = {"laplacian", "fold"}`),
+  `geom/laplacian.py` (adapter: `compute_weights` unchanged; strength q_pool/ε; arrays q, L_over_rho),
+  `stage_b.py: run_geometry, _process_one_geometry` (branch taken only with `geometry.enabled`; the disabled path is
+  the detector code, with the JSON focal/geometry/params/provenance blocks moved into `_meta_common` unchanged),
+  `config.py: GeometryCfg, DenseFitCfg, FoldCfg` (field-for-field the `DenseFitParams` / `FoldParams` of `geom`,
+  tested), `configs/candidate_fold_only.yaml` (run `fold_only`), `configs/candidate_lap_fold.yaml`
+  (run `tri_veto4_fold`).
+- **Context arrays** (`n_hat`, `sigma_theta`, `normal_valid`) are saved only when a channel computed the normals: a
+  `channels: [laplacian]` run never builds the dense fit (it would cost ~5 s per image for nothing). The JSON and the
+  manifest record `normals_computed` (true/false).
+- **Tables:** `<stem>_<name>_candidates.parquet` and `<stem>_<name>_<table>.parquet` (fold: `null`, the null sample
+  with T and T_add). Fold candidate columns, in order: `u v u0 v0 e1_u e1_v r_n width profile_ok k1 k2`, the side
+  fields `alpha rms_rel n excl m_used planar fallback sigma_theta` with suffix `_p` then `_m`, `n_p_x..n_m_z`,
+  `valid dtheta T T_over_lambda T_add gate_mult gate_add gate dtheta_gate dtheta_gate_add dtheta_k2 C no_veto
+  veto_pass k2_clean component_px accepted reason J chord J_lo J_hi w_c band d_rho d_rho_se s_gap planes_cross
+  d_rho_x0 rho_p_gap rho_m_gap dZ_rel depth_jump convexity L_over_rho_x0` (`tests/test_geom_stage_b.py`).
+  `reason` ∈ {accepted, component, veto, gate, invalid_window}. Angles in rad.
+- **JSON:** `detector` from the Laplacian channel's scalars when it runs (else `rho_floor`, `sky_frac`,
+  `n_bad_depth`); `combined` (fractions of w_net below 0.5 / 0.9 / 1, the clip `w_min`, channels, combine);
+  `channels` (each channel's scalars; NaN → null); `params.geometry`; `provenance.geometry_version` = 1.
+- **Deliverable clip:** `w` is clipped to the smallest `w_min` of the channels that ran.
+- **Viz:** the detector sheet (`viz/<stem>.png`) is rendered only when `laplacian` is among the channels (it shows the
+  combined w); fold-only runs get the fold sheet in F4.
+- **Manifest:** detector columns are NaN in fold-only runs; `combined_frac_w_lt_*` columns are added for geometry runs.
+- **`--set`** accepts nested keys (`--set geometry.fold.p_fa=1e-4`). Values are YAML, which reads `1e-4` (no decimal
+  point) as a string; float fields (also list elements) now coerce float-looking strings, in `--set` and in YAML
+  files, and fail with "expected a number" otherwise.
+- **Run directories** refuse a different `geometry` section unless `--force` (same rule as detector/sky/preprocess).
+
 ## 4. What moves out of `detector.py`, and why it stays bit-for-bit
 
 ### 4.1 Refactors (pure code motion)

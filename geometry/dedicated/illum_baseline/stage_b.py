@@ -5,6 +5,13 @@ Per run (out_dir/stage_b/<run>/), all arrays in the STORED frame:
                D (network res, float32), sky_mask (network res, bool)
   <stem>.json  detector scalars, focal, geometry, provenance
   manifest.parquet (+ manifest.csv), config_resolved.yaml, viz/<stem>.png (upright)
+
+With geometry.enabled (docs/geometry_channels.md section 3.5) the geometric-edge channels replace the detector call:
+  <stem>.npz   w, w_net (combined, elementwise min), <name>_w_net, <name>_strength, <name>_<array> per channel,
+               q, L_over_rho (when the laplacian channel runs), n_hat (H, W, 3; components in the UPRIGHT camera
+               frame), sigma_theta, normal_valid (when a channel computed the normals), D, sky_mask
+  <stem>_<name>_candidates.parquet, <stem>_<name>_<table>.parquet   upright network coordinates
+  <stem>.json  + channels (per-channel scalars), combined, params.geometry, provenance.geometry_version
 """
 
 from __future__ import annotations
@@ -21,13 +28,14 @@ from typing import Any
 import numpy as np
 from tqdm import tqdm
 
-from .config import Config, detector_params
+from .config import Config, dense_fit_params, detector_params
 from .detector import compute_weights
 from .io_tiff import to_upright
 from .outputs import deliverable_w, net_to_stored
 from .stage_a import stage_a_dir
 
 STAGE_B_VERSION = 1
+GEOMETRY_VERSION = 1  # recorded only for geometry.enabled runs
 
 
 def run_dir(cfg: Config, run_name: str | None = None) -> Path:
@@ -114,12 +122,159 @@ def _check_run_config(cfg: Config, rd: Path, force: bool) -> None:
         old, new = load_config(snap).to_dict(), cfg.to_dict()  # load_config fills keys added since
 
         def key(d):
-            return {k: d[k] for k in ("detector", "sky", "preprocess")} | {"variant": d["paths"]["stage_a_variant"]}
+            return ({k: d[k] for k in ("detector", "sky", "preprocess", "geometry")}
+                    | {"variant": d["paths"]["stage_a_variant"]})
 
         if key(old) != key(new):
-            raise ValueError(f"run {rd.name!r} exists with different detector/sky/preprocess/variant settings; "
+            raise ValueError(f"run {rd.name!r} exists with different detector/sky/preprocess/geometry/variant settings; "
                              "use another --run-name or --force")
     cfg.snapshot(snap)
+
+
+def _detector_record(sc: dict[str, Any]) -> dict[str, Any]:
+    """The JSON "detector" block from compute_weights scalars."""
+    return ({k: sc[k] for k in (
+        "s_hat", "s_hat_raw", "s_hat_clamped", "tau", "eps", "rho_floor", "r", "R", "sky_frac",
+        "n_bad_depth", "n_noise_valid", "frac_w_lt_0.5", "frac_w_lt_0.9", "frac_w_lt_1")}
+        | {k: sc[k] for k in ("tau_noise", "tau_min", "tau_min_over_tau_noise", "a_min", "lambda_ref",
+                              "eps_noise", "eps_min", "eps_floor", "prefilter", "tri_shat",
+                              "s_hat_filtered_response", "scale_band", "band_factor", "scale_band_mode",
+                              "band_gain") if k in sc})
+
+
+def _meta_common(cfg: Config, stem: str, meta_a: dict[str, Any]) -> dict[str, Any]:
+    """The JSON "focal", "geometry", "params" and "provenance" blocks."""
+    sa = stage_a_dir(cfg)
+    fr, net = meta_a["frames"], meta_a["network"]
+    gc, fo = meta_a["geocalib"], meta_a["focal"]
+    return {
+        "focal": {
+            "f_active": fo["f_active"], "f_n": fo["f_n"], "mode": fo["mode"],
+            "f_per_image": fo["f_per_image"], "f_pooled": fo["f_pooled"],
+            "pooled_meaningful": fo["pooled_meaningful"],
+            "fx": gc["fx"], "fy": gc["fy"],
+            "focal_uncertainty": gc["focal_uncertainty"],
+            "focal_rel_uncertainty": gc["focal_uncertainty"] / fo["f_per_image"],
+            "vfov_deg": gc["vfov_deg"], "vfov_uncertainty_deg": gc["vfov_uncertainty_deg"],
+            "roll_deg": gc["roll_deg"], "pitch_deg": gc["pitch_deg"],
+            "roll_uncertainty_deg": gc["roll_uncertainty_deg"],
+            "pitch_uncertainty_deg": gc["pitch_uncertainty_deg"],
+            "units": fo["units"], "canonical_focal": fo["canonical_focal"],
+        },
+        "geometry": {
+            "s_x": net["s_x"], "s_y": net["s_y"], "W_n": net["W_n"], "H_n": net["H_n"],
+            "orientation_tag": fr["orientation_tag"], "orientation_applied": fr["orientation_applied"],
+            "stored_WxH": fr["stored_WxH"], "upright_WxH": fr["upright_WxH"],
+            "frames": ("npz arrays are in the stored frame (aligned with the TIFF); w is at the original "
+                       "resolution, all other arrays at network resolution; viz/ is upright"),
+        },
+        "params": _params_record(cfg),
+        "provenance": {
+            "stage_a_json": str((sa / f"{stem}.json").relative_to(cfg.out_dir)),
+            "stage_a_npz_sha256": _sha256(sa / f"{stem}.npz"),
+            "stage_a_created": meta_a["created"],
+            "stage_a_version": meta_a["provenance"]["stage_a_version"],
+            "stage_b_version": STAGE_B_VERSION,
+            "repo_git": meta_a["provenance"].get("repo_git"),
+        },
+    }
+
+
+def _jsonable(x: Any) -> Any:
+    if isinstance(x, dict):
+        return {str(k): _jsonable(v) for k, v in x.items()}
+    if isinstance(x, (list, tuple)):
+        return [_jsonable(v) for v in x]
+    if isinstance(x, np.generic):
+        return x.item()
+    if isinstance(x, float) and not np.isfinite(x):
+        return None
+    return x
+
+
+def _channel_params(cfg: Config, name: str) -> dict[str, Any]:
+    if name == "laplacian":
+        return dataclasses.asdict(detector_params(cfg))
+    return dataclasses.asdict(getattr(cfg.geometry, name))
+
+
+def run_geometry(cfg: Config, D_up: np.ndarray, sky_up: np.ndarray | None, meta_a: dict[str, Any]):
+    """(context, channel results, combined w_net) at network resolution, upright."""
+    from .geom.camera import Intrinsics
+    from .geom.channels import CHANNELS, combine
+    from .geom.context import GeometryContext
+
+    ctx = GeometryContext(D_up, sky_up, Intrinsics.from_stage_a(meta_a), detector_params(cfg), dense_fit_params(cfg))
+    results = [CHANNELS[name]().run(ctx, _channel_params(cfg, name)) for name in cfg.geometry.channels]
+    return ctx, results, combine(results, cfg.geometry.combine)
+
+
+def _process_one_geometry(cfg: Config, stem: str, rd: Path, meta_a: dict[str, Any], D_up: np.ndarray,
+                          sky_up: np.ndarray | None) -> dict[str, Any]:
+    ctx, results, w_net = run_geometry(cfg, D_up, sky_up, meta_a)
+    fr = meta_a["frames"]
+    orient = fr["orientation_applied"]
+    w_clip = min(r.w_min for r in results)
+    w_full = deliverable_w(w_net, tuple(fr["upright_WxH"]), orient, w_clip)
+    if w_full.shape[:2] != (fr["stored_WxH"][1], fr["stored_WxH"][0]):
+        raise RuntimeError(f"{stem}: deliverable shape {w_full.shape} != stored {fr['stored_WxH']}")
+
+    def st(a: np.ndarray, dtype=np.float16) -> np.ndarray:
+        a = net_to_stored(a, orient)
+        return a if a.dtype == bool else a.astype(dtype)
+
+    arrays = {"w": w_full.astype(np.float16), "w_net": st(w_net)}
+    by_name = {r.name: r for r in results}
+    if "laplacian" in by_name:  # unprefixed as in detector runs, so viz.render works unchanged
+        arrays["q"] = st(by_name["laplacian"].arrays["q"])
+        arrays["L_over_rho"] = st(by_name["laplacian"].arrays["L_over_rho"])
+    for r in results:
+        arrays[f"{r.name}_w_net"] = st(r.w_net)
+        if r.strength is not None:
+            arrays[f"{r.name}_strength"] = st(r.strength)
+        for k, a in r.arrays.items():
+            arrays[f"{r.name}_{k}"] = st(a)
+    if "_normals" in ctx.__dict__:  # a channel computed the normals: save them (vector components stay upright)
+        arrays["n_hat"] = st(ctx.n_hat)
+        arrays["sigma_theta"] = st(ctx.sigma_theta)
+        arrays["normal_valid"] = st(ctx.normal_valid)
+    arrays["D"] = st(D_up, np.float32)
+    arrays["sky_mask"] = st(ctx.S)
+    tmp = rd / f"{stem}.tmp.npz"
+    np.savez_compressed(tmp, **arrays)
+    tmp.replace(rd / f"{stem}.npz")
+    for r in results:
+        if r.candidates is not None:
+            r.candidates.to_parquet(rd / f"{stem}_{r.name}_candidates.parquet", index=False)
+        for tname, t in r.tables.items():
+            t.to_parquet(rd / f"{stem}_{r.name}_{tname}.parquet", index=False)
+
+    if "laplacian" in by_name:
+        det = _detector_record(by_name["laplacian"].scalars)
+    else:
+        dp = ctx.disparity
+        det = {"rho_floor": dp.rho_floor, "sky_frac": dp.sky_frac, "n_bad_depth": int(dp.bad.sum())}
+    combined = {"frac_w_lt_0.5": float((w_net < 0.5).mean()), "frac_w_lt_0.9": float((w_net < 0.9).mean()),
+                "frac_w_lt_1": float((w_net < 1).mean()), "w_min_clip": w_clip,
+                "channels": list(cfg.geometry.channels), "combine": cfg.geometry.combine}
+    common = _meta_common(cfg, stem, meta_a)
+    common["geometry"]["frames"] += ("; n_hat vector components are in the upright camera frame (x right, y down, "
+                                     "z forward); candidate tables use upright network-resolution pixel coordinates")
+    common["params"]["geometry"] = dataclasses.asdict(cfg.geometry)
+    common["provenance"]["geometry_version"] = GEOMETRY_VERSION
+    meta = {
+        "stem": stem,
+        "file": meta_a["file"],
+        "created": dt.datetime.now().isoformat(timespec="seconds"),
+        "run": rd.name,
+        "detector": det,
+        "normals_computed": "_normals" in ctx.__dict__,
+        "combined": combined,
+        "channels": _jsonable({r.name: r.scalars for r in results}),
+        **common,
+    }
+    (rd / f"{stem}.json").write_text(json.dumps(meta, indent=2))
+    return meta
 
 
 def process_one(cfg: Config, stem: str, rd: Path) -> dict[str, Any]:
@@ -128,6 +283,8 @@ def process_one(cfg: Config, stem: str, rd: Path) -> dict[str, Any]:
     cache = np.load(sa / f"{stem}.npz")
     D_up = cache["D"]
     sky_up = cache["sky_prob"].astype(np.float64) if "sky_prob" in cache else None
+    if cfg.geometry.enabled:
+        return _process_one_geometry(cfg, stem, rd, meta_a, D_up, sky_up)
 
     params = detector_params(cfg)
     out = compute_weights(D_up, sky_up, params)
@@ -152,48 +309,13 @@ def process_one(cfg: Config, stem: str, rd: Path) -> dict[str, Any]:
     np.savez_compressed(tmp, **arrays)
     tmp.replace(rd / f"{stem}.npz")
 
-    gc, fo = meta_a["geocalib"], meta_a["focal"]
     meta = {
         "stem": stem,
         "file": meta_a["file"],
         "created": dt.datetime.now().isoformat(timespec="seconds"),
         "run": rd.name,
-        "detector": {k: sc[k] for k in (
-            "s_hat", "s_hat_raw", "s_hat_clamped", "tau", "eps", "rho_floor", "r", "R", "sky_frac",
-            "n_bad_depth", "n_noise_valid", "frac_w_lt_0.5", "frac_w_lt_0.9", "frac_w_lt_1")}
-        | {k: sc[k] for k in ("tau_noise", "tau_min", "tau_min_over_tau_noise", "a_min", "lambda_ref",
-                              "eps_noise", "eps_min", "eps_floor", "prefilter", "tri_shat",
-                              "s_hat_filtered_response", "scale_band", "band_factor", "scale_band_mode",
-                              "band_gain") if k in sc},
-        "focal": {
-            "f_active": fo["f_active"], "f_n": fo["f_n"], "mode": fo["mode"],
-            "f_per_image": fo["f_per_image"], "f_pooled": fo["f_pooled"],
-            "pooled_meaningful": fo["pooled_meaningful"],
-            "fx": gc["fx"], "fy": gc["fy"],
-            "focal_uncertainty": gc["focal_uncertainty"],
-            "focal_rel_uncertainty": gc["focal_uncertainty"] / fo["f_per_image"],
-            "vfov_deg": gc["vfov_deg"], "vfov_uncertainty_deg": gc["vfov_uncertainty_deg"],
-            "roll_deg": gc["roll_deg"], "pitch_deg": gc["pitch_deg"],
-            "roll_uncertainty_deg": gc["roll_uncertainty_deg"],
-            "pitch_uncertainty_deg": gc["pitch_uncertainty_deg"],
-            "units": fo["units"], "canonical_focal": fo["canonical_focal"],
-        },
-        "geometry": {
-            "s_x": net["s_x"], "s_y": net["s_y"], "W_n": net["W_n"], "H_n": net["H_n"],
-            "orientation_tag": fr["orientation_tag"], "orientation_applied": orient,
-            "stored_WxH": fr["stored_WxH"], "upright_WxH": fr["upright_WxH"],
-            "frames": ("npz arrays are in the stored frame (aligned with the TIFF); w is at the original "
-                       "resolution, all other arrays at network resolution; viz/ is upright"),
-        },
-        "params": _params_record(cfg),
-        "provenance": {
-            "stage_a_json": str((sa / f"{stem}.json").relative_to(cfg.out_dir)),
-            "stage_a_npz_sha256": _sha256(sa / f"{stem}.npz"),
-            "stage_a_created": meta_a["created"],
-            "stage_a_version": meta_a["provenance"]["stage_a_version"],
-            "stage_b_version": STAGE_B_VERSION,
-            "repo_git": meta_a["provenance"].get("repo_git"),
-        },
+        "detector": _detector_record(sc),
+        **_meta_common(cfg, stem, meta_a),
     }
     (rd / f"{stem}.json").write_text(json.dumps(meta, indent=2))
     return meta
@@ -217,7 +339,8 @@ def run_stage_b(cfg: Config, run_name: str | None = None, force: bool = False,
         else:
             process_one(cfg, stem, rd)
             status["n_done"] += 1
-        if viz and (force or not (rd / "viz" / f"{stem}.png").exists()):
+        sheet = not cfg.geometry.enabled or "laplacian" in cfg.geometry.channels  # the fold sheet comes in F4
+        if viz and sheet and (force or not (rd / "viz" / f"{stem}.png").exists()):
             render(cfg, rd, stem)
     status["manifest"] = str(write_manifest(rd))
     return status

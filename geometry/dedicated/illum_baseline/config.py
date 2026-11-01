@@ -100,6 +100,61 @@ class DetectorCfg:
 
 
 @dataclass
+class DenseFitCfg:
+    """N1 dense edge-aware plane fit (illum_baseline/geom/planefit.py: DenseFitParams)."""
+    sigma_n: float = 3.0
+    sigma_r: float = 0.01
+    sigma_g: float = 3.0
+    cond_max: float = 1.0e6
+    min_weight_sum: float = 5.0
+    g_init: str = "side_window"         # side_window | gaussian
+    refit: int = 1
+
+
+@dataclass
+class FoldCfg:
+    """Fold channel (illum_baseline/geom/fold.py: FoldParams; docs/fold_channel.md)."""
+    cand_sigma_d: float = 1.0
+    cand_sigma_T: float = 1.5
+    cand_rate_factor: float = 3.0
+    profile_half_len: int = 12
+    width_min: float = 2.0
+    width_max: float = 12.0
+    k_min: int = 6
+    k_margin: int = 2
+    m: int = 8
+    m_min: int = 4
+    w_t: int = 4
+    max_excluded: float = 0.2
+    planarity_factor: float = 3.0
+    b_tri_margin: float = 1.25
+    null_rms_quantile: float = 0.95
+    p_fa: float = 1.0e-3
+    null_stride: int = 4
+    lambda_clamp: list[float] = field(default_factory=lambda: [0.5, 1.0e4])
+    null_model: str = "multiplicative"  # multiplicative | additive
+    lambda_n: float = 93.2              # additive null, k_min = 6 (illum_baseline/geom/data/lambda_n.json)
+    veto_k_factor: float = 2.0
+    C_min: float = 0.85
+    J_min: float = 0.0872
+    J0: float = 0.25
+    w_min: float = 0.05
+    band_min: int = 2
+    min_component_px: int = 5
+    depth_jump_rel: float = 0.02
+
+
+@dataclass
+class GeometryCfg:
+    """Geometric-edge channels (docs/geometry_channels.md). Off by default: Stage B then runs the detector path."""
+    enabled: bool = False
+    channels: list[str] = field(default_factory=lambda: ["laplacian"])
+    combine: str = "min"
+    dense_fit: DenseFitCfg = field(default_factory=DenseFitCfg)
+    fold: FoldCfg = field(default_factory=FoldCfg)
+
+
+@dataclass
 class RunCfg:
     name: str = "baseline_v0"
     limit: int | None = None
@@ -118,6 +173,7 @@ class Config:
     da3: DA3Cfg = field(default_factory=DA3Cfg)
     sky: SkyCfg = field(default_factory=SkyCfg)
     detector: DetectorCfg = field(default_factory=DetectorCfg)
+    geometry: GeometryCfg = field(default_factory=GeometryCfg)
     run: RunCfg = field(default_factory=RunCfg)
 
     @property
@@ -141,6 +197,23 @@ class Config:
         path.write_text(yaml.safe_dump(self.to_dict(), sort_keys=False))
 
 
+def _coerce(annotation: str, value: Any, key: str) -> Any:
+    """Float fields: YAML 1.1 reads "1e-4" (no decimal point) as a string; turn float-looking strings into floats
+    (also inside lists) and fail clearly on anything else. Other types pass through unchanged."""
+    if "float" not in str(annotation):
+        return value
+
+    def one(v: Any) -> Any:
+        if isinstance(v, str):
+            try:
+                return float(v)
+            except ValueError:
+                raise ValueError(f"{key}: expected a number, got {v!r}") from None
+        return v
+
+    return [one(v) for v in value] if isinstance(value, list) else one(value)
+
+
 def _build(cls, data: dict[str, Any] | None, where: str):
     data = data or {}
     if not isinstance(data, dict):
@@ -157,7 +230,7 @@ def _build(cls, data: dict[str, Any] | None, where: str):
         if sub is not None and dataclasses.is_dataclass(sub):
             kwargs[name] = _build(sub, data[name], f"{where}.{name}" if where else name)
         else:
-            kwargs[name] = data[name]
+            kwargs[name] = _coerce(f.type, data[name], f"{where}.{name}" if where else name)
     return cls(**kwargs)
 
 
@@ -214,10 +287,46 @@ def validate(cfg: Config) -> None:
         raise ValueError("detector.w_min must be in (0, 1)")
     if d.s_hat_min is not None and d.s_hat_max is not None and d.s_hat_min > d.s_hat_max:
         raise ValueError("detector.s_hat_min > s_hat_max")
+    _validate_geometry(cfg.geometry)
     if cfg.paths.data_dir is not None and cfg.paths.out_dir is not None:
         data, out = cfg.data_dir.resolve(), cfg.out_dir.resolve()
         if out == data or data in out.parents:
             raise ValueError(f"out_dir {out} must not be inside data_dir {data}")
+
+
+def _validate_geometry(g: GeometryCfg) -> None:
+    from .geom.channels import CHANNELS
+
+    if not isinstance(g.channels, list) or not g.channels:
+        raise ValueError("geometry.channels must be a non-empty list")
+    unknown = [c for c in g.channels if c not in CHANNELS]
+    if unknown:
+        raise ValueError(f"geometry.channels: unknown {unknown}; available {sorted(CHANNELS)}")
+    if len(set(g.channels)) != len(g.channels):
+        raise ValueError("geometry.channels has duplicates")
+    if g.combine != "min":
+        raise ValueError(f"geometry.combine must be 'min' (the only mode implemented), got {g.combine!r}")
+    d, f = g.dense_fit, g.fold
+    if d.g_init not in ("side_window", "gaussian"):
+        raise ValueError(f"geometry.dense_fit.g_init must be side_window|gaussian, got {d.g_init!r}")
+    if min(d.sigma_n, d.sigma_r, d.sigma_g, d.cond_max) <= 0 or d.refit < 0:
+        raise ValueError("geometry.dense_fit: scales and cond_max must be > 0, refit >= 0")
+    if f.null_model not in ("multiplicative", "additive"):
+        raise ValueError(f"geometry.fold.null_model must be multiplicative|additive, got {f.null_model!r}")
+    if not 0 < f.p_fa < 1:
+        raise ValueError("geometry.fold.p_fa must be in (0, 1)")
+    if len(f.lambda_clamp) != 2 or not 0 < f.lambda_clamp[0] <= f.lambda_clamp[1]:
+        raise ValueError("geometry.fold.lambda_clamp must be [lo, hi] with 0 < lo <= hi")
+    if not 1 <= f.m_min <= f.m:
+        raise ValueError("geometry.fold: need 1 <= m_min <= m")
+    if not 0 < f.C_min <= 1:
+        raise ValueError("geometry.fold.C_min must be in (0, 1]")
+    if not 0 < f.w_min < 1:
+        raise ValueError("geometry.fold.w_min must be in (0, 1)")
+    if min(f.cand_sigma_d, f.cand_sigma_T, f.cand_rate_factor, f.J0, f.b_tri_margin, f.veto_k_factor) <= 0:
+        raise ValueError("geometry.fold: scales, factors and J0 must be > 0")
+    if f.k_min < 1 or f.w_t < 0 or f.null_stride < 1 or not 0 <= f.max_excluded < 1:
+        raise ValueError("geometry.fold: k_min >= 1, w_t >= 0, null_stride >= 1, 0 <= max_excluded < 1")
 
 
 PATH_KEYS = ("data_dir", "out_dir")
@@ -232,7 +341,8 @@ def _resolve_path(value: str | None, base: Path) -> str | None:
 
 
 def apply_sets(cfg: Config, sets: list[str] | None) -> Config:
-    """Apply --set overrides, then validate. Keys are section.key=value or a top-level key=value (device, seed);
+    """Apply --set overrides, then validate. Keys are section[.subsection].key=value (e.g. geometry.fold.p_fa=1e-4)
+    or a top-level key=value (device, seed);
     values are parsed as YAML. Relative paths.data_dir / paths.out_dir are taken relative to the working directory."""
     for item in sets or []:
         key, sep, val = item.partition("=")
@@ -245,13 +355,18 @@ def apply_sets(cfg: Config, sets: list[str] | None) -> Config:
                 raise ValueError(f"--set: unknown top-level key {key!r}")
             setattr(cfg, key, value)
             continue
-        section, name = key.split(".", 1)
-        obj = getattr(cfg, section, None)
-        if obj is None or not dataclasses.is_dataclass(obj) or name not in {f.name for f in dataclasses.fields(obj)}:
+        *parents, name = key.split(".")
+        obj = cfg
+        for part in parents:  # nested sections, e.g. geometry.fold.p_fa
+            obj = getattr(obj, part, None)
+            if obj is None or not dataclasses.is_dataclass(obj):
+                raise ValueError(f"--set: unknown key {key!r}")
+        if name not in {f.name for f in dataclasses.fields(obj)} or dataclasses.is_dataclass(getattr(obj, name)):
             raise ValueError(f"--set: unknown key {key!r}")
-        if section == "paths" and name in PATH_KEYS:
+        if parents == ["paths"] and name in PATH_KEYS:
             value = _resolve_path(value, Path.cwd())
-        setattr(obj, name, value)
+        ftype = {f.name: f.type for f in dataclasses.fields(obj)}[name]
+        setattr(obj, name, _coerce(ftype, value, f"--set {key}"))
     validate(cfg)
     return cfg
 
@@ -277,6 +392,13 @@ def load_config(path: str | Path) -> Config:
         setattr(cfg.paths, key, _resolve_path(getattr(cfg.paths, key), path.resolve().parent))
     validate(cfg)
     return cfg
+
+
+def dense_fit_params(cfg: Config):
+    """geom DenseFitParams from geometry.dense_fit."""
+    from .geom.planefit import DenseFitParams
+
+    return DenseFitParams(**dataclasses.asdict(cfg.geometry.dense_fit))
 
 
 def detector_params(cfg: Config):

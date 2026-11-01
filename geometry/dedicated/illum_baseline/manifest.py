@@ -25,8 +25,12 @@ def manifest_frame(rd: Path) -> pd.DataFrame:
             "stored_W": g["stored_WxH"][0], "stored_H": g["stored_WxH"][1],
             "W_n": g["W_n"], "H_n": g["H_n"], "s_x": g["s_x"], "s_y": g["s_y"],
             "orientation": g["orientation_tag"],
-            **{k: d[k] for k in ("s_hat", "s_hat_raw", "s_hat_clamped", "tau", "eps", "rho_floor", "r", "R",
-                                 "sky_frac", "n_bad_depth", "frac_w_lt_0.5", "frac_w_lt_0.9", "frac_w_lt_1")},
+            # fold-only geometry runs have no detector scalars: NaN there (docs/geometry_channels.md section 3.5)
+            **{k: d.get(k, np.nan) for k in ("s_hat", "s_hat_raw", "s_hat_clamped", "tau", "eps", "rho_floor", "r",
+                                             "R", "sky_frac", "n_bad_depth", "frac_w_lt_0.5", "frac_w_lt_0.9",
+                                             "frac_w_lt_1")},
+            **({f"combined_{k}": m["combined"][k] for k in ("frac_w_lt_0.5", "frac_w_lt_0.9", "frac_w_lt_1")}
+               | {"normals_computed": m["normals_computed"]} if "combined" in m else {}),
             "f_active": f["f_active"], "f_n": f["f_n"], "focal_mode": f["mode"],
             "f_per_image": f["f_per_image"], "f_pooled": f["f_pooled"],
             "pooled_meaningful": f["pooled_meaningful"],
