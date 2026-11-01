@@ -136,6 +136,9 @@ class FoldCfg:
     lambda_n: float = 93.2              # additive nulls, k_min = 6 (illum_baseline/geom/data/lambda_n.json)
     local_tile: int = 48                # additive_local: tile size (px)
     local_min_samples: int = 50         # additive_local: fewer valid null samples -> the global sigma_geo
+    cand_radius: float = 32.0           # additive_cand: null samples within this radius of x0 (px)
+    cand_radius_wide: float = 48.0      # additive_cand: second radius when fewer than cand_min_samples
+    cand_min_samples: int = 50          # additive_cand: else the global sigma_geo
     veto_k_factor: float = 2.0
     C_min: float = 0.85
     veto_mode: str = "fixed"            # fixed | capped (k2 capped by the next obstacle; TASK_FOLD_V2 F7)
@@ -316,8 +319,9 @@ def _validate_geometry(g: GeometryCfg) -> None:
         raise ValueError(f"geometry.dense_fit.g_init must be side_window|gaussian, got {d.g_init!r}")
     if min(d.sigma_n, d.sigma_r, d.sigma_g, d.cond_max) <= 0 or d.refit < 0:
         raise ValueError("geometry.dense_fit: scales and cond_max must be > 0, refit >= 0")
-    if f.null_model not in ("multiplicative", "additive", "additive_local"):
-        raise ValueError(f"geometry.fold.null_model must be multiplicative|additive|additive_local, got {f.null_model!r}")
+    if f.null_model not in ("multiplicative", "additive", "additive_local", "additive_cand"):
+        raise ValueError("geometry.fold.null_model must be multiplicative|additive|additive_local|additive_cand, "
+                         f"got {f.null_model!r}")
     if f.veto_mode not in ("fixed", "capped"):
         raise ValueError(f"geometry.fold.veto_mode must be fixed|capped, got {f.veto_mode!r}")
     if not 0 < f.veto_curv_coef < 1 or not 0 < f.veto_curv_max < 1:

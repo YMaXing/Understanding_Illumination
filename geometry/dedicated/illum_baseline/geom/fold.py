@@ -17,6 +17,10 @@ Null models for the gate (all are always computed and recorded; null_model selec
   additive_local: as additive, with sigma_geo solved per local_tile x local_tile px tile on the null samples inside
                   it (tiles with fewer than local_min_samples valid null samples take the global sigma_geo) and
                   interpolated bilinearly between tile centres.
+  additive_cand:  as additive, with sigma_geo solved per candidate on the null samples within cand_radius px of x0
+                  (fewer than cand_min_samples: cand_radius_wide, then the global sigma_geo), excluding the null
+                  samples within k_min + m px of the candidate's own ridge component (8-connected NMS pixels).
+                  Computed only when selected (TASK_FOLD_V2 F8, arm A1).
 """
 
 from __future__ import annotations
@@ -63,6 +67,9 @@ class FoldParams:
     lambda_n: float = 93.2              # noise-only inflation for the additive nulls, k_min = 6 (data/lambda_n.json)
     local_tile: int = 48                # additive_local: tile size (px)
     local_min_samples: int = 50         # additive_local: fewer valid null samples in a tile -> global sigma_geo
+    cand_radius: float = 32.0           # additive_cand: null samples within this radius of x0 (px)
+    cand_radius_wide: float = 48.0      # additive_cand: second radius when fewer than cand_min_samples
+    cand_min_samples: int = 50          # additive_cand: else the global sigma_geo
     veto_k_factor: float = 2.0
     C_min: float = 0.85
     veto_mode: str = "fixed"            # fixed (k2 = 2 k1, C >= C_min) | capped (TASK_FOLD_V2 F7)
@@ -83,7 +90,7 @@ class FoldParams:
         return cls(**d)
 
 
-NULL_MODELS = ("multiplicative", "additive", "additive_local")
+NULL_MODELS = ("multiplicative", "additive", "additive_local", "additive_cand")
 
 
 def _solve_sig2(d: np.ndarray, S: np.ndarray, lam_n: float) -> float:
@@ -100,6 +107,7 @@ def _solve_sig2(d: np.ndarray, S: np.ndarray, lam_n: float) -> float:
 
 
 V2_VETO_KEYS = ("veto_mode", "veto_curv_coef", "veto_curv_max")
+V2_CAND_KEYS = ("cand_radius", "cand_radius_wide", "cand_min_samples")
 
 
 def params_record(p: dict) -> dict:
@@ -108,6 +116,9 @@ def params_record(p: dict) -> dict:
     d = dict(p)
     if d.get("veto_mode", "fixed") == "fixed":
         for k in V2_VETO_KEYS:
+            d.pop(k, None)
+    if d.get("null_model") != "additive_cand":
+        for k in V2_CAND_KEYS:
             d.pop(k, None)
     return d
 
@@ -197,7 +208,19 @@ class FoldChannel:
             gate_add_local = r1.valid & (T_add_local > T_crit)
         if p.null_model != "multiplicative" and not np.isfinite(sig2):
             raise ValueError(f"null_model {p.null_model} needs a finite lambda_n and a non-empty null sample")
-        gate = {"multiplicative": gate_mult, "additive": gate_add, "additive_local": gate_add_local}[p.null_model]
+        cand_rec = None
+        if p.null_model == "additive_cand":
+            cand_rec = self._sigma_cand(p, ctx.shape, cands, xn[nv], dn, Sn, x0, r1.valid, sig2)
+            T_ac = np.full(N, np.nan)
+            v1 = r1.valid
+            if v1.any():
+                d1, S1 = null_projection(r1.p.nhat[v1], r1.m.nhat[v1], r1.p.Sigma_n[v1], r1.m.Sigma_n[v1])
+                T_ac[v1] = quad_form(d1, S1, p.lambda_n, cand_rec["sig2"][v1])
+            with np.errstate(invalid="ignore"):
+                cand_rec["gate"] = r1.valid & (T_ac > T_crit)
+            cand_rec["T"] = T_ac
+        gate = {"multiplicative": gate_mult, "additive": gate_add, "additive_local": gate_add_local,
+                "additive_cand": cand_rec["gate"] if cand_rec else None}[p.null_model]
         sig_pair = np.sqrt(0.5 * (r1.p.sigma_theta**2 + r1.m.sigma_theta**2))  # per-axis sigma of delta
         dtheta_gate = np.sqrt(T_crit * lam) * sig_pair
         dtheta_gate_add = np.sqrt(T_crit * (p.lambda_n * sig_pair**2 + sig2)) if np.isfinite(sig2) else np.full(N, np.nan)
@@ -292,6 +315,13 @@ class FoldChannel:
             "d_rho": r1.d_rho, "d_rho_se": r1.d_rho_se, "s_gap": r1.s_gap, "planes_cross": r1.planes_cross,
             "d_rho_x0": r1.d_rho_x0, "rho_p_gap": r1.rho_p_gap, "rho_m_gap": r1.rho_m_gap, "dZ_rel": r1.dZ_rel, "depth_jump": depth_jump, "convexity": convexity, "L_over_rho_x0": L0,
         })
+        if cand_rec is not None:  # additive_cand records (the other null models' tables are unchanged)
+            df["T_add_cand"] = cand_rec["T"]
+            df["sigma_geo_cand"] = np.sqrt(cand_rec["sig2"])
+            df["gate_add_cand"] = cand_rec["gate"]
+            df["cand_null_n"] = cand_rec["n"]
+            df["cand_null_radius"] = cand_rec["radius"]
+            df["dtheta_gate_add_cand"] = np.sqrt(T_crit * (p.lambda_n * sig_pair**2 + cand_rec["sig2"]))
         if capped is not None:  # capped-veto records (the fixed mode's table is unchanged)
             for k_ in ("k2_p", "k2_m", "d_next_p", "d_next_m", "C_curv", "C_min_eff", "decidable", "strict_planar",
                        "narrow_face", "veto_undecidable", "C_high"):
@@ -320,6 +350,11 @@ class FoldChannel:
             "frac_w_lt_0.5": float((w_fold < 0.5).mean()), "frac_w_lt_0.9": float((w_fold < 0.9).mean()),
             "params": params_record(dataclasses.asdict(p)),
         }
+        if cand_rec is not None:
+            sg = np.sqrt(cand_rec["sig2"][r1.valid])
+            scalars |= {"n_gate_add_cand": int(cand_rec["gate"].sum()),
+                        "sigma_geo_cand_median": float(np.median(sg)) if sg.size else float("nan"),
+                        "cand_null_global_share": float((cand_rec["radius"][r1.valid] == 0).mean()) if sg.size else float("nan")}
         if capped is not None:
             scalars |= {"veto_mode": "capped", "n_narrow_face": int(capped["narrow_face"].sum()),
                         "n_veto_undecidable": int(capped["veto_undecidable"].sum()),
@@ -410,3 +445,56 @@ class FoldChannel:
                 "C_min_eff": np.where(gate, C_min_eff, np.nan), "decidable": gate & decidable,
                 "strict_planar": strict, "narrow_face": undecided & strict,
                 "veto_undecidable": undecided & ~strict, "C_high": C_high}
+
+    @staticmethod
+    def _sigma_cand(p, shape, cands, xn, dn, Sn, x0, valid, sig2_global) -> dict:
+        """additive_cand: sigma_geo^2 per candidate with median(T_add) = 2 ln 2 over its local null samples.
+
+        T_add of every null sample is tabulated on a log grid of sigma^2 (1e-12 ... 1 rad^2, 64 values); per candidate
+        the median over its subset is interpolated (log-log) at 2 ln 2. Returns sig2 (N,), the subset size n and the
+        radius used (cand_radius, cand_radius_wide, or 0 for the global value).
+        """
+        from scipy.spatial import cKDTree
+
+        N = len(x0)
+        target = 2 * math.log(2)
+        grid = np.logspace(-12, 0, 64)
+        Tg = np.stack([quad_form(dn, Sn, p.lambda_n, a) for a in grid], -1)  # (Nn, 64), decreasing in a
+        ridge = np.zeros(shape, dtype=bool)
+        ridge[cands.ij[:, 1], cands.ij[:, 0]] = True
+        lab_img, _ = ndimage.label(ridge, structure=np.ones((3, 3), dtype=bool))
+        comp = lab_img[cands.ij[:, 1], cands.ij[:, 0]]
+        # null samples within k_min + m of each ridge component
+        excl: dict[int, set] = {}
+        if len(xn) and len(cands.ij):
+            near = cKDTree(cands.ij.astype(float)).query_ball_point(xn, r=p.k_min + p.m)
+            for j, lst in enumerate(near):
+                for c in {comp[i] for i in lst}:
+                    excl.setdefault(c, set()).add(j)
+        tree = cKDTree(xn) if len(xn) else None
+        sig2 = np.full(N, sig2_global)
+        n_used = np.zeros(N, dtype=int)
+        radius = np.zeros(N)
+        for i in np.nonzero(valid)[0]:
+            if tree is None:
+                break
+            ex = excl.get(comp[i], set())
+            idx = None
+            for rad in (p.cand_radius, p.cand_radius_wide):
+                cand_idx = [j for j in tree.query_ball_point(x0[i], r=rad) if j not in ex]
+                if len(cand_idx) >= p.cand_min_samples:
+                    idx, radius[i] = cand_idx, rad
+                    break
+            if idx is None:
+                continue
+            med = np.median(Tg[idx], axis=0)
+            n_used[i] = len(idx)
+            if med[0] <= target:
+                sig2[i] = 0.0
+            elif med[-1] > target:
+                sig2[i] = grid[-1]
+            else:
+                j = int(np.nonzero(med > target)[0][-1])
+                f = (math.log(med[j]) - math.log(target)) / (math.log(med[j]) - math.log(med[j + 1]))
+                sig2[i] = math.exp(math.log(grid[j]) + f * (math.log(grid[j + 1]) - math.log(grid[j])))
+        return {"sig2": sig2, "n": n_used, "radius": radius}
