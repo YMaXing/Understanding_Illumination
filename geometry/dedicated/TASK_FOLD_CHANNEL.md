@@ -370,6 +370,94 @@ Report one table per run: share w<0.5, share w<0.9, Δ vs `tri_veto4`, λ̂, ε�
 
 **STOP.**
 
+# TASK_FOLD_V2 (F6–F9): fold channel — veto for narrow faces, local gate for moderate creases
+
+Context: docs/fold_channel.md, docs/geometry_channels.md, docs/viz_guide.md. Reference runs: fold_only and
+tri_veto4_fold (multiplicative null). A review of the 10 fold sheets found:
+
+- The weight is effectively binary: w_fold < 0.5 equals w_fold < 0.9 to 3 decimals in 8/10 images (≤ 0.002 apart
+  in 088, 090); median J of accepted is 0.96–1.00. Nothing is accepted between ~7° and ~20°. The null tail beyond the
+  gate is far heavier than χ²₂ in all 10 images; in 075 and 090 the candidate and null histograms coincide through
+  the gate.
+- Narrow-face misses: the 079 plinth edge (§4.6), the 076 and 090 plinths, the edges of the 080 sculpture's narrow
+  side face.
+- no_veto acceptances are 2–12% of accepted (17–133 per image), largely on the 083 bollard limbs and the 079 box's
+  left silhouette. Cause unknown.
+- C has no upper bound; every image has a tail to C ≈ 1.5.
+
+Goal: fix the veto (narrow faces, no_veto) and the gate (moderate creases) without regressing the existing checks.
+Out of scope: silhouette ownership (integration step), geometry narrower than the windows, the Q_0.95 term of the
+contamination check, the depth channel, the GPU port.
+
+Constraints (as before):
+- Every new behaviour sits behind an option whose built-in default is the current behaviour.
+- With the new options off, baseline_v0, tri_veto4, channels: [laplacian], and the current fold_only and
+  tri_veto4_fold outputs (arrays, candidate tables, JSON) reproduce bit-for-bit. Add a repro test for the two fold
+  runs.
+- New configs candidate_fold_v2.yaml / candidate_lap_fold_v2.yaml, runs fold_v2 / tri_veto4_fold_v2; arms get their
+  own run names. configs/default.yaml stays unchanged.
+- Flag borderline choices with a stated lean and continue; stop only at the F6 checkpoint.
+
+## F6 — targets and diagnostics (stop and report)
+
+1. Pin ROIs in upright network px and record them alongside the existing ones (scripts/fold_null_rois.py):
+   - narrow faces: 079 plinth edge, 076 and 090 plinths, 080 side face (both edges);
+   - moderate creases: 070 vertical seam where the left wall's near and far sections meet; 083 collar groove under
+     the cap; any others with a clear plateau–step profile you find;
+   - existing: 070 floor, 079 grass, 079 sunlit grass, 083 bollard, 079 box rows 230/254.
+2. Run diag-fold on every target. Keep a crease target only if the dense normal-angle profile shows a step between
+   two plateaus. Report its Δθ(k₁) and how it currently fails (gate, veto, invalid_window, component). A crease DA3
+   rounded away is not a target.
+3. Diagnose no_veto: run diag-fold on 3–5 no_veto candidates each on the 083 limbs and the 079 left silhouette, and
+   report which k₂ samples were excluded and why. Hypothesis to check: another step's 1-px invalid-normal band
+   crosses the window, and the bilinear-corner rule widens it to 2 samples, > 20% of a 9-wide window.
+4. Characterize the C > 1.18 tail by class (§6.3 classes) and location.
+5. Report the plan, with any changes to the designs below.
+
+## F7 — veto with capped k₂ (evaluate with the current multiplicative gate)
+
+- Per side, d_next± = distance along ±e₁ from x₀ to the first obstacle beyond the candidate's own rounding
+  (|s| > width/2 + 1): an invalid normal, or another gate-passed candidate (lean: gate-passed only, so texture
+  ridges don't cap faces). k₂± = clamp(min(2k₁, d_next± − m − 2), k₁, 2k₁).
+- Constant-curvature ratio for those skips: C_curv = (2k₁ + m) / (k₂₊ + k₂₋ + m). Threshold
+  C_min,eff = 1 − 0.4·(1 − C_curv), which gives 0.85 at k₂ = 2k₁, k₁ = 6. Decidable iff C_curv ≤ 0.7. Calibrate 0.4
+  and 0.7 on the synthetic cylinders and box folds and report the margins.
+- Undecidable, or a k₂ window invalid: accept only if both k₁ sides are strictly planar (planar fit, not
+  fallback, rms_rel ≤ max(3ε̂, 1.25 b_tri(k₁, m)), i.e. without Q_0.95) and flag narrow_face; otherwise reject
+  with reason veto_undecidable. This replaces the blanket no_veto acceptance.
+- C > 1/C_min,eff: flag C_high, no rejection.
+- Tests: synthetic faces 12, 18, 24, 32 px wide between two folds (report which edges are accepted); cylinder deep
+  interior still 0/217, rim/limb not worse than 32/217; box folds C ≥ 0.95.
+- Real images: report the result per target, and how the former no_veto candidates split into narrow_face and
+  veto_undecidable. Losing the 083 limb acceptances is acceptable (they are steps); report how many.
+
+## F8 — gate arms (with the F7 veto)
+
+- A0: multiplicative (reference).
+- A1 (lean): candidate-centred local roughness. Additive model; σ_geo per candidate solved so that
+  median T_add = 2 ln 2 over the null samples within 32 px of x₀ (≥ 50 samples, else 48 px, else the global value),
+  excluding null samples within k_min + m px of this candidate's own ridge component (8-connected NMS pixels).
+  λ_n as now.
+- A2: additive_local with 24-px tiles, min samples 30.
+- Switching rule (the existing one plus one new criterion):
+  - every ROI's share of w_fold < 0.5 ≤ A0 + 0.02, including 079 sunlit grass;
+  - 079 box folds kept (w at rows 230/254, u 180–215, ≤ 0.25);
+  - 083 bollard median w_fold ≥ 0.95;
+  - new: at least half of the confirmed crease targets accepted.
+  If no arm meets the rule, report the closest arm and leave the gate as is.
+- Report per arm: the accepted Δθ histogram (< 5°, 5–20°, 20–50°, > 50°), the share of pixels with w_fold in
+  [0.5, 0.9) per image, and the 075 class table (§6.3).
+
+## F9 — runs, viz, docs
+
+- Run fold_v2 and tri_veto4_fold_v2 on the 10 images. Per-image table: cand → valid → gate → veto → component;
+  narrow_face, veto_undecidable, C_high counts; depth_jump share of accepted; w_fold < 0.5 / < 0.9; combined w < 0.5
+  and its Δ vs tri_veto4; runtime.
+- Fold sheet: panel 1 draws narrow_face segments dotted; panel 7 plots C / C_min,eff (line at 1) with narrow_face
+  and veto_undecidable marked; the text box shows the new counts and the gate arm.
+- eval-fold: extend the schema to polylines with classes fold, step, limb, texture (backward-compatible with
+  fold/not_fold) and report precision/recall per class. Annotations will follow from me; no UI work.
+- Update fold_channel.md (§4.5, §4.6, §5–§7), the decisions log in geometry_channels.md, and viz_guide.md.
 ---
 
 ## Do not

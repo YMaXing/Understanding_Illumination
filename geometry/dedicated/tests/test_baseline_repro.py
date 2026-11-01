@@ -1,6 +1,9 @@
-"""baseline_v0 and tri_veto4 must reproduce bit-for-bit (TASK_070_STRIPES, TASK_FOLD_CHANNEL working rules).
+"""baseline_v0, tri_veto4 and the fold runs must reproduce bit-for-bit (TASK_070_STRIPES, TASK_FOLD_CHANNEL working
+rules; TASK_FOLD_V2 adds fold_only and tri_veto4_fold).
 
-Stage B: recompute every image of each reference run from its Stage A cache and compare all saved arrays.
+Stage B: recompute every image of each reference run from its Stage A cache and compare all saved arrays (NaN equal
+to NaN), the JSON blocks and, for geometry runs, the candidate / null tables and the channel scalars (per-run
+timings excluded).
 Stage A (slow, GPU): rerun preprocessing + DA3 on one image and compare D and sky_prob to the cache.
 """
 
@@ -16,7 +19,9 @@ from illum_baseline.config import load_config
 RUN = "baseline_v0"
 # (output folder, run): the 10 taiwei_cui images, and the 10 batch2 images
 REFERENCE_RUNS = [("baseline_output", "baseline_v0"), ("baseline_output", "tri_veto4"),
-                  ("baseline_output_batch2", "tri_veto4")]
+                  ("baseline_output_batch2", "tri_veto4"),
+                  ("baseline_output", "fold_only"), ("baseline_output", "tri_veto4_fold")]
+TIMING_KEYS = {"context_s", "runtime_s"}  # wall-clock, differs between runs
 
 
 def _run_cfg(out: str = "baseline_output", run: str = RUN):
@@ -42,10 +47,22 @@ def test_stage_b_reproduces_bit_for_bit(tmp_path, out, run):
         old, new = np.load(rd / f"{stem}.npz"), np.load(tmp_path / f"{stem}.npz")
         assert sorted(old.files) == sorted(new.files)
         for k in old.files:
-            assert old[k].dtype == new[k].dtype and np.array_equal(old[k], new[k]), (stem, k)
+            nan_ok = np.issubdtype(old[k].dtype, np.floating)
+            assert old[k].dtype == new[k].dtype and np.array_equal(old[k], new[k], equal_nan=nan_ok), (stem, k)
         a, b = json.loads((rd / f"{stem}.json").read_text()), json.loads((tmp_path / f"{stem}.json").read_text())
         for sec in ("detector", "focal", "geometry", "params"):
             assert a[sec] == b[sec], (stem, sec)
+        if "channels" in a:  # geometry run
+            assert a["combined"] == b["combined"] and a["normals_computed"] == b["normals_computed"], stem
+            for ch in a["channels"]:
+                strip = lambda d: {k: v for k, v in d.items() if k not in TIMING_KEYS}  # noqa: E731
+                assert strip(a["channels"][ch]) == strip(b["channels"][ch]), (stem, ch)
+            import pandas as pd
+
+            tables = sorted(p.name for p in rd.glob(f"{stem}_*.parquet"))
+            assert tables == sorted(p.name for p in tmp_path.glob(f"{stem}_*.parquet")), stem
+            for t in tables:
+                pd.testing.assert_frame_equal(pd.read_parquet(rd / t), pd.read_parquet(tmp_path / t), check_exact=True)
 
 
 @pytest.mark.slow
