@@ -1,0 +1,69 @@
+# Default pipeline (since 2026-10-27): candidate tri + veto4. The original baseline is configs/baseline_v0.yaml.
+paths:                    # relative paths are relative to this file; override with --input/-i, --output/-o
+  data_dir: ../data        # input folder of TIFFs (searched recursively with `glob`)
+  out_dir: ../baseline_output   # outputs: stage_a/, stage_b/<run.name>/ (must not be inside data_dir)
+  glob: "**/*.tif*"
+device: cuda
+seed: 0
+
+preprocess:               # confirmed 2026-10-26 from the M1 audit (baseline_output/audit/audit_report.md)
+  layout: rgb             # rgb | mosaic | auto (fail loudly if ambiguous)
+  cfa_pattern: null       # RGGB | BGGR | GRBG | GBRG, if mosaic
+  black_level: 0          # scalar or per-channel; data are already black-subtracted
+  white_level: 65535
+  white_balance: none     # metadata | grayworld | none (network copy only); data are already white-balanced
+  exposure_percentile: 99.0
+  exposure_target: 0.9
+  exposure_gain_max: 64.0
+  respect_orientation_tag: true
+
+network:
+  long_side: 504
+  multiple: 14
+  resize_interp: area
+
+geocalib:
+  weights: pinhole
+  camera_model: pinhole
+
+focal:
+  mode: per_image         # per_image | pooled. Images come from mixed cameras/zoom and carry no EXIF,
+  group_key: null         # so no valid grouping exists: the pooled f is recorded but flagged not meaningful.
+
+da3:
+  model_id: depth-anything/DA3METRIC-LARGE
+  process_res: 504
+  process_res_method: upper_bound_resize   # verified no-op on 504x378 / 378x504 (docs/api_notes.md)
+  batch_size: 1           # M0 flag 4 (confirmed): bf16 numerics depend on batch composition
+  canonical_focal: 300.0
+
+sky:
+  threshold: 0.5
+  open_close_radius: 1
+  min_area_px: 50
+
+detector:
+  sigma: 1.25             # px at network resolution
+  sigma_w_prior: 1.0      # DA3 boundary smear prior, px
+  truncate: 4.0
+  rho_floor_frac: 0.5
+  rho_floor_percentile: 1.0
+  k_tau: 3.0
+  k_eps: 3.0
+  w_min: 0.05
+  s_hat_min: 1.0e-6
+  s_hat_max: null
+  # Candidate "tri (s_hat after filtering) + veto, band factor 4" (docs/pipeline_tri_veto4.md):
+  prefilter: trilateral   # tangent-plane bilateral on disparity before the Laplacian: removes DA3's 7-px grid ripple
+  tri_sigma_s: 3.0        # px, spatial scale (attenuates a 7-px ripple ~40x)
+  tri_sigma_r: 0.01       # relative deviation from the local tangent plane
+  tri_sigma_g: 3.0        # px, scale of the tangent-plane gradient
+  tri_shat: filtered      # noise scale s_hat from the filtered response (keeps folds strong)
+  scale_band: true        # scale-ratio veto: removes responses of smooth curvature (cylinders, spheres)
+  scale_band_mode: veto   # q' = min(q, g |L_sigma - L_{4 sigma}| / rho), g = 1 / (1 - 1/4)
+  band_factor: 4.0
+
+run:
+  name: tri_veto4
+  limit: null
+  force: false
