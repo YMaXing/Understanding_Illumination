@@ -19,6 +19,7 @@ planes_cross are recorded in either mode.
 
 usable: the sample mask (bilinear corners); None means Omega and valid dense normals (the fold channel's rule, which
 builds the dense fit); the depth channel passes Omega so that it never touches the normals.
+one_sided_constant: the depth channel's thin-structure fallback (beta = 0); _side is not changed by it.
 
 This module makes no decisions: thresholds, gates, vetoes and weights belong to the channels.
 """
@@ -290,3 +291,44 @@ def b_tri(k: np.ndarray, m: int, tri: tuple[float, float, float] = (3.0, 0.01, 3
     row = np.asarray(t["b"][str(m)], dtype=np.float64)  # index k = 0 .. len-1; constant beyond
     kk = np.clip(np.asarray(k, dtype=np.int64), 0, len(row) - 1)
     return row[kk]
+
+
+# ---------------------------------------------------------------- thin-structure constant fit (depth channel D-4)
+
+def one_sided_constant(ctx: GeometryContext, x0: np.ndarray, e1: np.ndarray, s_from: np.ndarray, s_to: np.ndarray,
+                       w_t: int, sign: int, usable: np.ndarray, max_excluded: float = 0.2
+                       ) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    """Constant fit (beta = 0) of rho_f over x0 + sign s e1 + t e_t, s = s_from, s_from + 1, ... <= s_to (per row),
+    |t| <= w_t, with the exclusion rule of the plane windows (all four bilinear corners usable). Returns
+    (alpha, se = std / sqrt(n), n, ok); ok needs at least 2 s positions, 3 samples and <= max_excluded excluded."""
+    x0 = np.asarray(x0, dtype=np.float64).reshape(-1, 2)
+    e1 = np.asarray(e1, dtype=np.float64).reshape(-1, 2)
+    N = len(x0)
+    s_from = np.broadcast_to(np.asarray(s_from, dtype=np.float64), (N,))
+    s_to = np.broadcast_to(np.asarray(s_to, dtype=np.float64), (N,))
+    n_pos = np.floor(s_to - s_from + 1e-9).astype(int) + 1
+    alpha, se, n = np.full(N, np.nan), np.full(N, np.nan), np.zeros(N, dtype=int)
+    ok_fit = np.zeros(N, dtype=bool)
+    if N == 0 or n_pos.max(initial=0) < 2:
+        return alpha, se, n, ok_fit
+    L = int(n_pos.max())
+    et = np.stack([-e1[:, 1], e1[:, 0]], -1)
+    t = np.arange(-w_t, w_t + 1, dtype=np.float64)
+    s = s_from[:, None] + np.arange(L, dtype=np.float64)[None]
+    in_span = np.arange(L)[None] < n_pos[:, None]
+    pts = (x0[:, None, None, :] + sign * s[:, :, None, None] * e1[:, None, None, :]
+           + t[None, None, :, None] * et[:, None, None, :])
+    val, ok = bilinear(ctx.rho_f, usable, pts[..., 0], pts[..., 1])
+    ok &= in_span[:, :, None]
+    cnt = ok.sum((1, 2))
+    tot = in_span.sum(1) * len(t)
+    with np.errstate(invalid="ignore", divide="ignore"):
+        v = np.where(ok, val, 0.0)
+        alpha = v.sum((1, 2)) / cnt
+        var = np.where(ok, (val - alpha[:, None, None]) ** 2, 0.0).sum((1, 2)) / (cnt - 1)
+        se = np.sqrt(var / cnt)
+        excl = 1.0 - cnt / tot
+    ok_fit = (n_pos >= 2) & (cnt >= 3) & (excl <= max_excluded)
+    alpha = np.where(ok_fit, alpha, np.nan)
+    se = np.where(ok_fit, se, np.nan)
+    return alpha, se, cnt, ok_fit

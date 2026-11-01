@@ -1,6 +1,6 @@
 # Depth-edge channel: design (draft, D0)
 
-Status 2026-11-01: **design draft** (TASK_DEPTH_CHANNEL D0), with D1 (field) and D2 (candidates, calibration) implemented; section 7 records what D2 changed. The math is settled in
+Status 2026-11-01: **design draft** (TASK_DEPTH_CHANNEL D0), with D1 (field) and D2 (candidates, calibration) implemented, and D3 (jump, gates, magnitude, weights, `DepthChannel`); sections 7–8 record what D2 and D3 changed. The math is settled in
 `TASK_DEPTH_CHANNEL.md` (D-K, D-1 … D-7) and only referenced here; this draft fixes the module map, the data flow, the
 use of the shared two-sided fit (and the one change to it), the context's laziness for `[depth]`, and where the
 evaluation classes and ROIs come from. It is finalized in D6 in the style of `docs/fold_channel.md`.
@@ -182,3 +182,35 @@ and `tri_veto4_fold_v2` to `test_baseline_repro.py`.
 - **Shared fit:** `two_sided_fit(..., gap_mode, usable)` and the new `d_rho_x0_se`, `d_rho_min_span` fields (section 3).
 - Scripts: `scripts/calibrate_depth.py` → `geom/data/depth_calibration.json`; `scripts/depth_d2_report.py` →
   `baseline_output/diag/depth_v1/d2/` (counts, ablation, DA3-vs-RGB alignment).
+
+## 8. D3 record (jump, gates, magnitude, weights)
+
+Changes to the D2 parameters (decided after D2): `centre_tol` 0.4; σ_w,max = P99 (now 1.02 px, see below).
+
+- **Lobes on h.** q = h/ρ_σ with h = nᵀHn; ρ_σ varies across a doublet, which drags the far lobe outward for large
+  jumps (far peak at −1.76 σ_tot·px for r = 1, −2.1 for r = 5, −3.3 for r = 100; s_sep then exceeds s_hi and
+  steps in front of distant backgrounds failed sharpness). Lobe positions are now found on h (peaks at ∓σ_tot for any
+  r); heights stay q at those peaks; the doublet magnitude is 1.03 |h|_lobe s_sep². Recalibrated σ_w,max: P99 1.02 px
+  (P95 0.77).
+- **Nearest peak.** Inside a thin structure the near lobes of both edges form one run; the lobe is the nearest local
+  peak reaching ½ of the run maximum (8-px poles: s_sep 8.0 → 2.9).
+- **Jump (D-4).** Per side: plane at k_c, m = 8 with the contamination check (internal retry m = 4) → m = 4 → constant
+  fit → doublet. Obstacles: D-3 candidates whose own doublet estimate passes τ_low (noise doublets ≤ 1e-3);
+  a side whose window lies beyond one uses the constant fit on the clear span. Fit modes and `d_next_±` recorded.
+- **Gates (D-5).** sky_near → sign (Δρ* > 0) → significance (|Δρ*|/(SE√λ̂) > 3.29; doublet: min lobe/ŝ_q) → r > τ_low →
+  components (link radius 3 px, ≥ 5 distinct pixels, one member r > τ_high). Sky edges pass with r = inf.
+- **Magnitude (D-6).** Plane-aware running median along mutual-nearest-neighbour chains; ΔZ = (f_n/300)(1/ρ̂₋ − 1/ρ̂₊);
+  lower bound with √λ̂-inflated SEs (inf when unbounded); focal bracket recorded.
+- **Weight (D-7).** w_c = max(0.05, ΔZ₀/(ΔZ + ΔZ₀)); bands max(2, ⌈σ_w,c⌉ + 1); strength r (inf at sky edges);
+  arrays `dZ` (float32, NaN off the bands, inf at sky), `q_over_s` (float16, clipped), `edge_mask`.
+
+**Tests 6–14** (`tests/test_depth_channel.py`): single-step recall 1.000 (r 5–200 %, smear ≤ 0.8, against slope);
+box silhouette recall 0.910; noise-free ΔZ error ≤ 1.3e-14, smear ≤ 3 px ≤ 0.9 %; scale/focal invariance exact; sky
+inf / w_min and sky_near; horizon lower bound flagged (unbounded); poles 6–20 px detected (6 px doublet, ΔZ error
+15 %; 8–12 px constant fit; 16–20 px planes; 4 px not detected: both lobes merge into one peak); limb bias +7 to +32 %
+(within the cylinder's own depth change over k px, 10–44 %); λ̂_Δρ −11 % vs the Monte-Carlo inflation.
+
+**Real images** (`scripts/depth_d3_report.py` → `baseline_output/diag/depth_v1/d3/d3_report.json`): 0.56–0.79 s per
+image after the context, normals never built. Significance, not τ_low, binds for 73–100 % of candidates (r_gate P50
+0.035–0.34; P90/P10 7–51). 090: a chain-link fence (DA3 renders the mesh as depth blobs) gives 1714 thin accepted
+candidates in small rings (w < 0.5 on 7.9 % of the image).

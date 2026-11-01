@@ -311,6 +311,20 @@ Settled in F0 (leans agreed) and revised in F1–F4; current state:
 | V2 F7–F9 | **`fold_v2` / `tri_veto4_fold_v2` are the fold reference for the depth channel and for integration**; the built-in default stays `veto_mode: fixed` (and `configs/default.yaml` keeps the geometry channels off) | decided 2026-11-01 |
 | V2 F7–F9 | moderate creases: combined w of `tri_veto4_fold_v2` along the confirmed creases equals tri_veto4's (076 façade ledge median 0.747, 088 rock ridge 0.252); not both below 0.5, so the crease gate is **not** parked; open item in `fold_channel.md` §7 | as measured |
 | V2 F9 | runs `fold_v2`, `tri_veto4_fold_v2` (`configs/candidate_fold_v2.yaml`, `candidate_lap_fold_v2.yaml`); fold sheet marks `narrow_face` / `veto_undecidable` and plots C / C_min,eff; `eval-fold` classes fold, step, limb, texture (not_fold kept) | as built |
+| D0 | depth ROIs pinned (`scripts/depth_rois.py`): 070 sky boundary (band of the tri_veto4 sky mask), 079 silhouettes left (trimmed to v ≤ 238) and top-back L/R, 079 lit/shaded fold, 083 limbs L/R, 083 base rim, 083 bollard interior u 175–205 × v 260–318 (the legacy v 260–330 box overlaps the base rim and is kept only for comparability) | confirmed before D3 |
+| D1 | depth field: g1 = −x g0/σ² normalized to Σ x g1 = 1 (correlation convention); Hessian from g2·g0, g0·g2, g1·g1, odd-reflect padding; n from the detrended gradient ∇ρ_σ − ∇ρ_{σ_L}; q = nᵀHn / max(ρ_σ, ρ_floor) | as built |
+| D2 | gradient floor: g_n = \|∇Dd\|/max(ρ_σ, ρ_floor) > 3 σ̂_g, σ̂_g = median(g_n over Ω)/1.1774; ŝ_q over Ω away from sky and border (not the floor-valid pixels); q not zeroed on the sky (ρ = 0 there) | as built |
+| D2 | centring stage \|s_p + s_m\| ≤ centre_tol s_sep (ghost lines next to steps on ρ_f); centre_tol **0.4** (D3) | as built |
+| D2–D3 | σ_w,max = **P99** of σ_w,c at unambiguous real occlusions (P95 recorded): 1.05 px with lobes on q, **1.02 px** after D3 moved the lobe positions to h; s_hi 3.23 px | as built (rule P99, value re-calibrated) |
+| D2 | `two_sided_fit(gap_mode, usable)`; `d_rho_x0_se`, `d_rho_min_span` recorded; fold defaults unchanged | as built |
+| D2 | DA3-vs-RGB alignment: RGB edge = DA3 edge + (−0.27, −0.52) px at strong depth edges, consistent on 9/10 images; **no correction now**. Integration-task items: (a) confirm the shift on more images; (b) if stable, a versioned Stage A option for a fixed subpixel shift of D; (c) band-coverage check against RGB edges for the depth and fold channels | open (integration task) |
+| D3 | lobe positions on the unnormalized h = nᵀHn, heights q at those peaks (q's normalization by ρ_σ drags the far lobe outward for r ≳ 1); the lobe is the nearest local peak of its run reaching ½ of the run maximum (thin structures); Δρ_doublet = 1.03 \|h\|_lobe s_sep² (= the spec's \|q\|_lobe ρ_σ(x₀) s_sep²) | as built |
+| D3 | jump retries: plane m = 8 (contamination check) → m = 4 → constant fit → doublet (`thin`); a side whose window lies beyond the next edge (a D-3 candidate with r_doublet > τ_low in its strip) uses the constant fit on the clear span [s_a, d_next − s_a], s_a = ⌈s_hi/2⌉ + 1; doublet significance min(\|q_p\|, \|q_m\|)/ŝ_q | as built |
+| D3 | hysteresis components link candidates within 3 px (`link_radius`), size = distinct pixels (8-connectivity of rounded pixels split oblique edges) | as built |
+| D3 | contour smoothing: running median over 5 chained candidates (mutual nearest neighbours ahead/behind, n·n ≥ 0.5) of each neighbour's plane evaluated at the candidate's own x₀ (exact on planes) | as built |
+| D3 | lower bound with SE inflated by √λ̂ (as the significance gate); r uses the matching lower bound when ρ̂₋ − z√λ̂ SE₋ ≤ 0; ΔZ_lb = inf when even ρ̂₋ + z√λ̂ SE₋ ≤ 0 | as built |
+| D3 | sky edges (far span ≥ 50 % sky on S): r = significance = ΔZ = inf, w_c = w_min; strength inf there; sky_near rejects | as built |
+| D3 | additive null for Δρ* recorded (`signif_add`, σ_geo,ρ solved so that the null median equals the χ²₁ median 0.455; λ_n = 104.6); gate stays multiplicative; decide in D5 (switch if r_gate P90/P10 > 3) | open (D5) |
 
 ## 8. Runtime (CPU, measured in F4)
 

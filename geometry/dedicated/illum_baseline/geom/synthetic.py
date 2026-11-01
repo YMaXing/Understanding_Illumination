@@ -127,3 +127,38 @@ def step_scene(ratio, tilt_near_deg, tilt_far_deg, phi_deg, Z1=3.0, W=504, H=378
     t = {s: (ns[s] @ P[s]) / (r @ ns[s]) for s in (1, 2)}
     D = np.where(sid == 1, t[1], t[2])
     return D, sid, ns
+
+
+CANON = 300.0  # canonical focal: D = Z * CANON / f (Stage A convention), so Z = f D / CANON
+
+
+def affine_step_scene(rho_far, rho_near, line_pt, line_dir, W=504, H=378):
+    """Disparity step between two affine fields rho = a + b u + c v (coefficients (a, b, c)): rho_near on the side
+    q.(x - line_pt) < 0 of the image line through line_pt with direction line_dir, q = line_dir rotated by +90 deg,
+    rho_far elsewhere (any affine rho is a plane). Returns (D = 1/rho (canonical units), sid: 1 near, 2 far)."""
+    u, v = np.meshgrid(np.arange(W, dtype=np.float64), np.arange(H, dtype=np.float64))
+    d = np.asarray(line_dir, float) / np.linalg.norm(line_dir)
+    q = np.array([-d[1], d[0]])
+    side = (u - line_pt[0]) * q[0] + (v - line_pt[1]) * q[1]
+    sid = np.where(side < 0, 1, 2)
+    rn = rho_near[0] + rho_near[1] * u + rho_near[2] * v
+    rf = rho_far[0] + rho_far[1] * u + rho_far[2] * v
+    with np.errstate(divide="ignore"):
+        D = 1.0 / np.where(sid == 1, rn, rf)
+    return D, sid
+
+
+def pole_scene(width_px, Z_pole=3.0, Z_bg=6.0, bg_tilt_deg=20.0, W=504, H=378, f=F_PX):
+    """A fronto-parallel vertical pole (a slab at Z_pole, width_px wide in the image, centred) in front of a background
+    plane through (0, 0, Z_bg) tilted about the vertical axis by bg_tilt_deg. Returns (Z (metric), sid: 1 pole,
+    2 background, (u_left, u_right) the pole's image edges)."""
+    r = rays(W, H, f)
+    th = np.radians(bg_tilt_deg)
+    n = np.array([np.sin(th), 0.0, -np.cos(th)])
+    Zb = (n @ np.array([0.0, 0.0, Z_bg])) / (r @ n)
+    c = (W - 1) / 2
+    u = np.arange(W, dtype=np.float64)[None, :].repeat(H, 0)
+    ul, ur = c - width_px / 2, c + width_px / 2
+    sid = np.where((u >= ul) & (u <= ur), 1, 2)
+    Z = np.where(sid == 1, Z_pole, Zb)
+    return Z, sid, (ul, ur)

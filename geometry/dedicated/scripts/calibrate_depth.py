@@ -7,7 +7,8 @@ illum_baseline/geom/data/depth_calibration.json; the DepthParams default sigma_w
    lambda_median = median(z^2) / median(chi^2_1) (what the channel uses) and the Monte-Carlo inflation mean(z^2),
    z = Delta rho* / SE.
 2. The real-image null: lambda_hat_Delta_rho per image at k = k_min (the channel's own per-image estimate).
-3. sigma_w_max: P95 of sigma_w_c over unambiguous occlusions on the 10 real images. First pass with the prior
+3. sigma_w_max: P99 of sigma_w_c over unambiguous occlusions (D3 decision; P95 recorded too: P95 rejects 5 % of real
+   occlusions by construction, and between the two the Delta rho* gate at k >= 11 decides anyway), on the 10 real images. First pass with the prior
    (sigma_w_prior in the detrending) but without the smear bound (s_hi = inf, so the offset bound is off too; lobes
    searched to +-8 px): otherwise the P95 is capped by the prior itself. Unambiguous occlusion: passed D-3, both sides
    planar at k_c (m = 8, contamination check), r = Delta rho*/rho_hat_- > 0.2, significance
@@ -145,7 +146,9 @@ def calibrate_real(p: DepthParams) -> dict:
                                "share_at_lobe_limit": float((a > 7.5).mean())}
         print(f"  pooled [{name}]: n {a.size}, sigma_wc P50 {np.percentile(a, 50):.2f} P90 {np.percentile(a, 90):.2f} "
               f"P95 {np.percentile(a, 95):.2f} P99 {np.percentile(a, 99):.2f}")
-    out["sigma_w_max"] = out["pooled"]["main (r>0.2, sig>2z, dominant)"]["P95"]
+    main = out["pooled"]["main (r>0.2, sig>2z, dominant)"]
+    out["sigma_w_max_P95"], out["sigma_w_max_P99"] = main["P95"], main["P99"]
+    out["sigma_w_max"] = main["P99"]
     return out
 
 
@@ -153,10 +156,13 @@ if __name__ == "__main__":
     t0 = time.time()
     p = DepthParams()
     res = {"params": {"sigma": p.sigma, "sigma_w_prior": p.sigma_w_prior, "k_g": p.k_g, "k_min": p.k_min, "m": p.m,
-                      "w_t": p.w_t, "z": p.z, "gap_mode": p.gap_mode, "disparity": p.disparity}}
+                      "w_t": p.w_t, "z": p.z, "gap_mode": p.gap_mode, "disparity": p.disparity,
+                      "centre_tol": p.centre_tol}}
     print("sigma_w_max and the real null:")
     res["real"] = calibrate_real(p)
     res["sigma_w_max"] = res["real"]["sigma_w_max"]
+    res["sigma_w_max_rule"] = "P99 (D3); P95 recorded"
+    res["sigma_w_max_P95"], res["sigma_w_max_P99"] = res["real"]["sigma_w_max_P95"], res["real"]["sigma_w_max_P99"]
     print("lambda_hat_Delta_rho on synthetic noise:")
     res["lambda_synthetic"] = calibrate_lambda_synthetic(p)
     CALIBRATION_PATH.parent.mkdir(exist_ok=True)

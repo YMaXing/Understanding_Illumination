@@ -171,6 +171,8 @@ class DepthField:
     grad_norm: np.ndarray   # (H, W)
     n: np.ndarray           # (H, W, 2) grad / |grad| (toward larger rho, the near side); (1, 0) where |grad| = 0
     q: np.ndarray           # (H, W) n^T H n / max(rho_s, rho_floor), signed (not zeroed on the sky: rho = 0 there)
+    h: np.ndarray           # (H, W) n^T H n (unnormalized): the lobe positions (D3)
+    den: np.ndarray         # (H, W) max(rho_s, rho_floor)
     g_n: np.ndarray         # (H, W) |grad| / max(rho_s, rho_floor), the normalized gradient
     valid: np.ndarray       # (H, W) Omega and g_n > k_g sigma_g
     s_q: float              # median(|q| over Omega, away from the sky and the border) / 0.6745
@@ -206,7 +208,8 @@ def depth_field(ctx: GeometryContext, p, detrend: bool = True) -> DepthField:
         nu = np.where(gnorm > 0, gu / gnorm, 1.0)
         nv = np.where(gnorm > 0, gv / gnorm, 0.0)
     den = np.maximum(rho_s, ctx.rho_floor)
-    q = (nu * nu * H_uu + 2 * nu * nv * H_uv + nv * nv * H_vv) / den
+    h = nu * nu * H_uu + 2 * nu * nv * H_uv + nv * nv * H_vv
+    q = h / den
     g_n = gnorm / den
     sigma_g = float(np.median(g_n[omega]) / RAYLEIGH_MEDIAN) if omega.any() else 0.0
     g_floor = p.k_g * sigma_g
@@ -217,7 +220,7 @@ def depth_field(ctx: GeometryContext, p, detrend: bool = True) -> DepthField:
     clean[:, :R] = clean[:, -R:] = False
     s_q = float(np.median(np.abs(q[clean])) / MAD_TO_STD) if clean.any() else float("nan")
     return DepthField(rho_s=rho_s, H_uu=H_uu, H_vv=H_vv, H_uv=H_uv, grad=np.stack([gu, gv], -1), grad_norm=gnorm,
-                      n=np.stack([nu, nv], -1), q=q, g_n=g_n, valid=valid, s_q=s_q, sigma_g=sigma_g, g_floor=g_floor,
+                      n=np.stack([nu, nv], -1), q=q, h=h, den=den, g_n=g_n, valid=valid, s_q=s_q, sigma_g=sigma_g, g_floor=g_floor,
                       sigma_L=sigma_L, clean=clean)
 
 
@@ -232,8 +235,10 @@ class DepthCandidates:
     ij: np.ndarray        # (N, 2) int (u, v): x0 rounded
     g_n: np.ndarray       # (N,) normalized gradient at x0
     rho_s0: np.ndarray    # (N,) rho_sigma(x0)
-    q_p: np.ndarray       # (N,) positive-lobe peak (>= 0; 0 if no lobe), at s_p < 0
-    q_m: np.ndarray       # (N,) negative-lobe peak (<= 0), at s_m > 0
+    q_p: np.ndarray       # (N,) q at the positive-lobe peak (>= 0; 0 if no lobe), at s_p < 0
+    q_m: np.ndarray       # (N,) q at the negative-lobe peak (<= 0), at s_m > 0
+    h_p: np.ndarray       # (N,) n^T H n at the peaks (the doublet magnitude: Delta rho = 1.03 |h|_lobe s_sep^2)
+    h_m: np.ndarray
     s_p: np.ndarray
     s_m: np.ndarray
     s_sep: np.ndarray     # (N,) s_m - s_p
@@ -282,15 +287,22 @@ def _merge(x0: np.ndarray, g: np.ndarray, radius: float) -> tuple[np.ndarray, np
     return xm, gm
 
 
-def _lobe(qs: np.ndarray, ok: np.ndarray, sign: int, step: float) -> tuple[np.ndarray, np.ndarray]:
+def _lobe(qs: np.ndarray, ok: np.ndarray, sign: int, step: float, rel_peak: float = 0.5
+          ) -> tuple[np.ndarray, np.ndarray]:
     """Peak of the lobe of sign `sign` contiguous with x0 along one direction. qs, ok: (N, L) samples at s = (j+1)
-    step, j = 0..L-1, moving away from x0. Returns (peak |q| (0 if no lobe), distance |s| of the peak, parabola-
-    refined)."""
+    step, j = 0..L-1, moving away from x0. The peak is the nearest local maximum of the run that reaches rel_peak of
+    the run's maximum (D3: inside a thin structure the near lobes of both edges form one run; the nearest peak is the
+    candidate's own, and small noise wiggles on the flank are skipped). Returns (peak |q| (0 if no lobe), distance
+    |s| of the peak, parabola-refined)."""
     N, L = qs.shape
     y = np.where(ok, sign * qs, -np.inf)
     run = np.cumprod(y > 0, axis=1).astype(bool)
     yr = np.where(run, y, -np.inf)
-    j = np.argmax(yr, axis=1)
+    ymax = yr.max(axis=1)
+    nxt = np.concatenate([yr[:, 1:], np.full((N, 1), -np.inf)], 1)
+    prv = np.concatenate([np.full((N, 1), -np.inf), yr[:, :-1]], 1)
+    local = run & (yr >= nxt) & (yr >= prv) & (yr >= rel_peak * ymax[:, None])
+    j = np.where(local.any(1), np.argmax(local, axis=1), np.argmax(yr, axis=1))
     has = run[:, 0]
     r = np.arange(N)
     y0 = yr[r, j]
@@ -309,8 +321,9 @@ def _lobe(qs: np.ndarray, ok: np.ndarray, sign: int, step: float) -> tuple[np.nd
 def depth_candidates(ctx: GeometryContext, p, field: DepthField | None = None, merge_radius: float = 0.5
                      ) -> DepthCandidates:
     """D-3: zero crossings of q (subpixel, merged within merge_radius px) at or above the gradient floor; polarity
-    q(x0 - n/2) > 0 > q(x0 + n/2); lobes of q along x0 + s n, s in [-L, L] (step p.lobe_step), each the peak of the
-    run of one sign contiguous with x0; two-sided height min(|q_p|, |q_m|) > k_h s_q; sharpness s_lo <= s_sep <= s_hi;
+    q(x0 - n/2) > 0 > q(x0 + n/2); lobes along x0 + s n, s in [-L, L] (step p.lobe_step), each the peak of the run of
+    one sign contiguous with x0, located on h = n^T H n and measured in q; two-sided height
+    min(|q_p|, |q_m|) > k_h s_q; sharpness s_lo <= s_sep <= s_hi;
     centring |s_p + s_m| <= centre_tol s_sep; optional symmetry. p: DepthParams."""
     f = depth_field(ctx, p) if field is None else field
     H, W = f.q.shape
@@ -338,12 +351,20 @@ def depth_candidates(ctx: GeometryContext, p, field: DepthField | None = None, m
     s = np.arange(1, L + 1) * p.lobe_step
     pts_b = x0[:, None, :] - s[None, :, None] * nn[:, None, :]
     pts_f = x0[:, None, :] + s[None, :, None] * nn[:, None, :]
-    qbk, okbk = bilinear(f.q, all_px, pts_b[..., 0], pts_b[..., 1])
-    qfw, okfw = bilinear(f.q, all_px, pts_f[..., 0], pts_f[..., 1])
-    q_p, d_p = _lobe(qbk, okbk, +1, p.lobe_step)
-    q_m, d_m = _lobe(qfw, okfw, -1, p.lobe_step)
-    s_p, s_m, q_m = -d_p, d_m, -q_m
+    # lobe positions on the unnormalized h = n^T H n (D3): q = h / rho_s with rho_s varying across a doublet drags the
+    # far lobe outward for large jumps (peak at -2.1 sigma_tot px for r = 5, -3.3 for r = 100); h peaks at
+    # -+ sigma_tot for any r. Heights are q at those peaks (scale-free, against s_q).
+    hbk, okbk = bilinear(f.h, all_px, pts_b[..., 0], pts_b[..., 1])
+    hfw, okfw = bilinear(f.h, all_px, pts_f[..., 0], pts_f[..., 1])
+    h_p, d_p = _lobe(hbk, okbk, +1, p.lobe_step)
+    h_m, d_m = _lobe(hfw, okfw, -1, p.lobe_step)
+    s_p, s_m, h_m = -d_p, d_m, -h_m
     s_sep = s_m - s_p
+    dp_, _ = bilinear(f.den, all_px, x0[:, 0] + np.nan_to_num(s_p) * nn[:, 0], x0[:, 1] + np.nan_to_num(s_p) * nn[:, 1])
+    dm_, _ = bilinear(f.den, all_px, x0[:, 0] + np.nan_to_num(s_m) * nn[:, 0], x0[:, 1] + np.nan_to_num(s_m) * nn[:, 1])
+    with np.errstate(invalid="ignore", divide="ignore"):
+        q_p = np.where(np.isfinite(dp_), h_p / dp_, 0.0)
+        q_m = np.where(np.isfinite(dm_), h_m / dm_, 0.0)
     height = np.minimum(q_p, -q_m) > p.k_h * f.s_q
     reason[(reason == "") & ~height] = "height"
 
@@ -370,6 +391,7 @@ def depth_candidates(ctx: GeometryContext, p, field: DepthField | None = None, m
     counts = {"n_cross": n_cross, "n_floor": n_floor, "n_cand": N, "n_polarity": int(pol.sum()),
               "n_height": int((pol & height).sum()), "n_sharpness": int((pol & height & sharp).sum()),
               "n_centring": int((pol & height & sharp & centred).sum()), "n_passed": int((reason == "").sum())}
-    return DepthCandidates(x0=x0, n=nn, ij=np.rint(x0).astype(int), g_n=g, rho_s0=rho0, q_p=q_p, q_m=q_m, s_p=s_p,
+    return DepthCandidates(x0=x0, n=nn, ij=np.rint(x0).astype(int), g_n=g, rho_s0=rho0, q_p=q_p, q_m=q_m, h_p=h_p,
+                           h_m=h_m, s_p=s_p,
                            s_m=s_m, s_sep=s_sep, sigma_wc=sigma_wc, k_c=k_c, reason=reason, counts=counts, s_lo=s_lo,
                            s_hi=s_hi, field=f)
