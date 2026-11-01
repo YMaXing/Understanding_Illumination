@@ -326,6 +326,7 @@ def run_stage_b(cfg: Config, run_name: str | None = None, force: bool = False,
                 stems: list[str] | None = None) -> dict[str, Any]:
     from .manifest import write_manifest
     from .viz import render
+    from .viz_fold import render_fold
 
     rd = run_dir(cfg, run_name)
     _inherit_stage_a_settings(cfg)
@@ -339,9 +340,11 @@ def run_stage_b(cfg: Config, run_name: str | None = None, force: bool = False,
         else:
             process_one(cfg, stem, rd)
             status["n_done"] += 1
-        sheet = not cfg.geometry.enabled or "laplacian" in cfg.geometry.channels  # the fold sheet comes in F4
-        if viz and sheet and (force or not (rd / "viz" / f"{stem}.png").exists()):
-            render(cfg, rd, stem)
+        g = cfg.geometry
+        if viz and (not g.enabled or "laplacian" in g.channels) and (force or not (rd / "viz" / f"{stem}.png").exists()):
+            render(cfg, rd, stem)  # detector sheet (with the combined w in geometry runs)
+        if viz and g.enabled and "fold" in g.channels and (force or not (rd / "viz_fold" / f"{stem}.png").exists()):
+            render_fold(cfg, rd, stem)
     status["manifest"] = str(write_manifest(rd))
     return status
 

@@ -95,8 +95,10 @@ geometry:                 # geometric-edge channels (docs/geometry_channels.md, 
     p_fa: 1.0e-3
     null_stride: 4
     lambda_clamp: [0.5, 1.0e+4]
-    null_model: multiplicative   # additive failed the 079 sunlit-grass ROI rule (docs/fold_channel.md section 4)
-    lambda_n: 93.2        # additive null, k_min = 6 (geom/data/lambda_n.json)
+    null_model: multiplicative   # | additive | additive_local; additive failed the 079 sunlit-grass ROI rule
+    lambda_n: 93.2        # additive nulls, k_min = 6 (geom/data/lambda_n.json)
+    local_tile: 48        # additive_local: sigma_geo per 48-px tile, bilinear between tile centres
+    local_min_samples: 50
     veto_k_factor: 2.0
     C_min: 0.85
     J_min: 0.0872

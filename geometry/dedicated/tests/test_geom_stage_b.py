@@ -27,8 +27,8 @@ FOLD_COLUMNS = [
     "alpha_p", "rms_rel_p", "n_p", "excl_p", "m_used_p", "planar_p", "fallback_p", "sigma_theta_p",
     "alpha_m", "rms_rel_m", "n_m", "excl_m", "m_used_m", "planar_m", "fallback_m", "sigma_theta_m",
     "n_p_x", "n_p_y", "n_p_z", "n_m_x", "n_m_y", "n_m_z",
-    "valid", "dtheta", "T", "T_over_lambda", "T_add", "gate_mult", "gate_add", "gate", "dtheta_gate",
-    "dtheta_gate_add", "dtheta_k2", "C", "no_veto", "veto_pass", "k2_clean", "component_px", "accepted", "reason",
+    "valid", "dtheta", "T", "T_over_lambda", "T_add", "T_add_local", "sigma_geo_local", "gate_mult", "gate_add",
+    "gate_add_local", "gate", "dtheta_gate", "dtheta_gate_add", "dtheta_gate_add_local", "dtheta_k2", "C", "no_veto", "veto_pass", "k2_clean", "component_px", "accepted", "reason",
     "J", "chord", "J_lo", "J_hi", "w_c", "band",
     "d_rho", "d_rho_se", "s_gap", "planes_cross", "d_rho_x0", "rho_p_gap", "rho_m_gap", "dZ_rel", "depth_jump",
     "convexity", "L_over_rho_x0",
@@ -140,4 +140,4 @@ def test_lap_fold_saved_keys_and_candidate_schema(tmp_path):
     assert set(cand["reason"]) <= {"accepted", "component", "veto", "gate", "invalid_window"}
     assert int(cand["accepted"].sum()) == meta["channels"]["fold"]["n_accepted"]
     null = pd.read_parquet(tmp_path / f"{stem}_fold_null.parquet")
-    assert list(null.columns) == ["u", "v", "T", "T_add", "valid", "dtheta", "fallback_p", "fallback_m"]
+    assert list(null.columns) == ["u", "v", "T", "T_add", "T_add_local", "valid", "dtheta", "fallback_p", "fallback_m"]

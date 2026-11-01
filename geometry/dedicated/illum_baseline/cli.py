@@ -16,6 +16,7 @@ import dataclasses
 import json
 import os
 import sys
+from pathlib import Path
 
 from . import DEFAULT_CONFIG
 from .config import Config, DetectorCfg, SkyCfg, apply_paths, apply_sets, load_config, validate
@@ -159,10 +160,17 @@ def cmd_viz(args: argparse.Namespace) -> int:
     from .stage_b import image_stems, run_dir
     from .viz import render
 
+    from .viz_fold import render_fold
+
     cfg = _cfg(args)
     rd = run_dir(cfg, args.run_name)
     for stem in args.stems or image_stems(rd):
-        print(render(cfg, rd, stem))
+        meta = json.loads((rd / f"{stem}.json").read_text())
+        chans = meta.get("combined", {}).get("channels")
+        if chans is None or "laplacian" in chans:  # detector sheet
+            print(render(cfg, rd, stem))
+        if chans and "fold" in chans:  # fold sheet
+            print(render_fold(cfg, rd, stem))
     return 0
 
 
@@ -191,6 +199,35 @@ def cmd_diag_generalize(args: argparse.Namespace) -> int:
     from .diag import generalize
 
     print(generalize(_cfg(args), args.runs, args.baseline_run, args.tag))
+    return 0
+
+
+def cmd_diag_fold(args: argparse.Namespace) -> int:
+    from .diag_fold import diag_fold
+    from .stage_b import run_dir
+
+    cfg = _cfg(args)
+    if not cfg.geometry.enabled or "fold" not in cfg.geometry.channels:
+        raise SystemExit("diag-fold needs a config with geometry.enabled and the fold channel "
+                         "(e.g. --config configs/candidate_fold_only.yaml)")
+    print(diag_fold(cfg, run_dir(cfg, args.run_name), args.stem, args.u, args.v))
+    return 0
+
+
+def cmd_eval_fold(args: argparse.Namespace) -> int:
+    from . import PROJECT_ROOT
+    from .geom.evaluate import evaluate_run
+    from .stage_b import run_dir
+
+    cfg = _cfg(args)
+    rd = run_dir(cfg, args.run_name)
+    ann = Path(args.annotations) if args.annotations else PROJECT_ROOT / "annotations" / "folds"
+    df = evaluate_run(rd, ann)
+    if df.empty:
+        print(f"no annotated images: no {ann}/<stem>.json for the fold candidate tables in {rd}")
+        return 0
+    df.to_csv(rd / "eval_fold.csv", index=False)
+    print(df.to_string(index=False))
     return 0
 
 
@@ -260,6 +297,20 @@ def build_parser() -> argparse.ArgumentParser:
     dc.add_argument("--baseline-run", default="baseline_v0")
     dc.add_argument("--tag", required=True, help="output prefix, e.g. t2")
     dc.set_defaults(func=cmd_diag_compare)
+
+    df_ = sub.add_parser("diag-fold", parents=[common],
+                         help="fold profile tool: the candidate nearest (u, v) (TASK_FOLD_CHANNEL F4)")
+    df_.add_argument("--stem", required=True)
+    df_.add_argument("--u", type=float, required=True, help="upright network-resolution column")
+    df_.add_argument("--v", type=float, required=True, help="upright network-resolution row")
+    df_.add_argument("--run-name", default=None, help="output run directory (default: run.name)")
+    df_.set_defaults(func=cmd_diag_fold)
+
+    ef = sub.add_parser("eval-fold", parents=[common],
+                        help="precision/recall of accepted folds against annotations/folds/<stem>.json")
+    ef.add_argument("--run-name", default=None)
+    ef.add_argument("--annotations", default=None, help="annotation folder (default: <project>/annotations/folds)")
+    ef.set_defaults(func=cmd_eval_fold)
 
     dz = sub.add_parser("diag-generalize", parents=[common],
                         help="per-image deltas vs a baseline run (TASK_070_STRIPES T5)")

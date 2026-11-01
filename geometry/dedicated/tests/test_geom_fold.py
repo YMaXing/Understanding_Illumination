@@ -340,3 +340,19 @@ def test_6_narrow_faces_flagged(width_px, expect, capsys):
         print(f"    k2 (no contamination check): C median {np.nanmedian(df['C'][g]):.3f}, vetoed {(g & ~df['veto_pass']).sum()}"
               f"/{g.sum()}, no_veto {(g & df['no_veto']).sum()}, k2 windows that would fail the check "
               f"{(g & ~df['k2_clean'] & ~df['no_veto']).sum()}")
+
+
+def test_4c_additive_local_null():
+    """additive_local: with one tile covering the image it is the global additive null; with 48-px tiles the tiles
+    are solved where they hold enough null samples and the gate uses the interpolated sigma_geo."""
+    D, sid, nrm, names = scene_objects(radii=(0.5, 1.0, 2.0))
+    ctx = GeometryContext(noisy(D, NOISE, 0), None, K, TRI)
+    one = FoldChannel().run(ctx, {"null_model": "additive_local", "local_tile": 1024})
+    df = one.candidates
+    v = df["valid"].to_numpy()
+    assert np.allclose(df["T_add_local"][v], df["T_add"][v], rtol=1e-12, atol=0)
+    assert one.scalars["sigma_geo_local_tiles"] == 1
+    assert np.array_equal(df["gate"].to_numpy(), df["gate_add"].to_numpy())
+    loc = FoldChannel().run(ctx, {"null_model": "additive_local"})
+    assert loc.scalars["sigma_geo_local_tiles"] > 10
+    assert np.array_equal(loc.candidates["gate"].to_numpy(), loc.candidates["gate_add_local"].to_numpy())

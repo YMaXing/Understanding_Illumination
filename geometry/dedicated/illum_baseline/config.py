@@ -132,8 +132,10 @@ class FoldCfg:
     p_fa: float = 1.0e-3
     null_stride: int = 4
     lambda_clamp: list[float] = field(default_factory=lambda: [0.5, 1.0e4])
-    null_model: str = "multiplicative"  # multiplicative | additive
-    lambda_n: float = 93.2              # additive null, k_min = 6 (illum_baseline/geom/data/lambda_n.json)
+    null_model: str = "multiplicative"  # multiplicative | additive | additive_local
+    lambda_n: float = 93.2              # additive nulls, k_min = 6 (illum_baseline/geom/data/lambda_n.json)
+    local_tile: int = 48                # additive_local: tile size (px)
+    local_min_samples: int = 50         # additive_local: fewer valid null samples -> the global sigma_geo
     veto_k_factor: float = 2.0
     C_min: float = 0.85
     J_min: float = 0.0872
@@ -311,8 +313,10 @@ def _validate_geometry(g: GeometryCfg) -> None:
         raise ValueError(f"geometry.dense_fit.g_init must be side_window|gaussian, got {d.g_init!r}")
     if min(d.sigma_n, d.sigma_r, d.sigma_g, d.cond_max) <= 0 or d.refit < 0:
         raise ValueError("geometry.dense_fit: scales and cond_max must be > 0, refit >= 0")
-    if f.null_model not in ("multiplicative", "additive"):
-        raise ValueError(f"geometry.fold.null_model must be multiplicative|additive, got {f.null_model!r}")
+    if f.null_model not in ("multiplicative", "additive", "additive_local"):
+        raise ValueError(f"geometry.fold.null_model must be multiplicative|additive|additive_local, got {f.null_model!r}")
+    if f.local_tile < 4 or f.local_min_samples < 1:
+        raise ValueError("geometry.fold: local_tile >= 4, local_min_samples >= 1")
     if not 0 < f.p_fa < 1:
         raise ValueError("geometry.fold.p_fa must be in (0, 1)")
     if len(f.lambda_clamp) != 2 or not 0 < f.lambda_clamp[0] <= f.lambda_clamp[1]:

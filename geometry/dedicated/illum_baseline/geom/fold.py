@@ -8,18 +8,22 @@ Window contamination check (k1 windows and the null sample): rms(residual)/alpha
 max(planarity_factor eps_hat, b_tri_margin b_tri(k, m), Q_{null_rms_quantile} of the null windows' rms). The veto's k2
 windows get no contamination check, only the exclusion rule.
 
-Null models for the gate (both are always computed and recorded; null_model selects the one that gates):
+Null models for the gate (all are always computed and recorded; null_model selects the one that gates):
   multiplicative: T = delta^T (Sigma_+ + Sigma_-)^-1 delta, accept T > lambda_hat 2 ln(1/p_fa),
                   lambda_hat = median(T_null) / (2 ln 2) clamped to lambda_clamp;
   additive:       T_add = delta^T (lambda_n (Sigma_+ + Sigma_-) + sigma_geo^2 I)^-1 delta, accept T_add > 2 ln(1/p_fa),
                   lambda_n the noise inflation from the synthetic Monte Carlo, sigma_geo solved per image so that
                   median(T_add over the null sample) = 2 ln 2 (0 if already below).
+  additive_local: as additive, with sigma_geo solved per local_tile x local_tile px tile on the null samples inside
+                  it (tiles with fewer than local_min_samples valid null samples take the global sigma_geo) and
+                  interpolated bilinearly between tile centres.
 """
 
 from __future__ import annotations
 
 import dataclasses
 import math
+import time
 from dataclasses import dataclass
 
 import numpy as np
@@ -55,8 +59,10 @@ class FoldParams:
     p_fa: float = 1.0e-3
     null_stride: int = 4
     lambda_clamp: tuple[float, float] = (0.5, 1.0e4)
-    null_model: str = "multiplicative"  # multiplicative | additive (additive failed the 079 sunlit-grass ROI rule)
-    lambda_n: float = 93.2              # noise-only inflation for the additive null, k_min = 6 (data/lambda_n.json)
+    null_model: str = "multiplicative"  # multiplicative | additive | additive_local
+    lambda_n: float = 93.2              # noise-only inflation for the additive nulls, k_min = 6 (data/lambda_n.json)
+    local_tile: int = 48                # additive_local: tile size (px)
+    local_min_samples: int = 50         # additive_local: fewer valid null samples in a tile -> global sigma_geo
     veto_k_factor: float = 2.0
     C_min: float = 0.85
     J_min: float = 0.0872
@@ -74,6 +80,22 @@ class FoldParams:
         return cls(**d)
 
 
+NULL_MODELS = ("multiplicative", "additive", "additive_local")
+
+
+def _solve_sig2(d: np.ndarray, S: np.ndarray, lam_n: float) -> float:
+    """sigma^2 >= 0 with median(delta^T (lam_n S + sigma^2 I)^-1 delta) = 2 ln 2 (bisection on log10 sigma^2)."""
+    target = 2 * math.log(2)
+    med = lambda a: float(np.median(quad_form(d, S, lam_n, a)))  # noqa: E731
+    if med(0.0) <= target:
+        return 0.0
+    lo, hi = -40.0, 2.0
+    for _ in range(80):
+        mid = 0.5 * (lo + hi)
+        lo, hi = (mid, hi) if med(10.0**mid) > target else (lo, mid)
+    return 10.0 ** (0.5 * (lo + hi))
+
+
 def _J(dtheta: np.ndarray) -> np.ndarray:
     return np.sin(np.minimum(dtheta, np.pi / 2))
 
@@ -86,8 +108,11 @@ class FoldChannel:
         H, W = ctx.shape
         fitkw = dict(m=p.m, w_t=p.w_t, m_min=p.m_min, max_excluded=p.max_excluded)
         tri = (ctx.det.tri_sigma_s, ctx.det.tri_sigma_r, ctx.det.tri_sigma_g)
-        if p.null_model not in ("multiplicative", "additive"):
-            raise ValueError(f"unknown null_model {p.null_model!r}")
+        if p.null_model not in NULL_MODELS:
+            raise ValueError(f"unknown null_model {p.null_model!r}; expected one of {NULL_MODELS}")
+        t_start = time.perf_counter()
+        ctx.normals  # shared context fields (timed separately: another channel may already have built them)
+        t_ctx = time.perf_counter() - t_start
 
         # F2.1 candidates, F2.2 rounding width and skip
         cands = fold_candidates(ctx, p.cand_sigma_d, p.cand_sigma_T, p.cand_rate_factor)
@@ -116,38 +141,51 @@ class FoldChannel:
         lam = float(np.clip(lam_raw, *p.lambda_clamp)) if T_null.size else 1.0
         T_crit = 2 * math.log(1 / p.p_fa)
         T_gate = lam * T_crit
-        # additive null: sigma_geo^2 such that median(T_add, null) = 2 ln 2
+        # additive null: sigma_geo^2 such that median(T_add, null) = 2 ln 2; additive_local: per tile
         sig2 = float("nan")
+        n_t, m_t = math.ceil(H / p.local_tile), math.ceil(W / p.local_tile)
+        sig_tiles = np.full((n_t, m_t), np.nan)
+        n_local = 0
         if np.isfinite(p.lambda_n) and T_null.size:
             dn, Sn = null_projection(null.p.nhat[nv], null.m.nhat[nv], null.p.Sigma_n[nv], null.m.Sigma_n[nv])
-            target = 2 * math.log(2)
-            med = lambda a: float(np.median(quad_form(dn, Sn, p.lambda_n, a)))  # noqa: E731
-            if med(0.0) <= target:
-                sig2 = 0.0
-            else:
-                lo, hi = -40.0, 2.0  # log10 rad^2
-                for _ in range(80):
-                    mid = 0.5 * (lo + hi)
-                    lo, hi = (mid, hi) if med(10.0**mid) > target else (lo, mid)
-                sig2 = 10.0 ** (0.5 * (lo + hi))
+            sig2 = _solve_sig2(dn, Sn, p.lambda_n)
+            sig_tiles[:] = math.sqrt(sig2)
+            ti = (xn[nv, 1] // p.local_tile).astype(int)
+            tj = (xn[nv, 0] // p.local_tile).astype(int)
+            for i in range(n_t):
+                for j in range(m_t):
+                    m_ij = (ti == i) & (tj == j)
+                    if m_ij.sum() >= p.local_min_samples:
+                        sig_tiles[i, j] = math.sqrt(_solve_sig2(dn[m_ij], Sn[m_ij], p.lambda_n))
+                        n_local += 1
+
+        def sig_local(x: np.ndarray) -> np.ndarray:
+            """Bilinear interpolation of the tile sigma_geo between tile centres at points x (N, 2) (u, v)."""
+            c = (p.local_tile - 1) / 2
+            coords = np.stack([(x[:, 1] - c) / p.local_tile, (x[:, 0] - c) / p.local_tile])
+            return ndimage.map_coordinates(sig_tiles, coords, order=1, mode="nearest")
 
         # F2.3-F2.5 at k1
         r1 = two_sided_fit(ctx, x0, e1, k1, rms_max=rms_max, fallback=True, **fitkw)
         dtheta1 = r1.dtheta
-        T_add = np.full(N, np.nan)
+        T_add, T_add_local = np.full(N, np.nan), np.full(N, np.nan)
+        sig_loc = sig_local(x0) if np.isfinite(sig2) and N else np.full(N, np.nan)
         if np.isfinite(sig2) and r1.valid.any():
-            d1, S1 = null_projection(r1.p.nhat[r1.valid], r1.m.nhat[r1.valid], r1.p.Sigma_n[r1.valid],
-                                     r1.m.Sigma_n[r1.valid])
-            T_add[r1.valid] = quad_form(d1, S1, p.lambda_n, sig2)
+            v1 = r1.valid
+            d1, S1 = null_projection(r1.p.nhat[v1], r1.m.nhat[v1], r1.p.Sigma_n[v1], r1.m.Sigma_n[v1])
+            T_add[v1] = quad_form(d1, S1, p.lambda_n, sig2)
+            T_add_local[v1] = quad_form(d1, S1, p.lambda_n, sig_loc[v1] ** 2)
         with np.errstate(invalid="ignore"):
             gate_mult = r1.valid & (r1.T > T_gate)
             gate_add = r1.valid & (T_add > T_crit)
-        if p.null_model == "additive" and not np.isfinite(sig2):
-            raise ValueError("null_model additive needs a finite lambda_n and a non-empty null sample")
-        gate = gate_add if p.null_model == "additive" else gate_mult
+            gate_add_local = r1.valid & (T_add_local > T_crit)
+        if p.null_model != "multiplicative" and not np.isfinite(sig2):
+            raise ValueError(f"null_model {p.null_model} needs a finite lambda_n and a non-empty null sample")
+        gate = {"multiplicative": gate_mult, "additive": gate_add, "additive_local": gate_add_local}[p.null_model]
         sig_pair = np.sqrt(0.5 * (r1.p.sigma_theta**2 + r1.m.sigma_theta**2))  # per-axis sigma of delta
         dtheta_gate = np.sqrt(T_crit * lam) * sig_pair
         dtheta_gate_add = np.sqrt(T_crit * (p.lambda_n * sig_pair**2 + sig2)) if np.isfinite(sig2) else np.full(N, np.nan)
+        dtheta_gate_add_local = np.sqrt(T_crit * (p.lambda_n * sig_pair**2 + sig_loc**2))
 
         # F2.6 concentration veto: k2 windows without the contamination check (exclusion rule only); sides without
         # a planar fit count as invalid (no_veto)
@@ -219,23 +257,30 @@ class FoldChannel:
             **r1.side_fields(),
             **{f"n_{t}_{c}": s.nhat[:, i] for t, s in (("p", r1.p), ("m", r1.m)) for i, c in enumerate("xyz")},
             "valid": r1.valid, "dtheta": dtheta1, "T": r1.T, "T_over_lambda": r1.T / lam, "T_add": T_add,
-            "gate_mult": gate_mult, "gate_add": gate_add, "gate": gate,
-            "dtheta_gate": dtheta_gate, "dtheta_gate_add": dtheta_gate_add,
+            "T_add_local": T_add_local, "sigma_geo_local": sig_loc,
+            "gate_mult": gate_mult, "gate_add": gate_add, "gate_add_local": gate_add_local, "gate": gate,
+            "dtheta_gate": dtheta_gate, "dtheta_gate_add": dtheta_gate_add, "dtheta_gate_add_local": dtheta_gate_add_local,
             "dtheta_k2": dtheta2, "C": C, "no_veto": no_veto, "veto_pass": veto_pass, "k2_clean": k2_clean,
             "component_px": comp, "accepted": accepted, "reason": reason,
             "J": J, "chord": chord, "J_lo": J_lo, "J_hi": J_hi, "w_c": w_c, "band": band,
             "d_rho": r1.d_rho, "d_rho_se": r1.d_rho_se, "s_gap": r1.s_gap, "planes_cross": r1.planes_cross,
             "d_rho_x0": r1.d_rho_x0, "rho_p_gap": r1.rho_p_x0, "rho_m_gap": r1.rho_m_x0, "dZ_rel": r1.dZ_rel, "depth_jump": depth_jump, "convexity": convexity, "L_over_rho_x0": L0,
         })
-        T_null_add = np.full(len(xn), np.nan)
+        T_null_add, T_null_add_local = np.full(len(xn), np.nan), np.full(len(xn), np.nan)
         if np.isfinite(sig2) and nv.any():
             T_null_add[nv] = quad_form(dn, Sn, p.lambda_n, sig2)
-        null_df = pd.DataFrame({"u": xn[:, 0], "v": xn[:, 1], "T": null.T, "T_add": T_null_add, "valid": null.valid,
+            T_null_add_local[nv] = quad_form(dn, Sn, p.lambda_n, sig_local(xn[nv]) ** 2)
+        null_df = pd.DataFrame({"u": xn[:, 0], "v": xn[:, 1], "T": null.T, "T_add": T_null_add,
+                                "T_add_local": T_null_add_local, "valid": null.valid,
                                 "dtheta": null.dtheta, "fallback_p": null.p.fallback, "fallback_m": null.m.fallback})
         scalars = {
             "lambda_hat": lam, "lambda_hat_raw": lam_raw, "eps_hat": eps_hat, "null_rms_q": q_null,
-            "T_gate": T_gate, "sigma_geo": math.sqrt(sig2) if np.isfinite(sig2) else float("nan"),
+            "T_gate": T_gate, "T_crit": T_crit, "null_model": p.null_model,
+            "sigma_geo": math.sqrt(sig2) if np.isfinite(sig2) else float("nan"),
+            "sigma_geo_local_tiles": int(n_local), "sigma_geo_local_min": float(np.nanmin(sig_tiles)) if n_local else float("nan"),
+            "sigma_geo_local_max": float(np.nanmax(sig_tiles)) if n_local else float("nan"),
             "n_gate_mult": int(gate_mult.sum()), "n_gate_add": int(gate_add.sum()),
+            "n_gate_add_local": int(gate_add_local.sum()),
             "rate_median": cands.median_rate, "rate_threshold": cands.threshold,
             "n_null": int(len(xn)), "n_null_valid": int(T_null.size),
             "n_cand": int(N), "n_valid": int(r1.valid.sum()), "n_gate": int(gate.sum()),
@@ -245,6 +290,8 @@ class FoldChannel:
             "frac_w_lt_0.5": float((w_fold < 0.5).mean()), "frac_w_lt_0.9": float((w_fold < 0.9).mean()),
             "params": dataclasses.asdict(p),
         }
+        scalars["context_s"] = t_ctx
+        scalars["runtime_s"] = time.perf_counter() - t_start - t_ctx
         return ChannelResult(name=self.name, w_net=w_fold, strength=strength, candidates=df,
                              arrays={"r_n": cands.rate_map}, scalars=scalars, w_min=p.w_min,
                              tables={"null": null_df})
