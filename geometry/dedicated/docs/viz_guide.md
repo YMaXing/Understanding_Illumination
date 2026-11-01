@@ -161,3 +161,119 @@ Use the text box to tie a sheet to its manifest row, and to spot unreliable imag
    - a red/blue doublet or a one-signed band means geometry;
    - speckle means texture or DA3 noise.
 3. In panel 4, see how far above the cyan contour it sits. That tells you whether raising `k_tau` would remove it.
+
+---
+
+# The fold sheet and the fold profile tool
+
+Runs with the fold channel (`configs/candidate_fold_only.yaml`, `configs/candidate_lap_fold.yaml`; see
+`docs/fold_channel.md`) also write `stage_b/<run>/viz_fold/<stem>.png`. It is rendered by
+`illum_baseline/viz_fold.py: render_fold()` from saved outputs only (`<stem>.npz`, `<stem>.json`,
+`<stem>_fold_candidates.parquet`, `<stem>_fold_null.parquet`) and re-rendered by
+`python -m illum_baseline viz --config <that config> --run-name <run>`, which draws the detector sheet too when the
+Laplacian channel ran.
+
+Layout: 3 × 3 panels plus a text box, always **upright**. Panels 1–8 are in network pixel coordinates; panel 9 is at
+the original resolution. The sheet follows the channel in order: result on the photo, normals, their uncertainty,
+where the normals turn, how much they turn, the gate, the veto, the weight, the combined weight.
+
+**Candidate segments.** Each candidate is drawn as a short segment along its fold line (perpendicular to e₁),
+centred at its subpixel position x₀.
+
+## Panel 1: accepted folds on the sRGB
+
+- Accepted candidates coloured by the fold angle Δθ(k₁) in degrees (plasma, 0–120°).
+- **Dashed** segments: accepted with `no_veto` (the veto windows were invalid, e.g. off the image).
+- **Gray** segments: passed the gate but were rejected by the curvature veto.
+- Use it to see *what* the channel calls a fold: box edges and plinth steps should be orange/yellow (60–100°),
+  shallow creases purple; gray lines on curved objects show the veto working.
+
+## Panel 2: normal map
+
+- RGB = (n̂ + 1)/2, with n̂ the unit normal **toward the camera** in the camera frame (x right, y down, z forward).
+  Blue is always low (n̂_z < 0). Examples: a wall facing the camera, n̂ = (0, 0, −1), is olive (0.5, 0.5, 0); ground
+  seen at 45°, n̂ ≈ (0, −0.7, −0.7), is dark red (0.5, 0.15, 0.15); a face turned to the right of the image
+  (n̂_x > 0) is redder, one turned to the left less red; a face turned up (n̂_y < 0) less green.
+- Gray: no valid normal (sky, within 9 px of the sky or border, rare degenerate fits).
+- Folds are where the colour changes abruptly; smooth colour ramps are curvature.
+
+## Panel 3: σ_θ, log scale
+
+- The angular standard deviation of each normal (degrees, log10 from −2 to 1).
+- It is small on well-measured near surfaces and grows on grazing ones, near the sky and next to edges, where the
+  fit has fewer effective samples. The gate is relative to this uncertainty, which is why a fixed Δθ threshold
+  would not work (`fold_channel.md` §4.5).
+
+## Panel 4: rotation rate r_n with all candidates
+
+- r_n = sqrt(λ₁) of the normals' structure tensor (rad/px, log10 from −4 to 0); cyan dots are **all** candidates
+  (ridges of r_n above 3× its median).
+- Saturated white bands are silhouettes, where the normal jumps by more than 1 rad within a pixel.
+- r_n says *where* the normal turns, not how much: shallow but sharp creases and strong but rounded folds can look
+  alike here. Panel 5 gives the amount.
+
+## Panel 5: Δθ(k₁) at the valid candidates
+
+- Every candidate whose two side windows gave normals, coloured by the angle between them (degrees, dark
+  background). Texture and noise appear as short purple scraps; geometry as long coherent lines.
+
+## Panel 6: gate statistic
+
+- Log–log densities of the gate statistic for the **null sample** (gray: a stride-4 grid of ordinary pixels) and for
+  the candidates (red), with the χ²₂ density (dotted) and the gate (green, 2 ln(1/p_fa) = 13.8).
+- The statistic follows the run's null model: T/λ̂ (multiplicative, the default), T_add or T_add_local.
+- After calibration the null sample's median sits at the χ²₂ median (1.39). A heavier tail than χ²₂ in the null
+  sample is real geometry (roughness, curvature); the candidates' excess to the right of the gate is what gets
+  accepted.
+
+## Panel 7: concentration veto
+
+- C = Δθ(k₁)/Δθ(k₂) against Δθ(k₁), for the gate-passed candidates whose veto windows were valid; blue passed,
+  gray vetoed; red line C_min = 0.85.
+- A fold keeps its angle when the windows move out (C ≈ 1); constant curvature gives C ≈ 0.6. A cloud near 1 is
+  folds; points far below are curved surfaces or folds next to a narrow face.
+
+## Panel 8: w_fold
+
+- The fold channel's weight at network resolution (gray, w_min to 1): bands of radius max(2, ⌈width/2⌉) around the
+  accepted candidates, each at w_c (0.215 for a 90° fold, 0.38 for 30°, 1 below 5°).
+
+## Panel 9: combined w on the sRGB
+
+- The delivered `w` (the min over the run's channels; Laplacian + fold in `tri_veto4_fold`) at the original
+  resolution as red alpha (1 − w)/(1 − w_min), as in panel 6 of the detector sheet.
+
+## Text box
+
+| entry | meaning |
+|---|---|
+| null model | which gate the run used (multiplicative, additive, additive_local) |
+| `lambda_hat` (raw) | multiplicative inflation median(T_null)/(2 ln 2) (clamped to [0.5, 10⁴]) |
+| `sigma_geo` global / local | additive models: geometric roughness solved from the null sample; local: per 48-px tile (min–max, number of tiles) |
+| `lambda_n` | noise-only inflation used by the additive models |
+| `eps_hat`, `null rms Q` | median and 95th percentile of the null windows' relative residual (contamination check) |
+| `null` | valid / total null samples |
+| candidates by stage | cand → valid (two-sided fits usable) → gate (with the counts under all three nulls) → veto (no_veto) → component (accepted); fallback sides; accepted with `depth_jump` |
+| `w_fold < 0.5`, `< 0.9`, combined | shares of pixels |
+| parameters | k_min, m, w_t, p_fa, C_min, J_min, J0, w_min, b_tri_margin, dense-fit gradient init |
+| `f_active`, `f unc`, `f_n`, orientation | GeoCalib focal (full-res px), its uncertainty, focal at network res, TIFF orientation |
+| runtime | context (dense fit) and fold-channel seconds for this image |
+
+## Fold profile tool
+
+`python -m illum_baseline diag-fold --config configs/candidate_lap_fold.yaml --stem <stem> --u <U> --v <V>`
+recomputes the fold channel for one image (same configuration as the run), takes the candidate nearest (U, V)
+(upright network px, as in the sheets) and writes `stage_b/<run>/diag_fold/<stem>_u<U>_v<V>.png`:
+
+- **Left: dense normal-angle profile** along e₁ through the candidate: the angle between the dense normal at s and at
+  the far − end, with the rounding width (orange), the k₁ windows (blue) and k₂ windows (green), and lines at
+  Δθ(k₁) and Δθ(k₂). A fold is a step from one plateau to another; a curved surface is a ramp that keeps rising
+  through the windows (then Δθ(k₂) > Δθ(k₁) and C < 0.85).
+- **Middle: the windows on the image** (k₁ blue, k₂ green, w_t = 4 px wide) with the two-sided normals n̂± drawn as
+  their image-plane components (× 12 px), labelled with all three components.
+- **Right: the numbers**: reason (accepted / gate / veto / component / invalid_window), Δθ(k₁), Δθ(k₂), C (and
+  `no_veto`), T/λ̂, T_add, T_add_local against the gate, J with its focal bracket, w_c and band, k₁, k₂, width, how
+  each side was fitted (planar m = 8 or 4, fallback, invalid), σ_θ±, Δρ* and ΔZ/Z_near with `planes_cross`,
+  `depth_jump`, convexity, the k₂ normals, and the image's λ̂, σ_geo and local σ_geo.
+
+Typical use: pick a pixel on a suspicious line in panel 1 or 8 of the fold sheet and run the tool there.

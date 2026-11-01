@@ -264,7 +264,7 @@ class FoldChannel:
             "component_px": comp, "accepted": accepted, "reason": reason,
             "J": J, "chord": chord, "J_lo": J_lo, "J_hi": J_hi, "w_c": w_c, "band": band,
             "d_rho": r1.d_rho, "d_rho_se": r1.d_rho_se, "s_gap": r1.s_gap, "planes_cross": r1.planes_cross,
-            "d_rho_x0": r1.d_rho_x0, "rho_p_gap": r1.rho_p_x0, "rho_m_gap": r1.rho_m_x0, "dZ_rel": r1.dZ_rel, "depth_jump": depth_jump, "convexity": convexity, "L_over_rho_x0": L0,
+            "d_rho_x0": r1.d_rho_x0, "rho_p_gap": r1.rho_p_gap, "rho_m_gap": r1.rho_m_gap, "dZ_rel": r1.dZ_rel, "depth_jump": depth_jump, "convexity": convexity, "L_over_rho_x0": L0,
         })
         T_null_add, T_null_add_local = np.full(len(xn), np.nan), np.full(len(xn), np.nan)
         if np.isfinite(sig2) and nv.any():

@@ -118,7 +118,7 @@ def test_2_wrong_K_gives_no_fold_on_planes(kappa):
         v = res.valid & res.p.planar & res.m.planar
         assert v.sum() > 150
         assert np.abs(res.dtheta[v]).max() < 1e-9
-        assert (np.abs(res.d_rho[v]) / res.rho_p_x0[v]).max() < 1e-12
+        assert (np.abs(res.d_rho[v]) / res.rho_p_gap[v]).max() < 1e-12
 
 
 # ---------------------------------------------------------------- 3. veto, 5. depth_jump (one noisy scene)

@@ -63,8 +63,8 @@ class TwoSidedResult:
     d_rho_se: np.ndarray      # (N,) its standard error
     s_gap: np.ndarray         # (N,) where along x0 + s e1 (s in [-k, k]) the gap is smallest
     planes_cross: np.ndarray  # (N,) bool: the gap changes sign inside [-k, k] (Delta rho* = 0)
-    rho_p_x0: np.ndarray      # (N,) each side's plane at x0 + s_gap e1
-    rho_m_x0: np.ndarray
+    rho_p_gap: np.ndarray     # (N,) each side's plane at x0 + s_gap e1
+    rho_m_gap: np.ndarray
     dZ_rel: np.ndarray        # (N,) |Delta rho*| / min(rho_+, rho_-) at s_gap = Delta Z / Z_near
     d_rho_x0: np.ndarray      # (N,) the gap at x0 itself (record)
     dtheta: np.ndarray        # (N,) rad, atan2(|n+ x n-|, n+ . n-)
@@ -227,7 +227,7 @@ def two_sided_fit(ctx: GeometryContext, x0: np.ndarray, e1: np.ndarray, k: np.nd
     if valid.any():
         T[valid] = chi2_statistic(P.nhat[valid], M.nhat[valid], P.Sigma_n[valid], M.Sigma_n[valid])
     return TwoSidedResult(p=P, m=M, d_rho=d_rho, d_rho_se=d_rho_se, s_gap=s_gap, planes_cross=planes_cross,
-                          rho_p_x0=rp, rho_m_x0=rm, dZ_rel=dZ_rel, d_rho_x0=g0, dtheta=dtheta, T=T, valid=valid)
+                          rho_p_gap=rp, rho_m_gap=rm, dZ_rel=dZ_rel, d_rho_x0=g0, dtheta=dtheta, T=T, valid=valid)
 
 
 def window_rms(res: TwoSidedResult) -> np.ndarray:
