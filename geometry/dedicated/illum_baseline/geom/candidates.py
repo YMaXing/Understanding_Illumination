@@ -9,6 +9,9 @@ r_n > cand_rate_factor * median(r_n), subpixel x0 from a parabola along e1.
 Sign convention: e1 = (cos phi, sin phi) with phi in (-90, 90] deg, i.e. e1_u > 0, or e1 = (0, 1). Side "+" is +e1.
 
 F2.2 rounding width: the 10%-90% distance of the normalized normal-angle profile along e1.
+
+Depth candidates (TASK_DEPTH_CHANNEL D-K, D-1, D-2; the candidates themselves, D-3, follow in D2): depth_kernels,
+depth_field.
 """
 
 from __future__ import annotations
@@ -19,7 +22,7 @@ from dataclasses import dataclass
 import numpy as np
 from scipy import ndimage
 
-from ..detector import gaussian_gradient, kernels
+from ..detector import _correlate_valid, dilate, gaussian_gradient, kernels
 from .context import GeometryContext
 from .sampling import bilinear
 
@@ -124,7 +127,81 @@ def rounding_width(ctx: GeometryContext, x0: np.ndarray, e1: np.ndarray, half_le
     return width, ok
 
 
-def depth_candidates(ctx: GeometryContext, params: dict) -> Candidates:
-    """Future depth channel: Canny-like candidates on the detrended disparity gradient (docs/geometry_channels.md
-    section 5). Not implemented."""
-    raise NotImplementedError("depth candidates are a later milestone")
+# ---------------------------------------------------------------- depth candidates (TASK_DEPTH_CHANNEL)
+
+MAD_TO_STD = 0.6745
+
+
+def depth_kernels(sigma: float, truncate: float = 4.0) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    """(x, g0, g1, g2) on x in [-R, R], R = ceil(truncate sigma) (D-K).
+
+    g0, g2: the detector's moment-constrained Gaussian and second-derivative kernels (sum g0 = 1, sum g2 = 0,
+    sum x^2 g2 = 2). g1: -(x / sigma^2) g0, normalized so that the implemented filter (a correlation, as in
+    detector._correlate_valid) returns exactly 1 on f(u) = u, i.e. sum x g1 = 1 (which flips the sign of -(x/s^2) g0);
+    sum g1 = 0 by antisymmetry.
+    """
+    x, g0, g2 = kernels(sigma, truncate)
+    g1 = -(x / sigma**2) * g0
+    g1 = g1 / (x * g1).sum()
+    return x, g0, g1, g2
+
+
+def _sep(a: np.ndarray, ku: np.ndarray, kv: np.ndarray) -> np.ndarray:
+    """Separable correlation: ku along u (axis 1), kv along v (axis 0), odd-reflect padding (exact on affine
+    functions), same shape."""
+    ru, rv = ku.size // 2, kv.size // 2
+    p = np.pad(a, ((rv, rv), (ru, ru)), mode="reflect", reflect_type="odd")
+    return _correlate_valid(_correlate_valid(p, ku, axis=1), kv, axis=0)
+
+
+@dataclass(frozen=True)
+class DepthField:
+    rho_s: np.ndarray       # (H, W) G_sigma * rho_src
+    H_uu: np.ndarray        # Hessian of rho_s
+    H_vv: np.ndarray
+    H_uv: np.ndarray
+    grad: np.ndarray        # (H, W, 2) the orientation gradient: grad rho_s - grad rho_{sigma_L} (detrended) or grad rho_s
+    grad_norm: np.ndarray   # (H, W)
+    n: np.ndarray           # (H, W, 2) grad / |grad| (toward larger rho, the near side); (1, 0) where |grad| = 0
+    q: np.ndarray           # (H, W) n^T H n / max(rho_s, rho_floor), signed; 0 outside Omega
+    valid: np.ndarray       # (H, W) Omega and |grad| >= k_g median(|grad| over Omega)
+    s_q: float              # median(|q| over valid, away from the sky and the border) / 0.6745
+    sigma_L: float
+    grad_floor: float
+
+
+def depth_field(ctx: GeometryContext, p, detrend: bool = True) -> DepthField:
+    """D-K, D-1, D-2 on the context's disparity (p.disparity: "rho_f", the default and the fold channel's field, or
+    "rho" for ablations). p: DepthParams (sigma, truncate, sigma_w_prior, sigma_L_factor, k_g, disparity)."""
+    src = {"rho_f": ctx.rho_f, "rho": ctx.rho}[p.disparity]
+    src = np.asarray(src, dtype=np.float64)
+    omega = ctx.omega
+    _, g0, g1, g2 = depth_kernels(p.sigma, p.truncate)
+    rho_s = _sep(src, g0, g0)
+    H_uu, H_vv, H_uv = _sep(src, g2, g0), _sep(src, g0, g2), _sep(src, g1, g1)
+    gu, gv = _sep(src, g1, g0), _sep(src, g0, g1)
+    sigma_tot = math.hypot(p.sigma, p.sigma_w_prior)
+    sigma_L = p.sigma_L_factor * sigma_tot
+    if detrend:
+        _, h0, h1, _ = depth_kernels(sigma_L, p.truncate)
+        gu, gv = gu - _sep(src, h1, h0), gv - _sep(src, h0, h1)
+    gnorm = np.hypot(gu, gv)
+    with np.errstate(invalid="ignore", divide="ignore"):
+        nu = np.where(gnorm > 0, gu / gnorm, 1.0)
+        nv = np.where(gnorm > 0, gv / gnorm, 0.0)
+    q = (nu * nu * H_uu + 2 * nu * nv * H_uv + nv * nv * H_vv) / np.maximum(rho_s, ctx.rho_floor)
+    q = np.where(omega, q, 0.0)
+    floor = p.k_g * float(np.median(gnorm[omega])) if omega.any() else 0.0
+    valid = omega & (gnorm >= floor) & (gnorm > 0)
+    R = int(math.ceil(p.truncate * p.sigma))
+    clean = valid & ~dilate(~omega, R)
+    clean[:R, :] = clean[-R:, :] = False
+    clean[:, :R] = clean[:, -R:] = False
+    s_q = float(np.median(np.abs(q[clean])) / MAD_TO_STD) if clean.any() else float("nan")
+    return DepthField(rho_s=rho_s, H_uu=H_uu, H_vv=H_vv, H_uv=H_uv, grad=np.stack([gu, gv], -1), grad_norm=gnorm,
+                      n=np.stack([nu, nv], -1), q=q, valid=valid, s_q=s_q, sigma_L=sigma_L, grad_floor=floor)
+
+
+def depth_candidates(ctx: GeometryContext, params) -> Candidates:
+    """D-3 (zero crossings, polarity, lobes, two-sided height, sharpness): TASK_DEPTH_CHANNEL D2."""
+    raise NotImplementedError("depth candidates (D-3) are milestone D2")
