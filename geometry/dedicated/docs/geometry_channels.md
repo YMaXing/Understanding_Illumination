@@ -225,8 +225,9 @@ With `[laplacian, fold]` the trilateral filter runs twice (inside `compute_weigh
 
 ## 6. Adding the depth channel
 
-The planned depth channel (a Canny-like detector on the detrended disparity, strength ΔZ/Z_near) plugs in without
-touching `fold.py`.
+Implemented in TASK_DEPTH_CHANNEL (D1–D4; `docs/depth_channel.md`): registered as `"depth"`, config `geometry.depth`,
+runs `depth_v1` / `depth_fold_v1`. The plan below is the F2-era sketch it started from; where they differ the
+depth-channel doc is authoritative (e.g. the depth magnitude uses the gap at x₀, not the min-span gap).
 
 **Planned defaults (F2 decisions; not implemented):**
 
@@ -325,6 +326,9 @@ Settled in F0 (leans agreed) and revised in F1–F4; current state:
 | D3 | lower bound with SE inflated by √λ̂ (as the significance gate); r uses the matching lower bound when ρ̂₋ − z√λ̂ SE₋ ≤ 0; ΔZ_lb = inf when even ρ̂₋ + z√λ̂ SE₋ ≤ 0 | as built |
 | D3 | sky edges (far span ≥ 50 % sky on S): r = significance = ΔZ = inf, w_c = w_min; strength inf there; sky_near rejects | as built |
 | D3 | additive null for Δρ* recorded (`signif_add`, σ_geo,ρ solved so that the null median equals the χ²₁ median 0.455; λ_n = 104.6); gate stays multiplicative; decide in D5 (switch if r_gate P90/P10 > 3) | open (D5) |
+| D4 | `geometry.depth.null` (multiplicative default \| additive), both significances recorded; `"null"` quoted in YAML | as built |
+| D4 | JSON `params.geometry.depth` only for runs with the depth channel; channel arrays keep float32/float16/bool dtypes (float64 → float16 as before); manifest `depth_*` columns only for depth runs; repro references extended by `fold_v2`, `tri_veto4_fold_v2` | as built |
+| D4 | depth strength is inf at sky edges (and unbounded far sides): any fusion on strengths must treat inf as saturated | as built (integration note) |
 
 ## 8. Runtime (CPU, measured in F4)
 

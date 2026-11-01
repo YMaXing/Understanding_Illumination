@@ -1,0 +1,158 @@
+# Geometric-edge channels: depth channel only (TASK_DEPTH_CHANNEL; docs/depth_channel.md); the fold section is unused. Detector, sky and preprocessing
+# settings are tri_veto4's: the context takes the sky mask, rho_floor and trilateral filter from them.
+paths:                    # relative paths are relative to this file; override with --input/-i, --output/-o
+  data_dir: ../data        # input folder of TIFFs (searched recursively with `glob`)
+  out_dir: ../baseline_output   # outputs: stage_a/, stage_b/<run.name>/ (must not be inside data_dir)
+  glob: "**/*.tif*"
+device: cuda
+seed: 0
+
+preprocess:               # confirmed 2026-10-26 from the M1 audit (baseline_output/audit/audit_report.md)
+  layout: rgb             # rgb | mosaic | auto (fail loudly if ambiguous)
+  cfa_pattern: null       # RGGB | BGGR | GRBG | GBRG, if mosaic
+  black_level: 0          # scalar or per-channel; data are already black-subtracted
+  white_level: 65535
+  white_balance: none     # metadata | grayworld | none (network copy only); data are already white-balanced
+  exposure_percentile: 99.0
+  exposure_target: 0.9
+  exposure_gain_max: 64.0
+  respect_orientation_tag: true
+
+network:
+  long_side: 504
+  multiple: 14
+  resize_interp: area
+
+geocalib:
+  weights: pinhole
+  camera_model: pinhole
+
+focal:
+  mode: per_image         # per_image | pooled. Images come from mixed cameras/zoom and carry no EXIF,
+  group_key: null         # so no valid grouping exists: the pooled f is recorded but flagged not meaningful.
+
+da3:
+  model_id: depth-anything/DA3METRIC-LARGE
+  process_res: 504
+  process_res_method: upper_bound_resize   # verified no-op on 504x378 / 378x504 (docs/api_notes.md)
+  batch_size: 1           # M0 flag 4 (confirmed): bf16 numerics depend on batch composition
+  canonical_focal: 300.0
+
+sky:
+  threshold: 0.5
+  open_close_radius: 1
+  min_area_px: 50
+
+detector:
+  sigma: 1.25             # px at network resolution
+  sigma_w_prior: 1.0      # DA3 boundary smear prior, px
+  truncate: 4.0
+  rho_floor_frac: 0.5
+  rho_floor_percentile: 1.0
+  k_tau: 3.0
+  k_eps: 3.0
+  w_min: 0.05
+  s_hat_min: 1.0e-6
+  s_hat_max: null
+  # Candidate "tri (s_hat after filtering) + veto, band factor 4" (docs/pipeline_tri_veto4.md):
+  prefilter: trilateral   # tangent-plane bilateral on disparity before the Laplacian: removes DA3's 7-px grid ripple
+  tri_sigma_s: 3.0        # px, spatial scale (attenuates a 7-px ripple ~40x)
+  tri_sigma_r: 0.01       # relative deviation from the local tangent plane
+  tri_sigma_g: 3.0        # px, scale of the tangent-plane gradient
+  tri_shat: filtered      # noise scale s_hat from the filtered response (keeps folds strong)
+  scale_band: true        # scale-ratio veto: removes responses of smooth curvature (cylinders, spheres)
+  scale_band_mode: veto   # q' = min(q, g |L_sigma - L_{4 sigma}| / rho), g = 1 / (1 - 1/4)
+  band_factor: 4.0
+
+geometry:                 # geometric-edge channels (docs/geometry_channels.md, docs/fold_channel.md)
+  enabled: true
+  channels: [depth]
+  combine: min            # elementwise min of the channels' w (the only mode)
+  dense_fit:              # N1 dense edge-aware plane fit on the trilateral-filtered disparity
+    sigma_n: 3.0
+    sigma_r: 0.01
+    sigma_g: 3.0
+    cond_max: 1.0e+6
+    min_weight_sum: 5.0
+    g_init: side_window   # tangent-plane gradient from 8 half-disk side windows (fixes the invalid band at steps)
+    refit: 1
+  fold:
+    cand_sigma_d: 1.0
+    cand_sigma_T: 1.5
+    cand_rate_factor: 3.0
+    profile_half_len: 12
+    width_min: 2.0
+    width_max: 12.0
+    k_min: 6              # arm A (F2); the planned depth channel uses k >= 11
+    k_margin: 2
+    m: 8
+    m_min: 4
+    w_t: 4
+    max_excluded: 0.2
+    planarity_factor: 3.0
+    b_tri_margin: 1.25    # on the trilateral contamination envelope b_tri(k, m) (geom/data/b_tri.json)
+    null_rms_quantile: 0.95
+    p_fa: 1.0e-3
+    null_stride: 4
+    lambda_clamp: [0.5, 1.0e+4]
+    null_model: multiplicative   # | additive | additive_local; additive failed the 079 sunlit-grass ROI rule
+    lambda_n: 93.2        # additive nulls, k_min = 6 (geom/data/lambda_n.json)
+    local_tile: 48        # additive_local: sigma_geo per 48-px tile, bilinear between tile centres
+    local_min_samples: 50
+    veto_k_factor: 2.0
+    C_min: 0.85           # fixed veto only
+    veto_mode: capped     # k2 capped by the next obstacle; undecidable -> strictly planar (narrow_face) or reject
+    veto_curv_coef: 0.4   # C_min_eff = 1 - 0.4 (1 - C_curv)
+    veto_curv_max: 0.8    # decidable iff C_curv <= 0.8 (calibrated: scripts/calibrate_veto.py)
+    J_min: 0.0872
+    J0: 0.25
+    w_min: 0.05
+    band_min: 2
+    min_component_px: 5
+    depth_jump_rel: 0.02
+
+  depth:                  # depth-edge channel (docs/depth_channel.md; TASK_DEPTH_CHANNEL D-K ... D-7)
+    disparity: rho_f      # the context's trilateral-filtered disparity (rho: ablation only)
+    sigma: 1.25           # px, Hessian scale
+    truncate: 4.0
+    sigma_w_prior: 1.0    # px, DA3 smear prior (detrending scale sigma_L = 4 sqrt(sigma^2 + prior^2))
+    sigma_L_factor: 4.0
+    k_g: 3.0              # gradient floor g_n > 3 sigma_g (Rayleigh scale)
+    lobe_half_len: 8.0
+    lobe_step: 0.25
+    k_h: 3.0              # two-sided lobe height > 3 s_q
+    s_lo_factor: 0.8
+    sigma_w_max: 1.02     # px, P99 at unambiguous real occlusions (geom/data/depth_calibration.json)
+    centre_tol: 0.4       # centring |s_p + s_m| <= 0.4 s_sep
+    symmetry: false
+    symmetry_ratio: 4.0
+    k_min: 11             # window skip >= 11 (clear of the trilateral bias zone)
+    m: 8
+    w_t: 4
+    m_min: 4
+    max_excluded: 0.2
+    planarity_factor: 3.0
+    b_tri_margin: 1.25
+    null_rms_quantile: 0.95
+    gap_mode: at_x0
+    doublet_coef: 1.03    # thin fallback: Delta rho = 1.03 |h|_lobe s_sep^2
+    tau_low: 0.02         # relative jump hysteresis
+    tau_high: 0.04
+    min_component_px: 5
+    link_radius: 3.0      # px, contour components
+    z: 3.29               # significance, two-sided p_fa = 1e-3
+    null_stride: 4
+    lambda_clamp: [0.5, 1.0e+4]
+    "null": multiplicative  # | additive (both significances always recorded; the key is quoted: bare null is YAML null)
+    lambda_n: 104.6       # additive null, k = 11
+    smooth_n: 5
+    sky_far_frac: 0.5
+    canonical_focal: 300.0
+    dZ0: 0.10             # m, knee of w_c = max(w_min, dZ0 / (dZ + dZ0))
+    w_min: 0.05
+    band_min: 2
+
+run:
+  name: depth_v1
+  limit: null
+  force: false

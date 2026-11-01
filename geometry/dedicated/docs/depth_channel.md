@@ -1,6 +1,6 @@
 # Depth-edge channel: design (draft, D0)
 
-Status 2026-11-01: **design draft** (TASK_DEPTH_CHANNEL D0), with D1 (field) and D2 (candidates, calibration) implemented, and D3 (jump, gates, magnitude, weights, `DepthChannel`); sections 7–8 record what D2 and D3 changed. The math is settled in
+Status 2026-11-01: **design draft** (TASK_DEPTH_CHANNEL D0), with D1 (field) and D2 (candidates, calibration) implemented, D3 (jump, gates, magnitude, weights, `DepthChannel`) and D4 (registry, config, Stage B saving); sections 7–9 record what D2–D4 changed. The math is settled in
 `TASK_DEPTH_CHANNEL.md` (D-K, D-1 … D-7) and only referenced here; this draft fixes the module map, the data flow, the
 use of the shared two-sided fit (and the one change to it), the context's laziness for `[depth]`, and where the
 evaluation classes and ROIs come from. It is finalized in D6 in the style of `docs/fold_channel.md`.
@@ -214,3 +214,35 @@ inf / w_min and sky_near; horizon lower bound flagged (unbounded); poles 6–20 
 image after the context, normals never built. Significance, not τ_low, binds for 73–100 % of candidates (r_gate P50
 0.035–0.34; P90/P10 7–51). 090: a chain-link fence (DA3 renders the mesh as depth blobs) gives 1714 thin accepted
 candidates in small rings (w < 0.5 on 7.9 % of the image).
+
+## 9. D4 record: integration and saved outputs
+
+**Registry and config.** `CHANNELS["depth"] = DepthChannel`. `geometry.depth` (`DepthCfg`) mirrors `DepthParams` field
+for field (tested), with validation and nested `--set` (e.g. `--set geometry.depth.null=additive`). The gate null is
+`geometry.depth.null`: `multiplicative` (default; λ̂_Δρ) or `additive` (λ_n SE² + σ_geo,ρ²); both significance columns
+are always recorded. In YAML the key is written quoted, `"null": multiplicative` (a bare `null` key is YAML's null);
+PyYAML quotes it when it writes `config_resolved.yaml`. Configs: `configs/candidate_depth_only.yaml` (`[depth]`, run
+`depth_v1`), `configs/candidate_depth_fold.yaml` (`[depth, fold]` with the fold_v2 settings, run `depth_fold_v1`);
+`configs/default.yaml` is unchanged (geometry off).
+
+**Records.** The JSON `params.geometry.depth` block is written only for runs that include the depth channel, so every
+earlier geometry run reproduces its record bit for bit (`fold_only`, `tri_veto4_fold`, `fold_v2`,
+`tri_veto4_fold_v2` in `tests/test_baseline_repro.py`). Channel arrays keep float32 / float16 / bool dtypes; float64
+arrays are stored as float16 as before (fold's `r_n` unchanged).
+
+**Saved outputs** (`stage_b/<run>/`, arrays in the stored frame at network resolution):
+
+| key / file | content |
+|---|---|
+| `depth_w_net` (float16) | w_depth ∈ [w_min, 1] |
+| `depth_strength` (float16) | r = ΔZ/Z_near at rasterized pixels (max over overlapping bands), 0 elsewhere. **inf at sky edges** (and where the far side is unbounded): any future fusion on strengths must treat inf as saturated |
+| `depth_dZ` (float32) | ΔZ in metres at rasterized pixels (max over bands), NaN elsewhere, inf at sky edges / unbounded far sides |
+| `depth_q_over_s` (float16) | signed q/ŝ_q, clipped to ±6.5e4 |
+| `depth_edge_mask` (bool) | the accepted candidates' rounded pixels |
+| `<stem>_depth_candidates.parquet` | every D-3 candidate (merged crossings above the gradient floor): position, n, lobes (q at the h peaks), s_sep, centring, σ_w,c, k_c; for D-3 survivors the jump (fit modes per side, d_next±, ρ̂±, SE±, Δρ*, its SE, the min-span gap, planarity / m_used / rms / exclusion of the m = 8 fit), the doublet and its ratio, `signif` (multiplicative) and `signif_add`, r, r_gate, sky shares, flags (`sky_edge`, `sky_near`, `thin`, `planes_cross`, `r_lower_bound`, `lower_bound`), component id / size / max r, smoothed ρ̂±, ΔZ with its focal bracket, w_c, band, `accepted` and `reason` ∈ {polarity, height, sharpness, centring, symmetry, sky_near, sign, signif, rel, component, accepted} |
+| `<stem>_depth_null.parquet` | the null grid: u, v, Δρ*, SE, planar± |
+| JSON `channels.depth` | ŝ_q, σ̂_g, λ̂_Δρ (raw and clamped), σ_geo,ρ, `null`, σ_w,max, s_lo, s_hi, counts per stage and per fit mode, r_gate P10/P50/P90, the share where significance binds, focal f_n and σ_f/f, shares w < 0.5 / 0.9, params, context and runtime |
+| manifest | `depth_*` columns (counts, ŝ_q, λ̂, σ_geo,ρ, null, σ_w,max, r_gate P50, share binding, shares of w, runtime) for depth runs only |
+
+A `[depth]` run never builds the dense fit or the normals: no `n_hat` / `sigma_theta` / `normal_valid` arrays,
+`normals_computed: false` (tested). `[depth, fold]` saves the elementwise min of the two channels' w (tested).

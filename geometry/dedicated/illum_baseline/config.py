@@ -153,6 +153,50 @@ class FoldCfg:
 
 
 @dataclass
+class DepthCfg:
+    """Depth-edge channel (illum_baseline/geom/depth.py: DepthParams; docs/depth_channel.md). Field for field."""
+    disparity: str = "rho_f"            # rho_f | rho (ablation)
+    sigma: float = 1.25
+    truncate: float = 4.0
+    sigma_w_prior: float = 1.0
+    sigma_L_factor: float = 4.0
+    k_g: float = 3.0
+    lobe_half_len: float = 8.0
+    lobe_step: float = 0.25
+    k_h: float = 3.0
+    s_lo_factor: float = 0.8
+    sigma_w_max: float = 1.02           # P99 of sigma_w_c at unambiguous occlusions (geom/data/depth_calibration.json)
+    centre_tol: float = 0.4
+    symmetry: bool = False
+    symmetry_ratio: float = 4.0
+    k_min: int = 11
+    m: int = 8
+    w_t: int = 4
+    m_min: int = 4
+    max_excluded: float = 0.2
+    planarity_factor: float = 3.0
+    b_tri_margin: float = 1.25
+    null_rms_quantile: float = 0.95
+    gap_mode: str = "at_x0"
+    doublet_coef: float = 1.03
+    tau_low: float = 0.02
+    tau_high: float = 0.04
+    min_component_px: int = 5
+    link_radius: float = 3.0
+    z: float = 3.29
+    null_stride: int = 4
+    lambda_clamp: list[float] = field(default_factory=lambda: [0.5, 1.0e4])
+    null: str = "multiplicative"        # multiplicative | additive (both significances always recorded)
+    lambda_n: float = 104.6             # additive null, k = 11 (geom/data/depth_calibration.json)
+    smooth_n: int = 5
+    sky_far_frac: float = 0.5
+    canonical_focal: float = 300.0
+    dZ0: float = 0.10                   # m
+    w_min: float = 0.05
+    band_min: int = 2
+
+
+@dataclass
 class GeometryCfg:
     """Geometric-edge channels (docs/geometry_channels.md). Off by default: Stage B then runs the detector path."""
     enabled: bool = False
@@ -160,6 +204,7 @@ class GeometryCfg:
     combine: str = "min"
     dense_fit: DenseFitCfg = field(default_factory=DenseFitCfg)
     fold: FoldCfg = field(default_factory=FoldCfg)
+    depth: DepthCfg = field(default_factory=DepthCfg)
 
 
 @dataclass
@@ -342,6 +387,26 @@ def _validate_geometry(g: GeometryCfg) -> None:
         raise ValueError("geometry.fold: scales, factors and J0 must be > 0")
     if f.k_min < 1 or f.w_t < 0 or f.null_stride < 1 or not 0 <= f.max_excluded < 1:
         raise ValueError("geometry.fold: k_min >= 1, w_t >= 0, null_stride >= 1, 0 <= max_excluded < 1")
+    e = g.depth
+    if e.disparity not in ("rho_f", "rho"):
+        raise ValueError(f"geometry.depth.disparity must be rho_f|rho, got {e.disparity!r}")
+    if e.null not in ("multiplicative", "additive"):
+        raise ValueError(f"geometry.depth.null must be multiplicative|additive, got {e.null!r}")
+    if e.gap_mode != "at_x0":
+        raise ValueError("geometry.depth.gap_mode must be at_x0 (min_span is recorded only)")
+    if len(e.lambda_clamp) != 2 or not 0 < e.lambda_clamp[0] <= e.lambda_clamp[1]:
+        raise ValueError("geometry.depth.lambda_clamp must be [lo, hi] with 0 < lo <= hi")
+    if min(e.sigma, e.truncate, e.sigma_L_factor, e.lobe_half_len, e.lobe_step, e.sigma_w_max, e.centre_tol, e.z,
+           e.dZ0, e.link_radius, e.canonical_focal, e.lambda_n, e.doublet_coef) <= 0 or min(e.k_g, e.k_h,
+                                                                                            e.sigma_w_prior) < 0:
+        raise ValueError("geometry.depth: scales, tolerances, z, dZ0, link_radius must be > 0; k_g, k_h >= 0")
+    if not 0 <= e.tau_low <= e.tau_high:
+        raise ValueError("geometry.depth: need 0 <= tau_low <= tau_high")
+    if not 1 <= e.m_min <= e.m or e.k_min < 1 or e.w_t < 0 or e.null_stride < 1 or not 0 <= e.max_excluded < 1:
+        raise ValueError("geometry.depth: 1 <= m_min <= m, k_min >= 1, w_t >= 0, null_stride >= 1, "
+                         "0 <= max_excluded < 1")
+    if not 0 < e.w_min < 1 or not 0 < e.sky_far_frac <= 1 or e.smooth_n < 1 or e.band_min < 0:
+        raise ValueError("geometry.depth: w_min in (0, 1), sky_far_frac in (0, 1], smooth_n >= 1, band_min >= 0")
 
 
 PATH_KEYS = ("data_dir", "out_dir")

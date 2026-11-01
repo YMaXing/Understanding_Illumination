@@ -1,8 +1,8 @@
 """Geometric-edge channels: result container, protocol, registry and combiner (docs/geometry_channels.md section 3.1).
 
 Each channel reads the shared GeometryContext and returns a ChannelResult; Stage B combines the channels' w_net with
-`combine` (elementwise min, the only mode). A new channel (e.g. "depth") is a class with `name` and
-`run(ctx, params) -> ChannelResult`, registered in CHANNELS.
+`combine` (elementwise min, the only mode). A channel is a class with `name` and
+`run(ctx, params) -> ChannelResult`, registered in CHANNELS ("laplacian", "fold", "depth").
 """
 
 from __future__ import annotations
@@ -21,7 +21,9 @@ if TYPE_CHECKING:
 class ChannelResult:
     name: str
     w_net: np.ndarray                  # (H, W) in [w_min, 1], network res, upright
-    strength: np.ndarray | None        # dimensionless per-pixel strength (fold: J at rasterized pixels, else 0)
+    strength: np.ndarray | None        # dimensionless per-pixel strength (fold: J, depth: r = Delta Z / Z_near at
+                                       # rasterized pixels, else 0; depth: inf at sky edges, so any fusion on
+                                       # strengths must treat inf as saturated)
     candidates: pd.DataFrame | None    # one row per candidate (all, with accept/reject reasons)
     arrays: dict[str, np.ndarray] = field(default_factory=dict)  # saved as "<name>_<key>"
     scalars: dict[str, float] = field(default_factory=dict)
@@ -49,8 +51,9 @@ def combine(results: list[ChannelResult], mode: str = "min") -> np.ndarray:
 def __getattr__(name: str):
     """CHANNELS is built on first access: the channel modules import ChannelResult from here."""
     if name == "CHANNELS":
+        from .depth import DepthChannel
         from .fold import FoldChannel
         from .laplacian import LaplacianChannel
 
-        return {"laplacian": LaplacianChannel, "fold": FoldChannel}  # future: "depth"
+        return {"laplacian": LaplacianChannel, "fold": FoldChannel, "depth": DepthChannel}
     raise AttributeError(f"module {__name__!r} has no attribute {name!r}")

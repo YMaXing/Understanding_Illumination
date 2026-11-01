@@ -232,8 +232,8 @@ def _process_one_geometry(cfg: Config, stem: str, rd: Path, meta_a: dict[str, An
         arrays[f"{r.name}_w_net"] = st(r.w_net)
         if r.strength is not None:
             arrays[f"{r.name}_strength"] = st(r.strength)
-        for k, a in r.arrays.items():
-            arrays[f"{r.name}_{k}"] = st(a)
+        for k, a in r.arrays.items():  # float64 -> float16 (as always); float32 / float16 / bool keep their dtype
+            arrays[f"{r.name}_{k}"] = st(a, a.dtype if a.dtype in (np.float32, np.float16) else np.float16)
     if "_normals" in ctx.__dict__:  # a channel computed the normals: save them (vector components stay upright)
         arrays["n_hat"] = st(ctx.n_hat)
         arrays["sigma_theta"] = st(ctx.sigma_theta)
@@ -264,6 +264,8 @@ def _process_one_geometry(cfg: Config, stem: str, rd: Path, meta_a: dict[str, An
 
     geo = dataclasses.asdict(cfg.geometry)
     geo["fold"] = params_record(geo["fold"])
+    if "depth" not in cfg.geometry.channels:  # runs without the depth channel keep their records unchanged
+        geo.pop("depth")
     common["params"]["geometry"] = geo
     common["provenance"]["geometry_version"] = GEOMETRY_VERSION
     meta = {

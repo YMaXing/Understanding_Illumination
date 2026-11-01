@@ -10,6 +10,9 @@ import numpy as np
 import pandas as pd
 
 FOCAL_REL_UNC_MAX = 0.15
+DEPTH_KEYS = ("n_cand", "n_passed", "n_accepted", "n_thin_accepted", "n_sky_edge_accepted", "n_lower_bound_accepted",
+              "s_q", "lambda_hat", "sigma_geo_rho", "null", "sigma_w_max", "r_gate_P50", "share_signif_binding",
+              "frac_w_lt_0.5", "frac_w_lt_0.9", "runtime_s")
 SKY_FRAC_MAX = 0.5
 
 
@@ -31,6 +34,9 @@ def manifest_frame(rd: Path) -> pd.DataFrame:
                                              "frac_w_lt_1")},
             **({f"combined_{k}": m["combined"][k] for k in ("frac_w_lt_0.5", "frac_w_lt_0.9", "frac_w_lt_1")}
                | {"normals_computed": m["normals_computed"]} if "combined" in m else {}),
+            # depth-channel runs only (other runs keep their manifest columns)
+            **({f"depth_{k}": m["channels"]["depth"].get(k, np.nan) for k in DEPTH_KEYS}
+               if "depth" in m.get("channels", {}) else {}),
             "f_active": f["f_active"], "f_n": f["f_n"], "focal_mode": f["mode"],
             "f_per_image": f["f_per_image"], "f_pooled": f["f_pooled"],
             "pooled_meaningful": f["pooled_meaningful"],
