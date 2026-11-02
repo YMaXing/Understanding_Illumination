@@ -11,7 +11,7 @@ import pandas as pd
 
 FOCAL_REL_UNC_MAX = 0.15
 DEPTH_KEYS = ("n_cand", "n_passed", "n_accepted", "n_thin_accepted", "n_sky_edge_accepted", "n_lower_bound_accepted",
-              "s_q", "lambda_hat", "sigma_geo_rho", "null", "sigma_w_max", "r_gate_P50", "share_signif_binding",
+              "s_q", "lambda_hat", "sigma_geo_rho", "null_model", "sigma_w_max", "r_gate_P50", "share_signif_binding",
               "frac_w_lt_0.5", "frac_w_lt_0.9", "runtime_s")
 SKY_FRAC_MAX = 0.5
 

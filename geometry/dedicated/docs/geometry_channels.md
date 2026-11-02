@@ -326,9 +326,12 @@ Settled in F0 (leans agreed) and revised in F1–F4; current state:
 | D3 | lower bound with SE inflated by √λ̂ (as the significance gate); r uses the matching lower bound when ρ̂₋ − z√λ̂ SE₋ ≤ 0; ΔZ_lb = inf when even ρ̂₋ + z√λ̂ SE₋ ≤ 0 | as built |
 | D3 | sky edges (far span ≥ 50 % sky on S): r = significance = ΔZ = inf, w_c = w_min; strength inf there; sky_near rejects | as built |
 | D3 | additive null for Δρ* recorded (`signif_add`, σ_geo,ρ solved so that the null median equals the χ²₁ median 0.455; λ_n = 104.6); gate stays multiplicative; decide in D5 (switch if r_gate P90/P10 > 3) | open (D5) |
-| D4 | `geometry.depth.null` (multiplicative default \| additive), both significances recorded; `"null"` quoted in YAML | as built |
+| D4–D5 | `geometry.depth.null_model` (multiplicative default \| additive; renamed from `null` before D5, the fold channel's key name), both significances recorded | as built |
 | D4 | JSON `params.geometry.depth` only for runs with the depth channel; channel arrays keep float32/float16/bool dtypes (float64 → float16 as before); manifest `depth_*` columns only for depth runs; repro references extended by `fold_v2`, `tri_veto4_fold_v2` | as built |
 | D4 | depth strength is inf at sky edges (and unbounded far sides): any fusion on strengths must treat inf as saturated | as built (integration note) |
+| D5 | runs `depth_v1` (multiplicative), `depth_v1_add` (additive), `depth_fold_v1`; depth sheet `viz_depth/`, profile tool `diag-depth`; all D5 spot checks met under both nulls | as built |
+| D5 | additive null for the depth channel: meets the decision rule (texture ≤ multiplicative + 0.02 on the 070 floor and both 079 grass ROIs; step/limb targets kept; synthetic box silhouette recall 0.91 → 0.95); **proposed as the default, not switched** | open (decision) |
+| D5 | 080 side face edge R (fold target) is also an occluding silhouette (depth fires there correctly); 090 chain-link fence reported as a clutter case (thin rings; not tuned) | as measured |
 
 ## 8. Runtime (CPU, measured in F4)
 

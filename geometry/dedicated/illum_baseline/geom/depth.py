@@ -73,7 +73,7 @@ class DepthParams:
     z: float = 3.29                   # two-sided p_fa = 1e-3
     null_stride: int = 4
     lambda_clamp: tuple[float, float] = (0.5, 1.0e4)
-    null: str = "multiplicative"      # gate null: multiplicative (lambda_hat) | additive (lambda_n SE^2 + sigma_geo_rho^2);
+    null_model: str = "multiplicative"  # gate null (same key as the fold channel): multiplicative (lambda_hat) | additive (lambda_n SE^2 + sigma_geo_rho^2);
                                       # both significance columns are always recorded
     lambda_n: float = 104.6           # noise-only inflation of (Delta rho*/SE)^2 at k = 11 (data/depth_calibration.json)
     # D-6: magnitude
@@ -138,7 +138,7 @@ class DepthNull:
 def depth_null(ctx: GeometryContext, p: DepthParams, f: DepthField, k: int | None = None) -> DepthNull:
     """Contamination threshold (flag 3: max(planarity_factor eps_hat, Q_{null_rms_quantile}, b_tri_margin b_tri)),
     lambda_hat_Delta_rho = median((Delta rho*/SE)^2 over the null) / 0.455, clamped to lambda_clamp, and the additive
-    null's sigma_geo_rho^2 (recorded; the gate uses it only with null "additive")."""
+    null's sigma_geo_rho^2 (recorded; the gate uses it only with null_model "additive")."""
     k = p.k_min if k is None else k
     xn, en = null_grid(ctx, p, f)
     kw = fit_kwargs(p, ctx)
@@ -433,8 +433,8 @@ class DepthChannel:
 
     def run(self, ctx: GeometryContext, params: dict | DepthParams | None = None) -> ChannelResult:
         p = params if isinstance(params, DepthParams) else DepthParams.from_dict(params)
-        if p.null not in NULL_MODELS:
-            raise ValueError(f"unknown null {p.null!r}; expected one of {NULL_MODELS}")
+        if p.null_model not in NULL_MODELS:
+            raise ValueError(f"unknown null_model {p.null_model!r}; expected one of {NULL_MODELS}")
         if p.gap_mode != "at_x0":
             raise ValueError("the depth magnitude uses gap_mode 'at_x0' (min_span is recorded only)")
         H, W = ctx.shape
@@ -455,7 +455,7 @@ class DepthChannel:
         obst = c.x0[P][r_doublet[P] > p.tau_low]
         J = jump(ctx, p, c.x0[P], c.n[P], c.k_c[P], c.q_p[P], c.q_m[P], c.h_p[P], c.h_m[P], c.s_sep[P], c.rho_s0[P],
                  f.s_q, nul, obst)
-        signif = J["signif_add"] if p.null == "additive" else J["signif"]
+        signif = J["signif_add"] if p.null_model == "additive" else J["signif"]
         sky_edge, sky_near = J["sky_edge"], J["sky_near"]
         with np.errstate(invalid="ignore"):
             sign_ok = sky_edge | (J["d_rho"] > 0)
@@ -502,7 +502,7 @@ class DepthChannel:
                 arr[A] = running_median(chs, vals, p.smooth_n, c.x0[P][A], J[bkey][A])
         scale = 0.5 * (ctx.K.f_x + ctx.K.f_y) / p.canonical_focal
         # lower bound with the SEs inflated by sqrt(lambda_hat), as in the significance gate (D3 decision)
-        zs = p.z * math.sqrt(nul.lambda_hat if p.null == "multiplicative" else p.lambda_n)
+        zs = p.z * math.sqrt(nul.lambda_hat if p.null_model == "multiplicative" else p.lambda_n)
         with np.errstate(invalid="ignore", divide="ignore"):
             dZ = scale * (1.0 / rho_m_s - 1.0 / rho_p_s)
             lower = ~sky_edge & (rho_m_s - zs * J["se_m"] <= 0)
@@ -580,7 +580,7 @@ class DepthChannel:
             "s_q": f.s_q, "sigma_g": f.sigma_g, "g_floor": f.g_floor, "valid_frac": float(f.valid.mean()),
             "lambda_hat": nul.lambda_hat, "lambda_hat_raw": nul.lambda_raw, "eps_hat": nul.eps_hat,
             "null_rms_q": nul.q_null, "n_null": int(len(nul.res.d_rho)), "n_null_valid": int(nul.z2.size),
-            "sigma_geo_rho": math.sqrt(nul.sigma2_add), "null": p.null,
+            "sigma_geo_rho": math.sqrt(nul.sigma2_add), "null_model": p.null_model,
             "sigma_w_max": p.sigma_w_max, "s_lo": c.s_lo, "s_hi": c.s_hi, **counts, **modes,
             "n_signif_ok_add": int((~sky_near & sign_ok & (sky_edge | (J["signif_add"] > p.z))).sum()),
             "n_thin_accepted": int((accepted & J["thin"]).sum()), "n_sky_edge_accepted": int((accepted & sky_edge).sum()),

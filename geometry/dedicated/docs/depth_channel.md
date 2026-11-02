@@ -1,6 +1,6 @@
 # Depth-edge channel: design (draft, D0)
 
-Status 2026-11-01: **design draft** (TASK_DEPTH_CHANNEL D0), with D1 (field) and D2 (candidates, calibration) implemented, D3 (jump, gates, magnitude, weights, `DepthChannel`) and D4 (registry, config, Stage B saving); sections 7–9 record what D2–D4 changed. The math is settled in
+Status 2026-11-01: **design draft** (TASK_DEPTH_CHANNEL D0), with D1 (field) and D2 (candidates, calibration) implemented, D3 (jump, gates, magnitude, weights, `DepthChannel`), D4 (registry, config, Stage B saving) and D5 (viz, runs, evaluation); sections 7–10 record what D2–D5 changed. The math is settled in
 `TASK_DEPTH_CHANNEL.md` (D-K, D-1 … D-7) and only referenced here; this draft fixes the module map, the data flow, the
 use of the shared two-sided fit (and the one change to it), the context's laziness for `[depth]`, and where the
 evaluation classes and ROIs come from. It is finalized in D6 in the style of `docs/fold_channel.md`.
@@ -218,12 +218,11 @@ candidates in small rings (w < 0.5 on 7.9 % of the image).
 ## 9. D4 record: integration and saved outputs
 
 **Registry and config.** `CHANNELS["depth"] = DepthChannel`. `geometry.depth` (`DepthCfg`) mirrors `DepthParams` field
-for field (tested), with validation and nested `--set` (e.g. `--set geometry.depth.null=additive`). The gate null is
-`geometry.depth.null`: `multiplicative` (default; λ̂_Δρ) or `additive` (λ_n SE² + σ_geo,ρ²); both significance columns
-are always recorded. In YAML the key is written quoted, `"null": multiplicative` (a bare `null` key is YAML's null);
-PyYAML quotes it when it writes `config_resolved.yaml`. Configs: `configs/candidate_depth_only.yaml` (`[depth]`, run
-`depth_v1`), `configs/candidate_depth_fold.yaml` (`[depth, fold]` with the fold_v2 settings, run `depth_fold_v1`);
-`configs/default.yaml` is unchanged (geometry off).
+for field (tested), with validation and nested `--set` (e.g. `--set geometry.depth.null_model=additive`). The gate null
+is `geometry.depth.null_model` (the fold channel's key name): `multiplicative` (default; λ̂_Δρ) or `additive`
+(λ_n SE² + σ_geo,ρ²); both significance columns are always recorded. Configs: `configs/candidate_depth_only.yaml`
+(`[depth]`, run `depth_v1`), `configs/candidate_depth_fold.yaml` (`[depth, fold]` with the fold_v2 settings, run
+`depth_fold_v1`); `configs/default.yaml` is unchanged (geometry off).
 
 **Records.** The JSON `params.geometry.depth` block is written only for runs that include the depth channel, so every
 earlier geometry run reproduces its record bit for bit (`fold_only`, `tri_veto4_fold`, `fold_v2`,
@@ -241,8 +240,34 @@ arrays are stored as float16 as before (fold's `r_n` unchanged).
 | `depth_edge_mask` (bool) | the accepted candidates' rounded pixels |
 | `<stem>_depth_candidates.parquet` | every D-3 candidate (merged crossings above the gradient floor): position, n, lobes (q at the h peaks), s_sep, centring, σ_w,c, k_c; for D-3 survivors the jump (fit modes per side, d_next±, ρ̂±, SE±, Δρ*, its SE, the min-span gap, planarity / m_used / rms / exclusion of the m = 8 fit), the doublet and its ratio, `signif` (multiplicative) and `signif_add`, r, r_gate, sky shares, flags (`sky_edge`, `sky_near`, `thin`, `planes_cross`, `r_lower_bound`, `lower_bound`), component id / size / max r, smoothed ρ̂±, ΔZ with its focal bracket, w_c, band, `accepted` and `reason` ∈ {polarity, height, sharpness, centring, symmetry, sky_near, sign, signif, rel, component, accepted} |
 | `<stem>_depth_null.parquet` | the null grid: u, v, Δρ*, SE, planar± |
-| JSON `channels.depth` | ŝ_q, σ̂_g, λ̂_Δρ (raw and clamped), σ_geo,ρ, `null`, σ_w,max, s_lo, s_hi, counts per stage and per fit mode, r_gate P10/P50/P90, the share where significance binds, focal f_n and σ_f/f, shares w < 0.5 / 0.9, params, context and runtime |
-| manifest | `depth_*` columns (counts, ŝ_q, λ̂, σ_geo,ρ, null, σ_w,max, r_gate P50, share binding, shares of w, runtime) for depth runs only |
+| JSON `channels.depth` | ŝ_q, σ̂_g, λ̂_Δρ (raw and clamped), σ_geo,ρ, `null_model`, σ_w,max, s_lo, s_hi, counts per stage and per fit mode, r_gate P10/P50/P90, the share where significance binds, focal f_n and σ_f/f, shares w < 0.5 / 0.9, params, context and runtime |
+| manifest | `depth_*` columns (counts, ŝ_q, λ̂, σ_geo,ρ, null_model, σ_w,max, r_gate P50, share binding, shares of w, runtime) for depth runs only |
 
 A `[depth]` run never builds the dense fit or the normals: no `n_hat` / `sigma_theta` / `normal_valid` arrays,
 `normals_computed: false` (tested). `[depth, fold]` saves the elementwise min of the two channels' w (tested).
+
+## 10. D5 record: visualization, runs, evaluation
+
+**Tools.** Depth sheet `stage_b/<run>/viz_depth/<stem>.png` (`illum_baseline/viz_depth.py`; rendered by Stage B and
+`viz` for runs with the depth channel; panel 4 recomputes the field from the Stage A cache). Profile tool
+`python -m illum_baseline diag-depth --config configs/candidate_depth_only.yaml --stem S --u U --v V`
+(`illum_baseline/diag_depth.py` → `stage_b/<run>/diag_depth/<stem>_u<U>_v<V>.png`): ρ_f and q along n with the lobes,
+the side planes extrapolated to x₀, the windows used, Δρ*, r, ΔZ, the doublet ratio, both significances.
+
+**Runs** (10 images): `depth_v1` (multiplicative), `depth_v1_add` (`--set geometry.depth.null_model=additive`),
+`depth_fold_v1`. Report: `scripts/depth_d5_report.py` → `baseline_output/diag/depth_v1/d5/d5_report.json`.
+
+- Share w_depth < 0.5 per image: 1.0–7.9 % (multiplicative), 1.0–8.1 % (additive); `depth_fold_v1` combined 3.0–11.4 %;
+  tri_veto4 10.5–33 %, tri_veto4_fold_v2 10.9–34.6 %. Runtime 0.57–0.83 s per image after the 0.3–0.4 s context.
+- Per class (share of w_depth < 0.5; multiplicative / additive): step 0.809 / 0.809, limb 0.997 / 0.997, fold
+  0.089 / 0.089, texture 0.0010 / 0.0029. The fold share comes from the 080 side face edge R target (0.57): its upper
+  half is the side face's outer silhouette against the background (r P50 2.2, ΔZ P50 4.9 m), an occlusion that the
+  fold targets also list; every other fold / crease target is ≤ 0.03.
+- Spot checks: all 16 met under both nulls (070 floor 0.000 vs ≤ 0.041; sky boundary median 0.05; 079 grass
+  0.000 / 0.003, sunlit 0.003 / 0.006; 079 silhouettes median 0.05–0.08; 079 box fold 1.00; 083 limbs 0.11 / 0.13;
+  083 rim 1.00; creases 1.00; runtime ≤ 0.83 s).
+- Additive null: +3 to +33 % accepted candidates; synthetic box silhouette recall (test 7) 0.910 → 0.950. Decision
+  rule (texture ≤ multiplicative + 0.02 on the 070 floor and both 079 grass ROIs, step / limb targets kept): **met**.
+  Proposed, not switched (the default stays multiplicative until decided).
+- 090 (chain-link fence, clutter case): 1995 of 2904 accepted candidates in the fence region (u 0–150, v 0–280), 89 %
+  thin (doublet) rings; w_depth < 0.5 on 24.5 % of the region vs 3.1 % elsewhere. Not tuned.

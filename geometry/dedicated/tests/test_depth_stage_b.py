@@ -1,6 +1,6 @@
 """TASK_DEPTH_CHANNEL D4: depth-channel integration (registry, config, Stage B saving, manifest).
 
-- config <-> params field parity, the two run configs, nested --set (geometry.depth.null), validation, YAML round trip;
+- config <-> params field parity, the two run configs, nested --set (geometry.depth.null_model), validation, YAML round trip;
 - a [depth] run never builds the dense fit or the normals (no n_hat saved, normals_computed false);
 - [depth, fold] saves the elementwise min of the two channels' w;
 - saved npz keys and dtypes, the candidate / null parquet schemas, the JSON channel record, the manifest columns;
@@ -37,7 +37,7 @@ DEPTH_COLUMNS = [
     "component_id", "component_px", "comp_r_max", "rho_p_s", "rho_m_s", "dZ", "dZ_lo", "dZ_hi", "lower_bound",
     "w_c", "band", "accepted", "reason",
 ]
-DEPTH_SCALARS = {"s_q", "sigma_g", "lambda_hat", "sigma_geo_rho", "null", "sigma_w_max", "s_lo", "s_hi", "n_cand",
+DEPTH_SCALARS = {"s_q", "sigma_g", "lambda_hat", "sigma_geo_rho", "null_model", "sigma_w_max", "s_lo", "s_hi", "n_cand",
                  "n_passed", "n_accepted", "n_fit_m8", "n_fit_doublet", "r_gate_P10", "r_gate_P50", "r_gate_P90",
                  "share_signif_binding", "frac_w_lt_0.5", "frac_w_lt_0.9", "params", "context_s", "runtime_s"}
 
@@ -54,12 +54,12 @@ def test_depth_config_parity_and_options():
     fold_v2 = load_config(CONFIGS / "candidate_fold_v2.yaml").geometry.fold
     assert load_config(CONFIGS / "candidate_depth_fold.yaml").geometry.fold == fold_v2  # the fold_v2 settings
     assert load_config(CONFIGS / "default.yaml").geometry.enabled is False
-    cfg = apply_sets(Config(), ["geometry.depth.null=additive", "geometry.depth.dZ0=2e-1",
+    cfg = apply_sets(Config(), ["geometry.depth.null_model=additive", "geometry.depth.dZ0=2e-1",
                                 "geometry.depth.lambda_clamp=[1, 1e3]"])
-    assert cfg.geometry.depth.null == "additive" and cfg.geometry.depth.dZ0 == 0.2
-    back = yaml.safe_load(yaml.safe_dump(cfg.to_dict(), sort_keys=False))  # "null" survives the YAML round trip
-    assert back["geometry"]["depth"]["null"] == "additive"
-    for bad in (["geometry.depth.null=bogus"], ["geometry.depth.gap_mode=min_span"], ["geometry.depth.disparity=x"],
+    assert cfg.geometry.depth.null_model == "additive" and cfg.geometry.depth.dZ0 == 0.2
+    back = yaml.safe_load(yaml.safe_dump(cfg.to_dict(), sort_keys=False))
+    assert back["geometry"]["depth"]["null_model"] == "additive"
+    for bad in (["geometry.depth.null_model=bogus"], ["geometry.depth.null=additive"], ["geometry.depth.gap_mode=min_span"], ["geometry.depth.disparity=x"],
                 ["geometry.depth.tau_low=0.1"], ["geometry.depth.lambda_clamp=[5, 1]"], ["geometry.depth.nope=1"],
                 ["geometry.depth.w_min=1.5"]):
         with pytest.raises(ValueError):
@@ -88,7 +88,7 @@ def test_depth_only_run_no_normals_and_schema(tmp_path):
         assert np.array_equal(z["w_net"], z["depth_w_net"])  # one channel: its w unchanged
         assert meta["normals_computed"] is False
         sc = meta["channels"]["depth"]
-        assert DEPTH_SCALARS <= set(sc) and sc["null"] == "multiplicative"
+        assert DEPTH_SCALARS <= set(sc) and sc["null_model"] == "multiplicative"
         assert "depth" in meta["params"]["geometry"]
         cand = pd.read_parquet(tmp_path / f"{stem}_depth_candidates.parquet")
         assert list(cand.columns) == DEPTH_COLUMNS
@@ -113,7 +113,7 @@ def test_depth_only_run_no_normals_and_schema(tmp_path):
     assert "dense" not in ctx.__dict__ and "_normals" not in ctx.__dict__
     # manifest: depth columns for depth runs
     m = pd.read_parquet(write_manifest(tmp_path))
-    assert {"depth_n_accepted", "depth_lambda_hat", "depth_null", "depth_frac_w_lt_0.5"} <= set(m.columns)
+    assert {"depth_n_accepted", "depth_lambda_hat", "depth_null_model", "depth_frac_w_lt_0.5"} <= set(m.columns)
 
 
 def test_depth_fold_is_elementwise_min(tmp_path):
@@ -129,13 +129,25 @@ def test_depth_fold_is_elementwise_min(tmp_path):
 
 
 def test_additive_null_option(tmp_path):
-    """geometry.depth.null = additive gates on signif_add; the multiplicative column is still recorded."""
+    """geometry.depth.null_model = additive gates on signif_add; the multiplicative column is still recorded."""
     _, metas = _run("candidate_depth_only.yaml", tmp_path, stems=("taiwei_cui_079",),
-                    sets=("geometry.depth.null=additive",))
+                    sets=("geometry.depth.null_model=additive",))
     sc = metas["taiwei_cui_079"]["channels"]["depth"]
-    assert sc["null"] == "additive" and sc["sigma_geo_rho"] > 0
+    assert sc["null_model"] == "additive" and sc["sigma_geo_rho"] > 0
     cand = pd.read_parquet(tmp_path / "taiwei_cui_079_depth_candidates.parquet")
     rej = cand["reason"] == "signif"
     assert (cand.loc[rej, "signif_add"] <= DepthParams().z).all()
     ok = cand["reason"].isin(["accepted", "rel", "component"]) & ~cand["sky_edge"] & ~cand["thin"]
     assert (cand.loc[ok, "signif_add"] > DepthParams().z).all() and cand.loc[ok, "signif"].notna().all()
+
+
+def test_depth_sheet_and_profile_tool(tmp_path):
+    """D5: the depth sheet renders from saved outputs and the profile tool runs on a candidate."""
+    from illum_baseline.diag_depth import diag_depth
+    from illum_baseline.viz_depth import render_depth
+
+    cfg, _ = _run("candidate_depth_only.yaml", tmp_path, stems=("taiwei_cui_079",))
+    sheet = render_depth(cfg, tmp_path, "taiwei_cui_079")
+    assert sheet.exists() and sheet.stat().st_size > 50_000
+    prof = diag_depth(cfg, tmp_path, "taiwei_cui_079", 116.0, 180.0)
+    assert prof.exists()

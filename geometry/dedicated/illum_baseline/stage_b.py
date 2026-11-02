@@ -4,7 +4,8 @@ Per run (out_dir/stage_b/<run>/), all arrays in the STORED frame:
   <stem>.npz   w (original res, float16), w_net, q, L_over_rho (network res, float16),
                D (network res, float32), sky_mask (network res, bool)
   <stem>.json  detector scalars, focal, geometry, provenance
-  manifest.parquet (+ manifest.csv), config_resolved.yaml, viz/<stem>.png (upright)
+  manifest.parquet (+ manifest.csv), config_resolved.yaml, viz/<stem>.png (upright); geometry runs also
+  viz_fold/<stem>.png (fold channel) and viz_depth/<stem>.png (depth channel)
 
 With geometry.enabled (docs/geometry_channels.md section 3.5) the geometric-edge channels replace the detector call:
   <stem>.npz   w, w_net (combined, elementwise min), <name>_w_net, <name>_strength, <name>_<array> per channel,
@@ -332,6 +333,7 @@ def run_stage_b(cfg: Config, run_name: str | None = None, force: bool = False,
                 stems: list[str] | None = None) -> dict[str, Any]:
     from .manifest import write_manifest
     from .viz import render
+    from .viz_depth import render_depth
     from .viz_fold import render_fold
 
     rd = run_dir(cfg, run_name)
@@ -351,6 +353,8 @@ def run_stage_b(cfg: Config, run_name: str | None = None, force: bool = False,
             render(cfg, rd, stem)  # detector sheet (with the combined w in geometry runs)
         if viz and g.enabled and "fold" in g.channels and (force or not (rd / "viz_fold" / f"{stem}.png").exists()):
             render_fold(cfg, rd, stem)
+        if viz and g.enabled and "depth" in g.channels and (force or not (rd / "viz_depth" / f"{stem}.png").exists()):
+            render_depth(cfg, rd, stem)
     status["manifest"] = str(write_manifest(rd))
     return status
 

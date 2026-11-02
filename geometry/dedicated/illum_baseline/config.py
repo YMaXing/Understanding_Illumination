@@ -186,7 +186,7 @@ class DepthCfg:
     z: float = 3.29
     null_stride: int = 4
     lambda_clamp: list[float] = field(default_factory=lambda: [0.5, 1.0e4])
-    null: str = "multiplicative"        # multiplicative | additive (both significances always recorded)
+    null_model: str = "multiplicative"  # multiplicative | additive (both significances always recorded; as fold)
     lambda_n: float = 104.6             # additive null, k = 11 (geom/data/depth_calibration.json)
     smooth_n: int = 5
     sky_far_frac: float = 0.5
@@ -390,8 +390,8 @@ def _validate_geometry(g: GeometryCfg) -> None:
     e = g.depth
     if e.disparity not in ("rho_f", "rho"):
         raise ValueError(f"geometry.depth.disparity must be rho_f|rho, got {e.disparity!r}")
-    if e.null not in ("multiplicative", "additive"):
-        raise ValueError(f"geometry.depth.null must be multiplicative|additive, got {e.null!r}")
+    if e.null_model not in ("multiplicative", "additive"):
+        raise ValueError(f"geometry.depth.null_model must be multiplicative|additive, got {e.null_model!r}")
     if e.gap_mode != "at_x0":
         raise ValueError("geometry.depth.gap_mode must be at_x0 (min_span is recorded only)")
     if len(e.lambda_clamp) != 2 or not 0 < e.lambda_clamp[0] <= e.lambda_clamp[1]:

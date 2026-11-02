@@ -160,6 +160,7 @@ def cmd_viz(args: argparse.Namespace) -> int:
     from .stage_b import image_stems, run_dir
     from .viz import render
 
+    from .viz_depth import render_depth
     from .viz_fold import render_fold
 
     cfg = _cfg(args)
@@ -171,6 +172,8 @@ def cmd_viz(args: argparse.Namespace) -> int:
             print(render(cfg, rd, stem))
         if chans and "fold" in chans:  # fold sheet
             print(render_fold(cfg, rd, stem))
+        if chans and "depth" in chans:  # depth sheet
+            print(render_depth(cfg, rd, stem))
     return 0
 
 
@@ -211,6 +214,18 @@ def cmd_diag_fold(args: argparse.Namespace) -> int:
         raise SystemExit("diag-fold needs a config with geometry.enabled and the fold channel "
                          "(e.g. --config configs/candidate_fold_only.yaml)")
     print(diag_fold(cfg, run_dir(cfg, args.run_name), args.stem, args.u, args.v))
+    return 0
+
+
+def cmd_diag_depth(args: argparse.Namespace) -> int:
+    from .diag_depth import diag_depth
+    from .stage_b import run_dir
+
+    cfg = _cfg(args)
+    if not cfg.geometry.enabled or "depth" not in cfg.geometry.channels:
+        raise SystemExit("diag-depth needs a config with geometry.enabled and the depth channel "
+                         "(e.g. --config configs/candidate_depth_only.yaml)")
+    print(diag_depth(cfg, run_dir(cfg, args.run_name), args.stem, args.u, args.v))
     return 0
 
 
@@ -305,6 +320,14 @@ def build_parser() -> argparse.ArgumentParser:
     df_.add_argument("--v", type=float, required=True, help="upright network-resolution row")
     df_.add_argument("--run-name", default=None, help="output run directory (default: run.name)")
     df_.set_defaults(func=cmd_diag_fold)
+
+    dd = sub.add_parser("diag-depth", parents=[common],
+                        help="depth profile tool: the candidate nearest (u, v) (TASK_DEPTH_CHANNEL D5)")
+    dd.add_argument("--stem", required=True)
+    dd.add_argument("--u", type=float, required=True, help="upright network-resolution column")
+    dd.add_argument("--v", type=float, required=True, help="upright network-resolution row")
+    dd.add_argument("--run-name", default=None, help="output run directory (default: run.name)")
+    dd.set_defaults(func=cmd_diag_depth)
 
     ef = sub.add_parser("eval-fold", parents=[common],
                         help="precision/recall of accepted folds against annotations/folds/<stem>.json")
