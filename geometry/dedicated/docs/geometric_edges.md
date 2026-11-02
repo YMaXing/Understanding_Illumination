@@ -73,6 +73,20 @@ resampled (the alignment option moves only where the deliverable's relaxation la
   artefact, no real geometry). Each component's pixel mask is saved alongside (`audit_masks.npz`) so later runs are
   re-scored on exactly the labelled pixels (G4, G5: closed if the new run has w < 0.5 on ≥ 50 % of it).
 
+### 2.3 As built (G1)
+
+- `configs/candidate_geom_v0.yaml` (`depth_fold_v1` with the additive depth default); runs `geom_v0` in
+  `baseline_output/` and `baseline_output_batch2/`.
+- `scripts/geom_eval.py` → `baseline_output/diag/geom/g1/eval.json` (per ROI and per class; combined w and each
+  channel's w).
+- `scripts/geom_audit.py` → `baseline_output/diag/geom/audit/` (as specified: components after merging within 2 px,
+  pps draws with replacement per image × direction stratum; `audit_strata.csv` records A_h, N_h, n_h, n_unique per
+  stratum; `audit_draws.csv` every draw). G4 estimator: share_c = Σ_h A_h p̂_hc / Σ_h A_h, p̂_hc the unweighted fraction
+  of stratum h's draws labelled c.
+- Variant `--split-px 1000 --tile 32` → `baseline_output/diag/geom/audit_split/`: components over 1000 px split into
+  their pieces per 32-px tile as sampling units (G1 flag: tri-only area is concentrated in a few very large merged
+  components).
+
 ## 3. How the open items will be resolved or closed
 
 | # | item | milestone | how |
