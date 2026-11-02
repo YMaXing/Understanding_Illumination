@@ -186,7 +186,7 @@ class DepthCfg:
     z: float = 3.29
     null_stride: int = 4
     lambda_clamp: list[float] = field(default_factory=lambda: [0.5, 1.0e4])
-    null_model: str = "multiplicative"  # multiplicative | additive (both significances always recorded; as fold)
+    null_model: str = "additive"        # additive (default since D5) | multiplicative; both significances recorded
     lambda_n: float = 104.6             # additive null, k = 11 (geom/data/depth_calibration.json)
     smooth_n: int = 5
     sky_far_frac: float = 0.5

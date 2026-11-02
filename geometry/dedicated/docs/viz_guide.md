@@ -295,3 +295,85 @@ nearest labelled polyline within the tolerance (ties: fold first). Per image (`<
 (share of the fold polylines covered by accepted candidates), fold precision (fold / all labelled acceptances),
 `precision_all` (fold / all acceptances), and per class `<class>_recall` (for step, limb, texture: how often the fold
 channel fires on them) and `<class>_precision` (that class's share of the labelled acceptances).
+
+
+# The depth sheet and the depth profile tool
+
+`stage_b/<run>/viz_depth/<stem>.png` (TASK_DEPTH_CHANNEL D5), written by Stage B and by `viz` for runs with the depth
+channel (`depth_v1`, `depth_v1_add`, `depth_fold_v1`). Upright frame, network-pixel axes (the sRGB is drawn over the
+same extent) except panel 9. Everything comes from the saved outputs except panel 4, which recomputes the depth field
+from the Stage A cache. Math and symbols: `docs/depth_channel.md`.
+
+## Panel 1: accepted edges on the sRGB
+
+Accepted candidates coloured by log₁₀ ΔZ (metres, −2 … 1.5); **cyan**: sky edges (ΔZ = ∞); **gray**: candidates that
+passed D-3 but were rejected at the gates (sky_near, sign, significance, relative jump, component). Expect continuous
+lines on silhouettes and limbs, nothing on folds, creases and texture. Short gray runs along a real edge are usually
+significance rejections (see the significance-only overlays in `diag/depth_v1/d5/`).
+
+## Panel 2: log₁₀ Z
+
+Metric depth Z = f_n D / 300, sky masked. Read it with panel 1: an accepted edge should separate two depth levels.
+
+## Panel 3: q / ŝ_q (RdBu_r, ±20)
+
+The normalized second derivative along n, in units of its noise scale. A step is a red–blue doublet (red behind the
+step, blue on the near side); a crease is a one-coloured line; planes are white. Doublets on every texture element mean
+noise; the height test (3 ŝ_q) removes those.
+
+## Panel 4: |∇Dd| (log) with n
+
+The detrended gradient's magnitude and its direction n (cyan arrows on the gradient-floor valid pixels, every 12 px),
+pointing toward the near side. On a step n points across it toward the nearer surface; beyond the step's core n flips
+(the wide blur's gradient dominates), which is why the centring test exists.
+
+## Panel 5: lobe separation s_sep
+
+Histogram of s_sep for the candidates past polarity and height, with s_lo (2.0 px) and s_hi (3.23 px). Real occlusions
+pile up at 2.2–3.0 px (DA3 edges are sharp); the long tail is S-shaped transitions and curved surfaces.
+
+## Panel 6: relative jump r
+
+Histogram of r = ΔZ/Z_near (log x) for the candidates reaching the gates, with τ_low 0.02 and τ_high 0.04. Mass far
+below τ_low is noise doublets that survived significance (rare under either null).
+
+## Panel 7: significance, null vs candidates
+
+The active null's statistic on the null grid (gray) and on the candidates with plane fits (red), with the gate z = 3.29.
+Multiplicative: |Δρ*|/(SE √λ̂); additive (default): √(Δρ*²/(λ_n SE² + σ_geo,ρ²)). The null should sit mostly below the
+gate (its median is calibrated to χ²₁'s); the candidates' bulk above it.
+
+## Panel 8: w_depth
+
+Grayscale [w_min, 1]; bands of radius 2–3 px around accepted edges, darkest for large ΔZ (w ≈ 0.05 for ΔZ ≳ 2 m).
+
+## Panel 9: combined w on the sRGB
+
+Red alpha = (1 − w)/(1 − w_min) at original resolution, for all the run's channels (depth alone, or depth + fold).
+
+## Text box
+
+ŝ_q, σ̂_g (and the floor factor), λ̂_Δρ (raw and clamped), σ_geo,ρ and λ_n, σ_w,max with s_lo and s_hi, the null
+sample's size; counts per stage (crossings, floor, merged, polarity, height, sharpness, centring, sky_near, sign,
+significance (with the other null's count in parentheses), relative jump, component); fit modes (m8, m4, constant,
+doublet) and the accepted thin, sky and lower-bound counts; r_gate P10/P50/P90 and the share of candidates where
+significance rather than τ_low binds; shares of w_depth < 0.5 / 0.9 and of the combined w < 0.5; key parameters; focal
+and its uncertainty; runtime.
+
+## Depth profile tool
+
+`python -m illum_baseline diag-depth --config configs/candidate_depth_only.yaml --stem S --u U --v V [--run-name R]`
+recomputes the channel and takes the D-3 candidate nearest (U, V) (upright network px). Output
+`stage_b/<run>/diag_depth/<stem>_u<U>_v<V>.png`:
+
+- **top:** ρ_f along n through x₀ (s from −(k_c + m + 4) to +(k_c + m + 4)) with both side planes extrapolated to x₀
+  (dashed; their values at x₀ in the legend, with the fit mode per side) and the window spans (dotted);
+- **bottom:** q/ŝ_q along n with the two lobe peaks, ±k_h, and the lobe positions, s_sep and centring in the title;
+- **right:** the image crop with the windows actually used (red: + near side; blue: − far side; dotted when the side
+  fell back) and n; below it Δρ* ± SE, r and r_gate, ΔZ with the focal bracket, Δρ_doublet/Δρ*, the significance under
+  both nulls, λ̂ and σ_geo,ρ, w_c, band and component size, and the reason.
+
+Reading recipe: a clean occlusion has a sharp step in the top plot with both planes flat up to the windows and meeting
+x₀ at different heights; a doublet with lobes near ±1.3 px; windows on the two surfaces. A fold shows a kink (planes
+meeting at x₀); a curved surface shows planes that do not follow ρ_f; a thin structure shows the near window landing
+beyond the next edge (fit mode const or doublet).

@@ -1,8 +1,9 @@
 # Geometric-edge channels: architecture
 
-Status as of 2026-10-31: **as built** (TASK_FOLD_CHANNEL F0–F5, TASK_FOLD_V2 F6–F9). Project root `geometry/dedicated/`. The fold channel's
-math, parameters and results are in `docs/fold_channel.md`; this document covers the architecture shared by all
-channels, the Stage B integration, the bit-for-bit guarantees, and how to add the planned depth channel.
+Status as of 2026-11-01: **as built** (TASK_FOLD_CHANNEL F0–F5, TASK_FOLD_V2 F6–F9, TASK_DEPTH_CHANNEL D0–D6). Project
+root `geometry/dedicated/`. The fold channel's math, parameters and results are in `docs/fold_channel.md`, the depth
+channel's in `docs/depth_channel.md`; this document covers the architecture shared by all channels, the Stage B
+integration, the bit-for-bit guarantees, the depth channel's place in it, and notes for the integration task.
 
 Conventions, as in `docs/pipeline_tri_veto4.md`:
 
@@ -22,14 +23,15 @@ Conventions, as in `docs/pipeline_tri_veto4.md`:
 | `planefit.py` | `DenseFitParams`, `dense_fit` (N1, side-window gradient init + refit), `side_window_gradient`; `window_fit` (masked OLS with covariance, for the two-sided windows) |
 | `normals.py` | `plane_vector`, `normals` (n̂, Σ_n, σ_θ, μ, ‖μ‖), `plane_distance`, `focal_bracket` |
 | `sampling.py` | `bilinear(arr, valid, u, v) -> (values, ok)` (ok: all four corners inside and valid) |
-| `twosided.py` | **shared by the fold and the future depth channel.** `two_sided_fit` → `TwoSidedResult`; `null_projection`, `quad_form`, `chi2_statistic`, `fold_angle`, `tangent_basis`; `window_rms`, `planarity_scale`; `b_tri` (contamination envelope from `data/b_tri.json`). Decision-free (section 3.4) |
-| `candidates.py` | `normal_structure_tensor`, `fold_candidates` (F2.1), `rounding_width` (F2.2), `Candidates`; stub `depth_candidates` |
+| `twosided.py` | **shared by the fold and depth channels.** `two_sided_fit(..., gap_mode, usable)` → `TwoSidedResult`; `one_sided_constant` (the depth channel's thin-structure fit); `null_projection`, `quad_form`, `chi2_statistic`, `fold_angle`, `tangent_basis`; `window_rms`, `planarity_scale`; `b_tri` (contamination envelope from `data/b_tri.json`). Decision-free (section 3.4) |
+| `candidates.py` | `normal_structure_tensor`, `fold_candidates` (F2.1), `rounding_width` (F2.2), `Candidates`; `depth_kernels`, `depth_field`, `depth_candidates` (D-K, D-1–D-3) |
 | `fold.py` | `FoldParams`, `FoldChannel` (F2.2–F2.8, three null models) |
+| `depth.py` | `DepthParams`, `DepthChannel` (D-4–D-7: jump with retries, gates, ΔZ, weights; two null models), `depth_null` |
 | `laplacian.py` | `LaplacianChannel`: adapter around `detector.compute_weights`, unchanged |
 | `channels.py` | `ChannelResult`, `Channel` protocol, `combine`, `CHANNELS` (built on first access) |
 | `evaluate.py` | fold precision/recall against `annotations/folds/<stem>.json` |
 | `synthetic.py` | ray-cast test scenes with exact surface IDs and normals (folds, steps, box + cylinders, chamfers) |
-| `data/` | `b_tri.json`, `lambda_n.json` (from `scripts/calibrate_fold.py`) |
+| `data/` | `b_tri.json`, `lambda_n.json` (from `scripts/calibrate_fold.py`); `depth_calibration.json` (from `scripts/calibrate_depth.py`) |
 
 Outside the subpackage:
 
@@ -39,8 +41,9 @@ Outside the subpackage:
 | `config.py` | `GeometryCfg` (+ `DenseFitCfg`, `FoldCfg`), validation, nested `--set`, float coercion | `enabled: false` built-in default |
 | `stage_b.py` | `run_geometry`, `_process_one_geometry` (branch only when enabled); JSON blocks moved into `_detector_record` / `_meta_common` unchanged | repro tests |
 | `manifest.py` | NaN for missing detector scalars (fold-only runs); `combined_*`, `normals_computed` columns | unchanged values for detector runs |
-| `viz_fold.py`, `diag_fold.py`, `cli.py` | fold sheet, profile tool (`diag-fold`), `eval-fold`; `viz` renders both sheets | – |
-| `configs/candidate_fold_only.yaml`, `configs/candidate_lap_fold.yaml` | runs `fold_only`, `tri_veto4_fold` | `configs/default.yaml` unchanged |
+| `viz_fold.py`, `diag_fold.py`, `cli.py` | fold sheet, profile tool (`diag-fold`), `eval-fold`; `viz` renders every sheet of the run's channels | – |
+| `viz_depth.py`, `diag_depth.py` | depth sheet, profile tool (`diag-depth`) | – |
+| `configs/candidate_fold_only.yaml`, `configs/candidate_lap_fold.yaml`, `configs/candidate_fold_v2.yaml`, `configs/candidate_lap_fold_v2.yaml`, `configs/candidate_depth_only.yaml`, `configs/candidate_depth_fold.yaml` | runs `fold_only`, `tri_veto4_fold`, `fold_v2`, `tri_veto4_fold_v2`, `depth_v1`, `depth_fold_v1` | `configs/default.yaml` unchanged |
 
 ## 2. Data flow (one image, `geometry.enabled: true`)
 
@@ -172,12 +175,12 @@ veto and weight.
 | `w` | float16 | combined, original resolution, clipped to [smallest channel w_min, 1] |
 | `w_net` | float16 | combined |
 | `q`, `L_over_rho` | float16 | unprefixed, when `laplacian` runs (the detector sheet reads them) |
-| `<name>_w_net`, `<name>_strength`, `<name>_<array>` | float16 / bool | per channel (fold: `fold_r_n`) |
+| `<name>_w_net`, `<name>_strength`, `<name>_<array>` | float16 / float32 / bool | per channel (fold: `fold_r_n`; depth: `depth_dZ` float32, `depth_q_over_s`, `depth_edge_mask`); float64 channel arrays are stored as float16, float32 / float16 / bool keep their dtype. `depth_strength` is ∞ at sky edges |
 | `n_hat` (H, W, 3), `sigma_theta`, `normal_valid` | float16, float16, bool | only when a channel computed the normals; **n_hat components are in the upright camera frame** (all images here have orientation 1) |
 | `D`, `sky_mask` | float32, bool | as in detector runs |
 
 Tables (upright network-resolution coordinates): `<stem>_<name>_candidates.parquet`, `<stem>_<name>_<table>.parquet`
-(fold: `null`). Fold candidate columns, in order: `u v u0 v0 e1_u e1_v r_n width profile_ok k1 k2`, the side fields
+(fold and depth: `null`). Depth candidate columns: `docs/depth_channel.md` Appendix A.3. Fold candidate columns, in order: `u v u0 v0 e1_u e1_v r_n width profile_ok k1 k2`, the side fields
 `alpha rms_rel n excl m_used planar fallback sigma_theta` with suffix `_p` then `_m`, `n_p_x … n_m_z`, `valid dtheta T
 T_over_lambda T_add T_add_local sigma_geo_local gate_mult gate_add gate_add_local gate dtheta_gate dtheta_gate_add
 dtheta_gate_add_local dtheta_k2 C no_veto veto_pass k2_clean component_px accepted reason J chord J_lo J_hi w_c band
@@ -193,8 +196,10 @@ section of the same name.
 Run directories refuse a different `geometry` section unless `--force`. The manifest has NaN detector columns in
 fold-only runs and `combined_frac_w_lt_*`, `normals_computed` for geometry runs.
 
-**Config.** `geometry: {enabled, channels, combine, dense_fit: DenseFitCfg, fold: FoldCfg}`, built-in default
-`enabled: false`; `DenseFitCfg` / `FoldCfg` are field-for-field `DenseFitParams` / `FoldParams` (tested). Validation:
+**Config.** `geometry: {enabled, channels, combine, dense_fit: DenseFitCfg, fold: FoldCfg, depth: DepthCfg}`, built-in
+default `enabled: false`; `DenseFitCfg` / `FoldCfg` / `DepthCfg` are field-for-field `DenseFitParams` / `FoldParams` /
+`DepthParams` (tested). The JSON `params.geometry.depth` block is written only for runs that include the depth channel
+(earlier runs keep their records). Validation:
 known channels, `combine: min`, null models, ranges. `--set` takes nested keys (`--set geometry.fold.p_fa=1e-4`);
 float fields coerce float-looking strings (YAML reads `1e-4` as a string) and fail with "expected a number"
 otherwise.
@@ -223,57 +228,36 @@ is the same `trilateral` call as inside `compute_weights`. `LaplacianChannel` ca
 With `[laplacian, fold]` the trilateral filter runs twice (inside `compute_weights` and in the context), about
 0.4 s; the adapter calls the detector unchanged by design.
 
-## 6. Adding the depth channel
+## 6. The depth channel and notes for the integration
 
-Implemented in TASK_DEPTH_CHANNEL (D1–D4; `docs/depth_channel.md`): registered as `"depth"`, config `geometry.depth`,
-runs `depth_v1` / `depth_fold_v1`. The plan below is the F2-era sketch it started from; where they differ the
-depth-channel doc is authoritative (e.g. the depth magnitude uses the gap at x₀, not the min-span gap).
+**As built** (TASK_DEPTH_CHANNEL; math, parameters, results: `docs/depth_channel.md`). `"depth"` in `CHANNELS`,
+`geometry.depth` in the config, runs `depth_v1` (`[depth]`) and `depth_fold_v1` (`[depth, fold]`, fold_v2 settings).
+It reads only S, Ω, ρ, ρ_floor, ρ_f, K and the sky probability from the context: a `[depth]` run never builds the dense
+fit or the normals (it calls `two_sided_fit` with `usable = Ω`, `fallback = False`, `gap_mode = "at_x0"`). Its
+candidate table, null table, arrays and scalars follow the channel protocol; the strength is r = ΔZ/Z_near (∞ at sky
+edges). Runtime 0.6–0.8 s per image after a 0.3–0.4 s context.
 
-**Planned defaults (F2 decisions; not implemented):**
+**What changed in shared code** (fold outputs bit for bit): `two_sided_fit` gained `gap_mode` (`min_span` default,
+`at_x0`) and `usable` (default Ω ∧ valid normals) and records `d_rho_x0_se`, `d_rho_min_span` in every mode;
+`one_sided_constant` is new. Stage B keeps float32 / float16 / bool channel arrays at their dtype (float64 → float16 as
+before); the manifest adds `depth_*` columns for depth runs.
 
-| parameter | value | why |
-|---|---|---|
-| window skip k | ≥ 11 (= R_s + 2) | windows clear the trilateral bias zone (9 px) and the bilinear / subpixel margin; F2 arm B (k_min = 11): `depth_jump` recall 0.995 on single synthetic steps, vs 0.04 at k_min = 6 |
-| noise inflation λ_n (additive null) | 121.2 | Monte-Carlo E[T]/2 at k = 11 (`geom/data/lambda_n.json`); 93.2 at k = 6 |
-| jump measure | Δρ* = smallest plane gap over s ∈ [−k, k], with `planes_cross` | zero at fold-like plane intersections |
+**Integration notes** (the open items are listed in `docs/depth_channel.md` §7):
 
-**Steps.**
-
-1. **Candidates** (`geom/candidates.py`): implement the stub `depth_candidates(ctx, params) -> Candidates`, e.g.
-   Canny on the detrended disparity gradient (ρ_f minus the dense plane prediction, or |∇ρ_f|/ρ_f with NMS along the
-   gradient). Return the same container as the fold candidates: `ij` (NMS pixel), `x0` (subpixel), `e1` (unit, across
-   the edge; keep the (−90°, 90°] orientation), `rate`, `rate_map`, `e1_map`, `valid_map`, `threshold`,
-   `median_rate`.
-2. **Channel** (`geom/depth.py`, new): `DepthChannel` with `name = "depth"` and `run(ctx, params) -> ChannelResult`.
-   - Window fits: `r = two_sided_fit(ctx, x0, e1, k, m, w_t, rms_max=..., fallback=False)` with k ≥ 11. Build
-     `rms_max` as the fold channel does (null-sample ε̂ and Q_0.95, `b_tri(k, m, tri)`; at k ≥ 11 b_tri ≈ 6e-6). No
-     fallback: Δρ* needs planar fits on both sides.
-   - Read from `TwoSidedResult`: `r.p.planar`, `r.m.planar`, `r.valid` (usable sides), `r.d_rho`, `r.d_rho_se`
-     (jump and its SE), `r.planes_cross` (fold-like intersection: not a depth edge), `r.s_gap`, `r.rho_p_gap`,
-     `r.rho_m_gap`, `r.dZ_rel` (ΔZ/Z_near, the strength), and for diagnostics `r.p.rms_rel`, `r.m.rms_rel`,
-     `r.p.excl`, `r.m.excl`, `r.d_rho_x0`. `r.dtheta` and `r.T` are available if the depth channel wants to
-     separate occlusions with and without a normal change.
-   - Metric ΔZ: Z = f_n·D/300 with f_n from the Stage A JSON (or `(ctx.K.f_x + ctx.K.f_y)/2`), Z_near = 1/max(ρ̂±)
-     scaled the same way, ΔZ = Z_near·dZ_rel; save it as an extra array.
-   - Gate: on |Δρ*|/SE with a per-image null calibration of its own (as λ̂ or σ_geo for the fold channel; the null
-     sample can reuse `two_sided_fit` on a stride grid), plus `dZ_rel > depth_jump_rel`; never on dZ_rel alone.
-   - Weight, rasterization, component filter: as `fold.py` does with w_c and bands, from dZ_rel.
-3. **Register**: add `"depth": DepthChannel` to the dict returned by `channels.__getattr__`.
-4. **Config**: `DepthCfg` in `config.py` (field-for-field with a `DepthParams` in `depth.py`; extend
-   `test_config_params_field_parity`), `geometry.depth: DepthCfg`, validation in `_validate_geometry`, and
-   `_channel_params` in `stage_b.py` already returns `asdict(getattr(cfg.geometry, name))`.
-5. **Saving and viz**: automatic from `ChannelResult` (`depth_w_net`, `depth_strength`, `depth_<array>`,
-   `<stem>_depth_candidates.parquet`, JSON `channels.depth`); add a depth sheet like `viz_fold.py` if needed and
-   call it from `run_stage_b` and `cli.cmd_viz` as the fold sheet is.
-6. **Tests** (test plan): Δρ* exact on noise-free synthetic steps at k ≥ 11 (`test_gap_folds_cross_steps_exact`
-   shows the two-sided part already is); strict silhouette recall: the depth decision on ≥ 90% of valid candidates at
-   synthetic occlusion silhouettes (box scene and single steps) at k ≥ 11 (the fold channel only reports its 0.75);
-   no depth edge at folds (`planes_cross`); scale invariance; and `channels: [laplacian]` still bit-identical to
-   tri_veto4.
-
-The design keeps channels independent: the context owns every shared field (ρ_f, the dense fit, n̂),
-`two_sided_fit` is decision-free and takes k per call, each channel calibrates its own null sample, and channels
-communicate only through `ChannelResult`.
+- **Fusion on strengths vs weights.** Today the channels are combined by the minimum of their weights, the only mode
+  implemented. Each channel also saves a dimensionless strength: fold J ∈ [0, 1] (the worst-case shading jump) and depth
+  r = ΔZ/Z_near ∈ (0, ∞], with r = ∞ at sky edges and unbounded far sides. A fusion on strengths must treat ∞ as
+  saturated, and must decide how a place where both fire (silhouettes with a normal change; DA3 contact steps such as
+  the 079 box–plinth edge) is counted once. The depth weight is nearly binary on real edges (ΔZ ≫ ΔZ₀), so a binary
+  weight with w_min is an option to decide together with the fusion.
+- **Retiring the Laplacian channel.** On the 10 images w < 0.5 covers 10–33 % in tri_veto4 against 1–8 % for depth and
+  3–11 % for depth + fold; the pinned ROIs show depth covering steps and limbs (median w 0.05–0.13) and leaving folds,
+  creases and texture alone. Retiring the Laplacian channel needs a recall comparison against tri_veto4 on annotated
+  fold / step / limb / texture classes, not only the pinned ROIs, and a decision on what the Laplacian catches that
+  neither channel does (fine texture curvature is meant to be dropped; small real features are not).
+- **Alignment and band coverage.** DA3 edges sit about (−0.27, −0.52) px from the RGB edges (D2); the depth band is
+  2–3 px. Checking band coverage against RGB edges (and the sky-mask boundary) decides whether a subpixel shift of D
+  or wider bands are needed.
 
 ## 7. Decisions log
 
@@ -325,13 +309,18 @@ Settled in F0 (leans agreed) and revised in F1–F4; current state:
 | D3 | contour smoothing: running median over 5 chained candidates (mutual nearest neighbours ahead/behind, n·n ≥ 0.5) of each neighbour's plane evaluated at the candidate's own x₀ (exact on planes) | as built |
 | D3 | lower bound with SE inflated by √λ̂ (as the significance gate); r uses the matching lower bound when ρ̂₋ − z√λ̂ SE₋ ≤ 0; ΔZ_lb = inf when even ρ̂₋ + z√λ̂ SE₋ ≤ 0 | as built |
 | D3 | sky edges (far span ≥ 50 % sky on S): r = significance = ΔZ = inf, w_c = w_min; strength inf there; sky_near rejects | as built |
-| D3 | additive null for Δρ* recorded (`signif_add`, σ_geo,ρ solved so that the null median equals the χ²₁ median 0.455; λ_n = 104.6); gate stays multiplicative; decide in D5 (switch if r_gate P90/P10 > 3) | open (D5) |
+| D3 | additive null for Δρ* recorded (`signif_add`, σ_geo,ρ solved so that the null median equals the χ²₁ median 0.455; λ_n = 104.6); gate stays multiplicative; decide in D5 (switch if r_gate P90/P10 > 3) | decided in D5: additive default (row D5 → D6) |
 | D4–D5 | `geometry.depth.null_model` (multiplicative default \| additive; renamed from `null` before D5, the fold channel's key name), both significances recorded | as built |
 | D4 | JSON `params.geometry.depth` only for runs with the depth channel; channel arrays keep float32/float16/bool dtypes (float64 → float16 as before); manifest `depth_*` columns only for depth runs; repro references extended by `fold_v2`, `tri_veto4_fold_v2` | as built |
 | D4 | depth strength is inf at sky edges (and unbounded far sides): any fusion on strengths must treat inf as saturated | as built (integration note) |
 | D5 | runs `depth_v1` (multiplicative), `depth_v1_add` (additive), `depth_fold_v1`; depth sheet `viz_depth/`, profile tool `diag-depth`; all D5 spot checks met under both nulls | as built |
-| D5 | additive null for the depth channel: meets the decision rule (texture ≤ multiplicative + 0.02 on the 070 floor and both 079 grass ROIs; step/limb targets kept; synthetic box silhouette recall 0.91 → 0.95); **proposed as the default, not switched** | open (decision) |
+| D5 | additive null for the depth channel: meets the decision rule (texture ≤ multiplicative + 0.02 on the 070 floor and both 079 grass ROIs; step/limb targets kept; synthetic box silhouette recall 0.91 → 0.95); **proposed as the default** | decided (row D5 → D6) |
 | D5 | 080 side face edge R (fold target) is also an occluding silhouette (depth fires there correctly); 090 chain-link fence reported as a clutter case (thin rings; not tuned) | as measured |
+| D5 → D6 | **depth `null_model: additive` is the default** (decision rule met); the fold channel stays multiplicative; the SE inflation of the lower bound and r_gate follows the active null (√λ̂ SE or √(λ_n SE² + σ_geo,ρ²/2) per side) | decided 2026-11-01, as built |
+| pre-D6 | 080 side face edge R evaluated as class step in the depth evaluation (`scripts/depth_rois.py` RELABELLED); kept as a fold target (legacy) in the fold evaluation | as built |
+| pre-D6 | 079 box–plinth contact and 075 kiosk base: steps in DA3's depth (step beats a continuous kink by ΔBIC 450–2750 at all 8 points; jumps 3–24 %), not folds misread; **no step-vs-kink integration item**; DA3 contact steps noted (both channels fire) | as measured |
+| pre-D6 | 070 sky band: 457 of 1766 px with w_depth ≥ 0.5: 375 just beyond the depth band (the accepted edges sit ~1 px inside the sky-mask boundary), 20 gaps, 62 corners / junctions | as measured |
+| D6 | final docs: `docs/depth_channel.md` (math, calibration, sensitivity, results, limitations, integration open items), this section 6, `docs/viz_guide.md` (depth sheet, `diag-depth`) | as built |
 
 ## 8. Runtime (CPU, measured in F4)
 
@@ -341,6 +330,7 @@ Settled in F0 (leans agreed) and revised in F1–F4; current state:
 | dense fit (side windows + 2 weighted passes) and normals | about 4.5–6 s |
 | fold channel after the context (candidates, null sample, two-sided fits, veto, rasterization) | 0.6–0.9 s |
 | Laplacian channel | about 0.5 s |
+| depth channel after the context (field, candidates, null sample, jumps, gates, rasterization; no dense fit) | 0.6–0.8 s (TASK_DEPTH_CHANNEL D5) |
 
 The task's target (fold channel < 5 s on the CPU) is missed by the context. Inference is expected to run on CUDA; the
 torch backend follows after F5, checked against this numpy implementation.

@@ -4,7 +4,7 @@ against tri_veto4 and tri_veto4_fold_v2 (all from saved outputs).
 - per image and run: share w < 0.5 / w < 0.9 (combined w_net; w_depth for the depth runs), candidate counts per stage,
   runtime;
 - per evaluation class (fold / step / limb / texture; pinned ROIs scripts/depth_rois.py, fold line targets
-  scripts/fold_null_rois.py, texture areas scripts/fold_null_rois.py: rois + the trimmed bollard interior): share of
+  scripts/fold_null_rois.py except those relabelled in depth_rois.RELABELLED, texture areas scripts/fold_null_rois.py: rois + the trimmed bollard interior): share of
   w_depth < 0.5, per null;
 - the spot-check targets of TASK_DEPTH_CHANNEL D5, per null;
 - the decision rule for the additive null (proposed, not switched): additive becomes the default only if the share of
@@ -38,7 +38,7 @@ sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "scripts"))
 sys.path.insert(0, str(ROOT / "tests"))
 
-from depth_rois import BOXES, POLYLINES, box_mask, sky_band_070  # noqa: E402
+from depth_rois import BOXES, POLYLINES, RELABELLED, box_mask, sky_band_070  # noqa: E402
 from fold_null_rois import TARGETS, _poly_samples, rois  # noqa: E402
 from illum_baseline.config import load_config  # noqa: E402
 from illum_baseline.stage_b import image_stems, load_upright  # noqa: E402
@@ -71,7 +71,7 @@ def class_samples(stem: str, w: np.ndarray) -> dict[str, dict[str, np.ndarray]]:
         if st == s:
             out[cls][name] = poly_w(w, poly)[0]
     for name, (st, kind, poly) in TARGETS.items():
-        if st == s:
+        if st == s and name not in RELABELLED:  # relabelled targets are taken from POLYLINES with their new class
             out["fold"][f"{name} ({kind})"] = poly_w(w, poly)[0]
     for name, m in rois(stem, w.shape).items():
         if name != "083 bollard":

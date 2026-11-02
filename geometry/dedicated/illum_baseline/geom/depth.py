@@ -73,7 +73,7 @@ class DepthParams:
     z: float = 3.29                   # two-sided p_fa = 1e-3
     null_stride: int = 4
     lambda_clamp: tuple[float, float] = (0.5, 1.0e4)
-    null_model: str = "multiplicative"  # gate null (same key as the fold channel): multiplicative (lambda_hat) | additive (lambda_n SE^2 + sigma_geo_rho^2);
+    null_model: str = "additive"      # gate null (same key as the fold channel; additive default since D5): multiplicative (lambda_hat) | additive (lambda_n SE^2 + sigma_geo_rho^2);
                                       # both significance columns are always recorded
     lambda_n: float = 104.6           # noise-only inflation of (Delta rho*/SE)^2 at k = 11 (data/depth_calibration.json)
     # D-6: magnitude
@@ -252,6 +252,14 @@ def _solve_sig2_rho(d: np.ndarray, se: np.ndarray, lam_n: float) -> float:
 SIDE_MODES = ("", "plane8", "plane4", "const")
 
 
+def se_eff(p: DepthParams, null: DepthNull, se: np.ndarray, pair: bool = False) -> np.ndarray:
+    """The SE inflated as the active null inflates it: sqrt(lambda_hat SE^2) (multiplicative) or
+    sqrt(lambda_n SE^2 + sigma_geo_rho^2) for Delta rho* (additive; sigma_geo_rho^2 / 2 per side)."""
+    if p.null_model == "additive":
+        return np.sqrt(p.lambda_n * se**2 + null.sigma2_add * (1.0 if pair else 0.5))
+    return np.sqrt(null.lambda_hat) * se
+
+
 def jump(ctx: GeometryContext, p: DepthParams, x0: np.ndarray, n: np.ndarray, k_c: np.ndarray, q_p: np.ndarray,
          q_m: np.ndarray, h_p: np.ndarray, h_m: np.ndarray, s_sep: np.ndarray, rho_s0: np.ndarray, s_q: float,
          null: DepthNull, obst: np.ndarray) -> dict[str, np.ndarray]:
@@ -324,13 +332,13 @@ def jump(ctx: GeometryContext, p: DepthParams, x0: np.ndarray, n: np.ndarray, k_
         signif = np.where(thin, signif_lobe, signif_fit)
         T_add = d_rho**2 / (p.lambda_n * d_rho_se**2 + null.sigma2_add)
         signif_add = np.where(thin, signif_lobe, np.sqrt(T_add))
-        # far side consistent with rho = 0 (rho_hat_- - z sqrt(lambda) SE_- <= 0): r is the lower bound
-        # Delta rho* / (rho_hat_- + z sqrt(lambda) SE_-) (D3), flagged r_lower_bound
-        zs = p.z * math.sqrt(lam)
-        r_lb = (rho_m - zs * se[-1] <= 0) & ~thin
-        den_lb = rho_m + zs * se[-1]
+        # far side consistent with rho = 0 (rho_hat_- - z SE_eff,- <= 0, SE inflated as the active null does): r is the
+        # lower bound Delta rho* / (rho_hat_- + z SE_eff,-) (D3), flagged r_lower_bound
+        zse_m = p.z * se_eff(p, null, se[-1])
+        r_lb = (rho_m - zse_m <= 0) & ~thin
+        den_lb = rho_m + zse_m
         r = np.where(r_lb, np.where(den_lb > 0, d_rho / den_lb, np.inf), d_rho / rho_m)
-        r_gate = zs * d_rho_se / np.where(r_lb, den_lb, rho_m)
+        r_gate = p.z * se_eff(p, null, d_rho_se, pair=True) / np.where(r_lb, den_lb, rho_m)
         doublet_ratio = np.where(thin, np.nan, doublet_rho / d_rho)
     fit_mode = np.full(N, "doublet", dtype=object)
     both = ~thin
@@ -501,14 +509,14 @@ class DepthChannel:
                     vals[sky_edge[A]] = np.nan  # no far plane at sky edges
                 arr[A] = running_median(chs, vals, p.smooth_n, c.x0[P][A], J[bkey][A])
         scale = 0.5 * (ctx.K.f_x + ctx.K.f_y) / p.canonical_focal
-        # lower bound with the SEs inflated by sqrt(lambda_hat), as in the significance gate (D3 decision)
-        zs = p.z * math.sqrt(nul.lambda_hat if p.null_model == "multiplicative" else p.lambda_n)
+        # lower bound with the SEs inflated as the active null inflates them (D3 decision; D6: per null)
+        zm, zp = p.z * se_eff(p, nul, J["se_m"]), p.z * se_eff(p, nul, J["se_p"])
         with np.errstate(invalid="ignore", divide="ignore"):
             dZ = scale * (1.0 / rho_m_s - 1.0 / rho_p_s)
-            lower = ~sky_edge & (rho_m_s - zs * J["se_m"] <= 0)
+            lower = ~sky_edge & (rho_m_s - zm <= 0)
             far_np = ~sky_edge & ~np.isfinite(J["se_m"]) & (rho_m_s <= 0)
-            near_lb = rho_p_s - zs * J["se_p"]
-            dZ_lb = scale * (1.0 / (rho_m_s + zs * J["se_m"]) - np.where(near_lb > 0, 1.0 / near_lb, np.inf))
+            near_lb = rho_p_s - zp
+            dZ_lb = scale * (1.0 / (rho_m_s + zm) - np.where(near_lb > 0, 1.0 / near_lb, np.inf))
         dZ = np.where(lower, np.where(np.isfinite(dZ_lb) & (dZ_lb > 0), dZ_lb, np.inf), dZ)
         dZ = np.where(far_np | sky_edge, np.inf, dZ)
         lower_bound = lower | far_np

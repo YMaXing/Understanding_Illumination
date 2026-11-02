@@ -88,7 +88,7 @@ def test_depth_only_run_no_normals_and_schema(tmp_path):
         assert np.array_equal(z["w_net"], z["depth_w_net"])  # one channel: its w unchanged
         assert meta["normals_computed"] is False
         sc = meta["channels"]["depth"]
-        assert DEPTH_SCALARS <= set(sc) and sc["null_model"] == "multiplicative"
+        assert DEPTH_SCALARS <= set(sc) and sc["null_model"] == "additive"
         assert "depth" in meta["params"]["geometry"]
         cand = pd.read_parquet(tmp_path / f"{stem}_depth_candidates.parquet")
         assert list(cand.columns) == DEPTH_COLUMNS
@@ -128,10 +128,9 @@ def test_depth_fold_is_elementwise_min(tmp_path):
         assert (tmp_path / f"taiwei_cui_079_{t}.parquet").exists()
 
 
-def test_additive_null_option(tmp_path):
-    """geometry.depth.null_model = additive gates on signif_add; the multiplicative column is still recorded."""
-    _, metas = _run("candidate_depth_only.yaml", tmp_path, stems=("taiwei_cui_079",),
-                    sets=("geometry.depth.null_model=additive",))
+def test_null_model_option(tmp_path):
+    """null_model additive (the default) gates on signif_add, multiplicative on signif; both columns always recorded."""
+    _, metas = _run("candidate_depth_only.yaml", tmp_path, stems=("taiwei_cui_079",))
     sc = metas["taiwei_cui_079"]["channels"]["depth"]
     assert sc["null_model"] == "additive" and sc["sigma_geo_rho"] > 0
     cand = pd.read_parquet(tmp_path / "taiwei_cui_079_depth_candidates.parquet")
@@ -139,6 +138,12 @@ def test_additive_null_option(tmp_path):
     assert (cand.loc[rej, "signif_add"] <= DepthParams().z).all()
     ok = cand["reason"].isin(["accepted", "rel", "component"]) & ~cand["sky_edge"] & ~cand["thin"]
     assert (cand.loc[ok, "signif_add"] > DepthParams().z).all() and cand.loc[ok, "signif"].notna().all()
+    _, metas = _run("candidate_depth_only.yaml", tmp_path, stems=("taiwei_cui_079",),
+                    sets=("geometry.depth.null_model=multiplicative",))
+    assert metas["taiwei_cui_079"]["channels"]["depth"]["null_model"] == "multiplicative"
+    cand = pd.read_parquet(tmp_path / "taiwei_cui_079_depth_candidates.parquet")
+    assert (cand.loc[cand["reason"] == "signif", "signif"] <= DepthParams().z).all()
+    assert cand["signif_add"].notna().sum() > 0
 
 
 def test_depth_sheet_and_profile_tool(tmp_path):

@@ -143,7 +143,7 @@ geometry:                 # geometric-edge channels (docs/geometry_channels.md, 
     z: 3.29               # significance, two-sided p_fa = 1e-3
     null_stride: 4
     lambda_clamp: [0.5, 1.0e+4]
-    null_model: multiplicative  # | additive (both significances always recorded; the fold channel's key name)
+    null_model: additive  # | multiplicative; additive default since D5 (decision rule met); both significances recorded
     lambda_n: 104.6       # additive null, k = 11
     smooth_n: 5
     sky_far_frac: 0.5

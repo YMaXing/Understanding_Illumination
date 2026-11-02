@@ -3,6 +3,7 @@
 Upright network px (u, v). Polylines were snapped in D0 (scripts/depth_d0_rois.py): silhouettes and limbs onto the
 maximum |d log D / ds|, folds onto the maximum normal-angle slope. Changes at confirmation:
 - 079 box silhouette left trimmed to v <= 238 (excludes the plinth contact, where Delta Z -> 0);
+- 080 side face edge R (a fold line target in scripts/fold_null_rois.py) is evaluated as class step (pre-D6);
 - 083 bollard interior: the trimmed box u 175-205 x v 260-318 is the one to use from D5 on. The legacy box
   (v 260-330, scripts/fold_null_rois.py) overlaps the base rim (v ~ 326-332), which explains the F2 rim-only
   w_fold < 0.5 pixels; it is kept for comparability with earlier reports.
@@ -29,7 +30,12 @@ POLYLINES = {  # name: (stem, class, polyline)
     "083 bollard limb L": ("083", "limb", [(149.9, 215.6), (160.0, 311.8)]),
     "083 bollard limb R": ("083", "limb", [(230.5, 215.1), (224.1, 311.9)]),
     "083 bollard base rim": ("083", "fold", [(169.0, 324.5), (188.0, 332.0), (210.4, 326.7)]),
+    # relabelled before D6: its upper half is the side face's outer silhouette against the background (an occlusion);
+    # scripts/fold_null_rois.py TARGETS keeps it as a narrow-face fold target (legacy label, F9 fold evaluation)
+    "080 side face edge R": ("080", "step", [(260.5, 95.1), (233.5, 199.2), (223.9, 289.8)]),
 }
+
+RELABELLED = {"080 side face edge R": ("fold", "step")}  # fold-target names whose class the depth evaluation overrides
 
 BOXES = {  # name: (stem, class, (u0, u1, v0, v1)) inclusive pixel ranges
     "083 bollard interior": ("083", "texture", (175, 205, 260, 318)),
