@@ -315,21 +315,26 @@ step and limb targets kept): met; additive is the default since D5.
 
 ## 7. Open items for the integration task
 
-1. **Alignment shift** (decisions log, D2): (a) confirm the shift on more images; (b) if stable, a versioned Stage A
-   option for a fixed subpixel shift of D; (c) a band-coverage check against RGB edges for the depth and fold channels.
-2. **Band coverage vs RGB.** Band radii (2–3 px) against the RGB edge positions and the sky-mask boundary (070: the
-   depth band sits ~1 px inside; 375 of 457 uncovered band pixels).
-3. **ΔZ₀ / binary weights.** The weight is nearly binary on real edges (section 4); decide between a knee and a binary
-   weight with w_min.
-4. **Fusion on strengths** (fold J, depth r) vs weights; depth strength is ∞ at sky edges and must saturate.
-5. **Retiring the Laplacian channel** once fold + depth cover its true positives.
-6. **Local σ_geo** for the fold channel's additive null (48-px tiles), as specified there.
-7. **Narrow-face veto** (fold channel, capped veto: `narrow_face`, `veto_undecidable`).
-8. **Fence clutter policy** (090): thin doublet rings in dense meshes.
-9. **Moderate-crease gate** (fold channel, `docs/fold_channel.md` §7).
-10. **Recall against tri_veto4 on true geometry classes** (annotated fold / step / limb / texture), not only the pinned ROIs.
+Status after TASK_GEOM_INTEGRATION (G0–G6; details `docs/geometry_channels.md` §6.1): items 1, 2, 3, 4, 5, 8, 9, 10
+**resolved** (closed as stated there; 9 as a documented gap), 6 and 7 **reopened, not fixed** (geom_v2 candidates), 11
+**recorded** (geom_v2 candidate). Under min with the Laplacian channel (geom_v1), the depth channel sets w on ≤ 0.03 % of
+the pixels; its deliverable role there is the strengths (r, ΔZ).
 
-11. **Component minimum on thin contours** (TASK_GEOM_INTEGRATION G4, record only, no code). Of the 45 labelled step
+1. *[resolved G2: not stable, no shift]* **Alignment shift** (decisions log, D2): (a) confirm the shift on more images; (b) if stable, a versioned Stage A
+   option for a fixed subpixel shift of D; (c) a band-coverage check against RGB edges for the depth and fold channels.
+2. *[resolved G2: sky_band depth_and_mask; band_min 2]* **Band coverage vs RGB.** Band radii (2–3 px) against the RGB edge positions and the sky-mask boundary (070: the
+   depth band sits ~1 px inside; 375 of 457 uncovered band pixels).
+3. *[resolved G3: ΔZ₀ 0.10 m, weight stays ΔZ-based]* **ΔZ₀ / binary weights.** The weight is nearly binary on real edges (section 4); decide between a knee and a binary
+   weight with w_min.
+4. *[resolved G6: min of weights; strengths documented]* **Fusion on strengths** (fold J, depth r) vs weights; depth strength is ∞ at sky edges and must saturate.
+5. *[resolved G4/G5: kept as a third channel, pool_radius 2]* **Retiring the Laplacian channel** once fold + depth cover its true positives.
+6. *[reopened G4, not fixed: geom_v2]* **Local σ_geo** for the fold channel's additive null (48-px tiles), as specified there.
+7. *[reopened G4, not fixed: geom_v2]* **Narrow-face veto** (fold channel, capped veto: `narrow_face`, `veto_undecidable`).
+8. *[resolved G3/G4: keep the relaxation]* **Fence clutter policy** (090): thin doublet rings in dense meshes.
+9. *[resolved G3 as a documented gap; crease rescue on in geom_v1]* **Moderate-crease gate** (fold channel, `docs/fold_channel.md` §7).
+10. *[resolved G4/G5: labelled audit]* **Recall against tri_veto4 on true geometry classes** (annotated fold / step / limb / texture), not only the pinned ROIs.
+
+11. *[recorded G4: geom_v2 candidate]* **Component minimum on thin contours** (TASK_GEOM_INTEGRATION G4, record only, no code). Of the 45 labelled step
     gaps still open after the G4 re-evaluation, 25 (15 733 of 25 089 px) are dropped at the component stage: their best
     candidates passed every gate, but 84 % sit in contour components < 5 px (median 4 px; `min_component_px` 5), 82 %
     are `thin` (doublet fits) and their r is above τ_high (r P50 0.10, component max r P50 0.11). These are fragmented

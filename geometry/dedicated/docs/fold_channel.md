@@ -528,13 +528,18 @@ ROIs and spot checks are unchanged by the capped veto: 070 floor, 079 grass 0.00
 
 ## 7. Limitations and open items
 
-- **Local σ_geo.** One σ_geo (or λ̂) per image treats grass and boxes alike. Neither local variant meets the switching
+Status after TASK_GEOM_INTEGRATION (`docs/geometry_channels.md` §6.1): local σ_geo (item 6) and narrow faces (item 7)
+**reopened, not fixed** (geom_v2 candidates; covered by the Laplacian channel in geom_v1); moderate creases (item 9)
+**resolved as a documented gap** (`crease_rescue: laplacian_corroborated` on in geom_v1; 076 ledge blocked by the capped
+veto); fold placement **open** (geom_v2 candidate: re-siting at the plane intersection).
+
+- *[item 6: reopened G4, not fixed]* **Local σ_geo.** One σ_geo (or λ̂) per image treats grass and boxes alike. Neither local variant meets the switching
   rule: additive_local (48-px tiles: sunlit grass 0.033; 24-px tiles: box folds lost) and the candidate-centred
   additive_cand (sunlit grass 0.026, no crease accepted); section 4.5.
-- **Narrow faces (v2).** The capped veto recovers folds next to faces ≥ 12–18 px (079 plinth edge 0.83, 080 side face
+- *[item 7: reopened G4, not fixed]* **Narrow faces (v2).** The capped veto recovers folds next to faces ≥ 12–18 px (079 plinth edge 0.83, 080 side face
   1.00). Plinth edges whose narrow face is narrower than the k₁ windows (076, 090) still fail at the gate (out of
   scope: geometry narrower than the windows).
-- **Moderate creases (v2).** The weight stays effectively binary (w_fold in [0.5, 0.9) on ≤ 0.003 of the pixels);
+- *[item 9: resolved G3 as a documented gap]* **Moderate creases (v2).** The weight stays effectively binary (w_fold in [0.5, 0.9) on ≤ 0.003 of the pixels);
   neither confirmed crease (076 façade ledge 14°, 088 rock ridge 22°) is accepted by any gate arm. A local null built
   from the surroundings is dominated by the object's other geometry; a null that separates the candidate's own faces
   from their surroundings is open. The combined w of `tri_veto4_fold_v2` along the creases equals tri_veto4's (the fold
@@ -548,7 +553,7 @@ ROIs and spot checks are unchanged by the capped veto: 070 floor, 079 grass 0.00
   (079 fold), 124, 125 (088 creases) open (0.00, 0.00, 0.14). In geom_v1 the Laplacian channel covers all five: w < 0.5
   on 100 % of each unit, median w 0.055 (15), 0.265 (37), 0.157 (97), 0.164 (124), 0.168 (125); the fold channel alone
   0.00 / 0.32 / 0.00 / 0.00 / 0.14 (`baseline_output/diag/geom/g5/units_v1.csv`).
-- **Fold placement (open).** The fold is placed at the NMS ridge of the rotation rate. On the 15 audit units labelled
+- *[open: geom_v2 candidate]* **Fold placement (open).** The fold is placed at the NMS ridge of the rotation rate. On the 15 audit units labelled
   geom_offset the RGB edge lies off the NMS site along e1 (G4): vertical corners −2.0 px (toward the oblique face,
   all 5 units negative), nosings +2.9 px (up, all 5 positive), contact folds mixed (+1.2 median, −2.4 to +5.6). The
   G5 diagnostic (`scripts/geom_g5_fold_site.py`) sites the fold where the two fitted side planes intersect

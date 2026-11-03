@@ -242,7 +242,8 @@ edges). Runtime 0.6–0.8 s per image after a 0.3–0.4 s context.
 `one_sided_constant` is new. Stage B keeps float32 / float16 / bool channel arrays at their dtype (float64 → float16 as
 before); the manifest adds `depth_*` columns for depth runs.
 
-**Integration notes** (the open items are listed in `docs/depth_channel.md` §7):
+**Integration notes** written after TASK_DEPTH_CHANNEL (the open items are listed in `docs/depth_channel.md` §7; their
+outcome after TASK_GEOM_INTEGRATION is in section 6.1, which supersedes the notes below):
 
 - **Fusion on strengths vs weights.** Today the channels are combined by the minimum of their weights, the only mode
   implemented. Each channel also saves a dimensionless strength: fold J ∈ [0, 1] (the worst-case shading jump) and depth
@@ -258,6 +259,30 @@ before); the manifest adds `depth_*` columns for depth runs.
 - **Alignment and band coverage.** DA3 edges sit about (−0.27, −0.52) px from the RGB edges (D2); the depth band is
   2–3 px. Checking band coverage against RGB edges (and the sky-mask boundary) decides whether a subpixel shift of D
   or wider bands are needed.
+
+### 6.1 Integration outcome (TASK_GEOM_INTEGRATION G0–G6): status of items 1–10
+
+The integrated product is **geom_v1** (`configs/candidate_geom_v1.yaml`; consumer description `docs/geometric_edges.md`):
+channels [depth, fold, laplacian] combined by the elementwise min; depth with the additive null and
+`sky_band: depth_and_mask`; fold v2 with `crease_rescue: laplacian_corroborated` (8°, k_L 3); the Laplacian channel is
+tri_veto4's detector with `pool_radius: 2`; band_min 2; no deliverable shift.
+
+| # | item | status | outcome |
+|---|---|---|---|
+| 1 | DA3 alignment shift | **closed** (G2) | not stable on 20 images (pooled (−0.07, −0.47) px; dy CI excludes 0, but only 39 % of images within 0.3 px): no deliverable shift option |
+| 2 | band coverage vs RGB | **closed** (G2) | `depth.sky_band: depth_and_mask` adopted (070 sky band 0.74 → 0.985); band_min stays 2: no band_min ≤ 4 reaches 90 % coverage of the RGB edge (0.82–0.88, the RGB-edge tail; 1.00 at the DA3 edge) |
+| 3 | ΔZ₀ | **closed** (G3) | stays 0.10 m (1.00 m loses limbs 1.00 → 0.81 for little texture gain); the weight stays a function of ΔZ |
+| 4 | fusion on strengths vs weights | **closed** (G6) | min of the weights (the only mode); strengths documented with units (`docs/geometric_edges.md` §3), ∞ at sky edges saturated |
+| 5 | retiring the Laplacian channel | **closed** (G4, G5) | rule → (c) third channel: geom_v0 missed 0.584 [0.512, 0.656] of the tri-only area (labelled audit), mostly steps and folds; pooling radius 2 by the G5 rule |
+| 6 | local σ_geo (fold) | **reopened, not fixed** (G4) | textured-surface fold gaps 97, 124, 125 stay open in the fold channel; covered by the Laplacian in geom_v1; geom_v2 candidate (7.1) |
+| 7 | narrow-face veto (fold) | **reopened, not fixed** (G4) | narrow faces 15, 37 open in the fold channel (92 closed by the rescue); covered by the Laplacian in geom_v1; geom_v2 candidate (7.1) |
+| 8 | fence clutter | **closed** (G3, G4) | relaxation kept (thin-ring clusters on fences, railings, balusters, foliage); no audit unit labelled artifact or clutter |
+| 9 | moderate creases | **closed as a documented gap** (G3) | crease rescue as an option, on in geom_v1 (088 ridge 0.125 → 0.76); the 076 façade ledge stays blocked by the capped veto |
+| 10 | recall vs tri_veto4 on true classes | **closed** (G4, G5) | labelled audit: missed true geometry 0.584 (geom_v0) → 0.007 [0, 0.021] (geom_v1, per unit; 0.079 per pixel) |
+
+Findings recorded on the way: under min with the Laplacian, the depth channel sets w on ≤ 0.03 % of the pixels (its
+deliverable role is the strengths r and ΔZ); fold placement (NMS vs plane site); the depth channel's component minimum on
+thin contours. All three are in the geom_v2 candidate list (7.1) or the limitations (`docs/geometric_edges.md` §5).
 
 ## 7. Decisions log
 
@@ -330,10 +355,27 @@ Settled in F0 (leans agreed) and revised in F1–F4; current state:
 | G2/G3 review | approved: `sky_band: depth_and_mask` with band_min 2; `crease_rescue: laplacian_corroborated` 8° / 3 enters the G4 re-evaluation; ΔZ₀ 0.10 m; item 8 closed (no unit labelled artifact or clutter); the sky edges' `thin` flag kept and documented; the rescue's support is the component's majority sign of L/ρ_f (no separate convexity test) | decided 2026-11-02 |
 | G4 | labelled audit (stratified pps estimator, stratified bootstrap): missed true geometry after the re-evaluation 0.584 [0.512, 0.656] of the tri-only area (step 0.341, fold 0.172, limb 0.038, crease 0.033; subscale 0.034 excluded); tri_fp 0.083; geom_fp 0.052 of geom-only | as measured |
 | G4 | Laplacian rule → **(c) third channel** (missed ≫ 10 %, crease 5.7 % of it); no Laplacian-corroborated depth rescue proposed (open step gaps dropped mostly at the component stage: fragmented thin contours < 5 px, not at the significance gate) | proposed (G4 report) |
+| G4 | items 6 (textured-surface folds 97, 124, 125 open) and 7 (narrow faces 15, 37 open; 92 closed by the rescue) **reopen** by the rule; geom_offset recorded as an open fold-placement item (vertical corners −2.0 px toward the oblique face, nosings +2.9 px up) | by rule |
 | G4 review | **Laplacian (c)**: geom_v1 = [depth, fold, laplacian] by min; items 6, 7 reopened, not fixed in this task (the Laplacian covers the affected units in geom_v1; `docs/fold_channel.md` §7); depth component minimum on thin contours recorded (`docs/depth_channel.md` §7, no code); fold placement an open item; offset labels 161 / 173 / 165 / 180 kept (RGB-edge caveat) | decided 2026-11-02 |
 | G5 | geom_v1 run on both batches, new bit-for-bit reference; `geometry.laplacian.pool_radius` option (null = detector r = 3, bit for bit); combined sheet `viz_geom/`; under min the depth channel and the sky ring add no w < 0.5 area (the Laplacian covers them), the fold channel 5.8 % / 9.9 % and the rescue 1.2 % / 2.1 % of the w < 0.5 area (batch1 / batch2); r sweep report only; fold-site diagnostic: plane-intersection site halves the convex-fold offset (−1.75 → −0.82 px) | as built / as measured |
 | G5 review | pool_radius default stays null (= detector r = 3); rule "r = 2 if step, limb, fold coverage each within 0.02 of r = 3" met (−0.009, 0, −0.017) → **geom_v1 uses `geometry.laplacian.pool_radius: 2`**; the first run kept as `geom_v1_r3`; references geom_v1 and geom_v1_r3 on both batches; texture 0.254 → 0.198, w < 0.5 0.241 → 0.217 (batch1), 0.305 → 0.279 (batch2) | decided by rule 2026-11-03 |
-| G4 | items 6 (textured-surface folds 97, 124, 125 open) and 7 (narrow faces 15, 37 open; 92 closed by the rescue) **reopen** by the rule; geom_offset recorded as an open fold-placement item (vertical corners −2.0 px toward the oblique face, nosings +2.9 px up) | by rule |
+| G6 | consumer doc `docs/geometric_edges.md` final; items 1–10 status (section 6.1); geom_v2 candidate list (7.1); default proposal prepared as a separate, unapplied commit (branch `proposal/geom_v1_default`) | as built |
+
+### 7.1 geom_v2 candidate list (recorded in G6; no code)
+
+1. **Fold re-siting.** Place the fold at the intersection of the two fitted side planes (ρ̂₊ = ρ̂₋ along e1) instead of
+   the NMS ridge of the rotation rate, where the planes cross within ±k₁. G5 diagnostic: on convex folds the RGB-edge
+   offset drops from −1.75 to −0.82 px (frontal-face convention; vertical corners −2.02 → −1.05, nosings +2.59 →
+   +1.21); no consistent effect on concave contact folds; unusable on narrow plinths (planes cross for 34 % of the
+   contact-target candidates). Open: the residual ≈ 1 px, a fallback where the planes do not cross, and an RGB-free
+   acceptance test.
+2. **Thin-contour depth components.** 25 of the 45 step gaps still open after the G4 re-evaluation are dropped at the
+   component stage: contour components < 5 px (`min_component_px`), 82 % `thin` (doublet fits), r above τ_high
+   (fences, railings). Candidate: a component rule for thin contours (e.g. linking along the chain direction, or a
+   size minimum counted on the chain rather than on distinct pixels), checked against the fence clutter policy.
+3. **Items 6 / 7 in the fold channel.** Textured-surface folds (local σ_geo: 097 079 fold, 124 / 125 088 creases) and
+   narrow faces narrower than the k₁ windows (15 067 pickets, 37 070 porch nosing). Covered by the Laplacian in
+   geom_v1; a fold-channel fix would let a later version drop the Laplacian's texture and band excess there.
 
 ## 8. Runtime (CPU, measured in F4)
 

@@ -1,12 +1,199 @@
-# Geometric edges (geom_v1): the combined depth + fold smoothness-loss weight
+# Geometric edges (geom_v1): the combined smoothness-loss weight
 
-Status 2026-11-01: **design draft (TASK_GEOM_INTEGRATION G0), no code yet.** This document becomes the consumer-facing
-description of `geom_v1` in G6. Until then it records the target architecture, the evaluation and audit design, how
-each integration open item (depth_channel.md §7, items 1–10) will be resolved or closed, the config and run names, and
-what stays bit-for-bit. Channel math lives in `docs/depth_channel.md` and `docs/fold_channel.md`, the shared
-architecture in `docs/geometry_channels.md`.
+Status 2026-11-03: **final (TASK_GEOM_INTEGRATION G6)**. This is the consumer-facing description of `geom_v1`: what the
+weight means, its frame and resolution, how to load it, the strengths, the alignment, the limitations and how to re-run.
+Channel math: `docs/depth_channel.md`, `docs/fold_channel.md`, `docs/pipeline_tri_veto4.md` (the Laplacian detector);
+shared architecture and the status of the integration items: `docs/geometry_channels.md` §6.1; the integration record
+(design, evaluation, audit, G2–G5 results) is Appendix A below. `configs/default.yaml` is **not** changed: a separate,
+unapplied commit proposes geom_v1 as the default (section 7).
 
-## 1. Target architecture and data flow
+## 1. What w is
+
+`w` is a per-pixel weight for the smoothness term of a shading / illumination loss: **w = 1** where the surface is
+smooth and the shading may be assumed continuous, **w → w_min = 0.05** at geometric edges, where the illumination can be
+discontinuous (depth steps and silhouettes, limbs, folds between faces, creases). It is relaxation, not a label: the loss
+should multiply its neighbour differences by the weight (section 2), never divide by it.
+
+geom_v1 combines three channels by the **elementwise minimum** (a pixel is relaxed if any channel relaxes it):
+
+| channel | fires on | weight per candidate | settings in geom_v1 |
+|---|---|---|---|
+| depth | occluding depth steps in DA3's depth (two-sided plane fits in disparity) | w_c = max(0.05, ΔZ₀/(ΔZ + ΔZ₀)), ΔZ₀ = 0.10 m; band max(2, ⌈σ_w⌉ + 1) px | additive null; `sky_band: depth_and_mask` (the sky-mask boundary ring within 4 px of an accepted sky edge) |
+| fold | surface-normal discontinuities (two-sided plane normals, capped veto) | w_c from the shading jump J; band max(2, ⌈width/2⌉) px | fold v2 (multiplicative gate, capped veto); `crease_rescue: laplacian_corroborated` (8°, k_L 3) |
+| laplacian | tri_veto4's detector: \|LoG(ρ_f)\| / ρ with the scale-ratio veto | w = max(w_min, ε/(q_pool + ε)) | `pool_radius: 2` (tri_veto4 pools with 3) |
+
+```
+Stage A cache: D (DA3 metric depth, canonical focal), sky_prob, meta          [no new DA3 pass; D never shifted]
+   └─► GeometryContext (network res, upright, float64): S, Ω, ρ = 1/D, ρ_floor, ρ_f (trilateral), dense fit, n̂
+        ├─► depth      → w_depth, r = ΔZ/Z_near (∞ at sky edges), ΔZ [m]
+        ├─► fold       → w_fold, J
+        └─► laplacian  → w_lap, q_pool/ε
+   w_net = min(w_depth, w_fold, w_lap)                (network res, upright)
+   w     = clip(bilinear upsample of w_net to the original size, half-pixel centres, [w_min, 1]), to the stored frame
+```
+
+**Frame and resolution.** Per image, `stage_b/geom_v1/<stem>.npz`:
+
+| key | resolution | frame | dtype | meaning |
+|---|---|---|---|---|
+| `w` | original (the TIFF's size) | **stored** (as the TIFF is stored; the EXIF orientation is not applied) | float16 | **the deliverable** |
+| `w_net` | network (504 × 378 or 378 × 504) | stored | float16 | combined weight before upsampling |
+| `depth_w_net`, `fold_w_net`, `laplacian_w_net` | network | stored | float16 | per-channel weights |
+| `depth_strength`, `fold_strength`, `laplacian_strength`, `depth_dZ` | network | stored | float16 / float32 | strengths (section 3) |
+| `D`, `sky_mask`, `n_hat`, `normal_valid`, `sigma_theta`, `q`, `L_over_rho`, … | network | stored (n_hat components in the upright camera frame) | | diagnostics |
+
+`<stem>.json` holds the per-image scalars (channel counts, null scales, frames: `geometry.orientation_applied`,
+`upright_WxH`, `stored_WxH`); `<stem>_{depth,fold}_candidates.parquet` the candidate tables (upright network pixel
+coordinates); `manifest.csv` one row per image. Every image of batch1 and batch2 has orientation 1 (stored = upright).
+
+**Loading.**
+
+```python
+import numpy as np
+from illum_baseline.outputs import pair_weights
+
+w = np.load("baseline_output/stage_b/geom_v1/<stem>.npz")["w"].astype(np.float32)   # (H, W), original res, stored
+w_x, w_y = pair_weights(w)                                                            # (H, W-1), (H-1, W)
+# smoothness term, e.g.  sum(w_x * |dI_x|^p) + sum(w_y * |dI_y|^p)   on the image in the same (stored) frame
+```
+
+To get arrays in the upright frame use `illum_baseline.stage_b.load_upright(cfg, run_dir, stem)` (cfg from the run's
+`config_resolved.yaml`). Do not differentiate or re-filter an upsampled weight map: upsample once (as saved) and take
+neighbour minima.
+
+## 2. `pair_weights`
+
+`pair_weights(w) -> (w_x, w_y)` with `w_x[i, j] = min(w[i, j], w[i, j+1])` (shape H × (W−1)) and
+`w_y[i, j] = min(w[i, j], w[i+1, j])` ((H−1) × W): the weight of a neighbour difference is the smaller of its two pixels,
+so a difference that touches a relaxed pixel is relaxed. Compute it at load time on the full-resolution `w`, in the same
+frame as the image the loss runs on. It is the only pairing implemented; it is symmetric and needs no orientation.
+
+## 3. Strengths and units
+
+The weights are what geom_v1 delivers; the strengths are saved for consumers that want the geometric magnitude (and for a
+future fusion other than min, which is not implemented):
+
+| array | definition | range, units |
+|---|---|---|
+| `fold_strength` | the fold's shading jump J (worst case over light directions) at rasterized pixels (max over overlapping bands), 0 elsewhere | J ∈ [0, 1], dimensionless |
+| `depth_strength` | r = ΔZ / Z_near at rasterized pixels (max over bands), 0 elsewhere | r ∈ (0, ∞], dimensionless; **∞ at sky edges** and unbounded far sides: treat as saturated |
+| `depth_dZ` | ΔZ at rasterized pixels (max over bands), NaN elsewhere | metres (canonical-focal DA3 depth scaled by f_n/300), ∞ at sky edges |
+| `laplacian_strength` | q_pool / ε, so that w_lap = max(w_min, 1/(1 + strength)) where q_pool > 0 | dimensionless, ≥ 0 |
+
+Under min with the Laplacian channel the depth channel sets w on ≤ 0.03 % of the pixels (section 5): its contribution
+to the deliverable is the strengths r and ΔZ (which depth edge is an occlusion, and how large), not the weight.
+
+## 4. Alignment
+
+None is applied. DA3's edges sit a fraction of a pixel off the RGB edges, but the shift is **not stable** across images
+(G2: pooled (−0.07, −0.47) px over 20 images, dy CI excludes 0, yet only 39 % of the images lie within 0.3 px of the
+pooled shift; per-image dx from −0.54 to +0.54 px). No `deliverable_shift_px` option exists; `w` is in DA3's frame,
+upsampled with half-pixel centres. The bands (≥ 2 px at network resolution, ≈ 4 px at original resolution for 1000-px
+images) absorb sub-pixel offsets; 74 % of strong depth edges have their RGB edge within 2 px.
+
+## 5. Limitations
+
+Numbers from the labelled audit (`audit_split/`, 190 units, stratified pps estimator, 95 % stratified-bootstrap CIs;
+`baseline_output/diag/geom/g6/limits.json`), the pinned batch1 ROIs and the G5 runs.
+
+- **The depth channel rarely sets w.** Every depth w < 0.5 pixel lies inside the Laplacian's w < 0.5 except 2 (batch1)
+  / 3 (batch2) px; depth is the binding minimum on 0.011 % / 0.029 % of the pixels (median lowering 0.03 / 0.02). Its
+  deliverable role is the strengths (section 3). The sky ring (`sky_band: depth_and_mask`) likewise adds no area beyond
+  the Laplacian's sky band.
+- **The Laplacian's band excess and texture** (geom_v1, pooling radius 2), as shares of the tri-only area (665 801
+  network px over 20 images, 17.5 % of all pixels) still relaxed per pixel: band excess (relaxation wider than the edge)
+  **0.214 [0.159, 0.271]** (142 400 px; 0.86 of the band-excess area), tri_veto4 false positives on texture (tri_fp)
+  **0.069 [0.038, 0.104]** (45 700 px), all units labelled texture **0.159 [0.114, 0.208]** (106 100 px). Texture ROIs
+  (share w < 0.5): 070 floor 0.008, 079 grass 0.219, 079 sunlit grass 0.383, 083 bollard interior 0.002; texture class
+  0.198 (tri_veto4 0.254, geom_v0 without the Laplacian 0.003). Geom-only false positives (DA3 bumps on foliage and
+  surface marks): 0.052 [0, 0.104] of the geom-only area (39 123 px), band excess 0.033 [0.010, 0.064]. The price of
+  keeping the Laplacian (G4 decision (c)): without it geom_v0 missed 0.584 [0.512, 0.656] of the tri-only area as true
+  geometry; geom_v1 misses 0.007 [0, 0.021] per unit (0.079 per pixel).
+- **Fold placement.** The fold channel sites a fold at the NMS ridge of the normal rotation rate. Signed offset of the
+  RGB edge from it along the fit direction (15 audit units labelled geom_offset): vertical corners −2.02 px (toward the
+  oblique face), nosings +2.59 px (up), contact folds +0.81 (mixed). At the intersection of the two fitted side planes
+  the offsets are −1.05 / +1.21 / +0.32 px; all convex candidates −1.75 → −0.82 px toward the frontal face (the NMS peak
+  sits toward the more camera-facing face; the plane site halves it). The plane site is unusable on narrow plinths: the
+  planes cross within ±k₁ for only 34 % of the contact-target candidates. RGB caveat: the luminance maximum can be a
+  shadow edge, and 12 % of the contact-fold samples sit at the ±8 px search limit. Not corrected in geom_v1 (geom_v2
+  candidate).
+- **Items 6 / 7 (fold channel), reopened, not fixed.** Folds on textured surfaces (audit units 97, 124, 125) and narrow
+  faces narrower than the fold windows (15, 37) are missed by the fold channel (w < 0.5 on 0.00–0.32 of each unit); in
+  geom_v1 the Laplacian covers them (0.70–0.89 of each unit, median w 0.17–0.28). Unit 92 (076 plinth contact fold)
+  is covered by the crease rescue.
+- **Thin-contour depth components.** Of the 45 step gaps the depth channel leaves open, 25 are dropped by the component
+  minimum (contour pieces < 5 px; 82 % thin doublet fits, r above τ_high): fences and railings. The Laplacian covers
+  them in geom_v1.
+- **Alignment shift**: unstable across images, not applied (section 4).
+- **Moderate creases**: the crease rescue relaxes the 088 rock ridge (coverage 0.76) but not the 076 façade ledge
+  (blocked by the capped veto; documented gap, item 9).
+- **Clutter**: fences, railings, balusters and foliage carry dense thin depth rings; the relaxation is kept there (the
+  illumination is genuinely discontinuous); no audit unit was labelled artifact or clutter.
+- **Runtime.** 7.65 s per image on the CPU (median, 20 images; tri_veto4 0.55 s), dominated by the fold channel's dense
+  fit and normals; the GPU backend is a separate step.
+- **DA3 dependence.** All geometry comes from one DA3 metric-depth pass at network resolution: edges below its resolution
+  (gap_subscale: siding laps, ~1–2 cm trims; 0.034 of the tri-only area) are not resolved by the depth or fold channel.
+
+## 6. How to re-run
+
+From `geometry/dedicated/` (ROS / other Python paths off: `env -u PYTHONPATH`):
+
+```bash
+# Stage A (DA3, GPU) if the cache is missing; then Stage B geom_v1 (CPU), both batches
+env -u PYTHONPATH uv run python -m illum_baseline stage-a --config configs/candidate_geom_v1.yaml
+env -u PYTHONPATH uv run python -m illum_baseline stage-b --config configs/candidate_geom_v1.yaml
+env -u PYTHONPATH uv run python -m illum_baseline stage-b --config configs/candidate_geom_v1.yaml -i data/batch2 -o baseline_output_batch2
+# sheets only (viz, viz_depth, viz_fold, viz_geom)
+env -u PYTHONPATH uv run python -m illum_baseline viz --config configs/candidate_geom_v1.yaml
+# evaluation and audit reports (read RGB; diagnostic only)
+env -u PYTHONPATH uv run python scripts/geom_g5.py          # G1 table, audit re-score, marginals, r sweep
+env -u PYTHONPATH uv run python scripts/geom_g5_radius.py   # pooling radius report
+env -u PYTHONPATH uv run python scripts/geom_g5_fold_site.py
+env -u PYTHONPATH uv run python scripts/geom_g6_limits.py
+env -u PYTHONPATH uv run python scripts/geom_g6_default.py  # default-proposal numbers (times Stage B)
+# bit-for-bit check of every reference run (incl. geom_v1, geom_v1_r3)
+env -u PYTHONPATH uv run pytest tests/test_baseline_repro.py
+```
+
+A run directory refuses a different detector / sky / preprocess / geometry section unless `--force`; any change of
+settings needs a new `run.name`. Options are listed in section A.4.
+
+## 7. Default proposal (prepared, not applied)
+
+Branch `proposal/geom_v1_default` holds one commit on top of this branch that makes geom_v1 the pipeline default
+(`configs/default.yaml` = `configs/candidate_geom_v1.yaml`, the two tests that pin the default, and the docs lines that
+name it). It is not merged. What changes for a default run (`python -m illum_baseline infer` / `stage-b` without
+`--config`), per batch (`baseline_output/diag/geom/g6/default_proposal.json`):
+
+| | batch1 | batch2 |
+|---|---|---|
+| run directory | `stage_b/tri_veto4` → `stage_b/geom_v1` | same |
+| w < 0.5, deliverable `w` (original res) | 0.2262 → 0.2156 (−0.0105) | 0.2741 → 0.2765 (+0.0025) |
+| w < 0.5, `w_net` (network res) | 0.2274 → 0.2174 (−0.0100) | 0.2753 → 0.2788 (+0.0035) |
+| marginal w < 0.5 area (px; share of geom_v1's w < 0.5) | laplacian 253 475 (61.2 %), fold 34 579 (8.3 %), crease rescue 7 222 (1.7 %), depth 2, sky ring 0 | laplacian 286 907 (54.0 %), fold 64 832 (12.2 %), crease rescue 13 894 (2.6 %), depth 3, sky ring 0 |
+| runtime per image (Stage B, CPU, median) | 0.54 s → 7.65 s | 0.55 s → 7.67 s |
+| saved data per image | 1.6 → 6.2 MB | 1.5 → 8.9 MB |
+| saved sheets per image | 1.0 → 3.6 MB | 1.1 → 4.6 MB |
+
+New saved outputs per image: in `<stem>.npz` the keys `depth_w_net`, `depth_strength`, `depth_dZ`, `depth_q_over_s`,
+`depth_edge_mask`, `fold_w_net`, `fold_strength`, `fold_r_n`, `laplacian_w_net`, `laplacian_strength`, `laplacian_q`,
+`laplacian_L_over_rho`, `n_hat`, `normal_valid`, `sigma_theta` (kept: `w`, `w_net`, `q`, `L_over_rho`, `D`,
+`sky_mask`); the tables `<stem>_depth_candidates.parquet`, `<stem>_depth_null.parquet`, `<stem>_fold_candidates.parquet`,
+`<stem>_fold_null.parquet`; the sheets `viz_depth/`, `viz_fold/`, `viz_geom/` (besides `viz/`); the JSON gains
+`channels`, `combined`, `normals_computed`; the manifest gains `depth_*` columns.
+
+Config keys that change (effective values; `configs/default.yaml` relies on the built-in geometry defaults today):
+`geometry.enabled` false → true; `geometry.channels` [laplacian] → [depth, fold, laplacian]; `geometry.fold.veto_mode`
+fixed → capped; `geometry.fold.crease_rescue` off → laplacian_corroborated; `geometry.depth.sky_band` depth →
+depth_and_mask; `geometry.laplacian.pool_radius` null → 2; `run.name` tri_veto4 → geom_v1. The YAML additionally spells
+out the `geometry.dense_fit`, `geometry.fold`, `geometry.depth` and `geometry.laplacian` sections (at their built-in
+values otherwise). Detector, sky, preprocessing, DA3 and paths are unchanged, so the Stage A cache is reused.
+
+---
+
+# Appendix A. Integration record (TASK_GEOM_INTEGRATION G0–G5)
+
+## A.1 Target architecture and data flow (G0 draft, superseded by section 1)
 
 `geom_v1` is the geometry path of Stage B with channels `[depth, fold]` combined by the elementwise **min** (settled):
 a pixel is relaxed if either channel relaxes it, and a place where both fire (silhouettes with a normal change, DA3
@@ -40,9 +227,9 @@ Invariants: geometry is pure numpy/scipy, float64, network resolution, upright; 
 evaluation and diagnostic scripts do); no evaluation result feeds back into a channel; D is never shifted or
 resampled (the alignment option moves only where the deliverable's relaxation lands).
 
-## 2. Evaluation harness and disagreement audit (G1)
+## A.2 Evaluation harness and disagreement audit (G1)
 
-### 2.1 `scripts/geom_eval.py` (batch1, pinned ROIs)
+### A.2.1 `scripts/geom_eval.py` (batch1, pinned ROIs)
 
 - **ROIs:** `scripts/depth_rois.py` (POLYLINES, BOXES, RELABELLED; the 070 sky band from the tri_veto4 sky mask) and
   `scripts/fold_null_rois.py` (TARGETS: narrow-face edges → class fold, `crease` targets → class crease; the texture
@@ -56,7 +243,7 @@ resampled (the alignment option moves only where the deliverable's relaxation la
 - **Runs:** any list; G1 uses tri_veto4, tri_veto4_fold_v2, geom_v0. Output `baseline_output/diag/geom/g1/eval.json`
   plus one table.
 
-### 2.2 Disagreement audit (batch1 + batch2)
+### A.2.2 Disagreement audit (batch1 + batch2)
 
 - **Maps** (network res, upright): tri-only = tri_veto4 w < 0.5 ∧ geom_v0 w ≥ 0.9; geom-only = the reverse.
 - **Components:** 8-connected; components closer than 2 px merged (label the 1-px dilation, assign the original
@@ -73,7 +260,7 @@ resampled (the alignment option moves only where the deliverable's relaxation la
   artefact, no real geometry). Each component's pixel mask is saved alongside (`audit_masks.npz`) so later runs are
   re-scored on exactly the labelled pixels (G4, G5: closed if the new run has w < 0.5 on ≥ 50 % of it).
 
-### 2.3 As built (G1)
+### A.2.3 As built (G1)
 
 - `configs/candidate_geom_v0.yaml` (`depth_fold_v1` with the additive depth default); runs `geom_v0` in
   `baseline_output/` and `baseline_output_batch2/`.
@@ -87,7 +274,7 @@ resampled (the alignment option moves only where the deliverable's relaxation la
   their pieces per 32-px tile as sampling units (G1 flag: tri-only area is concentrated in a few very large merged
   components).
 
-## 3. How the open items will be resolved or closed
+## A.3 How the open items will be resolved or closed
 
 | # | item | milestone | how |
 |---|---|---|---|
@@ -102,7 +289,7 @@ resampled (the alignment option moves only where the deliverable's relaxation la
 | 9 | moderate creases | G3.1 | `geometry.fold.crease_rescue: off \| laplacian_corroborated` (Δθ ≥ θ_rescue, J ≥ J_min, rescued component ≥ 10 px, Laplacian one-signed response > k_L ŝ_L on ≥ 70 % of it); targets: 076 ledge and 088 ridge coverage ≥ 0.5, texture ≤ geom_v0 + 0.01, 083 interior unchanged; else "documented gap" |
 | 10 | recall vs tri_veto4 on true classes | G4.1–2 | the labelled audit: tri-only geometry (step/limb/fold/crease) = recall gaps; tri-only texture/artifact/clutter = tri_veto4 false positives; geom-only texture/artifact = geom_v0 false positives; re-scored after G2/G3 settings |
 
-### 3.1 G2 results (items 1, 2)
+### A.3.1 G2 results (items 1, 2)
 
 - **Shift (item 1): not stable.** 20 images, strong accepted depth edges (accepted, m8, r > 0.2, additive significance
   > 2z, not sky; 4083 samples with |s| ≤ 2; 069 and 074 excluded for < 20 samples). Image-level pooled shift
@@ -120,7 +307,7 @@ resampled (the alignment option moves only where the deliverable's relaxation la
 - New option (default off): `geometry.depth.sky_band: depth | depth_and_mask` (ring radius 2 px within 4 px of an
   accepted sky edge; recorded only when on).
 
-### 3.2 G3 results (items 9, 3, 8)
+### A.3.2 G3 results (items 9, 3, 8)
 
 - **Crease rescue (item 9).** `geometry.fold.crease_rescue: off | laplacian_corroborated` (recorded only when on; off is
   bit-identical on all 20 images). `ctx.s_hat_L` (B5 on the un-vetoed |L/ρ_f|) equals tri_veto4's recorded ŝ exactly on
@@ -140,7 +327,7 @@ resampled (the alignment option moves only where the deliverable's relaxation la
   pipe rail), foliage (080, 075, 082, 067) and distant façades (076, 082). Lean: keep the relaxation (no code); revisit if
   G4 labels such clusters `artifact`.
 
-### 3.3 G4 results (items 5, 6, 7, 10)
+### A.3.3 G4 results (items 5, 6, 7, 10)
 
 Labels: `audit_split/audit_labels.csv` (190 units; `bucket` used for every count). Re-evaluation run `geom_g4_reeval`
 (`configs/candidate_geom_g4_reeval.yaml`: geom_v0 + `sky_band: depth_and_mask` + `crease_rescue: laplacian_corroborated`
@@ -197,7 +384,7 @@ shift, which G2 found unstable and ≤ 0.5 px). The labels of 161 / 173 (offset 
 **Item 7 reopens** by the rule (15, 37). Textured-surface fold gaps 97 (fold), 124, 125 (creases) are all open (0.00,
 0.00, 0.14): **item 6 reopens** by the rule.
 
-### 3.4 G5 results: geom_v1
+### A.3.4 G5 results: geom_v1
 
 `configs/candidate_geom_v1.yaml`, run `geom_v1` on both batches: channels **[depth, fold, laplacian]**, min;
 `depth.sky_band: depth_and_mask`; band_min 2; `fold.crease_rescue: laplacian_corroborated` (8°, k_L 3); no deliverable
@@ -280,16 +467,16 @@ the oblique face from the NMS site. The hypothesis holds in direction (the NMS p
 but the plane site removes only about half of the offset; contact folds (concave) show no consistent effect, and on the
 narrow plinth targets the planes often do not cross within ±k₁. Open fold-placement item (G6 limitations).
 
-## 4. Config and run names
+## A.4 Config and run names
 
 | config | channels | run(s) | milestone |
 |---|---|---|---|
 | `configs/candidate_geom_v0.yaml` | `[depth, fold]` (depth additive default, fold_v2) | `geom_v0` in `baseline_output/` and `baseline_output_batch2/` | G1 |
-| G2/G3 variants | via `--set` on `candidate_geom_v0.yaml` | `geom_v0_shift`, `geom_v0_band{3,4}`, `geom_v0_skymask`, `geom_v0_rescue_*`, `geom_v0_dz0_{030,100}` (diagnostic runs, both batches where no ROI is needed) | G2, G3 |
+| G2/G3 variants (planned as runs) | computed inside the diagnostic scripts instead: re-rasterization of the geom_v0 tables (band_min, sky ring, ΔZ₀) and fold-channel reruns (rescue sweep) in `scripts/geom_g2_coverage.py`, `scripts/geom_g3.py`; no run directories | – | G2, G3 |
 | `configs/candidate_geom_g4_reeval.yaml` | geom_v0 + `sky_band: depth_and_mask` + `crease_rescue` 8° / 3 | `geom_g4_reeval` (both batches; re-evaluation, not a reference) | G4 |
 | `configs/candidate_geom_v1.yaml` | `[depth, fold, laplacian]` + sky_band depth_and_mask + crease_rescue 8° / 3 + laplacian pool_radius 2 (G4 (c), the approved G2/G3 settings, the G5 rule) | `geom_v1` (both batches; bit-for-bit reference) | G5 |
 | `configs/candidate_geom_v1_r3.yaml` | as geom_v1 with pool_radius null (r = 3) | `geom_v1_r3` (both batches; bit-for-bit reference) | G5 |
-| `configs/default.yaml` | unchanged; a separate, unapplied commit proposes geom_v1 as the default | – | G6 |
+| `configs/default.yaml` | unchanged (tri_veto4); the unapplied commit on branch `proposal/geom_v1_default` makes it geom_v1 (section 7) | – | G6 |
 
 New options (each defaults to the old behaviour): `geometry.deliverable_shift_px` (planned; not added, G2: shift not
 stable), `geometry.depth.sky_band: depth`, `geometry.fold.crease_rescue: off` (with `rescue_theta_deg` 8, `rescue_k_L` 3,
@@ -297,15 +484,15 @@ stable), `geometry.depth.sky_band: depth`, `geometry.fold.crease_rescue: off` (w
 recorded only when set). Batch2 runs use the same config with `--input data/batch2
 --output baseline_output_batch2`, as batch2 `tri_veto4` was made.
 
-## 5. What stays bit-for-bit
+## A.5 What stays bit-for-bit
 
 `baseline_v0`, both `tri_veto4` (batch1, batch2), `[laplacian]`, `fold_only`, `tri_veto4_fold`, `fold_v2`,
 `tri_veto4_fold_v2` (`tests/test_baseline_repro.py`, `tests/test_geom_stage_b.py`), with every new option at its
-default; plus tests that each option at its default leaves geom_v0 outputs unchanged. `geom_v1` becomes a new
-reference in G5. JSON parameter records list a new option only when it is on (as `fold.params_record` and the
+default; plus tests that each option at its default leaves geom_v0 outputs unchanged. G5 added `geom_v1` (pooling
+radius 2) and `geom_v1_r3` (radius 3, the first geom_v1 run) on both batches as references. JSON parameter records list a new option only when it is on (as `fold.params_record` and the
 `params.geometry.depth` rule already do), so existing records stay identical.
 
-## 6. Missing pieces this task needs (to be built in the milestones named)
+## A.6 Missing pieces this task needs (to be built in the milestones named)
 
 | needed | status | where |
 |---|---|---|
@@ -323,7 +510,7 @@ reference in G5. JSON parameter records list a new option only when it is on (as
 | hand labels for the audit | missing by design (you label the CSV after G1) | G1 → G4 |
 | annotations (`annotations/folds/`) | none exist; the pinned ROIs and the audit labels stand in | – |
 
-## 7. Flags and leans (G0)
+## A.7 Flags and leans (G0)
 
 1. **Batch2 runs** use the same config with `--input/--output` overrides (as batch2 `tri_veto4`), run name `geom_v0` in
    `baseline_output_batch2/`. *Lean:* yes (no separate config file).
