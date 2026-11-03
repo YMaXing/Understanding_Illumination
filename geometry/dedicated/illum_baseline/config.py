@@ -194,6 +194,9 @@ class DepthCfg:
     dZ0: float = 0.10                   # m
     w_min: float = 0.05
     band_min: int = 2
+    sky_band: str = "depth"             # depth | depth_and_mask (G2: also paint the sky-mask boundary ring)
+    sky_ring_px: int = 2
+    sky_ring_near_px: float = 4.0
 
 
 @dataclass
@@ -392,6 +395,8 @@ def _validate_geometry(g: GeometryCfg) -> None:
         raise ValueError(f"geometry.depth.disparity must be rho_f|rho, got {e.disparity!r}")
     if e.null_model not in ("multiplicative", "additive"):
         raise ValueError(f"geometry.depth.null_model must be multiplicative|additive, got {e.null_model!r}")
+    if e.sky_band not in ("depth", "depth_and_mask") or e.sky_ring_px < 0 or e.sky_ring_near_px < 0:
+        raise ValueError(f"geometry.depth.sky_band must be depth|depth_and_mask (ring >= 0), got {e.sky_band!r}")
     if e.gap_mode != "at_x0":
         raise ValueError("geometry.depth.gap_mode must be at_x0 (min_span is recorded only)")
     if len(e.lambda_clamp) != 2 or not 0 < e.lambda_clamp[0] <= e.lambda_clamp[1]:

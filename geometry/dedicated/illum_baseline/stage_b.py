@@ -267,6 +267,10 @@ def _process_one_geometry(cfg: Config, stem: str, rd: Path, meta_a: dict[str, An
     geo["fold"] = params_record(geo["fold"])
     if "depth" not in cfg.geometry.channels:  # runs without the depth channel keep their records unchanged
         geo.pop("depth")
+    else:
+        from .geom.depth import params_record as depth_params_record
+
+        geo["depth"] = depth_params_record(geo["depth"])
     common["params"]["geometry"] = geo
     common["provenance"]["geometry_version"] = GEOMETRY_VERSION
     meta = {

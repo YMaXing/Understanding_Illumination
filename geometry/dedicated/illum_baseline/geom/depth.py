@@ -84,6 +84,11 @@ class DepthParams:
     dZ0: float = 0.10                 # m, knee of w_c = max(w_min, dZ0 / (dZ + dZ0))
     w_min: float = 0.05
     band_min: int = 2
+    # TASK_GEOM_INTEGRATION G2: depth_and_mask also paints w_min on the sky-mask boundary ring (radius sky_ring_px)
+    # within sky_ring_near_px of an accepted sky-edge candidate (a sky region with no accepted sky edge stays unpainted)
+    sky_band: str = "depth"           # depth | depth_and_mask
+    sky_ring_px: int = 2
+    sky_ring_near_px: float = 4.0
 
     @classmethod
     def from_dict(cls, d: dict | None) -> DepthParams:
@@ -250,6 +255,26 @@ def _solve_sig2_rho(d: np.ndarray, se: np.ndarray, lam_n: float) -> float:
 
 
 SIDE_MODES = ("", "plane8", "plane4", "const")
+SKY_BAND_KEYS = ("sky_band", "sky_ring_px", "sky_ring_near_px")
+
+
+def params_record(p: dict) -> dict:
+    """The depth parameters as recorded in the outputs: TASK_GEOM_INTEGRATION keys only when their option is on, so
+    runs with the options off keep the records of the runs made before they existed."""
+    d = dict(p)
+    if d.get("sky_band", "depth") == "depth":
+        for k in SKY_BAND_KEYS:
+            d.pop(k, None)
+    return d
+
+
+def sky_boundary_ring(S: np.ndarray, radius: int) -> np.ndarray:
+    """The sky-side boundary pixels of S dilated by radius (3x3 steps), the image border excluded (the definition of
+    the 070 sky-band ROI, scripts/depth_rois.py)."""
+    b = S & ~ndimage.binary_erosion(S, structure=np.ones((3, 3), bool), border_value=1)
+    b[:1, :] = b[-1:, :] = False
+    b[:, :1] = b[:, -1:] = False
+    return ndimage.binary_dilation(b, structure=np.ones((3, 3), bool), iterations=radius) if radius > 0 else b
 
 
 def se_eff(p: DepthParams, null: DepthNull, se: np.ndarray, pair: bool = False) -> np.ndarray:
@@ -443,6 +468,8 @@ class DepthChannel:
         p = params if isinstance(params, DepthParams) else DepthParams.from_dict(params)
         if p.null_model not in NULL_MODELS:
             raise ValueError(f"unknown null_model {p.null_model!r}; expected one of {NULL_MODELS}")
+        if p.sky_band not in ("depth", "depth_and_mask"):
+            raise ValueError(f"unknown sky_band {p.sky_band!r}; expected depth or depth_and_mask")
         if p.gap_mode != "at_x0":
             raise ValueError("the depth magnitude uses gap_mode 'at_x0' (min_span is recorded only)")
         H, W = ctx.shape
@@ -545,6 +572,18 @@ class DepthChannel:
             w_depth = np.minimum(w_depth, ndimage.grey_erosion(wi, footprint=fp, mode="constant", cval=1.0))
             strength = np.maximum(strength, ndimage.grey_dilation(si, footprint=fp, mode="constant", cval=0.0))
             dZ_map = np.maximum(dZ_map, ndimage.grey_dilation(zi, footprint=fp, mode="constant", cval=-np.inf))
+        n_ring = 0
+        if p.sky_band == "depth_and_mask":
+            sk = accepted & sky_edge
+            if sk.any():
+                seed = np.ones((H, W), dtype=bool)
+                seed[v[sk], u[sk]] = False
+                near = ndimage.distance_transform_edt(seed) <= p.sky_ring_near_px
+                ring = sky_boundary_ring(ctx.S, p.sky_ring_px) & near
+                n_ring = int((ring & (w_depth > p.w_min)).sum())
+                w_depth[ring] = p.w_min
+                strength[ring] = np.inf
+                dZ_map[ring] = np.inf
         dZ_map = np.where(np.isneginf(dZ_map), np.nan, dZ_map).astype(np.float32)
         edge_mask = np.zeros((H, W), dtype=bool)
         edge_mask[v[accepted], u[accepted]] = True
@@ -599,7 +638,8 @@ class DepthChannel:
             "share_signif_binding": float((rg > p.tau_low).mean()) if rg.size else float("nan"),
             "f_n": 0.5 * (ctx.K.f_x + ctx.K.f_y), "sigma_f_rel": float(rel_f), "dZ0": p.dZ0,
             "frac_w_lt_0.5": float((w_depth < 0.5).mean()), "frac_w_lt_0.9": float((w_depth < 0.9).mean()),
-            "params": dataclasses.asdict(p),
+            **({"n_sky_ring_px": n_ring} if p.sky_band != "depth" else {}),
+            "params": params_record(dataclasses.asdict(p)),
         }
         scalars["context_s"] = t_ctx
         scalars["runtime_s"] = time.perf_counter() - t_start - t_ctx
