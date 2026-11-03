@@ -10,7 +10,7 @@ Status as of 2026-11-01 (TASK_DEPTH_CHANNEL D0–D6; the development record of e
   (`[depth, fold]` with the fold_v2 settings, combined by the elementwise minimum, run `depth_fold_v1`). The gate null
   is `geometry.depth.null_model: additive` (the default since D5; section 3.7). The saved D5 runs `depth_v1` and
   `depth_fold_v1` were made with the multiplicative null, `depth_v1_add` with the additive one.
-- **Default pipeline unchanged:** `configs/default.yaml` has the geometry channels off; `baseline_v0`, both
+- **Default pipeline:** since TASK_GEOM_INTEGRATION G6 `configs/default.yaml` is geom_v1 (this channel with `sky_band: depth_and_mask`; `docs/geometric_edges.md`); at the time of this task it had the geometry channels off; `baseline_v0`, both
   `tri_veto4`, `[laplacian]`, `fold_only`, `tri_veto4_fold`, `fold_v2` and `tri_veto4_fold_v2` reproduce bit for bit
   (`tests/test_baseline_repro.py`, `tests/test_geom_stage_b.py`).
 - **Visualization:** the depth sheet and the profile tool `diag-depth`, `docs/viz_guide.md`.
@@ -440,7 +440,7 @@ for field (tested), with validation and nested `--set` (e.g. `--set geometry.dep
 is `geometry.depth.null_model` (the fold channel's key name): `multiplicative` (default; λ̂_Δρ) or `additive`
 (λ_n SE² + σ_geo,ρ²); both significance columns are always recorded. Configs: `configs/candidate_depth_only.yaml`
 (`[depth]`, run `depth_v1`), `configs/candidate_depth_fold.yaml` (`[depth, fold]` with the fold_v2 settings, run
-`depth_fold_v1`); `configs/default.yaml` is unchanged (geometry off).
+`depth_fold_v1`); `configs/default.yaml` was unchanged by this task (geometry off; geom_v1 since TASK_GEOM_INTEGRATION G6).
 
 **Records.** The JSON `params.geometry.depth` block is written only for runs that include the depth channel, so every
 earlier geometry run reproduces its record bit for bit (`fold_only`, `tri_veto4_fold`, `fold_v2`,
