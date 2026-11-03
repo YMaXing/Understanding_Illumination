@@ -2,7 +2,7 @@
 
 Status as of 2026-10-27:
 
-- **Default pipeline:** `configs/default.yaml`, identical to `configs/candidate_tri_veto4.yaml`. Stage B run name `tri_veto4`.
+- **Default pipeline:** since TASK_GEOM_INTEGRATION G6, `configs/default.yaml` is geom_v1 (`docs/geometric_edges.md`), which contains this detector as its Laplacian channel (pooling radius 2). tri_veto4 itself: `configs/candidate_tri_veto4.yaml`, Stage B run name `tri_veto4`.
 - **Original baseline:** `configs/baseline_v0.yaml`. It reproduces `stage_b/baseline_v0` bit-for-bit, and a test enforces this.
 
 The task history is in `TASK_070_STRIPES.md` (T1–T5) and in the per-step reports under `baseline_output/diag/`.

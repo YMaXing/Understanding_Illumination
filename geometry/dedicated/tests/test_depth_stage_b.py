@@ -53,7 +53,7 @@ def test_depth_config_parity_and_options():
         assert DepthParams.from_dict(dataclasses.asdict(cfg.geometry.depth)) == DepthParams()
     fold_v2 = load_config(CONFIGS / "candidate_fold_v2.yaml").geometry.fold
     assert load_config(CONFIGS / "candidate_depth_fold.yaml").geometry.fold == fold_v2  # the fold_v2 settings
-    assert load_config(CONFIGS / "default.yaml").geometry.enabled is False
+    assert load_config(CONFIGS / "default.yaml").geometry.enabled is True  # geom_v1 (G6 default proposal)
     cfg = apply_sets(Config(), ["geometry.depth.null_model=additive", "geometry.depth.dZ0=2e-1",
                                 "geometry.depth.lambda_clamp=[1, 1e3]"])
     assert cfg.geometry.depth.null_model == "additive" and cfg.geometry.depth.dZ0 == 0.2

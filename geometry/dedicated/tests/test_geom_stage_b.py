@@ -54,7 +54,9 @@ def test_combine_is_elementwise_min():
 def test_config_defaults_validation_and_nested_set():
     cfg = Config()
     assert cfg.geometry.enabled is False and cfg.geometry.channels == ["laplacian"]
-    assert load_config(DEFAULT_CONFIG).geometry.enabled is False
+    d = load_config(DEFAULT_CONFIG)  # the default is geom_v1 (TASK_GEOM_INTEGRATION G6)
+    assert d.geometry.enabled is True and d.geometry.channels == ["depth", "fold", "laplacian"]
+    assert d.to_dict() == load_config(PROJECT_ROOT / "configs" / "candidate_geom_v1.yaml").to_dict()
     assert set(CHANNELS) >= {"laplacian", "fold"}
     apply_sets(cfg, ["geometry.fold.p_fa=1.0e-4", "geometry.dense_fit.refit=2", "geometry.channels=[fold]"])
     assert cfg.geometry.fold.p_fa == 1e-4 and cfg.geometry.dense_fit.refit == 2 and cfg.geometry.channels == ["fold"]

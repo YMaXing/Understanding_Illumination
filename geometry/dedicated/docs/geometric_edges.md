@@ -476,7 +476,7 @@ narrow plinth targets the planes often do not cross within ±k₁. Open fold-pla
 | `configs/candidate_geom_g4_reeval.yaml` | geom_v0 + `sky_band: depth_and_mask` + `crease_rescue` 8° / 3 | `geom_g4_reeval` (both batches; re-evaluation, not a reference) | G4 |
 | `configs/candidate_geom_v1.yaml` | `[depth, fold, laplacian]` + sky_band depth_and_mask + crease_rescue 8° / 3 + laplacian pool_radius 2 (G4 (c), the approved G2/G3 settings, the G5 rule) | `geom_v1` (both batches; bit-for-bit reference) | G5 |
 | `configs/candidate_geom_v1_r3.yaml` | as geom_v1 with pool_radius null (r = 3) | `geom_v1_r3` (both batches; bit-for-bit reference) | G5 |
-| `configs/default.yaml` | unchanged (tri_veto4); the unapplied commit on branch `proposal/geom_v1_default` makes it geom_v1 (section 7) | – | G6 |
+| `configs/default.yaml` | geom_v1 (= `candidate_geom_v1.yaml`; this commit, branch `proposal/geom_v1_default`) | `geom_v1` | G6 |
 
 New options (each defaults to the old behaviour): `geometry.deliverable_shift_px` (planned; not added, G2: shift not
 stable), `geometry.depth.sky_band: depth`, `geometry.fold.crease_rescue: off` (with `rescue_theta_deg` 8, `rescue_k_L` 3,
