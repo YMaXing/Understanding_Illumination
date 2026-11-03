@@ -9,8 +9,8 @@ from functools import cached_property
 
 import numpy as np
 
-from ..detector import (Disparity, Params, gaussian_gradient, prepare_disparity, smooth_and_laplacian,
-                        trilateral)
+from ..detector import (MAD_TO_STD, Disparity, Params, dilate, gaussian_gradient, prepare_disparity,
+                        smooth_and_laplacian, trilateral)
 from .camera import Intrinsics
 from .normals import Normals, normals
 from .planefit import DenseFit, DenseFitParams, dense_fit
@@ -130,3 +130,21 @@ class GeometryContext:
         out = L / np.maximum(rs, self.rho_floor)
         _ro(out)
         return out
+
+    @cached_property
+    def s_hat_L(self) -> float:
+        """Record-only: the detector's B5 noise scale on the un-vetoed |L_over_rho_f| (median / 0.6745 over the pixels
+        r px clear of the sky and R px clear of the border, clamped to [s_hat_min, s_hat_max]); used by the fold
+        channel's crease rescue (TASK_GEOM_INTEGRATION G3). Equals the Laplacian channel's s_hat when that one is
+        computed on the un-vetoed filtered response (tri_shat filtered)."""
+        p = self.det
+        valid = ~dilate(self.S, p.r)
+        R = p.R
+        valid[:R, :] = valid[-R:, :] = False
+        valid[:, :R] = valid[:, -R:] = False
+        s = float(np.median(np.abs(self.L_over_rho_f[valid])) / MAD_TO_STD) if valid.any() else p.s_hat_min
+        if p.s_hat_min is not None:
+            s = max(s, p.s_hat_min)
+        if p.s_hat_max is not None:
+            s = min(s, p.s_hat_max)
+        return s

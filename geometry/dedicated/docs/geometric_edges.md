@@ -102,6 +102,44 @@ resampled (the alignment option moves only where the deliverable's relaxation la
 | 9 | moderate creases | G3.1 | `geometry.fold.crease_rescue: off \| laplacian_corroborated` (Δθ ≥ θ_rescue, J ≥ J_min, rescued component ≥ 10 px, Laplacian one-signed response > k_L ŝ_L on ≥ 70 % of it); targets: 076 ledge and 088 ridge coverage ≥ 0.5, texture ≤ geom_v0 + 0.01, 083 interior unchanged; else "documented gap" |
 | 10 | recall vs tri_veto4 on true classes | G4.1–2 | the labelled audit: tri-only geometry (step/limb/fold/crease) = recall gaps; tri-only texture/artifact/clutter = tri_veto4 false positives; geom-only texture/artifact = geom_v0 false positives; re-scored after G2/G3 settings |
 
+### 3.1 G2 results (items 1, 2)
+
+- **Shift (item 1): not stable.** 20 images, strong accepted depth edges (accepted, m8, r > 0.2, additive significance
+  > 2z, not sky; 4083 samples with |s| ≤ 2; 069 and 074 excluded for < 20 samples). Image-level pooled shift
+  (−0.07, −0.47) px (RGB = DA3 + shift), 95 % CI dx [−0.19, 0.06], dy [−0.64, −0.30] (excludes 0); but only 39 % of the
+  images lie within 0.3 px of it (median distance 0.34 px, max 0.93; per-image dx −0.54 … +0.54). Rule: stable needs
+  both → **not stable; `geometry.deliverable_shift_px` not added**. (`scripts/geom_g2_align.py` →
+  `diag/geom/g2/align.json`.)
+- **Band coverage (item 2)** (`scripts/geom_g2_coverage.py` → `diag/geom/g2/coverage.json`; w re-rasterized from the
+  geom_v0 tables, bit-identical to the saved w_net at band_min 2): depth-edge coverage at the RGB edge 0.819 / 0.846 /
+  0.879 for band_min 2 / 3 / 4 (1.000 at the DA3 position); fold targets 0.43 (the narrow plinth edges and creases are not
+  detected, not a band question); 070 sky band 0.741 / 0.919 / 0.987 with `sky_band: depth`, 0.985 / 0.986 / 0.987 with
+  `depth_and_mask`; texture ≤ geom_v0 + 0.01 everywhere (079 sunlit grass 0.006 → 0.012 at band_min 4). **No setting
+  meets the rule** (depth-edge coverage ≥ 0.90): 74 % of the RGB edges lie within 2 px of the depth edge, 10 % beyond 6 px
+  and 4.4 % at the ±8 px search limit (no luminance edge at the depth edge); 0.90 would need ~6-px bands.
+- New option (default off): `geometry.depth.sky_band: depth | depth_and_mask` (ring radius 2 px within 4 px of an
+  accepted sky edge; recorded only when on).
+
+### 3.2 G3 results (items 9, 3, 8)
+
+- **Crease rescue (item 9).** `geometry.fold.crease_rescue: off | laplacian_corroborated` (recorded only when on; off is
+  bit-identical on all 20 images). `ctx.s_hat_L` (B5 on the un-vetoed |L/ρ_f|) equals tri_veto4's recorded ŝ exactly on
+  all 10 batch1 images. Sweep θ_rescue ∈ {6, 8, 10}° × k_L ∈ {2, 3, 4}: 088 rock ridge coverage 0.125 → 0.76 at every
+  setting, 076 façade ledge 0 → 0.13 at most (its candidates are eligible, 49/53, but only 16 pass the capped veto as
+  decided: the ledge is blocked by the veto, not by θ or k_L); texture within + 0.01 and the 083 interior unchanged at
+  every setting; the fold class coverage rises 0.47 → 0.82 (narrow plinth edges). **No setting meets the targets**
+  (both creases ≥ 0.5) → item 9 closed as a documented gap by the rule. Side effects on batch2: 55–2039 rescued
+  candidates per image (8°/3), mostly real small geometry (068 siding laps, 074 downpipes, window frames, ledges;
+  w < 0.5 0.046 → 0.103 on 074).
+- **ΔZ₀ (item 3)**, mean deliverable share of w < 0.5 over 20 images: 0.090 / 0.084 / 0.072 for ΔZ₀ 0.10 / 0.30 / 1.00 m
+  (w < 0.9: 0.106 / 0.105 / 0.102); per class at 1.00 m: step 0.775 → 0.751, limb 1.00 → 0.81, texture 0.003 → 0.000.
+  ΔZ₀ stays 0.10 m.
+- **Thin-ring clusters (item 8)**: 32-px tiles with ≥ 5 accepted candidates, > 50 % thin, sky edges excluded (a sky edge's
+  far side is sky, so it falls back to the doublet and carries `thin`): 1–56 cluster tiles per image; fences, railings
+  and balusters (090 chain-link, 066 / 067 picket fences, 071–073 iron railings, batch2 070 / 075 porch balusters, 084
+  pipe rail), foliage (080, 075, 082, 067) and distant façades (076, 082). Lean: keep the relaxation (no code); revisit if
+  G4 labels such clusters `artifact`.
+
 ## 4. Config and run names
 
 | config | channels | run(s) | milestone |
@@ -111,8 +149,8 @@ resampled (the alignment option moves only where the deliverable's relaxation la
 | `configs/candidate_geom_v1.yaml` | from G4 + the approved G2/G3 settings | `geom_v1` (both batches; new bit-for-bit reference) | G5 |
 | `configs/default.yaml` | unchanged; a separate, unapplied commit proposes geom_v1 as the default | – | G6 |
 
-New options (each defaults to the old behaviour): `geometry.deliverable_shift_px: [0, 0]`,
-`geometry.depth.sky_band: depth`, `geometry.fold.crease_rescue: off` (with `rescue_theta_deg` 8, `rescue_k_L` 3,
+New options (each defaults to the old behaviour): `geometry.deliverable_shift_px` (planned; not added, G2: shift not
+stable), `geometry.depth.sky_band: depth`, `geometry.fold.crease_rescue: off` (with `rescue_theta_deg` 8, `rescue_k_L` 3,
 `rescue_min_component_px` 10, `rescue_support` 0.7). Batch2 runs use the same config with `--input data/batch2
 --output baseline_output_batch2`, as batch2 `tri_veto4` was made.
 

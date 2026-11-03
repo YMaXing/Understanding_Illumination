@@ -81,6 +81,12 @@ class FoldParams:
     band_min: int = 2
     min_component_px: int = 5
     depth_jump_rel: float = 0.02
+    # TASK_GEOM_INTEGRATION G3: rescue moderate creases that fail only the gate, corroborated by the Laplacian
+    crease_rescue: str = "off"          # off | laplacian_corroborated
+    rescue_theta_deg: float = 8.0       # dtheta(k1) >= this
+    rescue_k_L: float = 3.0             # |L_over_rho_f| > k_L s_hat_L on a support pixel
+    rescue_min_component_px: int = 10   # rescued component length (distinct NMS pixels)
+    rescue_support: float = 0.7         # share of the component's pixels with one-signed support
 
     @classmethod
     def from_dict(cls, d: dict | None) -> FoldParams:
@@ -108,6 +114,7 @@ def _solve_sig2(d: np.ndarray, S: np.ndarray, lam_n: float) -> float:
 
 V2_VETO_KEYS = ("veto_mode", "veto_curv_coef", "veto_curv_max")
 V2_CAND_KEYS = ("cand_radius", "cand_radius_wide", "cand_min_samples")
+RESCUE_KEYS = ("crease_rescue", "rescue_theta_deg", "rescue_k_L", "rescue_min_component_px", "rescue_support")
 
 
 def params_record(p: dict) -> dict:
@@ -119,6 +126,9 @@ def params_record(p: dict) -> dict:
             d.pop(k, None)
     if d.get("null_model") != "additive_cand":
         for k in V2_CAND_KEYS:
+            d.pop(k, None)
+    if d.get("crease_rescue", "off") == "off":
+        for k in RESCUE_KEYS:
             d.pop(k, None)
     return d
 
@@ -270,6 +280,15 @@ class FoldChannel:
             Jb.append(_J(fold_angle(*nb)))
         J_lo, J_hi = np.fmin(*Jb), np.fmax(*Jb)
 
+        # TASK_GEOM_INTEGRATION G3 crease rescue (off: nothing here runs and every output is unchanged)
+        rescue = None
+        if p.crease_rescue not in ("off", "laplacian_corroborated"):
+            raise ValueError(f"unknown crease_rescue {p.crease_rescue!r}")
+        if p.crease_rescue == "laplacian_corroborated":
+            rescue = self._crease_rescue(ctx, p, cands, gate, x0, e1, width, k1, r1, dtheta1, J, eps_hat, tri, fitkw,
+                                         rms_max)
+            accepted = accepted | rescue["rescued"]
+
         # F2.8 weight and rasterization
         with np.errstate(invalid="ignore"):
             w_c = np.maximum(p.w_min, p.J0 / (np.maximum(J - p.J_min, 0.0) + p.J0))
@@ -299,6 +318,8 @@ class FoldChannel:
         reason[~r1.valid] = "invalid_window"
         if capped is not None:
             reason[capped["veto_undecidable"]] = "veto_undecidable"
+        if rescue is not None:
+            reason[rescue["rescued"]] = "rescued"
 
         df = pd.DataFrame({
             "u": u, "v": v, "u0": x0[:, 0], "v0": x0[:, 1], "e1_u": e1[:, 0], "e1_v": e1[:, 1],
@@ -322,6 +343,9 @@ class FoldChannel:
             df["cand_null_n"] = cand_rec["n"]
             df["cand_null_radius"] = cand_rec["radius"]
             df["dtheta_gate_add_cand"] = np.sqrt(T_crit * (p.lambda_n * sig_pair**2 + cand_rec["sig2"]))
+        if rescue is not None:  # crease-rescue records (tables without the option are unchanged)
+            for k_ in ("rescue_eligible", "rescue_veto_pass", "rescue_comp_px", "rescue_support", "rescued"):
+                df[k_] = rescue[k_]
         if capped is not None:  # capped-veto records (the fixed mode's table is unchanged)
             for k_ in ("k2_p", "k2_m", "d_next_p", "d_next_m", "C_curv", "C_min_eff", "decidable", "strict_planar",
                        "narrow_face", "veto_undecidable", "C_high"):
@@ -359,11 +383,58 @@ class FoldChannel:
             scalars |= {"veto_mode": "capped", "n_narrow_face": int(capped["narrow_face"].sum()),
                         "n_veto_undecidable": int(capped["veto_undecidable"].sum()),
                         "n_C_high": int(capped["C_high"].sum())}
+        if rescue is not None:
+            scalars |= {"n_rescue_eligible": int(rescue["rescue_eligible"].sum()),
+                        "n_rescue_veto_pass": int(rescue["rescue_veto_pass"].sum()),
+                        "n_rescued": int(rescue["rescued"].sum()), "s_hat_L": float(ctx.s_hat_L)}
         scalars["context_s"] = t_ctx
         scalars["runtime_s"] = time.perf_counter() - t_start - t_ctx
         return ChannelResult(name=self.name, w_net=w_fold, strength=strength, candidates=df,
                              arrays={"r_n": cands.rate_map}, scalars=scalars, w_min=p.w_min,
                              tables={"null": null_df})
+
+    @staticmethod
+    def _crease_rescue(ctx, p, cands, gate, x0, e1, width, k1, r1, dtheta1, J, eps_hat, tri, fitkw, rms_max) -> dict:
+        """TASK_GEOM_INTEGRATION G3: candidates that fail only the gate (valid k1 windows) with dtheta(k1) >=
+        rescue_theta_deg and J >= J_min; the veto decided as pass (capped: a second veto pass over gate | eligible,
+        results kept for the eligible only, so the gate-passed candidates' own veto is unchanged; decided = decidable
+        and C >= C_min_eff, the narrow_face route excluded; fixed: valid k2 windows and C >= C_min). Their
+        8-connected components (NMS pixels) are rescued when >= rescue_min_component_px and when >= rescue_support of
+        their members carry the Laplacian's one-signed response: |L_over_rho_f(x0)| > rescue_k_L s_hat_L with the
+        component's majority sign (the convexity the fold records is the sign of the same field)."""
+        H, W = ctx.shape
+        N = len(x0)
+        with np.errstate(invalid="ignore"):
+            elig = r1.valid & ~gate & (np.degrees(dtheta1) >= p.rescue_theta_deg) & (J >= p.J_min)
+        dec = np.zeros(N, dtype=bool)
+        if elig.any():
+            if p.veto_mode == "capped":
+                cap2 = FoldChannel._capped_veto(ctx, p, cands, gate | elig, x0, e1, width, k1, r1, dtheta1, eps_hat,
+                                                tri, fitkw, rms_max)
+                dec = elig & cap2["veto_pass"] & cap2["decidable"]
+            else:
+                g = np.nonzero(elig)[0]
+                k2 = np.rint(p.veto_k_factor * k1).astype(int)
+                r2 = two_sided_fit(ctx, x0[g], e1[g], k2[g], rms_max=None, fallback=False, **fitkw)
+                with np.errstate(invalid="ignore", divide="ignore"):
+                    dec[g] = r2.valid & (dtheta1[g] / r2.dtheta >= p.C_min)
+        L0, okL = bilinear(ctx.L_over_rho_f, ctx.omega, x0[:, 0], x0[:, 1])
+        u, v = cands.ij[:, 0], cands.ij[:, 1]
+        grid = np.zeros((H, W), dtype=bool)
+        grid[v[dec], u[dec]] = True
+        lab, nl = ndimage.label(grid, structure=np.ones((3, 3), dtype=bool))
+        size = np.bincount(lab.ravel(), minlength=nl + 1)
+        li = np.where(dec, lab[v, u], 0)
+        sgn = np.where(okL, np.sign(np.nan_to_num(L0)), 0.0)
+        comp_sign = np.sign(np.bincount(li[dec], weights=sgn[dec], minlength=nl + 1))
+        sup = dec & okL & (sgn == comp_sign[li]) & (np.abs(np.nan_to_num(L0)) > p.rescue_k_L * ctx.s_hat_L)
+        n_mem = np.bincount(li[dec], minlength=nl + 1)
+        with np.errstate(invalid="ignore", divide="ignore"):
+            share = np.bincount(li[sup], minlength=nl + 1) / n_mem
+        keep = (size >= p.rescue_min_component_px) & (share >= p.rescue_support)
+        keep[0] = False
+        return {"rescue_eligible": elig, "rescue_veto_pass": dec, "rescue_comp_px": np.where(dec, size[li], 0),
+                "rescue_support": np.where(dec, share[li], np.nan), "rescued": dec & keep[li]}
 
     @staticmethod
     def _capped_veto(ctx, p, cands, gate, x0, e1, width, k1, r1, dtheta1, eps_hat, tri, fitkw, rms_max) -> dict:

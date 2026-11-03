@@ -150,6 +150,11 @@ class FoldCfg:
     band_min: int = 2
     min_component_px: int = 5
     depth_jump_rel: float = 0.02
+    crease_rescue: str = "off"          # off | laplacian_corroborated (TASK_GEOM_INTEGRATION G3)
+    rescue_theta_deg: float = 8.0
+    rescue_k_L: float = 3.0
+    rescue_min_component_px: int = 10
+    rescue_support: float = 0.7
 
 
 @dataclass
@@ -382,6 +387,11 @@ def _validate_geometry(g: GeometryCfg) -> None:
         raise ValueError("geometry.fold.lambda_clamp must be [lo, hi] with 0 < lo <= hi")
     if not 1 <= f.m_min <= f.m:
         raise ValueError("geometry.fold: need 1 <= m_min <= m")
+    if f.crease_rescue not in ("off", "laplacian_corroborated"):
+        raise ValueError(f"geometry.fold.crease_rescue must be off|laplacian_corroborated, got {f.crease_rescue!r}")
+    if f.rescue_theta_deg < 0 or f.rescue_k_L < 0 or f.rescue_min_component_px < 1 or not 0 < f.rescue_support <= 1:
+        raise ValueError("geometry.fold: rescue_theta_deg, rescue_k_L >= 0, rescue_min_component_px >= 1, "
+                         "rescue_support in (0, 1]")
     if not 0 < f.C_min <= 1:
         raise ValueError("geometry.fold.C_min must be in (0, 1]")
     if not 0 < f.w_min < 1:

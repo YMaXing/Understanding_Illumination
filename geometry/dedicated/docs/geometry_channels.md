@@ -321,6 +321,12 @@ Settled in F0 (leans agreed) and revised in F1–F4; current state:
 | pre-D6 | 079 box–plinth contact and 075 kiosk base: steps in DA3's depth (step beats a continuous kink by ΔBIC 450–2750 at all 8 points; jumps 3–24 %), not folds misread; **no step-vs-kink integration item**; DA3 contact steps noted (both channels fire) | as measured |
 | pre-D6 | 070 sky band: 457 of 1766 px with w_depth ≥ 0.5: 375 just beyond the depth band (the accepted edges sit ~1 px inside the sky-mask boundary), 20 gaps, 62 corners / junctions | as measured |
 | D6 | final docs: `docs/depth_channel.md` (math, calibration, sensitivity, results, limitations, integration open items), this section 6, `docs/viz_guide.md` (depth sheet, `diag-depth`) | as built |
+| G1 | geom_v0 = depth (additive) + fold_v2 by min; audit sampled on 32-px tile units of components > 1000 px (`audit_split/`), the literal-spec sample kept (`audit/`) | as built |
+| G2 | DA3-vs-RGB shift not stable on 20 images (CI excludes 0 in dy, 39 % of images within 0.3 px): no deliverable shift option | decided by rule |
+| G2 | band coverage: no band_min ∈ {2, 3, 4} reaches 90 % depth-edge coverage at the RGB edge (0.82–0.88; RGB-edge tail); `geometry.depth.sky_band: depth_and_mask` (sky band 0.74 → 0.985) as an option, default off | proposed (G2 report) |
+| G3 | `geometry.fold.crease_rescue: laplacian_corroborated` as an option (default off; `ctx.s_hat_L` = tri_veto4's ŝ exactly); targets not met (076 ledge blocked by the capped veto) → item 9 documented gap | as built; closed by rule |
+| G3 | ΔZ₀ stays 0.10 m (report: 0.30 / 1.00 m trade limb and step coverage for little texture gain) | as measured |
+| G3 | thin-ring clusters (fences, railings, balusters, foliage, distant façades): keep the relaxation, no code | lean (revisit in G4) |
 
 ## 8. Runtime (CPU, measured in F4)
 
