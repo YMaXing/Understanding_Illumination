@@ -69,6 +69,12 @@ class DepthParams:
     tau_low: float = 0.02
     tau_high: float = 0.04
     min_component_px: int = 5         # distinct pixels per component
+    # TASK_GEOM_V2 V3: short thin components (pieces of thin doublet fits below the component minimum)
+    short_thin: str = "off"           # off | strong | linked
+    short_thin_min_px: int = 2        # strong: a waived piece has >= this many distinct pixels
+    short_thin_gap_px: float = 4.0    # linked: endpoint gap between two pieces
+    short_thin_angle_deg: float = 20.0  # linked: tangent difference
+    short_thin_lateral_px: float = 1.5  # linked: the other piece's endpoint within this of the tangent line
     link_radius: float = 3.0          # px, candidates closer than this belong to one contour component (D3 decision)
     z: float = 3.29                   # two-sided p_fa = 1e-3
     null_stride: int = 4
@@ -256,6 +262,9 @@ def _solve_sig2_rho(d: np.ndarray, se: np.ndarray, lam_n: float) -> float:
 
 SIDE_MODES = ("", "plane8", "plane4", "const")
 SKY_BAND_KEYS = ("sky_band", "sky_ring_px", "sky_ring_near_px")
+SHORT_THIN_KEYS = ("short_thin", "short_thin_min_px", "short_thin_gap_px", "short_thin_angle_deg",
+                   "short_thin_lateral_px")
+SHORT_THIN = ("off", "strong", "linked")
 
 
 def params_record(p: dict) -> dict:
@@ -264,6 +273,9 @@ def params_record(p: dict) -> dict:
     d = dict(p)
     if d.get("sky_band", "depth") == "depth":
         for k in SKY_BAND_KEYS:
+            d.pop(k, None)
+    if d.get("short_thin", "off") == "off":
+        for k in SHORT_THIN_KEYS:
             d.pop(k, None)
     return d
 
@@ -387,6 +399,75 @@ def jump(ctx: GeometryContext, p: DepthParams, x0: np.ndarray, n: np.ndarray, k_
 
 
 # ---------------------------------------------------------------- D-6: contours
+
+def short_thin_accept(p, x: np.ndarray, n: np.ndarray, lab: np.ndarray, sizes: np.ndarray, thin: np.ndarray,
+                      r: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+    """TASK_GEOM_V2 V3 on the surviving candidates (x, n, their D-5 component labels lab, component sizes in distinct
+    pixels, thin flags, r). Pieces = components below min_component_px whose every member is thin.
+    strong: a piece with >= short_thin_min_px pixels whose every member has r > tau_high is accepted.
+    linked: pieces are linked end to end (union-find) when an endpoint gap is <= short_thin_gap_px, their tangents differ
+      by <= short_thin_angle_deg, their mean normals point to the same side (same polarity) and each piece's nearest
+      endpoint lies within short_thin_lateral_px of the other's tangent line; a linked chain is accepted if its pixels
+      (summed over its pieces) reach min_component_px and its maximum r exceeds tau_high.
+    Returns (accepted, link id (-1: not in a linked chain of >= 2 pieces)) per candidate."""
+    acc = np.zeros(len(x), dtype=bool)
+    link = np.full(len(x), -1, dtype=int)
+    pieces = [k for k in np.unique(lab) if sizes[k] < p.min_component_px and thin[lab == k].all()]
+    if not pieces:
+        return acc, link
+    if p.short_thin == "strong":
+        for k in pieces:
+            m = lab == k
+            if sizes[k] >= p.short_thin_min_px and (r[m] > p.tau_high).all():
+                acc[m] = True
+        return acc, link
+    # linked: per piece its mean normal, tangent, endpoints (extreme members along the tangent)
+    info = []
+    for k in pieces:
+        m = np.nonzero(lab == k)[0]
+        nn = n[m] * np.sign(n[m] @ n[m[0]])[:, None]
+        nbar = nn.mean(0)
+        nbar /= max(np.linalg.norm(nbar), 1e-12)
+        tau = np.array([-nbar[1], nbar[0]])
+        proj = x[m] @ tau
+        info.append({"k": k, "m": m, "n": nbar, "tau": tau, "ends": x[m[[np.argmin(proj), np.argmax(proj)]]],
+                     "px": int(sizes[k]), "rmax": float(np.nanmax(np.where(np.isfinite(r[m]), r[m], np.inf)))})
+    parent = list(range(len(info)))
+
+    def find(a):
+        while parent[a] != a:
+            parent[a] = parent[parent[a]]
+            a = parent[a]
+        return a
+
+    cos_t = math.cos(math.radians(p.short_thin_angle_deg))
+    ends = np.concatenate([d["ends"] for d in info])
+    owner = np.repeat(np.arange(len(info)), 2)
+    tree = cKDTree(ends)
+    for a_, b_ in tree.query_pairs(p.short_thin_gap_px, output_type="ndarray"):
+        i, j = owner[a_], owner[b_]
+        if i == j:
+            continue
+        A, B = info[i], info[j]
+        if abs(A["tau"] @ B["tau"]) < cos_t or A["n"] @ B["n"] <= 0:
+            continue
+        lat_ab = abs((ends[b_] - ends[a_]) @ A["n"])     # B's endpoint from A's tangent line (through A's endpoint)
+        lat_ba = abs((ends[a_] - ends[b_]) @ B["n"])
+        if lat_ab <= p.short_thin_lateral_px and lat_ba <= p.short_thin_lateral_px:
+            parent[find(i)] = find(j)
+    roots = np.array([find(i) for i in range(len(info))])
+    for rt in np.unique(roots):
+        grp = np.nonzero(roots == rt)[0]
+        if len(grp) < 2:
+            continue
+        px = sum(info[g]["px"] for g in grp)
+        rmax = max(info[g]["rmax"] for g in grp)
+        for g in grp:
+            link[info[g]["m"]] = rt
+            if px >= p.min_component_px and rmax > p.tau_high:
+                acc[info[g]["m"]] = True
+    return acc, link
+
 
 def chains(x: np.ndarray, n: np.ndarray, radius: float = 1.5, cos_min: float = 0.5) -> list[np.ndarray]:
     """Order candidates into contours: each links to its nearest neighbour ahead and behind along the tangent
@@ -521,6 +602,15 @@ class DepthChannel:
             np.maximum.at(rmax, lab, np.nan_to_num(J["r"][S_idx], nan=-np.inf))
             comp_px[S_idx], comp_rmax[S_idx], comp_id[S_idx] = sizes[lab], rmax[lab], lab
         accepted = surv & (comp_px >= p.min_component_px) & (comp_rmax > p.tau_high)
+        # TASK_GEOM_V2 V3 short thin components (off: nothing here runs)
+        if p.short_thin not in SHORT_THIN:
+            raise ValueError(f"unknown short_thin {p.short_thin!r}; expected one of {SHORT_THIN}")
+        short_acc, short_link = np.zeros(len(P), dtype=bool), np.full(len(P), -1, dtype=int)
+        if p.short_thin != "off" and S_idx.size:
+            acc_s, link_s = short_thin_accept(p, c.x0[P][S_idx], c.n[P][S_idx], lab, sizes, J["thin"][S_idx],
+                                              J["r"][S_idx])
+            short_acc[S_idx], short_link[S_idx] = acc_s & ~accepted[S_idx], link_s
+            accepted = accepted | short_acc
         rp[surv & ~accepted] = "component"
         rp[accepted] = "accepted"
         reason[P] = rp
@@ -615,6 +705,9 @@ class DepthChannel:
             "band": full(band, 0), "accepted": full(accepted, False), "reason": reason,
         })
         df["reason"] = df["reason"].astype(str)
+        if p.short_thin != "off":  # V3 records (tables without the option are unchanged)
+            df["short_thin"] = full(short_acc, False)
+            df["short_thin_link"] = full(short_link, -1)
 
         # gate diagnostics (candidates reaching the gates with a fit: not sky, not thin, sign ok)
         gd = ~sky_edge & ~J["thin"] & ~sky_near & (J["d_rho"] > 0) & np.isfinite(J["r_gate"])
@@ -631,6 +724,7 @@ class DepthChannel:
             "sigma_w_max": p.sigma_w_max, "s_lo": c.s_lo, "s_hi": c.s_hi, **counts, **modes,
             "n_signif_ok_add": int((~sky_near & sign_ok & (sky_edge | (J["signif_add"] > p.z))).sum()),
             "n_thin_accepted": int((accepted & J["thin"]).sum()), "n_sky_edge_accepted": int((accepted & sky_edge).sum()),
+            **({"n_short_thin_accepted": int(short_acc.sum())} if p.short_thin != "off" else {}),
             "n_lower_bound_accepted": int((accepted & lower_bound).sum()),
             "r_gate_P10": float(np.percentile(rg, 10)) if rg.size else float("nan"),
             "r_gate_P50": float(np.percentile(rg, 50)) if rg.size else float("nan"),

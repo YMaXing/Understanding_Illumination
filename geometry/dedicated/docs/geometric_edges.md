@@ -522,6 +522,37 @@ of the sample).* Coverage combined / core: geom_v1 0.800 / 0.671, plane_intersec
 (frontal convention), vertical corners −0.27; nosings are not corrected (+2.71: a third of them have no valid peak,
 and their RGB edge is often a shadow or at the search limit). (plane_intersection fails the same rule: −0.21 px.)
 
+### 8.10 V3 results: short thin depth components (documented gap)
+
+Option `geometry.depth.short_thin: off | strong | linked` (default off; recorded only when on; columns `short_thin`,
+`short_thin_link`, scalar `n_short_thin_accepted`). Pieces = D-5 components below `min_component_px` (5) whose every
+member is `thin`. `strong`: a piece of ≥ 2 px whose every member has r > τ_high (and, as a survivor, passed the
+significance gate) is accepted. `linked` (V0 ruling): pieces are linked end to end when an endpoint gap is ≤ 4 or 6 px
+(the sweep), their tangents differ by ≤ 20°, their mean normals point to the same side, and each piece's endpoint lies
+≤ 1.5 px from the other's tangent line; a linked chain is accepted if its summed pixels reach 5 and its maximum r
+exceeds τ_high. Report `scripts/geom_v3_thin.py` (the depth channel rerun from the Stage A cache per variant, geom_v1's
+saved fold and Laplacian weights; `off` reproduces the saved depth w bit for bit) → `v2/thin.json`,
+`v2/thin_overlays/<stem>.png`.
+
+| variant (core w unless stated) | off | strong | linked 4 px | linked 6 px |
+|---|---|---|---|---|
+| newly accepted candidates, batch1 / batch2 | 0 / 0 | 338 / 633 | 0 / 92 | 10 / 144 |
+| 25 component-stage step units: closed / relaxed px (of 15 733) | 0 / 66 | 0 / 905 | 0 / 142 | 0 / 197 |
+| all 45 open step gaps: closed / relaxed px (of 25 089) | 0 / 465 | 0 / 1 304 | 0 / 541 | 0 / 596 |
+| missed true geometry per pixel | 0.568 | 0.558 | 0.568 | 0.566 |
+| tri_fp / geom_fp / texture-label units relaxed | 0 / 0.052 / 0 | 0.0006 / 0.052 / 0.0008 | 0 / 0.052 / 0 | 0 / 0.052 / 0 |
+| texture ROIs, core and combined | unchanged (combined 0.008 / 0.218 / 0.383 / 0.002) | unchanged | unchanged | unchanged |
+| w < 0.5 deliverable, batch1 / batch2 | 0.216 / 0.277 | same | same | same |
+
+**Rule: no variant closes a step-gap pixel**, so none improves on `off` and none is proposed; item recorded as a
+documented gap. Every variant meets the texture constraints; `strong` relaxes the most step-gap px (+839 over off,
+3.3 % of the open step-gap area), but the rule ranks by closure. Why: the pieces are 1–4 px, so even accepted they add
+short fragments of a 2-px band inside units that are tri_veto4's wide relaxation strips (median about 600 px); the
+overlays show them on real geometry (073 railing bars and top rail, filling gaps between geom_v1's contours; 090 the
+chain-link mesh, as dots; 080 / 075 / 082 / 067 sparse dots in foliage). `linked` finds few chains (pieces separated by
+more than 3 px rarely line up within 1.5 px laterally). The open step gaps stay covered by the Laplacian (geom_v1) or,
+in geom_v2, by its fallback away from accepted edges.
+
 ---
 
 # Appendix A. Integration record (TASK_GEOM_INTEGRATION G0–G5)

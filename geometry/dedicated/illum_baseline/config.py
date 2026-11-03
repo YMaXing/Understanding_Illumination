@@ -206,6 +206,11 @@ class DepthCfg:
     sky_band: str = "depth"             # depth | depth_and_mask (G2: also paint the sky-mask boundary ring)
     sky_ring_px: int = 2
     sky_ring_near_px: float = 4.0
+    short_thin: str = "off"             # off | strong | linked (TASK_GEOM_V2 V3)
+    short_thin_min_px: int = 2
+    short_thin_gap_px: float = 4.0
+    short_thin_angle_deg: float = 20.0
+    short_thin_lateral_px: float = 1.5
 
 
 @dataclass
@@ -427,6 +432,10 @@ def _validate_geometry(g: GeometryCfg) -> None:
         raise ValueError(f"geometry.depth.null_model must be multiplicative|additive, got {e.null_model!r}")
     if e.sky_band not in ("depth", "depth_and_mask") or e.sky_ring_px < 0 or e.sky_ring_near_px < 0:
         raise ValueError(f"geometry.depth.sky_band must be depth|depth_and_mask (ring >= 0), got {e.sky_band!r}")
+    if (e.short_thin not in ("off", "strong", "linked") or e.short_thin_min_px < 1 or e.short_thin_gap_px <= 0
+            or not 0 < e.short_thin_angle_deg < 90 or e.short_thin_lateral_px < 0):
+        raise ValueError(f"geometry.depth.short_thin must be off|strong|linked (min_px >= 1, gap > 0, angle in (0, 90), "
+                         f"lateral >= 0), got {e.short_thin!r}")
     if e.gap_mode != "at_x0":
         raise ValueError("geometry.depth.gap_mode must be at_x0 (min_span is recorded only)")
     if len(e.lambda_clamp) != 2 or not 0 < e.lambda_clamp[0] <= e.lambda_clamp[1]:
