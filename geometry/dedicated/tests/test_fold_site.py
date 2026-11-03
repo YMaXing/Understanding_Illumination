@@ -124,3 +124,33 @@ def test_hessian_peak_on_a_real_image():
     B = b.candidates
     assert (B.loc[B["site_valid"], "site_t"].abs() <= 4).all() and B.loc[~B["accepted"], "site_valid"].eq(False).all()
     assert params_record(dataclasses.asdict(dataclasses.replace(fp, site="hessian_peak")))["site_window_px"] == 4.0
+
+
+def test_hessian_peak_does_not_jump_to_a_same_sign_neighbour():
+    """Two convex kinks 5 px apart, the second stronger; the first one's candidate starts 1.5 px toward the second
+    (an NMS bias). With both accepted, no site jumps to the other kink: the second sits on its own kink; the first,
+    whose blurred bump is only a shoulder of the stronger one (trilateral + sigma 1.25), is either on its own kink or
+    invalid (x0 kept)."""
+    from illum_baseline.detector import Params
+    from illum_baseline.geom.camera import Intrinsics
+    from illum_baseline.geom.context import GeometryContext
+    from illum_baseline.geom.synthetic import F_PX
+
+    W, H = 504, 378
+    u, _ = np.meshgrid(np.arange(W, dtype=float), np.arange(H, dtype=float))
+    c, a = 251.3, 0.25
+    rho = np.where(u < c, a + 0.002 * (u - c), np.where(u < c + 5, a + 0.0005 * (u - c),
+                                                        a + 0.0025 - 0.003 * (u - c - 5)))
+    rho = rho * (1 + 2e-4 * np.random.default_rng(0).standard_normal(rho.shape))
+    ctx = GeometryContext(1 / rho, None, Intrinsics.centered(F_PX, F_PX, W, H), Params(prefilter="trilateral"))
+    vv = np.arange(150.0, 170.0)
+    x0 = np.concatenate([np.stack([np.full(vv.size, c + 1.5), vv], -1), np.stack([np.full(vv.size, c + 5.0), vv], -1)])
+    e1 = np.tile([1.0, 0.0], (len(x0), 1))
+    t, ok = FoldChannel._hessian_peak(FoldParams(site="hessian_peak"), ctx, x0, e1, np.ones(len(x0), bool))
+    n = vv.size
+    assert ok[n:].all() and np.abs(t[n:]).max() < 0.3, t[n:]
+    first = np.where(ok[:n], t[:n], -1.5)                 # invalid: the candidate keeps x0, i.e. no move at all
+    assert (np.where(ok[:n], np.abs(t[:n] + 1.5), 0) < 0.5).all() and (first < 2.5).all()
+    # alone (the neighbour not accepted), the first candidate's peak is the stronger neighbour: the limit is what holds it
+    t1, ok1 = FoldChannel._hessian_peak(FoldParams(site="hessian_peak"), ctx, x0[:n], e1[:n], np.ones(n, bool))
+    assert np.nanmedian(t1) > 2.5

@@ -367,6 +367,7 @@ Settled in F0 (leans agreed) and revised in F1–F4; current state:
 | V1 review | V4 design approved (`fold.rescue_undecidable`, targets as proposed, plus the narrow-face split, smooth-curvature overlays, a report-only 6-px rescue minimum); item 6 is open (reopened G4, not fixed) | decided 2026-11-03 |
 | V2 | `fold.site: nms \| plane_intersection` (default nms); valid sites 0.45–0.50 of accepted candidates; convex median \|offset\| 2.84 → 2.63 px (−0.21; rule ≥ 0.5 not met), vertical corners −2.00 → −1.05, nosings +2.90 → +1.50; fold-target coverage unchanged; geom_gain closures kept, relaxed share 0.664 → 0.573; **not proposed** | as measured |
 | V2b | `fold.site: hessian_peak` (peak of −convexity · e1ᵀHe1/ρ within ±4 px; height test, doublet and window-end rejections; 5-candidate median); valid 0.76 / 0.79; convex median \|offset\| 2.84 → 1.70 px (−1.15), vertical corners −2.00 → −0.27; fold-target coverage unchanged; no geom_gain closure lost (relaxed 0.664 → 0.589); **proposed; V5 uses it** | as measured / proposed |
+| V2b review | hessian_peak approved for V5 (fixed); same-sign neighbour limit added (the synthetic peak jumped; real images: 1 jump before, 0 after); scorer: RGB-edge coverage of all accepted fold candidates (reliable edges: inside ±8 px, strength ≥ 3 × the image median \|∇Y\|), the fourth V5 constraint; geom_gain / geom_offset drops read as the band moving; nosings stay +2.7 px | decided 2026-11-03 / as built |
 
 ### 7.1 geom_v2 candidate list (recorded in G6; no code)
 

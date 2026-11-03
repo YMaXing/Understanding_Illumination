@@ -216,7 +216,9 @@ def main():
     print("\ncoverage split:", json.dumps(split, indent=0, default=float))
     for name in runs:
         r = rep["score"][name]
-        print(name, "rgb", {w: (round(v["depth_edges"], 4), round(v["fold_targets"], 4)) for w, v in r["rgb"].items()},
+        print(name, "rgb (depth edges, fold targets, fold candidates)",
+              {w: (round(v["depth_edges"], 4), round(v["fold_targets"], 4), round(v["fold_candidates"], 4),
+                   v["n_fold_candidates"]) for w, v in r["rgb"].items()},
               "| cov", {w: {c: round(v["coverage"], 4) for c, v in r["g1"][w]["classes"].items() if v["coverage"]}
                         for w in r["g1"]},
               "| texture", {w: {k: round(v, 4) for k, v in r["g1"][w]["texture_rois"].items()} for w in r["g1"]},

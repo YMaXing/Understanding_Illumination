@@ -32,6 +32,18 @@ def luminance(stage_a: Path, stem: str) -> np.ndarray:
 
 
 def rgb_offset(Y: np.ndarray, x0: np.ndarray, n: np.ndarray, half: float = 8.0, step: float = 0.25) -> np.ndarray:
+    return rgb_offset_strength(Y, x0, n, half, step)[0]
+
+
+def gradient_median(Y: np.ndarray) -> float:
+    """Median of |grad Y| (Gaussian derivative sigma = 1 px) over the image: the scale for a reliable RGB edge."""
+    gu, gv = gaussian_gradient(Y, 1.0)
+    return float(np.median(np.hypot(gu, gv)))
+
+
+def rgb_offset_strength(Y: np.ndarray, x0: np.ndarray, n: np.ndarray, half: float = 8.0, step: float = 0.25
+                        ) -> tuple[np.ndarray, np.ndarray]:
+    """rgb_offset and the edge strength max |grad Y . n| at it (NaN where a sample leaves the image)."""
     gu, gv = gaussian_gradient(Y, 1.0)
     s = np.arange(-half, half + step / 2, step)
     pts = x0[:, None, :] + s[None, :, None] * n[:, None, :]
@@ -47,7 +59,8 @@ def rgb_offset(Y: np.ndarray, x0: np.ndarray, n: np.ndarray, half: float = 8.0, 
         c = ym - 2 * y0 + yp
         dl = np.where((j > 0) & (j < len(s) - 1) & (c < 0), 0.5 * (ym - yp) / c, 0.0)
     out = s[j] + np.clip(dl, -0.5, 0.5) * step
-    return np.where((ok1 & ok2).all(1), out, np.nan)
+    inside = (ok1 & ok2).all(1)
+    return np.where(inside, out, np.nan), np.where(inside, y0, np.nan)
 
 
 def fit_shift(s: np.ndarray, n: np.ndarray, lim: float = 2.0) -> tuple[np.ndarray, np.ndarray, int]:

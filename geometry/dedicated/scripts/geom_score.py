@@ -13,8 +13,11 @@ Metrics (imported from the existing scripts, not duplicated):
             missed true geometry (gap_fixable + gap_unresolved) per unit and per pixel; band excess, tri_fp and
             texture-labelled area still relaxed (per pixel);
   rgb       RGB-edge coverage (the G2(c) measure; scripts/geom_g2_coverage.py, geom_g2_align.py, rgb_edges.py) of a
-            fixed edge set: the strong accepted depth edges of geom_v1 (both batches; identical to geom_v0's) and the
-            batch1 fold targets; an edge is covered if the full-resolution weight is < 0.5 at its RGB edge;
+            fixed edge set: the strong accepted depth edges of geom_v1 (both batches; identical to geom_v0's), the
+            batch1 fold targets, and all accepted fold candidates of geom_v1 (both batches; NMS x0 along e1) counted
+            only where the RGB edge is reliable: inside the +-8 px search window (|s| < 7.99) and with an edge strength
+            max |grad Y . e1| >= RGB_MIN_GRAD x the image's median |grad Y|; an edge is covered if the full-resolution
+            weight is < 0.5 at its RGB edge;
   wfrac     share of w < 0.5 per batch, deliverable and network resolution (core: upsampled as the deliverable is);
   runtime   (--timing) Stage B process_one per image, median per batch (scripts/geom_g6_timing.py IOTimer protocol,
             no viz, into a temporary folder).
@@ -44,7 +47,7 @@ from geom_eval import CLASSES, roi_list, roi_metrics  # noqa: E402
 from geom_g2_align import strong  # noqa: E402
 from geom_g2_coverage import covered, poly_normals, to_full  # noqa: E402
 from geom_g4 import AUD, BUCKETS, GAPS, Estimator  # noqa: E402
-from rgb_edges import luminance, rgb_offset  # noqa: E402
+from rgb_edges import gradient_median, luminance, rgb_offset, rgb_offset_strength  # noqa: E402
 from illum_baseline.config import load_config  # noqa: E402
 from illum_baseline.outputs import upsample_weights  # noqa: E402
 from illum_baseline.stage_b import image_stems, load_upright, process_one  # noqa: E402
@@ -55,6 +58,7 @@ EDGE_RUN = "geom_v1"     # the fixed RGB-edge set comes from its depth tables
 OUT = ROOT / "baseline_output" / "diag" / "geom" / "v2"
 W_MIN = 0.05
 WEIGHTS = ("combined", "core")
+RGB_MIN_GRAD = 3.0       # reliable RGB edge: strength >= 3 x the image's median |grad Y| (flag; lean)
 
 
 # ---------------------------------------------------------------- loading
@@ -211,6 +215,17 @@ def rgb_edge_set() -> dict:
             s = rgb_offset(Y, x0, n)
             ok = np.isfinite(s)
             e = {"depth": to_full(x0[ok] + s[ok, None] * n[ok], net_wh, up_wh), "fold": []}
+            fc = pd.read_parquet(rd / f"{stem}_fold_candidates.parquet")
+            fc = fc[fc["accepted"]]
+            xf, nf = fc[["u0", "v0"]].to_numpy(), fc[["e1_u", "e1_v"]].to_numpy()
+            sf, gf = rgb_offset_strength(Y, xf, nf)
+            g_med = gradient_median(Y)
+            rel = np.isfinite(sf) & (np.abs(sf) < 7.99) & (gf >= RGB_MIN_GRAD * g_med)
+            e["fold_all"] = to_full(xf[rel] + sf[rel, None] * nf[rel], net_wh, up_wh)
+            e["fold_all_stats"] = {"n": int(len(fc)), "finite": int(np.isfinite(sf).sum()),
+                                   "inside": int((np.isfinite(sf) & (np.abs(sf) < 7.99)).sum()),
+                                   "reliable": int(rel.sum()), "g_med": g_med,
+                                   "strength_over_med": (gf[np.isfinite(sf) & (np.abs(sf) < 7.99)] / g_med).tolist()}
             if batch == "batch1":
                 for tg in fold_targets():
                     if tg["stem"] == stem:
@@ -226,14 +241,16 @@ def rgb_coverage(run: Run, edges: dict) -> dict:
     for weight in WEIGHTS:
         if weight == "core" and not run.has_core():
             continue
-        dep, fold = [], []
+        dep, fold, fall = [], [], []
         for stem, e in edges.items():
             wf = run.maps(stem)[f"{weight}_full"]
             dep.append(covered(wf, e["depth"]))
             fold += [covered(wf, p) for p in e["fold"]]
-        d, f = np.concatenate(dep), np.concatenate(fold)
+            fall.append(covered(wf, e["fold_all"]))
+        d, f, fa = np.concatenate(dep), np.concatenate(fold), np.concatenate(fall)
         out[weight] = {"depth_edges": float(d.mean()), "n_depth_edges": int(d.size), "fold_targets": float(f.mean()),
-                       "n_fold_samples": int(f.size)}
+                       "n_fold_samples": int(f.size), "fold_candidates": float(fa.mean()),
+                       "n_fold_candidates": int(fa.size)}
     return out
 
 
@@ -316,7 +333,7 @@ def summary(rep: dict) -> pd.DataFrame:
                    **{f"w<0.5 {b}": v["deliverable"] for b, v in r["wfrac"][weight].items()}}
             if "rgb" in r:
                 row |= {"rgb depth edges": r["rgb"][weight]["depth_edges"], "rgb fold targets": r["rgb"][weight][
-                    "fold_targets"]}
+                    "fold_targets"], "rgb fold candidates": r["rgb"][weight]["fold_candidates"]}
             if "runtime" in r:
                 row |= {f"runtime {b}": v["median_s"] for b, v in r["runtime"].items()}
             rows.append(row)

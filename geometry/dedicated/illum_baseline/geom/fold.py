@@ -423,8 +423,11 @@ class FoldChannel:
         hessian_peak: the sub-pixel peak of y(s) = -convexity q(x0 + s e1), s in [-site_window_px, site_window_px] (step
           0.25 px), q = e1^T H e1 / max(rho_s, rho_floor) from the depth channel's kernels on rho_f (built-in
           DepthParams: sigma 1.25, truncate 4); -convexity = sign(L/rho_f) at x0, so the fold's own bump is positive.
-          Invalid (x0 kept) if convexity is 0, the peak is at a window end, the peak fails the depth channel's height
-          test (y > k_h s_q), or the opposite-sign extremum exceeds half the peak (a doublet: a step component).
+          Each side of the window is limited to half the distance to the next accepted fold centreline on that side
+          along e1 (accepted candidates within 1 px of the line x0 + s e1 and at |s| >= 1.5 px), so the peak cannot
+          jump to a same-sign neighbour. Invalid (x0 kept) if convexity is 0, the peak is at a (limited) window end,
+          the peak fails the depth channel's height test (y > k_h s_q), or the opposite-sign extremum within the window
+          exceeds half the peak (a doublet: a step component).
         For the accepted candidates t is smoothed by a running median over site_smooth_n candidates in chain order
         (geom.depth.chains; shorter chains keep their own t); a candidate without a valid t keeps its NMS pixel.
         Returns the records and the rasterization pixels."""
@@ -453,6 +456,7 @@ class FoldChannel:
     def _hessian_peak(p: FoldParams, ctx, x0, e1, accepted) -> tuple[np.ndarray, np.ndarray]:
         from .candidates import depth_field
         from .depth import DepthParams
+        from scipy.spatial import cKDTree
 
         N = len(x0)
         t = np.full(N, np.nan)
@@ -475,13 +479,32 @@ class FoldChannel:
         huu, huv, hvv, den = vals
         eu, ev = e1[A, 0][:, None], e1[A, 1][:, None]
         q = (eu * eu * huu + 2 * eu * ev * huv + ev * ev * hvv) / den
-        y = sgn[:, None] * q
+        # same-sign neighbours: half the distance to the next accepted centreline on each side along e1
+        xa, ea = x0[A], e1[A]
+        tau = np.stack([-ea[:, 1], ea[:, 0]], -1)
+        lo = np.full(len(A), p.site_window_px)
+        hi = np.full(len(A), p.site_window_px)
+        tree = cKDTree(xa)
+        for i, js in enumerate(tree.query_ball_point(xa, 2 * p.site_window_px + 1.0)):
+            d = xa[js] - xa[i]
+            sj, lat = d @ ea[i], np.abs(d @ tau[i])
+            ok = (lat <= 1.0) & (np.abs(sj) >= 1.5)
+            if ok.any():
+                sp, sm = sj[ok & (sj > 0)], -sj[ok & (sj < 0)]
+                if sp.size:
+                    hi[i] = min(hi[i], sp.min() / 2)
+                if sm.size:
+                    lo[i] = min(lo[i], sm.min() / 2)
+        allowed = (s[None, :] >= -lo[:, None] - 1e-9) & (s[None, :] <= hi[:, None] + 1e-9)
+        y = np.where(allowed, sgn[:, None] * q, np.nan)
         yy = np.where(np.isfinite(y), y, -np.inf)
         j = np.argmax(yy, axis=1)
         r = np.arange(len(A))
         y0 = yy[r, j]
         L = len(s)
-        inner = (j > 0) & (j < L - 1)
+        jfirst = np.argmax(allowed, axis=1)
+        jlast = L - 1 - np.argmax(allowed[:, ::-1], axis=1)
+        inner = (j > jfirst) & (j < jlast)
         jm, jp = np.clip(j - 1, 0, L - 1), np.clip(j + 1, 0, L - 1)
         ym, yp = yy[r, jm], yy[r, jp]
         with np.errstate(invalid="ignore", divide="ignore"):

@@ -240,7 +240,7 @@ scaled to the G1 totals (`scripts/geom_g4.py`). Labels: `audit_split/audit_label
 | fold re-siting | V2 | band centreline at the side planes' intersection | signed RGB-edge offsets (NMS vs re-sited) per sub-type, validity fraction, fold-target RGB coverage, geom_gain / geom_offset closure, texture | convex median \|offset\| −0.5 px or more; fold-target coverage −0.01 at most; no geom_gain unit loses closure |
 | short thin depth components | V3 | accept short thin pieces now dropped by the component minimum | under core w: the 25 component-stage step units, all step gaps (per unit and per pixel), relaxed shares of tri_fp / geom_fp / texture units, texture ROIs (core and combined), overlays | most step-gap px closed, with texture ROIs (combined) ≤ geom_v1 + 0.01 and texture-unit relaxed share (core) + 0.02 at most |
 | fold recall | V4 | the option approved at V1 | its V1 targets; texture ROIs ≤ geom_v1 + 0.01; 083 interior unchanged | as approved |
-| fallback Laplacian | V5 | w_lap′ = 1 within d_excl of an accepted edge | every metric of the scorer, per setting; held-out batch1 → batch2 check; retirement metric (core, gap_unresolved apart) | lowest band excess among settings with missed geometry (per pixel) ≤ geom_v1 + 0.02 and step / limb / fold ROI and RGB-edge coverages each ≥ geom_v1 − 0.02; ties by texture |
+| fallback Laplacian | V5 | w_lap′ = 1 within d_excl of an accepted edge | every metric of the scorer, per setting; held-out batch1 → batch2 check; retirement metric (core, gap_unresolved apart) | lowest band excess among settings with missed geometry (per pixel) ≤ geom_v1 + 0.02, step / limb / fold ROI coverage each ≥ geom_v1 − 0.02, RGB-edge coverage of depth edges and fold targets each ≥ geom_v1 − 0.02, and (V2b review) RGB-edge coverage of all accepted fold candidates (reliable edges) ≥ geom_v1 − 0.02; ties by texture |
 
 **V1 scorer** (`scripts/geom_score.py`, any list of runs; combined w and core w): G1 ROI table (classes, coverage), audit
 per bucket per unit and per pixel, RGB-edge coverage of strong depth edges and fold targets (the G2(c) measure), texture
@@ -493,7 +493,32 @@ moves off the displaced area onto the edge), relaxed 0.250 → 0.183; texture RO
 w < 0.5 deliverable 0.216 / 0.277 → 0.215 / 0.275.
 
 **Rule: met.** Convex median |offset| −1.15 px (≥ 0.5), fold-target coverage change 0.000 (combined and core; ≥ −0.01),
-no geom_gain unit loses closure. **`site: hessian_peak` is proposed, and V5 uses it.** Residual: convex −0.77 px median
+no geom_gain unit loses closure. **`site: hessian_peak` is proposed, and V5 uses it** (approved, fixed, not swept).
+
+**Reading the geom_gain / geom_offset drop.** Both buckets were drawn on geom_v0's band, i.e. on the NMS band position;
+their relaxed shares measure how much of that position stays relaxed, so the drop (geom_gain 0.664 → 0.589,
+geom_offset 0.250 → 0.183, 3 geom_offset units no longer closed) is the band moving toward the RGB edge, not lost
+geometry. **Nosings** stay at about +2.7 px: narrow treads (the peak window meets the next edge), DA3's smoothing of
+stairs, and an RGB edge often at the search limit.
+
+**Same-sign neighbours (V2b review).** Synthetic: with two convex kinks 5 px apart (the second stronger) and the first
+one's candidate 1.5 px toward the second, the unrestricted peak jumps to the neighbour (site at +4.8 px from the first
+kink). So each side of the window is now limited to half the distance to the next accepted fold centreline on that side
+along e1 (accepted candidates within 1 px of the line x₀ + s e1, at |s| ≥ 1.5 px); tested: the stronger kink's site
+stays on its kink, the weaker one (only a shoulder of the stronger bump after the trilateral filter and σ 1.25) is
+invalid rather than displaced. Real images (`scripts/geom_v2_site_neighbours.py`): of the valid sites 18.2 % have
+|t| > 2 px; of those, 12 (0.3 %) had another accepted fold centreline within 6 px along n before the limit, and 1 landed
+on it; with the limit 5, and 0 land on it. The table above is from the rerun with the limit (geom_v1_hessian rerun on
+both batches): validity 0.76 / 0.79, convex median |offset| 2.84 → 1.70 px (−1.15), every other number as above to the
+digits shown.
+
+**RGB-edge coverage of all accepted fold candidates** (V2b review; scorer `rgb.fold_candidates`): the fixed set of
+geom_v1's 26 466 accepted fold candidates (NMS x₀ along e1), counted only where the RGB edge is reliable: inside the
+±8 px window (93.7 %) and with an edge strength max |∇Y · e1| ≥ 3 × the image's median |∇Y| (17 950 kept, 67.8 %; at
+1 / 2 / 5 / 10 × the median 83.9 / 74.4 / 56.7 / 44.3 %; the median candidate's edge is 8.6 × the image median).
+*Flag: the 3× threshold; lean: 3× (it drops the flat-shading folds whose luminance maximum is noise, and keeps two thirds
+of the sample).* Coverage combined / core: geom_v1 0.800 / 0.671, plane_intersection 0.804 / 0.671, hessian_peak
+0.809 / 0.696. It is the fourth constraint of the V5 selection rule (≥ geom_v1 − 0.02). Residual: convex −0.77 px median
 (frontal convention), vertical corners −0.27; nosings are not corrected (+2.71: a third of them have no valid peak,
 and their RGB edge is often a shadow or at the search limit). (plane_intersection fails the same rule: −0.21 px.)
 

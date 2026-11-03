@@ -553,6 +553,13 @@ veto); fold placement **open** (geom_v2 candidate: re-siting at the plane inters
   (079 fold), 124, 125 (088 creases) open (0.00, 0.00, 0.14). In geom_v1 the Laplacian channel covers all five: w < 0.5
   on 100 % of each unit, median w 0.055 (15), 0.265 (37), 0.157 (97), 0.164 (124), 0.168 (125); the fold channel alone
   0.00 / 0.32 / 0.00 / 0.00 / 0.14 (`baseline_output/diag/geom/g5/units_v1.csv`).
+- *[TASK_GEOM_V2 V2 / V2b]* **Fold siting.** `geometry.fold.site: nms | plane_intersection | hessian_peak`
+  (default nms). plane_intersection fails the V2 rule (convex median |offset| −0.21 px); hessian_peak (the sub-pixel peak
+  of −convexity · e1ᵀHe1/ρ within ±4 px, limited to half the distance to the next accepted fold centreline, with the
+  height, doublet and window-end rejections) meets it: convex median |offset| 2.84 → 1.70 px, vertical corners −2.00 →
+  −0.27 px, fold-target coverage unchanged; proposed for geom_v2. The geom_gain / geom_offset relaxed shares fall
+  (0.664 → 0.589, 0.250 → 0.183) because those units were drawn on the NMS band position: the band moves, geometry is
+  not lost. Nosings stay at about +2.7 px (narrow treads, DA3's smoothing of stairs, RGB search limit).
 - *[open: geom_v2 candidate]* **Fold placement (open).** The fold is placed at the NMS ridge of the rotation rate. On the 15 audit units labelled
   geom_offset the RGB edge lies off the NMS site along e1 (G4): vertical corners −2.0 px (toward the oblique face,
   all 5 units negative), nosings +2.9 px (up, all 5 positive), contact folds mixed (+1.2 median, −2.4 to +5.6). The
