@@ -5,7 +5,8 @@ the depth and fold candidate tables) plus the Stage A sRGB for panel 1. Network 
 drawn over the same extent).
   1 sRGB + accepted depth edges (log10 dZ; sky edges cyan), fold edges (dtheta), rescued creases (dashed)
   2 log10 Z   3 normal map   4 w_depth   5 w_fold   6 combined w
-  7 tri_veto4 w (the Laplacian channel is tri_veto4's detector, unchanged)
+  7 tri_veto4 w: the Laplacian channel itself when its pooling radius is the detector's (null), else the sibling
+    stage_b/tri_veto4 run's w_net (geom_v1 pools with r = 2)
   8 disagreement: Laplacian-only (red: w_lap < 0.5, min(w_depth, w_fold) >= 0.9) vs depth/fold-only (blue: the reverse)
   9 text box: channel settings, counts, shares, alignment shift (none)
 """
@@ -24,7 +25,7 @@ import numpy as np  # noqa: E402
 import pandas as pd  # noqa: E402
 from matplotlib.collections import LineCollection  # noqa: E402
 
-from .config import Config  # noqa: E402
+from .config import Config, load_config  # noqa: E402
 
 DZ_LOG_LIM = (-2.0, 1.5)     # log10 m
 DTHETA_LIM = (0.0, 90.0)     # deg
@@ -58,6 +59,15 @@ def render_geom(cfg: Config, rd: Path, stem: str) -> Path:
     srgb = cv2.cvtColor(cv2.imread(str(sa_json.parent / "srgb" / f"{stem}.png")), cv2.COLOR_BGR2RGB)
 
     wd, wf, wl = (a[k].astype(np.float64) for k in ("depth_w_net", "fold_w_net", "laplacian_w_net"))
+    lp = pg.get("laplacian", {}).get("pool_radius")
+    tri_rd = rd.parent / "tri_veto4"
+    if lp is None:  # the Laplacian channel is tri_veto4's detector unchanged
+        w_tri, tri_title = wl, "tri_veto4 w (= the Laplacian channel, r = 3)"
+    elif (tri_rd / f"{stem}.npz").exists():
+        w_tri = load_upright(load_config(tri_rd / "config_resolved.yaml"), tri_rd, stem)[0]["w_net"].astype(np.float64)
+        tri_title = "tri_veto4 w (run tri_veto4; Laplacian pooling r = 3)"
+    else:
+        w_tri, tri_title = wl, f"Laplacian channel w (r = {lp}; tri_veto4 run not found)"
     w = a["w_net"].astype(np.float64)
     H_n, W_n = w.shape
     ext = (-0.5, W_n - 0.5, H_n - 0.5, -0.5)
@@ -106,7 +116,7 @@ def render_geom(cfg: Config, rd: Path, stem: str) -> Path:
 
     # 4-7. weights
     for i, (img, title) in enumerate([(wd, "w_depth"), (wf, "w_fold"), (w, "combined w = min(depth, fold, laplacian)"),
-                                      (wl, "tri_veto4 w (= the Laplacian channel)")]):
+                                      (w_tri, tri_title)]):
         im = ax[3 + i].imshow(img, cmap="gray", vmin=0, vmax=1, extent=ext)
         ax[3 + i].set_title(f"{title}\nw < 0.5: {(img < 0.5).mean():.3f}   w < 0.9: {(img < 0.9).mean():.3f}")
     fig.colorbar(im, ax=ax[6], fraction=0.046, label="w")
@@ -129,7 +139,6 @@ def render_geom(cfg: Config, rd: Path, stem: str) -> Path:
 
     # text box
     d, f = ch["depth"], ch["fold"]
-    lp = pg.get("laplacian", {}).get("pool_radius")
     lines = [
         f"run {rd.name}   stem {stem}",
         f"channels {meta['combined']['channels']}, combine {meta['combined']['combine']}",
@@ -152,6 +161,7 @@ def render_geom(cfg: Config, rd: Path, stem: str) -> Path:
         f"  depth     {(wd < 0.5).mean():.4f} / {(wd < 0.9).mean():.4f}",
         f"  fold      {(wf < 0.5).mean():.4f} / {(wf < 0.9).mean():.4f}",
         f"  laplacian {(wl < 0.5).mean():.4f} / {(wl < 0.9).mean():.4f}",
+        f"  tri_veto4 {(w_tri < 0.5).mean():.4f} / {(w_tri < 0.9).mean():.4f}",
         f"  combined  {(w < 0.5).mean():.4f} / {(w < 0.9).mean():.4f}",
         f"  Laplacian-only {lap_only.mean():.4f}, depth/fold-only {df_only.mean():.4f}",
         "",

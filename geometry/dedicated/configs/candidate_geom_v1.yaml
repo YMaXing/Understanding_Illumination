@@ -1,7 +1,7 @@
 # Geometric edges geom_v1 (TASK_GEOM_INTEGRATION G5): depth channel (additive null) + fold channel v2 + Laplacian
 # channel (tri_veto4's detector, unchanged), combined by min. Approved settings: geometry.depth.sky_band depth_and_mask (G2),
 # band_min 2 (both channels), geometry.fold.crease_rescue laplacian_corroborated at 8 deg / k_L 3 (G3), no deliverable
-# shift (G2: not stable), Laplacian kept as a third channel (G4 decision (c)), pooling radius r = 3 (the detector's r).
+# shift (G2: not stable), Laplacian kept as a third channel (G4 decision (c)), Laplacian pooling radius r = 2 (G5 rule).
 # Detector, sky and preprocessing settings are tri_veto4's: the context takes the sky mask, rho_floor and trilateral
 # filter from them, and the Laplacian channel is tri_veto4 itself.
 paths:                    # relative paths are relative to this file; override with --input/-i, --output/-o
@@ -73,7 +73,8 @@ geometry:                 # geometric-edge channels (docs/geometry_channels.md, 
   channels: [depth, fold, laplacian]
   combine: min            # elementwise min of the channels' w (the only mode)
   laplacian:
-    pool_radius: null      # B6 pooling radius; null = the detector's r = 3 (G5 sweep r in {1, 2, 3}: report only)
+    pool_radius: 2         # B6 pooling radius (null = the detector's r = 3); r = 2 by the G5 rule (step, limb, fold
+                           # coverage within 0.02 of r = 3); geom_v1_r3 keeps r = 3
   dense_fit:              # N1 dense edge-aware plane fit on the trilateral-filtered disparity
     sigma_n: 3.0
     sigma_r: 0.01

@@ -67,13 +67,19 @@ def test_geom_v1_config():
     v0 = load_config(PROJECT_ROOT / "configs" / "candidate_geom_v0.yaml")
     v1 = load_config(PROJECT_ROOT / "configs" / "candidate_geom_v1.yaml")
     assert v1.run.name == "geom_v1" and v1.geometry.channels == ["depth", "fold", "laplacian"]
-    assert v1.geometry.combine == "min" and v1.geometry.laplacian.pool_radius is None
+    assert v1.geometry.combine == "min" and v1.geometry.laplacian.pool_radius == 2
     assert v1.geometry.depth.sky_band == "depth_and_mask" and v1.geometry.depth.band_min == 2
     f = v1.geometry.fold
     assert (f.crease_rescue, f.rescue_theta_deg, f.rescue_k_L, f.band_min) == ("laplacian_corroborated", 8.0, 3.0, 2)
     a, b = dataclasses.asdict(v0.geometry), dataclasses.asdict(v1.geometry)
     b["channels"], b["depth"]["sky_band"], b["fold"]["crease_rescue"] = ["depth", "fold"], "depth", "off"
+    b["laplacian"]["pool_radius"] = None
     assert a == b and v0.detector == v1.detector and v0.sky == v1.sky
+    r3 = load_config(PROJECT_ROOT / "configs" / "candidate_geom_v1_r3.yaml")
+    assert r3.run.name == "geom_v1_r3" and r3.geometry.laplacian.pool_radius is None
+    c, d = dataclasses.asdict(v1.geometry), dataclasses.asdict(r3.geometry)
+    d["laplacian"]["pool_radius"] = 2
+    assert c == d and r3.detector == v1.detector
 
 
 def test_geom_sheet_and_disagreement():

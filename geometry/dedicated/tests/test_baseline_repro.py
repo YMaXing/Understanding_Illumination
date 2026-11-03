@@ -1,6 +1,6 @@
 """baseline_v0, tri_veto4 and the fold runs must reproduce bit-for-bit (TASK_070_STRIPES, TASK_FOLD_CHANNEL working
 rules; TASK_FOLD_V2 adds fold_only and tri_veto4_fold; TASK_DEPTH_CHANNEL D4 adds fold_v2 and
-tri_veto4_fold_v2; TASK_GEOM_INTEGRATION G5 adds geom_v1 on both batches).
+tri_veto4_fold_v2; TASK_GEOM_INTEGRATION G5 adds geom_v1 (Laplacian pooling radius 2) and geom_v1_r3 (radius 3) on both batches).
 
 Stage B: recompute every image of each reference run from its Stage A cache and compare all saved arrays (NaN equal
 to NaN), the JSON blocks and, for geometry runs, the candidate / null tables and the channel scalars (per-run
@@ -23,7 +23,8 @@ REFERENCE_RUNS = [("baseline_output", "baseline_v0"), ("baseline_output", "tri_v
                   ("baseline_output_batch2", "tri_veto4"),
                   ("baseline_output", "fold_only"), ("baseline_output", "tri_veto4_fold"),
                   ("baseline_output", "fold_v2"), ("baseline_output", "tri_veto4_fold_v2"),
-                  ("baseline_output", "geom_v1"), ("baseline_output_batch2", "geom_v1")]
+                  ("baseline_output", "geom_v1"), ("baseline_output_batch2", "geom_v1"),
+                  ("baseline_output", "geom_v1_r3"), ("baseline_output_batch2", "geom_v1_r3")]
 TIMING_KEYS = {"context_s", "runtime_s"}  # wall-clock, differs between runs
 
 

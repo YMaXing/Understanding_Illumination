@@ -388,8 +388,9 @@ saved outputs plus the Stage A sRGB.
    along the fold line coloured by Δθ(k₁), rescued creases dashed.
 2. **log₁₀ Z** (sky masked).
 3. **Normal map**, RGB = (n + 1)/2, gray where invalid.
-4. **w_depth**, 5. **w_fold**, 6. **combined w** = min of the three channels, 7. **tri_veto4 w** (the Laplacian channel is
-   tri_veto4's detector, unchanged), each with its share of w < 0.5 and < 0.9.
+4. **w_depth**, 5. **w_fold**, 6. **combined w** = min of the three channels, 7. **tri_veto4 w** (the Laplacian channel
+   itself when `geometry.laplacian.pool_radius` is null, i.e. r = 3; otherwise the sibling `stage_b/tri_veto4` run's
+   w_net, since geom_v1 pools with r = 2), each with its share of w < 0.5 and < 0.9.
 8. **Disagreement:** red = Laplacian-only (w_lap < 0.5 where min(w_depth, w_fold) ≥ 0.9), blue = depth/fold-only (the
    reverse), over the gray image; the thresholds are the G1 audit's.
 9. **Text box:** channel settings (null models, dZ0, band_min, sky_band, crease rescue θ / k_L, pooling radius),

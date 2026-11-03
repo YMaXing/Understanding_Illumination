@@ -10,9 +10,9 @@
    re-rasterized without the rescued candidates); the re-rasterization with everything reproduces the saved channel w
    (checked).
 4. Report-only sweep of the Laplacian pooling radius r in {1, 2, 3} inside geom_v1 (w = min(depth, fold, lap_r); the
-   Laplacian channel rerun from the Stage A cache with geometry.laplacian.pool_radius = r; r = 3 reproduces the saved
-   laplacian_w_net, checked): closure of the labelled gap units, tri_band_excess (and tri_fp) area still relaxed, the
-   texture ROI shares (batch1). r stays 3.
+   Laplacian channel rerun from the Stage A cache with geometry.laplacian.pool_radius = r; the run's own radius
+   reproduces the saved laplacian_w_net, checked): closure of the labelled gap units, tri_band_excess (and tri_fp) area still relaxed, the
+   texture ROI shares (batch1). geom_v1 uses r = 2 (scripts/geom_g5_radius.py rule); geom_v1_r3 keeps r = 3.
 Writes baseline_output/diag/geom/g5/g5.json and eval.json.
 Run from geometry/dedicated:  env -u PYTHONPATH uv run python scripts/geom_g5.py
 """
@@ -116,8 +116,9 @@ def main():
                                   detector_params(cfg), dense_fit_params(cfg))
             base = dataclasses.asdict(detector_params(cfg))
             wl_r = {r_: LaplacianChannel().run(ctx, base | {"pool_radius": r_}).w_net for r_ in RADII}
+            r_run = cfg.geometry.laplacian.pool_radius or 3   # null = the detector's r = 3
             checks.append({"stem": stem, "depth_raster": same16(wd_all, wd), "fold_raster": same16(wf_all, wf),
-                           "lap_r3": same16(wl_r[3], wl), "combined": same16(np.minimum.reduce([wd, wf, wl]), w)})
+                           "lap_run_radius": same16(wl_r[r_run], wl), "combined": same16(np.minimum.reduce([wd, wf, wl]), w)})
             # ---- 3. marginal contributions
             lo = w < 0.5
             marg.append({"batch": batch, "stem": stem, "image_px": int(w.size), "w_lt_0.5": int(lo.sum()),
