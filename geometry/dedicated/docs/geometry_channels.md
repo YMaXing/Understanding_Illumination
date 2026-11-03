@@ -327,6 +327,10 @@ Settled in F0 (leans agreed) and revised in F1–F4; current state:
 | G3 | `geometry.fold.crease_rescue: laplacian_corroborated` as an option (default off; `ctx.s_hat_L` = tri_veto4's ŝ exactly); targets not met (076 ledge blocked by the capped veto) → item 9 documented gap | as built; closed by rule |
 | G3 | ΔZ₀ stays 0.10 m (report: 0.30 / 1.00 m trade limb and step coverage for little texture gain) | as measured |
 | G3 | thin-ring clusters (fences, railings, balusters, foliage, distant façades): keep the relaxation, no code | lean (revisit in G4) |
+| G2/G3 review | approved: `sky_band: depth_and_mask` with band_min 2; `crease_rescue: laplacian_corroborated` 8° / 3 enters the G4 re-evaluation; ΔZ₀ 0.10 m; item 8 closed (no unit labelled artifact or clutter); the sky edges' `thin` flag kept and documented; the rescue's support is the component's majority sign of L/ρ_f (no separate convexity test) | decided 2026-11-02 |
+| G4 | labelled audit (stratified pps estimator, stratified bootstrap): missed true geometry after the re-evaluation 0.584 [0.512, 0.656] of the tri-only area (step 0.341, fold 0.172, limb 0.038, crease 0.033; subscale 0.034 excluded); tri_fp 0.083; geom_fp 0.052 of geom-only | as measured |
+| G4 | Laplacian rule → **(c) third channel** (missed ≫ 10 %, crease 5.7 % of it); no Laplacian-corroborated depth rescue proposed (open step gaps dropped mostly at the component stage: fragmented thin contours < 5 px, not at the significance gate) | proposed (G4 report) |
+| G4 | items 6 (textured-surface folds 97, 124, 125 open) and 7 (narrow faces 15, 37 open; 92 closed by the rescue) **reopen** by the rule; geom_offset recorded as an open fold-placement item (vertical corners −2.0 px toward the oblique face, nosings +2.9 px up) | by rule |
 
 ## 8. Runtime (CPU, measured in F4)
 

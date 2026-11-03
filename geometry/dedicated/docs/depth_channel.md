@@ -157,7 +157,8 @@ A candidate passes D-3, has the right sign, and then:
   component is kept when every member has r > τ_low = 0.02, one member has r > τ_high = 0.04, and it covers ≥ 5
   distinct pixels.
 - **Sky.** If ≥ 50 % of the far span is sky (S), the edge is a sky edge: r = significance = ΔZ = ∞. If ≥ 50 % of the
-  near span is sky, the candidate is rejected (`sky_near`).
+  near span is sky, the candidate is rejected (`sky_near`). A sky edge's far window is sky, so its jump falls back to
+  the doublet and it carries the `thin` flag (kept, G3 decision): exclude sky edges when counting thin-ring clusters.
 
 Neither gate is used alone: significance protects against noise at small ρ, the relative jump against large but
 physically small jumps. On real images significance is the binding gate for 73–100 % of candidates (multiplicative;

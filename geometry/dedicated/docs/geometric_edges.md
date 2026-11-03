@@ -140,12 +140,69 @@ resampled (the alignment option moves only where the deliverable's relaxation la
   pipe rail), foliage (080, 075, 082, 067) and distant façades (076, 082). Lean: keep the relaxation (no code); revisit if
   G4 labels such clusters `artifact`.
 
+### 3.3 G4 results (items 5, 6, 7, 10)
+
+Labels: `audit_split/audit_labels.csv` (190 units; `bucket` used for every count). Re-evaluation run `geom_g4_reeval`
+(`configs/candidate_geom_g4_reeval.yaml`: geom_v0 + `sky_band: depth_and_mask` + `crease_rescue: laplacian_corroborated`
+8° / k_L 3, both batches). A unit is closed if the run's w < 0.5 on ≥ 50 % of it. Script `scripts/geom_g4.py`, outputs
+`baseline_output/diag/geom/g4/` (`g4.json`, `estimates.csv`, `strata.csv`, `units.csv`, `offsets*.csv`,
+`open_step_candidates.parquet`).
+
+**Estimator.** Area share per direction = Σ_h A_h p̂_hc / Σ_h A_h (p̂_hc the fraction of stratum h's draws, with
+multiplicity); 95 % CI from a stratified bootstrap over draws (B = 10000); area = share × the G1 total. The pooled draw
+fraction agrees within 0.01 on tri-only; on geom-only it differs where the minimum-one allocation over-samples small
+strata (geom_gain 0.66 vs 0.60, geom_band_excess 0.03 vs 0.07, unsure 0.002 vs 0.017). Six geom-only strata have a single draw (3.3 % of the
+geom-only area, marked in `strata.csv`): they add no bootstrap variance, so the geom-only CIs are understated.
+
+Tri-only (665 801 px, 17.5 % of all image px; 140 draws, 136 units):
+
+| bucket | share [95 % CI] | area px | closed by the re-evaluation |
+|---|---|---|---|
+| gap_fixable | 0.485 [0.414, 0.556] | 322 700 | 0.035 (5 of 65 units: 4 fold, 1 limb, all by the rescue) |
+| gap_unresolved | 0.134 [0.089, 0.186] | 89 300 | 0 |
+| gap_subscale | 0.034 [0.012, 0.062] | 22 600 | 0 |
+| tri_band_excess | 0.256 [0.191, 0.324] | 170 700 | 0 |
+| tri_fp | 0.083 [0.047, 0.125] | 55 500 | 0 (no new coverage inside a tri_fp unit) |
+| unsure | 0.008 [0, 0.023] | 5 000 | 0 |
+
+Geom-only (39 123 px, 1.0 % of image px; 60 draws, 54 units): geom_gain 0.664 [0.553, 0.767], geom_offset 0.250
+[0.154, 0.354], geom_band_excess 0.033 [0.010, 0.060], geom_fp 0.052 [0, 0.104] (3 units, all foliage / surface marks
+on DA3 bumps), unsure 0.002. The options only lower w (checked on all 20 images), so every geom-only unit stays covered.
+The run adds 51 332 px of w < 0.5: 33 827 inside tri_veto4's w < 0.5, 7 638 where tri_veto4 ≥ 0.9 (geom-only area
+39 694 → 47 332 px), 9 867 in between. The sky band closed no audited unit.
+
+**Laplacian decision (item 5).** Missed true geometry = gap_fixable + gap_unresolved not closed: **0.584 [0.512, 0.656]**
+of the tri-only area after the re-evaluation (0.619 before; 0.588 excluding unsure; 10.2 % of all image px). By label:
+step 0.341, fold 0.172, limb 0.038, crease 0.033 (crease = 5.7 % of the missed area). gap_subscale (0.034) excluded
+(below the depth channel's design resolution). Missed ≫ 10 % and not crease-like → **(c) keep the Laplacian as a third
+channel**.
+
+**Open step gaps (45 units, 25 089 px).** Stage that drops the edge (most advanced stage any depth candidate within 2 px
+reached): component 25 units (15 733 px), significance 6 (2 202), τ_low 6 (3 284), D-3 tests 5 (2 176), sign 2 (1 407),
+no candidate above the gradient floor 1 (287). In the component stage 84 % of the best candidates sit in contour
+components < 5 px (median 4 px; their r P50 0.10, component max r P50 0.11 > τ_high), 82 % are `thin` (doublet fits):
+fragmented thin contours on fences and railings (090, 073, batch2 075, 067). The significance gate does not dominate, so
+a Laplacian-corroborated depth rescue (option (b) for steps) is not proposed.
+
+**geom_offset (15 units, all fold candidates; signed s* of the RGB edge along the normal).** Vertical corners (5 units;
++ = toward the more frontal face): median −2.0 px (P25 −2.8, P75 −1.1), every unit negative (−0.8 to −3.2), raw dx
++0.75 to +3.2, all convex. Nosings (5; + = image up): median +2.9 px, every unit positive (+1.7 to +6.9), all convex.
+Contact folds (5 incl. 173 by orientation; + = image up): median +1.2 px, mixed (−2.4 to +5.6), concave except 173.
+12 % of contact-fold samples sit at the ±8 px search limit. Open fold-placement item for the G6 limitations (not the DA3
+shift, which G2 found unstable and ≤ 0.5 px).
+
+**Items 6 / 7.** Narrow-face units after the re-evaluation: 92 (076 plinth contact fold) closed by the rescue (0.81);
+15 (067 picket front/side folds, 0.00) and 37 (070 porch nosing, step, 0.32) open; 171 (075 curb top, gain) stays.
+**Item 7 reopens** by the rule (15, 37). Textured-surface fold gaps 97 (fold), 124, 125 (creases) are all open (0.00,
+0.00, 0.14): **item 6 reopens** by the rule.
+
 ## 4. Config and run names
 
 | config | channels | run(s) | milestone |
 |---|---|---|---|
 | `configs/candidate_geom_v0.yaml` | `[depth, fold]` (depth additive default, fold_v2) | `geom_v0` in `baseline_output/` and `baseline_output_batch2/` | G1 |
 | G2/G3 variants | via `--set` on `candidate_geom_v0.yaml` | `geom_v0_shift`, `geom_v0_band{3,4}`, `geom_v0_skymask`, `geom_v0_rescue_*`, `geom_v0_dz0_{030,100}` (diagnostic runs, both batches where no ROI is needed) | G2, G3 |
+| `configs/candidate_geom_g4_reeval.yaml` | geom_v0 + `sky_band: depth_and_mask` + `crease_rescue` 8° / 3 | `geom_g4_reeval` (both batches; re-evaluation, not a reference) | G4 |
 | `configs/candidate_geom_v1.yaml` | from G4 + the approved G2/G3 settings | `geom_v1` (both batches; new bit-for-bit reference) | G5 |
 | `configs/default.yaml` | unchanged; a separate, unapplied commit proposes geom_v1 as the default | – | G6 |
 
