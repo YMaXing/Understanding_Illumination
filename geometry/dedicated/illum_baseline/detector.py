@@ -45,6 +45,7 @@ class Params:
     scale_band: bool = False   # q from L_sigma - L_{band_factor sigma}: cancels constant curvature (scale-ratio test)
     band_factor: float = 2.0
     scale_band_mode: str = "replace"  # replace: q = |band|; veto: q = min(|L|, g |band|), g = 1 / (1 - 1/band_factor)
+    pool_radius: int | None = None  # B6 pooling disk radius; None = r (TASK_GEOM_INTEGRATION G5 option, laplacian channel)
 
     @property
     def R(self) -> int:
@@ -329,7 +330,8 @@ def compute_weights(D: np.ndarray, sky_prob: np.ndarray | None, params: Params) 
     eps_min = (p.k_eps / p.k_tau) * tau_min if (p.eps_floor and tau_min is not None) else None
     eps = eps_noise if eps_min is None else max(eps_noise, eps_min)
     q_eff = np.maximum(q - tau, 0.0)
-    q_pool = ndimage.grey_dilation(q_eff, footprint=disk(r), mode="constant", cval=0.0)
+    r_pool = r if p.pool_radius is None else p.pool_radius
+    q_pool = ndimage.grey_dilation(q_eff, footprint=disk(r_pool), mode="constant", cval=0.0)
 
     # B7
     if eps > 0:
@@ -358,6 +360,7 @@ def compute_weights(D: np.ndarray, sky_prob: np.ndarray | None, params: Params) 
             "eps": eps,
             "rho_floor": rho_floor,
             "r": r,
+            **({} if p.pool_radius is None else {"pool_radius": r_pool}),
             "R": R,
             "sky_frac": sky_frac,
             "n_bad_depth": int(bad.sum()),

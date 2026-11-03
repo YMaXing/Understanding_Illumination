@@ -5,7 +5,8 @@ Per run (out_dir/stage_b/<run>/), all arrays in the STORED frame:
                D (network res, float32), sky_mask (network res, bool)
   <stem>.json  detector scalars, focal, geometry, provenance
   manifest.parquet (+ manifest.csv), config_resolved.yaml, viz/<stem>.png (upright); geometry runs also
-  viz_fold/<stem>.png (fold channel) and viz_depth/<stem>.png (depth channel)
+  viz_fold/<stem>.png (fold channel) and viz_depth/<stem>.png (depth channel); viz_geom/<stem>.png (depth + fold +
+  laplacian runs: the combined sheet)
 
 With geometry.enabled (docs/geometry_channels.md section 3.5) the geometric-edge channels replace the detector call:
   <stem>.npz   w, w_net (combined, elementwise min), <name>_w_net, <name>_strength, <name>_<array> per channel,
@@ -137,6 +138,7 @@ def _detector_record(sc: dict[str, Any]) -> dict[str, Any]:
     return ({k: sc[k] for k in (
         "s_hat", "s_hat_raw", "s_hat_clamped", "tau", "eps", "rho_floor", "r", "R", "sky_frac",
         "n_bad_depth", "n_noise_valid", "frac_w_lt_0.5", "frac_w_lt_0.9", "frac_w_lt_1")}
+        | ({"pool_radius": sc["pool_radius"]} if "pool_radius" in sc else {})
         | {k: sc[k] for k in ("tau_noise", "tau_min", "tau_min_over_tau_noise", "a_min", "lambda_ref",
                               "eps_noise", "eps_min", "eps_floor", "prefilter", "tri_shat",
                               "s_hat_filtered_response", "scale_band", "band_factor", "scale_band_mode",
@@ -195,7 +197,7 @@ def _jsonable(x: Any) -> Any:
 
 def _channel_params(cfg: Config, name: str) -> dict[str, Any]:
     if name == "laplacian":
-        return dataclasses.asdict(detector_params(cfg))
+        return dataclasses.asdict(detector_params(cfg)) | {"pool_radius": cfg.geometry.laplacian.pool_radius}
     return dataclasses.asdict(getattr(cfg.geometry, name))
 
 
@@ -265,6 +267,8 @@ def _process_one_geometry(cfg: Config, stem: str, rd: Path, meta_a: dict[str, An
 
     geo = dataclasses.asdict(cfg.geometry)
     geo["fold"] = params_record(geo["fold"])
+    if geo["laplacian"]["pool_radius"] is None:  # the default: records unchanged
+        geo.pop("laplacian")
     if "depth" not in cfg.geometry.channels:  # runs without the depth channel keep their records unchanged
         geo.pop("depth")
     else:
@@ -339,6 +343,7 @@ def run_stage_b(cfg: Config, run_name: str | None = None, force: bool = False,
     from .viz import render
     from .viz_depth import render_depth
     from .viz_fold import render_fold
+    from .viz_geom import render_geom, wants_geom_sheet
 
     rd = run_dir(cfg, run_name)
     _inherit_stage_a_settings(cfg)
@@ -359,6 +364,8 @@ def run_stage_b(cfg: Config, run_name: str | None = None, force: bool = False,
             render_fold(cfg, rd, stem)
         if viz and g.enabled and "depth" in g.channels and (force or not (rd / "viz_depth" / f"{stem}.png").exists()):
             render_depth(cfg, rd, stem)
+        if viz and g.enabled and wants_geom_sheet(g.channels) and (force or not (rd / "viz_geom" / f"{stem}.png").exists()):
+            render_geom(cfg, rd, stem)  # combined sheet (depth + fold + laplacian runs, G5)
     status["manifest"] = str(write_manifest(rd))
     return status
 

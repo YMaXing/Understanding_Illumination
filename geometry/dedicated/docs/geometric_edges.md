@@ -189,12 +189,82 @@ a Laplacian-corroborated depth rescue (option (b) for steps) is not proposed.
 +0.75 to +3.2, all convex. Nosings (5; + = image up): median +2.9 px, every unit positive (+1.7 to +6.9), all convex.
 Contact folds (5 incl. 173 by orientation; + = image up): median +1.2 px, mixed (−2.4 to +5.6), concave except 173.
 12 % of contact-fold samples sit at the ±8 px search limit. Open fold-placement item for the G6 limitations (not the DA3
-shift, which G2 found unstable and ≤ 0.5 px).
+shift, which G2 found unstable and ≤ 0.5 px). The labels of 161 / 173 (offset near 0) and 165 / 180 (> 3 px) are kept
+(review decision); the RGB edge can be a shadow edge, and the search limit caps the contact-fold samples.
 
 **Items 6 / 7.** Narrow-face units after the re-evaluation: 92 (076 plinth contact fold) closed by the rescue (0.81);
 15 (067 picket front/side folds, 0.00) and 37 (070 porch nosing, step, 0.32) open; 171 (075 curb top, gain) stays.
 **Item 7 reopens** by the rule (15, 37). Textured-surface fold gaps 97 (fold), 124, 125 (creases) are all open (0.00,
 0.00, 0.14): **item 6 reopens** by the rule.
+
+### 3.4 G5 results: geom_v1
+
+`configs/candidate_geom_v1.yaml`, run `geom_v1` on both batches: channels **[depth, fold, laplacian]**, min;
+`depth.sky_band: depth_and_mask`; band_min 2; `fold.crease_rescue: laplacian_corroborated` (8°, k_L 3); no deliverable
+shift; `geometry.laplacian.pool_radius: null` (= the detector's r = 3). The Laplacian channel is tri_veto4's detector, so
+geom_v1 ⊇ tri_veto4 wherever w < 0.5. New bit-for-bit references: `geom_v1` (batch1, batch2). Script
+`scripts/geom_g5.py` (outputs `baseline_output/diag/geom/g5/`: `g5.json`, `eval.json`, `units_v1.csv`,
+`estimates_v1.csv`); sheets `stage_b/geom_v1/viz_geom/<stem>.png`.
+
+**G1 table (combined w, batch1 pinned ROIs):**
+
+| class | share w < 0.5: tri_veto4 / geom_v0 / geom_v1 | polyline coverage: tri_veto4 / geom_v0 / geom_v1 |
+|---|---|---|
+| step | 0.962 / 0.775 / 0.962 | 0.909 / 0.850 / 0.909 |
+| limb | 1.000 / 1.000 / 1.000 | 1.000 / 1.000 / 1.000 |
+| fold | 0.909 / 0.437 / 0.971 | 0.962 / 0.468 / 0.999 |
+| crease | 0.436 / 0.037 / 0.564 | 0.495 / 0.053 / 0.585 |
+| texture | 0.254 / 0.003 / 0.254 | – |
+
+**Audit re-scored (G4 labels).** Every tri-only unit is closed under geom_v1 (w < 0.5 on ≥ 50 %), since the Laplacian
+channel is tri_veto4: missed true geometry 0.584 → 0, and with it tri_band_excess (0.256 of the tri-only area,
+170 700 px) and tri_fp (0.083, 55 500 px) are relaxed again. Geom-only units stay covered (gain 0.664, offset 0.250,
+band excess 0.033, fp 0.052). Named units (w < 0.5 share, median w): 15 1.00 / 0.055, 37 1.00 / 0.265, 97 1.00 / 0.157,
+124 1.00 / 0.164, 125 1.00 / 0.168, all by the Laplacian (fold alone 0.00 / 0.32 / 0.00 / 0.00 / 0.14).
+
+**Marginal contribution** (geom_v1 w < 0.5 area that exists only because of the channel or option; px, share of image px,
+share of the w < 0.5 area):
+
+| | batch1 (w < 0.5: 459 901 px) | batch2 (581 920 px) |
+|---|---|---|
+| depth | 0 | 0 |
+| fold | 26 705 (1.4 %, 5.8 %) | 57 444 (3.0 %, 9.9 %) |
+| laplacian | 299 154 (15.7 %, 65.1 %) | 337 605 (17.7 %, 58.0 %) |
+| sky_band | 0 | 0 |
+| crease_rescue | 5 452 (0.29 %, 1.2 %) | 12 053 (0.63 %, 2.1 %) |
+
+Every depth w < 0.5 pixel (196 478 px) also has the Laplacian below 0.5 (none at ≥ 0.9); depth is the binding minimum on
+0.00 % (batch1) / 0.02 % (batch2) of the pixels, median lowering 0.03 / 0.02. The sky ring lies inside the Laplacian's
+sky band. The fold channel is binding on 2.8 % / 4.7 % of the pixels (median lowering 0.29 / 0.46). The re-rasterized
+channel w (with / without the sky ring, with / without the rescued candidates) reproduces the saved w bit for bit.
+
+**Laplacian pooling radius r ∈ {1, 2, 3}** (report only; `geometry.laplacian.pool_radius`, default null = 3, bit for
+bit; w = min(depth, fold, Laplacian_r)):
+
+| r | gap_fixable closed | gap_unresolved | gap_subscale | missed true geometry | tri_band_excess px relaxed (area share) | tri_fp (area share) | texture: 070 floor / 079 grass / 079 sunlit / 083 interior |
+|---|---|---|---|---|---|---|---|
+| 1 | 61/65 | 17/18 | 2/5 | 0.036 | 0.71 (0.228) | 10/11 (0.070) | 0.004 / 0.169 / 0.279 / 0.000 |
+| 2 | 64/65 | 18/18 | 5/5 | 0.007 | 0.86 (0.256) | 11/11 (0.083) | 0.008 / 0.219 / 0.383 / 0.002 |
+| 3 | 65/65 | 18/18 | 5/5 | 0 | 1.00 (0.256) | 11/11 (0.083) | 0.015 / 0.267 / 0.504 / 0.004 |
+
+r stays 3.
+
+**Fold-placement diagnostic** (`scripts/geom_g5_fold_site.py`, `g5/fold_site.json`; signed offset of the RGB edge from
+the fold site along e1, G4 conventions; plane site = intersection of the two fitted side planes, ρ̂₊ = ρ̂₋):
+
+| set, sub-type | n | planes cross | NMS site median [P25, P75] | plane site |
+|---|---|---|---|---|
+| geom_offset vertical-corner (5) | 585 | 0.99 | −2.02 [−2.80, −1.09] | −1.05 [−2.22, −0.46] |
+| geom_offset nosing (5) | 213 | 0.80 | +2.59 [+2.07, +3.16] | +1.21 [+0.25, +1.78] |
+| geom_offset contact (5) | 281 | 1.00 | +0.81 [−1.14, +5.44] | +0.32 [−1.96, +4.20] |
+| fold targets vertical-corner (10) | 459 | 0.78 | −1.04 [−2.47, +0.46] | −0.06 [−2.64, +0.95] |
+| fold targets contact (6) | 364 | 0.34 | +1.11 [−0.45, +4.11] | −0.77 [−3.78, +5.27] |
+| fold targets nosing (2) | 20 | 0.75 | +8.00 (65 % at the search limit) | +6.28 |
+
+All convex candidates in the frontal-face convention: NMS −1.75 px, plane −0.82 px; the plane site lies 0.57 px toward
+the oblique face from the NMS site. The hypothesis holds in direction (the NMS peak sits toward the more frontal face)
+but the plane site removes only about half of the offset; contact folds (concave) show no consistent effect, and on the
+narrow plinth targets the planes often do not cross within ±k₁. Open fold-placement item (G6 limitations).
 
 ## 4. Config and run names
 
@@ -203,12 +273,13 @@ shift, which G2 found unstable and ≤ 0.5 px).
 | `configs/candidate_geom_v0.yaml` | `[depth, fold]` (depth additive default, fold_v2) | `geom_v0` in `baseline_output/` and `baseline_output_batch2/` | G1 |
 | G2/G3 variants | via `--set` on `candidate_geom_v0.yaml` | `geom_v0_shift`, `geom_v0_band{3,4}`, `geom_v0_skymask`, `geom_v0_rescue_*`, `geom_v0_dz0_{030,100}` (diagnostic runs, both batches where no ROI is needed) | G2, G3 |
 | `configs/candidate_geom_g4_reeval.yaml` | geom_v0 + `sky_band: depth_and_mask` + `crease_rescue` 8° / 3 | `geom_g4_reeval` (both batches; re-evaluation, not a reference) | G4 |
-| `configs/candidate_geom_v1.yaml` | from G4 + the approved G2/G3 settings | `geom_v1` (both batches; new bit-for-bit reference) | G5 |
+| `configs/candidate_geom_v1.yaml` | `[depth, fold, laplacian]` + sky_band depth_and_mask + crease_rescue 8° / 3 (G4 (c) + the approved G2/G3 settings) | `geom_v1` (both batches; new bit-for-bit reference) | G5 |
 | `configs/default.yaml` | unchanged; a separate, unapplied commit proposes geom_v1 as the default | – | G6 |
 
 New options (each defaults to the old behaviour): `geometry.deliverable_shift_px` (planned; not added, G2: shift not
 stable), `geometry.depth.sky_band: depth`, `geometry.fold.crease_rescue: off` (with `rescue_theta_deg` 8, `rescue_k_L` 3,
-`rescue_min_component_px` 10, `rescue_support` 0.7). Batch2 runs use the same config with `--input data/batch2
+`rescue_min_component_px` 10, `rescue_support` 0.7), `geometry.laplacian.pool_radius: null` (G5; the detector's r = 3;
+recorded only when set). Batch2 runs use the same config with `--input data/batch2
 --output baseline_output_batch2`, as batch2 `tri_veto4` was made.
 
 ## 5. What stays bit-for-bit

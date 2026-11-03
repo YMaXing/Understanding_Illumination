@@ -205,6 +205,13 @@ class DepthCfg:
 
 
 @dataclass
+class LaplacianCfg:
+    """Laplacian channel options (the detector section supplies everything else)."""
+    pool_radius: int | None = None      # B6 pooling radius in px; null = the detector's r = ceil(hypot(sigma,
+                                        # sigma_w_prior)) + 1 (3 at the defaults). Recorded only when set (G5)
+
+
+@dataclass
 class GeometryCfg:
     """Geometric-edge channels (docs/geometry_channels.md). Off by default: Stage B then runs the detector path."""
     enabled: bool = False
@@ -213,6 +220,7 @@ class GeometryCfg:
     dense_fit: DenseFitCfg = field(default_factory=DenseFitCfg)
     fold: FoldCfg = field(default_factory=FoldCfg)
     depth: DepthCfg = field(default_factory=DepthCfg)
+    laplacian: LaplacianCfg = field(default_factory=LaplacianCfg)
 
 
 @dataclass
@@ -400,6 +408,9 @@ def _validate_geometry(g: GeometryCfg) -> None:
         raise ValueError("geometry.fold: scales, factors and J0 must be > 0")
     if f.k_min < 1 or f.w_t < 0 or f.null_stride < 1 or not 0 <= f.max_excluded < 1:
         raise ValueError("geometry.fold: k_min >= 1, w_t >= 0, null_stride >= 1, 0 <= max_excluded < 1")
+    if g.laplacian.pool_radius is not None and (not isinstance(g.laplacian.pool_radius, int)
+                                                 or g.laplacian.pool_radius < 1):
+        raise ValueError(f"geometry.laplacian.pool_radius must be null or an int >= 1, got {g.laplacian.pool_radius!r}")
     e = g.depth
     if e.disparity not in ("rho_f", "rho"):
         raise ValueError(f"geometry.depth.disparity must be rho_f|rho, got {e.disparity!r}")

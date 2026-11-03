@@ -329,6 +329,13 @@ step and limb targets kept): met; additive is the default since D5.
 9. **Moderate-crease gate** (fold channel, `docs/fold_channel.md` §7).
 10. **Recall against tri_veto4 on true geometry classes** (annotated fold / step / limb / texture), not only the pinned ROIs.
 
+11. **Component minimum on thin contours** (TASK_GEOM_INTEGRATION G4, record only, no code). Of the 45 labelled step
+    gaps still open after the G4 re-evaluation, 25 (15 733 of 25 089 px) are dropped at the component stage: their best
+    candidates passed every gate, but 84 % sit in contour components < 5 px (median 4 px; `min_component_px` 5), 82 %
+    are `thin` (doublet fits) and their r is above τ_high (r P50 0.10, component max r P50 0.11). These are fragmented
+    thin contours on fences and railings (090, 073, batch2 075, 067). The other open step gaps: τ_low 6, significance
+    6, D-3 tests 5, sign 2, no candidate 1. In geom_v1 the Laplacian channel covers them.
+
 The step-vs-kink model selection in `two_sided_fit` is not needed as an integration item: the 079 and 075 checks
 (section 5.3) found steps in DA3's depth, not folds misread as steps.
 

@@ -541,6 +541,23 @@ ROIs and spot checks are unchanged by the capped veto: 070 floor, 079 grass 0.00
   channel adds nothing there): 076 façade ledge median 0.747 (19% of the polyline below 0.5), 088 rock ridge median
   0.252 (79% below 0.5); so the Laplacian covers the ridge but not most of the ledge, and the crease gate is not
   parked.
+- **Items 6 / 7 after the labelled audit (TASK_GEOM_INTEGRATION G4): reopened, not fixed.** Reopen rule applied after
+  the re-evaluation (geom_v0 + sky_band depth_and_mask + crease_rescue 8° / 3; a unit closed if w < 0.5 on ≥ 50 % of
+  it). Narrow faces (item 7): unit 92 (076 plinth contact fold) closed by the crease rescue (0.81), 15 (067 picket
+  front / side folds, 0.00) and 37 (070 porch nosing, labelled step, 0.32) open. Textured-surface folds (item 6): 97
+  (079 fold), 124, 125 (088 creases) open (0.00, 0.00, 0.14). In geom_v1 the Laplacian channel covers all five: w < 0.5
+  on 100 % of each unit, median w 0.055 (15), 0.265 (37), 0.157 (97), 0.164 (124), 0.168 (125); the fold channel alone
+  0.00 / 0.32 / 0.00 / 0.00 / 0.14 (`baseline_output/diag/geom/g5/units_v1.csv`).
+- **Fold placement (open).** The fold is placed at the NMS ridge of the rotation rate. On the 15 audit units labelled
+  geom_offset the RGB edge lies off the NMS site along e1 (G4): vertical corners −2.0 px (toward the oblique face,
+  all 5 units negative), nosings +2.9 px (up, all 5 positive), contact folds mixed (+1.2 median, −2.4 to +5.6). The
+  G5 diagnostic (`scripts/geom_g5_fold_site.py`) sites the fold where the two fitted side planes intersect
+  (ρ̂₊ = ρ̂₋ along e1, the k₁ fit's `s_gap` when `planes_cross`): vertical corners −2.0 → −1.05 px, nosings +2.6 → +1.2
+  px, contact folds +0.8 → +0.3 (mixed); all convex candidates in the frontal-face convention −1.75 → −0.82 px, the
+  plane site 0.57 px toward the oblique face from the NMS site. The plane site halves the bias on convex folds but does
+  not remove it; on the narrow plinth targets the planes often do not cross within ±k₁ (contact targets 34 %) and the
+  plane site is no better. RGB-edge caveat: the luminance maximum can be a shadow edge, and 12 % of the contact-fold
+  samples sit at the ±8 px search limit; the labels of 161 / 173 (near 0) and 165 / 180 (> 3 px) are kept.
 - **Silhouettes in the capped veto.** A step's own 1-px invalid-normal band caps k₂ at once, so silhouettes usually
   become undecidable and are rejected unless strictly planar (rim-class losses, 083 limbs). Silhouette ownership is
   the integration step's; the Laplacian keeps them down-weighted in the combined w.

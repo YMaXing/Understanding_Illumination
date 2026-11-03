@@ -162,6 +162,7 @@ def cmd_viz(args: argparse.Namespace) -> int:
 
     from .viz_depth import render_depth
     from .viz_fold import render_fold
+    from .viz_geom import render_geom, wants_geom_sheet
 
     cfg = _cfg(args)
     rd = run_dir(cfg, args.run_name)
@@ -174,6 +175,8 @@ def cmd_viz(args: argparse.Namespace) -> int:
             print(render_fold(cfg, rd, stem))
         if chans and "depth" in chans:  # depth sheet
             print(render_depth(cfg, rd, stem))
+        if wants_geom_sheet(chans):  # combined geometry sheet
+            print(render_geom(cfg, rd, stem))
     return 0
 
 

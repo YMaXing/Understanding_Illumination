@@ -377,3 +377,24 @@ Reading recipe: a clean occlusion has a sharp step in the top plot with both pla
 x₀ at different heights; a doublet with lobes near ±1.3 px; windows on the two surfaces. A fold shows a kink (planes
 meeting at x₀); a curved surface shows planes that do not follow ρ_f; a thin structure shows the near window landing
 beyond the next edge (fit mode const or doublet).
+
+# The combined geometry sheet
+
+`stage_b/<run>/viz_geom/<stem>.png` (`illum_baseline/viz_geom.py: render_geom()`), rendered for runs whose channels
+include depth, fold and laplacian (geom_v1), by `stage-b` and by `viz`. Upright frame, network pixel coordinates; from the
+saved outputs plus the Stage A sRGB.
+
+1. **sRGB with the accepted edges:** depth edges coloured by log₁₀ ΔZ (cyan: sky edges), fold edges as short segments
+   along the fold line coloured by Δθ(k₁), rescued creases dashed.
+2. **log₁₀ Z** (sky masked).
+3. **Normal map**, RGB = (n + 1)/2, gray where invalid.
+4. **w_depth**, 5. **w_fold**, 6. **combined w** = min of the three channels, 7. **tri_veto4 w** (the Laplacian channel is
+   tri_veto4's detector, unchanged), each with its share of w < 0.5 and < 0.9.
+8. **Disagreement:** red = Laplacian-only (w_lap < 0.5 where min(w_depth, w_fold) ≥ 0.9), blue = depth/fold-only (the
+   reverse), over the gray image; the thresholds are the G1 audit's.
+9. **Text box:** channel settings (null models, dZ0, band_min, sky_band, crease rescue θ / k_L, pooling radius),
+   accepted / rescued counts, the w shares per channel and combined, the disagreement shares, and "alignment shift:
+   none".
+
+Reading recipe: red mostly on textured ground and as band excess around blue / black edges means the Laplacian adds its
+texture and halo responses; blue on folds and narrow faces means the fold channel adds geometry the Laplacian misses.
