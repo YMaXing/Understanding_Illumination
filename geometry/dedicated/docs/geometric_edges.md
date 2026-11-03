@@ -453,6 +453,50 @@ against ≥ 0.5; fold-target coverage +0.0004 (combined) / +0.003 (core) and no 
 vertical corners −1.05, nosings +1.50; more than half of the convex candidates have no valid site (planes not crossing
 within ±3 px), and those keep the full NMS offset. No further correction in this task.
 
+### 8.9 V2b results: Hessian-peak siting (proposed)
+
+Third mode `geometry.fold.site: hessian_peak` (with `site_window_px` 4; recorded only when on). For each accepted fold
+candidate: y(s) = −convexity · q(x₀ + s e1), s ∈ [−4, 4] px (step 0.25), q = e1ᵀ H e1 / max(ρ_σ, ρ_floor) from the depth
+channel's kernels on ρ_f (built-in DepthParams: σ 1.25, truncate 4); the site is the parabola-refined maximum. Invalid
+(x₀ kept) if the convexity is 0, the peak is at a window end, the peak fails the depth channel's height test
+(y > k_h ŝ_q, k_h 3) or the opposite-sign extremum exceeds half the peak (a doublet: a step component). Same 5-candidate
+chain-order median as plane_intersection. Sign: the recorded convexity is −sign(L/ρ_f) (+1 = disparity ridge, where
+nᵀHn < 0), so the fold's own bump is −convexity · q > 0. Synthetic check (test): on an asymmetric kink (face slopes
++0.002 / −0.0005 per px) the peak lies within 0.3 px of the kink from x₀ offsets of +1.5, −2 and 0 px; a step is
+rejected as a doublet. Run `geom_v1_hessian` (`configs/candidate_geom_v1_hessian.yaml`, both batches, diagnostic).
+
+**Signed RGB-edge offset** (median, in brackets the median |·|; px) and validity, nms / plane_intersection / hessian_peak:
+
+| set | n | nms | plane_intersection (valid) | hessian_peak (valid) |
+|---|---|---|---|---|
+| geom_offset vertical corners | 585 | −2.00 (2.00) | −1.05 (1.05) (0.99) | **−0.27 (0.66)** (1.00) |
+| geom_offset nosings | 213 | +2.90 (2.99) | +1.50 (1.61) (0.80) | +2.71 (2.81) (0.65) |
+| geom_offset contact | 281 | +0.81 (3.48) | +0.28 (3.36) (0.98) | +0.30 (2.38) (0.92) |
+| fold targets vertical corners | 459 | −0.94 (1.31) | −0.07 (1.18) (0.69) | −0.07 (1.02) (0.98) |
+| fold targets contact | 364 | +2.55 (2.75) | +2.56 (2.78) (0.13) | +1.96 (2.22) (1.00) |
+| fold targets nosings | 20 | +8.00 (65 % at the limit) | +6.17 (0.75) | +8.01 (0.95) |
+| **all accepted convex candidates** (frontal) | 11 515 | −1.69 (**2.84**) | −1.19 (2.63) (0.47) | −0.77 (**1.70**) (0.74) |
+| the same, valid sites only | | −1.45 (1.93) | −0.80 (1.47) (n 5 437) | −0.72 (1.22) (n 8 540) |
+
+Validity of all accepted candidates: plane_intersection 0.50 / 0.45 (batch1 / batch2), hessian_peak 0.76 / 0.79 (convex
+0.72 / 0.76). Per unit (hessian_peak): vertical corners 143 −3.22 → −0.29, 178 −1.23 → −0.17, 179 −2.20 → −0.97, 183
+−1.46 → −0.02, 189 −0.76 → +0.16 (every one within 1 px); nosings 153 +1.73 → −0.05, 155 / 156 halved, 154 no valid
+site, 180 +6.91 → +8.18 (worse; RGB edge at the limit); contact 165 +5.65 → +2.93, 161 / 173 / 182 / 187 about
+unchanged.
+
+**Coverage, closure, texture** (geom_v1 → hessian_peak): fold-target RGB-edge coverage combined 0.869 → 0.869, core
+0.698 → 0.698 (detected targets 0.899 → 0.899 / core 0.744 → 0.744; not detected 0.828 → 0.828 / 0.634 → 0.634; one
+sample of 2 599 moves each way); RGB coverage of depth edges 0.977 → 0.976 (core 0.826 → 0.824); ROI coverage combined
+fold 0.982 → 0.981, step / limb / crease unchanged; geom_gain 31 / 31 closed (combined and core), per-pixel relaxed
+0.664 → 0.589 (the units were drawn on geom_v0's band, which moves); geom_offset 15 → 12 closed (143, 178, 183: the band
+moves off the displaced area onto the edge), relaxed 0.250 → 0.183; texture ROIs unchanged (combined and core);
+w < 0.5 deliverable 0.216 / 0.277 → 0.215 / 0.275.
+
+**Rule: met.** Convex median |offset| −1.15 px (≥ 0.5), fold-target coverage change 0.000 (combined and core; ≥ −0.01),
+no geom_gain unit loses closure. **`site: hessian_peak` is proposed, and V5 uses it.** Residual: convex −0.77 px median
+(frontal convention), vertical corners −0.27; nosings are not corrected (+2.71: a third of them have no valid peak,
+and their RGB edge is often a shadow or at the search limit). (plane_intersection fails the same rule: −0.21 px.)
+
 ---
 
 # Appendix A. Integration record (TASK_GEOM_INTEGRATION G0–G5)

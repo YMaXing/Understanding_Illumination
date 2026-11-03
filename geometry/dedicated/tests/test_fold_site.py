@@ -72,3 +72,55 @@ def test_site_moves_only_the_band():
     # same number of relaxed pixels up to the band overlap; the default reproduces the saved geom_v1 fold w
     saved = json.loads((PROJECT_ROOT / "baseline_output" / "stage_b" / "geom_v1" / f"{stem}.json").read_text())
     assert saved["channels"]["fold"]["n_accepted"] == a.scalars["n_accepted"]
+
+
+def _kink_ctx(c=251.3, b1=0.002, b2=-0.0005, step=False):
+    """rho piecewise affine in u (a plane on each side), continuous at u = c (a fold; asymmetric slopes: one face
+    more frontal), or a disparity step there."""
+    from illum_baseline.detector import Params
+    from illum_baseline.geom.camera import Intrinsics
+    from illum_baseline.geom.context import GeometryContext
+    from illum_baseline.geom.synthetic import F_PX
+
+    W, H = 504, 378
+    u, v = np.meshgrid(np.arange(W, dtype=float), np.arange(H, dtype=float))
+    a = 0.25
+    rho = np.where(u < c, a + b1 * (u - c), a + b2 * (u - c))
+    if step:
+        rho = np.where(u < c, a, 0.8 * a)
+    rng = np.random.default_rng(0)
+    rho = rho * (1 + 2e-4 * rng.standard_normal(rho.shape))
+    D = 1.0 / rho
+    return GeometryContext(D, None, Intrinsics.centered(F_PX, F_PX, W, H), Params(prefilter="trilateral"))
+
+
+def test_hessian_peak_sits_on_the_kink_and_rejects_steps():
+    c = 251.3
+    ctx = _kink_ctx(c)
+    vv = np.arange(150.0, 170.0)
+    for off in (1.5, -2.0, 0.0):
+        x0 = np.stack([np.full(vv.size, c + off), vv], -1)
+        e1 = np.tile([1.0, 0.0], (vv.size, 1))
+        t, ok = FoldChannel._hessian_peak(FoldParams(site="hessian_peak"), ctx, x0, e1, np.ones(vv.size, bool))
+        assert ok.all() and np.abs(t + off).max() < 0.3, (off, t)       # the peak is the kink, not biased by slopes
+    sctx = _kink_ctx(c, step=True)
+    x0 = np.stack([np.full(vv.size, c), vv], -1)
+    t, ok = FoldChannel._hessian_peak(FoldParams(site="hessian_peak"), sctx, x0, np.tile([1.0, 0.0], (vv.size, 1)),
+                                      np.ones(vv.size, bool))
+    assert not ok.any()                                                  # a step's doublet is rejected
+
+
+def test_hessian_peak_on_a_real_image():
+    stem = "taiwei_cui_079"
+    if not (STAGE_A / f"{stem}.npz").exists():
+        pytest.skip("no Stage A cache")
+    cfg = load_config(PROJECT_ROOT / "configs" / "candidate_geom_v1.yaml")
+    ctx = _real_ctx(stem, cfg)
+    fp = FoldParams.from_dict(dataclasses.asdict(cfg.geometry.fold))
+    a = FoldChannel().run(ctx, fp)
+    b = FoldChannel().run(ctx, dataclasses.replace(fp, site="hessian_peak"))
+    for col in ("accepted", "reason", "J", "w_c", "band"):
+        assert a.candidates[col].equals(b.candidates[col]), col
+    B = b.candidates
+    assert (B.loc[B["site_valid"], "site_t"].abs() <= 4).all() and B.loc[~B["accepted"], "site_valid"].eq(False).all()
+    assert params_record(dataclasses.asdict(dataclasses.replace(fp, site="hessian_peak")))["site_window_px"] == 4.0

@@ -366,6 +366,7 @@ Settled in F0 (leans agreed) and revised in F1–F4; current state:
 | V1 | scorer `scripts/geom_score.py` (reproduces the geom_v1 numbers); fold-gap map: 29 open fold / crease units, the gate stops most candidates in 21 (75 % of px), and the crease rescue is blocked by an undecidable veto in 21 units; V4 design proposed: `fold.rescue_undecidable: reject \| corroborate` | as measured / proposed |
 | V1 review | V4 design approved (`fold.rescue_undecidable`, targets as proposed, plus the narrow-face split, smooth-curvature overlays, a report-only 6-px rescue minimum); item 6 is open (reopened G4, not fixed) | decided 2026-11-03 |
 | V2 | `fold.site: nms \| plane_intersection` (default nms); valid sites 0.45–0.50 of accepted candidates; convex median \|offset\| 2.84 → 2.63 px (−0.21; rule ≥ 0.5 not met), vertical corners −2.00 → −1.05, nosings +2.90 → +1.50; fold-target coverage unchanged; geom_gain closures kept, relaxed share 0.664 → 0.573; **not proposed** | as measured |
+| V2b | `fold.site: hessian_peak` (peak of −convexity · e1ᵀHe1/ρ within ±4 px; height test, doublet and window-end rejections; 5-candidate median); valid 0.76 / 0.79; convex median \|offset\| 2.84 → 1.70 px (−1.15), vertical corners −2.00 → −0.27; fold-target coverage unchanged; no geom_gain closure lost (relaxed 0.664 → 0.589); **proposed; V5 uses it** | as measured / proposed |
 
 ### 7.1 geom_v2 candidate list (recorded in G6; no code)
 

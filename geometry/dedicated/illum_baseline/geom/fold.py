@@ -88,9 +88,10 @@ class FoldParams:
     rescue_min_component_px: int = 10   # rescued component length (distinct NMS pixels)
     rescue_support: float = 0.7         # share of the component's pixels with one-signed support
     # TASK_GEOM_V2 V2: band centreline at the intersection of the two fitted side planes
-    site: str = "nms"                   # nms | plane_intersection
+    site: str = "nms"                   # nms | plane_intersection | hessian_peak (V2b)
     site_max_t: float = 3.0             # px, |t| of the plane intersection along e1 for a valid site
     site_smooth_n: int = 5              # running median of t over this many candidates in chain order
+    site_window_px: float = 4.0         # hessian_peak: the peak is searched within +-this along e1
 
     @classmethod
     def from_dict(cls, d: dict | None) -> FoldParams:
@@ -119,8 +120,8 @@ def _solve_sig2(d: np.ndarray, S: np.ndarray, lam_n: float) -> float:
 V2_VETO_KEYS = ("veto_mode", "veto_curv_coef", "veto_curv_max")
 V2_CAND_KEYS = ("cand_radius", "cand_radius_wide", "cand_min_samples")
 RESCUE_KEYS = ("crease_rescue", "rescue_theta_deg", "rescue_k_L", "rescue_min_component_px", "rescue_support")
-SITE_KEYS = ("site", "site_max_t", "site_smooth_n")
-SITES = ("nms", "plane_intersection")
+SITE_KEYS = ("site", "site_max_t", "site_smooth_n", "site_window_px")
+SITES = ("nms", "plane_intersection", "hessian_peak")
 
 
 def params_record(p: dict) -> dict:
@@ -305,7 +306,7 @@ class FoldChannel:
         # TASK_GEOM_V2 V2 site (nms: the NMS pixels, unchanged); only the rasterized centreline moves
         if p.site not in SITES:
             raise ValueError(f"unknown site {p.site!r}; expected one of {SITES}")
-        site = self._site(p, x0, e1, r1, accepted, u, v, (H, W)) if p.site == "plane_intersection" else None
+        site = None if p.site == "nms" else self._site(p, x0, e1, r1, accepted, u, v, (H, W), ctx)
         ru, rv = (u, v) if site is None else (site["u_site"], site["v_site"])
         w_fold = np.ones((H, W))
         strength = np.zeros((H, W))
@@ -415,17 +416,27 @@ class FoldChannel:
                              tables={"null": null_df})
 
     @staticmethod
-    def _site(p: FoldParams, x0, e1, r1, accepted, u, v, shape) -> dict:
-        """TASK_GEOM_V2 V2: t along e1 where the k1 side planes intersect (rho_+ = rho_-; the fit's gap root s_gap when
-        the planes cross, both sides planar); valid if |t| <= site_max_t. For the accepted candidates t is smoothed by a
-        running median over site_smooth_n candidates in chain order (geom.depth.chains; shorter chains keep their own
-        t); a candidate without a valid t keeps its NMS pixel. Returns the records and the rasterization pixels."""
+    def _site(p: FoldParams, x0, e1, r1, accepted, u, v, shape, ctx=None) -> dict:
+        """TASK_GEOM_V2 V2 / V2b: the fold band's centreline offset t along e1.
+        plane_intersection: where the k1 side planes intersect (rho_+ = rho_-; the fit's gap root s_gap when the planes
+          cross, both sides planar); valid if |t| <= site_max_t.
+        hessian_peak: the sub-pixel peak of y(s) = -convexity q(x0 + s e1), s in [-site_window_px, site_window_px] (step
+          0.25 px), q = e1^T H e1 / max(rho_s, rho_floor) from the depth channel's kernels on rho_f (built-in
+          DepthParams: sigma 1.25, truncate 4); -convexity = sign(L/rho_f) at x0, so the fold's own bump is positive.
+          Invalid (x0 kept) if convexity is 0, the peak is at a window end, the peak fails the depth channel's height
+          test (y > k_h s_q), or the opposite-sign extremum exceeds half the peak (a doublet: a step component).
+        For the accepted candidates t is smoothed by a running median over site_smooth_n candidates in chain order
+        (geom.depth.chains; shorter chains keep their own t); a candidate without a valid t keeps its NMS pixel.
+        Returns the records and the rasterization pixels."""
         from .depth import chains, running_median
 
         H, W = shape
-        with np.errstate(invalid="ignore"):
-            valid = r1.planes_cross & np.isfinite(r1.s_gap) & (np.abs(r1.s_gap) <= p.site_max_t)
-        t_raw = np.where(valid, r1.s_gap, np.nan)
+        if p.site == "hessian_peak":
+            t_raw, valid = FoldChannel._hessian_peak(p, ctx, x0, e1, accepted)
+        else:
+            with np.errstate(invalid="ignore"):
+                valid = r1.planes_cross & np.isfinite(r1.s_gap) & (np.abs(r1.s_gap) <= p.site_max_t)
+            t_raw = np.where(valid, r1.s_gap, np.nan)
         t_app = np.full(len(x0), np.nan)
         A = np.nonzero(accepted)[0]
         if A.size:
@@ -437,6 +448,51 @@ class FoldChannel:
         us = np.where(move, np.clip(np.rint(xs[:, 0]), 0, W - 1).astype(int), u)
         vs = np.where(move, np.clip(np.rint(xs[:, 1]), 0, H - 1).astype(int), v)
         return {"site_t": t_raw, "site_valid": valid, "site_t_applied": t_app, "u_site": us, "v_site": vs}
+
+    @staticmethod
+    def _hessian_peak(p: FoldParams, ctx, x0, e1, accepted) -> tuple[np.ndarray, np.ndarray]:
+        from .candidates import depth_field
+        from .depth import DepthParams
+
+        N = len(x0)
+        t = np.full(N, np.nan)
+        valid = np.zeros(N, dtype=bool)
+        A = np.nonzero(accepted)[0]
+        if not A.size:
+            return t, valid
+        dp = DepthParams()
+        f = depth_field(ctx, dp)
+        L0, okL = bilinear(ctx.L_over_rho_f, ctx.omega, x0[A, 0], x0[A, 1])
+        sgn = np.where(okL, np.sign(L0), 0.0)                       # = -convexity
+        step = 0.25
+        s = np.arange(-p.site_window_px, p.site_window_px + step / 2, step)
+        pts = x0[A, None, :] + s[None, :, None] * e1[A, None, :]
+        full = np.ones(ctx.shape, dtype=bool)
+        vals = []
+        for arr in (f.H_uu, f.H_uv, f.H_vv, f.den):
+            a_, ok_ = bilinear(arr, full, pts[..., 0], pts[..., 1])
+            vals.append(np.where(ok_, a_, np.nan))
+        huu, huv, hvv, den = vals
+        eu, ev = e1[A, 0][:, None], e1[A, 1][:, None]
+        q = (eu * eu * huu + 2 * eu * ev * huv + ev * ev * hvv) / den
+        y = sgn[:, None] * q
+        yy = np.where(np.isfinite(y), y, -np.inf)
+        j = np.argmax(yy, axis=1)
+        r = np.arange(len(A))
+        y0 = yy[r, j]
+        L = len(s)
+        inner = (j > 0) & (j < L - 1)
+        jm, jp = np.clip(j - 1, 0, L - 1), np.clip(j + 1, 0, L - 1)
+        ym, yp = yy[r, jm], yy[r, jp]
+        with np.errstate(invalid="ignore", divide="ignore"):
+            curv = ym - 2 * y0 + yp
+            d = np.where(inner & (curv < 0) & np.isfinite(ym) & np.isfinite(yp),
+                         np.clip(0.5 * (ym - yp) / curv, -0.5, 0.5), 0.0)
+        opp = np.nanmax(np.where(np.isfinite(y), -y, -np.inf), axis=1)
+        ok = (sgn != 0) & inner & np.isfinite(y0) & (y0 > dp.k_h * f.s_q) & (opp <= 0.5 * y0)
+        t[A] = np.where(ok, s[j] + d * step, np.nan)
+        valid[A] = ok
+        return t, valid
 
     @staticmethod
     def _crease_rescue(ctx, p, cands, gate, x0, e1, width, k1, r1, dtheta1, J, eps_hat, tri, fitkw, rms_max) -> dict:
