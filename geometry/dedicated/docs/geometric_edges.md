@@ -220,6 +220,122 @@ times above (median over 4 images: `viz` 4.0 s, `viz_depth` 7.6 s, `viz_fold` 6.
 run with sheets is about 4× slower than without. For dataset-scale runs pass **`--no-viz`** (a CLI flag of `infer` and `stage-b`; there is no config key); sheets can be
 rendered later for chosen images with `python -m illum_baseline viz [stems ...]`.
 
+## 8. geom_v2 design (TASK_GEOM_V2 V0; nothing built yet)
+
+**Goal.** geom_v2 = geom_v1 with the Laplacian channel demoted to a **fallback**: it relaxes only away from accepted
+geometric edges, so near them the depth and fold channels alone set the band. The fusion stays the elementwise min; the
+fallback is a mask on the Laplacian's w before the min. Retirement is not the goal: gap_unresolved alone is 0.134
+[0.089, 0.186] of the tri-only area (DA3 shows that geometry only as a smooth gradient), above G4's 10 % threshold.
+
+**Definitions** (all milestones). Combined w = the run's deliverable weight. Core w = min(w_depth, w_fold) from the saved
+per-channel arrays (geometry without the Laplacian). Per-unit closure = w < 0.5 on ≥ 50 % of the unit; per-pixel share =
+the unit's fraction of pixels with w < 0.5. Audit estimates: the stratified pps estimator with stratified-bootstrap CIs,
+scaled to the G1 totals (`scripts/geom_g4.py`). Labels: `audit_split/audit_labels.csv`, final.
+
+### 8.1 The four parts and how each is scored
+
+| part | milestone | mechanism | scored by | proposal rule |
+|---|---|---|---|---|
+| scorer + fold-gap map | V1 | `scripts/geom_score.py`; stage of every open fold / crease gap unit | reproduces the G5 / G6 numbers on geom_v1 (test) | V4 design: one option at the dominant addressable stage |
+| fold re-siting | V2 | band centreline at the side planes' intersection | signed RGB-edge offsets (NMS vs re-sited) per sub-type, validity fraction, fold-target RGB coverage, geom_gain / geom_offset closure, texture | convex median \|offset\| −0.5 px or more; fold-target coverage −0.01 at most; no geom_gain unit loses closure |
+| short thin depth components | V3 | accept short thin pieces now dropped by the component minimum | under core w: the 25 component-stage step units, all step gaps (per unit and per pixel), relaxed shares of tri_fp / geom_fp / texture units, texture ROIs (core and combined), overlays | most step-gap px closed, with texture ROIs (combined) ≤ geom_v1 + 0.01 and texture-unit relaxed share (core) + 0.02 at most |
+| fold recall | V4 | the option approved at V1 | its V1 targets; texture ROIs ≤ geom_v1 + 0.01; 083 interior unchanged | as approved |
+| fallback Laplacian | V5 | w_lap′ = 1 within d_excl of an accepted edge | every metric of the scorer, per setting; held-out batch1 → batch2 check; retirement metric (core, gap_unresolved apart) | lowest band excess among settings with missed geometry (per pixel) ≤ geom_v1 + 0.02 and step / limb / fold ROI and RGB-edge coverages each ≥ geom_v1 − 0.02; ties by texture |
+
+**V1 scorer** (`scripts/geom_score.py`, any list of runs; combined w and core w): G1 ROI table (classes, coverage), audit
+per bucket per unit and per pixel, RGB-edge coverage of strong depth edges and fold targets (the G2(c) measure), texture
+ROIs, w < 0.5 per batch, Stage B runtime per image (`scripts/geom_g6_timing.py`). Baselines tri_veto4, geom_v1_r3,
+geom_v1. It **imports** the existing functions (`geom_eval.roi_list / roi_metrics`, `geom_g4.Estimator`,
+`geom_g2_coverage.raster / covered / to_full / poly_normals`, `geom_g2_align.strong`, `rgb_edges`) and moves the
+coverage loop of `geom_g2_coverage.main` into a function; the old scripts keep their outputs.
+
+**V1 fold-gap stages** (units labelled fold or crease, bucket gap_fixable or gap_unresolved, open under core w; fold
+candidates of geom_v1 within 2 px; furthest stage reached, in this order):
+
+| stage | from the saved run |
+|---|---|
+| no candidate (below the NMS floor) | no row; max `fold_r_n` in the unit / the run's `rate_threshold` reported |
+| window validity / contamination | reason `invalid_window` |
+| planarity | valid, a side on the dense-normal fallback (`fallback_p/m`), gate failed |
+| χ² gate | both sides planar, reason `gate` |
+| capped concentration veto | reasons `veto`, `veto_undecidable` |
+| component minimum | reason `component` |
+| J_min | accepted, but w_c ≥ 0.5 (J < J_min + J0, Δθ ≲ 20°): J_min enters only the weight, not acceptance |
+| rescue ineligible | gate failures not rescued, split by the rescue condition that fails (Δθ < 8°, J < J_min, veto, component, support) |
+
+(The listed order puts J_min before the component minimum; in the channel the component minimum acts on acceptance and
+J_min only on the weight, so J_min is the later stage. *Flag; lean:* the order above.)
+
+### 8.2 New options (each defaults to the old behaviour; recorded in the JSON and the candidate tables only when on)
+
+| option | values (default first) | where | records when on |
+|---|---|---|---|
+| `geometry.fold.site` | `nms` \| `plane_intersection` | fold channel, before rasterization | columns `site_t`, `site_valid`, `site_t_smooth`; scalar `n_site_valid` |
+| `geometry.fold.site_max_t` | 3.0 px | | |
+| `geometry.fold.site_smooth_n` | 5 | | |
+| `geometry.depth.short_thin` | `off` \| `strong` \| `linked` | depth channel, D-5 component step | column `short_thin` (accepted by the waiver / the link); `link_id`; scalars |
+| `geometry.depth.short_thin_min_px` | 2 | `strong` | |
+| `geometry.depth.short_thin_gap_px`, `..._angle_deg` | see flag 2; 20° | `linked` | |
+| V4 option | approved at V1 | fold channel | |
+| `geometry.laplacian.role` | `channel` \| `fallback` | Stage B `run_geometry`, after the channels, before the min | arrays `laplacian_w_fallback`, `laplacian_exclusion`; scalar `exclusion_share` |
+| `geometry.laplacian.d_excl` | 3.0 px | `fallback` | |
+
+- **Site.** The k₁ two-sided fit already gives the root of ρ̂₊ − ρ̂₋ along e1 (`s_gap` when `planes_cross`, both sides
+  planar), so t needs no refit: valid if planes cross with |t| ≤ 3 px, else t = 0 (x₀ kept). Smoothing: running median
+  of t over 5 candidates along `geom.depth.chains` (mutual-nearest ordering along the fold line) within a component;
+  candidates in chains shorter than 5 keep their own t. Δθ, J, the gate and every acceptance decision are unchanged;
+  only the rasterized centreline moves to round(x₀ + t e1).
+- **Fallback.** The exclusion zone is a Euclidean distance transform (network resolution) from the rasterized
+  centrelines of the accepted depth candidates (sky edges included) and the accepted fold candidates (rescued included;
+  at the V2 site when on). `role: fallback` needs depth or fold in `channels` (validated). The saved `laplacian_w_net`
+  keeps its meaning (the channel's own output); the masked weight that enters the min is saved separately.
+
+### 8.3 Runs and configs
+
+| milestone | config / run | role |
+|---|---|---|
+| V1 | none (scorer on tri_veto4, geom_v1_r3, geom_v1); outputs `baseline_output/diag/geom/v2/` | report |
+| V2 | `configs/candidate_geom_v1_site.yaml` → `geom_v1_site` (both batches) | diagnostic, not a reference |
+| V3 | depth channel rerun in-script from the Stage A cache for the variants (0.6 s per image), the rest re-rasterized from the geom_v1 tables; `geom_v1_thin_<variant>` run for the proposed variant only | diagnostic |
+| V4 | `configs/candidate_geom_v1_<V4 option>.yaml` → `geom_v1_<V4 option>` | diagnostic |
+| V5 | in-script sweep: re-rasterization (band_min, exclusion) and Laplacian reruns (pool_radius 2 / 3) on the V2–V4 runs' tables | report |
+| V6 | `configs/candidate_geom_v2.yaml` → `geom_v2` (both batches); branch `proposal/geom_v2_default` | **new bit-for-bit reference**; default proposal (not applied) |
+
+### 8.4 What stays bit-for-bit
+
+Every existing reference, with every new option at its default: `baseline_v0`, `tri_veto4` (batch1, batch2), the
+`[laplacian]` ≡ tri_veto4 test, `fold_only`, `tri_veto4_fold`, `fold_v2`, `tri_veto4_fold_v2`, `geom_v1` and
+`geom_v1_r3` (batch1, batch2): arrays, JSON blocks, candidate / null tables (new columns only when an option is on) and
+channel scalars. Plus option-off tests against geom_v0 / geom_v1 outputs, as in G2 / G3. `configs/default.yaml` (geom_v1)
+is not changed.
+
+### 8.5 Missing tools and annotations
+
+- **Tools to build:** the scorer and its geom_v1 reproduction test (V1); the fold-gap stage diagnostic (V1); an overlay
+  script for newly accepted depth pieces (V3); the exclusion-zone rasterizer, shared by Stage B and the V5 sweep (V5);
+  a sampler that draws audit units from an arbitrary mask (geom_audit.py takes only the tri-only / geom-only maps; V6's
+  supplementary audit); viz_geom panels 7 / 8 for the fallback and for geom_v2 vs geom_v1 (V6).
+- **Not available, so proxies are used:** fold-site ground truth (the RGB luminance edge stands in, with its
+  shadow caveat and the ±8 px search limit); labels for the newly accepted V3 pieces and for any area V2–V5 relax outside
+  the labelled units (overlays, then V6's conditional `audit_v2_labels.csv`); an independent test set (the audit is
+  also the selection set; V5's batch1 → batch2 held-out check is the only guard).
+
+### 8.6 Flags (lean in each)
+
+1. **Stage order J_min vs component minimum** (8.1): lean, J_min after the component minimum, as the channel applies them.
+2. **`linked` gap.** Depth candidates within `link_radius` = 3 px already form one component (D-5), so separate pieces
+   are > 3 px apart and a gap ≤ 2 or ≤ 3 px links nothing. Lean: endpoint gap ∈ {4, 6} px (the sweep), keeping the 20°
+   tangent and same-polarity conditions; endpoints and tangents from `chains`.
+3. **Site smoothing** along `chains` within a component; chains shorter than 5 keep their own t. Lean: as stated.
+4. **Exclusion edges:** sky edges included (lean, as you leaned); the sky ring (`depth_and_mask`) is a painted weight,
+   not an edge centreline: lean, not included.
+5. **Saved arrays under the fallback:** `laplacian_w_net` stays the channel's own output, the masked weight is
+   `laplacian_w_fallback`; so combined w = min(depth, fold, laplacian_w_fallback), and the scorer's core w is unaffected.
+6. **Scorer refactor:** import from the existing scripts (and move the G2(c) loop into a function) rather than rewrite
+   them, so their committed outputs stay reproducible.
+7. **V3 / V5 by re-rasterization:** exact for band_min and the exclusion (the G2 / G5 re-rasterization reproduces the
+   saved w bit for bit); the depth variants need the depth channel rerun (cheap), not the fold channel.
+
 ---
 
 # Appendix A. Integration record (TASK_GEOM_INTEGRATION G0–G5)

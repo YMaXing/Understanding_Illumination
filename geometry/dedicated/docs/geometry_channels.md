@@ -361,6 +361,7 @@ Settled in F0 (leans agreed) and revised in F1–F4; current state:
 | G5 review | pool_radius default stays null (= detector r = 3); rule "r = 2 if step, limb, fold coverage each within 0.02 of r = 3" met (−0.009, 0, −0.017) → **geom_v1 uses `geometry.laplacian.pool_radius: 2`**; the first run kept as `geom_v1_r3`; references geom_v1 and geom_v1_r3 on both batches; texture 0.254 → 0.198, w < 0.5 0.241 → 0.217 (batch1), 0.305 → 0.279 (batch2) | decided by rule 2026-11-03 |
 | G6 | consumer doc `docs/geometric_edges.md` final; items 1–10 status (section 6.1); geom_v2 candidate list (7.1); default proposal prepared as a separate, unapplied commit (branch `proposal/geom_v1_default`) | as built |
 | G6 review | **geom_v1 is the pipeline default** (proposal merged as it stands, with depth); the [fold, laplacian] variant changes w on ≤ 0.03 % of the pixels and saves 0.65 s per image, but geom_v2 needs depth's accepted edges and tables; Stage B 7.00 / 7.05 s per image (CPU), 4.5 s of it the dense fit; sheets on by default (about 24 s per image for the four sheets), `--no-viz` for dataset-scale runs | decided 2026-11-03 |
+| V0 (TASK_GEOM_V2) | geom_v2 design: `docs/geometric_edges.md` §8 (Laplacian as a fallback; fold re-siting, short thin depth components, fold recall; options, runs, references, missing tools, flags) | design |
 
 ### 7.1 geom_v2 candidate list (recorded in G6; no code)
 
