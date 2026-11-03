@@ -155,6 +155,9 @@ class FoldCfg:
     rescue_k_L: float = 3.0
     rescue_min_component_px: int = 10
     rescue_support: float = 0.7
+    site: str = "nms"                   # nms | plane_intersection (TASK_GEOM_V2 V2)
+    site_max_t: float = 3.0
+    site_smooth_n: int = 5
 
 
 @dataclass
@@ -397,6 +400,9 @@ def _validate_geometry(g: GeometryCfg) -> None:
         raise ValueError("geometry.fold: need 1 <= m_min <= m")
     if f.crease_rescue not in ("off", "laplacian_corroborated"):
         raise ValueError(f"geometry.fold.crease_rescue must be off|laplacian_corroborated, got {f.crease_rescue!r}")
+    if f.site not in ("nms", "plane_intersection") or f.site_max_t <= 0 or f.site_smooth_n < 1:
+        raise ValueError(f"geometry.fold.site must be nms|plane_intersection (site_max_t > 0, site_smooth_n >= 1), "
+                         f"got {f.site!r}")
     if f.rescue_theta_deg < 0 or f.rescue_k_L < 0 or f.rescue_min_component_px < 1 or not 0 < f.rescue_support <= 1:
         raise ValueError("geometry.fold: rescue_theta_deg, rescue_k_L >= 0, rescue_min_component_px >= 1, "
                          "rescue_support in (0, 1]")

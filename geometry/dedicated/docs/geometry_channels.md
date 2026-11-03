@@ -364,6 +364,8 @@ Settled in F0 (leans agreed) and revised in F1–F4; current state:
 | V0 (TASK_GEOM_V2) | geom_v2 design: `docs/geometric_edges.md` §8 (Laplacian as a fallback; fold re-siting, short thin depth components, fold recall; options, runs, references, missing tools, flags) | design |
 | V0 review | stage order J_min after the component minimum, last stage "accepted, w ≥ 0.5 (J ≤ J_min + J0)"; `linked` gap {4, 6} px, 20° tangent, same polarity, lateral ≤ 1.5 px; site smoothing in chain order; exclusion with sky edges, without the sky ring; `laplacian_w_fallback` saved only with the fallback; scorer imports the existing scripts | decided 2026-11-03 |
 | V1 | scorer `scripts/geom_score.py` (reproduces the geom_v1 numbers); fold-gap map: 29 open fold / crease units, the gate stops most candidates in 21 (75 % of px), and the crease rescue is blocked by an undecidable veto in 21 units; V4 design proposed: `fold.rescue_undecidable: reject \| corroborate` | as measured / proposed |
+| V1 review | V4 design approved (`fold.rescue_undecidable`, targets as proposed, plus the narrow-face split, smooth-curvature overlays, a report-only 6-px rescue minimum); item 6 is open (reopened G4, not fixed) | decided 2026-11-03 |
+| V2 | `fold.site: nms \| plane_intersection` (default nms); valid sites 0.45–0.50 of accepted candidates; convex median \|offset\| 2.84 → 2.63 px (−0.21; rule ≥ 0.5 not met), vertical corners −2.00 → −1.05, nosings +2.90 → +1.50; fold-target coverage unchanged; geom_gain closures kept, relaxed share 0.664 → 0.573; **not proposed** | as measured |
 
 ### 7.1 geom_v2 candidate list (recorded in G6; no code)
 

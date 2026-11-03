@@ -173,6 +173,25 @@ def audit(run: Run, U: pd.DataFrame, draws: pd.DataFrame, strata: pd.DataFrame, 
     return out
 
 
+def fold_targets() -> list[dict]:
+    """The batch1 fold targets (fold_null_rois TARGETS + the depth_rois fold polylines), in rgb_edge_set's order."""
+    out = []
+    for stem in [f"taiwei_cui_{s}" for s in sorted({v[0] for v in TARGETS.values()} |
+                                                    {v[0] for v in POLYLINES.values()})]:
+        out += [{"name": k, "stem": stem, "poly": poly} for k, (st_, _, poly) in TARGETS.items() if stem.endswith(st_)]
+        out += [{"name": k, "stem": stem, "poly": poly} for k, (st_, cls, poly) in POLYLINES.items()
+                if stem.endswith(st_) and cls == "fold"]
+    return out
+
+
+def fold_target_points(target: dict, Y: np.ndarray, net_wh, up_wh) -> np.ndarray:
+    """Full-resolution RGB-edge points along one target polyline (the G2(c) measure)."""
+    pts, nn = poly_normals(target["poly"])
+    o = rgb_offset(Y, pts, nn)
+    k = np.isfinite(o)
+    return to_full(pts[k] + o[k, None] * nn[k], net_wh, up_wh)
+
+
 def rgb_edge_set() -> dict:
     """{stem: {'depth': full-res RGB-edge points of the strong depth edges, 'fold': [... per target polyline]}}."""
     cache = OUT / "rgb_edge_set.npz"
@@ -193,13 +212,9 @@ def rgb_edge_set() -> dict:
             ok = np.isfinite(s)
             e = {"depth": to_full(x0[ok] + s[ok, None] * n[ok], net_wh, up_wh), "fold": []}
             if batch == "batch1":
-                polys = [poly for (st_, _, poly) in TARGETS.values() if stem.endswith(st_)]
-                polys += [poly for (st_, cls, poly) in POLYLINES.values() if stem.endswith(st_) and cls == "fold"]
-                for poly in polys:
-                    pts, nn = poly_normals(poly)
-                    o = rgb_offset(Y, pts, nn)
-                    k = np.isfinite(o)
-                    e["fold"].append(to_full(pts[k] + o[k, None] * nn[k], net_wh, up_wh))
+                for tg in fold_targets():
+                    if tg["stem"] == stem:
+                        e["fold"].append(fold_target_points(tg, Y, net_wh, up_wh))
             edges[stem] = e
     OUT.mkdir(parents=True, exist_ok=True)
     np.savez_compressed(cache, edges=np.array(edges, dtype=object))

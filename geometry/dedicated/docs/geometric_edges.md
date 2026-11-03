@@ -404,8 +404,54 @@ the rescue by an undecidable veto):
   (core) not increased. Reported: the 076 façade ledge and 088 ridge coverage (the ledge was blocked by the same veto
   in G3), units 15, 97, 124.
 - It reopens item 7 (the undecidable capped veto is the narrow-face mechanism): the outcome goes to fold_channel.md §7.
-- Not proposed: the χ² gate itself (the multiplicative null is wide here, T/λ̂ P50 0.68; changing it is item 6, closed
-  by the local-σ_geo rule) and the rescue's 10-px minimum (second, 14 units; an existing parameter).
+- Not proposed: the χ² gate itself (the failures come from noisy normals, T/λ̂ P50 0.68 at Δθ P50 25°; a local σ_geo,
+  item 6, which is open (reopened in G4, not fixed), would make the gate stricter on noisy surfaces) and the rescue's
+  10-px minimum (second, 14 units; an existing parameter).
+- **Approved at the V1 review** with these targets, plus: rescued candidates split by whether another accepted edge lies
+  within 10 px (narrow-face cases); overlays on the 075 kiosk cylinder and the 083 bollard (smooth-curvature controls);
+  a report-only rescue component minimum of 6 px. Order V2 → V3 → V4 → V5.
+
+### 8.8 V2 results: fold re-siting
+
+Option `geometry.fold.site: nms | plane_intersection` (default nms; `site_max_t` 3 px, `site_smooth_n` 5; recorded only
+when on). The site is the k₁ fit's plane-gap root (`s_gap` when `planes_cross`), valid if |t| ≤ 3 px; t is smoothed by a
+running median over 5 candidates in chain order (`geom.depth.chains`; chains shorter than 5 keep their own t); a
+candidate without a valid t keeps its NMS pixel. Acceptance, Δθ, J and w_c are unchanged (test); only the rasterized
+centreline moves. Columns `site_t`, `site_valid`, `site_t_applied`, `u_site`, `v_site`; scalars `n_site_valid`,
+`site_valid_share`. Run `geom_v1_site` (`configs/candidate_geom_v1_site.yaml`, both batches, diagnostic); report
+`scripts/geom_v2_site.py` → `baseline_output/diag/geom/v2/site.json`, `site_samples.csv`.
+
+**Validity:** 0.50 (batch1) / 0.45 (batch2) of the accepted fold candidates have a valid site (convex 0.51 / 0.44); geom_offset
+units 0.80–0.99 per sub-type; fold targets: vertical corners 0.69, contact folds 0.13, nosings 0.75.
+
+**Signed RGB-edge offset along e1** (median, px; NMS → re-sited; G5 conventions):
+
+| set | n | NMS (median \|·\|) | re-sited (median \|·\|) |
+|---|---|---|---|
+| geom_offset vertical corners (5 units) | 585 | −2.00 (2.00) | −1.05 (1.05) |
+| geom_offset nosings (5) | 213 | +2.90 (2.99) | +1.50 (1.61) |
+| geom_offset contact (5) | 281 | +0.81 (3.48) | +0.28 (3.36) |
+| fold targets, vertical corners | 459 | −0.94 (1.31) | −0.07 (1.18) |
+| fold targets, contact | 364 | +2.55 (2.75) | +2.56 (2.78) (valid 0.13) |
+| fold targets, nosings | 20 | +8.00 (65 % at the search limit) | +6.17 |
+| all accepted convex candidates, 20 images (frontal convention) | 11 515 | −1.69 (**2.84**) | −1.19 (**2.63**) |
+| the same, valid sites only | 5 437 | −1.45 (1.93) | −0.80 (1.47) |
+
+Per unit: 143 −3.22 → −0.83, 153 +1.73 → −0.11, 154–156 +2.3–2.9 → +0.8–1.6, 183 / 189 halved; 178 / 179 slightly
+worse (−1.2 → −1.4, −2.2 → −2.5), 182 / 187 worse (+1.9 → +3.0, −2.4 → −3.0), 180 no valid site.
+
+**Coverage and closure:** fold-target RGB-edge coverage combined 0.869 → 0.870, core 0.698 → 0.701; split: targets the
+fold channel detects (8) combined 0.899 → 0.899, core 0.744 → 0.748; not detected (5) combined 0.828 → 0.828, core
+0.634 → 0.635. ROI coverage combined step / limb / fold unchanged, crease 0.574 → 0.553 (core 0.399 → 0.367). geom_gain:
+31 / 31 units still closed (combined and core), but the per-pixel relaxed share falls 0.664 → 0.573; geom_offset units
+15 → 13 closed (143, 182: the band leaves the displaced area the unit was drawn on), relaxed 0.250 → 0.190. Texture ROIs
+unchanged (combined and core).
+
+**Rule: not met.** The convex-candidate median |offset| drops by **0.21 px** (0.46 px on the valid sites alone),
+against ≥ 0.5; fold-target coverage +0.0004 (combined) / +0.003 (core) and no geom_gain unit losing closure pass. So
+`site` stays `nms` (not proposed). Residual offset with the option on: convex −1.19 px median (frontal convention),
+vertical corners −1.05, nosings +1.50; more than half of the convex candidates have no valid site (planes not crossing
+within ±3 px), and those keep the full NMS offset. No further correction in this task.
 
 ---
 

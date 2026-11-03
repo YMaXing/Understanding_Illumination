@@ -87,6 +87,10 @@ class FoldParams:
     rescue_k_L: float = 3.0             # |L_over_rho_f| > k_L s_hat_L on a support pixel
     rescue_min_component_px: int = 10   # rescued component length (distinct NMS pixels)
     rescue_support: float = 0.7         # share of the component's pixels with one-signed support
+    # TASK_GEOM_V2 V2: band centreline at the intersection of the two fitted side planes
+    site: str = "nms"                   # nms | plane_intersection
+    site_max_t: float = 3.0             # px, |t| of the plane intersection along e1 for a valid site
+    site_smooth_n: int = 5              # running median of t over this many candidates in chain order
 
     @classmethod
     def from_dict(cls, d: dict | None) -> FoldParams:
@@ -115,6 +119,8 @@ def _solve_sig2(d: np.ndarray, S: np.ndarray, lam_n: float) -> float:
 V2_VETO_KEYS = ("veto_mode", "veto_curv_coef", "veto_curv_max")
 V2_CAND_KEYS = ("cand_radius", "cand_radius_wide", "cand_min_samples")
 RESCUE_KEYS = ("crease_rescue", "rescue_theta_deg", "rescue_k_L", "rescue_min_component_px", "rescue_support")
+SITE_KEYS = ("site", "site_max_t", "site_smooth_n")
+SITES = ("nms", "plane_intersection")
 
 
 def params_record(p: dict) -> dict:
@@ -129,6 +135,9 @@ def params_record(p: dict) -> dict:
             d.pop(k, None)
     if d.get("crease_rescue", "off") == "off":
         for k in RESCUE_KEYS:
+            d.pop(k, None)
+    if d.get("site", "nms") == "nms":
+        for k in SITE_KEYS:
             d.pop(k, None)
     return d
 
@@ -293,14 +302,19 @@ class FoldChannel:
         with np.errstate(invalid="ignore"):
             w_c = np.maximum(p.w_min, p.J0 / (np.maximum(J - p.J_min, 0.0) + p.J0))
         band = np.maximum(p.band_min, np.ceil(width / 2).astype(int))
+        # TASK_GEOM_V2 V2 site (nms: the NMS pixels, unchanged); only the rasterized centreline moves
+        if p.site not in SITES:
+            raise ValueError(f"unknown site {p.site!r}; expected one of {SITES}")
+        site = self._site(p, x0, e1, r1, accepted, u, v, (H, W)) if p.site == "plane_intersection" else None
+        ru, rv = (u, v) if site is None else (site["u_site"], site["v_site"])
         w_fold = np.ones((H, W))
         strength = np.zeros((H, W))
         for b in np.unique(band[accepted]):
             a = accepted & (band == b)
             wi = np.ones((H, W))
-            np.minimum.at(wi, (v[a], u[a]), w_c[a])
+            np.minimum.at(wi, (rv[a], ru[a]), w_c[a])
             si = np.zeros((H, W))
-            np.maximum.at(si, (v[a], u[a]), J[a])
+            np.maximum.at(si, (rv[a], ru[a]), J[a])
             fp = disk(int(b))
             w_fold = np.minimum(w_fold, ndimage.grey_erosion(wi, footprint=fp, mode="constant", cval=1.0))
             strength = np.maximum(strength, ndimage.grey_dilation(si, footprint=fp, mode="constant", cval=0.0))
@@ -343,6 +357,9 @@ class FoldChannel:
             df["cand_null_n"] = cand_rec["n"]
             df["cand_null_radius"] = cand_rec["radius"]
             df["dtheta_gate_add_cand"] = np.sqrt(T_crit * (p.lambda_n * sig_pair**2 + cand_rec["sig2"]))
+        if site is not None:  # site records (tables without the option are unchanged)
+            for k_ in ("site_t", "site_valid", "site_t_applied", "u_site", "v_site"):
+                df[k_] = site[k_]
         if rescue is not None:  # crease-rescue records (tables without the option are unchanged)
             for k_ in ("rescue_eligible", "rescue_veto_pass", "rescue_comp_px", "rescue_support", "rescued"):
                 df[k_] = rescue[k_]
@@ -387,11 +404,39 @@ class FoldChannel:
             scalars |= {"n_rescue_eligible": int(rescue["rescue_eligible"].sum()),
                         "n_rescue_veto_pass": int(rescue["rescue_veto_pass"].sum()),
                         "n_rescued": int(rescue["rescued"].sum()), "s_hat_L": float(ctx.s_hat_L)}
+        if site is not None:
+            na = int(accepted.sum())
+            nsv = int((accepted & site["site_valid"]).sum())
+            scalars |= {"n_site_valid": nsv, "site_valid_share": nsv / na if na else float("nan")}
         scalars["context_s"] = t_ctx
         scalars["runtime_s"] = time.perf_counter() - t_start - t_ctx
         return ChannelResult(name=self.name, w_net=w_fold, strength=strength, candidates=df,
                              arrays={"r_n": cands.rate_map}, scalars=scalars, w_min=p.w_min,
                              tables={"null": null_df})
+
+    @staticmethod
+    def _site(p: FoldParams, x0, e1, r1, accepted, u, v, shape) -> dict:
+        """TASK_GEOM_V2 V2: t along e1 where the k1 side planes intersect (rho_+ = rho_-; the fit's gap root s_gap when
+        the planes cross, both sides planar); valid if |t| <= site_max_t. For the accepted candidates t is smoothed by a
+        running median over site_smooth_n candidates in chain order (geom.depth.chains; shorter chains keep their own
+        t); a candidate without a valid t keeps its NMS pixel. Returns the records and the rasterization pixels."""
+        from .depth import chains, running_median
+
+        H, W = shape
+        with np.errstate(invalid="ignore"):
+            valid = r1.planes_cross & np.isfinite(r1.s_gap) & (np.abs(r1.s_gap) <= p.site_max_t)
+        t_raw = np.where(valid, r1.s_gap, np.nan)
+        t_app = np.full(len(x0), np.nan)
+        A = np.nonzero(accepted)[0]
+        if A.size:
+            chs = [c for c in chains(x0[A], e1[A]) if len(c) >= p.site_smooth_n]
+            tA = running_median(chs, t_raw[A], p.site_smooth_n)
+            t_app[A] = np.where(valid[A], tA, 0.0)
+        move = accepted & valid
+        xs = x0 + np.where(move, t_app, 0.0)[:, None] * e1
+        us = np.where(move, np.clip(np.rint(xs[:, 0]), 0, W - 1).astype(int), u)
+        vs = np.where(move, np.clip(np.rint(xs[:, 1]), 0, H - 1).astype(int), v)
+        return {"site_t": t_raw, "site_valid": valid, "site_t_applied": t_app, "u_site": us, "v_site": vs}
 
     @staticmethod
     def _crease_rescue(ctx, p, cands, gate, x0, e1, width, k1, r1, dtheta1, J, eps_hat, tri, fitkw, rms_max) -> dict:
