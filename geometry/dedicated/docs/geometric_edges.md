@@ -336,6 +336,77 @@ is not changed.
 7. **V3 / V5 by re-rasterization:** exact for band_min and the exclusion (the G2 / G5 re-rasterization reproduces the
    saved w bit for bit); the depth variants need the depth channel rerun (cheap), not the fold channel.
 
+### 8.7 V1 results: scorer and fold-gap map
+
+**Scorer** (`scripts/geom_score.py`; outputs `baseline_output/diag/geom/v2/score.json`, `score_summary.csv`; the fixed
+RGB-edge set cached in `rgb_edge_set.npz`; test `tests/test_geom_score.py` reproduces the task-file geom_v1 numbers
+within 0.0008):
+
+| metric | tri_veto4 | geom_v1_r3 | geom_v1 | geom_v1 core |
+|---|---|---|---|---|
+| missed true geometry per pixel / per unit | 0 / 0 | 0 / 0 | 0.079 / 0.007 | 0.568 / 0.584 |
+| gap_unresolved missed per pixel | 0 | 0 | 0.017 | 0.128 |
+| band excess still relaxed (per pixel) | 0.256 | 0.256 | 0.214 | 0.003 |
+| tri_fp still relaxed | 0.083 | 0.083 | 0.069 | 0 |
+| texture-labelled units relaxed | 0.193 | 0.193 | 0.159 | 0 |
+| ROI coverage step / limb / fold / crease | 0.909 / 1 / 0.962 / 0.495 | 0.909 / 1 / 0.999 / 0.585 | 0.900 / 1 / 0.982 / 0.574 | 0.850 / 1 / 0.817 / 0.399 |
+| texture: class / 079 sunlit / 079 grass | 0.254 / 0.504 / 0.267 | 0.254 / 0.504 / 0.267 | 0.197 / 0.383 / 0.218 | 0.003 / 0.006 / 0.003 |
+| RGB-edge coverage: depth edges / fold targets | 0.990 / 0.847 | 0.991 / 0.908 | 0.977 / 0.869 | 0.826 / 0.698 |
+| w < 0.5 deliverable, batch1 / batch2 | 0.226 / 0.274 | 0.240 / 0.304 | 0.216 / 0.277 | 0.081 / 0.124 |
+| Stage B s per image, batch1 / batch2 | 0.56 / 0.56 | 7.96 / 9.25 | 8.78 / 9.10 | – |
+
+(Runtimes from the scorer's own pass; this machine varied by about 25 % against G6's clean 7.00 / 7.05 s; compare
+within a pass only.)
+
+**Fold-gap map** (`scripts/geom_fold_gaps.py`; `fold_gaps.json`, `fold_gaps_units.csv`, `fold_gaps_candidates.csv`).
+33 fold / crease units in gap_fixable or gap_unresolved; 4 closed and **29 open** under geom_v1's core w. Furthest stage
+reached per unit (fold candidates of geom_v1 within 2 px):
+
+| stage | units | px | share of px |
+|---|---|---|---|
+| no candidate (below the NMS floor) | 2 | 1 127 | 0.09 |
+| window validity / contamination | 2 | 1 000 | 0.08 |
+| planarity | 0 | 0 | 0 |
+| χ² gate | 7 | 3 352 | 0.26 |
+| capped concentration veto | 5 | 2 304 | 0.18 |
+| component minimum | 6 | 2 188 | 0.17 |
+| accepted, w ≥ 0.5 (J ≤ J_min + J0) | 1 | 944 | 0.07 |
+| accepted, w < 0.5 (band misses the unit) | 6 | 2 064 | 0.16 |
+
+The furthest stage hides where most candidates stop: the units past the gate reach it with 1–7 candidates in components
+of 1–3 px (fold minimum 5) or 1–7 px (rescue minimum 10). Candidate level (932 candidates of the open units): χ² gate
+455, planarity 197, window 108, band misses 97, veto 42, component 25, accepted w ≥ 0.5 8; modal stage per unit: χ² gate
+12 units (5 273 px), planarity 9 (4 418 px), so the **gate** stops most candidates in 21 of the 29 units (75 % of the
+px). The χ²-gate failures are not weak folds (Δθ P10 / P50 / P90 4.1 / 24.8 / 71.1°; T/λ̂ P50 0.68 against 13.8). What
+keeps those gate failures out of the crease rescue (candidate level): **rescue veto 428 candidates in 21 units, every
+one undecidable** (none decided as fail; Δθ P50 43°), Δθ < 8° 122 (7 units), rescue component < 10 px 71 (14 units),
+support < 0.7 31 (2 units).
+
+- **"accepted, w ≥ 0.5" does not dominate** (1 unit, 113, the 083 bollard collar crease; 4 candidates, Δθ 13.4–14.4°),
+  so V4 does not target the J0 knee.
+- **Textured-surface units:** 97 (079 fold) χ² gate, rescue blocked by the veto; 124 (088 crease) χ² gate, rescue
+  component < 10 px; 125 (088 crease) accepted, band misses the unit (core 0.14).
+- **Narrow-face units:** 15 (067 pickets) capped concentration veto; 37 is labelled step (not in this map; G4: no
+  depth candidate above the gradient floor).
+
+**V4 design (proposed, not coded).** One option, aimed at the dominant addressable stage (gate failures kept out of
+the rescue by an undecidable veto):
+
+- `geometry.fold.rescue_undecidable: reject | corroborate`, default `reject` (today's behaviour).
+- `corroborate`: in the crease rescue, an eligible gate failure (Δθ ≥ 8°, J ≥ J_min) whose second-pass capped veto is
+  undecidable counts as "decided as pass" when its rescued component meets the existing size (≥ 10 px) and support
+  (≥ 70 %) conditions **on the scale-ratio-vetoed Laplacian** (q′ = min(|L|, g |L_σ − L_4σ|) / ρ, the tri_veto4 veto,
+  computed on ρ_f as a new context record field) instead of the un-vetoed L/ρ_f. The concentration veto exists to
+  reject smooth curvature; the scale-ratio veto removes exactly that from the corroborating response, so it stands in
+  where the concentration ratio cannot be decided. Decided-fail candidates stay rejected; nothing else changes.
+- **Targets:** ≥ 7 of the 21 veto-blocked open units closed under core w; texture ROIs (combined) ≤ geom_v1 + 0.01;
+  the 083 bollard interior unchanged; texture-labelled units relaxed (core) + 0.02 at most; geom_fp units relaxed
+  (core) not increased. Reported: the 076 façade ledge and 088 ridge coverage (the ledge was blocked by the same veto
+  in G3), units 15, 97, 124.
+- It reopens item 7 (the undecidable capped veto is the narrow-face mechanism): the outcome goes to fold_channel.md §7.
+- Not proposed: the χ² gate itself (the multiplicative null is wide here, T/λ̂ P50 0.68; changing it is item 6, closed
+  by the local-σ_geo rule) and the rescue's 10-px minimum (second, 14 units; an existing parameter).
+
 ---
 
 # Appendix A. Integration record (TASK_GEOM_INTEGRATION G0–G5)
