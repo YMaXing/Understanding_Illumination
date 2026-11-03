@@ -4,8 +4,8 @@ Status 2026-11-03: **final (TASK_GEOM_INTEGRATION G6)**. This is the consumer-fa
 weight means, its frame and resolution, how to load it, the strengths, the alignment, the limitations and how to re-run.
 Channel math: `docs/depth_channel.md`, `docs/fold_channel.md`, `docs/pipeline_tri_veto4.md` (the Laplacian detector);
 shared architecture and the status of the integration items: `docs/geometry_channels.md` §6.1; the integration record
-(design, evaluation, audit, G2–G5 results) is Appendix A below. `configs/default.yaml` is **not** changed: a separate,
-unapplied commit proposes geom_v1 as the default (section 7).
+(design, evaluation, audit, G2–G5 results) is Appendix A below. **geom_v1 is the pipeline default** since 2026-11-03
+(`configs/default.yaml` = `configs/candidate_geom_v1.yaml`; section 7).
 
 ## 1. What w is
 
@@ -129,8 +129,8 @@ Numbers from the labelled audit (`audit_split/`, 190 units, stratified pps estim
   (blocked by the capped veto; documented gap, item 9).
 - **Clutter**: fences, railings, balusters and foliage carry dense thin depth rings; the relaxation is kept there (the
   illumination is genuinely discontinuous); no audit unit was labelled artifact or clutter.
-- **Runtime.** 7.65 s per image on the CPU (median, 20 images; tri_veto4 0.55 s), dominated by the fold channel's dense
-  fit and normals; the GPU backend is a separate step.
+- **Runtime.** 7.00 / 7.05 s per image for Stage B on the CPU (median, batch1 / batch2; tri_veto4 0.55 s), 65 % of it
+  the fold channel's dense fit and normals (4.5 s; breakdown in section 7); the GPU backend is a separate step.
 - **DA3 dependence.** All geometry comes from one DA3 metric-depth pass at network resolution: edges below its resolution
   (gap_subscale: siding laps, ~1–2 cm trims; 0.034 of the tri-only area) are not resolved by the depth or fold channel.
 
@@ -158,12 +158,13 @@ env -u PYTHONPATH uv run pytest tests/test_baseline_repro.py
 A run directory refuses a different detector / sky / preprocess / geometry section unless `--force`; any change of
 settings needs a new `run.name`. Options are listed in section A.4.
 
-## 7. Default proposal (prepared, not applied)
+## 7. The default (applied 2026-11-03)
 
-Branch `proposal/geom_v1_default` holds one commit on top of this branch that makes geom_v1 the pipeline default
-(`configs/default.yaml` = `configs/candidate_geom_v1.yaml`, the two tests that pin the default, and the docs lines that
-name it). It is not merged. What changes for a default run (`python -m illum_baseline infer` / `stage-b` without
-`--config`), per batch (`baseline_output/diag/geom/g6/default_proposal.json`):
+geom_v1 is the pipeline default: the proposal commit (`configs/default.yaml` = `configs/candidate_geom_v1.yaml`, the two
+tests that pin the default, and the docs lines that name it; branch `proposal/geom_v1_default`, `ff6f443`) was merged
+into `yx_dev`. The previous default, tri_veto4, is `configs/candidate_tri_veto4.yaml`. What changed for a default run
+(`python -m illum_baseline infer` / `stage-b` without `--config`), per batch
+(`baseline_output/diag/geom/g6/default_proposal.json`, `timing.json`):
 
 | | batch1 | batch2 |
 |---|---|---|
@@ -171,7 +172,7 @@ name it). It is not merged. What changes for a default run (`python -m illum_bas
 | w < 0.5, deliverable `w` (original res) | 0.2262 → 0.2156 (−0.0105) | 0.2741 → 0.2765 (+0.0025) |
 | w < 0.5, `w_net` (network res) | 0.2274 → 0.2174 (−0.0100) | 0.2753 → 0.2788 (+0.0035) |
 | marginal w < 0.5 area (px; share of geom_v1's w < 0.5) | laplacian 253 475 (61.2 %), fold 34 579 (8.3 %), crease rescue 7 222 (1.7 %), depth 2, sky ring 0 | laplacian 286 907 (54.0 %), fold 64 832 (12.2 %), crease rescue 13 894 (2.6 %), depth 3, sky ring 0 |
-| runtime per image (Stage B, CPU, median) | 0.54 s → 7.65 s | 0.55 s → 7.67 s |
+| runtime per image (Stage B, CPU, median, no sheets) | 0.54 s → 7.00 s | 0.55 s → 7.05 s |
 | saved data per image | 1.6 → 6.2 MB | 1.5 → 8.9 MB |
 | saved sheets per image | 1.0 → 3.6 MB | 1.1 → 4.6 MB |
 
@@ -188,6 +189,36 @@ fixed → capped; `geometry.fold.crease_rescue` off → laplacian_corroborated; 
 depth_and_mask; `geometry.laplacian.pool_radius` null → 2; `run.name` tri_veto4 → geom_v1. The YAML additionally spells
 out the `geometry.dense_fit`, `geometry.fold`, `geometry.depth` and `geometry.laplacian` sections (at their built-in
 values otherwise). Detector, sky, preprocessing, DA3 and paths are unchanged, so the Stage A cache is reused.
+
+**Runtime breakdown** (Stage B `process_one`, median s per image, CPU, no sheets; `scripts/geom_g6_timing.py`; IO timed
+inside the same call, the parts in a second pass in Stage B's order; tri_veto4 from `scripts/geom_g6_default.py`):
+
+| part | batch1 | batch2 |
+|---|---|---|
+| total | 7.00 | 7.05 |
+| IO (Stage A cache in; npz, parquet, JSON out) | 0.28 | 0.28 |
+| shared: disparity, sky mask | 0.004 | 0.004 |
+| shared: ρ_f trilateral (depth and fold) | 0.31 | 0.32 |
+| depth channel (incl. rasterization 0.005, sky ring ≈ 0) | 0.57 | 0.68 |
+| fold context: dense fit + normals | 4.53 | 4.57 |
+| fold channel (incl. crease rescue 0.11 / 0.12, rasterization 0.03, L/ρ_f record 0.01) | 0.82 | 0.81 |
+| laplacian channel (tri_veto4's detector, its own trilateral) | 0.37 | 0.38 |
+| combine (min) + deliverable upsample | 0.002 | 0.002 |
+| other (array conversion, records) | 0.11 | 0.01 |
+
+**Why the depth channel stays.** The report-only variant `geom_v1_fold_lap` (`configs/candidate_geom_v1_fold_lap.yaml`,
+[fold, laplacian], geom_v1's other options; `scripts/geom_g6_variant.py`, `g6/variant.json`) has the same G1 ROI table
+to 4 decimals and bit-identical fold and Laplacian weights; dropping depth raises w on 0.011 % / 0.029 % of the network
+pixels (batch1 / batch2; > 0.1 on 0.0008 % / 0.0035 %, max 0.34 / 0.54; the w < 0.5 status of 2 / 3 network px), and
+saves 0.62 / 0.69 s per image (6.38 / 6.36 s). Depth stays in the default because its accepted edges and tables (r, ΔZ,
+the candidate table) are the input of the geom_v2 candidates (`docs/geometry_channels.md` §7.1: thin-contour depth
+components, the depth strengths) and the consumers' occlusion information, at ≤ 0.03 % of the weights and 0.65 s.
+
+**Sheets.** A default run renders the diagnostic sheets: `infer` and `stage-b` write `viz/`, `viz_depth/`, `viz_fold/`
+and `viz_geom/` per image (3.6 / 4.6 MB per image). Rendering them takes about 24 s per image on top of the Stage B
+times above (median over 4 images: `viz` 4.0 s, `viz_depth` 7.6 s, `viz_fold` 6.8 s, `viz_geom` 5.5 s), i.e. a default
+run with sheets is about 4× slower than without. For dataset-scale runs pass **`--no-viz`** (a CLI flag of `infer` and `stage-b`; there is no config key); sheets can be
+rendered later for chosen images with `python -m illum_baseline viz [stems ...]`.
 
 ---
 

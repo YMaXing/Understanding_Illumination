@@ -1,4 +1,4 @@
-# Default pipeline (proposed in TASK_GEOM_INTEGRATION G6): geometric edges geom_v1 = depth channel (additive null,
+# Default pipeline since 2026-11-03 (TASK_GEOM_INTEGRATION G6): geometric edges geom_v1 = depth channel (additive null,
 # sky_band depth_and_mask) + fold channel v2 (capped veto, crease rescue 8 deg / k_L 3) + Laplacian channel (tri_veto4's
 # detector, pooling radius 2), combined by min; identical to configs/candidate_geom_v1.yaml (docs/geometric_edges.md).
 # The previous default (tri_veto4, the detector path) is configs/candidate_tri_veto4.yaml; the original baseline
