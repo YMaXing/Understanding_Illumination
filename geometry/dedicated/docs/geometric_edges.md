@@ -765,6 +765,50 @@ The fold bands move toward the RGB edge (convex median |offset| 2.84 → 1.70 px
 alone), everything else within 0.001. Its default proposal (branch `proposal/geom_v1_1_default`) was approved and
 merged: geom_v1_1 is the pipeline default (section 7.1).
 
+### 8.14 W1: fold window cap at the next ridge (proposed by rule; not applied)
+
+`geometry.fold.window_cap: off | next_ridge` (default off; geom_v1_1 bit for bit). Per fold candidate and side:
+- d_ridge is the first s ≥ 2 px along ±e1 where x0 + s e1 lies within 0.75 px of another NMS fold-ridge pixel (all
+  candidates, any sign, before gating).
+- If the k1 window reaches within 2 px of that ridge (k1 + m ≥ d_ridge − 2), the side's skip becomes max(k_min, 6) and
+  the window ends 2 px before the ridge: m′ = min(m, ⌊d_ridge − 2⌋ − 6).
+- The cap applies only if m′ ≥ 4; otherwise the side keeps the default window.
+- Only the k1 fit changes; k1 itself (k2, the veto, the rescue, the band) is unchanged.
+- A capped window has no m = 4 retry: it falls back to the dense normal.
+- Its contamination threshold uses the m = 4 b_tri table, since the table is calibrated for m = 8 and m = 4 only.
+
+Run `geom_v1_1_wcap` (`configs/candidate_geom_v1_1_wcap.yaml`), both batches; `scripts/geom_w1_window_cap.py` →
+`baseline_output/diag/geom/w1/window_cap.json`, scorer output `w1/score.json`.
+
+| | geom_v1_1 | geom_v1_1_wcap |
+|---|---|---|
+| 070 middle riser, accepted: upper / lower fold | 0.318 / 0.475 | **1.000 / 1.000** |
+| 070 middle riser, k1 = 8 candidates accepted | 0 / 223 | 223 / 223 |
+| 070 top / bottom risers | 1.000 | 1.000 (not capped) |
+| narrow-face units 15 / 37 / 92, core | 0.000 / 0.324 / 0.792 | unchanged |
+| RGB fold targets / fold candidates, combined | 0.869 / 0.809 | 0.864 / 0.802 |
+| RGB fold targets / fold candidates, core | 0.698 / 0.696 | 0.691 / 0.682 |
+| 068 right-wall laps: candidates capped | – | 2 of 1 049 (961 sides reach a ridge at 8.5–10 px but m′ < 4) |
+| missed / px, combined / core | 0.079 / 0.563 | 0.080 / 0.569 |
+| geom_gain, combined | 0.589 | 0.560 |
+| crease coverage, core (088 rock ridge) | 0.399 (0.763) | 0.239 (0.388) |
+
+Every constraint holds on all units and on the batch1 units alone:
+- texture ROIs ≤ +0.002;
+- the 083 interior is unchanged;
+- core texture-label and tri_fp relaxed shares are unchanged;
+- geom_fp is −0.005 (batch1 −0.021);
+- step / limb / fold ROI coverage is unchanged.
+
+Both middle-riser folds reach ≥ 90 %, so the rule proposes `window_cap: next_ridge`.
+
+Flag:
+- The cap applies to 21 % of all candidates (18 450 of 87 991), not only to narrow faces. It re-sorts acceptances
+  image-wide: −1 019 / +1 038 (685 of the losses are capped candidates).
+- Core crease coverage falls by 0.16; combined crease coverage falls by only 0.005, because the Laplacian covers it.
+- geom_gain falls by 0.03.
+- None of these is a stated constraint.
+
 ---
 
 # Appendix A. Integration record (TASK_GEOM_INTEGRATION G0–G5)
