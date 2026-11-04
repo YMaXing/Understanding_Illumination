@@ -4,8 +4,9 @@ Status 2026-11-03: **final (TASK_GEOM_INTEGRATION G6)**. This is the consumer-fa
 weight means, its frame and resolution, how to load it, the strengths, the alignment, the limitations and how to re-run.
 Channel math: `docs/depth_channel.md`, `docs/fold_channel.md`, `docs/pipeline_tri_veto4.md` (the Laplacian detector);
 shared architecture and the status of the integration items: `docs/geometry_channels.md` §6.1; the integration record
-(design, evaluation, audit, G2–G5 results) is Appendix A below. **geom_v1 is the pipeline default** since 2026-11-03
-(`configs/default.yaml` = `configs/candidate_geom_v1.yaml`; section 7).
+(design, evaluation, audit, G2–G5 results) is Appendix A below. **geom_v1_1 is the pipeline default** (geom_v1 +
+`fold.site: hessian_peak`; `configs/default.yaml` = `configs/candidate_geom_v1_1.yaml`; section 7.1); everything below
+describes geom_v1 and holds for geom_v1_1 except where the fold band sits (§8.9).
 
 ## 1. What w is
 
@@ -159,6 +160,31 @@ A run directory refuses a different detector / sky / preprocess / geometry secti
 settings needs a new `run.name`. Options are listed in section A.4.
 
 ## 7. The default (applied 2026-11-03)
+
+### 7.1 geom_v1_1 as the default (proposal; branch `proposal/geom_v1_1_default`)
+
+`configs/default.yaml` = `configs/candidate_geom_v1_1.yaml` (geom_v1 + `geometry.fold.site: hessian_peak`), the test that
+pins the default, and the docs lines that name it. What changes for a default run against geom_v1, per batch
+(`baseline_output/diag/geom/v1_1/default_proposal.json`, `score.json`):
+
+| | batch1 | batch2 |
+|---|---|---|
+| run directory | `stage_b/geom_v1` → `stage_b/geom_v1_1` | same |
+| w < 0.5, deliverable `w` | 0.2156 → 0.2151 (−0.0005) | 0.2765 → 0.2750 (−0.0015) |
+| w < 0.5, `w_net` | 0.2174 → 0.2169 | 0.2788 → 0.2772 |
+| area the re-siting adds / removes (network px, of 1 905 120) | +3 539 / −4 499 | +5 518 / −8 630 |
+| marginal w < 0.5 area, geom_v1 → geom_v1_1 (px) | depth 2 → 2, fold 34 579 → 33 619, laplacian 253 475 → 252 086 | depth 3 → 3, fold 64 832 → 61 720, laplacian 286 907 → 283 824 |
+| runtime per image (Stage B, CPU, median, same pass) | 7.70 → 7.74 s | 7.75 → 7.87 s |
+
+Scored effect (combined w): fold-candidate RGB-edge coverage 0.800 → 0.809 (core 0.671 → 0.696), band excess 0.214 →
+0.217 (paired +0.003 [0.000, +0.009]), missed true geometry 0.079 → 0.079, ROI coverage and texture within 0.001 (§8.13).
+New saved outputs: none as files or npz keys; the fold candidate table gains `site_t`, `site_valid`, `site_t_applied`,
+`u_site`, `v_site`; the fold scalars gain `n_site_valid`, `site_valid_share`; the JSON fold parameters gain `site`,
+`site_max_t`, `site_smooth_n`, `site_window_px`. Config keys: `geometry.fold.site` nms → hessian_peak (`site_max_t` 3,
+`site_smooth_n` 5, `site_window_px` 4 spelled out at their built-in values), `run.name` geom_v1 → geom_v1_1. Detector,
+sky, preprocessing, DA3 and paths unchanged (the Stage A cache is reused).
+
+### 7.0 geom_v1 as the default (applied 2026-11-03)
 
 geom_v1 is the pipeline default: the proposal commit (`configs/default.yaml` = `configs/candidate_geom_v1.yaml`, the two
 tests that pin the default, and the docs lines that name it; branch `proposal/geom_v1_default`, `ff6f443`) was merged

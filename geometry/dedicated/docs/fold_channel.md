@@ -8,7 +8,7 @@ Status as of 2026-10-31 (TASK_FOLD_CHANNEL F0–F5; TASK_FOLD_V2 F6–F9, sectio
   (run `tri_veto4_fold`: the tri_veto4 Laplacian weight and the fold weight, combined by the elementwise minimum);
   with the capped veto of section 4.6 (v2): `configs/candidate_fold_v2.yaml` (run `fold_v2`) and
   `configs/candidate_lap_fold_v2.yaml` (run `tri_veto4_fold_v2`).
-- **Default pipeline:** since TASK_GEOM_INTEGRATION G6 `configs/default.yaml` is geom_v1 (fold v2 with the crease rescue, depth and Laplacian channels; `docs/geometric_edges.md`); before that it was tri_veto4 with the geometry channels off. `baseline_v0`
+- **Default pipeline:** `configs/default.yaml` is geom_v1_1 (fold v2 with the crease rescue and `site: hessian_peak`, depth and Laplacian channels; geom_v1 from TASK_GEOM_INTEGRATION G6 until the TASK_GEOM_V2 wrap-up; `docs/geometric_edges.md`); before that it was tri_veto4 with the geometry channels off. `baseline_v0`
   and `tri_veto4` reproduce bit-for-bit, and `channels: [laplacian]` reproduces `tri_veto4` bit-for-bit (tests).
 - **Visualization:** the fold sheet and the profile tool, `docs/viz_guide.md`.
 

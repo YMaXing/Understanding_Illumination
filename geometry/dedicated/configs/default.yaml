@@ -1,8 +1,7 @@
-# Default pipeline since 2026-11-03 (TASK_GEOM_INTEGRATION G6): geometric edges geom_v1 = depth channel (additive null,
-# sky_band depth_and_mask) + fold channel v2 (capped veto, crease rescue 8 deg / k_L 3) + Laplacian channel (tri_veto4's
-# detector, pooling radius 2), combined by min; identical to configs/candidate_geom_v1.yaml (docs/geometric_edges.md).
-# The previous default (tri_veto4, the detector path) is configs/candidate_tri_veto4.yaml; the original baseline
-# configs/baseline_v0.yaml.
+# Default pipeline (proposed in the TASK_GEOM_V2 wrap-up): geometric edges geom_v1_1 = geom_v1 + geometry.fold.site
+# hessian_peak (the fold band's centreline at the oriented-Hessian peak); identical to configs/candidate_geom_v1_1.yaml
+# (docs/geometric_edges.md section 7). The previous default, geom_v1, is configs/candidate_geom_v1.yaml; tri_veto4 is
+# configs/candidate_tri_veto4.yaml.
 paths:                    # relative paths are relative to this file; override with --input/-i, --output/-o
   data_dir: ../data        # input folder of TIFFs (searched recursively with `glob`)
   out_dir: ../baseline_output   # outputs: stage_a/, stage_b/<run.name>/ (must not be inside data_dir)
@@ -121,6 +120,10 @@ geometry:                 # geometric-edge channels (docs/geometry_channels.md, 
     rescue_k_L: 3.0
     rescue_min_component_px: 10
     rescue_support: 0.7
+    site: hessian_peak         # TASK_GEOM_V2 V2b (default nms)
+    site_max_t: 3.0
+    site_smooth_n: 5
+    site_window_px: 4.0
 
   depth:                  # depth-edge channel (docs/depth_channel.md; TASK_DEPTH_CHANNEL D-K ... D-7)
     disparity: rho_f      # the context's trilateral-filtered disparity (rho: ablation only)
@@ -167,6 +170,6 @@ geometry:                 # geometric-edge channels (docs/geometry_channels.md, 
     sky_ring_near_px: 4.0
 
 run:
-  name: geom_v1
+  name: geom_v1_1
   limit: null
   force: false
