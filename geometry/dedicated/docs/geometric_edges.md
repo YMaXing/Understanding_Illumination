@@ -599,6 +599,57 @@ dome and shaft pass it), and the narrow-face cases bring texture through their n
 diffuse: the blocked units' relaxed share doubles (0.063 → 0.129) without crossing 50 %, and the core missed geometry falls
 by 0.055 of the tri-only area. In geom_v2 the Laplacian fallback covers these units.
 
+### 8.12 V5 results: fallback Laplacian (no setting passes)
+
+Option `geometry.laplacian.role: channel | fallback` with `d_excl` (default channel; recorded only with the fallback;
+arrays `laplacian_w_fallback`, `laplacian_exclusion`; scalars `role`, `d_excl`, `exclusion_share`; `laplacian_w_net` keeps
+the channel's own output). `illum_baseline/geom/fallback.py` builds the exclusion zone (shared by Stage B and the sweep;
+tested to give the same zone): a Euclidean distance transform at network resolution from the centreline pixels of the
+accepted fold candidates (rescued included, at the V2b site) and the accepted depth candidates except thin doublets (sky
+edges kept); w_lap′ = 1 within d_excl, the combined w stays min(w_depth, w_fold, w_lap′). Sweep
+(`scripts/geom_v5_fallback.py` → `v2/fallback.json`, `fallback_settings.csv`): d_excl ∈ {2, 3, 4, 6} × pool_radius
+∈ {2, 3} × band_min ∈ {2, 3} on geom_v1_hessian's tables (fold.site hessian_peak, short_thin off, rescue_undecidable
+reject); depth and fold re-rasterized (band_min 2 reproduces the saved weights, 20 / 20), the Laplacian from the saved
+geom_v1_hessian (r 2) and geom_v1_r3 (r 3) runs.
+
+| setting d / r / band_min | missed / px | band excess | tri_fp | texture class | 079 sunlit | cov step / fold | RGB depth / fold targets / **fold cand.** | w < 0.5 b1 / b2 | zone share |
+|---|---|---|---|---|---|---|---|---|---|
+| geom_v1 (reference) | 0.079 | 0.214 | 0.069 | 0.197 | 0.383 | 0.900 / 0.982 | 0.977 / 0.869 / **0.800** | 0.216 / 0.277 | – |
+| 2 / 2 / 2 | 0.085 | 0.217 | 0.067 | 0.192 | 0.367 | 0.900 / 0.981 | 0.976 / 0.869 / 0.762 | 0.213 / 0.271 | 0.057 |
+| 2 / 2 / 3 | 0.085 | 0.217 | 0.067 | 0.192 | 0.367 | 0.900 / 0.981 | 0.976 / 0.869 / 0.766 | 0.214 / 0.272 | 0.057 |
+| 2 / 3 / 2 | 0.007 | 0.256 | 0.082 | 0.248 | 0.488 | 0.909 / 0.999 | 0.991 / 0.907 / 0.777 | 0.237 / 0.298 | 0.057 |
+| 2 / 3 / 3 | 0.006 | 0.256 | 0.082 | 0.248 | 0.488 | 0.909 / 0.999 | 0.991 / 0.907 / 0.778 | 0.238 / 0.298 | 0.057 |
+| 3 / 2 / 2 | 0.116 | 0.189 | 0.067 | 0.187 | 0.356 | 0.900 / 0.978 | 0.948 / 0.865 / 0.746 | 0.203 / 0.257 | 0.083 |
+| 3 / 2 / 3 | 0.088 | 0.217 | 0.067 | 0.189 | 0.359 | 0.900 / 0.981 | 0.976 / 0.868 / 0.759 | 0.212 / 0.270 | 0.083 |
+| 3 / 3 / 2 | 0.037 | 0.229 | 0.081 | 0.243 | 0.476 | 0.909 / 0.999 | 0.963 / 0.902 / 0.758 | 0.226 / 0.284 | 0.083 |
+| 3 / 3 / 3 | 0.010 | 0.256 | 0.081 | 0.244 | 0.479 | 0.909 / 0.999 | 0.991 / 0.907 / 0.771 | 0.236 / 0.296 | 0.083 |
+| 4 / 2 / 2 | 0.148 | 0.160 | 0.066 | 0.183 | 0.346 | 0.900 / 0.978 | 0.919 / 0.851 / 0.724 | 0.192 / 0.243 | 0.107 |
+| 4 / 2 / 3 | 0.119 | 0.188 | 0.066 | 0.185 | 0.349 | 0.900 / 0.981 | 0.948 / 0.853 / 0.736 | 0.201 / 0.256 | 0.107 |
+| 4 / 3 / 2 | 0.076 | 0.199 | 0.080 | 0.237 | 0.464 | 0.909 / 0.999 | 0.935 / 0.882 / 0.734 | 0.215 / 0.268 | 0.107 |
+| 4 / 3 / 3 | 0.047 | 0.228 | 0.080 | 0.239 | 0.467 | 0.909 / 0.999 | 0.963 / 0.884 / 0.746 | 0.224 / 0.281 | 0.107 |
+| 6 / 2 / 2 | 0.213 | 0.100 | 0.063 | 0.174 | 0.321 | 0.882 / 0.975 | 0.860 / 0.822 / 0.703 | 0.169 / 0.218 | 0.159 |
+| 6 / 2 / 3 | 0.182 | 0.131 | 0.064 | 0.176 | 0.324 | 0.892 / 0.979 | 0.889 / 0.824 / 0.715 | 0.178 / 0.232 | 0.159 |
+| 6 / 3 / 2 | 0.153 | 0.127 | 0.077 | 0.226 | 0.433 | 0.890 / 0.992 | 0.872 / 0.836 / 0.707 | 0.188 / 0.238 | 0.159 |
+| 6 / 3 / 3 | 0.122 | 0.158 | 0.078 | 0.227 | 0.436 | 0.901 / 0.996 | 0.900 / 0.838 / 0.718 | 0.198 / 0.252 | 0.159 |
+
+(limb coverage 1.00 everywhere; geom_gain 0.589 and geom_fp 0.044 per pixel at every setting.)
+
+**Selection: no setting passes.** Fails per constraint (of 16): fold-candidate RGB coverage ≥ 0.7795 **16** (the binding
+one; best 0.7783 at 2 / 3 / 3), missed ≤ 0.0992 7, depth-edge RGB coverage ≥ 0.9566 8, fold-target RGB coverage ≥ 0.8492 4,
+step / limb / fold ROI coverage 0. The batch1-only selection fails the same way (no choice; the full-sample and
+held-out results agree), so the batch2 check and the all-edges check (both defined at a chosen setting) are not run.
+Nothing is widened.
+
+**Why the binding constraint fails** (`scripts/geom_v5_why.py`, at 2 / 2 / 2): 848 of the 17 950 reliable
+fold-candidate RGB samples lose coverage, and 846 of them (99.8 %) lie within 3 px of an accepted fold candidate whose own
+w_c is ≥ 0.5 (a weak fold, J ≤ J_min + J0, Δθ ≲ 20°): the exclusion removes the Laplacian around edges that relax
+nothing themselves. The trade-off across the grid: d_excl ≥ 4 cuts the band excess (0.214 → 0.100 at 6 / 2 / 2) but
+loses missed geometry (0.213) and RGB coverage; pool radius 3 keeps the geometry (missed 0.006) but brings tri_veto4's band
+excess back (0.256) and texture (079 sunlit 0.488).
+
+**Retirement metric** (core w, V2–V4 options as settled): missed true geometry per pixel 0.563 [0.495, 0.630] at band_min
+2 (0.510 [0.447, 0.573] at 3), gap_unresolved alone 0.127 [0.082, 0.176] (0.114 at 3): the Laplacian cannot be retired.
+
 ---
 
 # Appendix A. Integration record (TASK_GEOM_INTEGRATION G0–G5)

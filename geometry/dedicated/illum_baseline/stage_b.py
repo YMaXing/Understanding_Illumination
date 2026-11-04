@@ -209,6 +209,22 @@ def run_geometry(cfg: Config, D_up: np.ndarray, sky_up: np.ndarray | None, meta_
 
     ctx = GeometryContext(D_up, sky_up, Intrinsics.from_stage_a(meta_a), detector_params(cfg), dense_fit_params(cfg))
     results = [CHANNELS[name]().run(ctx, _channel_params(cfg, name)) for name in cfg.geometry.channels]
+    lap = cfg.geometry.laplacian
+    if lap.role == "fallback":  # TASK_GEOM_V2 V5: mask the Laplacian's input to the min near accepted edges
+        import dataclasses as _dc
+
+        from .geom.fallback import apply_fallback, exclusion_zone
+
+        by = {r.name: r for r in results}
+        zone = exclusion_zone(by["depth"].candidates if "depth" in by else None,
+                              by["fold"].candidates if "fold" in by else None, ctx.shape, lap.d_excl)
+        r_lap = by["laplacian"]
+        w_fb = apply_fallback(r_lap.w_net, zone)
+        r_lap.arrays["w_fallback"] = w_fb           # saved as laplacian_w_fallback; laplacian_w_net is unchanged
+        r_lap.arrays["exclusion"] = zone            # saved as laplacian_exclusion (bool)
+        r_lap.scalars |= {"role": "fallback", "d_excl": lap.d_excl, "exclusion_share": float(zone.mean())}
+        masked = [(_dc.replace(r, w_net=w_fb) if r.name == "laplacian" else r) for r in results]
+        return ctx, results, combine(masked, cfg.geometry.combine)
     return ctx, results, combine(results, cfg.geometry.combine)
 
 
@@ -267,7 +283,13 @@ def _process_one_geometry(cfg: Config, stem: str, rd: Path, meta_a: dict[str, An
 
     geo = dataclasses.asdict(cfg.geometry)
     geo["fold"] = params_record(geo["fold"])
-    if geo["laplacian"]["pool_radius"] is None:  # the default: records unchanged
+    lap_rec = geo["laplacian"]
+    if lap_rec.get("role", "channel") == "channel":  # TASK_GEOM_V2 V5 keys only with the fallback
+        lap_rec.pop("role", None)
+        lap_rec.pop("d_excl", None)
+    if lap_rec.get("pool_radius") is None:
+        lap_rec.pop("pool_radius", None)
+    if not lap_rec:  # the default: records unchanged
         geo.pop("laplacian")
     if "depth" not in cfg.geometry.channels:  # runs without the depth channel keep their records unchanged
         geo.pop("depth")

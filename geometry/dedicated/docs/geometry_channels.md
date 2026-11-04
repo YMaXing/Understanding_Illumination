@@ -371,6 +371,8 @@ Settled in F0 (leans agreed) and revised in F1–F4; current state:
 | V3 | `depth.short_thin: off \| strong \| linked` (gap 4 / 6 px, 20°, same polarity, lateral ≤ 1.5 px); no variant closes a step-gap unit (strong: +971 accepted pieces, +839 relaxed step-gap px, tri_fp / texture-label +0.0006 / +0.0008); texture unchanged; **not proposed, documented gap** | as measured |
 | V3 review | short_thin stays off (V5 included); thin structures stay the Laplacian's domain (depth_channel.md §7 item 11); V5 exclusion edges: accepted fold candidates (incl. rescued) and accepted depth candidates except thin doublets (sky edges kept); V4 runs with `fold.site: hessian_peak` | decided 2026-11-03 |
 | V4 | `fold.rescue_undecidable: reject \| corroborate` (+ `ctx.L_veto_over_rho_f`); 1 of 21 veto-blocked units closed (target ≥ 7), their relaxed share 0.063 → 0.129; core missed 0.563 → 0.508; fails 079 grass (+0.017) and the 083 interior (0 → 0.021 core); **not proposed**; item 7 stays open, item 6 open | as measured |
+| V4 review | rescue_undecidable stays reject; fold_channel.md §7: the V4 recall gain, the failure mode (the scale-ratio-vetoed Laplacian passes smooth curvature), a hessian-peak-sharpness candidate, unit closure structurally hard for narrow bands | decided 2026-11-03 |
+| V5 | `laplacian.role: channel \| fallback` (+ `d_excl`; `illum_baseline/geom/fallback.py`); sweep d_excl {2, 3, 4, 6} × r {2, 3} × band_min {2, 3}: **no setting passes** (fold-candidate RGB coverage fails in all 16, best 0.778 vs 0.780; 99.8 % of the lost samples sit next to accepted folds with w_c ≥ 0.5); held-out agrees; retirement metric 0.563 (gap_unresolved 0.127) | as measured |
 
 ### 7.1 geom_v2 candidate list (recorded in G6; no code)
 

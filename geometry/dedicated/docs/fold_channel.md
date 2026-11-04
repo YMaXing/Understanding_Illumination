@@ -544,6 +544,17 @@ veto); fold placement **open** (geom_v2 candidate: re-siting at the plane inters
   10 px of another accepted edge; it closes 1 of the 21 veto-blocked units (target ≥ 7), leaves the narrow-face unit
   15 at 0, and fails two constraints (079 grass +0.017, the 083 interior 0 → 0.021 core: the vetoed response passes the
   bollard dome and shaft). Not adopted; item 7 stays open (geom_v2: covered by the Laplacian fallback).
+  - *Recall gain under core w* with `corroborate` (and `site: hessian_peak`): missed true geometry 0.563 → 0.508 of the
+    tri-only area, fold ROI coverage 0.817 → 0.907, fold-target RGB coverage (core) 0.698 → 0.767. *Not adopted
+    because* only 1 of the 21 veto-blocked units closes, 079 grass rises +0.017 (combined) and the 083 interior changes
+    (rescues on the bollard's dome top and shaft).
+  - *Failure mode:* the scale-ratio-vetoed Laplacian (band term at 4σ ≈ 5 px, reach about ±10–15 px) passes smooth
+    curvature at the scale of the bollard's dome, so it cannot stand in for the concentration veto there.
+  - *Candidate for later (no code):* hessian_peak sharpness as the stand-in where the concentration veto is
+    undecidable: a valid V2b site whose s·q peak clearly exceeds its values at ±3 px. It needs only ±4 px, so it stays
+    decidable on narrow faces.
+  - *Unit closure* (≥ 50 % of tri_veto4's wide relaxation strips) is structurally hard for any narrow-band channel
+    (V3, V4: the fragments add 2–6 px bands inside strips of ~600 px); V5's selection rule uses per-pixel shares.
   **Narrow faces (v2).** The capped veto recovers folds next to faces ≥ 12–18 px (079 plinth edge 0.83, 080 side face
   1.00). Plinth edges whose narrow face is narrower than the k₁ windows (076, 090) still fail at the gate (out of
   scope: geometry narrower than the windows).

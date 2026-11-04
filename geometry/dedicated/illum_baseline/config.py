@@ -219,6 +219,8 @@ class LaplacianCfg:
     """Laplacian channel options (the detector section supplies everything else)."""
     pool_radius: int | None = None      # B6 pooling radius in px; null = the detector's r = ceil(hypot(sigma,
                                         # sigma_w_prior)) + 1 (3 at the defaults). Recorded only when set (G5)
+    role: str = "channel"               # channel | fallback (TASK_GEOM_V2 V5: w_lap = 1 within d_excl of an edge)
+    d_excl: float = 3.0                 # px, fallback exclusion distance
 
 
 @dataclass
@@ -430,6 +432,11 @@ def _validate_geometry(g: GeometryCfg) -> None:
     if g.laplacian.pool_radius is not None and (not isinstance(g.laplacian.pool_radius, int)
                                                  or g.laplacian.pool_radius < 1):
         raise ValueError(f"geometry.laplacian.pool_radius must be null or an int >= 1, got {g.laplacian.pool_radius!r}")
+    if g.laplacian.role not in ("channel", "fallback") or g.laplacian.d_excl < 0:
+        raise ValueError(f"geometry.laplacian.role must be channel|fallback (d_excl >= 0), got {g.laplacian.role!r}")
+    if g.laplacian.role == "fallback" and (g.enabled and ("laplacian" not in g.channels
+                                                          or not {"depth", "fold"} & set(g.channels))):
+        raise ValueError("geometry.laplacian.role fallback needs the laplacian channel and depth or fold")
     e = g.depth
     if e.disparity not in ("rho_f", "rho"):
         raise ValueError(f"geometry.depth.disparity must be rho_f|rho, got {e.disparity!r}")
