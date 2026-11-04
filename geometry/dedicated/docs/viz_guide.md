@@ -2,7 +2,30 @@
 
 Each file `baseline_output/stage_b/<run>/viz/<stem>.png` is one image's diagnostic sheet. It is rendered by `illum_baseline/viz.py: render()` from saved outputs only, and can be re-rendered with `python -m illum_baseline.cli viz --run-name <run> [stems...]`.
 
-**Default pipeline note (since 2026-10-27, `tri_veto4`, see `docs/pipeline_tri_veto4.md`):**
+**Default pipeline:** since the TASK_GEOM_V2 wrap-up (2026-11-03), the default is **geom_v1_1**
+(`docs/geometric_edges.md`). Its runs write four sheets per image:
+
+| folder | sheet | section below |
+|---|---|---|
+| `viz_geom/` | the three channels combined | "The combined geometry sheet" |
+| `viz_fold/` | the fold channel | "The fold sheet and the fold profile tool" |
+| `viz_depth/` | the depth channel | "The depth sheet and the depth profile tool" |
+| `viz/` | this sheet | this section |
+
+In a geom_v1 / geom_v1_1 run, the `viz/` sheet mixes two sources:
+
+- **Panels 3, 4 and 7** show the Laplacian channel's response (`q`, `L_over_rho`, `tri_veto4`'s detector).
+- **Panels 5 and 6** show the **combined** w, the min of the depth, fold and Laplacian channels.
+
+The Laplacian channel's own weight (pooling radius 2) is in `laplacian_w_net`, and `viz_geom/` sets it beside the other
+channels.
+
+Default history:
+- tri_veto4, from 2026-10-27 until TASK_GEOM_INTEGRATION G6;
+- geom_v1, from G6 until the wrap-up;
+- geom_v1_1, since the wrap-up (`docs/geometry_channels.md` §7.0).
+
+**The Laplacian detector (`tri_veto4`, `docs/pipeline_tri_veto4.md`):**
 
 - `q` and `L_over_rho` are computed from the trilateral-filtered disparity.
 - `q` passes through the scale-ratio veto, min(q, g·|band response|).
@@ -380,9 +403,19 @@ beyond the next edge (fit mode const or doublet).
 
 # The combined geometry sheet
 
-`stage_b/<run>/viz_geom/<stem>.png` (`illum_baseline/viz_geom.py: render_geom()`), rendered for runs whose channels
-include depth, fold and laplacian (geom_v1), by `stage-b` and by `viz`. Upright frame, network pixel coordinates; from the
-saved outputs plus the Stage A sRGB.
+`stage_b/<run>/viz_geom/<stem>.png` (`illum_baseline/viz_geom.py: render_geom()`). It is rendered by `stage-b` and by
+`viz` for runs whose channels include depth, fold and laplacian, i.e. geom_v1 and the default geom_v1_1. Upright frame,
+network pixel coordinates; from the saved outputs plus the Stage A sRGB.
+
+**geom_v1_1 (the default) versus geom_v1.** The panels are the same; only the fold band moves.
+
+- **Band.** geom_v1_1 sets `fold.site: hessian_peak`, so each accepted fold's band in `w_fold` (panel 5) and in the
+  combined w (panel 6) is centred on the oriented-Hessian peak, `u_site` / `v_site` in the fold candidate table. On
+  convex folds this moves the band toward the RGB edge, by up to 3 px (`site_max_t`).
+- **Panel 1 segments.** The fold segments in panel 1 are still drawn at the candidate's NMS position (`u0`, `v0`).
+  Where a fold was re-sited, the segment and the band centre can be up to 3 px apart.
+- **Text box.** It does not print the `site` setting. The run's JSON (`params.geometry.fold.site`) and
+  `config_resolved.yaml` record it.
 
 1. **sRGB with the accepted edges:** depth edges coloured by log₁₀ ΔZ (cyan: sky edges), fold edges as short segments
    along the fold line coloured by Δθ(k₁), rescued creases dashed.
@@ -390,7 +423,7 @@ saved outputs plus the Stage A sRGB.
 3. **Normal map**, RGB = (n + 1)/2, gray where invalid.
 4. **w_depth**, 5. **w_fold**, 6. **combined w** = min of the three channels, 7. **tri_veto4 w** (the Laplacian channel
    itself when `geometry.laplacian.pool_radius` is null, i.e. r = 3; otherwise the sibling `stage_b/tri_veto4` run's
-   w_net, since geom_v1 pools with r = 2), each with its share of w < 0.5 and < 0.9.
+   w_net, since geom_v1 / geom_v1_1 pool with r = 2), each with its share of w < 0.5 and < 0.9.
 8. **Disagreement:** red = Laplacian-only (w_lap < 0.5 where min(w_depth, w_fold) ≥ 0.9), blue = depth/fold-only (the
    reverse), over the gray image; the thresholds are the G1 audit's.
 9. **Text box:** channel settings (null models, dZ0, band_min, sky_band, crease rescue θ / k_L, pooling radius),
