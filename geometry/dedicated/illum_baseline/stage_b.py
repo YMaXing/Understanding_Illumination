@@ -197,7 +197,10 @@ def _jsonable(x: Any) -> Any:
 
 def _channel_params(cfg: Config, name: str) -> dict[str, Any]:
     if name == "laplacian":
-        return dataclasses.asdict(detector_params(cfg)) | {"pool_radius": cfg.geometry.laplacian.pool_radius}
+        lap = cfg.geometry.laplacian
+        extra = {} if lap.hysteresis == "off" else {"hysteresis": lap.hysteresis, "hysteresis_kappa": lap.hysteresis_kappa,
+                                                     "hysteresis_max_gap": lap.hysteresis_max_gap}
+        return dataclasses.asdict(detector_params(cfg)) | {"pool_radius": lap.pool_radius} | extra
     return dataclasses.asdict(getattr(cfg.geometry, name))
 
 
@@ -289,6 +292,9 @@ def _process_one_geometry(cfg: Config, stem: str, rd: Path, meta_a: dict[str, An
         lap_rec.pop("d_excl", None)
     if lap_rec.get("pool_radius") is None:
         lap_rec.pop("pool_radius", None)
+    if lap_rec.get("hysteresis", "off") == "off":  # TASK_GEOM_V2 W2 keys only with the hysteresis on
+        for k in ("hysteresis", "hysteresis_kappa", "hysteresis_max_gap"):
+            lap_rec.pop(k, None)
     if not lap_rec:  # the default: records unchanged
         geo.pop("laplacian")
     if "depth" not in cfg.geometry.channels:  # runs without the depth channel keep their records unchanged

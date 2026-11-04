@@ -884,6 +884,60 @@ window, which crosses the opposite fold, and stay at T/λ̂ 2.8.
 **W1 is closed for good, not adopted.** `window_cap` stays off; the four modes remain options. The record is in
 `docs/fold_channel.md` §7 (item 7).
 
+### 8.15 W2: Laplacian ridge hysteresis (no κ proposed)
+
+`geometry.laplacian.hysteresis: off | ridge_bridge` (default off; geom_v1_1 bit for bit), with `hysteresis_kappa`
+and `hysteresis_max_gap` 16. The module is `illum_baseline/geom/hysteresis.py`. It runs on q′, the vetoed response
+before the threshold.
+
+- **Ridge pixels:** λ₁ < 0 and |λ₁| > |λ₂| (λ₁ the most negative Hessian eigenvalue, Gaussian derivatives σ = 1); NMS
+  of q′ along λ₁'s eigenvector; q′ > κτ.
+  - The |λ₁| > |λ₂| condition is an addition to the approved design. Without it the NMS passes rows about 1σ off a
+    ridge, where λ₁ ≈ 0 points along the flat direction.
+- **Linking:** 8-neighbouring ridge pixels whose tangents agree within 30°.
+- **Seeds and continuation:** seeds have q′ > τ; continuation runs are linked components with κτ < q′ ≤ τ.
+- **Bridge:** a continuation run of ≤ 16 px linked to ≥ 2 distinct seed runs. Each of its pixels takes q_eff =
+  min over the touched seed runs of the median of q′ − τ over the 3 seed pixels nearest the contact.
+- **Weight:** pooling and w as in the detector.
+- **Single-ended variant** (≥ 1 seed run): report only.
+
+Runs `geom_v1_1_hys06` / `geom_v1_1_hys08` (`configs/candidate_geom_v1_1_hys06.yaml`, `_hys08.yaml`), both batches, no
+sheets. `scripts/geom_w2_hysteresis.py` → `baseline_output/diag/geom/w2/hysteresis.json`; scorer output `w2/score.json`.
+
+| | κ = 0.6 | κ = 0.8 | single-ended 0.6 / 0.8 (report only) |
+|---|---|---|---|
+| continuation px; runs bridged (px), 20 images | 41 432; 554 (2 552) | 17 036; 416 (1 499) | 4 339 runs (15 200 px) / 4 133 (9 713) |
+| Laplacian w < 0.5 / < 0.9 / < 1, image mean (geom_v1_1 0.2221 / 0.2889 / 0.3029) | 0.2221 / 0.2895 / 0.3047 | 0.2221 / 0.2892 / 0.3038 | |
+| combined: every scored number vs geom_v1_1 | Δ < 0.00005 | Δ < 0.00005 | texture class +0.0007, 079 grass sunlit +0.0025 |
+| paired band excess | 0.0000 [0.0000, 0.0000] | 0.0000 [0.0000, 0.0000] | +0.0001 [0.0000, +0.0003] / 0.0000 |
+| constraints (all units; batch1 units); core unchanged | all hold | all hold | all hold |
+| **gain: lap-line columns with combined w < 0.5, 068 / 069 / 069 inside the shadow** | **+0.000 / +0.000 / +0.000** | **+0.000 / +0.000 / +0.000** | +0.000 / +0.0003 / +0.000 |
+
+The bridge recompute from the saved float16 q matches the runs on all but 0.0025 % of the pixels.
+
+**Not proposed:** every constraint holds on all units and on batch1 units, but the gain target fails at both κ.
+
+**Why.** Bridging is not what keeps the laps above 0.5; strength is:
+- w < 0.5 needs q_eff > ε = τ, i.e. q′ > 2τ.
+- q′/τ along the lap lines is P10 / P50 / P90 = 0.86 / 1.47 / 1.84 on 068 and 0.82 / 1.46 / 2.04 on 069 (inside the
+  shadow 0.68 / 0.99 / 1.50).
+- So geom_v1_1 relaxes only 0.136 (068) and 0.157 (069) of the lap columns, and 0.005 inside the shadow, even where
+  q′ > τ.
+- A bridged gap takes its weaker flank's q′ − τ, typically about 0.5τ, which gives w ≈ 0.67. Below 0.5 is out of reach
+  by construction.
+
+**Gap lengths on the lap lines.** Sub-τ stretches along the line:
+- 068: P50 9 px, P90 21 px; 6 of 14 longer than 16.
+- 069 outside the shadow: P50 5 px, P90 29 px; 8 of 24 longer than 16.
+- 069 inside the shadow: P50 21 px, P90 48 px, max 76; 7 of 11 longer than 16. The shadow is about 44 px wide, so the
+  16-px bridge cannot cross it.
+
+Continuation runs (κ = 0.6), inside / outside the shadow: P50 16 / 8 px; 6 of 12 / 7 of 19 bridged.
+
+**070 middle riser:** q′/τ along its folds is P10 / P50 / P90 = 0.39 / 0.54 / 0.67 (lower) and 0.39 / 0.59 / 0.68
+(upper). No pixel exceeds τ, so there is no seed and no hysteresis route. 29 % / 44 % of the pixels lie in
+(0.6τ, τ]; 0 % / 0.5 % in (0.8τ, τ].
+
 ---
 
 # Appendix A. Integration record (TASK_GEOM_INTEGRATION G0–G5)
