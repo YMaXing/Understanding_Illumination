@@ -12,6 +12,10 @@ Constraints (combined w unless stated):
   the same verdict with the audit restricted to batch1 units.
 Proposal: window_cap next_ridge if every constraint holds and each middle-riser fold reaches >= 90 % accepted.
 Writes baseline_output/diag/geom/w1/window_cap.json.
+W1b (--run geom_v1_1_wcapf, window_cap next_fold_ridge): also the capped share of candidates, accepted folds lost /
+gained per image, and the added constraints: core crease coverage >= geom_v1_1 - 0.02, 088 rock ridge (core coverage)
+>= 0.70, geom_gain (combined) >= geom_v1_1 - 0.01, core missed true geometry per pixel <= geom_v1_1 + 0.002, core RGB
+fold-candidate coverage >= geom_v1_1 - 0.005. Writes w1/window_cap_<run>.json.
 """
 
 from __future__ import annotations
@@ -27,10 +31,12 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from geom_score import Run, load_labels, rgb_edge_set  # noqa: E402
+from geom_score import Run, g1_table, load_labels, rgb_edge_set  # noqa: E402
 from geom_v5_fallback import BATCHES, metrics  # noqa: E402
 
-REF, NEW = "geom_v1_1", "geom_v1_1_wcap"
+REF = "geom_v1_1"
+NEW = sys.argv[sys.argv.index("--run") + 1] if "--run" in sys.argv else "geom_v1_1_wcap"
+W1B = NEW != "geom_v1_1_wcap"
 OUT = ROOT / "baseline_output" / "diag" / "geom" / "w1"
 NARROW = (15, 37, 92)
 RISERS = {"top": (344, 382, 362.5), "middle": (386, 414, 400.5), "bottom": (443, 478, 460.5)}
@@ -114,6 +120,28 @@ def constraints(ref, new, aud):
     return {n: {"ok": bool(ok), "diff": float(d)} for n, (ok, d) in out.items()}
 
 
+def changes(ref, new):
+    """Per image: accepted folds lost / gained, and the capped share of the candidates."""
+    rows, tot = {}, {"n": 0, "capped": 0, "lost": 0, "gained": 0, "lost_capped": 0, "gained_capped": 0}
+    for b, root in BATCHES.items():
+        for p in sorted((root / "stage_b" / ref).glob("*_fold_candidates.parquet")):
+            a, n = pd.read_parquet(p), pd.read_parquet(root / "stage_b" / new / p.name)
+            assert len(a) == len(n) and np.array_equal(a.u0.to_numpy(), n.u0.to_numpy())
+            cap = (n.window_capped_p | n.window_capped_m).to_numpy()
+            A, N = a.accepted.to_numpy(), n.accepted.to_numpy()
+            r = {"n": len(a), "capped": int(cap.sum()), "lost": int((A & ~N).sum()), "gained": int((~A & N).sum()),
+                 "lost_capped": int((A & ~N & cap).sum()), "gained_capped": int((~A & N & cap).sum())}
+            rows[p.name.replace("_fold_candidates.parquet", "")] = r
+            for k in tot:
+                tot[k] += r[k]
+    tot["capped_share"] = tot["capped"] / tot["n"]
+    return {"total": tot, "per_image": rows}
+
+
+def roi(run, name, w="core"):
+    return next(r for r in g1_table(run)[w]["rois"] if r["roi"] == name)
+
+
 def headline(m, U):
     out = {}
     for w in ("combined", "core"):
@@ -146,12 +174,36 @@ def main():
                             for r in runs}}
     mid = rep["risers_070"][NEW]
     riser_ok = all(mid[f"middle {f}"]["accepted_or_rescued"] >= 0.9 for f in ("upper", "lower"))
+    rep["changes"] = changes(REF, NEW)
+    rep["rock_ridge_088_core"] = {r: {k: roi(runs[r], "088 rock ridge")[k] for k in ("coverage", "share_w<0.5")}
+                                  for r in runs}
+    if W1B:
+        hr, hn = rep["headline"][REF], rep["headline"][NEW]
+        extra = {"core crease coverage >= -0.02": (hn["core"]["cov crease"] - hr["core"]["cov crease"], lambda d: d >= -0.02),
+                 "088 rock ridge core coverage >= 0.70": (rep["rock_ridge_088_core"][NEW]["coverage"], lambda v: v >= 0.70),
+                 "geom_gain (combined) >= -0.01": (hn["combined"]["geom_gain"] - hr["combined"]["geom_gain"],
+                                                   lambda d: d >= -0.01),
+                 "core missed/px <= +0.002": (hn["core"]["missed/px"] - hr["core"]["missed/px"], lambda d: d <= 0.002),
+                 "core RGB fold candidates >= -0.005": (hn["core"]["rgb fold_candidates"] - hr["core"]["rgb fold_candidates"],
+                                                        lambda d: d >= -0.005)}
+        rep["constraints_w1b"] = {k: {"ok": bool(f(v)), "diff": float(v)} for k, (v, f) in extra.items()}
+        # batch1 audit: geom_gain and core missed from the batch1-unit audit
+        a1 = {r: M[r] for r in runs}
+        e1 = {"geom_gain (combined) >= -0.01": a1[NEW]["combined"]["audit_batch1"]["geom_only geom_gain"]["share"]
+              - a1[REF]["combined"]["audit_batch1"]["geom_only geom_gain"]["share"],
+              "core missed/px <= +0.002": a1[NEW]["core"]["audit_batch1"]["missed_px"]["share"]
+              - a1[REF]["core"]["audit_batch1"]["missed_px"]["share"]}
+        rep["constraints_w1b_batch1_audit"] = {
+            k: ({"ok": bool(e1[k] >= -0.01 if "gain" in k else e1[k] <= 0.002), "diff": float(e1[k])} if k in e1
+                else v) for k, v in rep["constraints_w1b"].items()}
+        rep["constraints"] |= rep["constraints_w1b"]
+        rep["constraints_batch1_audit"] |= rep["constraints_w1b_batch1_audit"]
     all_ok = all(v["ok"] for v in rep["constraints"].values())
     all_ok1 = all(v["ok"] for v in rep["constraints_batch1_audit"].values())
     rep["verdict"] = {"constraints": all_ok, "constraints_batch1_audit": all_ok1, "middle_riser_>=0.9": riser_ok,
                       "propose": bool(all_ok and all_ok1 and riser_ok), "same_verdict_batch1": all_ok == all_ok1}
     OUT.mkdir(parents=True, exist_ok=True)
-    (OUT / "window_cap.json").write_text(json.dumps(rep, indent=1, default=float))
+    (OUT / ("window_cap.json" if not W1B else f"window_cap_{NEW}.json")).write_text(json.dumps(rep, indent=1, default=float))
     print(json.dumps({k: rep[k] for k in ("headline", "constraints", "constraints_batch1_audit", "risers_070",
                                          "laps_068", "verdict")}, indent=1, default=float))
 

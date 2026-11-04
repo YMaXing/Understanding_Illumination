@@ -83,3 +83,22 @@ def test_per_side_window_lengths_match_the_scalar_path():
     d4 = two_sided_fit(ctx, x0[m == 4], e1[m == 4], 6, 4, **kw)
     assert np.array_equal(c.dtheta[m == 4], d4.dtheta, equal_nan=True)
     assert np.array_equal(c.dtheta[m == 8], a.dtheta[m == 8], equal_nan=True)
+
+
+def test_next_fold_ridge_counts_only_valid_ridges_and_has_its_own_tables():
+    from illum_baseline.geom.twosided import b_tri
+    p = FoldParams(window_cap="next_fold_ridge")
+    cands = _ridges([20, 34])
+    x0 = np.array([[40.0, 20.2]])
+    e1 = np.array([[0.0, 1.0]])
+    ok_all = np.ones(len(cands.ij), bool)
+    assert FoldChannel._window_cap(p, cands, x0, e1, np.array([8]), ridge_ok=ok_all)["window_capped_p"][0]
+    # the ridge at v = 34 without a valid Hessian peak does not count
+    ok = cands.ij[:, 1] != 34
+    c = FoldChannel._window_cap(p, cands, x0, e1, np.array([8]), ridge_ok=ok)
+    assert not c["window_capped_p"][0] and np.isinf(c["d_ridge_p"][0])
+    assert apply_sets(Config(), ["geometry.fold.window_cap=next_fold_ridge"]).geometry.fold.window_cap == "next_fold_ridge"
+    # b_tri calibrated for m = 5, 6, 7 (W1b), between the m = 4 and m = 8 envelopes at the skips in use
+    k = np.arange(6, 17)
+    for m in (5, 6, 7):
+        assert (b_tri(k, m) <= b_tri(k, 4) + 1e-12).all() and (b_tri(k, m) >= b_tri(k, 8) - 1e-12).all()

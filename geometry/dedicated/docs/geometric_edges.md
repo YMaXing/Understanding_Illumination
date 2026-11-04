@@ -765,7 +765,7 @@ The fold bands move toward the RGB edge (convex median |offset| 2.84 → 1.70 px
 alone), everything else within 0.001. Its default proposal (branch `proposal/geom_v1_1_default`) was approved and
 merged: geom_v1_1 is the pipeline default (section 7.1).
 
-### 8.14 W1: fold window cap at the next ridge (proposed by rule; not applied)
+### 8.14 W1 / W1b: fold window cap at the next ridge (W1 closed, not adopted)
 
 `geometry.fold.window_cap: off | next_ridge` (default off; geom_v1_1 bit for bit). Per fold candidate and side:
 - d_ridge is the first s ≥ 2 px along ±e1 where x0 + s e1 lies within 0.75 px of another NMS fold-ridge pixel (all
@@ -808,6 +808,52 @@ Flag:
 - Core crease coverage falls by 0.16; combined crease coverage falls by only 0.005, because the Laplacian covers it.
 - geom_gain falls by 0.03.
 - None of these is a stated constraint.
+
+W1 review: next_ridge is held, not adopted.
+
+**W1b, `window_cap: next_fold_ridge`** (run `geom_v1_1_wcapf`, `configs/candidate_geom_v1_1_wcapf.yaml`; no sheets).
+It differs from next_ridge in two ways:
+- **Which ridges count.** A neighbouring NMS ridge counts only if its own Hessian peak is valid, using the
+  hessian_peak test at that ridge before gating: convexity ≠ 0, height y > k_h s_q, and not a doublet (opposite
+  extremum ≤ half the peak). There is no neighbour limit and no window-end test. 62–71 % of the candidates are valid
+  ridges.
+- **Contamination thresholds.** The shortened windows (m = 5, 6, 7) get their own thresholds:
+  - b_tri(k, m), from `scripts/calibrate_fold.py --add-m 5 6 7` (the m = 4 / 8 entries are unchanged);
+  - the null windows' median rms and 95 % quantile at that m, per image (k = k_min, the null grid).
+
+Report and selection: `scripts/geom_w1_window_cap.py --run geom_v1_1_wcapf` →
+`w1/window_cap_geom_v1_1_wcapf.json`; scorer output `w1b/score.json`.
+
+| | geom_v1_1 | wcap (W1) | wcapf (W1b) |
+|---|---|---|---|
+| 070 middle riser accepted, upper / lower | 0.318 / 0.475 | 1.000 / 1.000 | **0.836 / 0.820** |
+| capped share of all candidates | – | 0.210 | 0.165 |
+| accepted folds lost / gained (20 images) | – | 1 019 / 1 038 | 793 / 820 |
+| core crease coverage (088 rock ridge) | 0.399 (0.763) | 0.239 (0.388) | **0.239 (0.388)** |
+| geom_gain, all units / batch1 units | 0.589 / – | 0.560 | 0.580 / −0.039 vs geom_v1_1 |
+| core missed / px | 0.563 | 0.569 | **0.569** |
+| core RGB fold candidates | 0.696 | 0.682 | **0.686** |
+| narrow-face units 15 / 37 / 92, core | 0.000 / 0.324 / 0.792 | unchanged | unchanged |
+| 068 laps capped | – | 2 / 1 049 | 2 / 1 049 |
+
+W1b fails the riser target and four of the added constraints:
+- core crease coverage −0.160 (limit −0.02);
+- 088 rock ridge 0.388 (minimum 0.70);
+- core missed +0.005 (limit +0.002);
+- core RGB fold candidates −0.009 (limit −0.005).
+
+On the batch1 units geom_gain also fails (−0.039). The W1 constraints all hold.
+
+Causes:
+- **Riser.** Every capped middle-riser candidate is accepted. The 18 % / 16 % that stay uncapped are candidates whose
+  opposite fold fails the Hessian height test where it should stop their window: 40 % of the lower fold and 19 % of
+  the upper fold fail it, because DA3 rounds the 14-px face.
+- **088 ridge.** 21 of its 28 lost acceptances are capped candidates. 19 of their capped sides keep m = 8 and only
+  lose skip (k1 7–8 → 6), so the window moves into the ridge's rounding: T/λ̂ falls from 17.1 to 12.6, below the 13.8
+  gate.
+
+**W1 is closed, not adopted.** `window_cap` stays off, and both modes remain available as options. The narrow-face limit
+is recorded in `docs/fold_channel.md` §7 (item 7).
 
 ---
 

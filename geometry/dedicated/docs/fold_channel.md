@@ -544,13 +544,26 @@ veto); fold placement **open** (geom_v2 candidate: re-siting at the plane inters
   10 px of another accepted edge; it closes 1 of the 21 veto-blocked units (target ≥ 7), leaves the narrow-face unit
   15 at 0, and fails two constraints (079 grass +0.017, the 083 interior 0 → 0.021 core: the vetoed response passes the
   bollard dome and shaft). Not adopted; item 7 stays open (geom_v2: covered by the Laplacian fallback).
-- *[item 7, TASK_GEOM_V2 W1]* `geometry.fold.window_cap: next_ridge` ends a side's k1 window 2 px before the next
+- *[item 7, TASK_GEOM_V2 W1 / W1b: closed, not adopted]* `geometry.fold.window_cap: next_ridge` ends a side's k1 window 2 px before the next
   NMS fold ridge (skip 6; only if the shortened m ≥ 4). It fixes faces narrower than k1 + m + 2:
   - the 070 middle riser (14 px) goes from 32 % / 48 % to 100 % accepted; the rounding width saturating at 12 px had
     pushed k1 to 8, and the riser-side window crossed the opposite fold, with σ_θ 13× the clean risers';
   - the audit's narrow-face units 15 / 37 / 92 are unchanged, and the 068 laps (10 px apart) stay out of reach.
-  It meets the W1 constraints and is proposed by rule. It caps 21 % of all candidates, and core crease coverage
-  falls by 0.16 (`docs/geometric_edges.md` §8.14).
+  It meets the W1 constraints, but it was held: it caps 21 % of all candidates, and core crease coverage falls by 0.16
+  (`docs/geometric_edges.md` §8.14).
+
+  W1b (`next_fold_ridge`) counts only ridges with a valid Hessian peak, and the shortened windows get their own
+  contamination thresholds. It reaches only 84 % / 82 % on the middle riser and keeps the 088 crease loss.
+  **The narrow-face limit, as it stands:** a face narrower than about k1 + m + 2 ≈ 16 px gives its k1 windows no clean
+  plane on the face side, and neither repair in the fold channel works:
+  - A cap at the next ridge fixes the face, but only where the opposite fold is a detectable ridge. DA3 rounds narrow
+    faces, so their folds often fail the Hessian height test (40 % on the 070 riser's lower fold).
+  - The same cap shortens the skip of rounded single folds near parallel ridges (the 088 rock ridge), which lowers T
+    below the gate there.
+
+  The Laplacian doesn't cover this case either. On the 070 middle riser's fold pixels, geom_v1_1's Laplacian w is
+  < 0.5 on 0 %; the combined w is < 0.5 on 46 %, all of it from the fold channel's accepted part. Item 7 stays open,
+  with W1 / W1b recorded as not adopted.
   - *Recall gain under core w* with `corroborate` (and `site: hessian_peak`): missed true geometry 0.563 → 0.508 of the
     tri-only area, fold ROI coverage 0.817 → 0.907, fold-target RGB coverage (core) 0.698 → 0.767. *Not adopted
     because* only 1 of the 21 veto-blocked units closes, 079 grass rises +0.017 (combined) and the 083 interior changes
