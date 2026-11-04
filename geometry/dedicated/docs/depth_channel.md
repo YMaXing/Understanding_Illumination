@@ -10,7 +10,7 @@ Status as of 2026-11-01 (TASK_DEPTH_CHANNEL D0–D6; the development record of e
   (`[depth, fold]` with the fold_v2 settings, combined by the elementwise minimum, run `depth_fold_v1`). The gate null
   is `geometry.depth.null_model: additive` (the default since D5; section 3.7). The saved D5 runs `depth_v1` and
   `depth_fold_v1` were made with the multiplicative null, `depth_v1_add` with the additive one.
-- **Default pipeline:** since TASK_GEOM_INTEGRATION G6 `configs/default.yaml` is geom_v1 (this channel with `sky_band: depth_and_mask`; `docs/geometric_edges.md`); at the time of this task it had the geometry channels off; `baseline_v0`, both
+- **Default pipeline:** `configs/default.yaml` is geom_v1_1 (this channel with `sky_band: depth_and_mask`; geom_v1 from TASK_GEOM_INTEGRATION G6 until the TASK_GEOM_V2 wrap-up; `docs/geometric_edges.md`); at the time of this task it had the geometry channels off; `baseline_v0`, both
   `tri_veto4`, `[laplacian]`, `fold_only`, `tri_veto4_fold`, `fold_v2` and `tri_veto4_fold_v2` reproduce bit for bit
   (`tests/test_baseline_repro.py`, `tests/test_geom_stage_b.py`).
 - **Visualization:** the depth sheet and the profile tool `diag-depth`, `docs/viz_guide.md`.
