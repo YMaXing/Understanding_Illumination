@@ -1,12 +1,15 @@
-# Geometric edges (geom_v1): the combined smoothness-loss weight
+# Geometric edges (geom_v1_1): the combined smoothness-loss weight
 
-Status 2026-11-03: **final (TASK_GEOM_INTEGRATION G6)**. This is the consumer-facing description of `geom_v1`: what the
+Status 2026-11-03: **final (TASK_GEOM_INTEGRATION G6; default updated in the TASK_GEOM_V2 wrap-up)**. This is the
+consumer-facing description of the default weight (`geom_v1_1`; written for `geom_v1`, which it extends): what the
 weight means, its frame and resolution, how to load it, the strengths, the alignment, the limitations and how to re-run.
 Channel math: `docs/depth_channel.md`, `docs/fold_channel.md`, `docs/pipeline_tri_veto4.md` (the Laplacian detector);
 shared architecture and the status of the integration items: `docs/geometry_channels.md` §6.1; the integration record
-(design, evaluation, audit, G2–G5 results) is Appendix A below. **geom_v1_1 is the pipeline default** (geom_v1 +
-`fold.site: hessian_peak`; `configs/default.yaml` = `configs/candidate_geom_v1_1.yaml`; section 7.1); everything below
-describes geom_v1 and holds for geom_v1_1 except where the fold band sits (§8.9).
+(design, evaluation, audit, G2–G5 results) is Appendix A below. **geom_v1_1 is the pipeline default** since the
+TASK_GEOM_V2 wrap-up, 2026-11-03 (geom_v1 + `fold.site: hessian_peak`; `configs/default.yaml` =
+`configs/candidate_geom_v1_1.yaml`; its numbers against geom_v1 in section 7.1); sections 1–6 describe geom_v1 and hold
+for geom_v1_1 except where the fold band sits (§8.9: the fold centreline at the oriented-Hessian peak instead of the NMS
+ridge).
 
 ## 1. What w is
 
@@ -20,7 +23,7 @@ geom_v1 combines three channels by the **elementwise minimum** (a pixel is relax
 | channel | fires on | weight per candidate | settings in geom_v1 |
 |---|---|---|---|
 | depth | occluding depth steps in DA3's depth (two-sided plane fits in disparity) | w_c = max(0.05, ΔZ₀/(ΔZ + ΔZ₀)), ΔZ₀ = 0.10 m; band max(2, ⌈σ_w⌉ + 1) px | additive null; `sky_band: depth_and_mask` (the sky-mask boundary ring within 4 px of an accepted sky edge) |
-| fold | surface-normal discontinuities (two-sided plane normals, capped veto) | w_c from the shading jump J; band max(2, ⌈width/2⌉) px | fold v2 (multiplicative gate, capped veto); `crease_rescue: laplacian_corroborated` (8°, k_L 3) |
+| fold | surface-normal discontinuities (two-sided plane normals, capped veto) | w_c from the shading jump J; band max(2, ⌈width/2⌉) px | fold v2 (multiplicative gate, capped veto); `crease_rescue: laplacian_corroborated` (8°, k_L 3); geom_v1_1 adds `site: hessian_peak` (band centred on the oriented-Hessian peak, §8.9) |
 | laplacian | tri_veto4's detector: \|LoG(ρ_f)\| / ρ with the scale-ratio veto | w = max(w_min, ε/(q_pool + ε)) | `pool_radius: 2` (tri_veto4 pools with 3) |
 
 ```
@@ -33,7 +36,7 @@ Stage A cache: D (DA3 metric depth, canonical focal), sky_prob, meta          [n
    w     = clip(bilinear upsample of w_net to the original size, half-pixel centres, [w_min, 1]), to the stored frame
 ```
 
-**Frame and resolution.** Per image, `stage_b/geom_v1/<stem>.npz`:
+**Frame and resolution.** Per image, `stage_b/geom_v1_1/<stem>.npz` (the default run; `stage_b/geom_v1/` has the same keys):
 
 | key | resolution | frame | dtype | meaning |
 |---|---|---|---|---|
@@ -53,7 +56,7 @@ coordinates); `manifest.csv` one row per image. Every image of batch1 and batch2
 import numpy as np
 from illum_baseline.outputs import pair_weights
 
-w = np.load("baseline_output/stage_b/geom_v1/<stem>.npz")["w"].astype(np.float32)   # (H, W), original res, stored
+w = np.load("baseline_output/stage_b/geom_v1_1/<stem>.npz")["w"].astype(np.float32)   # (H, W), original res, stored
 w_x, w_y = pair_weights(w)                                                            # (H, W-1), (H-1, W)
 # smoothness term, e.g.  sum(w_x * |dI_x|^p) + sum(w_y * |dI_y|^p)   on the image in the same (stored) frame
 ```
@@ -140,19 +143,22 @@ Numbers from the labelled audit (`audit_split/`, 190 units, stratified pps estim
 From `geometry/dedicated/` (ROS / other Python paths off: `env -u PYTHONPATH`):
 
 ```bash
-# Stage A (DA3, GPU) if the cache is missing; then Stage B geom_v1 (CPU), both batches
-env -u PYTHONPATH uv run python -m illum_baseline stage-a --config configs/candidate_geom_v1.yaml
-env -u PYTHONPATH uv run python -m illum_baseline stage-b --config configs/candidate_geom_v1.yaml
-env -u PYTHONPATH uv run python -m illum_baseline stage-b --config configs/candidate_geom_v1.yaml -i data/batch2 -o baseline_output_batch2
+# Stage A (DA3, GPU) if the cache is missing; then Stage B geom_v1_1 (CPU; the default config), both batches
+#   (geom_v1 itself: --config configs/candidate_geom_v1.yaml)
+env -u PYTHONPATH uv run python -m illum_baseline stage-a --config configs/candidate_geom_v1_1.yaml
+env -u PYTHONPATH uv run python -m illum_baseline stage-b --config configs/candidate_geom_v1_1.yaml
+env -u PYTHONPATH uv run python -m illum_baseline stage-b --config configs/candidate_geom_v1_1.yaml -i data/batch2 -o baseline_output_batch2
 # sheets only (viz, viz_depth, viz_fold, viz_geom)
-env -u PYTHONPATH uv run python -m illum_baseline viz --config configs/candidate_geom_v1.yaml
+env -u PYTHONPATH uv run python -m illum_baseline viz --config configs/candidate_geom_v1_1.yaml
 # evaluation and audit reports (read RGB; diagnostic only)
 env -u PYTHONPATH uv run python scripts/geom_g5.py          # G1 table, audit re-score, marginals, r sweep
 env -u PYTHONPATH uv run python scripts/geom_g5_radius.py   # pooling radius report
 env -u PYTHONPATH uv run python scripts/geom_g5_fold_site.py
 env -u PYTHONPATH uv run python scripts/geom_g6_limits.py
 env -u PYTHONPATH uv run python scripts/geom_g6_default.py  # default-proposal numbers (times Stage B)
-# bit-for-bit check of every reference run (incl. geom_v1, geom_v1_r3)
+env -u PYTHONPATH uv run python scripts/geom_score.py --runs geom_v1 geom_v1_1 --timing --out baseline_output/diag/geom/v1_1
+env -u PYTHONPATH uv run python scripts/geom_v1_1_default.py  # geom_v1_1 vs geom_v1 default table (section 7.1)
+# bit-for-bit check of every reference run (incl. geom_v1, geom_v1_r3, geom_v1_1)
 env -u PYTHONPATH uv run pytest tests/test_baseline_repro.py
 ```
 
@@ -161,11 +167,14 @@ settings needs a new `run.name`. Options are listed in section A.4.
 
 ## 7. The default (applied 2026-11-03)
 
-### 7.1 geom_v1_1 as the default (proposal; branch `proposal/geom_v1_1_default`)
+### 7.1 geom_v1_1 as the default (applied 2026-11-03)
 
-`configs/default.yaml` = `configs/candidate_geom_v1_1.yaml` (geom_v1 + `geometry.fold.site: hessian_peak`), the test that
-pins the default, and the docs lines that name it. What changes for a default run against geom_v1, per batch
-(`baseline_output/diag/geom/v1_1/default_proposal.json`, `score.json`):
+**geom_v1_1 is the pipeline default.** The proposal commit (`configs/default.yaml` = `configs/candidate_geom_v1_1.yaml`,
+i.e. geom_v1 + `geometry.fold.site: hessian_peak`; the test that pins the default; the docs lines that name it; branch
+`proposal/geom_v1_1_default`, `900766d`) passed the full suite on its branch (218 passed, 2 deselected) and was merged
+into `yx_dev`. The previous default, geom_v1, is `configs/candidate_geom_v1.yaml`; geom_v1 and geom_v1_1 are both
+bit-for-bit references (both batches). What changes for a default run (`python -m illum_baseline infer` / `stage-b`
+without `--config`) against geom_v1, per batch (`baseline_output/diag/geom/v1_1/default_proposal.json`, `score.json`):
 
 | | batch1 | batch2 |
 |---|---|---|
@@ -184,9 +193,9 @@ New saved outputs: none as files or npz keys; the fold candidate table gains `si
 `site_smooth_n` 5, `site_window_px` 4 spelled out at their built-in values), `run.name` geom_v1 → geom_v1_1. Detector,
 sky, preprocessing, DA3 and paths unchanged (the Stage A cache is reused).
 
-### 7.0 geom_v1 as the default (applied 2026-11-03)
+### 7.0 geom_v1 as the default (applied 2026-11-03 in G6; superseded by geom_v1_1, 7.1)
 
-geom_v1 is the pipeline default: the proposal commit (`configs/default.yaml` = `configs/candidate_geom_v1.yaml`, the two
+geom_v1 was the pipeline default from G6 to the TASK_GEOM_V2 wrap-up: the proposal commit (`configs/default.yaml` = `configs/candidate_geom_v1.yaml`, the two
 tests that pin the default, and the docs lines that name it; branch `proposal/geom_v1_default`, `ff6f443`) was merged
 into `yx_dev`. The previous default, tri_veto4, is `configs/candidate_tri_veto4.yaml`. What changed for a default run
 (`python -m illum_baseline infer` / `stage-b` without `--config`), per batch
@@ -246,7 +255,7 @@ times above (median over 4 images: `viz` 4.0 s, `viz_depth` 7.6 s, `viz_fold` 6.
 run with sheets is about 4× slower than without. For dataset-scale runs pass **`--no-viz`** (a CLI flag of `infer` and `stage-b`; there is no config key); sheets can be
 rendered later for chosen images with `python -m illum_baseline viz [stems ...]`.
 
-## 8. geom_v2 design and results (TASK_GEOM_V2 V0–V5; stopped at V5, geom_v1 stays the default)
+## 8. geom_v2 design and results (TASK_GEOM_V2 V0–V5; stopped at V5; the wrap-up made geom_v1_1 the default, 7.1)
 
 **Goal.** geom_v2 = geom_v1 with the Laplacian channel demoted to a **fallback**: it relaxes only away from accepted
 geometric edges, so near them the depth and fold channels alone set the band. The fusion stays the elementwise min; the
@@ -753,7 +762,8 @@ the Hessian siting itself: geom_v1_hessian against geom_v1). This was the last c
 
 The fold bands move toward the RGB edge (convex median |offset| 2.84 → 1.70 px, §8.9): fold-candidate RGB coverage
 +0.009 (core +0.025), band excess +0.003 [0.000, +0.009] (the paired CI of §8.13's d_excl 2 row, which equals the siting
-alone), everything else within 0.001. A prepared, unapplied default proposal is on branch `proposal/geom_v1_1_default`.
+alone), everything else within 0.001. Its default proposal (branch `proposal/geom_v1_1_default`) was approved and
+merged: geom_v1_1 is the pipeline default (section 7.1).
 
 ---
 

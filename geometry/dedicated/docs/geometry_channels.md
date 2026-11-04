@@ -376,13 +376,25 @@ Settled in F0 (leans agreed) and revised in F1–F4; current state:
 | V5 review / rerun | exclusion only around edges that relax (own w_c < 0.5); added: band excess reduced vs geom_v1 with the paired bootstrap CI excluding 0; rerun: fold-candidate RGB failures 16 → 1, others unchanged; **no setting passes** (the 8 that meet the first rule never reduce band excess, the 7 that reduce it fail missed geometry and depth-edge RGB coverage) | as measured |
 | TASK_GEOM_V2 end | **the geom_v2 line stops at V5; geom_v1 stays the pipeline default; V6 skipped**; the V2–V5 options stay available at their defaults (geom_v1 bit for bit) | decided by rule 2026-11-03 |
 | wrap-up | final check: fallback with fold-only relaxing exclusion (d_excl 2 / 3 / 4, r 2, band_min 2) meets every original constraint but never cuts band excess (best −0.005 [−0.012, +0.003]); **geom_v1_1 = geom_v1 + fold.site hessian_peak**, a new bit-for-bit reference (both batches); default proposal prepared on `proposal/geom_v1_1_default` (not applied) | as built / proposed |
+| wrap-up review | **geom_v1_1 is the pipeline default** (`configs/default.yaml` = `configs/candidate_geom_v1_1.yaml`); the proposal (`900766d`) passed the full suite on its branch (218 passed, 2 deselected) and was merged into `yx_dev`; against geom_v1: fold-candidate RGB-edge coverage 0.800 → 0.809 (core 0.671 → 0.696), band excess 0.214 → 0.217 (paired +0.003 [0.000, +0.009]), missed geometry 0.079 → 0.079, ROI coverage and texture within 0.001, w < 0.5 (deliverable) 0.2156 → 0.2151 / 0.2765 → 0.2750, Stage B 7.70 → 7.74 / 7.75 → 7.87 s per image (batch1 / batch2); geom_v1 stays a bit-for-bit reference (`docs/geometric_edges.md` §7.1) | decided 2026-11-03 |
+
+### 7.0 Default history (`configs/default.yaml`)
+
+| period | default run | config (kept as) | change | decided | record |
+|---|---|---|---|---|---|
+| before TASK_GEOM_INTEGRATION G6 | `tri_veto4` | `configs/candidate_tri_veto4.yaml` | Laplacian detector only (baseline_v0 → tri ŝ + veto, band factor 4), geometry channels off | inherited from `geometry/baseline/` when the project was seeded | `docs/pipeline_tri_veto4.md` |
+| G6 review → TASK_GEOM_V2 wrap-up | `geom_v1` | `configs/candidate_geom_v1.yaml` | [depth, fold, laplacian], min; capped veto, crease rescue, sky band depth_and_mask, pool radius 2 | 2026-11-03 (proposal `ff6f443`) | `docs/geometric_edges.md` §7.0 |
+| since the wrap-up review | `geom_v1_1` | `configs/candidate_geom_v1_1.yaml` | geom_v1 + `fold.site: hessian_peak` | 2026-11-03 (proposal `900766d`) | `docs/geometric_edges.md` §7.1 |
+
+All three runs stay bit-for-bit references on both batches (`tests/test_baseline_repro.py`); the configs of the earlier
+defaults are unchanged, so each can be rerun with `--config`.
 
 ### 7.1 geom_v2 candidate list (recorded in G6; no code)
 
 Outcome (TASK_GEOM_V2, `docs/geometric_edges.md` §8): fold re-siting built (`fold.site: hessian_peak` met its rule);
 thin-contour depth components built and not proposed (documented gap); items 6 / 7: `fold.rescue_undecidable` built and not
 proposed, both items stay open; the Laplacian fallback built, no setting passed the selection rule, so the line stopped
-with geom_v1 as the default.
+with geom_v1 as the default; in the wrap-up geom_v1 + the Hessian siting (geom_v1_1) became the default (7.0).
 
 1. **Fold re-siting.** Place the fold at the intersection of the two fitted side planes (ρ̂₊ = ρ̂₋ along e1) instead of
    the NMS ridge of the rotation rate, where the planes cross within ±k₁. G5 diagnostic: on convex folds the RGB-edge
