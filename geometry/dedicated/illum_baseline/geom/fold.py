@@ -94,7 +94,7 @@ class FoldParams:
     site_smooth_n: int = 5              # running median of t over this many candidates in chain order
     site_window_px: float = 4.0         # hessian_peak: the peak is searched within +-this along e1
     # TASK_GEOM_V2 W1: end a side's k1 window before the next NMS fold ridge on that side
-    window_cap: str = "off"             # off | next_ridge | next_fold_ridge (W1b)
+    window_cap: str = "off"             # off | next_ridge | next_fold_ridge (W1b) | end_only (W1c)
     window_cap_margin: float = 2.0      # px: the window ends this far before the ridge
     window_cap_k: int = 6               # capped skip = max(k_min, this)
 
@@ -127,7 +127,7 @@ V2_CAND_KEYS = ("cand_radius", "cand_radius_wide", "cand_min_samples")
 RESCUE_KEYS = ("crease_rescue", "rescue_theta_deg", "rescue_k_L", "rescue_min_component_px", "rescue_support")
 SITE_KEYS = ("site", "site_max_t", "site_smooth_n", "site_window_px")
 WINDOW_CAP_KEYS = ("window_cap", "window_cap_margin", "window_cap_k")
-WINDOW_CAPS = ("off", "next_ridge", "next_fold_ridge")
+WINDOW_CAPS = ("off", "next_ridge", "next_fold_ridge", "end_only")
 UNDECIDABLE = ("reject", "corroborate")
 SITES = ("nms", "plane_intersection", "hessian_peak")
 
@@ -518,7 +518,8 @@ class FoldChannel:
         (k1 + m >= d_ridge - margin), the side's skip becomes k_c = max(k_min, window_cap_k) and the window ends margin
         px before the ridge: m' = min(m, floor(d_ridge - margin) - k_c); applied only if m' >= m_min, else the default
         window. Only the k1 fit changes; k1 itself (k2, the veto, the rescue, the band) is unchanged.
-        ridge_ok (next_fold_ridge, W1b): only the NMS pixels of candidates with a valid Hessian peak count as ridges."""
+        ridge_ok (next_fold_ridge, W1b): only the NMS pixels of candidates with a valid Hessian peak count as ridges.
+        end_only (W1c): the skip stays k1; only the window end moves: m' = min(m, floor(d_ridge - margin) - k1)."""
         from scipy.spatial import cKDTree
 
         N = len(x0)
@@ -526,7 +527,7 @@ class FoldChannel:
         tree = cKDTree(ij.astype(np.float64)) if len(ij) else None
         reach = (k1 + p.m).astype(np.float64)
         s = np.arange(2.0, float(reach.max(initial=0.0)) + p.window_cap_margin + step / 2, step)
-        k_c = max(p.k_min, p.window_cap_k)
+        k_c = k1 if p.window_cap == "end_only" else np.full(N, max(p.k_min, p.window_cap_k))
         out = {"n_too_short": 0}
         for sgn, tag in ((1, "p"), (-1, "m")):
             d = np.full(N, np.inf)

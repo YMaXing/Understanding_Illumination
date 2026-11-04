@@ -102,3 +102,16 @@ def test_next_fold_ridge_counts_only_valid_ridges_and_has_its_own_tables():
     k = np.arange(6, 17)
     for m in (5, 6, 7):
         assert (b_tri(k, m) <= b_tri(k, 4) + 1e-12).all() and (b_tri(k, m) >= b_tri(k, 8) - 1e-12).all()
+
+
+def test_end_only_keeps_k1():
+    p = FoldParams(window_cap="end_only")
+    x0 = np.array([[40.0, 20.2], [40.0, 20.2]])
+    e1 = np.tile([0.0, 1.0], (2, 1))
+    # ridge at v = 36: d_ridge 15.5; k1 8 -> m = floor(13.5) - 8 = 5, skip kept at 8
+    c = FoldChannel._window_cap(p, _ridges([20, 36]), x0[:1], e1[:1], np.array([8]))
+    assert (c["k1_p"][0], c["m_p_fit"][0], c["window_capped_p"][0]) == (8, 5, True)
+    # ridge at v = 34: d_ridge 13.5; k1 8 -> m = 3 < m_min: default window; k1 6 -> m = 5
+    c = FoldChannel._window_cap(p, _ridges([20, 34]), x0, e1, np.array([8, 6]))
+    assert not c["window_capped_p"][0] and (c["k1_p"][0], c["m_p_fit"][0]) == (8, 8)
+    assert (c["k1_p"][1], c["m_p_fit"][1], c["window_capped_p"][1]) == (6, 5, True)

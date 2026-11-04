@@ -160,7 +160,7 @@ class FoldCfg:
     site_max_t: float = 3.0
     site_smooth_n: int = 5
     site_window_px: float = 4.0
-    window_cap: str = "off"             # off | next_ridge (TASK_GEOM_V2 W1) | next_fold_ridge (W1b)
+    window_cap: str = "off"             # off | next_ridge (TASK_GEOM_V2 W1) | next_fold_ridge (W1b) | end_only (W1c)
     window_cap_margin: float = 2.0
     window_cap_k: int = 6
 
@@ -417,8 +417,8 @@ def _validate_geometry(g: GeometryCfg) -> None:
         raise ValueError(f"geometry.fold.site must be nms|plane_intersection|hessian_peak (site_max_t, site_window_px "
                          f"> 0, site_smooth_n >= 1), "
                          f"got {f.site!r}")
-    if f.window_cap not in ("off", "next_ridge", "next_fold_ridge") or f.window_cap_margin < 0 or f.window_cap_k < 1:
-        raise ValueError(f"geometry.fold.window_cap must be off|next_ridge|next_fold_ridge (window_cap_margin >= 0, window_cap_k >= 1), "
+    if f.window_cap not in ("off", "next_ridge", "next_fold_ridge", "end_only") or f.window_cap_margin < 0 or f.window_cap_k < 1:
+        raise ValueError(f"geometry.fold.window_cap must be off|next_ridge|next_fold_ridge|end_only (window_cap_margin >= 0, window_cap_k >= 1), "
                          f"got {f.window_cap!r}")
     if f.rescue_undecidable not in ("reject", "corroborate") or (f.rescue_undecidable == "corroborate"
                                                                   and f.veto_mode != "capped"):

@@ -765,7 +765,7 @@ The fold bands move toward the RGB edge (convex median |offset| 2.84 → 1.70 px
 alone), everything else within 0.001. Its default proposal (branch `proposal/geom_v1_1_default`) was approved and
 merged: geom_v1_1 is the pipeline default (section 7.1).
 
-### 8.14 W1 / W1b: fold window cap at the next ridge (W1 closed, not adopted)
+### 8.14 W1 / W1b / W1c: fold window cap at the next ridge (W1 closed for good, not adopted)
 
 `geometry.fold.window_cap: off | next_ridge` (default off; geom_v1_1 bit for bit). Per fold candidate and side:
 - d_ridge is the first s ≥ 2 px along ±e1 where x0 + s e1 lies within 0.75 px of another NMS fold-ridge pixel (all
@@ -852,8 +852,37 @@ Causes:
   lose skip (k1 7–8 → 6), so the window moves into the ridge's rounding: T/λ̂ falls from 17.1 to 12.6, below the 13.8
   gate.
 
-**W1 is closed, not adopted.** `window_cap` stays off, and both modes remain available as options. The narrow-face limit
-is recorded in `docs/fold_channel.md` §7 (item 7).
+W1b review: it fails. The 088 loss comes from lowering k1 to 6, not from the trigger.
+
+**W1c, `window_cap: end_only`** (run `geom_v1_1_wcape`, `configs/candidate_geom_v1_1_wcape.yaml`; no sheets):
+- The trigger is any NMS ridge, as in next_ridge.
+- k1 is kept; only the window end moves to 2 px before the ridge: m′ = min(m, ⌊d_ridge − 2⌋ − k1).
+- The cap applies only if m′ ≥ 4.
+- The shortened windows use W1b's own contamination thresholds.
+
+Scored as W1b (`w1/window_cap_geom_v1_1_wcape.json`, `w1c/score.json`):
+
+| | geom_v1_1 | W1c | limit |
+|---|---|---|---|
+| 070 middle riser accepted, upper / lower | 0.318 / 0.475 | **0.781 / 0.690** | ≥ 0.90 |
+| capped share; accepted folds lost / gained | – | 0.161; 637 / 490 | |
+| core crease coverage (088 rock ridge) | 0.399 (0.763) | **0.351 (0.650)** | ≥ 0.379 (0.70) |
+| geom_gain, combined | 0.589 | **0.566** | ≥ 0.579 |
+| core missed / px, all units (batch1 units) | 0.563 | 0.565 (**+0.003**) | ≤ +0.002 |
+| core RGB fold candidates | 0.696 | **0.689** | ≥ 0.691 |
+| RGB fold targets, combined / core | 0.869 / 0.698 | 0.869 / 0.696 | |
+| narrow-face units 15 / 37 / 92, core | 0 / 0.324 / 0.792 | unchanged | |
+| 068 laps capped | – | 1 of 1 049 | |
+
+Not proposed: the riser target fails, and so do four constraints on all units (core crease, 088 ridge, geom_gain, core
+RGB fold candidates), four on batch1 units, with core missed replacing geom_gain; the W1 constraints hold.
+
+On the middle riser, every capped window is accepted (0.99–1.00, m′ = 4–7). The 105 k1 = 8 candidates that fail are the
+ones where k1 + m_min + 2 = 14 px does not fit before the opposite ridge (d_ridge ≈ 13.5–14). They keep the default
+window, which crosses the opposite fold, and stay at T/λ̂ 2.8.
+
+**W1 is closed for good, not adopted.** `window_cap` stays off; the four modes remain options. The record is in
+`docs/fold_channel.md` §7 (item 7).
 
 ---
 
