@@ -155,7 +155,8 @@ class FoldCfg:
     rescue_k_L: float = 3.0
     rescue_min_component_px: int = 10
     rescue_support: float = 0.7
-    site: str = "nms"                   # nms | plane_intersection (TASK_GEOM_V2 V2)
+    rescue_undecidable: str = "reject"  # reject | corroborate (TASK_GEOM_V2 V4)
+    site: str = "nms"                   # nms | plane_intersection | hessian_peak (TASK_GEOM_V2 V2 / V2b)
     site_max_t: float = 3.0
     site_smooth_n: int = 5
     site_window_px: float = 4.0
@@ -411,6 +412,10 @@ def _validate_geometry(g: GeometryCfg) -> None:
         raise ValueError(f"geometry.fold.site must be nms|plane_intersection|hessian_peak (site_max_t, site_window_px "
                          f"> 0, site_smooth_n >= 1), "
                          f"got {f.site!r}")
+    if f.rescue_undecidable not in ("reject", "corroborate") or (f.rescue_undecidable == "corroborate"
+                                                                  and f.veto_mode != "capped"):
+        raise ValueError(f"geometry.fold.rescue_undecidable must be reject|corroborate (corroborate needs "
+                         f"veto_mode capped), got {f.rescue_undecidable!r}")
     if f.rescue_theta_deg < 0 or f.rescue_k_L < 0 or f.rescue_min_component_px < 1 or not 0 < f.rescue_support <= 1:
         raise ValueError("geometry.fold: rescue_theta_deg, rescue_k_L >= 0, rescue_min_component_px >= 1, "
                          "rescue_support in (0, 1]")

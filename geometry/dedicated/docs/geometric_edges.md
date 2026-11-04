@@ -286,8 +286,10 @@ J_min only on the weight, so J_min is the later stage. *Flag; lean:* the order a
   candidates in chains shorter than 5 keep their own t. Δθ, J, the gate and every acceptance decision are unchanged;
   only the rasterized centreline moves to round(x₀ + t e1).
 - **Fallback.** The exclusion zone is a Euclidean distance transform (network resolution) from the rasterized
-  centrelines of the accepted depth candidates (sky edges included) and the accepted fold candidates (rescued included;
-  at the V2 site when on). `role: fallback` needs depth or fold in `channels` (validated). The saved `laplacian_w_net`
+  centrelines of the accepted fold candidates (rescued included; at the V2b site) and of the accepted depth candidates
+  **except thin doublets**, sky edges kept although they carry the thin flag (settled at the V3 review: excluding around
+  thin fragments would break the Laplacian's continuous relaxation on fences and railings; the all-edges variant is
+  reported once at the chosen setting as a check). `role: fallback` needs depth or fold in `channels` (validated). The saved `laplacian_w_net`
   keeps its meaning (the channel's own output); the masked weight that enters the min is saved separately.
 
 ### 8.3 Runs and configs
@@ -552,6 +554,50 @@ overlays show them on real geometry (073 railing bars and top rail, filling gaps
 chain-link mesh, as dots; 080 / 075 / 082 / 067 sparse dots in foliage). `linked` finds few chains (pieces separated by
 more than 3 px rarely line up within 1.5 px laterally). The open step gaps stay covered by the Laplacian (geom_v1) or,
 in geom_v2, by its fallback away from accepted edges.
+
+### 8.11 V4 results: fold recall through undecidable vetoes (targets not met)
+
+Option `geometry.fold.rescue_undecidable: reject | corroborate` (default reject; capped veto only; recorded only when on;
+column `rescue_undecidable`, scalar `n_rescued_undecidable`). With `corroborate`, eligible gate failures (Δθ ≥ 8°,
+J ≥ J_min) whose second-pass capped veto is undecidable join the crease rescue's components; their support is measured on
+the scale-ratio-vetoed response `ctx.L_veto_over_rho_f` (sign(L) min(|L|, g |L_σ − L_4σ|)/ρ on ρ_f, the tri_veto4 veto)
+against the same k_L ŝ_L; an undecidable candidate is rescued when its joint component (with the decided-pass
+candidates) is kept; the decided-pass components are evaluated exactly as without the option, so it only adds (test);
+decided-fail candidates stay out; rescued component ≥ 10 px and support ≥ 70 % unchanged.
+Runs with `fold.site: hessian_peak` (V3 review): base `geom_v1_hessian` (reject), `geom_v1_v4` (corroborate), report-only
+`geom_v1_v4_c6` (corroborate + rescue minimum 6 px), both batches. Report `scripts/geom_v4_recall.py` → `v2/recall.json`,
+`v2/recall_overlays/`.
+
+| metric | geom_v1 | base (hessian) | V4 corroborate | V4 + min 6 px (report) |
+|---|---|---|---|---|
+| 21 veto-blocked units closed (core; target ≥ 7) | 0 | 0 | **1** (41) | 1 (41) |
+| their per-pixel relaxed share (core) | 0.047 | 0.063 | 0.129 | 0.201 |
+| open fold / crease gaps closed (core) | 4 | 4 | 5 | 5 |
+| core missed true geometry per pixel | 0.568 | 0.563 | 0.508 | 0.486 |
+| fold-candidate RGB coverage, combined / core | 0.800 / 0.671 | 0.809 / 0.696 | 0.809 / 0.700 | 0.810 / 0.702 |
+| fold-target RGB coverage, combined / core | 0.869 / 0.698 | 0.869 / 0.698 | 0.878 / 0.767 | 0.878 / 0.767 |
+| ROI coverage fold / crease, core | 0.817 / 0.399 | 0.817 / 0.399 | 0.907 / 0.399 | 0.907 / 0.410 |
+| 076 ledge / 088 ridge coverage, core | 0.130 / 0.762 | 0.130 / 0.762 | 0.130 / 0.762 | 0.130 / 0.787 |
+| texture ROIs combined: 079 grass / sunlit / 083 interior | 0.218 / 0.383 / 0.002 | 0.218 / 0.383 / 0.002 | **0.236** / 0.385 / **0.023** | 0.237 / 0.405 / 0.023 |
+| texture ROIs core: 079 grass / sunlit / 083 interior | 0.003 / 0.006 / 0 | 0.003 / 0.006 / 0 | 0.070 / 0.010 / **0.021** | 0.079 / 0.037 / 0.021 |
+| texture-labelled units relaxed (core) | 0 | 0.008 | 0.011 | 0.013 |
+| geom_fp relaxed (core) | 0.052 | 0.044 | 0.044 | 0.044 |
+| units 15 / 97 / 124 (core share) | 0 / 0 / 0 | 0 / 0 / 0.02 | 0 / 0 / 0.06 | 0 / 0 / 0.19 |
+
+7 758 candidates are rescued through an undecidable veto (batch1 3 632, batch2 4 126), all of them new.
+**Narrow-face split** (another accepted edge within 10 px): narrow 6 535 new candidates, closing unit 41 alone, with
+079 grass core 0.053, sunlit 0.008, 083 interior 0, texture units relaxed 0.039; isolated 1 223, closing none, with 079
+grass 0.031, sunlit 0.010, **083 interior 0.021**, texture units 0.020 (each group added alone to the base core w).
+Overlays: 083 the collar ring (the labelled crease, welcome) but also the dome top and one stretch of the shaft (smooth
+curvature: the isolated group); 075 the kiosk roof rim (real) and background trees and façades; the cylinder body mostly
+untouched.
+
+**Outcome: not met.** The closure target fails (1 of 21 against ≥ 7) and two fixed constraints fail: 079 grass (combined)
++0.017 > +0.01, the 083 interior changes (combined 0.002 → 0.023, core 0 → 0.021). Nothing is loosened; the option stays
+`reject` and is not proposed. The vetoed Laplacian does not reject smooth curvature as the concentration veto does (the
+dome and shaft pass it), and the narrow-face cases bring texture through their neighbours. The recall is real but
+diffuse: the blocked units' relaxed share doubles (0.063 → 0.129) without crossing 50 %, and the core missed geometry falls
+by 0.055 of the tri-only area. In geom_v2 the Laplacian fallback covers these units.
 
 ---
 

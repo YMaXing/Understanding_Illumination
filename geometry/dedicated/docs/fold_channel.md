@@ -533,10 +533,18 @@ Status after TASK_GEOM_INTEGRATION (`docs/geometry_channels.md` §6.1): local σ
 **resolved as a documented gap** (`crease_rescue: laplacian_corroborated` on in geom_v1; 076 ledge blocked by the capped
 veto); fold placement **open** (geom_v2 candidate: re-siting at the plane intersection).
 
-- *[item 6: reopened G4, not fixed]* **Local σ_geo.** One σ_geo (or λ̂) per image treats grass and boxes alike. Neither local variant meets the switching
+- *[item 6: open (reopened G4, not fixed)]* Why TASK_GEOM_V2 V4 leaves the χ² gate alone: the open fold gaps fail it
+  through noisy normals (gate failures Δθ P50 25°, T/λ̂ P50 0.68 against 13.8), and a local σ_geo would make the gate
+  stricter on exactly those noisy surfaces, not looser. **Local σ_geo.** One σ_geo (or λ̂) per image treats grass and boxes alike. Neither local variant meets the switching
   rule: additive_local (48-px tiles: sunlit grass 0.033; 24-px tiles: box folds lost) and the candidate-centred
   additive_cand (sunlit grass 0.026, no crease accepted); section 4.5.
-- *[item 7: reopened G4, not fixed]* **Narrow faces (v2).** The capped veto recovers folds next to faces ≥ 12–18 px (079 plinth edge 0.83, 080 side face
+- *[item 7: reopened G4; TASK_GEOM_V2 V4 outcome: not fixed]* `geometry.fold.rescue_undecidable: corroborate` lets
+  eligible gate failures whose capped veto is undecidable (the narrow-face mechanism) into the crease rescue,
+  corroborated by the scale-ratio-vetoed Laplacian. 7 758 candidates are rescued that way, 6 535 of them within
+  10 px of another accepted edge; it closes 1 of the 21 veto-blocked units (target ≥ 7), leaves the narrow-face unit
+  15 at 0, and fails two constraints (079 grass +0.017, the 083 interior 0 → 0.021 core: the vetoed response passes the
+  bollard dome and shaft). Not adopted; item 7 stays open (geom_v2: covered by the Laplacian fallback).
+  **Narrow faces (v2).** The capped veto recovers folds next to faces ≥ 12–18 px (079 plinth edge 0.83, 080 side face
   1.00). Plinth edges whose narrow face is narrower than the k₁ windows (076, 090) still fail at the gate (out of
   scope: geometry narrower than the windows).
 - *[item 9: resolved G3 as a documented gap]* **Moderate creases (v2).** The weight stays effectively binary (w_fold in [0.5, 0.9) on ≤ 0.003 of the pixels);

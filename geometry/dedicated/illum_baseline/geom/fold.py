@@ -87,6 +87,7 @@ class FoldParams:
     rescue_k_L: float = 3.0             # |L_over_rho_f| > k_L s_hat_L on a support pixel
     rescue_min_component_px: int = 10   # rescued component length (distinct NMS pixels)
     rescue_support: float = 0.7         # share of the component's pixels with one-signed support
+    rescue_undecidable: str = "reject"  # reject | corroborate (TASK_GEOM_V2 V4; capped veto only)
     # TASK_GEOM_V2 V2: band centreline at the intersection of the two fitted side planes
     site: str = "nms"                   # nms | plane_intersection | hessian_peak (V2b)
     site_max_t: float = 3.0             # px, |t| of the plane intersection along e1 for a valid site
@@ -121,6 +122,7 @@ V2_VETO_KEYS = ("veto_mode", "veto_curv_coef", "veto_curv_max")
 V2_CAND_KEYS = ("cand_radius", "cand_radius_wide", "cand_min_samples")
 RESCUE_KEYS = ("crease_rescue", "rescue_theta_deg", "rescue_k_L", "rescue_min_component_px", "rescue_support")
 SITE_KEYS = ("site", "site_max_t", "site_smooth_n", "site_window_px")
+UNDECIDABLE = ("reject", "corroborate")
 SITES = ("nms", "plane_intersection", "hessian_peak")
 
 
@@ -140,6 +142,8 @@ def params_record(p: dict) -> dict:
     if d.get("site", "nms") == "nms":
         for k in SITE_KEYS:
             d.pop(k, None)
+    if d.get("rescue_undecidable", "reject") == "reject" or d.get("crease_rescue", "off") == "off":
+        d.pop("rescue_undecidable", None)
     return d
 
 
@@ -294,6 +298,8 @@ class FoldChannel:
         rescue = None
         if p.crease_rescue not in ("off", "laplacian_corroborated"):
             raise ValueError(f"unknown crease_rescue {p.crease_rescue!r}")
+        if p.rescue_undecidable not in UNDECIDABLE:
+            raise ValueError(f"unknown rescue_undecidable {p.rescue_undecidable!r}; expected one of {UNDECIDABLE}")
         if p.crease_rescue == "laplacian_corroborated":
             rescue = self._crease_rescue(ctx, p, cands, gate, x0, e1, width, k1, r1, dtheta1, J, eps_hat, tri, fitkw,
                                          rms_max)
@@ -362,8 +368,10 @@ class FoldChannel:
             for k_ in ("site_t", "site_valid", "site_t_applied", "u_site", "v_site"):
                 df[k_] = site[k_]
         if rescue is not None:  # crease-rescue records (tables without the option are unchanged)
-            for k_ in ("rescue_eligible", "rescue_veto_pass", "rescue_comp_px", "rescue_support", "rescued"):
-                df[k_] = rescue[k_]
+            for k_ in ("rescue_eligible", "rescue_veto_pass", "rescue_comp_px", "rescue_support", "rescued",
+                       "rescue_undecidable"):
+                if k_ in rescue:
+                    df[k_] = rescue[k_]
         if capped is not None:  # capped-veto records (the fixed mode's table is unchanged)
             for k_ in ("k2_p", "k2_m", "d_next_p", "d_next_m", "C_curv", "C_min_eff", "decidable", "strict_planar",
                        "narrow_face", "veto_undecidable", "C_high"):
@@ -405,6 +413,8 @@ class FoldChannel:
             scalars |= {"n_rescue_eligible": int(rescue["rescue_eligible"].sum()),
                         "n_rescue_veto_pass": int(rescue["rescue_veto_pass"].sum()),
                         "n_rescued": int(rescue["rescued"].sum()), "s_hat_L": float(ctx.s_hat_L)}
+            if "rescue_undecidable" in rescue:
+                scalars["n_rescued_undecidable"] = int((rescue["rescued"] & rescue["rescue_undecidable"]).sum())
         if site is not None:
             na = int(accepted.sum())
             nsv = int((accepted & site["site_valid"]).sum())
@@ -525,17 +535,26 @@ class FoldChannel:
         and C >= C_min_eff, the narrow_face route excluded; fixed: valid k2 windows and C >= C_min). Their
         8-connected components (NMS pixels) are rescued when >= rescue_min_component_px and when >= rescue_support of
         their members carry the Laplacian's one-signed response: |L_over_rho_f(x0)| > rescue_k_L s_hat_L with the
-        component's majority sign (the convexity the fold records is the sign of the same field)."""
+        component's majority sign (the convexity the fold records is the sign of the same field).
+        TASK_GEOM_V2 V4, rescue_undecidable corroborate (capped veto): eligible candidates whose second-pass veto is
+        undecidable form components together with the decided-pass ones; their support is measured on the
+        scale-ratio-vetoed response (ctx.L_veto_over_rho_f, which removes smooth curvature, the concentration veto's
+        target) instead of the un-vetoed one; an undecidable candidate is rescued when its joint component is kept.
+        The decided-pass components are evaluated exactly as without the option, so the option only adds;
+        candidates the veto decides as fail stay out. reject: unchanged."""
         H, W = ctx.shape
         N = len(x0)
         with np.errstate(invalid="ignore"):
             elig = r1.valid & ~gate & (np.degrees(dtheta1) >= p.rescue_theta_deg) & (J >= p.J_min)
         dec = np.zeros(N, dtype=bool)
+        und = np.zeros(N, dtype=bool)
         if elig.any():
             if p.veto_mode == "capped":
                 cap2 = FoldChannel._capped_veto(ctx, p, cands, gate | elig, x0, e1, width, k1, r1, dtheta1, eps_hat,
                                                 tri, fitkw, rms_max)
                 dec = elig & cap2["veto_pass"] & cap2["decidable"]
+                if p.rescue_undecidable == "corroborate":
+                    und = elig & ~cap2["decidable"]
             else:
                 g = np.nonzero(elig)[0]
                 k2 = np.rint(p.veto_k_factor * k1).astype(int)
@@ -544,21 +563,38 @@ class FoldChannel:
                     dec[g] = r2.valid & (dtheta1[g] / r2.dtheta >= p.C_min)
         L0, okL = bilinear(ctx.L_over_rho_f, ctx.omega, x0[:, 0], x0[:, 1])
         u, v = cands.ij[:, 0], cands.ij[:, 1]
-        grid = np.zeros((H, W), dtype=bool)
-        grid[v[dec], u[dec]] = True
-        lab, nl = ndimage.label(grid, structure=np.ones((3, 3), dtype=bool))
-        size = np.bincount(lab.ravel(), minlength=nl + 1)
-        li = np.where(dec, lab[v, u], 0)
         sgn = np.where(okL, np.sign(np.nan_to_num(L0)), 0.0)
-        comp_sign = np.sign(np.bincount(li[dec], weights=sgn[dec], minlength=nl + 1))
-        sup = dec & okL & (sgn == comp_sign[li]) & (np.abs(np.nan_to_num(L0)) > p.rescue_k_L * ctx.s_hat_L)
-        n_mem = np.bincount(li[dec], minlength=nl + 1)
-        with np.errstate(invalid="ignore", divide="ignore"):
-            share = np.bincount(li[sup], minlength=nl + 1) / n_mem
-        keep = (size >= p.rescue_min_component_px) & (share >= p.rescue_support)
-        keep[0] = False
-        return {"rescue_eligible": elig, "rescue_veto_pass": dec, "rescue_comp_px": np.where(dec, size[li], 0),
-                "rescue_support": np.where(dec, share[li], np.nan), "rescued": dec & keep[li]}
+
+        def components(mem, mag):
+            grid = np.zeros((H, W), dtype=bool)
+            grid[v[mem], u[mem]] = True
+            lab, nl = ndimage.label(grid, structure=np.ones((3, 3), dtype=bool))
+            size = np.bincount(lab.ravel(), minlength=nl + 1)
+            li = np.where(mem, lab[v, u], 0)
+            comp_sign = np.sign(np.bincount(li[mem], weights=sgn[mem], minlength=nl + 1))
+            sup = mem & okL & (sgn == comp_sign[li]) & (mag > p.rescue_k_L * ctx.s_hat_L)
+            n_mem = np.bincount(li[mem], minlength=nl + 1)
+            with np.errstate(invalid="ignore", divide="ignore"):
+                share = np.bincount(li[sup], minlength=nl + 1) / n_mem
+            keep = (size >= p.rescue_min_component_px) & (share >= p.rescue_support)
+            keep[0] = False
+            return np.where(mem, size[li], 0), np.where(mem, share[li], np.nan), mem & keep[li]
+
+        mag = np.abs(np.nan_to_num(L0))
+        comp_px, support, rescued = components(dec, mag)          # the G3 rescue, unchanged
+        out = {"rescue_eligible": elig, "rescue_veto_pass": dec, "rescue_comp_px": comp_px,
+               "rescue_support": support, "rescued": rescued}
+        if p.rescue_undecidable == "corroborate":
+            # V4: undecidable members join, corroborated by the vetoed response; the union only adds to the G3 rescue
+            if und.any():
+                Lv, okv = bilinear(ctx.L_veto_over_rho_f, ctx.omega, x0[:, 0], x0[:, 1])
+                mag2 = np.where(und, np.where(okv, np.abs(np.nan_to_num(Lv)), 0.0), mag)
+                cpx2, sup2, res2 = components(dec | und, mag2)
+                out["rescue_comp_px"] = np.where(und, cpx2, comp_px)
+                out["rescue_support"] = np.where(und, sup2, support)
+                out["rescued"] = rescued | (res2 & und)
+            out["rescue_undecidable"] = und
+        return out
 
     @staticmethod
     def _capped_veto(ctx, p, cands, gate, x0, e1, width, k1, r1, dtheta1, eps_hat, tri, fitkw, rms_max) -> dict:

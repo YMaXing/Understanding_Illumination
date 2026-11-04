@@ -132,6 +132,20 @@ class GeometryContext:
         return out
 
     @cached_property
+    def L_veto_over_rho_f(self) -> np.ndarray:
+        """Record-only (TASK_GEOM_V2 V4): the scale-ratio-vetoed response on rho_f, signed as L: sign(L) min(|L|,
+        g |L_sigma - L_{band_factor sigma}|) / max(rho_sigma, rho_floor), g = 1 / (1 - 1 / band_factor) (the tri_veto4
+        veto; smooth curvature cancels in the band term). Used by the fold channel's rescue_undecidable: corroborate."""
+        d = self.det
+        rs, L = smooth_and_laplacian(self.rho_f, d.sigma, d.truncate)
+        Lb = L - smooth_and_laplacian(self.rho_f, d.band_factor * d.sigma, d.truncate)[1]
+        den = np.maximum(rs, self.rho_floor)
+        g = 1.0 / (1.0 - 1.0 / d.band_factor)
+        out = np.sign(L) * np.minimum(np.abs(L / den), g * np.abs(Lb / den))
+        _ro(out)
+        return out
+
+    @cached_property
     def s_hat_L(self) -> float:
         """Record-only: the detector's B5 noise scale on the un-vetoed |L_over_rho_f| (median / 0.6745 over the pixels
         r px clear of the sky and R px clear of the border, clamped to [s_hat_min, s_hat_max]); used by the fold

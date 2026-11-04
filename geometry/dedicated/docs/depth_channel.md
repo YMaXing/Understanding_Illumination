@@ -334,7 +334,7 @@ the pixels; its deliverable role there is the strengths (r, ΔZ).
 9. *[resolved G3 as a documented gap; crease rescue on in geom_v1]* **Moderate-crease gate** (fold channel, `docs/fold_channel.md` §7).
 10. *[resolved G4/G5: labelled audit]* **Recall against tri_veto4 on true geometry classes** (annotated fold / step / limb / texture), not only the pinned ROIs.
 
-11. *[TASK_GEOM_V2 V3: option `geometry.depth.short_thin: off | strong | linked` built, no variant closes a step-gap unit (strong relaxes +839 px of the 25 089 open step-gap px); documented gap]* **Component minimum on thin contours** (TASK_GEOM_INTEGRATION G4, record only, no code). Of the 45 labelled step
+11. *[TASK_GEOM_V2 V3: option `geometry.depth.short_thin: off | strong | linked` built, not proposed; short_thin stays off, V5 included]* DA3 resolves railing bars and chain-link mesh only as 1–4 px fragments; accepting them (`strong`) relaxes 3.3 % of the open step-gap px and closes no unit, so the component minimum is not the real limit, and thin structures stay the Laplacian's domain. **Component minimum on thin contours** (TASK_GEOM_INTEGRATION G4, record only, no code). Of the 45 labelled step
     gaps still open after the G4 re-evaluation, 25 (15 733 of 25 089 px) are dropped at the component stage: their best
     candidates passed every gate, but 84 % sit in contour components < 5 px (median 4 px; `min_component_px` 5), 82 %
     are `thin` (doublet fits) and their r is above τ_high (r P50 0.10, component max r P50 0.11). These are fragmented
