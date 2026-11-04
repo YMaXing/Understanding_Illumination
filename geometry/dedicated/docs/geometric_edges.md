@@ -220,7 +220,7 @@ times above (median over 4 images: `viz` 4.0 s, `viz_depth` 7.6 s, `viz_fold` 6.
 run with sheets is about 4× slower than without. For dataset-scale runs pass **`--no-viz`** (a CLI flag of `infer` and `stage-b`; there is no config key); sheets can be
 rendered later for chosen images with `python -m illum_baseline viz [stems ...]`.
 
-## 8. geom_v2 design (TASK_GEOM_V2 V0; nothing built yet)
+## 8. geom_v2 design and results (TASK_GEOM_V2 V0–V5; stopped at V5, geom_v1 stays the default)
 
 **Goal.** geom_v2 = geom_v1 with the Laplacian channel demoted to a **fallback**: it relaxes only away from accepted
 geometric edges, so near them the depth and fold channels alone set the band. The fusion stays the elementwise min; the
@@ -649,6 +649,54 @@ excess back (0.256) and texture (079 sunlit 0.488).
 
 **Retirement metric** (core w, V2–V4 options as settled): missed true geometry per pixel 0.563 [0.495, 0.630] at band_min
 2 (0.510 [0.447, 0.573] at 3), gap_unresolved alone 0.127 [0.082, 0.176] (0.114 at 3): the Laplacian cannot be retired.
+
+### 8.13 V5 rerun with relaxing edges only, and the end of the geom_v2 line
+
+**Change (V5 review):** the exclusion edges keep only edges that relax: accepted fold candidates (rescued included, at the
+Hessian site) and accepted depth candidates except thin doublets (sky edges kept), each only if its own w_c < 0.5
+(`illum_baseline/geom/fallback.py`; `include_weak` reproduces the first sweep). **Added condition:** the chosen setting
+must reduce band excess against geom_v1 with the paired stratified-bootstrap 95 % CI of the difference (setting − geom_v1,
+one estimator, the same draws) excluding 0. Same 16 settings, same rule otherwise (`scripts/geom_v5_fallback.py` →
+`v2/fallback_relax.json`, `fallback_relax_settings.csv`).
+
+| d / r / band_min | missed / px | band excess | Δ band excess [95 % CI] | Δ missed / px [CI] | Δ tri_fp [CI] | RGB depth / fold targets / fold cand. | passes the first rule |
+|---|---|---|---|---|---|---|---|
+| geom_v1 | 0.079 | 0.214 | – | – | – | 0.977 / 0.869 / 0.800 | – |
+| 2 / 2 / 2 | 0.079 | 0.217 | +0.003 [0.000, +0.009] | −0.000 [−0.001, +0.001] | 0 [0, 0] | 0.976 / 0.869 / 0.809 | yes |
+| 2 / 2 / 3 | 0.079 | 0.217 | +0.003 [0.000, +0.009] | −0.000 [−0.001, +0.001] | 0 [0, 0] | 0.976 / 0.869 / 0.812 | yes |
+| 2 / 3 / 2 | 0.000 | 0.256 | +0.043 [+0.030, +0.057] | −0.079 [−0.095, −0.065] | +0.015 [+0.008, +0.022] | 0.991 / 0.907 / 0.829 | yes |
+| 2 / 3 / 3 | 0.000 | 0.256 | +0.043 [+0.030, +0.057] | −0.079 [−0.095, −0.065] | +0.015 [+0.008, +0.022] | 0.991 / 0.907 / 0.830 | yes |
+| 3 / 2 / 2 | 0.106 | 0.189 | **−0.024 [−0.037, −0.013]** | +0.027 [+0.020, +0.035] | −0.000 [−0.001, 0] | 0.948 / 0.867 / 0.800 | no (missed, RGB depth) |
+| 3 / 2 / 3 | 0.079 | 0.217 | +0.003 [0.000, +0.009] | −0.000 [−0.001, +0.001] | 0 [0, 0] | 0.976 / 0.869 / 0.812 | yes |
+| 3 / 3 / 2 | 0.028 | 0.229 | +0.015 [+0.002, +0.028] | −0.052 [−0.067, −0.037] | +0.015 [+0.008, +0.022] | 0.963 / 0.905 / 0.818 | yes |
+| 3 / 3 / 3 | 0.000 | 0.256 | +0.043 [+0.030, +0.057] | −0.079 [−0.095, −0.065] | +0.015 [+0.008, +0.022] | 0.991 / 0.907 / 0.830 | yes |
+| 4 / 2 / 2 | 0.137 | 0.160 | **−0.054 [−0.077, −0.033]** | +0.058 [+0.044, +0.073] | −0.001 [−0.002, 0] | 0.919 / 0.856 / 0.789 | no (missed, RGB depth) |
+| 4 / 2 / 3 | 0.108 | 0.188 | **−0.025 [−0.037, −0.014]** | +0.029 [+0.021, +0.036] | −0.000 [−0.001, 0] | 0.948 / 0.858 / 0.800 | no (missed, RGB depth) |
+| 4 / 3 / 2 | 0.064 | 0.199 | −0.015 [−0.034, +0.003] | −0.015 [−0.032, +0.002] | +0.014 [+0.008, +0.021] | 0.935 / 0.889 / 0.805 | no (RGB depth) |
+| 4 / 3 / 3 | 0.035 | 0.228 | +0.014 [+0.003, +0.025] | −0.044 [−0.058, −0.032] | +0.015 [+0.008, +0.022] | 0.963 / 0.891 / 0.817 | yes |
+| 6 / 2 / 2 | 0.199 | 0.100 | **−0.114 [−0.152, −0.075]** | +0.120 [+0.095, +0.147] | −0.002 [−0.006, 0] | 0.860 / 0.828 / 0.770 | no (missed, RGB ×3) |
+| 6 / 2 / 3 | 0.168 | 0.131 | **−0.083 [−0.112, −0.054]** | +0.089 [+0.070, +0.108] | −0.002 [−0.004, 0] | 0.889 / 0.831 / 0.781 | no (missed, RGB depth / targets) |
+| 6 / 3 / 2 | 0.137 | 0.127 | **−0.087 [−0.122, −0.051]** | +0.058 [+0.032, +0.085] | +0.013 [+0.006, +0.019] | 0.872 / 0.842 / 0.780 | no (missed, RGB ×2) |
+| 6 / 3 / 3 | 0.106 | 0.158 | **−0.056 [−0.083, −0.030]** | +0.026 [+0.006, +0.047] | +0.013 [+0.007, +0.020] | 0.900 / 0.845 / 0.791 | no (missed, RGB depth / targets) |
+
+(step / limb / fold ROI coverage pass everywhere; texture class 0.189–0.254, 079 sunlit 0.367–0.504.)
+
+**Failures per constraint, first sweep → rerun (removed):** fold-candidate RGB coverage 16 → 1 (**15 removed**), missed
+geometry 7 → 7 (0), depth-edge RGB coverage 8 → 8 (0), fold-target RGB coverage 4 → 4 (0), step / limb / fold 0 → 0; the
+new improvement condition fails in 9.
+
+**Selection: no setting passes.** The 8 settings that meet every constraint of the first rule have band excess 0.217–0.256,
+never below geom_v1's 0.214 (the closest, 2 / 2 / 2, differs by +0.003 [0.000, +0.009]). The 7 settings whose paired CI
+shows a band-excess reduction all fail the missed-geometry limit and the depth-edge RGB coverage: band excess and the
+geometry next to the depth edges trade one for one, because the reduction comes from removing the Laplacian where the depth
+band (2–3 px around DA3's edge) is narrower than the RGB edge's offset from it. The held-out and all-edges checks are
+defined at a chosen setting and are not run.
+
+**Conclusion: the geom_v2 line stops here (V5 review rule).** geom_v1 stays the pipeline default and V6 is skipped. What
+remains from TASK_GEOM_V2, all behind options whose defaults keep geom_v1 bit for bit: the scorer
+(`scripts/geom_score.py`), `fold.site: plane_intersection | hessian_peak` (hessian_peak met its V2 rule), `depth.short_thin`,
+`fold.rescue_undecidable`, `laplacian.role: fallback`, and the diagnostics of §8.7–§8.13. Retirement metric (core w, the
+settled options): missed true geometry 0.563 [0.495, 0.630], gap_unresolved 0.127 [0.082, 0.176].
 
 ---
 

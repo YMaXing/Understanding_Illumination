@@ -373,8 +373,15 @@ Settled in F0 (leans agreed) and revised in F1–F4; current state:
 | V4 | `fold.rescue_undecidable: reject \| corroborate` (+ `ctx.L_veto_over_rho_f`); 1 of 21 veto-blocked units closed (target ≥ 7), their relaxed share 0.063 → 0.129; core missed 0.563 → 0.508; fails 079 grass (+0.017) and the 083 interior (0 → 0.021 core); **not proposed**; item 7 stays open, item 6 open | as measured |
 | V4 review | rescue_undecidable stays reject; fold_channel.md §7: the V4 recall gain, the failure mode (the scale-ratio-vetoed Laplacian passes smooth curvature), a hessian-peak-sharpness candidate, unit closure structurally hard for narrow bands | decided 2026-11-03 |
 | V5 | `laplacian.role: channel \| fallback` (+ `d_excl`; `illum_baseline/geom/fallback.py`); sweep d_excl {2, 3, 4, 6} × r {2, 3} × band_min {2, 3}: **no setting passes** (fold-candidate RGB coverage fails in all 16, best 0.778 vs 0.780; 99.8 % of the lost samples sit next to accepted folds with w_c ≥ 0.5); held-out agrees; retirement metric 0.563 (gap_unresolved 0.127) | as measured |
+| V5 review / rerun | exclusion only around edges that relax (own w_c < 0.5); added: band excess reduced vs geom_v1 with the paired bootstrap CI excluding 0; rerun: fold-candidate RGB failures 16 → 1, others unchanged; **no setting passes** (the 8 that meet the first rule never reduce band excess, the 7 that reduce it fail missed geometry and depth-edge RGB coverage) | as measured |
+| TASK_GEOM_V2 end | **the geom_v2 line stops at V5; geom_v1 stays the pipeline default; V6 skipped**; the V2–V5 options stay available at their defaults (geom_v1 bit for bit) | decided by rule 2026-11-03 |
 
 ### 7.1 geom_v2 candidate list (recorded in G6; no code)
+
+Outcome (TASK_GEOM_V2, `docs/geometric_edges.md` §8): fold re-siting built (`fold.site: hessian_peak` met its rule);
+thin-contour depth components built and not proposed (documented gap); items 6 / 7: `fold.rescue_undecidable` built and not
+proposed, both items stay open; the Laplacian fallback built, no setting passed the selection rule, so the line stopped
+with geom_v1 as the default.
 
 1. **Fold re-siting.** Place the fold at the intersection of the two fitted side planes (ρ̂₊ = ρ̂₋ along e1) instead of
    the NMS ridge of the rotation rate, where the planes cross within ±k₁. G5 diagnostic: on convex folds the RGB-edge

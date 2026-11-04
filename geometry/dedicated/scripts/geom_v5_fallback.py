@@ -19,11 +19,17 @@ ties by the lower texture class share (all combined w).
 Held-out: the same selection with the audit restricted to batch1 units, and the chosen setting's audit numbers on the
 batch2 units. Retirement metric: core per-pixel missed true geometry (gap_unresolved apart). Check: the chosen setting
 with all depth edges in the exclusion (thin doublets included).
-Writes baseline_output/diag/geom/v2/fallback.json and fallback_settings.csv.
+V5 review: the exclusion edges are only those that relax (own w_c < 0.5; --include-weak reproduces the first sweep),
+the chosen setting must also reduce band excess against geom_v1 with the paired bootstrap 95 % CI of the difference
+(same draws) excluding 0, and paired CIs (setting - geom_v1) are reported for band excess, per-pixel missed geometry
+and tri_fp; the failures per constraint are compared with the first sweep's.
+Writes baseline_output/diag/geom/v2/fallback[_weak].json and fallback[_weak]_settings.csv (the first sweep:
+fallback.json / fallback_settings.csv, kept).
 """
 
 from __future__ import annotations
 
+import argparse
 import dataclasses
 import itertools
 import json
@@ -39,6 +45,7 @@ sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from geom_g2_coverage import raster  # noqa: E402
+from geom_g4 import GAPS, Estimator  # noqa: E402
 from geom_score import (OUT, W_MIN, Run, audit, g1_table, load_labels, rgb_coverage, rgb_edge_set,  # noqa: E402
                         unit_fractions, wfrac)
 from illum_baseline.geom.depth import sky_boundary_ring  # noqa: E402
@@ -110,7 +117,7 @@ def metrics(run, lab, draws, strata, totals, masks, edges, batch1, batch2) -> di
                 "texture_label": t["texture label | relaxed per pixel"],
                 **{f"geom_only {b}": g[f"{b} | relaxed per pixel"] for b in ("geom_gain", "geom_offset",
                                                                               "geom_band_excess", "geom_fp")}}
-    out = {}
+    out = {"_U": U}
     for w in ("combined", "core"):
         out[w] = {"audit": aud(A, w), "audit_batch1": aud(A1, w), "audit_batch2": aud(A2, w),
                   "coverage": {c: G[w]["classes"][c]["coverage"] for c in ("step", "limb", "fold", "crease")},
@@ -132,6 +139,28 @@ def flat(name, m, w="combined", aud="audit"):
             **{f"w<.5 {b}": v for b, v in m[w]["wfrac"].items()}}
 
 
+def paired(U_s: pd.DataFrame, U_v: pd.DataFrame, draws, strata, totals) -> dict:
+    """Paired stratified bootstrap (one estimator, the same draws) of setting - geom_v1 on the tri-only audit, combined w:
+    band excess and tri_fp still relaxed and missed true geometry, per pixel."""
+    d = draws[draws["direction"] == "tri-only"].merge(U_s[["id", "bucket", "frac_combined"]], on="id", how="left")
+    d = d.merge(U_v[["id", "frac_combined"]].rename(columns={"frac_combined": "frac_v1"}), on="id", how="left")
+    d = d.reset_index(drop=True)
+    t = totals[totals["direction"] == "tri-only"]
+    E = Estimator(d, strata[strata["direction"] == "tri-only"], float(t["area_px"].sum()), float(t["image_px"].sum()),
+                  np.random.default_rng(0))
+    fs, fv = d["frac_combined"].to_numpy(), d["frac_v1"].to_numpy()
+    be, fp, gp = ((d["bucket"] == "tri_band_excess").to_numpy(), (d["bucket"] == "tri_fp").to_numpy(),
+                  d["bucket"].isin(GAPS).to_numpy())
+    _, reps = E.run({"be_s": be * fs, "be_v": be * fv, "fp_s": fp * fs, "fp_v": fp * fv,
+                     "mi_s": gp * (1 - fs), "mi_v": gp * (1 - fv)})
+    out = {}
+    for k, name in (("be", "band excess"), ("mi", "missed per pixel"), ("fp", "tri_fp")):
+        diff = reps[f"{k}_s"] - reps[f"{k}_v"]
+        lo, hi = np.percentile(diff, [2.5, 97.5])
+        out[name] = {"diff": float(reps[f"_est:{k}_s"] - reps[f"_est:{k}_v"]), "ci_lo": float(lo), "ci_hi": float(hi)}
+    return out
+
+
 def select(rows: pd.DataFrame, ref: dict) -> tuple[pd.DataFrame, str | None, dict]:
     ok = pd.DataFrame({
         "missed": rows["missed/px"] <= ref["missed/px"] + TOL,
@@ -139,7 +168,8 @@ def select(rows: pd.DataFrame, ref: dict) -> tuple[pd.DataFrame, str | None, dic
         "fold": rows["cov fold"] >= ref["cov fold"] - TOL,
         "rgb depth": rows["rgb depth"] >= ref["rgb depth"] - TOL,
         "rgb fold targets": rows["rgb fold targets"] >= ref["rgb fold targets"] - TOL,
-        "rgb fold cand": rows["rgb fold cand"] >= ref["rgb fold cand"] - TOL}, index=rows.index)
+        "rgb fold cand": rows["rgb fold cand"] >= ref["rgb fold cand"] - TOL,
+        "band excess reduced (paired CI < 0)": rows["be diff hi"] < 0}, index=rows.index)
     passing = rows[ok.all(axis=1)]
     if not len(passing):
         return ok, None, {c: int((~ok[c]).sum()) for c in ok}
@@ -148,6 +178,10 @@ def select(rows: pd.DataFrame, ref: dict) -> tuple[pd.DataFrame, str | None, dic
 
 
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--include-weak", action="store_true", help="the first sweep's exclusion (edges with w_c >= 0.5 too)")
+    args = ap.parse_args()
+    tag = "_weak" if args.include_weak else "_relax"
     OUT.mkdir(parents=True, exist_ok=True)
     lab, draws, strata, totals, masks = load_labels()
     edges = rgb_edge_set()
@@ -168,12 +202,13 @@ def main():
             checks.append(bool(np.array_equal(dw[2].astype(np.float16), a["depth_w_net"]) and
                                np.array_equal(fw[2].astype(np.float16), a["fold_w_net"])))
             lap = {2: a["laplacian_w_net"].astype(np.float64), 3: a3["laplacian_w_net"].astype(np.float64)}
-            zones = {d: exclusion_zone(dc, fc, shape, d) for d in D_EXCL}
+            zones = {d: exclusion_zone(dc, fc, shape, d, include_weak=args.include_weak) for d in D_EXCL}
             pre[stem] = {"dw": dw, "fw": fw, "lap": lap, "zones": zones, "dc": dc, "fc": fc, "shape": shape}
             up[stem] = tuple(meta["geometry"]["upright_WxH"])
     print("band_min 2 re-rasterization reproduces the saved depth / fold w:", all(checks), f"({sum(checks)}/{len(checks)})")
 
     v1m = metrics(Run(V1), lab, draws, strata, totals, masks, edges, batch1, batch2)
+    U_v1 = v1m["_U"]
     ref, ref1 = flat("geom_v1", v1m), flat("geom_v1", v1m, aud="audit_batch1")
     results, rows, rows1, rows2, core_rows = {}, [], [], [], []
     for d, r, bm in itertools.product(D_EXCL, RADII, BAND_MINS):
@@ -184,22 +219,37 @@ def main():
             net[stem] = (np.minimum(core, apply_fallback(p["lap"][r], p["zones"][d])), core)
         m = metrics(SettingRun(name, base, net, up), lab, draws, strata, totals, masks, edges, batch1, batch2)
         excl = float(np.mean([pre[s]["zones"][d].mean() for s in pre]))
-        results[name] = m | {"exclusion_share_mean": excl}
-        rows.append(flat(name, m) | {"d_excl": d, "pool_radius": r, "band_min": bm, "exclusion share": excl})
-        rows1.append(flat(name, m, aud="audit_batch1"))
-        rows2.append(flat(name, m, aud="audit_batch2"))
+        pr = paired(m["_U"], v1m["_U"], draws, strata, totals)
+        pr1 = paired(m["_U"], v1m["_U"], *batch_subset(draws, strata, totals, batch1))
+        pr2 = paired(m["_U"], v1m["_U"], *batch_subset(draws, strata, totals, batch2))
+        results[name] = {k: v for k, v in m.items() if k != "_U"} | {"exclusion_share_mean": excl, "paired": pr,
+                                                                    "paired_batch1": pr1, "paired_batch2": pr2}
+        pcols = lambda q: {"be diff": q["band excess"]["diff"], "be diff lo": q["band excess"]["ci_lo"],  # noqa: E731
+                           "be diff hi": q["band excess"]["ci_hi"], "missed diff": q["missed per pixel"]["diff"],
+                           "missed diff lo": q["missed per pixel"]["ci_lo"], "missed diff hi": q["missed per pixel"]["ci_hi"],
+                           "fp diff": q["tri_fp"]["diff"], "fp diff lo": q["tri_fp"]["ci_lo"], "fp diff hi": q["tri_fp"]["ci_hi"]}
+        rows.append(flat(name, m) | {"d_excl": d, "pool_radius": r, "band_min": bm, "exclusion share": excl} | pcols(pr))
+        rows1.append(flat(name, m, aud="audit_batch1") | pcols(pr1))
+        rows2.append(flat(name, m, aud="audit_batch2") | pcols(pr2))
         print(name, "done", flush=True)
     R = pd.DataFrame(rows)
-    R.to_csv(OUT / "fallback_settings.csv", index=False)
+    R.to_csv(OUT / f"fallback{tag}_settings.csv", index=False)
     ok, best, binding = select(R, ref)
     ok1, best1, binding1 = select(pd.DataFrame(rows1).assign(**{c: R[c] for c in R if c.startswith(("cov ", "rgb "))}),
                                   ref1)
-    rep = {"rebuild_bit_identical": all(checks), "geom_v1": v1m, "settings": results, "selection": {
+    first = OUT / "fallback.json"
+    earlier = json.loads(first.read_text())["selection"]["full"]["fails_per_constraint"] if first.exists() else {}
+    v1m = {k: v for k, v in v1m.items() if k != "_U"}
+    rep = {"exclusion": "all accepted edges (first sweep)" if args.include_weak else "relaxing edges only (w_c < 0.5)",
+           "rebuild_bit_identical": all(checks), "geom_v1": v1m, "settings": results,
+           "failures_first_sweep": earlier,
+           "failures_removed": {c: earlier[c] - binding.get(c, 0) for c in earlier}, "selection": {
         "full": {"chosen": best, "fails_per_constraint": binding, "pass": ok.all(axis=1).tolist()},
         "batch1_audit": {"chosen": best1, "fails_per_constraint": binding1},
         "same_choice": best == best1}}
     if best1 is not None:
         rep["selection"]["batch1_audit"]["chosen_on_batch2_units"] = flat(best1, results[best1], aud="audit_batch2")
+        rep["selection"]["batch1_audit"]["chosen_paired_batch2"] = results[best1]["paired_batch2"]
         rep["selection"]["batch1_audit"]["geom_v1_on_batch2_units"] = flat("geom_v1", v1m, aud="audit_batch2")
     # retirement metric: core w (V2-V4 options on) at each band_min
     for bm in BAND_MINS:
@@ -212,21 +262,25 @@ def main():
         net = {}
         for stem, p in pre.items():
             core = np.minimum(p["dw"][bm], p["fw"][bm])
-            z = exclusion_zone(p["dc"], p["fc"], p["shape"], d, include_thin=True)
+            z = exclusion_zone(p["dc"], p["fc"], p["shape"], d, include_thin=True, include_weak=args.include_weak)
             net[stem] = (np.minimum(core, apply_fallback(p["lap"][r], z)), core)
         m = metrics(SettingRun(best + "_all_edges", base, net, up), lab, draws, strata, totals, masks, edges, batch1,
                     batch2)
-        rep["all_edges_check"] = flat(best + " all edges", m)
-    (OUT / "fallback.json").write_text(json.dumps(rep, indent=1, default=float))
+        rep["all_edges_check"] = flat(best + " all edges", m) | {"paired": paired(m["_U"], U_v1, draws, strata, totals)}
+    (OUT / f"fallback{tag}.json").write_text(json.dumps(rep, indent=1, default=float))
 
     pd.set_option("display.width", 250, "display.max_columns", 60, "display.max_rows", 80)
     show = ["setting", "missed/px", "band excess", "tri_fp", "texture label", "cov step", "cov limb", "cov fold",
             "cov crease", "texture class", "tex 079 grass", "tex 079 grass sunlit", "rgb depth", "rgb fold targets",
-            "rgb fold cand", "go geom_gain", "go geom_fp", "w<.5 batch1", "w<.5 batch2", "exclusion share"]
+            "rgb fold cand", "go geom_gain", "go geom_fp", "w<.5 batch1", "w<.5 batch2", "exclusion share",
+            "be diff", "be diff lo", "be diff hi", "missed diff", "missed diff lo", "missed diff hi", "fp diff",
+            "fp diff lo", "fp diff hi"]
     print("geom_v1:", {k: round(v, 4) for k, v in ref.items() if isinstance(v, float)})
     print(R[show].round(4).to_string(index=False))
     print("pass:", dict(zip(R["setting"], ok.all(axis=1))))
     print("selection:", json.dumps(rep["selection"], indent=1, default=float))
+    print("failures, first sweep -> now (removed):", {c: (earlier.get(c), binding.get(c), rep["failures_removed"].get(c))
+                                                     for c in binding})
     print("retirement (core):", json.dumps(rep["retirement_core"], indent=1, default=float))
     if "all_edges_check" in rep:
         print("all-edges check:", {k: round(v, 4) for k, v in rep["all_edges_check"].items() if isinstance(v, float)})
