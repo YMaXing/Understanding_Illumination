@@ -698,6 +698,37 @@ remains from TASK_GEOM_V2, all behind options whose defaults keep geom_v1 bit fo
 `fold.rescue_undecidable`, `laplacian.role: fallback`, and the diagnostics of §8.7–§8.13. Retirement metric (core w, the
 settled options): missed true geometry 0.563 [0.495, 0.630], gap_unresolved 0.127 [0.082, 0.176].
 
+**Final check (wrap-up, report only):** the fallback with the exclusion around relaxing fold candidates only (own w_c <
+0.5, at the Hessian site; no depth and no sky edges), pool radius 2, band_min 2 (`scripts/geom_v5_foldonly.py` →
+`v2/fallback_foldonly.json`):
+
+| d_excl | zone share | Δ band excess [95 % CI] | Δ missed / px [CI] | Δ tri_fp | RGB depth / fold targets / fold cand. | step / limb / fold |
+|---|---|---|---|---|---|---|
+| 2 | 0.027 | +0.003 [0.000, +0.009] | −0.000 [−0.001, +0.001] | 0 | 0.976 / 0.869 / 0.809 | 0.900 / 1.000 / 0.981 |
+| 3 | 0.041 | +0.001 [−0.004, +0.006] | +0.006 [+0.003, +0.010] | 0 | 0.974 / 0.867 / 0.801 | 0.900 / 1.000 / 0.978 |
+| 4 | 0.053 | −0.005 [−0.012, +0.003] | +0.015 [+0.009, +0.023] | 0 | 0.971 / 0.859 / 0.792 | 0.900 / 1.000 / 0.978 |
+
+Every setting meets the original constraints, none reduces band excess with its CI below 0 (the +0.003 at d_excl 2 is
+the Hessian siting itself: geom_v1_hessian against geom_v1). This was the last check; the line stays stopped.
+
+**geom_v1_1** (wrap-up): geom_v1 + `fold.site: hessian_peak`, nothing else (`configs/candidate_geom_v1_1.yaml`, run
+`geom_v1_1` on both batches, a new bit-for-bit reference; its arrays equal geom_v1_hessian's). Scored
+(`scripts/geom_score.py` → `baseline_output/diag/geom/v1_1/score.json`), combined w (core in brackets):
+
+| metric | geom_v1 | geom_v1_1 |
+|---|---|---|
+| missed true geometry per pixel / per unit | 0.079 / 0.007 (0.568 / 0.584) | 0.079 / 0.007 (0.563 / 0.584) |
+| band excess / tri_fp / texture-labelled units relaxed | 0.214 / 0.069 / 0.159 | 0.217 / 0.069 / 0.163 |
+| ROI coverage step / limb / fold / crease | 0.900 / 1.000 / 0.982 / 0.574 | 0.900 / 1.000 / 0.981 / 0.574 |
+| texture class / 079 grass / 079 sunlit / 083 interior | 0.197 / 0.218 / 0.383 / 0.002 | unchanged |
+| RGB-edge coverage: depth edges / fold targets / **fold candidates** | 0.977 / 0.869 / **0.800** (core 0.671) | 0.976 / 0.869 / **0.809** (core 0.696) |
+| w < 0.5 deliverable, batch1 / batch2 | 0.216 / 0.277 | 0.215 / 0.275 |
+| Stage B s per image (this pass), batch1 / batch2 | 7.70 / 7.75 | 7.74 / 7.87 |
+
+The fold bands move toward the RGB edge (convex median |offset| 2.84 → 1.70 px, §8.9): fold-candidate RGB coverage
++0.009 (core +0.025), band excess +0.003 [0.000, +0.009] (the paired CI of §8.13's d_excl 2 row, which equals the siting
+alone), everything else within 0.001. A prepared, unapplied default proposal is on branch `proposal/geom_v1_1_default`.
+
 ---
 
 # Appendix A. Integration record (TASK_GEOM_INTEGRATION G0–G5)

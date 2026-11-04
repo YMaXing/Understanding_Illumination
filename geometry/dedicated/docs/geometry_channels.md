@@ -375,6 +375,7 @@ Settled in F0 (leans agreed) and revised in F1–F4; current state:
 | V5 | `laplacian.role: channel \| fallback` (+ `d_excl`; `illum_baseline/geom/fallback.py`); sweep d_excl {2, 3, 4, 6} × r {2, 3} × band_min {2, 3}: **no setting passes** (fold-candidate RGB coverage fails in all 16, best 0.778 vs 0.780; 99.8 % of the lost samples sit next to accepted folds with w_c ≥ 0.5); held-out agrees; retirement metric 0.563 (gap_unresolved 0.127) | as measured |
 | V5 review / rerun | exclusion only around edges that relax (own w_c < 0.5); added: band excess reduced vs geom_v1 with the paired bootstrap CI excluding 0; rerun: fold-candidate RGB failures 16 → 1, others unchanged; **no setting passes** (the 8 that meet the first rule never reduce band excess, the 7 that reduce it fail missed geometry and depth-edge RGB coverage) | as measured |
 | TASK_GEOM_V2 end | **the geom_v2 line stops at V5; geom_v1 stays the pipeline default; V6 skipped**; the V2–V5 options stay available at their defaults (geom_v1 bit for bit) | decided by rule 2026-11-03 |
+| wrap-up | final check: fallback with fold-only relaxing exclusion (d_excl 2 / 3 / 4, r 2, band_min 2) meets every original constraint but never cuts band excess (best −0.005 [−0.012, +0.003]); **geom_v1_1 = geom_v1 + fold.site hessian_peak**, a new bit-for-bit reference (both batches); default proposal prepared on `proposal/geom_v1_1_default` (not applied) | as built / proposed |
 
 ### 7.1 geom_v2 candidate list (recorded in G6; no code)
 

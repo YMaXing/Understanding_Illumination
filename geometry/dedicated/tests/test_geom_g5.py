@@ -95,3 +95,12 @@ def test_geom_sheet_and_disagreement():
     cfg = load_config(V1 / "config_resolved.yaml")
     out = render_geom(cfg, V1, "taiwei_cui_079")
     assert out.exists() and out.stat().st_size > 10_000
+
+
+def test_geom_v1_1_config_is_geom_v1_plus_the_hessian_site():
+    v1 = load_config(PROJECT_ROOT / "configs" / "candidate_geom_v1.yaml")
+    v11 = load_config(PROJECT_ROOT / "configs" / "candidate_geom_v1_1.yaml")
+    assert v11.run.name == "geom_v1_1" and v11.geometry.fold.site == "hessian_peak"
+    a, b = v1.to_dict(), v11.to_dict()
+    b["geometry"]["fold"]["site"], b["run"]["name"] = "nms", "geom_v1"
+    assert a == b
