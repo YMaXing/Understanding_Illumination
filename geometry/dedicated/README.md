@@ -52,26 +52,100 @@ Each batch has four sheet folders with one PNG per image:
 | `viz_depth/` | the depth channel: accepted edges, ΔZ, significance, `w_depth` | "The depth sheet and the depth profile tool" |
 | `viz/` | the Laplacian detector and the final `w` on the photo | "Reading the Stage B visualization panels" |
 
-## Running
+## Running inference
 
-Run from this directory. Unset `PYTHONPATH` so that other Python installs, such as ROS, stay off the path.
+Run every command from this directory (`geometry/dedicated/`). Prefix each one with `env -u PYTHONPATH`, so that other
+Python installs (ROS) stay off the path, and run it through `uv run`. Without `--config`, every command uses
+`configs/default.yaml`, which is geom_v1_1 with run name `geom_v1_1`.
+
+### Inputs
+
+- **Images.** Linear RGB TIFFs (`.tif` / `.tiff`). Mosaic (raw Bayer) input is not supported. The EXIF orientation
+  tag is respected.
+- **Where they are read from.** The input folder is searched **recursively** (`paths.glob: "**/*.tif*"`). The default
+  input is `data/`, so a bare `infer` also picks up `data/batch2/`: it sees 20 TIFFs, not 10. Name the folder with `-i`.
+- **The output folder** must not be inside the input folder.
+
+### One command: `infer` (Stage A, then Stage B)
 
 ```bash
-# full default pipeline (Stage A: DA3 on the GPU, cached; Stage B: the geometry channels on the CPU)
-env -u PYTHONPATH uv run python -m illum_baseline infer
-# Stage B only, on another batch
-env -u PYTHONPATH uv run python -m illum_baseline stage-b -i data/batch2 -o baseline_output_batch2
-# re-render the sheets from saved outputs, for chosen images
-env -u PYTHONPATH uv run python -m illum_baseline viz --config configs/candidate_geom_v1_1.yaml [stems ...]
-# tests, including the bit-for-bit check of every reference run
-env -u PYTHONPATH uv run pytest
+# a new folder of TIFFs
+env -u PYTHONPATH uv run python -m illum_baseline infer -i /path/to/tiffs -o /path/to/outputs
+# the two batches here, each into its own output folder (how the reference runs were made)
+env -u PYTHONPATH uv run python -m illum_baseline infer -i data/batch2 -o baseline_output_batch2
+# dataset scale: skip the diagnostic sheets; only some images
+env -u PYTHONPATH uv run python -m illum_baseline infer -i /path/to/tiffs -o /path/to/outputs --no-viz
+env -u PYTHONPATH uv run python -m illum_baseline infer -i /path/to/tiffs -o /path/to/outputs --stems img_001 img_002
 ```
 
-Pass `--no-viz` to `infer` or `stage-b` for dataset-scale runs. Rendering the four sheets adds about 24 s per image to
-Stage B's 7–8 s (CPU).
+To run batch1 alone, don't point `-i` at `data/`: that also picks up `data/batch2/`. Give `--stems` with its ten
+`taiwei_cui_*` names, or put the batch1 TIFFs in their own folder.
 
-Each run writes to `stage_b/<run.name>/`. That directory refuses different settings unless `--force`, so a changed
-config needs a new `run.name`. The earlier defaults stay reproducible with `--config`:
+`infer` runs two stages and prints a JSON summary:
+1. **Stage A** (`device: cuda`; falls back to the CPU, with a warning, if no GPU is found):
+   - converts each TIFF to sRGB;
+   - estimates the focal length with GeoCalib, per image;
+   - runs DA3METRIC-LARGE once, at network resolution (long side 504: 504 × 378 or 378 × 504), about 0.1 s per image
+     on the GPU.
 
-- `configs/candidate_geom_v1.yaml`
-- `configs/candidate_tri_veto4.yaml`
+   It caches the results as `<output>/stage_a/<stem>.npz` (D, sky_prob), `<stem>.json` and `srgb/<stem>.png`.
+2. **Stage B** (CPU): the depth, fold and Laplacian channels, their minimum, and the deliverable. About 7.7–7.9 s per
+   image, of which about 4.5 s is the dense fit. The four diagnostic sheets add about 24 s per image unless `--no-viz`.
+
+Both stages skip images whose outputs already exist. `--force` recomputes them.
+
+### Outputs: `<output>/stage_b/geom_v1_1/`
+
+| file | contents |
+|---|---|
+| `<stem>.npz` | **`w`: the deliverable**, float16, at the TIFF's original size and in its **stored** frame (EXIF orientation not applied), 0.05 ≤ w ≤ 1. Also `w_net` (network resolution) and the per-channel weights, strengths and diagnostics (`docs/geometric_edges.md` §1) |
+| `<stem>.json` | per-image scalars: channel counts, noise scales, frames (`orientation_applied`, `upright_WxH`, `stored_WxH`) |
+| `<stem>_depth_candidates.parquet`, `<stem>_fold_candidates.parquet` (and `_null` tables) | candidate tables, upright network pixel coordinates |
+| `manifest.csv` / `manifest.parquet` | one row per image |
+| `config_resolved.yaml` | the exact settings of the run |
+| `viz/`, `viz_depth/`, `viz_fold/`, `viz_geom/` | the sheets (unless `--no-viz`) |
+
+Using `w` in a smoothness loss (`docs/geometric_edges.md` §1–§2):
+
+```python
+import numpy as np
+from illum_baseline.outputs import pair_weights
+
+w = np.load("<output>/stage_b/geom_v1_1/<stem>.npz")["w"].astype(np.float32)  # (H, W), stored frame
+w_x, w_y = pair_weights(w)   # (H, W-1), (H-1, W): the min of each neighbour pair
+# loss term: sum(w_x * |dI_x|^p) + sum(w_y * |dI_y|^p), on the image in the same (stored) frame
+```
+
+Multiply the neighbour differences by the weight, never divide by it. Don't re-filter or differentiate `w`.
+
+### Running the stages separately
+
+```bash
+env -u PYTHONPATH uv run python -m illum_baseline stage-a -i /path/to/tiffs -o /path/to/outputs   # GPU, cached
+env -u PYTHONPATH uv run python -m illum_baseline stage-b -i /path/to/tiffs -o /path/to/outputs   # reads the cache
+```
+
+- **What `stage-b` reads.** It processes the images in `<output>/stage_a/`. `-i` is used only to warn about TIFFs that
+  have no cache yet.
+- **Changing Stage B settings.** Stage A doesn't depend on any Stage B setting, so a change to a detector or
+  geometry setting reuses the cache. Pass it with `--config` or `--set` (e.g. `--set geometry.fold.window_cap=end_only`),
+  and give the run a new name with `--run-name`. A run folder refuses different detector / sky / preprocess / geometry
+  settings unless `--force`, which overwrites it.
+
+### Re-rendering sheets, and the previous defaults
+
+```bash
+# sheets from saved outputs only (no recomputation); stems optional, default all
+env -u PYTHONPATH uv run python -m illum_baseline viz -o /path/to/outputs [stems ...]
+# a previous default, as its own run folder
+env -u PYTHONPATH uv run python -m illum_baseline stage-b --config configs/candidate_geom_v1.yaml -i /path/to/tiffs -o /path/to/outputs
+```
+
+The previous defaults are `configs/candidate_geom_v1.yaml` (run `geom_v1`) and `configs/candidate_tri_veto4.yaml`
+(run `tri_veto4`, the Laplacian detector only).
+
+### Tests
+
+```bash
+env -u PYTHONPATH uv run pytest   # about 27 min; includes the bit-for-bit check of every reference run
+```
