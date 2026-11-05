@@ -341,6 +341,27 @@ the pixels; its deliverable role there is the strengths (r, ΔZ).
     thin contours on fences and railings (090, 073, batch2 075, 067). The other open step gaps: τ_low 6, significance
     6, D-3 tests 5, sign 2, no candidate 1. In geom_v1 the Laplacian channel covers them.
 
+    **Where the thin contours fragment** (TASK_GEOM_V2, `scripts/thin_fragmentation.py` →
+    `baseline_output/diag/geom/thin_frag/`; report only, the depth channel unchanged). The method: run D-4 for every
+    candidate of the 25 component-stage units, form the pieces before any test (candidates with r > τ_high, linked
+    within 3 px), and evaluate every test on every candidate. Findings:
+    - **The pre-gate pieces are already short:** 249 pieces, median 3 px, P90 16 px; 107 are ≥ 5 px.
+    - **Sharpness and centring fragment them further.** Sharpness rejects 63 % of the candidates first, failing on the
+      wide side. Centring fails on 51 % and causes the most breaks (56) and sub-5-px pieces (80). Significance adds
+      16 breaks.
+    - **The failures alternate along each piece** rather than cluster: failure runs are 0.73–0.92 of the number
+      expected at random.
+    - **Bars and foliage share the thin-doublet signature.** The median lobe separation is above s_hi = 3.23 px on 79 %
+      of the bar pieces and 80 % of the foliage pieces (medians 4.3 / 5.7 px; tri_fp 92 %). No robust statistic
+      separates them:
+      - a contour-level decision with every test judged on the piece median keeps 7 % of the bar px against 42 % of
+        the foliage px;
+      - dropping sharpness at the contour level keeps 45 % of the bar px but 60 % of the foliage px and 27 % of the
+        tri_fp px (ceiling 0.137 of core missed geometry).
+
+    Not adopted; the depth channel is unchanged. Thin structures stay with the Laplacian, under the clutter policy
+    (item 8).
+
 The step-vs-kink model selection in `two_sided_fit` is not needed as an integration item: the 079 and 075 checks
 (section 5.3) found steps in DA3's depth, not folds misread as steps.
 

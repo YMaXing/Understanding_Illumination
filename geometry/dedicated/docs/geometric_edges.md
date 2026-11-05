@@ -150,6 +150,28 @@ Numbers from the labelled audit (`audit_split/`, 190 units, stratified pps estim
   - The plausible core gain is 0.01–0.015 of the tri-only area. The cost is a Stage B runtime about 4.5× longer (dense
     fit 5.7 → 26 s per image), plus recalibrating every pixel-defined parameter.
 
+### 5.1 Final limitations of geom_v1_1 (repair track closed)
+
+The TASK_GEOM_V2 repair track is closed (§8.16): the fold window cap (W1 / W1b / W1c), Laplacian hysteresis (W2), DA3 at
+1008 and the thin-structure analysis. The limits below stand. Shares are of the tri-only audit area (core = min(depth,
+fold); combined = geom_v1_1's w); "ceiling" is the reduction in core missed geometry if the class were fully relaxed.
+
+| limit | cause | size | what covers it in geom_v1_1 | tried, not adopted |
+|---|---|---|---|---|
+| Thin structures: fences, railings, chain-link (25 step gaps stopped at the component stage) | DA3 renders thin bars as fragmented thin doublets: pre-gate pieces are a median 3 px; sharpness and centring fragment them further, alternating along each piece; the doublet signature (lobe separation > s_hi) is shared with foliage | core ceiling 0.17–0.19 | the Laplacian, under the clutter policy (item 8) | V3 `short_thin`; contour-level decisions (keep more foliage than bar); DA3 at 1008 |
+| Unresolved geometry (18 gap_unresolved units: soft plant boundaries, foliage against sky, glass fins, nosings in planters) | no DA3 depth or normal signal above the local noise floor, at 504 or 1008 | core ceiling 0.127 | the Laplacian where its response exists; otherwise missed | DA3 at 1008 (no signal gain; 2 units gain a candidate) |
+| Narrow faces (item 7; units 15, 37, 92; the 070 middle riser) | a face narrower than k1 + m_min + 2 ≈ 12–14 px leaves no clean fold window; DA3 rounds the face, so its folds often fail the Hessian height test | core ceiling 0.014; combined w < 0.5 on 0.70 / 0.78 / 0.92 of units 15 / 37 / 92; 070 riser folds 0.46 (Laplacian 0) | the Laplacian (15, 37), the crease rescue (92) | `fold.window_cap` next_ridge / next_fold_ridge / end_only; Laplacian hysteresis (no seed on the riser); DA3 at 1008 (closes the riser, class ≤ 0.014) |
+| Siding laps and sub-resolution edges (gap_subscale) | DA3 ramps of 17–28° with noisy normals: fold gate T/λ̂ ≈ 0.3–0.8 against 13.8; Laplacian q′ ≈ 1.5τ (w < 0.5 needs 2τ); shadow lowers both; depth r 0.005–0.012 < τ_low | 0.034 of the tri-only area; lap columns with combined w < 0.5: 0.14 (068), 0.16 (069), 0.005 inside the 069 shadow | the crease rescue (w_c 0.50–0.78) and the Laplacian, partly | Laplacian hysteresis (gaps bridged at w ≈ 0.67); DA3 at 1008 (lap S/N 14.3 → 4.4 on 068) |
+| Folds on textured surfaces (item 6; units 97, 124, 125) | one σ_geo / λ̂ per image; the gate fails on noisy normals | – | the Laplacian (0.70–0.89 of each unit) | additive_local / additive_cand nulls; `fold.rescue_undecidable` |
+| Moderate creases (item 9; the 076 façade ledge) | blocked by the capped veto | 076 ledge coverage 0.13 | documented gap; the crease rescue covers the 088 rock ridge (0.76) | – |
+| The Laplacian's band excess and texture | fixed-scale Laplacian, pooling radius 2 | band excess 0.217, tri_fp 0.069, texture-labelled units 0.163 (combined); texture ROIs 0.008 / 0.218 / 0.383 / 0.002 | accepted as the price of its recall (without it core misses 0.563 of the tri-only area) | fallback Laplacian (V5, no setting passed) |
+| Fold placement | the band sits at the oriented-Hessian peak (`fold.site: hessian_peak`) | convex median \|offset\| 1.70 px (2.84 at the NMS ridge) | bands ≥ 2 px | plane-intersection site |
+| The depth channel rarely sets w | its edges lie inside the Laplacian's relaxation | binding on 0.011 % / 0.029 % of the pixels | – (its value is the strengths and tables, §3) | – |
+| Runtime | dense fit and normals on the CPU | Stage B 7.7–7.9 s per image (4.5 s dense fit) | – | 1008 would be about 4.5× longer |
+
+Net: geom_v1_1 misses 0.079 of the tri-only area as true geometry per pixel in the combined w (0.007 per unit); the
+core channels alone miss 0.563.
+
 ## 6. How to re-run
 
 From `geometry/dedicated/` (ROS / other Python paths off: `env -u PYTHONPATH`):
@@ -949,6 +971,21 @@ Continuation runs (κ = 0.6), inside / outside the shadow: P50 16 / 8 px; 6 of 1
 **070 middle riser:** q′/τ along its folds is P10 / P50 / P90 = 0.39 / 0.54 / 0.67 (lower) and 0.39 / 0.59 / 0.68
 (upper). No pixel exceeds τ, so there is no seed and no hysteresis route. 29 % / 44 % of the pixels lie in
 (0.6τ, τ]; 0 % / 0.5 % in (0.8τ, τ].
+
+### 8.16 The repair track is closed
+
+After the geom_v2 line (V0–V5) and the wrap-up, four repair attempts targeted the limits that remain in geom_v1_1. None
+was adopted.
+
+| attempt | target | result | record |
+|---|---|---|---|
+| W1 / W1b / W1c `fold.window_cap` | narrow faces (070 middle riser) | the riser reaches 1.00 / 1.00 with next_ridge, but the crease losses (088) fail the constraints; next_fold_ridge 0.84 / 0.82; end_only 0.78 / 0.69: the face is too narrow for k1 + m_min | §8.14; `docs/fold_channel.md` §7 item 7 |
+| W2 `laplacian.hysteresis` | lap continuity | constraints hold, lap gain 0 (bridged w ≈ 0.67; w < 0.5 needs q′ > 2τ); the riser has no seed | §8.15 |
+| DA3 at 1008 | narrow faces, laps, unresolved units | the riser closes (class ≤ 0.014); lap S/N falls; no signal gain on unresolved units; plausible core gain 0.01–0.015 against a Stage B runtime about 4.5× longer | §5; `res1008/`, `gaps1008/` |
+| Thin-structure analysis | fences and railings | pieces a median 3 px before any test; sharpness and centring alternate; bars and foliage share the thin-doublet signature, so no contour-level decision | `docs/depth_channel.md` §7 item 11 |
+
+All the options stay in the code at their defaults (geom_v1_1 bit for bit), and the 1008 cache stays in
+`stage_a/res1008/`. The final limitations, with their causes and what covers each in geom_v1_1, are in §5.1.
 
 ---
 
