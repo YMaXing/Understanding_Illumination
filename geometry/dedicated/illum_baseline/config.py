@@ -160,6 +160,9 @@ class FoldCfg:
     site_max_t: float = 3.0
     site_smooth_n: int = 5
     site_window_px: float = 4.0
+    window_cap: str = "off"             # off | next_ridge (TASK_GEOM_V2 W1) | next_fold_ridge (W1b) | end_only (W1c)
+    window_cap_margin: float = 2.0
+    window_cap_k: int = 6
 
 
 @dataclass
@@ -221,6 +224,9 @@ class LaplacianCfg:
                                         # sigma_w_prior)) + 1 (3 at the defaults). Recorded only when set (G5)
     role: str = "channel"               # channel | fallback (TASK_GEOM_V2 V5: w_lap = 1 within d_excl of an edge)
     d_excl: float = 3.0                 # px, fallback exclusion distance
+    hysteresis: str = "off"             # off | ridge_bridge (TASK_GEOM_V2 W2: bridge sub-threshold ridge gaps)
+    hysteresis_kappa: float = 0.8       # continuation threshold kappa tau
+    hysteresis_max_gap: int = 16        # px, longest bridged continuation run
 
 
 @dataclass
@@ -414,6 +420,9 @@ def _validate_geometry(g: GeometryCfg) -> None:
         raise ValueError(f"geometry.fold.site must be nms|plane_intersection|hessian_peak (site_max_t, site_window_px "
                          f"> 0, site_smooth_n >= 1), "
                          f"got {f.site!r}")
+    if f.window_cap not in ("off", "next_ridge", "next_fold_ridge", "end_only") or f.window_cap_margin < 0 or f.window_cap_k < 1:
+        raise ValueError(f"geometry.fold.window_cap must be off|next_ridge|next_fold_ridge|end_only (window_cap_margin >= 0, window_cap_k >= 1), "
+                         f"got {f.window_cap!r}")
     if f.rescue_undecidable not in ("reject", "corroborate") or (f.rescue_undecidable == "corroborate"
                                                                   and f.veto_mode != "capped"):
         raise ValueError(f"geometry.fold.rescue_undecidable must be reject|corroborate (corroborate needs "
@@ -432,6 +441,10 @@ def _validate_geometry(g: GeometryCfg) -> None:
     if g.laplacian.pool_radius is not None and (not isinstance(g.laplacian.pool_radius, int)
                                                  or g.laplacian.pool_radius < 1):
         raise ValueError(f"geometry.laplacian.pool_radius must be null or an int >= 1, got {g.laplacian.pool_radius!r}")
+    if (g.laplacian.hysteresis not in ("off", "ridge_bridge") or not 0 < g.laplacian.hysteresis_kappa < 1
+            or g.laplacian.hysteresis_max_gap < 1):
+        raise ValueError(f"geometry.laplacian.hysteresis must be off|ridge_bridge (0 < hysteresis_kappa < 1, "
+                         f"hysteresis_max_gap >= 1), got {g.laplacian.hysteresis!r}")
     if g.laplacian.role not in ("channel", "fallback") or g.laplacian.d_excl < 0:
         raise ValueError(f"geometry.laplacian.role must be channel|fallback (d_excl >= 0), got {g.laplacian.role!r}")
     if g.laplacian.role == "fallback" and (g.enabled and ("laplacian" not in g.channels

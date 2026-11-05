@@ -137,6 +137,40 @@ Numbers from the labelled audit (`audit_split/`, 190 units, stratified pps estim
   the fold channel's dense fit and normals (4.5 s; breakdown in section 7); the GPU backend is a separate step.
 - **DA3 dependence.** All geometry comes from one DA3 metric-depth pass at network resolution: edges below its resolution
   (gap_subscale: siding laps, ~1–2 cm trims; 0.034 of the tri-only area) are not resolved by the depth or fold channel.
+- **Higher DA3 resolution does not lift the limit (probed, 1008 route closed).** DA3 runs natively at 1008 × 756.
+  Probes with the geometry code unchanged (`scripts/probe_res1008*.py`, `probe_gaps_*.py`;
+  `baseline_output/diag/geom/res1008/`, `gaps1008/`; the 1008 cache is kept in `stage_a/res1008/` beside the 504
+  cache) found:
+  - The 070 middle riser closes at 1008: fold acceptance 0.39 / 0.49 → 1.00 / 1.00 on its two folds. But the
+    narrow-face class is worth ≤ 0.014 of core missed geometry.
+  - The 068 / 069 laps lose signal/noise at 1008 (two-sided rotation over the between-laps control: 068 14.3 → 4.4;
+    069 13.6 → 9.9). Their rotation grows, but the normal noise grows faster.
+  - The unresolved units gain no DA3 signal: S/N ≥ 3 in 0.06 → 0.00 of the 18 units, median 1.06 → 1.12. Only units
+    11 and 33 gain a candidate at 1008.
+  - The plausible core gain is 0.01–0.015 of the tri-only area. The cost is a Stage B runtime about 4.5× longer (dense
+    fit 5.7 → 26 s per image), plus recalibrating every pixel-defined parameter.
+
+### 5.1 Final limitations of geom_v1_1 (repair track closed)
+
+The TASK_GEOM_V2 repair track is closed (§8.16): the fold window cap (W1 / W1b / W1c), Laplacian hysteresis (W2), DA3 at
+1008 and the thin-structure analysis. The limits below stand. Shares are of the tri-only audit area (core = min(depth,
+fold); combined = geom_v1_1's w); "ceiling" is the reduction in core missed geometry if the class were fully relaxed.
+
+| limit | cause | size | what covers it in geom_v1_1 | tried, not adopted |
+|---|---|---|---|---|
+| Thin structures: fences, railings, chain-link (25 step gaps stopped at the component stage) | DA3 renders thin bars as fragmented thin doublets: pre-gate pieces are a median 3 px; sharpness and centring fragment them further, alternating along each piece; the doublet signature (lobe separation > s_hi) is shared with foliage | core ceiling 0.17–0.19 | the Laplacian, under the clutter policy (item 8) | V3 `short_thin`; contour-level decisions (keep more foliage than bar); DA3 at 1008 |
+| Unresolved geometry (18 gap_unresolved units: soft plant boundaries, foliage against sky, glass fins, nosings in planters) | no DA3 depth or normal signal above the local noise floor, at 504 or 1008 | core ceiling 0.127 | the Laplacian where its response exists; otherwise missed | DA3 at 1008 (no signal gain; 2 units gain a candidate) |
+| Narrow faces (item 7; units 15, 37, 92; the 070 middle riser) | a face narrower than k1 + m_min + 2 ≈ 12–14 px leaves no clean fold window; DA3 rounds the face, so its folds often fail the Hessian height test | core ceiling 0.014; combined w < 0.5 on 0.70 / 0.78 / 0.92 of units 15 / 37 / 92; 070 riser folds 0.46 (Laplacian 0) | the Laplacian (15, 37), the crease rescue (92) | `fold.window_cap` next_ridge / next_fold_ridge / end_only; Laplacian hysteresis (no seed on the riser); DA3 at 1008 (closes the riser, class ≤ 0.014) |
+| Siding laps and sub-resolution edges (gap_subscale) | DA3 ramps of 17–28° with noisy normals: fold gate T/λ̂ ≈ 0.3–0.8 against 13.8; Laplacian q′ ≈ 1.5τ (w < 0.5 needs 2τ); shadow lowers both; depth r 0.005–0.012 < τ_low | 0.034 of the tri-only area; lap columns with combined w < 0.5: 0.14 (068), 0.16 (069), 0.005 inside the 069 shadow | the crease rescue (w_c 0.50–0.78) and the Laplacian, partly | Laplacian hysteresis (gaps bridged at w ≈ 0.67); DA3 at 1008 (lap S/N 14.3 → 4.4 on 068) |
+| Folds on textured surfaces (item 6; units 97, 124, 125) | one σ_geo / λ̂ per image; the gate fails on noisy normals | – | the Laplacian (0.70–0.89 of each unit) | additive_local / additive_cand nulls; `fold.rescue_undecidable` |
+| Moderate creases (item 9; the 076 façade ledge) | blocked by the capped veto | 076 ledge coverage 0.13 | documented gap; the crease rescue covers the 088 rock ridge (0.76) | – |
+| The Laplacian's band excess and texture | fixed-scale Laplacian, pooling radius 2 | band excess 0.217, tri_fp 0.069, texture-labelled units 0.163 (combined); texture ROIs 0.008 / 0.218 / 0.383 / 0.002 | accepted as the price of its recall (without it core misses 0.563 of the tri-only area) | fallback Laplacian (V5, no setting passed) |
+| Fold placement | the band sits at the oriented-Hessian peak (`fold.site: hessian_peak`) | convex median \|offset\| 1.70 px (2.84 at the NMS ridge) | bands ≥ 2 px | plane-intersection site |
+| The depth channel rarely sets w | its edges lie inside the Laplacian's relaxation | binding on 0.011 % / 0.029 % of the pixels | – (its value is the strengths and tables, §3) | – |
+| Runtime | dense fit and normals on the CPU | Stage B 7.7–7.9 s per image (4.5 s dense fit) | – | 1008 would be about 4.5× longer |
+
+Net: geom_v1_1 misses 0.079 of the tri-only area as true geometry per pixel in the combined w (0.007 per unit); the
+core channels alone miss 0.563.
 
 ## 6. How to re-run
 
@@ -764,6 +798,194 @@ The fold bands move toward the RGB edge (convex median |offset| 2.84 → 1.70 px
 +0.009 (core +0.025), band excess +0.003 [0.000, +0.009] (the paired CI of §8.13's d_excl 2 row, which equals the siting
 alone), everything else within 0.001. Its default proposal (branch `proposal/geom_v1_1_default`) was approved and
 merged: geom_v1_1 is the pipeline default (section 7.1).
+
+### 8.14 W1 / W1b / W1c: fold window cap at the next ridge (W1 closed for good, not adopted)
+
+`geometry.fold.window_cap: off | next_ridge` (default off; geom_v1_1 bit for bit). Per fold candidate and side:
+- d_ridge is the first s ≥ 2 px along ±e1 where x0 + s e1 lies within 0.75 px of another NMS fold-ridge pixel (all
+  candidates, any sign, before gating).
+- If the k1 window reaches within 2 px of that ridge (k1 + m ≥ d_ridge − 2), the side's skip becomes max(k_min, 6) and
+  the window ends 2 px before the ridge: m′ = min(m, ⌊d_ridge − 2⌋ − 6).
+- The cap applies only if m′ ≥ 4; otherwise the side keeps the default window.
+- Only the k1 fit changes; k1 itself (k2, the veto, the rescue, the band) is unchanged.
+- A capped window has no m = 4 retry: it falls back to the dense normal.
+- Its contamination threshold uses the m = 4 b_tri table, since the table is calibrated for m = 8 and m = 4 only.
+
+Run `geom_v1_1_wcap` (`configs/candidate_geom_v1_1_wcap.yaml`), both batches; `scripts/geom_w1_window_cap.py` →
+`baseline_output/diag/geom/w1/window_cap.json`, scorer output `w1/score.json`.
+
+| | geom_v1_1 | geom_v1_1_wcap |
+|---|---|---|
+| 070 middle riser, accepted: upper / lower fold | 0.318 / 0.475 | **1.000 / 1.000** |
+| 070 middle riser, k1 = 8 candidates accepted | 0 / 223 | 223 / 223 |
+| 070 top / bottom risers | 1.000 | 1.000 (not capped) |
+| narrow-face units 15 / 37 / 92, core | 0.000 / 0.324 / 0.792 | unchanged |
+| RGB fold targets / fold candidates, combined | 0.869 / 0.809 | 0.864 / 0.802 |
+| RGB fold targets / fold candidates, core | 0.698 / 0.696 | 0.691 / 0.682 |
+| 068 right-wall laps: candidates capped | – | 2 of 1 049 (961 sides reach a ridge at 8.5–10 px but m′ < 4) |
+| missed / px, combined / core | 0.079 / 0.563 | 0.080 / 0.569 |
+| geom_gain, combined | 0.589 | 0.560 |
+| crease coverage, core (088 rock ridge) | 0.399 (0.763) | 0.239 (0.388) |
+
+Every constraint holds on all units and on the batch1 units alone:
+- texture ROIs ≤ +0.002;
+- the 083 interior is unchanged;
+- core texture-label and tri_fp relaxed shares are unchanged;
+- geom_fp is −0.005 (batch1 −0.021);
+- step / limb / fold ROI coverage is unchanged.
+
+Both middle-riser folds reach ≥ 90 %, so the rule proposes `window_cap: next_ridge`.
+
+Flag:
+- The cap applies to 21 % of all candidates (18 450 of 87 991), not only to narrow faces. It re-sorts acceptances
+  image-wide: −1 019 / +1 038 (685 of the losses are capped candidates).
+- Core crease coverage falls by 0.16; combined crease coverage falls by only 0.005, because the Laplacian covers it.
+- geom_gain falls by 0.03.
+- None of these is a stated constraint.
+
+W1 review: next_ridge is held, not adopted.
+
+**W1b, `window_cap: next_fold_ridge`** (run `geom_v1_1_wcapf`, `configs/candidate_geom_v1_1_wcapf.yaml`; no sheets).
+It differs from next_ridge in two ways:
+- **Which ridges count.** A neighbouring NMS ridge counts only if its own Hessian peak is valid, using the
+  hessian_peak test at that ridge before gating: convexity ≠ 0, height y > k_h s_q, and not a doublet (opposite
+  extremum ≤ half the peak). There is no neighbour limit and no window-end test. 62–71 % of the candidates are valid
+  ridges.
+- **Contamination thresholds.** The shortened windows (m = 5, 6, 7) get their own thresholds:
+  - b_tri(k, m), from `scripts/calibrate_fold.py --add-m 5 6 7` (the m = 4 / 8 entries are unchanged);
+  - the null windows' median rms and 95 % quantile at that m, per image (k = k_min, the null grid).
+
+Report and selection: `scripts/geom_w1_window_cap.py --run geom_v1_1_wcapf` →
+`w1/window_cap_geom_v1_1_wcapf.json`; scorer output `w1b/score.json`.
+
+| | geom_v1_1 | wcap (W1) | wcapf (W1b) |
+|---|---|---|---|
+| 070 middle riser accepted, upper / lower | 0.318 / 0.475 | 1.000 / 1.000 | **0.836 / 0.820** |
+| capped share of all candidates | – | 0.210 | 0.165 |
+| accepted folds lost / gained (20 images) | – | 1 019 / 1 038 | 793 / 820 |
+| core crease coverage (088 rock ridge) | 0.399 (0.763) | 0.239 (0.388) | **0.239 (0.388)** |
+| geom_gain, all units / batch1 units | 0.589 / – | 0.560 | 0.580 / −0.039 vs geom_v1_1 |
+| core missed / px | 0.563 | 0.569 | **0.569** |
+| core RGB fold candidates | 0.696 | 0.682 | **0.686** |
+| narrow-face units 15 / 37 / 92, core | 0.000 / 0.324 / 0.792 | unchanged | unchanged |
+| 068 laps capped | – | 2 / 1 049 | 2 / 1 049 |
+
+W1b fails the riser target and four of the added constraints:
+- core crease coverage −0.160 (limit −0.02);
+- 088 rock ridge 0.388 (minimum 0.70);
+- core missed +0.005 (limit +0.002);
+- core RGB fold candidates −0.009 (limit −0.005).
+
+On the batch1 units geom_gain also fails (−0.039). The W1 constraints all hold.
+
+Causes:
+- **Riser.** Every capped middle-riser candidate is accepted. The 18 % / 16 % that stay uncapped are candidates whose
+  opposite fold fails the Hessian height test where it should stop their window: 40 % of the lower fold and 19 % of
+  the upper fold fail it, because DA3 rounds the 14-px face.
+- **088 ridge.** 21 of its 28 lost acceptances are capped candidates. 19 of their capped sides keep m = 8 and only
+  lose skip (k1 7–8 → 6), so the window moves into the ridge's rounding: T/λ̂ falls from 17.1 to 12.6, below the 13.8
+  gate.
+
+W1b review: it fails. The 088 loss comes from lowering k1 to 6, not from the trigger.
+
+**W1c, `window_cap: end_only`** (run `geom_v1_1_wcape`, `configs/candidate_geom_v1_1_wcape.yaml`; no sheets):
+- The trigger is any NMS ridge, as in next_ridge.
+- k1 is kept; only the window end moves to 2 px before the ridge: m′ = min(m, ⌊d_ridge − 2⌋ − k1).
+- The cap applies only if m′ ≥ 4.
+- The shortened windows use W1b's own contamination thresholds.
+
+Scored as W1b (`w1/window_cap_geom_v1_1_wcape.json`, `w1c/score.json`):
+
+| | geom_v1_1 | W1c | limit |
+|---|---|---|---|
+| 070 middle riser accepted, upper / lower | 0.318 / 0.475 | **0.781 / 0.690** | ≥ 0.90 |
+| capped share; accepted folds lost / gained | – | 0.161; 637 / 490 | |
+| core crease coverage (088 rock ridge) | 0.399 (0.763) | **0.351 (0.650)** | ≥ 0.379 (0.70) |
+| geom_gain, combined | 0.589 | **0.566** | ≥ 0.579 |
+| core missed / px, all units (batch1 units) | 0.563 | 0.565 (**+0.003**) | ≤ +0.002 |
+| core RGB fold candidates | 0.696 | **0.689** | ≥ 0.691 |
+| RGB fold targets, combined / core | 0.869 / 0.698 | 0.869 / 0.696 | |
+| narrow-face units 15 / 37 / 92, core | 0 / 0.324 / 0.792 | unchanged | |
+| 068 laps capped | – | 1 of 1 049 | |
+
+Not proposed: the riser target fails, and so do four constraints on all units (core crease, 088 ridge, geom_gain, core
+RGB fold candidates), four on batch1 units, with core missed replacing geom_gain; the W1 constraints hold.
+
+On the middle riser, every capped window is accepted (0.99–1.00, m′ = 4–7). The 105 k1 = 8 candidates that fail are the
+ones where k1 + m_min + 2 = 14 px does not fit before the opposite ridge (d_ridge ≈ 13.5–14). They keep the default
+window, which crosses the opposite fold, and stay at T/λ̂ 2.8.
+
+**W1 is closed for good, not adopted.** `window_cap` stays off; the four modes remain options. The record is in
+`docs/fold_channel.md` §7 (item 7).
+
+### 8.15 W2: Laplacian ridge hysteresis (no κ proposed)
+
+`geometry.laplacian.hysteresis: off | ridge_bridge` (default off; geom_v1_1 bit for bit), with `hysteresis_kappa`
+and `hysteresis_max_gap` 16. The module is `illum_baseline/geom/hysteresis.py`. It runs on q′, the vetoed response
+before the threshold.
+
+- **Ridge pixels:** λ₁ < 0 and |λ₁| > |λ₂| (λ₁ the most negative Hessian eigenvalue, Gaussian derivatives σ = 1); NMS
+  of q′ along λ₁'s eigenvector; q′ > κτ.
+  - The |λ₁| > |λ₂| condition is an addition to the approved design. Without it the NMS passes rows about 1σ off a
+    ridge, where λ₁ ≈ 0 points along the flat direction.
+- **Linking:** 8-neighbouring ridge pixels whose tangents agree within 30°.
+- **Seeds and continuation:** seeds have q′ > τ; continuation runs are linked components with κτ < q′ ≤ τ.
+- **Bridge:** a continuation run of ≤ 16 px linked to ≥ 2 distinct seed runs. Each of its pixels takes q_eff =
+  min over the touched seed runs of the median of q′ − τ over the 3 seed pixels nearest the contact.
+- **Weight:** pooling and w as in the detector.
+- **Single-ended variant** (≥ 1 seed run): report only.
+
+Runs `geom_v1_1_hys06` / `geom_v1_1_hys08` (`configs/candidate_geom_v1_1_hys06.yaml`, `_hys08.yaml`), both batches, no
+sheets. `scripts/geom_w2_hysteresis.py` → `baseline_output/diag/geom/w2/hysteresis.json`; scorer output `w2/score.json`.
+
+| | κ = 0.6 | κ = 0.8 | single-ended 0.6 / 0.8 (report only) |
+|---|---|---|---|
+| continuation px; runs bridged (px), 20 images | 41 432; 554 (2 552) | 17 036; 416 (1 499) | 4 339 runs (15 200 px) / 4 133 (9 713) |
+| Laplacian w < 0.5 / < 0.9 / < 1, image mean (geom_v1_1 0.2221 / 0.2889 / 0.3029) | 0.2221 / 0.2895 / 0.3047 | 0.2221 / 0.2892 / 0.3038 | |
+| combined: every scored number vs geom_v1_1 | Δ < 0.00005 | Δ < 0.00005 | texture class +0.0007, 079 grass sunlit +0.0025 |
+| paired band excess | 0.0000 [0.0000, 0.0000] | 0.0000 [0.0000, 0.0000] | +0.0001 [0.0000, +0.0003] / 0.0000 |
+| constraints (all units; batch1 units); core unchanged | all hold | all hold | all hold |
+| **gain: lap-line columns with combined w < 0.5, 068 / 069 / 069 inside the shadow** | **+0.000 / +0.000 / +0.000** | **+0.000 / +0.000 / +0.000** | +0.000 / +0.0003 / +0.000 |
+
+The bridge recompute from the saved float16 q matches the runs on all but 0.0025 % of the pixels.
+
+**Not proposed:** every constraint holds on all units and on batch1 units, but the gain target fails at both κ.
+
+**Why.** Bridging is not what keeps the laps above 0.5; strength is:
+- w < 0.5 needs q_eff > ε = τ, i.e. q′ > 2τ.
+- q′/τ along the lap lines is P10 / P50 / P90 = 0.86 / 1.47 / 1.84 on 068 and 0.82 / 1.46 / 2.04 on 069 (inside the
+  shadow 0.68 / 0.99 / 1.50).
+- So geom_v1_1 relaxes only 0.136 (068) and 0.157 (069) of the lap columns, and 0.005 inside the shadow, even where
+  q′ > τ.
+- A bridged gap takes its weaker flank's q′ − τ, typically about 0.5τ, which gives w ≈ 0.67. Below 0.5 is out of reach
+  by construction.
+
+**Gap lengths on the lap lines.** Sub-τ stretches along the line:
+- 068: P50 9 px, P90 21 px; 6 of 14 longer than 16.
+- 069 outside the shadow: P50 5 px, P90 29 px; 8 of 24 longer than 16.
+- 069 inside the shadow: P50 21 px, P90 48 px, max 76; 7 of 11 longer than 16. The shadow is about 44 px wide, so the
+  16-px bridge cannot cross it.
+
+Continuation runs (κ = 0.6), inside / outside the shadow: P50 16 / 8 px; 6 of 12 / 7 of 19 bridged.
+
+**070 middle riser:** q′/τ along its folds is P10 / P50 / P90 = 0.39 / 0.54 / 0.67 (lower) and 0.39 / 0.59 / 0.68
+(upper). No pixel exceeds τ, so there is no seed and no hysteresis route. 29 % / 44 % of the pixels lie in
+(0.6τ, τ]; 0 % / 0.5 % in (0.8τ, τ].
+
+### 8.16 The repair track is closed
+
+After the geom_v2 line (V0–V5) and the wrap-up, four repair attempts targeted the limits that remain in geom_v1_1. None
+was adopted.
+
+| attempt | target | result | record |
+|---|---|---|---|
+| W1 / W1b / W1c `fold.window_cap` | narrow faces (070 middle riser) | the riser reaches 1.00 / 1.00 with next_ridge, but the crease losses (088) fail the constraints; next_fold_ridge 0.84 / 0.82; end_only 0.78 / 0.69: the face is too narrow for k1 + m_min | §8.14; `docs/fold_channel.md` §7 item 7 |
+| W2 `laplacian.hysteresis` | lap continuity | constraints hold, lap gain 0 (bridged w ≈ 0.67; w < 0.5 needs q′ > 2τ); the riser has no seed | §8.15 |
+| DA3 at 1008 | narrow faces, laps, unresolved units | the riser closes (class ≤ 0.014); lap S/N falls; no signal gain on unresolved units; plausible core gain 0.01–0.015 against a Stage B runtime about 4.5× longer | §5; `res1008/`, `gaps1008/` |
+| Thin-structure analysis | fences and railings | pieces a median 3 px before any test; sharpness and centring alternate; bars and foliage share the thin-doublet signature, so no contour-level decision | `docs/depth_channel.md` §7 item 11 |
+
+All the options stay in the code at their defaults (geom_v1_1 bit for bit), and the 1008 cache stays in
+`stage_a/res1008/`. The final limitations, with their causes and what covers each in geom_v1_1, are in §5.1.
 
 ---
 

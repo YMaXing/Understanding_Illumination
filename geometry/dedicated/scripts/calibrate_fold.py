@@ -11,6 +11,8 @@
    noise level. Written to illum_baseline/geom/data/lambda_n.json; the FoldParams default is set from it by hand.
 
 Run from geometry/dedicated:  env -u PYTHONPATH uv run python scripts/calibrate_fold.py
+TASK_GEOM_V2 W1b: `--add-m 5 6 7` computes b_tri for those window lengths in the same way and adds them to b_tri.json,
+leaving the existing entries (m = 8, 4) and lambda_n untouched.
 """
 
 from __future__ import annotations
@@ -70,8 +72,8 @@ def single_surface(sid: np.ndarray, x0: np.ndarray, e1: np.ndarray, k: int, m: i
     return inside & (corners == corners[:, :1]).all(1) & (corners[:, 0] > 0)
 
 
-def calibrate_b_tri() -> dict:
-    b = {m: np.zeros(K_MAX + 1) for m in (FP.m, FP.m // 2)}
+def calibrate_b_tri(ms=(FP.m, FP.m // 2)) -> dict:
+    b = {m: np.zeros(K_MAX + 1) for m in ms}
     worst = {m: [""] * (K_MAX + 1) for m in b}
     n_scenes = 0
     for name, D, sky, sid in reference_scenes():
@@ -128,6 +130,21 @@ def calibrate_lambda_n() -> dict:
 
 if __name__ == "__main__":
     t0 = time.time()
+    if "--add-m" in sys.argv:
+        ms = tuple(int(a) for a in sys.argv[sys.argv.index("--add-m") + 1:])
+        old = json.loads(B_TRI_PATH.read_text())
+        new = calibrate_b_tri(ms)
+        assert new["tri"] == old["tri"] and new["w_t"] == old["w_t"] and new["k_max"] == old["k_max"]
+        for key in ("b", "raw_max", "worst_scene"):
+            for m in ms:
+                if str(m) in old[key]:
+                    raise SystemExit(f"b_tri.json already has m = {m}")
+                old[key][str(m)] = new[key][str(m)]
+        B_TRI_PATH.write_text(json.dumps(old, indent=1))
+        for m in ms:
+            print(f"b_tri m={m}: " + " ".join(f"k{k}:{v:.1e}" for k, v in enumerate(old["b"][str(m)]) if 4 <= k <= 14))
+        print(f"b_tri: added m = {ms}, {time.time() - t0:.0f} s -> {B_TRI_PATH}")
+        sys.exit(0)
     tab = calibrate_b_tri()
     B_TRI_PATH.parent.mkdir(exist_ok=True)
     B_TRI_PATH.write_text(json.dumps(tab, indent=1))

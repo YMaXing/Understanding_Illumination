@@ -93,6 +93,10 @@ class FoldParams:
     site_max_t: float = 3.0             # px, |t| of the plane intersection along e1 for a valid site
     site_smooth_n: int = 5              # running median of t over this many candidates in chain order
     site_window_px: float = 4.0         # hessian_peak: the peak is searched within +-this along e1
+    # TASK_GEOM_V2 W1: end a side's k1 window before the next NMS fold ridge on that side
+    window_cap: str = "off"             # off | next_ridge | next_fold_ridge (W1b) | end_only (W1c)
+    window_cap_margin: float = 2.0      # px: the window ends this far before the ridge
+    window_cap_k: int = 6               # capped skip = max(k_min, this)
 
     @classmethod
     def from_dict(cls, d: dict | None) -> FoldParams:
@@ -122,6 +126,8 @@ V2_VETO_KEYS = ("veto_mode", "veto_curv_coef", "veto_curv_max")
 V2_CAND_KEYS = ("cand_radius", "cand_radius_wide", "cand_min_samples")
 RESCUE_KEYS = ("crease_rescue", "rescue_theta_deg", "rescue_k_L", "rescue_min_component_px", "rescue_support")
 SITE_KEYS = ("site", "site_max_t", "site_smooth_n", "site_window_px")
+WINDOW_CAP_KEYS = ("window_cap", "window_cap_margin", "window_cap_k")
+WINDOW_CAPS = ("off", "next_ridge", "next_fold_ridge", "end_only")
 UNDECIDABLE = ("reject", "corroborate")
 SITES = ("nms", "plane_intersection", "hessian_peak")
 
@@ -141,6 +147,9 @@ def params_record(p: dict) -> dict:
             d.pop(k, None)
     if d.get("site", "nms") == "nms":
         for k in SITE_KEYS:
+            d.pop(k, None)
+    if d.get("window_cap", "off") == "off":
+        for k in WINDOW_CAP_KEYS:
             d.pop(k, None)
     if d.get("rescue_undecidable", "reject") == "reject" or d.get("crease_rescue", "off") == "off":
         d.pop("rescue_undecidable", None)
@@ -217,7 +226,38 @@ class FoldChannel:
             return ndimage.map_coordinates(sig_tiles, coords, order=1, mode="nearest")
 
         # F2.3-F2.5 at k1
-        r1 = two_sided_fit(ctx, x0, e1, k1, rms_max=rms_max, fallback=True, **fitkw)
+        if p.window_cap not in WINDOW_CAPS:
+            raise ValueError(f"unknown window_cap {p.window_cap!r}; expected one of {WINDOW_CAPS}")
+        wcap = None
+        if p.window_cap == "off":
+            r1 = two_sided_fit(ctx, x0, e1, k1, rms_max=rms_max, fallback=True, **fitkw)
+        else:
+            ridge_ok = self._ridge_peak_valid(ctx, x0, e1, p.site_window_px) if p.window_cap == "next_fold_ridge" \
+                else None
+            wcap = self._window_cap(p, cands, x0, e1, k1, ridge_ok=ridge_ok)
+            null_m: dict[int, tuple[float, float]] = {}
+            if p.window_cap == "next_ridge":
+                def rms_max_cap(k: np.ndarray, m: int) -> np.ndarray:  # W1: the m = 4 table for 4 < m < 8
+                    return rms_max(k, p.m if m >= p.m else p.m_min)
+            else:
+                # W1b: the shortened lengths get their own thresholds, as m = 8 and 4: the null windows' rms at that m
+                # (k = k_min, the null grid) and b_tri(k, m) (scripts/calibrate_fold.py --add-m)
+                used = set(np.unique(wcap["m_p_fit"]).tolist()) | set(np.unique(wcap["m_m_fit"]).tolist())
+                for mv in sorted(used - {p.m, p.m_min}):
+                    cr = window_rms(two_sided_fit(ctx, xn, en, p.k_min, rms_max=None, fallback=False,
+                                                  **{**fitkw, "m": int(mv)}))
+                    null_m[int(mv)] = (float(np.median(cr)) if cr.size else float("nan"),
+                                       float(np.quantile(cr, p.null_rms_quantile)) if cr.size else float("nan"))
+
+                def rms_max_cap(k: np.ndarray, m: int) -> np.ndarray:
+                    if m in null_m:
+                        e_m, q_m = null_m[m]
+                        return np.fmax(np.fmax(p.planarity_factor * e_m, q_m), p.b_tri_margin * b_tri(k, m, tri))
+                    return rms_max(k, m)
+            wcap["null_m"] = null_m
+            wcap["ridge_ok_share"] = float(ridge_ok.mean()) if ridge_ok is not None and N else float("nan")
+            r1 = two_sided_fit(ctx, x0, e1, wcap["k1_p"], rms_max=rms_max_cap, fallback=True, k_m=wcap["k1_m"],
+                               m_p=wcap["m_p_fit"], m_m=wcap["m_m_fit"], **fitkw)
         dtheta1 = r1.dtheta
         T_add, T_add_local = np.full(N, np.nan), np.full(N, np.nan)
         sig_loc = sig_local(x0) if np.isfinite(sig2) and N else np.full(N, np.nan)
@@ -367,6 +407,10 @@ class FoldChannel:
         if site is not None:  # site records (tables without the option are unchanged)
             for k_ in ("site_t", "site_valid", "site_t_applied", "u_site", "v_site"):
                 df[k_] = site[k_]
+        if wcap is not None:  # window-cap records (tables without the option are unchanged)
+            for k_ in ("d_ridge_p", "d_ridge_m", "k1_p", "k1_m", "m_p_fit", "m_m_fit", "window_capped_p",
+                       "window_capped_m"):
+                df[k_] = wcap[k_]
         if rescue is not None:  # crease-rescue records (tables without the option are unchanged)
             for k_ in ("rescue_eligible", "rescue_veto_pass", "rescue_comp_px", "rescue_support", "rescued",
                        "rescue_undecidable"):
@@ -419,11 +463,89 @@ class FoldChannel:
             na = int(accepted.sum())
             nsv = int((accepted & site["site_valid"]).sum())
             scalars |= {"n_site_valid": nsv, "site_valid_share": nsv / na if na else float("nan")}
+        if wcap is not None:
+            capped_any = wcap["window_capped_p"] | wcap["window_capped_m"]
+            scalars |= {"n_window_capped": int(capped_any.sum()),
+                        "n_window_capped_sides": int(wcap["window_capped_p"].sum() + wcap["window_capped_m"].sum()),
+                        "n_window_cap_too_short": int(wcap["n_too_short"])}
+            if p.window_cap == "next_fold_ridge":
+                scalars["window_cap_ridge_valid_share"] = wcap["ridge_ok_share"]
+                for mv, (e_m, q_m) in wcap["null_m"].items():
+                    scalars[f"eps_hat_m{mv}"], scalars[f"null_rms_q_m{mv}"] = e_m, q_m
         scalars["context_s"] = t_ctx
         scalars["runtime_s"] = time.perf_counter() - t_start - t_ctx
         return ChannelResult(name=self.name, w_net=w_fold, strength=strength, candidates=df,
                              arrays={"r_n": cands.rate_map}, scalars=scalars, w_min=p.w_min,
                              tables={"null": null_df})
+
+    @staticmethod
+    def _ridge_peak_valid(ctx, x0, e1, window_px: float) -> np.ndarray:
+        """TASK_GEOM_V2 W1b: the hessian_peak validity test at every NMS candidate, before gating: y(s) =
+        -convexity q(x0 + s e1), |s| <= window_px (step 0.25), q = e1^T H e1 / max(rho_s, rho_floor) (depth-channel kernels,
+        built-in DepthParams); valid if convexity != 0, the peak passes the height test (y > k_h s_q) and the
+        opposite-sign extremum is at most half the peak (not a doublet). No neighbour limit, no window-end test."""
+        from .candidates import depth_field
+        from .depth import DepthParams
+
+        N = len(x0)
+        if not N:
+            return np.zeros(0, dtype=bool)
+        dp = DepthParams()
+        f = depth_field(ctx, dp)
+        L0, okL = bilinear(ctx.L_over_rho_f, ctx.omega, x0[:, 0], x0[:, 1])
+        sgn = np.where(okL, np.sign(L0), 0.0)
+        s = np.arange(-window_px, window_px + 0.125, 0.25)
+        pts = x0[:, None, :] + s[None, :, None] * e1[:, None, :]
+        full = np.ones(ctx.shape, dtype=bool)
+        vals = []
+        for arr in (f.H_uu, f.H_uv, f.H_vv, f.den):
+            a_, ok_ = bilinear(arr, full, pts[..., 0], pts[..., 1])
+            vals.append(np.where(ok_, a_, np.nan))
+        huu, huv, hvv, den = vals
+        eu, ev = e1[:, 0][:, None], e1[:, 1][:, None]
+        y = sgn[:, None] * (eu * eu * huu + 2 * eu * ev * huv + ev * ev * hvv) / den
+        with np.errstate(invalid="ignore"):
+            y0 = np.nanmax(np.where(np.isfinite(y), y, -np.inf), axis=1)
+            opp = np.nanmax(np.where(np.isfinite(y), -y, -np.inf), axis=1)
+            return (sgn != 0) & np.isfinite(y0) & (y0 > dp.k_h * f.s_q) & (opp <= 0.5 * y0)
+
+    @staticmethod
+    def _window_cap(p: FoldParams, cands, x0, e1, k1, step: float = 0.5, tol: float = 0.75,
+                    ridge_ok: np.ndarray | None = None) -> dict:
+        """TASK_GEOM_V2 W1 (window_cap next_ridge): per candidate and side, d_ridge = the first s >= 2 px along +-e1
+        where x0 + s e1 lies within tol px of another NMS fold ridge pixel (every candidate, any sign, before gating;
+        s < 2 px is the candidate's own ridge). If the k1 window [k1, k1 + m] reaches within window_cap_margin of it
+        (k1 + m >= d_ridge - margin), the side's skip becomes k_c = max(k_min, window_cap_k) and the window ends margin
+        px before the ridge: m' = min(m, floor(d_ridge - margin) - k_c); applied only if m' >= m_min, else the default
+        window. Only the k1 fit changes; k1 itself (k2, the veto, the rescue, the band) is unchanged.
+        ridge_ok (next_fold_ridge, W1b): only the NMS pixels of candidates with a valid Hessian peak count as ridges.
+        end_only (W1c): the skip stays k1; only the window end moves: m' = min(m, floor(d_ridge - margin) - k1)."""
+        from scipy.spatial import cKDTree
+
+        N = len(x0)
+        ij = cands.ij if ridge_ok is None else cands.ij[ridge_ok]
+        tree = cKDTree(ij.astype(np.float64)) if len(ij) else None
+        reach = (k1 + p.m).astype(np.float64)
+        s = np.arange(2.0, float(reach.max(initial=0.0)) + p.window_cap_margin + step / 2, step)
+        k_c = k1 if p.window_cap == "end_only" else np.full(N, max(p.k_min, p.window_cap_k))
+        out = {"n_too_short": 0}
+        for sgn, tag in ((1, "p"), (-1, "m")):
+            d = np.full(N, np.inf)
+            if N and s.size and tree is not None:
+                pts = x0[:, None, :] + sgn * s[None, :, None] * e1[:, None, :]
+                dd, _ = tree.query(pts.reshape(-1, 2), distance_upper_bound=tol)
+                hit = np.isfinite(dd).reshape(N, s.size)
+                d = np.where(hit.any(1), s[np.argmax(hit, 1)], np.inf)
+            reaches = reach >= d - p.window_cap_margin
+            with np.errstate(invalid="ignore"):
+                m_new = np.where(reaches, np.minimum(p.m, np.floor(d - p.window_cap_margin) - k_c), p.m)
+            capped = reaches & (m_new >= p.m_min)
+            out["n_too_short"] += int((reaches & ~capped).sum())
+            out[f"d_ridge_{tag}"] = d
+            out[f"k1_{tag}"] = np.where(capped, k_c, k1).astype(int)
+            out[f"m_{tag}_fit"] = np.where(capped, m_new, p.m).astype(int)
+            out[f"window_capped_{tag}"] = capped
+        return out
 
     @staticmethod
     def _site(p: FoldParams, x0, e1, r1, accepted, u, v, shape, ctx=None) -> dict:

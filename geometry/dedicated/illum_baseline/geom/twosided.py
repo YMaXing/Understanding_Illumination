@@ -191,16 +191,38 @@ def chi2_statistic(n_p: np.ndarray, n_m: np.ndarray, S_p: np.ndarray, S_m: np.nd
     return quad_form(*null_projection(n_p, n_m, S_p, S_m))
 
 
+def _side_var_m(ctx: GeometryContext, x0: np.ndarray, e1: np.ndarray, k: np.ndarray, sign: int, m: np.ndarray,
+                **kw) -> SideResult:
+    """_side with a window length per row (TASK_GEOM_V2 W1): one _side call per distinct length, rows reassembled."""
+    m = np.asarray(m, dtype=int)
+    uniq = np.unique(m)
+    if len(uniq) == 1:
+        return _side(ctx, x0, e1, k, sign, m=int(uniq[0]), **kw)
+    parts = {int(mv): (np.nonzero(m == mv)[0], _side(ctx, x0[m == mv], e1[m == mv], k[m == mv], sign, m=int(mv), **kw))
+             for mv in uniq}
+    out = {}
+    for f in fields(SideResult):
+        first = next(iter(parts.values()))[1]
+        a0 = getattr(first, f.name)
+        arr = np.empty((len(x0),) + a0.shape[1:], dtype=a0.dtype)
+        for idx, sd in parts.values():
+            arr[idx] = getattr(sd, f.name)
+        out[f.name] = arr
+    return SideResult(**out)
+
+
 def two_sided_fit(ctx: GeometryContext, x0: np.ndarray, e1: np.ndarray, k: np.ndarray | int, m: int, w_t: int, *,
                   rms_max: RmsMax | None = None, m_min: int = 4, max_excluded: float = 0.2,
                   fallback: bool = True, k_m: np.ndarray | int | None = None, gap_mode: str = "min_span",
-                  usable: np.ndarray | None = None) -> TwoSidedResult:
+                  usable: np.ndarray | None = None, m_p: np.ndarray | None = None,
+                  m_m: np.ndarray | None = None) -> TwoSidedResult:
     """Vectorized over N candidates: x0 (N, 2) (u, v), e1 (N, 2) unit, k (N,) or scalar int.
 
     rms_max None skips the contamination check (calibration passes, the veto's k2 windows).
     k_m: a separate skip for the - side (the + side uses k); the plane-gap span is then [-k_m, k]. None: k on both.
     gap_mode: "min_span" (default) or "at_x0" (see the module docstring). usable: the sample mask (None: Omega and
     valid dense normals); with usable given and fallback=False the dense fit is never read.
+    m_p / m_m: a window length per row for the + / - side (TASK_GEOM_V2 W1, fold window_cap); None: m on both.
     """
     if gap_mode not in ("min_span", "at_x0"):
         raise ValueError(f"unknown gap_mode {gap_mode!r}; expected min_span or at_x0")
@@ -209,8 +231,13 @@ def two_sided_fit(ctx: GeometryContext, x0: np.ndarray, e1: np.ndarray, k: np.nd
     k = np.broadcast_to(np.asarray(k), (len(x0),)).astype(np.float64)
     km = k if k_m is None else np.broadcast_to(np.asarray(k_m), (len(x0),)).astype(np.float64)
     kw = dict(m=m, w_t=w_t, rms_max=rms_max, m_min=m_min, max_excluded=max_excluded, fallback=fallback, usable=usable)
-    P = _side(ctx, x0, e1, k, +1, **kw)
-    M = _side(ctx, x0, e1, km, -1, **kw)
+    if m_p is None and m_m is None:
+        P = _side(ctx, x0, e1, k, +1, **kw)
+        M = _side(ctx, x0, e1, km, -1, **kw)
+    else:
+        kv = {a: b for a, b in kw.items() if a != "m"}
+        P = _side_var_m(ctx, x0, e1, k, +1, np.full(len(x0), m) if m_p is None else m_p, **kv)
+        M = _side_var_m(ctx, x0, e1, km, -1, np.full(len(x0), m) if m_m is None else m_m, **kv)
 
     def plane_at(sd: SideResult, x: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
         a = np.concatenate([np.ones((len(x), 1)), x - sd.c], -1)
