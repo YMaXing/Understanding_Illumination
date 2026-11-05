@@ -578,6 +578,15 @@ veto); fold placement **open** (geom_v2 candidate: re-siting at the plane inters
 
   Item 7 stays open as a documented limit: faces narrower than k1 + m_min + 2 px (about 12–14 px) are not resolved by
   the fold channel. `window_cap` stays off (modes next_ridge, next_fold_ridge, end_only kept as options).
+
+  **DA3 at 1008 (probe, route closed).** With the code unchanged, the 070 middle riser is 30 px wide at 1008 (15 px@504)
+  and its folds are accepted (0.39 / 0.49 → 1.00 / 1.00). The narrow-face class is worth ≤ 0.014 of core missed
+  geometry, though, and the move costs a Stage B runtime about 4.5× longer. Other findings:
+  - the 068 laps lose S/N (14.3 → 4.4);
+  - the unresolved units gain no DA3 signal;
+  - the plausible core gain is 0.01–0.015.
+
+  Not pursued; the 1008 cache (`stage_a/res1008/`) is kept (`docs/geometric_edges.md` §5).
   - *Recall gain under core w* with `corroborate` (and `site: hessian_peak`): missed true geometry 0.563 → 0.508 of the
     tri-only area, fold ROI coverage 0.817 → 0.907, fold-target RGB coverage (core) 0.698 → 0.767. *Not adopted
     because* only 1 of the 21 veto-blocked units closes, 079 grass rises +0.017 (combined) and the 083 interior changes

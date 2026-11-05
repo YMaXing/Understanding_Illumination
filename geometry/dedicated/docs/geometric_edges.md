@@ -137,6 +137,18 @@ Numbers from the labelled audit (`audit_split/`, 190 units, stratified pps estim
   the fold channel's dense fit and normals (4.5 s; breakdown in section 7); the GPU backend is a separate step.
 - **DA3 dependence.** All geometry comes from one DA3 metric-depth pass at network resolution: edges below its resolution
   (gap_subscale: siding laps, ~1–2 cm trims; 0.034 of the tri-only area) are not resolved by the depth or fold channel.
+- **Higher DA3 resolution does not lift the limit (probed, 1008 route closed).** DA3 runs natively at 1008 × 756.
+  Probes with the geometry code unchanged (`scripts/probe_res1008*.py`, `probe_gaps_*.py`;
+  `baseline_output/diag/geom/res1008/`, `gaps1008/`; the 1008 cache is kept in `stage_a/res1008/` beside the 504
+  cache) found:
+  - The 070 middle riser closes at 1008: fold acceptance 0.39 / 0.49 → 1.00 / 1.00 on its two folds. But the
+    narrow-face class is worth ≤ 0.014 of core missed geometry.
+  - The 068 / 069 laps lose signal/noise at 1008 (two-sided rotation over the between-laps control: 068 14.3 → 4.4;
+    069 13.6 → 9.9). Their rotation grows, but the normal noise grows faster.
+  - The unresolved units gain no DA3 signal: S/N ≥ 3 in 0.06 → 0.00 of the 18 units, median 1.06 → 1.12. Only units
+    11 and 33 gain a candidate at 1008.
+  - The plausible core gain is 0.01–0.015 of the tri-only area. The cost is a Stage B runtime about 4.5× longer (dense
+    fit 5.7 → 26 s per image), plus recalibrating every pixel-defined parameter.
 
 ## 6. How to re-run
 
