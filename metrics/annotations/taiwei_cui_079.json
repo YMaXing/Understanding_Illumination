@@ -1,0 +1,4900 @@
+{
+ "schema_version": "1.2",
+ "image": "taiwei_cui_079",
+ "set": "dev_v2",
+ "split": "train",
+ "seen_in_training": "unknown",
+ "width": 768,
+ "height": 1023,
+ "image_sha256": "3c3e1fe424d9f2beb4ccb57df651751755f30aaccba39f288cf388cb4ee4aa82",
+ "image_pixel_sha256": "d80828464013866c7649bab7f45a411680421704386711fdba6b812a46d0c689",
+ "assigned_to": "yueren",
+ "pairs": [
+  {
+   "id": "t=1794166888588",
+   "image": "taiwei_cui_079",
+   "type": "i",
+   "A": {
+    "x": 497,
+    "y": 859,
+    "r": 4
+   },
+   "B": {
+    "x": 503,
+    "y": 887,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:41:28.588Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "i",
+     "a_row": 859,
+     "a_col": 497,
+     "b_row": 887,
+     "b_col": 503,
+     "half": 4,
+     "t": 1794166888588,
+     "edits": [
+      {
+       "op": "autosize",
+       "at": "2026-11-09T00:25:21.308Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "half": 3
+       },
+       "after": {
+        "half": 4
+       },
+       "criteria": "spec+sides",
+       "stopped_by": {
+        "A": "reached max",
+        "B": "reached max"
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.308Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/i/000",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "patch_ok": true,
+     "patch_flags": [],
+     "redundancy_group": "taiwei_cui_079/i/000",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 95,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.086871,
+     "b_B": 7.067032,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794166890254",
+   "image": "taiwei_cui_079",
+   "type": "i",
+   "A": {
+    "x": 550,
+    "y": 843,
+    "r": 4
+   },
+   "B": {
+    "x": 556,
+    "y": 869,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:41:30.254Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "i",
+     "a_row": 843,
+     "a_col": 550,
+     "b_row": 869,
+     "b_col": 556,
+     "half": 4,
+     "t": 1794166890254,
+     "edits": [
+      {
+       "op": "autosize",
+       "at": "2026-11-09T00:25:21.312Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "half": 3
+       },
+       "after": {
+        "half": 4
+       },
+       "criteria": "spec+sides",
+       "stopped_by": {
+        "A": "reached max",
+        "B": "reached max"
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.312Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/i/001",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "patch_ok": true,
+     "patch_flags": [],
+     "redundancy_group": "taiwei_cui_079/i/001",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 96,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.104012,
+     "b_B": 7.552799,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794166894929",
+   "image": "taiwei_cui_079",
+   "type": "i",
+   "A": {
+    "x": 374,
+    "y": 890,
+    "r": 3
+   },
+   "B": {
+    "x": 379,
+    "y": 932,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:41:34.929Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "i",
+     "a_row": 890,
+     "a_col": 374,
+     "b_row": 932,
+     "b_col": 379,
+     "half": 3,
+     "t": 1794166894929,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 3: homogeneity (spread 0.088 > max(1.5 x 0.049, 2 x 0.037))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.316Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 3: homogeneity (spread 0.088 > max(1.5 x 0.049, 2 x 0.037))"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/i/002",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/i/002",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 97,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.919391,
+     "b_B": 7.05575,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794166962073",
+   "image": "taiwei_cui_079",
+   "type": "i",
+   "A": {
+    "x": 581,
+    "y": 790,
+    "r": 3
+   },
+   "B": {
+    "x": 610,
+    "y": 781,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:42:42.073Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "i",
+     "a_row": 790,
+     "a_col": 581,
+     "b_row": 781,
+     "b_col": 610,
+     "half": 3,
+     "t": 1794166962073,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 3: homogeneity (spread 0.060 > max(1.5 x 0.021, 2 x 0.028))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.319Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 3: homogeneity (spread 0.060 > max(1.5 x 0.021, 2 x 0.028))"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/i/003",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/i/003",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 98,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.231538,
+     "b_B": 7.576443,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794166967266",
+   "image": "taiwei_cui_079",
+   "type": "i",
+   "A": {
+    "x": 669,
+    "y": 683,
+    "r": 3
+   },
+   "B": {
+    "x": 680,
+    "y": 712,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:42:47.266Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "i",
+     "a_row": 683,
+     "a_col": 669,
+     "b_row": 712,
+     "b_col": 680,
+     "half": 3,
+     "t": 1794166967266,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: homogeneity (spread 0.065 > max(1.5 x 0.029, 2 x 0.012)); sides (an outer row/column differs from the core)",
+      "B at current half 3: homogeneity (spread 0.062 > max(1.5 x 0.039, 2 x 0.030))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.322Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: homogeneity (spread 0.065 > max(1.5 x 0.029, 2 x 0.012)); sides (an outer row/column differs from the core)",
+         "B at current half 3: homogeneity (spread 0.062 > max(1.5 x 0.039, 2 x 0.030))"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/i/004",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/i/004",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 99,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.17952,
+     "b_B": 7.43353,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794166981470",
+   "image": "taiwei_cui_079",
+   "type": "i",
+   "A": {
+    "x": 753,
+    "y": 782,
+    "r": 2
+   },
+   "B": {
+    "x": 758,
+    "y": 798,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:43:01.470Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "i",
+     "a_row": 782,
+     "a_col": 753,
+     "b_row": 798,
+     "b_col": 758,
+     "half": 2,
+     "t": 1794166981470,
+     "half_a": 2,
+     "half_b": 4,
+     "edits": [
+      {
+       "op": "autosize",
+       "at": "2026-11-09T00:25:21.325Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "half": 1,
+        "half_a": null,
+        "half_b": null
+       },
+       "after": {
+        "half": 2,
+        "half_a": 2,
+        "half_b": 4
+       },
+       "criteria": "spec+sides",
+       "stopped_by": {
+        "A": "own side",
+        "B": "reached max"
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.325Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/i/005",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "patch_ok": true,
+     "patch_flags": [],
+     "redundancy_group": "taiwei_cui_079/i/005",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 100,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.67913,
+     "b_B": 6.193942,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794166986042",
+   "image": "taiwei_cui_079",
+   "type": "i",
+   "A": {
+    "x": 743,
+    "y": 783,
+    "r": 1
+   },
+   "B": {
+    "x": 740,
+    "y": 770,
+    "r": 1
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:43:06.042Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "i",
+     "a_row": 783,
+     "a_col": 743,
+     "b_row": 770,
+     "b_col": 740,
+     "half": 1,
+     "t": 1794166986042,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 1: plateau (14% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.328Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 1: plateau (14% of step > 10%)"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/i/006",
+        "weight": 1,
+        "eval_subset": false
+       }
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/i/006",
+     "weight": 1,
+     "eval_subset": false
+    },
+    "v0_index": 101,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.917496,
+     "b_B": 6.469877,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794166998628",
+   "image": "taiwei_cui_079",
+   "type": "i",
+   "A": {
+    "x": 300,
+    "y": 736,
+    "r": 3
+   },
+   "B": {
+    "x": 292,
+    "y": 713,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:43:18.628Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "i",
+     "a_row": 736,
+     "a_col": 300,
+     "b_row": 713,
+     "b_col": 292,
+     "half": 3,
+     "t": 1794166998628,
+     "half_a": 3,
+     "half_b": 4,
+     "edits": [
+      {
+       "op": "autosize",
+       "at": "2026-11-09T00:25:21.331Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "half_a": null,
+        "half_b": null
+       },
+       "after": {
+        "half_a": 3,
+        "half_b": 4
+       },
+       "criteria": "spec+sides",
+       "stopped_by": {
+        "A": "homogeneity",
+        "B": "reached max"
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.331Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/i/007",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "patch_ok": true,
+     "patch_flags": [],
+     "redundancy_group": "taiwei_cui_079/i/007",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 102,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.53776,
+     "b_B": 7.390553,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794167046888",
+   "image": "taiwei_cui_079",
+   "type": "i",
+   "A": {
+    "x": 114,
+    "y": 499,
+    "r": 3
+   },
+   "B": {
+    "x": 125,
+    "y": 515,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:44:06.888Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "i",
+     "a_row": 499,
+     "a_col": 114,
+     "b_row": 515,
+     "b_col": 125,
+     "half": 3,
+     "t": 1794167046888,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: homogeneity (spread 0.077 > max(1.5 x 0.045, 2 x 0.009))",
+      "B at current half 3: homogeneity (spread 0.050 > max(1.5 x 0.026, 2 x 0.021))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.334Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: homogeneity (spread 0.077 > max(1.5 x 0.045, 2 x 0.009))",
+         "B at current half 3: homogeneity (spread 0.050 > max(1.5 x 0.026, 2 x 0.021))"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/i/008",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/i/008",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 103,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.723993,
+     "b_B": 8.164185,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794167053496",
+   "image": "taiwei_cui_079",
+   "type": "i",
+   "A": {
+    "x": 139,
+    "y": 560,
+    "r": 3
+   },
+   "B": {
+    "x": 156,
+    "y": 568,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:44:13.496Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "i",
+     "a_row": 560,
+     "a_col": 139,
+     "b_row": 568,
+     "b_col": 156,
+     "half": 3,
+     "t": 1794167053496,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: homogeneity (spread 0.054 > max(1.5 x 0.026, 2 x 0.020))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.337Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: homogeneity (spread 0.054 > max(1.5 x 0.026, 2 x 0.020))"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/i/009",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/i/009",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 104,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.241194,
+     "b_B": 7.170236,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794167056664",
+   "image": "taiwei_cui_079",
+   "type": "i",
+   "A": {
+    "x": 153,
+    "y": 522,
+    "r": 3
+   },
+   "B": {
+    "x": 174,
+    "y": 527,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:44:16.664Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "i",
+     "a_row": 522,
+     "a_col": 153,
+     "b_row": 527,
+     "b_col": 174,
+     "half": 3,
+     "t": 1794167056664,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 3: sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.339Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 3: sides (an outer row/column differs from the core)"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/i/010",
+        "weight": 1,
+        "eval_subset": false
+       }
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/i/010",
+     "weight": 1,
+     "eval_subset": false
+    },
+    "v0_index": 105,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.071628,
+     "b_B": 7.197234,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794167065411",
+   "image": "taiwei_cui_079",
+   "type": "i",
+   "A": {
+    "x": 161,
+    "y": 459,
+    "r": 3
+   },
+   "B": {
+    "x": 184,
+    "y": 458,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:44:25.411Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "i",
+     "a_row": 459,
+     "a_col": 161,
+     "b_row": 458,
+     "b_col": 184,
+     "half": 3,
+     "t": 1794167065411,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 3: homogeneity (spread 0.102 > max(1.5 x 0.057, 2 x 0.035)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.342Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 3: homogeneity (spread 0.102 > max(1.5 x 0.057, 2 x 0.035)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/i/011",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/i/011",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 106,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 7.975197,
+     "b_B": 7.140609,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794167076516",
+   "image": "taiwei_cui_079",
+   "type": "i",
+   "A": {
+    "x": 172,
+    "y": 402,
+    "r": 1
+   },
+   "B": {
+    "x": 186,
+    "y": 403,
+    "r": 1
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:44:36.516Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "i",
+     "a_row": 402,
+     "a_col": 172,
+     "b_row": 403,
+     "b_col": 186,
+     "half": 1,
+     "t": 1794167076516,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 1: own side (reaches 1.1 px, transition starts 3.0)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.344Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 1: own side (reaches 1.1 px, transition starts 3.0)"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/i/012",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/i/012",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 107,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.167118,
+     "b_B": 7.534675,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794167094220",
+   "image": "taiwei_cui_079",
+   "type": "i",
+   "A": {
+    "x": 155,
+    "y": 395,
+    "r": 2
+   },
+   "B": {
+    "x": 161,
+    "y": 407,
+    "r": 1
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:44:54.220Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "i",
+     "a_row": 395,
+     "a_col": 155,
+     "b_row": 407,
+     "b_col": 161,
+     "half": 1,
+     "t": 1794167094220,
+     "half_a": 2,
+     "half_b": 1,
+     "edits": [
+      {
+       "op": "autosize",
+       "at": "2026-11-09T00:25:21.347Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "half_a": null,
+        "half_b": null
+       },
+       "after": {
+        "half_a": 2,
+        "half_b": 1
+       },
+       "criteria": "spec+sides",
+       "stopped_by": {
+        "A": "own side",
+        "B": "own side"
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.347Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/i/013",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "patch_ok": true,
+     "patch_flags": [],
+     "redundancy_group": "taiwei_cui_079/i/013",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 108,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.320543,
+     "b_B": 7.973762,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794167098397",
+   "image": "taiwei_cui_079",
+   "type": "i",
+   "A": {
+    "x": 217,
+    "y": 372,
+    "r": 3
+   },
+   "B": {
+    "x": 227,
+    "y": 386,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:44:58.397Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "i",
+     "a_row": 372,
+     "a_col": 217,
+     "b_row": 386,
+     "b_col": 227,
+     "half": 2,
+     "t": 1794167098397,
+     "half_a": 3,
+     "half_b": 2,
+     "edits": [
+      {
+       "op": "autosize",
+       "at": "2026-11-09T00:25:21.351Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "half": 1,
+        "half_a": null,
+        "half_b": null
+       },
+       "after": {
+        "half": 2,
+        "half_a": 3,
+        "half_b": 2
+       },
+       "criteria": "spec+sides",
+       "stopped_by": {
+        "A": "own side",
+        "B": "own side"
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.351Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/i/014",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "patch_ok": true,
+     "patch_flags": [],
+     "redundancy_group": "taiwei_cui_079/i/014",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 109,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.267238,
+     "b_B": 7.482619,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794167112927",
+   "image": "taiwei_cui_079",
+   "type": "i",
+   "A": {
+    "x": 711,
+    "y": 635,
+    "r": 4
+   },
+   "B": {
+    "x": 731,
+    "y": 626,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:45:12.927Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "i",
+     "a_row": 635,
+     "a_col": 711,
+     "b_row": 626,
+     "b_col": 731,
+     "half": 4,
+     "t": 1794167112927,
+     "edits": [
+      {
+       "op": "autosize",
+       "at": "2026-11-09T00:25:21.355Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "half": 1
+       },
+       "after": {
+        "half": 4
+       },
+       "criteria": "spec+sides",
+       "stopped_by": {
+        "A": "reached max",
+        "B": "reached max"
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.355Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/i/015",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "patch_ok": true,
+     "patch_flags": [],
+     "redundancy_group": "taiwei_cui_079/i/015",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 110,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.125889,
+     "b_B": 7.293398,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794167118655",
+   "image": "taiwei_cui_079",
+   "type": "i",
+   "A": {
+    "x": 749,
+    "y": 583,
+    "r": 1
+   },
+   "B": {
+    "x": 753,
+    "y": 595,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:45:18.655Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "i",
+     "a_row": 583,
+     "a_col": 749,
+     "b_row": 595,
+     "b_col": 753,
+     "half": 1,
+     "t": 1794167118655,
+     "half_a": 1,
+     "half_b": 2,
+     "edits": [
+      {
+       "op": "autosize",
+       "at": "2026-11-09T00:25:21.358Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "half_a": null,
+        "half_b": null
+       },
+       "after": {
+        "half_a": 1,
+        "half_b": 2
+       },
+       "criteria": "spec+sides",
+       "stopped_by": {
+        "A": "own side",
+        "B": "own side"
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.358Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/i/016",
+        "weight": 0.5,
+        "eval_subset": true
+       }
+      }
+     ],
+     "patch_ok": true,
+     "patch_flags": [],
+     "redundancy_group": "taiwei_cui_079/i/016",
+     "weight": 0.5,
+     "eval_subset": true
+    },
+    "v0_index": 111,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.026698,
+     "b_B": 7.264804,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794167124540",
+   "image": "taiwei_cui_079",
+   "type": "i",
+   "A": {
+    "x": 765,
+    "y": 576,
+    "r": 1
+   },
+   "B": {
+    "x": 762,
+    "y": 567,
+    "r": 1
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:45:24.540Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "i",
+     "a_row": 576,
+     "a_col": 765,
+     "b_row": 567,
+     "b_col": 762,
+     "half": 1,
+     "t": 1794167124540,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 1: own side (reaches 1.3 px, transition starts 3.0)",
+      "B at current half 1: own side (reaches 8.2 px, transition ends 7.5); plateau (15% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.361Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 1: own side (reaches 1.3 px, transition starts 3.0)",
+         "B at current half 1: own side (reaches 8.2 px, transition ends 7.5); plateau (15% of step > 10%)"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/i/016",
+        "weight": 0.5,
+        "eval_subset": false
+       }
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/i/016",
+     "weight": 0.5,
+     "eval_subset": false
+    },
+    "v0_index": 112,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.021016,
+     "b_B": 7.261565,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794167129238",
+   "image": "taiwei_cui_079",
+   "type": "i",
+   "A": {
+    "x": 754,
+    "y": 550,
+    "r": 1
+   },
+   "B": {
+    "x": 762,
+    "y": 558,
+    "r": 1
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:45:29.238Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "i",
+     "a_row": 550,
+     "a_col": 754,
+     "b_row": 558,
+     "b_col": 762,
+     "half": 1,
+     "t": 1794167129238,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 1: own side (reaches 1.4 px, transition starts 3.0)",
+      "B at current half 1: own side (reaches 9.9 px, transition ends 8.5); plateau (28% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.363Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 1: own side (reaches 1.4 px, transition starts 3.0)",
+         "B at current half 1: own side (reaches 9.9 px, transition ends 8.5); plateau (28% of step > 10%)"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/i/017",
+        "weight": 1,
+        "eval_subset": false
+       }
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/i/017",
+     "weight": 1,
+     "eval_subset": false
+    },
+    "v0_index": 113,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.027922,
+     "b_B": 7.195981,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794167152646",
+   "image": "taiwei_cui_079",
+   "type": "i",
+   "A": {
+    "x": 571,
+    "y": 163,
+    "r": 2
+   },
+   "B": {
+    "x": 569,
+    "y": 186,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:45:52.646Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "i",
+     "a_row": 163,
+     "a_col": 571,
+     "b_row": 186,
+     "b_col": 569,
+     "half": 2,
+     "t": 1794167152646,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: own side (reaches 2.2 px, transition starts 2.0); plateau (28% of step > 10%)",
+      "B at current half 2: own side (reaches 20.9 px, transition ends 21.5); plateau (20% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.367Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: own side (reaches 2.2 px, transition starts 2.0); plateau (28% of step > 10%)",
+         "B at current half 2: own side (reaches 20.9 px, transition ends 21.5); plateau (20% of step > 10%)"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/i/018",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/i/018",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 114,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 7.25871,
+     "b_B": 6.538377,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794167160704",
+   "image": "taiwei_cui_079",
+   "type": "i",
+   "A": {
+    "x": 199,
+    "y": 737,
+    "r": 4
+   },
+   "B": {
+    "x": 184,
+    "y": 697,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:46:00.704Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "i",
+     "a_row": 737,
+     "a_col": 199,
+     "b_row": 697,
+     "b_col": 184,
+     "half": 4,
+     "t": 1794167160704,
+     "edits": [
+      {
+       "op": "autosize",
+       "at": "2026-11-09T00:25:21.370Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "half": 2
+       },
+       "after": {
+        "half": 4
+       },
+       "criteria": "spec+sides",
+       "stopped_by": {
+        "A": "reached max",
+        "B": "reached max"
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.370Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/i/019",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "patch_ok": true,
+     "patch_flags": [],
+     "redundancy_group": "taiwei_cui_079/i/019",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 115,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 7.887528,
+     "b_B": 6.165026,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794167177831",
+   "image": "taiwei_cui_079",
+   "type": "i",
+   "A": {
+    "x": 102,
+    "y": 655,
+    "r": 2
+   },
+   "B": {
+    "x": 123,
+    "y": 663,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:46:17.831Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "i",
+     "a_row": 655,
+     "a_col": 102,
+     "b_row": 663,
+     "b_col": 123,
+     "half": 2,
+     "t": 1794167177831,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: own side (reaches 2.6 px, transition starts 1.5); plateau (65% of step > 10%); homogeneity (spread 0.201 > max(1.5 x 0.133, 2 x 0.053))",
+      "B at current half 2: plateau (46% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.374Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: own side (reaches 2.6 px, transition starts 1.5); plateau (65% of step > 10%); homogeneity (spread 0.201 > max(1.5 x 0.133, 2 x 0.053))",
+         "B at current half 2: plateau (46% of step > 10%)"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/i/020",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/i/020",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 116,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 6.584486,
+     "b_B": 6.259111,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794167183276",
+   "image": "taiwei_cui_079",
+   "type": "i",
+   "A": {
+    "x": 48,
+    "y": 500,
+    "r": 2
+   },
+   "B": {
+    "x": 48,
+    "y": 527,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:46:23.276Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "i",
+     "a_row": 500,
+     "a_col": 48,
+     "b_row": 527,
+     "b_col": 48,
+     "half": 2,
+     "t": 1794167183276,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 2: sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.377Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 2: sides (an outer row/column differs from the core)"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/i/021",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/i/021",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 117,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.190277,
+     "b_B": 6.555838,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794167189517",
+   "image": "taiwei_cui_079",
+   "type": "i",
+   "A": {
+    "x": 261,
+    "y": 189,
+    "r": 2
+   },
+   "B": {
+    "x": 269,
+    "y": 163,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:46:29.517Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "i",
+     "a_row": 189,
+     "a_col": 261,
+     "b_row": 163,
+     "b_col": 269,
+     "half": 2,
+     "t": 1794167189517,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 2: own side (reaches 24.7 px, transition ends 23.0); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.380Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 2: own side (reaches 24.7 px, transition ends 23.0); sides (an outer row/column differs from the core)"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/i/022",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/i/022",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 118,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 7.859562,
+     "b_B": 6.106983,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794167199150",
+   "image": "taiwei_cui_079",
+   "type": "i",
+   "A": {
+    "x": 460,
+    "y": 137,
+    "r": 2
+   },
+   "B": {
+    "x": 463,
+    "y": 112,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:46:39.150Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "i",
+     "a_row": 137,
+     "a_col": 460,
+     "b_row": 112,
+     "b_col": 463,
+     "half": 2,
+     "t": 1794167199150,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: plateau (30% of step > 10%)",
+      "B at current half 2: own side (reaches 23.0 px, transition ends 23.0); homogeneity (spread 0.227 > max(1.5 x 0.102, 2 x 0.056))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.384Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: plateau (30% of step > 10%)",
+         "B at current half 2: own side (reaches 23.0 px, transition ends 23.0); homogeneity (spread 0.227 > max(1.5 x 0.102, 2 x 0.056))"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/i/023",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/i/023",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 119,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 7.414701,
+     "b_B": 6.845924,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794167207393",
+   "image": "taiwei_cui_079",
+   "type": "i",
+   "A": {
+    "x": 236,
+    "y": 78,
+    "r": 2
+   },
+   "B": {
+    "x": 227,
+    "y": 96,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:46:47.393Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "i",
+     "a_row": 78,
+     "a_col": 236,
+     "b_row": 96,
+     "b_col": 227,
+     "half": 2,
+     "t": 1794167207393,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: own side (reaches 2.7 px, transition starts 1.5)",
+      "B at current half 2: plateau (20% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.387Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: own side (reaches 2.7 px, transition starts 1.5)",
+         "B at current half 2: plateau (20% of step > 10%)"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/i/024",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/i/024",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 120,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 7.331029,
+     "b_B": 6.618437,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794167217645",
+   "image": "taiwei_cui_079",
+   "type": "m",
+   "A": {
+    "x": 584,
+    "y": 871,
+    "r": 2
+   },
+   "B": {
+    "x": 569,
+    "y": 889,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:46:57.645Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "m",
+     "a_row": 871,
+     "a_col": 584,
+     "b_row": 889,
+     "b_col": 569,
+     "half": 2,
+     "t": 1794167217645,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: own side (reaches 2.8 px, transition starts 2.0); plateau (13% of step > 10%)",
+      "B at current half 2: plateau (18% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.391Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: own side (reaches 2.8 px, transition starts 2.0); plateau (13% of step > 10%)",
+         "B at current half 2: plateau (18% of step > 10%)"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/m/000",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/m/000",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 121
+   }
+  },
+  {
+   "id": "t=1794167220034",
+   "image": "taiwei_cui_079",
+   "type": "m",
+   "A": {
+    "x": 551,
+    "y": 905,
+    "r": 1
+   },
+   "B": {
+    "x": 547,
+    "y": 913,
+    "r": 1
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:47:00.034Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "m",
+     "a_row": 905,
+     "a_col": 551,
+     "b_row": 913,
+     "b_col": 547,
+     "half": 1,
+     "t": 1794167220034,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: own side (reaches 2.8 px, transition starts 3.5); plateau (92% of step > 10%)",
+      "B at current half 2: own side (reaches 6.4 px, transition ends 5.0)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.394Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: own side (reaches 2.8 px, transition starts 3.5); plateau (92% of step > 10%)",
+         "B at current half 2: own side (reaches 6.4 px, transition ends 5.0)"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/m/001",
+        "weight": 1,
+        "eval_subset": true
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-09T05:05:55.937Z",
+       "before": {
+        "half": 2
+       },
+       "after": {
+        "half": 1
+       }
+      },
+      {
+       "op": "move",
+       "at": "2026-11-09T05:06:06.916Z",
+       "before": {
+        "a_col": 554,
+        "a_row": 907
+       },
+       "after": {
+        "a_col": 551,
+        "a_row": 905
+       },
+       "n": 15
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/m/001",
+     "weight": 1,
+     "eval_subset": true,
+     "review_verdicts": [
+      {
+       "verdict": "fixed",
+       "at": "2026-11-09T05:06:08.950Z",
+       "list": "review_blind.csv"
+      }
+     ]
+    },
+    "v0_index": 122
+   }
+  },
+  {
+   "id": "t=1794167223199",
+   "image": "taiwei_cui_079",
+   "type": "m",
+   "A": {
+    "x": 712,
+    "y": 911,
+    "r": 2
+   },
+   "B": {
+    "x": 724,
+    "y": 915,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:47:03.199Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "m",
+     "a_row": 911,
+     "a_col": 712,
+     "b_row": 915,
+     "b_col": 724,
+     "half": 2,
+     "t": 1794167223199,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: own side (reaches 2.5 px, transition starts 2.5)",
+      "B at current half 2: own side (reaches 10.1 px, transition ends 9.5)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.398Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: own side (reaches 2.5 px, transition starts 2.5)",
+         "B at current half 2: own side (reaches 10.1 px, transition ends 9.5)"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/m/002",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/m/002",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 123
+   }
+  },
+  {
+   "id": "t=1794167242979",
+   "image": "taiwei_cui_079",
+   "type": "m",
+   "A": {
+    "x": 715,
+    "y": 970,
+    "r": 2
+   },
+   "B": {
+    "x": 718,
+    "y": 989,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:47:22.979Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "m",
+     "a_row": 970,
+     "a_col": 715,
+     "b_row": 989,
+     "b_col": 718,
+     "half": 2,
+     "t": 1794167242979,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: plateau (11% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.401Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: plateau (11% of step > 10%)"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/m/003",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/m/003",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 124
+   }
+  },
+  {
+   "id": "t=1794167278417",
+   "image": "taiwei_cui_079",
+   "type": "m",
+   "A": {
+    "x": 395,
+    "y": 789,
+    "r": 1
+   },
+   "B": {
+    "x": 400,
+    "y": 795,
+    "r": 1
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:47:58.417Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "m",
+     "a_row": 789,
+     "a_col": 395,
+     "b_row": 795,
+     "b_col": 400,
+     "half": 1,
+     "t": 1794167278417,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 1: own side (reaches 1.4 px, transition starts 2.0); plateau (64% of step > 10%)",
+      "B at current half 1: own side (reaches 6.4 px, transition ends 5.5)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.406Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 1: own side (reaches 1.4 px, transition starts 2.0); plateau (64% of step > 10%)",
+         "B at current half 1: own side (reaches 6.4 px, transition ends 5.5)"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/m/005",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/m/005",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 125
+   }
+  },
+  {
+   "id": "t=1794167284979",
+   "image": "taiwei_cui_079",
+   "type": "m",
+   "A": {
+    "x": 504,
+    "y": 836,
+    "r": 1
+   },
+   "B": {
+    "x": 513,
+    "y": 831,
+    "r": 1
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:48:04.979Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "m",
+     "a_row": 836,
+     "a_col": 504,
+     "b_row": 831,
+     "b_col": 513,
+     "half": 1,
+     "t": 1794167284979,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 1: plateau (106% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.410Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 1: plateau (106% of step > 10%)"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/m/006",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/m/006",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 126
+   }
+  },
+  {
+   "id": "t=1794167293648",
+   "image": "taiwei_cui_079",
+   "type": "m",
+   "A": {
+    "x": 651,
+    "y": 568,
+    "r": 1
+   },
+   "B": {
+    "x": 665,
+    "y": 569,
+    "r": 1
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:48:13.648Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "m",
+     "a_row": 568,
+     "a_col": 651,
+     "b_row": 569,
+     "b_col": 665,
+     "half": 1,
+     "t": 1794167293648,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 1: own side (reaches 1.1 px, transition starts 1.5)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.414Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 1: own side (reaches 1.1 px, transition starts 1.5)"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/m/007",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/m/007",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 127
+   }
+  },
+  {
+   "id": "t=1794167298066",
+   "image": "taiwei_cui_079",
+   "type": "i",
+   "A": {
+    "x": 599,
+    "y": 505,
+    "r": 3
+   },
+   "B": {
+    "x": 607,
+    "y": 491,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:48:18.066Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "i",
+     "a_row": 505,
+     "a_col": 599,
+     "b_row": 491,
+     "b_col": 607,
+     "half": 2,
+     "t": 1794167298066,
+     "half_a": 3,
+     "half_b": 2,
+     "edits": [
+      {
+       "op": "autosize",
+       "at": "2026-11-09T00:25:21.420Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "half": 1,
+        "half_a": null,
+        "half_b": null
+       },
+       "after": {
+        "half": 2,
+        "half_a": 3,
+        "half_b": 2
+       },
+       "criteria": "spec+sides",
+       "stopped_by": {
+        "A": "own side",
+        "B": "own side"
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.420Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/i/025",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "patch_ok": true,
+     "patch_flags": [],
+     "redundancy_group": "taiwei_cui_079/i/025",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 128,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.661101,
+     "b_B": 7.95062,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794167299843",
+   "image": "taiwei_cui_079",
+   "type": "i",
+   "A": {
+    "x": 567,
+    "y": 492,
+    "r": 2
+   },
+   "B": {
+    "x": 560,
+    "y": 482,
+    "r": 1
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:48:19.843Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "i",
+     "a_row": 492,
+     "a_col": 567,
+     "b_row": 482,
+     "b_col": 560,
+     "half": 1,
+     "t": 1794167299843,
+     "half_a": 2,
+     "half_b": 1,
+     "edits": [
+      {
+       "op": "autosize",
+       "at": "2026-11-09T00:25:21.424Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "half_a": null,
+        "half_b": null
+       },
+       "after": {
+        "half_a": 2,
+        "half_b": 1
+       },
+       "criteria": "spec+sides",
+       "stopped_by": {
+        "A": "own side",
+        "B": "own side"
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.424Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/i/026",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "patch_ok": true,
+     "patch_flags": [],
+     "redundancy_group": "taiwei_cui_079/i/026",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 129,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.719374,
+     "b_B": 8.207387,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794167319273",
+   "image": "taiwei_cui_079",
+   "type": "i",
+   "A": {
+    "x": 325,
+    "y": 665,
+    "r": 2
+   },
+   "B": {
+    "x": 314,
+    "y": 653,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:48:39.273Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "i",
+     "a_row": 665,
+     "a_col": 325,
+     "b_row": 653,
+     "b_col": 314,
+     "half": 2,
+     "t": 1794167319273,
+     "half_a": 2,
+     "half_b": 3,
+     "edits": [
+      {
+       "op": "autosize",
+       "at": "2026-11-09T00:25:21.428Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "half": 1,
+        "half_a": null,
+        "half_b": null
+       },
+       "after": {
+        "half": 2,
+        "half_a": 2,
+        "half_b": 3
+       },
+       "criteria": "spec+sides",
+       "stopped_by": {
+        "A": "own side",
+        "B": "homogeneity"
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.428Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/i/027",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "patch_ok": true,
+     "patch_flags": [],
+     "redundancy_group": "taiwei_cui_079/i/027",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 130,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.630708,
+     "b_B": 7.752984,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794167337148",
+   "image": "taiwei_cui_079",
+   "type": "m",
+   "A": {
+    "x": 322,
+    "y": 876,
+    "r": 4
+   },
+   "B": {
+    "x": 298,
+    "y": 856,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:48:57.148Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "m",
+     "a_row": 876,
+     "a_col": 322,
+     "b_row": 856,
+     "b_col": 298,
+     "half": 4,
+     "t": 1794167337148,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: own side (reaches 5.6 px, transition starts 7.5)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.431Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: own side (reaches 5.6 px, transition starts 7.5)"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/m/008",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/m/008",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 131
+   }
+  },
+  {
+   "id": "t=1794167346522",
+   "image": "taiwei_cui_079",
+   "type": "m",
+   "A": {
+    "x": 587,
+    "y": 581,
+    "r": 4
+   },
+   "B": {
+    "x": 564,
+    "y": 586,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:49:06.522Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "m",
+     "a_row": 581,
+     "a_col": 587,
+     "b_row": 586,
+     "b_col": 564,
+     "half": 4,
+     "t": 1794167346522,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: own side (reaches 4.8 px, transition starts 2.0); plateau (15% of step > 10%); sides (an outer row/column differs from the core)",
+      "B at current half 4: homogeneity (spread 0.063 > max(1.5 x 0.025, 2 x 0.010)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.435Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: own side (reaches 4.8 px, transition starts 2.0); plateau (15% of step > 10%); sides (an outer row/column differs from the core)",
+         "B at current half 4: homogeneity (spread 0.063 > max(1.5 x 0.025, 2 x 0.010)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/m/009",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/m/009",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 132
+   }
+  },
+  {
+   "id": "t=1794167356478",
+   "image": "taiwei_cui_079",
+   "type": "m",
+   "A": {
+    "x": 13,
+    "y": 285,
+    "r": 4
+   },
+   "B": {
+    "x": 42,
+    "y": 275,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:49:16.478Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "m",
+     "a_row": 285,
+     "a_col": 13,
+     "b_row": 275,
+     "b_col": 42,
+     "half": 4,
+     "t": 1794167356478,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: own side (reaches 5.1 px, transition starts 2.0); plateau (47% of step > 10%); homogeneity (spread 0.669 > max(1.5 x 0.150, 2 x 0.010)); sides (an outer row/column differs from the core)",
+      "B at current half 4: own side (reaches 25.6 px, transition ends 25.5)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.438Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: own side (reaches 5.1 px, transition starts 2.0); plateau (47% of step > 10%); homogeneity (spread 0.669 > max(1.5 x 0.150, 2 x 0.010)); sides (an outer row/column differs from the core)",
+         "B at current half 4: own side (reaches 25.6 px, transition ends 25.5)"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/m/010",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/m/010",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 133
+   }
+  },
+  {
+   "id": "t=1794167361215",
+   "image": "taiwei_cui_079",
+   "type": "m",
+   "A": {
+    "x": 626,
+    "y": 76,
+    "r": 1
+   },
+   "B": {
+    "x": 619,
+    "y": 92,
+    "r": 1
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:49:21.215Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "m",
+     "a_row": 76,
+     "a_col": 626,
+     "b_row": 92,
+     "b_col": 619,
+     "half": 1,
+     "t": 1794167361215,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: own side (reaches 5.2 px, transition starts 3.0); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.441Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: own side (reaches 5.2 px, transition starts 3.0); sides (an outer row/column differs from the core)"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/m/011",
+        "weight": 1,
+        "eval_subset": true
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-09T05:16:35.634Z",
+       "before": {
+        "half": 4
+       },
+       "after": {
+        "half": 3
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-09T05:16:35.902Z",
+       "before": {
+        "half": 3
+       },
+       "after": {
+        "half": 2
+       }
+      },
+      {
+       "op": "move",
+       "at": "2026-11-09T05:16:43.212Z",
+       "before": {
+        "a_col": 621,
+        "a_row": 70
+       },
+       "after": {
+        "a_col": 626,
+        "a_row": 76
+       },
+       "n": 43
+      },
+      {
+       "op": "half",
+       "at": "2026-11-09T05:16:45.849Z",
+       "before": {
+        "half": 2
+       },
+       "after": {
+        "half": 3
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-09T05:16:46.368Z",
+       "before": {
+        "half": 3
+       },
+       "after": {
+        "half": 2
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-09T05:16:46.727Z",
+       "before": {
+        "half": 2
+       },
+       "after": {
+        "half": 1
+       }
+      },
+      {
+       "op": "type",
+       "at": "2026-11-09T05:16:49.290Z",
+       "before": {
+        "type": "m"
+       },
+       "after": {
+        "type": "b"
+       }
+      },
+      {
+       "op": "move",
+       "at": "2026-11-09T05:17:09.639Z",
+       "before": {
+        "b_col": 614,
+        "b_row": 88,
+        "a_row": 76
+       },
+       "after": {
+        "b_col": 619,
+        "b_row": 90,
+        "a_row": 78
+       },
+       "n": 9
+      },
+      {
+       "op": "move",
+       "at": "2026-11-09T05:17:21.097Z",
+       "before": {
+        "a_row": 78,
+        "a_col": 626
+       },
+       "after": {
+        "a_row": 75,
+        "a_col": 626
+       },
+       "n": 5
+      },
+      {
+       "op": "move",
+       "at": "2026-11-09T05:17:27.676Z",
+       "before": {
+        "b_col": 619,
+        "b_row": 90
+       },
+       "after": {
+        "b_col": 619,
+        "b_row": 92
+       },
+       "n": 6
+      },
+      {
+       "op": "move",
+       "at": "2026-11-09T05:17:35.885Z",
+       "before": {
+        "a_row": 75
+       },
+       "after": {
+        "a_row": 76
+       }
+      },
+      {
+       "op": "type",
+       "at": "2026-11-09T05:17:38.467Z",
+       "before": {
+        "type": "b"
+       },
+       "after": {
+        "type": "m"
+       }
+      },
+      {
+       "op": "move",
+       "at": "2026-11-09T05:17:43.225Z",
+       "before": {
+        "a_col": 626,
+        "a_row": 76
+       },
+       "after": {
+        "a_col": 626,
+        "a_row": 75
+       },
+       "n": 11
+      },
+      {
+       "op": "move",
+       "at": "2026-11-09T05:17:49.916Z",
+       "before": {
+        "a_row": 75
+       },
+       "after": {
+        "a_row": 76
+       }
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/m/011",
+     "weight": 1,
+     "eval_subset": true,
+     "review_verdicts": [
+      {
+       "verdict": "relabel",
+       "at": "2026-11-09T05:16:49.291Z",
+       "list": "review_blind.csv",
+       "from": "m",
+       "to": "b"
+      },
+      {
+       "verdict": "fixed",
+       "at": "2026-11-09T05:17:30.757Z",
+       "list": "review_blind.csv"
+      },
+      {
+       "verdict": "relabel",
+       "at": "2026-11-09T05:17:38.468Z",
+       "list": "review_blind.csv",
+       "from": "b",
+       "to": "m"
+      },
+      {
+       "verdict": "fixed",
+       "at": "2026-11-09T05:17:53.582Z",
+       "list": "review_blind.csv"
+      }
+     ]
+    },
+    "v0_index": 134
+   }
+  },
+  {
+   "id": "t=1794167364418",
+   "image": "taiwei_cui_079",
+   "type": "m",
+   "A": {
+    "x": 726,
+    "y": 42,
+    "r": 4
+   },
+   "B": {
+    "x": 742,
+    "y": 16,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T19:49:24.418Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "m",
+     "a_row": 42,
+     "a_col": 726,
+     "b_row": 16,
+     "b_col": 742,
+     "half": 4,
+     "t": 1794167364418,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: plateau (11% of step > 10%); homogeneity (spread 0.195 > max(1.5 x 0.115, 2 x 0.071))",
+      "B at current half 4: own side (reaches 25.0 px, transition ends 24.0)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.444Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: plateau (11% of step > 10%); homogeneity (spread 0.195 > max(1.5 x 0.115, 2 x 0.071))",
+         "B at current half 4: own side (reaches 25.0 px, transition ends 24.0)"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/m/012",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/m/012",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 135
+   }
+  },
+  {
+   "id": "t=1794171714078",
+   "image": "taiwei_cui_079",
+   "type": "m",
+   "A": {
+    "x": 389,
+    "y": 644,
+    "r": 1
+   },
+   "B": {
+    "x": 385,
+    "y": 609,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T21:01:54.078Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "m",
+     "a_row": 644,
+     "a_col": 389,
+     "b_row": 609,
+     "b_col": 385,
+     "half": 1,
+     "t": 1794171714078,
+     "half_a": 1,
+     "half_b": 4,
+     "edits": [
+      {
+       "op": "autosize",
+       "at": "2026-11-09T00:25:25.298Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "half_a": null,
+        "half_b": null
+       },
+       "after": {
+        "half_a": 1,
+        "half_b": 4
+       },
+       "criteria": "spec+sides",
+       "stopped_by": {
+        "A": "homogeneity",
+        "B": "reached max"
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:25.298Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.260Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/m/013",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "patch_ok": true,
+     "patch_flags": [],
+     "redundancy_group": "taiwei_cui_079/m/013",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 846
+   }
+  },
+  {
+   "id": "t=1794171714873",
+   "image": "taiwei_cui_079",
+   "type": "m",
+   "A": {
+    "x": 436,
+    "y": 620,
+    "r": 4
+   },
+   "B": {
+    "x": 432,
+    "y": 581,
+    "r": 1
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T21:01:54.873Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "m",
+     "a_row": 620,
+     "a_col": 436,
+     "b_row": 581,
+     "b_col": 432,
+     "half": 1,
+     "t": 1794171714873,
+     "half_a": 4,
+     "half_b": 1,
+     "edits": [
+      {
+       "op": "autosize",
+       "at": "2026-11-09T00:25:25.302Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "half_a": null,
+        "half_b": null
+       },
+       "after": {
+        "half_a": 4,
+        "half_b": 1
+       },
+       "criteria": "spec+sides",
+       "stopped_by": {
+        "A": "reached max",
+        "B": "plateau"
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:25.302Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.260Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/m/014",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "patch_ok": true,
+     "patch_flags": [],
+     "redundancy_group": "taiwei_cui_079/m/014",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 847
+   }
+  },
+  {
+   "id": "t=1794171715630",
+   "image": "taiwei_cui_079",
+   "type": "m",
+   "A": {
+    "x": 473,
+    "y": 590,
+    "r": 1
+   },
+   "B": {
+    "x": 469,
+    "y": 551,
+    "r": 1
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T21:01:55.630Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "m",
+     "a_row": 590,
+     "a_col": 473,
+     "b_row": 551,
+     "b_col": 469,
+     "half": 1,
+     "t": 1794171715630,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 1: plateau (13% of step > 10%)",
+      "B at current half 1: own side (reaches 38.1 px, transition ends 37.0)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:25.305Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 1: plateau (13% of step > 10%)",
+         "B at current half 1: own side (reaches 38.1 px, transition ends 37.0)"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.260Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/m/015",
+        "weight": 0.5,
+        "eval_subset": true
+       }
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/m/015",
+     "weight": 0.5,
+     "eval_subset": true
+    },
+    "v0_index": 848
+   }
+  },
+  {
+   "id": "t=1794171716332",
+   "image": "taiwei_cui_079",
+   "type": "m",
+   "A": {
+    "x": 497,
+    "y": 570,
+    "r": 1
+   },
+   "B": {
+    "x": 491,
+    "y": 544,
+    "r": 1
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T21:01:56.332Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "m",
+     "a_row": 570,
+     "a_col": 497,
+     "b_row": 544,
+     "b_col": 491,
+     "half": 1,
+     "t": 1794171716332,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 1: plateau (80% of step > 10%)",
+      "B at current half 1: plateau (43% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:25.308Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 1: plateau (80% of step > 10%)",
+         "B at current half 1: plateau (43% of step > 10%)"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.260Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/m/015",
+        "weight": 0.5,
+        "eval_subset": true
+       }
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/m/015",
+     "weight": 0.5,
+     "eval_subset": true
+    },
+    "v0_index": 849
+   }
+  },
+  {
+   "id": "t=1794171717869",
+   "image": "taiwei_cui_079",
+   "type": "m",
+   "A": {
+    "x": 649,
+    "y": 456,
+    "r": 2
+   },
+   "B": {
+    "x": 669,
+    "y": 416,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T21:01:57.869Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "m",
+     "a_row": 456,
+     "a_col": 649,
+     "b_row": 416,
+     "b_col": 669,
+     "half": 2,
+     "t": 1794171717869,
+     "edits": [
+      {
+       "op": "move",
+       "at": "2026-11-08T22:58:17.107Z",
+       "before": {
+        "a_col": 673,
+        "a_row": 454
+       },
+       "after": {
+        "a_col": 650,
+        "a_row": 456
+       },
+       "n": 25
+      },
+      {
+       "op": "move",
+       "at": "2026-11-08T22:58:18.659Z",
+       "before": {
+        "a_col": 650
+       },
+       "after": {
+        "a_col": 649
+       }
+      },
+      {
+       "op": "autosize",
+       "at": "2026-11-09T00:25:25.312Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "half": 1,
+        "half_a": null,
+        "half_b": null
+       },
+       "after": {
+        "half": 2,
+        "half_a": 2,
+        "half_b": 3
+       },
+       "criteria": "spec+sides",
+       "stopped_by": {
+        "A": "homogeneity",
+        "B": "sides"
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:25.312Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.260Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/m/016",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "half_a": 2,
+     "half_b": 3,
+     "patch_ok": true,
+     "patch_flags": [],
+     "redundancy_group": "taiwei_cui_079/m/016",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 850
+   }
+  },
+  {
+   "id": "t=1794171718642",
+   "image": "taiwei_cui_079",
+   "type": "m",
+   "A": {
+    "x": 706,
+    "y": 428,
+    "r": 1
+   },
+   "B": {
+    "x": 706,
+    "y": 399,
+    "r": 1
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T21:01:58.642Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "m",
+     "a_row": 428,
+     "a_col": 706,
+     "b_row": 399,
+     "b_col": 706,
+     "half": 1,
+     "t": 1794171718642,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 1: plateau (19% of step > 10%)",
+      "B at current half 1: own side (reaches 28.0 px, transition ends 26.5); plateau (11% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:25.315Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 1: plateau (19% of step > 10%)",
+         "B at current half 1: own side (reaches 28.0 px, transition ends 26.5); plateau (11% of step > 10%)"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.260Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/m/017",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/m/017",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 851
+   }
+  },
+  {
+   "id": "t=1794171719640",
+   "image": "taiwei_cui_079",
+   "type": "m",
+   "A": {
+    "x": 725,
+    "y": 413,
+    "r": 1
+   },
+   "B": {
+    "x": 721,
+    "y": 385,
+    "r": 1
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T21:01:59.640Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "m",
+     "a_row": 413,
+     "a_col": 725,
+     "b_row": 385,
+     "b_col": 721,
+     "half": 1,
+     "t": 1794171719640,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 1: plateau (69% of step > 10%)",
+      "B at current half 1: plateau (16% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:25.318Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 1: plateau (69% of step > 10%)",
+         "B at current half 1: plateau (16% of step > 10%)"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.260Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/m/018",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/m/018",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 852
+   }
+  },
+  {
+   "id": "t=1794171720792",
+   "image": "taiwei_cui_079",
+   "type": "m",
+   "A": {
+    "x": 601,
+    "y": 444,
+    "r": 2
+   },
+   "B": {
+    "x": 617,
+    "y": 425,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T21:02:00.792Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "m",
+     "a_row": 444,
+     "a_col": 601,
+     "b_row": 425,
+     "b_col": 617,
+     "half": 2,
+     "t": 1794171720792,
+     "half_a": 2,
+     "half_b": 3,
+     "edits": [
+      {
+       "op": "autosize",
+       "at": "2026-11-09T00:25:25.321Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "half": 1,
+        "half_a": null,
+        "half_b": null
+       },
+       "after": {
+        "half": 2,
+        "half_a": 2,
+        "half_b": 3
+       },
+       "criteria": "spec+sides",
+       "stopped_by": {
+        "A": "own side",
+        "B": "homogeneity"
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:25.321Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.260Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/m/019",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "patch_ok": true,
+     "patch_flags": [],
+     "redundancy_group": "taiwei_cui_079/m/019",
+     "weight": 1,
+     "eval_subset": true,
+     "review_verdicts": [
+      {
+       "verdict": "keep",
+       "at": "2026-11-09T05:15:39.172Z",
+       "list": "review_blind.csv"
+      }
+     ]
+    },
+    "v0_index": 853
+   }
+  },
+  {
+   "id": "t=1794171721695",
+   "image": "taiwei_cui_079",
+   "type": "m",
+   "A": {
+    "x": 587,
+    "y": 424,
+    "r": 1
+   },
+   "B": {
+    "x": 602,
+    "y": 413,
+    "r": 1
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T21:02:01.695Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "m",
+     "a_row": 424,
+     "a_col": 587,
+     "b_row": 413,
+     "b_col": 602,
+     "half": 1,
+     "t": 1794171721695,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 1: own side (reaches 1.4 px, transition starts 2.0)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:25.324Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 1: own side (reaches 1.4 px, transition starts 2.0)"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.260Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/m/020",
+        "weight": 1,
+        "eval_subset": true
+       }
+      },
+      {
+       "op": "move",
+       "at": "2026-11-09T05:13:32.475Z",
+       "before": {
+        "a_row": 428,
+        "a_col": 584
+       },
+       "after": {
+        "a_row": 424,
+        "a_col": 587
+       },
+       "n": 9
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/m/020",
+     "weight": 1,
+     "eval_subset": true,
+     "review_verdicts": [
+      {
+       "verdict": "fixed",
+       "at": "2026-11-09T05:13:35.538Z",
+       "list": "review_blind.csv"
+      }
+     ]
+    },
+    "v0_index": 854
+   }
+  },
+  {
+   "id": "t=1794171723607",
+   "image": "taiwei_cui_079",
+   "type": "b",
+   "A": {
+    "x": 544,
+    "y": 455,
+    "r": 1
+   },
+   "B": {
+    "x": 574,
+    "y": 450,
+    "r": 1
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T21:02:03.607Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "b",
+     "a_row": 455,
+     "a_col": 544,
+     "b_row": 450,
+     "b_col": 574,
+     "half": 1,
+     "t": 1794171723607,
+     "edits": [
+      {
+       "op": "type",
+       "at": "2026-11-08T22:38:01.153Z",
+       "before": {
+        "type": "m"
+       },
+       "after": {
+        "type": "b"
+       }
+      },
+      {
+       "op": "swap",
+       "at": "2026-11-08T23:09:00.030Z",
+       "before": {
+        "a_row": 450,
+        "a_col": 574,
+        "b_row": 455,
+        "b_col": 544
+       },
+       "after": {
+        "a_row": 455,
+        "a_col": 544,
+        "b_row": 450,
+        "b_col": 574
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:25.327Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.260Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/b/000",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "patch_ok": true,
+     "patch_flags": [],
+     "redundancy_group": "taiwei_cui_079/b/000",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 855
+   }
+  },
+  {
+   "id": "t=1794171726714",
+   "image": "taiwei_cui_079",
+   "type": "m",
+   "A": {
+    "x": 515,
+    "y": 545,
+    "r": 1
+   },
+   "B": {
+    "x": 506,
+    "y": 517,
+    "r": 1
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-08T21:02:06.714Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "m",
+     "a_row": 545,
+     "a_col": 515,
+     "b_row": 517,
+     "b_col": 506,
+     "half": 1,
+     "t": 1794171726714,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 1: own side (reaches 28.2 px, transition ends 27.5)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:25.330Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 1: own side (reaches 28.2 px, transition ends 27.5)"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.260Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/m/021",
+        "weight": 1,
+        "eval_subset": true
+       }
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/m/021",
+     "weight": 1,
+     "eval_subset": true
+    },
+    "v0_index": 856
+   }
+  }
+ ],
+ "s_seed_log": [],
+ "legacy": {
+  "source_set": "dev_v2",
+  "source_file": "illumination_edge/pairs_2026-11-09T05-33-47.json",
+  "source_sha256": "6b71702d7ce46dff7a3cb3f48160a68a97279505f6bff85d5b4ad5954e28a952",
+  "migrated_by": "metrics/migrate_v0.py 1.0",
+  "deleted": [
+   {
+    "v0": {
+     "image": "taiwei_cui_079",
+     "type": "m",
+     "a_row": 780,
+     "a_col": 680,
+     "b_row": 793,
+     "b_col": 668,
+     "half": 1,
+     "t": 1794167260557,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 1: own side (reaches 1.4 px, transition starts 3.0); plateau (19% of step > 10%)",
+      "B at current half 1: own side (reaches 11.4 px, transition ends 11.0); plateau (16% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-09T00:25:21.403Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 1: own side (reaches 1.4 px, transition starts 3.0); plateau (19% of step > 10%)",
+         "B at current half 1: own side (reaches 11.4 px, transition ends 11.0); plateau (16% of step > 10%)"
+        ]
+       }
+      },
+      {
+       "op": "balance",
+       "at": "2026-11-09T00:25:43.258Z",
+       "tool": "balance_pairs.py",
+       "version": "1.0",
+       "before": {
+        "redundancy_group": null,
+        "weight": null,
+        "eval_subset": null
+       },
+       "after": {
+        "redundancy_group": "taiwei_cui_079/m/004",
+        "weight": 1,
+        "eval_subset": true
+       }
+      },
+      {
+       "op": "move",
+       "at": "2026-11-09T05:20:51.033Z",
+       "before": {
+        "a_col": 676,
+        "a_row": 782
+       },
+       "after": {
+        "a_col": 678,
+        "a_row": 783
+       },
+       "n": 3
+      },
+      {
+       "op": "move",
+       "at": "2026-11-09T05:20:53.940Z",
+       "before": {
+        "a_row": 783,
+        "a_col": 678
+       },
+       "after": {
+        "a_row": 782,
+        "a_col": 677
+       },
+       "n": 4
+      },
+      {
+       "op": "move",
+       "at": "2026-11-09T05:21:00.870Z",
+       "before": {
+        "a_row": 782,
+        "a_col": 677
+       },
+       "after": {
+        "a_row": 781,
+        "a_col": 675
+       },
+       "n": 3
+      },
+      {
+       "op": "move",
+       "at": "2026-11-09T05:21:06.946Z",
+       "before": {
+        "a_col": 675,
+        "a_row": 781
+       },
+       "after": {
+        "a_col": 680,
+        "a_row": 780
+       },
+       "n": 10
+      },
+      {
+       "op": "move",
+       "at": "2026-11-09T05:21:09.649Z",
+       "before": {
+        "b_row": 792
+       },
+       "after": {
+        "b_row": 793
+       }
+      },
+      {
+       "op": "delete",
+       "at": "2026-11-09T05:21:13.151Z"
+      }
+     ],
+     "redundancy_group": "taiwei_cui_079/m/004",
+     "weight": 1,
+     "eval_subset": true,
+     "review_verdicts": [
+      {
+       "verdict": "delete",
+       "at": "2026-11-09T05:21:13.151Z",
+       "list": "review_blind.csv"
+      }
+     ],
+     "deleted_at": "2026-11-09T05:21:13.151Z",
+     "deleted_index": 126
+    },
+    "v0_index": 52
+   }
+  ]
+ }
+}

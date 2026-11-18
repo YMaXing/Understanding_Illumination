@@ -1,0 +1,8474 @@
+{
+ "schema_version": "1.2",
+ "image": "acharya_mrudula_048",
+ "set": "glossy_confirm",
+ "split": "train",
+ "seen_in_training": "unknown",
+ "width": 1023,
+ "height": 768,
+ "image_sha256": "d93a077ac526cfa00a937576ed33ee02436b133d3cc19ba292d207ce943aed15",
+ "image_pixel_sha256": "41493c8ff2676cb1b7effa668f5488962baaf7bff4347df538c4ed52e2b4f8bd",
+ "assigned_to": "yueren",
+ "pairs": [
+  {
+   "id": "t=1794789519882",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 514,
+    "y": 319,
+    "r": 4
+   },
+   "B": {
+    "x": 491,
+    "y": 308,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:38:39.882Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 319,
+     "a_col": 514,
+     "b_row": 308,
+     "b_col": 491,
+     "half": 4,
+     "t": 1794789519882,
+     "major": true,
+     "glossy": true
+    },
+    "v0_index": 0,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.206906,
+     "b_B": 6.605715,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789534175",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 497,
+    "y": 355,
+    "r": 4
+   },
+   "B": {
+    "x": 469,
+    "y": 345,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:38:54.175Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 355,
+     "a_col": 497,
+     "b_row": 345,
+     "b_col": 469,
+     "half": 4,
+     "t": 1794789534175,
+     "major": true,
+     "glossy": true
+    },
+    "v0_index": 1,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.520332,
+     "b_B": 7.734787,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789539852",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 479,
+    "y": 380,
+    "r": 4
+   },
+   "B": {
+    "x": 446,
+    "y": 372,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:38:59.852Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 380,
+     "a_col": 479,
+     "b_row": 372,
+     "b_col": 446,
+     "half": 4,
+     "t": 1794789539852,
+     "glossy": true
+    },
+    "v0_index": 2,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.646068,
+     "b_B": 7.953571,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789547953",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 463,
+    "y": 396,
+    "r": 2
+   },
+   "B": {
+    "x": 436,
+    "y": 396,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:39:07.953Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 396,
+     "a_col": 463,
+     "b_row": 396,
+     "b_col": 436,
+     "half": 2,
+     "t": 1794789547953,
+     "major": true,
+     "glossy": true
+    },
+    "v0_index": 3,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.642907,
+     "b_B": 7.684699,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789571414",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 424,
+    "y": 446,
+    "r": 2
+   },
+   "B": {
+    "x": 435,
+    "y": 432,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:39:31.414Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 446,
+     "a_col": 424,
+     "b_row": 432,
+     "b_col": 435,
+     "half": 2,
+     "t": 1794789571414,
+     "major": true,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-16T00:39:56.745Z",
+       "before": {
+        "a_row": 449,
+        "a_col": 433
+       },
+       "after": {
+        "a_row": 446,
+        "a_col": 424
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-16T00:39:58.878Z",
+       "before": {
+        "b_row": 436,
+        "b_col": 445
+       },
+       "after": {
+        "b_row": 432,
+        "b_col": 435
+       }
+      }
+     ]
+    },
+    "v0_index": 4,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.952893,
+     "b_B": 5.628434,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789575167",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 411,
+    "y": 450,
+    "r": 2
+   },
+   "B": {
+    "x": 398,
+    "y": 434,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:39:35.167Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 450,
+     "a_col": 411,
+     "b_row": 434,
+     "b_col": 398,
+     "half": 2,
+     "t": 1794789575167,
+     "major": true
+    },
+    "v0_index": 5,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.251711,
+     "b_B": 5.45663,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789578475",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 384,
+    "y": 456,
+    "r": 2
+   },
+   "B": {
+    "x": 368,
+    "y": 437,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:39:38.475Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 456,
+     "a_col": 384,
+     "b_row": 437,
+     "b_col": 368,
+     "half": 2,
+     "t": 1794789578475,
+     "major": true
+    },
+    "v0_index": 6,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.140664,
+     "b_B": 5.455931,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789589121",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 374,
+    "y": 451,
+    "r": 2
+   },
+   "B": {
+    "x": 348,
+    "y": 455,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:39:49.121Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 451,
+     "a_col": 374,
+     "b_row": 455,
+     "b_col": 348,
+     "half": 2,
+     "t": 1794789589121,
+     "major": true
+    },
+    "v0_index": 7,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.095708,
+     "b_B": 5.83483,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789592083",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 391,
+    "y": 467,
+    "r": 2
+   },
+   "B": {
+    "x": 372,
+    "y": 470,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:39:52.083Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 467,
+     "a_col": 391,
+     "b_row": 470,
+     "b_col": 372,
+     "half": 2,
+     "t": 1794789592083,
+     "major": true
+    },
+    "v0_index": 8,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.256375,
+     "b_B": 6.393021,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789602467",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 445,
+    "y": 453,
+    "r": 2
+   },
+   "B": {
+    "x": 454,
+    "y": 438,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:40:02.467Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 453,
+     "a_col": 445,
+     "b_row": 438,
+     "b_col": 454,
+     "half": 2,
+     "t": 1794789602467,
+     "major": true
+    },
+    "v0_index": 9,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.360796,
+     "b_B": 5.649722,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789625405",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 451,
+    "y": 466,
+    "r": 3
+   },
+   "B": {
+    "x": 421,
+    "y": 475,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:40:25.405Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 466,
+     "a_col": 451,
+     "b_row": 475,
+     "b_col": 421,
+     "half": 3,
+     "t": 1794789625405,
+     "major": true
+    },
+    "v0_index": 10,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.228381,
+     "b_B": 7.753798,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789632452",
+   "image": "acharya_mrudula_048",
+   "type": "b",
+   "A": {
+    "x": 492,
+    "y": 483,
+    "r": 3
+   },
+   "B": {
+    "x": 474,
+    "y": 503,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:40:32.452Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "b",
+     "a_row": 483,
+     "a_col": 492,
+     "b_row": 503,
+     "b_col": 474,
+     "half": 3,
+     "t": 1794789632452,
+     "major": true
+    },
+    "v0_index": 11
+   }
+  },
+  {
+   "id": "t=1794789645171",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 531,
+    "y": 497,
+    "r": 2
+   },
+   "B": {
+    "x": 523,
+    "y": 510,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:40:45.171Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 497,
+     "a_col": 531,
+     "b_row": 510,
+     "b_col": 523,
+     "half": 2,
+     "t": 1794789645171,
+     "major": true
+    },
+    "v0_index": 12,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.052946,
+     "b_B": 8.041457,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789652219",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 576,
+    "y": 513,
+    "r": 2
+   },
+   "B": {
+    "x": 568,
+    "y": 529,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:40:52.219Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 513,
+     "a_col": 576,
+     "b_row": 529,
+     "b_col": 568,
+     "half": 2,
+     "t": 1794789652219,
+     "major": true
+    },
+    "v0_index": 13,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.004029,
+     "b_B": 7.958947,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789657402",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 618,
+    "y": 528,
+    "r": 3
+   },
+   "B": {
+    "x": 610,
+    "y": 546,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:40:57.402Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 528,
+     "a_col": 618,
+     "b_row": 546,
+     "b_col": 610,
+     "half": 3,
+     "t": 1794789657402,
+     "major": true
+    },
+    "v0_index": 14,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.015439,
+     "b_B": 7.953783,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789660663",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 658,
+    "y": 542,
+    "r": 3
+   },
+   "B": {
+    "x": 646,
+    "y": 565,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:41:00.663Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 542,
+     "a_col": 658,
+     "b_row": 565,
+     "b_col": 646,
+     "half": 3,
+     "t": 1794789660663,
+     "major": true
+    },
+    "v0_index": 15,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.983242,
+     "b_B": 7.849761,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789674882",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 693,
+    "y": 560,
+    "r": 2
+   },
+   "B": {
+    "x": 686,
+    "y": 574,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:41:14.882Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 560,
+     "a_col": 693,
+     "b_row": 574,
+     "b_col": 686,
+     "half": 2,
+     "t": 1794789674882,
+     "major": true
+    },
+    "v0_index": 16,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.914388,
+     "b_B": 7.819905,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789682402",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 732,
+    "y": 574,
+    "r": 2
+   },
+   "B": {
+    "x": 726,
+    "y": 588,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:41:22.402Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 574,
+     "a_col": 732,
+     "b_row": 588,
+     "b_col": 726,
+     "half": 2,
+     "t": 1794789682402,
+     "major": true
+    },
+    "v0_index": 17,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.924561,
+     "b_B": 7.789269,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789691559",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 762,
+    "y": 584,
+    "r": 2
+   },
+   "B": {
+    "x": 757,
+    "y": 598,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:41:31.559Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 584,
+     "a_col": 762,
+     "b_row": 598,
+     "b_col": 757,
+     "half": 2,
+     "t": 1794789691559,
+     "major": true
+    },
+    "v0_index": 18,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.920249,
+     "b_B": 7.790794,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789695517",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 789,
+    "y": 593,
+    "r": 2
+   },
+   "B": {
+    "x": 783,
+    "y": 607,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:41:35.517Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 593,
+     "a_col": 789,
+     "b_row": 607,
+     "b_col": 783,
+     "half": 2,
+     "t": 1794789695517,
+     "major": true
+    },
+    "v0_index": 19,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.922151,
+     "b_B": 7.774436,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789703597",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 823,
+    "y": 605,
+    "r": 2
+   },
+   "B": {
+    "x": 819,
+    "y": 619,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:41:43.597Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 605,
+     "a_col": 823,
+     "b_row": 619,
+     "b_col": 819,
+     "half": 2,
+     "t": 1794789703597,
+     "major": true
+    },
+    "v0_index": 20,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.97264,
+     "b_B": 7.704107,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789731774",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 823,
+    "y": 605,
+    "r": 2
+   },
+   "B": {
+    "x": 847,
+    "y": 614,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:42:11.774Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 605,
+     "a_col": 823,
+     "b_row": 614,
+     "b_col": 847,
+     "half": 2,
+     "t": 1794789731774,
+     "major": true
+    },
+    "v0_index": 21,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.97264,
+     "b_B": 7.639971,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789735902",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 827,
+    "y": 590,
+    "r": 2
+   },
+   "B": {
+    "x": 843,
+    "y": 597,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:42:15.902Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 590,
+     "a_col": 827,
+     "b_row": 597,
+     "b_col": 843,
+     "half": 2,
+     "t": 1794789735902,
+     "major": true,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-16T00:42:20.007Z",
+       "before": {
+        "a_col": 828
+       },
+       "after": {
+        "a_col": 827
+       }
+      }
+     ]
+    },
+    "v0_index": 22,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.942329,
+     "b_B": 7.703619,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789765173",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 826,
+    "y": 601,
+    "r": 2
+   },
+   "B": {
+    "x": 815,
+    "y": 598,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:42:45.173Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 601,
+     "a_col": 826,
+     "b_row": 598,
+     "b_col": 815,
+     "half": 2,
+     "t": 1794789765173,
+     "major": true
+    },
+    "v0_index": 23,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.959071,
+     "b_B": 7.91439,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789777735",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 828,
+    "y": 587,
+    "r": 2
+   },
+   "B": {
+    "x": 819,
+    "y": 583,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:42:57.735Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 587,
+     "a_col": 828,
+     "b_row": 583,
+     "b_col": 819,
+     "half": 2,
+     "t": 1794789777735,
+     "major": true
+    },
+    "v0_index": 24,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.963055,
+     "b_B": 8.036454,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789788164",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 829,
+    "y": 575,
+    "r": 2
+   },
+   "B": {
+    "x": 846,
+    "y": 580,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:43:08.164Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 575,
+     "a_col": 829,
+     "b_row": 580,
+     "b_col": 846,
+     "half": 2,
+     "t": 1794789788164,
+     "major": true
+    },
+    "v0_index": 25,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.74076,
+     "b_B": 7.546298,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789793488",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 829,
+    "y": 575,
+    "r": 2
+   },
+   "B": {
+    "x": 820,
+    "y": 571,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:43:13.488Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 575,
+     "a_col": 829,
+     "b_row": 571,
+     "b_col": 820,
+     "half": 2,
+     "t": 1794789793488,
+     "major": true
+    },
+    "v0_index": 26,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.74076,
+     "b_B": 7.873464,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789797547",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 832,
+    "y": 560,
+    "r": 2
+   },
+   "B": {
+    "x": 848,
+    "y": 564,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:43:17.547Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 560,
+     "a_col": 832,
+     "b_row": 564,
+     "b_col": 848,
+     "half": 2,
+     "t": 1794789797547,
+     "major": true
+    },
+    "v0_index": 27,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.742947,
+     "b_B": 7.634749,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789811500",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 834,
+    "y": 560,
+    "r": 2
+   },
+   "B": {
+    "x": 824,
+    "y": 556,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:43:31.500Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 560,
+     "a_col": 834,
+     "b_row": 556,
+     "b_col": 824,
+     "half": 2,
+     "t": 1794789811500,
+     "major": true
+    },
+    "v0_index": 28,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.743566,
+     "b_B": 8.179872,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789821552",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 833,
+    "y": 555,
+    "r": 2
+   },
+   "B": {
+    "x": 839,
+    "y": 540,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:43:41.552Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 555,
+     "a_col": 833,
+     "b_row": 540,
+     "b_col": 839,
+     "half": 2,
+     "t": 1794789821552,
+     "major": true
+    },
+    "v0_index": 29,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.739509,
+     "b_B": 7.646262,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789830872",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 816,
+    "y": 548,
+    "r": 2
+   },
+   "B": {
+    "x": 821,
+    "y": 537,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:43:50.872Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 548,
+     "a_col": 816,
+     "b_row": 537,
+     "b_col": 821,
+     "half": 2,
+     "t": 1794789830872,
+     "major": true
+    },
+    "v0_index": 30,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.682793,
+     "b_B": 7.720449,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789835926",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 794,
+    "y": 541,
+    "r": 2
+   },
+   "B": {
+    "x": 799,
+    "y": 530,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:43:55.926Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 541,
+     "a_col": 794,
+     "b_row": 530,
+     "b_col": 799,
+     "half": 2,
+     "t": 1794789835926,
+     "major": true
+    },
+    "v0_index": 31,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.700465,
+     "b_B": 7.784996,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789841714",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 773,
+    "y": 533,
+    "r": 2
+   },
+   "B": {
+    "x": 778,
+    "y": 522,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:44:01.714Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 533,
+     "a_col": 773,
+     "b_row": 522,
+     "b_col": 778,
+     "half": 2,
+     "t": 1794789841714,
+     "major": true
+    },
+    "v0_index": 32,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.747853,
+     "b_B": 7.782023,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789847354",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 756,
+    "y": 527,
+    "r": 2
+   },
+   "B": {
+    "x": 764,
+    "y": 516,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:44:07.354Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 527,
+     "a_col": 756,
+     "b_row": 516,
+     "b_col": 764,
+     "half": 2,
+     "t": 1794789847354,
+     "edits": [
+      {
+       "op": "major",
+       "at": "2026-11-16T00:44:29.405Z",
+       "before": {
+        "major": true
+       },
+       "after": {
+        "major": null
+       }
+      },
+      {
+       "op": "major",
+       "at": "2026-11-16T00:44:30.636Z",
+       "before": {
+        "major": null
+       },
+       "after": {
+        "major": true
+       }
+      }
+     ],
+     "major": true
+    },
+    "v0_index": 33,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.736982,
+     "b_B": 7.832943,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789854666",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 756,
+    "y": 527,
+    "r": 2
+   },
+   "B": {
+    "x": 747,
+    "y": 523,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:44:14.666Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 527,
+     "a_col": 756,
+     "b_row": 523,
+     "b_col": 747,
+     "half": 2,
+     "t": 1794789854666,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-16T00:44:19.381Z",
+       "before": {
+        "b_row": 524,
+        "b_col": 749
+       },
+       "after": {
+        "b_row": 523,
+        "b_col": 747
+       }
+      },
+      {
+       "op": "major",
+       "at": "2026-11-16T00:44:33.446Z",
+       "before": {
+        "major": null
+       },
+       "after": {
+        "major": true
+       }
+      }
+     ],
+     "major": true
+    },
+    "v0_index": 34,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.736982,
+     "b_B": 8.510289,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789865700",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 751,
+    "y": 538,
+    "r": 2
+   },
+   "B": {
+    "x": 741,
+    "y": 534,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:44:25.700Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 538,
+     "a_col": 751,
+     "b_row": 534,
+     "b_col": 741,
+     "half": 2,
+     "t": 1794789865700,
+     "major": true
+    },
+    "v0_index": 35,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.679113,
+     "b_B": 7.963385,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789879891",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 744,
+    "y": 551,
+    "r": 2
+   },
+   "B": {
+    "x": 734,
+    "y": 546,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:44:39.891Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 551,
+     "a_col": 744,
+     "b_row": 546,
+     "b_col": 734,
+     "half": 2,
+     "t": 1794789879891,
+     "major": true
+    },
+    "v0_index": 36,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.946024,
+     "b_B": 8.104607,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789884366",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 735,
+    "y": 565,
+    "r": 2
+   },
+   "B": {
+    "x": 723,
+    "y": 560,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:44:44.366Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 565,
+     "a_col": 735,
+     "b_row": 560,
+     "b_col": 723,
+     "half": 2,
+     "t": 1794789884366,
+     "major": true
+    },
+    "v0_index": 37,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.929707,
+     "b_B": 8.330737,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789895182",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 730,
+    "y": 578,
+    "r": 2
+   },
+   "B": {
+    "x": 714,
+    "y": 573,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:44:55.182Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 578,
+     "a_col": 730,
+     "b_row": 573,
+     "b_col": 714,
+     "half": 2,
+     "t": 1794789895182,
+     "major": true
+    },
+    "v0_index": 38,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.812026,
+     "b_B": 7.921884,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789911149",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 689,
+    "y": 563,
+    "r": 2
+   },
+   "B": {
+    "x": 700,
+    "y": 568,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:45:11.149Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 563,
+     "a_col": 689,
+     "b_row": 568,
+     "b_col": 700,
+     "half": 2,
+     "t": 1794789911149,
+     "major": true
+    },
+    "v0_index": 39,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.712477,
+     "b_B": 8.116605,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789918183",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 698,
+    "y": 553,
+    "r": 2
+   },
+   "B": {
+    "x": 707,
+    "y": 558,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:45:18.183Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 553,
+     "a_col": 698,
+     "b_row": 558,
+     "b_col": 707,
+     "half": 2,
+     "t": 1794789918183,
+     "major": true
+    },
+    "v0_index": 40,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.942668,
+     "b_B": 8.185056,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789923101",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 709,
+    "y": 538,
+    "r": 2
+   },
+   "B": {
+    "x": 719,
+    "y": 543,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:45:23.101Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 538,
+     "a_col": 709,
+     "b_row": 543,
+     "b_col": 719,
+     "half": 2,
+     "t": 1794789923101,
+     "major": true
+    },
+    "v0_index": 41,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.957854,
+     "b_B": 8.233055,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789928116",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 723,
+    "y": 523,
+    "r": 2
+   },
+   "B": {
+    "x": 732,
+    "y": 526,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:45:28.116Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 523,
+     "a_col": 723,
+     "b_row": 526,
+     "b_col": 732,
+     "half": 2,
+     "t": 1794789928116,
+     "major": true
+    },
+    "v0_index": 42,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.618426,
+     "b_B": 8.467343,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789941898",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 732,
+    "y": 512,
+    "r": 2
+   },
+   "B": {
+    "x": 739,
+    "y": 520,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:45:41.898Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 512,
+     "a_col": 732,
+     "b_row": 520,
+     "b_col": 739,
+     "half": 2,
+     "t": 1794789941898,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-16T00:45:45.042Z",
+       "before": {
+        "b_row": 518,
+        "b_col": 741
+       },
+       "after": {
+        "b_row": 520,
+        "b_col": 739
+       }
+      },
+      {
+       "op": "major",
+       "at": "2026-11-16T00:45:47.373Z",
+       "before": {
+        "major": null
+       },
+       "after": {
+        "major": true
+       }
+      }
+     ],
+     "major": true
+    },
+    "v0_index": 43,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.667746,
+     "b_B": 8.653974,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789963827",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 732,
+    "y": 514,
+    "r": 2
+   },
+   "B": {
+    "x": 739,
+    "y": 505,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:46:03.827Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 514,
+     "a_col": 732,
+     "b_row": 505,
+     "b_col": 739,
+     "half": 2,
+     "t": 1794789963827,
+     "major": true
+    },
+    "v0_index": 44,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.641874,
+     "b_B": 7.824553,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789969149",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 716,
+    "y": 499,
+    "r": 2
+   },
+   "B": {
+    "x": 731,
+    "y": 505,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:46:09.149Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 499,
+     "a_col": 716,
+     "b_row": 505,
+     "b_col": 731,
+     "half": 2,
+     "t": 1794789969149,
+     "major": true
+    },
+    "v0_index": 45,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.796534,
+     "b_B": 7.756936,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789974973",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 733,
+    "y": 486,
+    "r": 2
+   },
+   "B": {
+    "x": 739,
+    "y": 502,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:46:14.973Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 486,
+     "a_col": 733,
+     "b_row": 502,
+     "b_col": 739,
+     "half": 2,
+     "t": 1794789974973,
+     "major": true
+    },
+    "v0_index": 46,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.841576,
+     "b_B": 7.86218,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789977894",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 760,
+    "y": 496,
+    "r": 2
+   },
+   "B": {
+    "x": 753,
+    "y": 506,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:46:17.894Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 496,
+     "a_col": 760,
+     "b_row": 506,
+     "b_col": 753,
+     "half": 2,
+     "t": 1794789977894,
+     "major": true
+    },
+    "v0_index": 47,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.761336,
+     "b_B": 7.804135,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789982737",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 787,
+    "y": 505,
+    "r": 2
+   },
+   "B": {
+    "x": 781,
+    "y": 516,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:46:22.737Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 505,
+     "a_col": 787,
+     "b_row": 516,
+     "b_col": 781,
+     "half": 2,
+     "t": 1794789982737,
+     "major": true
+    },
+    "v0_index": 48,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.675124,
+     "b_B": 7.799021,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789986459",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 819,
+    "y": 517,
+    "r": 2
+   },
+   "B": {
+    "x": 813,
+    "y": 528,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:46:26.459Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 517,
+     "a_col": 819,
+     "b_row": 528,
+     "b_col": 813,
+     "half": 2,
+     "t": 1794789986459,
+     "major": true
+    },
+    "v0_index": 49,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.710205,
+     "b_B": 7.761619,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789991203",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 847,
+    "y": 527,
+    "r": 2
+   },
+   "B": {
+    "x": 843,
+    "y": 540,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:46:31.203Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 527,
+     "a_col": 847,
+     "b_row": 540,
+     "b_col": 843,
+     "half": 2,
+     "t": 1794789991203,
+     "major": true
+    },
+    "v0_index": 50,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.659475,
+     "b_B": 7.674886,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794789995825",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 875,
+    "y": 535,
+    "r": 2
+   },
+   "B": {
+    "x": 871,
+    "y": 551,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:46:35.825Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 535,
+     "a_col": 875,
+     "b_row": 551,
+     "b_col": 871,
+     "half": 2,
+     "t": 1794789995825,
+     "major": true
+    },
+    "v0_index": 51,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.648071,
+     "b_B": 7.513399,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790006063",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 968,
+    "y": 568,
+    "r": 2
+   },
+   "B": {
+    "x": 969,
+    "y": 582,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:46:46.063Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 568,
+     "a_col": 968,
+     "b_row": 582,
+     "b_col": 969,
+     "half": 2,
+     "t": 1794790006063,
+     "major": true
+    },
+    "v0_index": 52,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.952633,
+     "b_B": 6.733569,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790019276",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 797,
+    "y": 462,
+    "r": 2
+   },
+   "B": {
+    "x": 803,
+    "y": 452,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:46:59.276Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 462,
+     "a_col": 797,
+     "b_row": 452,
+     "b_col": 803,
+     "half": 2,
+     "t": 1794790019276,
+     "major": true
+    },
+    "v0_index": 53,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.81992,
+     "b_B": 8.052049,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790022582",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 780,
+    "y": 444,
+    "r": 2
+   },
+   "B": {
+    "x": 796,
+    "y": 450,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:47:02.582Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 444,
+     "a_col": 780,
+     "b_row": 450,
+     "b_col": 796,
+     "half": 2,
+     "t": 1794790022582,
+     "major": true
+    },
+    "v0_index": 54,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.792004,
+     "b_B": 8.061001,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790026099",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 826,
+    "y": 474,
+    "r": 2
+   },
+   "B": {
+    "x": 829,
+    "y": 461,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:47:06.099Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 474,
+     "a_col": 826,
+     "b_row": 461,
+     "b_col": 829,
+     "half": 2,
+     "t": 1794790026099,
+     "major": true
+    },
+    "v0_index": 55,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.84179,
+     "b_B": 8.02412,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790031191",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 854,
+    "y": 485,
+    "r": 2
+   },
+   "B": {
+    "x": 857,
+    "y": 470,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:47:11.191Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 485,
+     "a_col": 854,
+     "b_row": 470,
+     "b_col": 857,
+     "half": 2,
+     "t": 1794790031191,
+     "major": true
+    },
+    "v0_index": 56,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.805685,
+     "b_B": 7.970896,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790037749",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 881,
+    "y": 493,
+    "r": 2
+   },
+   "B": {
+    "x": 884,
+    "y": 480,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:47:17.749Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 493,
+     "a_col": 881,
+     "b_row": 480,
+     "b_col": 884,
+     "half": 2,
+     "t": 1794790037749,
+     "major": true
+    },
+    "v0_index": 57,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.742127,
+     "b_B": 7.603802,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790043642",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 808,
+    "y": 444,
+    "r": 2
+   },
+   "B": {
+    "x": 802,
+    "y": 453,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:47:23.642Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 444,
+     "a_col": 808,
+     "b_row": 453,
+     "b_col": 802,
+     "half": 2,
+     "t": 1794790043642,
+     "major": true
+    },
+    "v0_index": 58,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.736823,
+     "b_B": 8.053276,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790047654",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 833,
+    "y": 454,
+    "r": 2
+   },
+   "B": {
+    "x": 828,
+    "y": 465,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:47:27.654Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 454,
+     "a_col": 833,
+     "b_row": 465,
+     "b_col": 828,
+     "half": 2,
+     "t": 1794790047654,
+     "major": true
+    },
+    "v0_index": 59,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.726201,
+     "b_B": 8.047964,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790052449",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 860,
+    "y": 463,
+    "r": 2
+   },
+   "B": {
+    "x": 855,
+    "y": 474,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:47:32.449Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 463,
+     "a_col": 860,
+     "b_row": 474,
+     "b_col": 855,
+     "half": 2,
+     "t": 1794790052449,
+     "major": true
+    },
+    "v0_index": 60,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.661079,
+     "b_B": 7.992889,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790058675",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 883,
+    "y": 473,
+    "r": 2
+   },
+   "B": {
+    "x": 880,
+    "y": 483,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:47:38.675Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 473,
+     "a_col": 883,
+     "b_row": 483,
+     "b_col": 880,
+     "half": 2,
+     "t": 1794790058675,
+     "major": true
+    },
+    "v0_index": 61,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.595886,
+     "b_B": 7.707032,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790075085",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 892,
+    "y": 478,
+    "r": 2
+   },
+   "B": {
+    "x": 897,
+    "y": 468,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:47:55.085Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 478,
+     "a_col": 892,
+     "b_row": 468,
+     "b_col": 897,
+     "half": 2,
+     "t": 1794790075085,
+     "major": true
+    },
+    "v0_index": 62,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.541288,
+     "b_B": 6.579171,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790078969",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 869,
+    "y": 468,
+    "r": 2
+   },
+   "B": {
+    "x": 874,
+    "y": 458,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:47:58.969Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 468,
+     "a_col": 869,
+     "b_row": 458,
+     "b_col": 874,
+     "half": 2,
+     "t": 1794790078969,
+     "major": true
+    },
+    "v0_index": 63,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.635027,
+     "b_B": 7.95705,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790082160",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 842,
+    "y": 458,
+    "r": 2
+   },
+   "B": {
+    "x": 847,
+    "y": 448,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:48:02.160Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 458,
+     "a_col": 842,
+     "b_row": 448,
+     "b_col": 847,
+     "half": 2,
+     "t": 1794790082160,
+     "major": true
+    },
+    "v0_index": 64,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.717435,
+     "b_B": 7.994973,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790087703",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 813,
+    "y": 448,
+    "r": 2
+   },
+   "B": {
+    "x": 819,
+    "y": 439,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:48:07.703Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 448,
+     "a_col": 813,
+     "b_row": 439,
+     "b_col": 819,
+     "half": 2,
+     "t": 1794790087703,
+     "major": true
+    },
+    "v0_index": 65,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.785449,
+     "b_B": 7.996529,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790091371",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 784,
+    "y": 437,
+    "r": 2
+   },
+   "B": {
+    "x": 793,
+    "y": 427,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:48:11.371Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 437,
+     "a_col": 784,
+     "b_row": 427,
+     "b_col": 793,
+     "half": 2,
+     "t": 1794790091371,
+     "major": true,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-16T00:48:16.656Z",
+       "before": {
+        "a_row": 436,
+        "a_col": 785
+       },
+       "after": {
+        "a_row": 437,
+        "a_col": 784
+       }
+      }
+     ]
+    },
+    "v0_index": 66,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.728577,
+     "b_B": 7.97521,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790107082",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 760,
+    "y": 428,
+    "r": 2
+   },
+   "B": {
+    "x": 767,
+    "y": 418,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:48:27.082Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 428,
+     "a_col": 760,
+     "b_row": 418,
+     "b_col": 767,
+     "half": 2,
+     "t": 1794790107082,
+     "major": true
+    },
+    "v0_index": 67,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.751212,
+     "b_B": 8.034324,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790124953",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 735,
+    "y": 415,
+    "r": 2
+   },
+   "B": {
+    "x": 743,
+    "y": 406,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:48:44.953Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 415,
+     "a_col": 735,
+     "b_row": 406,
+     "b_col": 743,
+     "half": 2,
+     "t": 1794790124953,
+     "major": true
+    },
+    "v0_index": 68,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.696545,
+     "b_B": 7.953354,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790142008",
+   "image": "acharya_mrudula_048",
+   "type": "b",
+   "A": {
+    "x": 706,
+    "y": 401,
+    "r": 2
+   },
+   "B": {
+    "x": 717,
+    "y": 396,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:49:02.008Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "b",
+     "a_row": 401,
+     "a_col": 706,
+     "b_row": 396,
+     "b_col": 717,
+     "half": 2,
+     "t": 1794790142008,
+     "major": true
+    },
+    "v0_index": 69
+   }
+  },
+  {
+   "id": "t=1794790150999",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 673,
+    "y": 394,
+    "r": 3
+   },
+   "B": {
+    "x": 688,
+    "y": 385,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:49:10.999Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 394,
+     "a_col": 673,
+     "b_row": 385,
+     "b_col": 688,
+     "half": 3,
+     "t": 1794790150999,
+     "major": true
+    },
+    "v0_index": 70,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.52453,
+     "b_B": 7.543529,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790154979",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 642,
+    "y": 380,
+    "r": 3
+   },
+   "B": {
+    "x": 657,
+    "y": 369,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:49:14.979Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 380,
+     "a_col": 642,
+     "b_row": 369,
+     "b_col": 657,
+     "half": 3,
+     "t": 1794790154979,
+     "major": true
+    },
+    "v0_index": 71,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.219135,
+     "b_B": 7.518488,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790160410",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 607,
+    "y": 361,
+    "r": 3
+   },
+   "B": {
+    "x": 636,
+    "y": 358,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:49:20.410Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 361,
+     "a_col": 607,
+     "b_row": 358,
+     "b_col": 636,
+     "half": 3,
+     "t": 1794790160410,
+     "major": true
+    },
+    "v0_index": 72,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.344558,
+     "b_B": 7.594465,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790164351",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 612,
+    "y": 340,
+    "r": 3
+   },
+   "B": {
+    "x": 635,
+    "y": 358,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:49:24.351Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 340,
+     "a_col": 612,
+     "b_row": 358,
+     "b_col": 635,
+     "half": 3,
+     "t": 1794790164351,
+     "major": true
+    },
+    "v0_index": 73,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.439511,
+     "b_B": 7.594465,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790168528",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 645,
+    "y": 343,
+    "r": 3
+   },
+   "B": {
+    "x": 658,
+    "y": 359,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:49:28.528Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 343,
+     "a_col": 645,
+     "b_row": 359,
+     "b_col": 658,
+     "half": 3,
+     "t": 1794790168528,
+     "major": true
+    },
+    "v0_index": 74,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.432253,
+     "b_B": 7.507838,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790172653",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 665,
+    "y": 345,
+    "r": 3
+   },
+   "B": {
+    "x": 684,
+    "y": 359,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:49:32.653Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 345,
+     "a_col": 665,
+     "b_row": 359,
+     "b_col": 684,
+     "half": 3,
+     "t": 1794790172653,
+     "major": true
+    },
+    "v0_index": 75,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.459162,
+     "b_B": 7.60427,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790179666",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 666,
+    "y": 346,
+    "r": 3
+   },
+   "B": {
+    "x": 695,
+    "y": 342,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:49:39.666Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 346,
+     "a_col": 666,
+     "b_row": 342,
+     "b_col": 695,
+     "half": 3,
+     "t": 1794790179666,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-16T00:49:41.541Z",
+       "before": {
+        "b_col": 692
+       },
+       "after": {
+        "b_col": 693
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-16T00:49:42.371Z",
+       "before": {
+        "b_row": 343,
+        "b_col": 693
+       },
+       "after": {
+        "b_row": 342,
+        "b_col": 695
+       }
+      },
+      {
+       "op": "major",
+       "at": "2026-11-16T00:49:43.269Z",
+       "before": {
+        "major": null
+       },
+       "after": {
+        "major": true
+       }
+      }
+     ],
+     "major": true
+    },
+    "v0_index": 76,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.457068,
+     "b_B": 7.538733,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790193749",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 645,
+    "y": 341,
+    "r": 3
+   },
+   "B": {
+    "x": 666,
+    "y": 328,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:49:53.749Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 341,
+     "a_col": 645,
+     "b_row": 328,
+     "b_col": 666,
+     "half": 3,
+     "t": 1794790193749,
+     "major": true
+    },
+    "v0_index": 77,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.451191,
+     "b_B": 7.716713,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790202109",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 629,
+    "y": 326,
+    "r": 3
+   },
+   "B": {
+    "x": 641,
+    "y": 316,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:50:02.109Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 326,
+     "a_col": 629,
+     "b_row": 316,
+     "b_col": 641,
+     "half": 3,
+     "t": 1794790202109,
+     "major": true
+    },
+    "v0_index": 78,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.503239,
+     "b_B": 7.79937,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790210573",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 598,
+    "y": 316,
+    "r": 3
+   },
+   "B": {
+    "x": 613,
+    "y": 304,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:50:10.573Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 316,
+     "a_col": 598,
+     "b_row": 304,
+     "b_col": 613,
+     "half": 3,
+     "t": 1794790210573
+    },
+    "v0_index": 79,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.526113,
+     "b_B": 8.071316,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790246019",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 597,
+    "y": 295,
+    "r": 2
+   },
+   "B": {
+    "x": 611,
+    "y": 292,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:50:46.019Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 295,
+     "a_col": 597,
+     "b_row": 292,
+     "b_col": 611,
+     "half": 2,
+     "t": 1794790246019,
+     "major": true
+    },
+    "v0_index": 80,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.294739,
+     "b_B": 6.597902,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790250874",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 701,
+    "y": 322,
+    "r": 2
+   },
+   "B": {
+    "x": 690,
+    "y": 329,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:50:50.874Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 322,
+     "a_col": 701,
+     "b_row": 329,
+     "b_col": 690,
+     "half": 2,
+     "t": 1794790250874,
+     "major": true
+    },
+    "v0_index": 81,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.515448,
+     "b_B": 7.638314,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790255792",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 718,
+    "y": 330,
+    "r": 2
+   },
+   "B": {
+    "x": 711,
+    "y": 341,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:50:55.792Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 330,
+     "a_col": 718,
+     "b_row": 341,
+     "b_col": 711,
+     "half": 2,
+     "t": 1794790255792,
+     "major": true
+    },
+    "v0_index": 82,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.546562,
+     "b_B": 7.458354,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790269318",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 759,
+    "y": 378,
+    "r": 2
+   },
+   "B": {
+    "x": 769,
+    "y": 368,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:51:09.318Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 378,
+     "a_col": 759,
+     "b_row": 368,
+     "b_col": 769,
+     "half": 2,
+     "t": 1794790269318,
+     "major": true
+    },
+    "v0_index": 83,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 7.352398,
+     "b_B": 5.659037,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790276692",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 742,
+    "y": 371,
+    "r": 2
+   },
+   "B": {
+    "x": 751,
+    "y": 359,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:51:16.692Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 371,
+     "a_col": 742,
+     "b_row": 359,
+     "b_col": 751,
+     "half": 2,
+     "t": 1794790276692,
+     "major": true
+    },
+    "v0_index": 84,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 7.273088,
+     "b_B": 5.778596,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790286461",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 726,
+    "y": 361,
+    "r": 2
+   },
+   "B": {
+    "x": 740,
+    "y": 354,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:51:26.461Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 361,
+     "a_col": 726,
+     "b_row": 354,
+     "b_col": 740,
+     "half": 2,
+     "t": 1794790286461,
+     "major": true
+    },
+    "v0_index": 85,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 7.255024,
+     "b_B": 6.117732,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790302382",
+   "image": "acharya_mrudula_048",
+   "type": "b",
+   "A": {
+    "x": 879,
+    "y": 386,
+    "r": 2
+   },
+   "B": {
+    "x": 871,
+    "y": 396,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:51:42.382Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "b",
+     "a_row": 386,
+     "a_col": 879,
+     "b_row": 396,
+     "b_col": 871,
+     "half": 2,
+     "t": 1794790302382
+    },
+    "v0_index": 86
+   }
+  },
+  {
+   "id": "t=1794790305229",
+   "image": "acharya_mrudula_048",
+   "type": "b",
+   "A": {
+    "x": 859,
+    "y": 377,
+    "r": 2
+   },
+   "B": {
+    "x": 849,
+    "y": 387,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:51:45.229Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "b",
+     "a_row": 377,
+     "a_col": 859,
+     "b_row": 387,
+     "b_col": 849,
+     "half": 2,
+     "t": 1794790305229
+    },
+    "v0_index": 87
+   }
+  },
+  {
+   "id": "t=1794790318682",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 440,
+    "y": 86,
+    "r": 2
+   },
+   "B": {
+    "x": 454,
+    "y": 93,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:51:58.682Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 86,
+     "a_col": 440,
+     "b_row": 93,
+     "b_col": 454,
+     "half": 2,
+     "t": 1794790318682,
+     "major": true
+    },
+    "v0_index": 88,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.438523,
+     "b_B": 7.318222,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790325386",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 446,
+    "y": 66,
+    "r": 2
+   },
+   "B": {
+    "x": 461,
+    "y": 73,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:52:05.386Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 66,
+     "a_col": 446,
+     "b_row": 73,
+     "b_col": 461,
+     "half": 2,
+     "t": 1794790325386,
+     "major": true
+    },
+    "v0_index": 89,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.578936,
+     "b_B": 7.348094,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790329392",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 454,
+    "y": 50,
+    "r": 2
+   },
+   "B": {
+    "x": 470,
+    "y": 56,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:52:09.392Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 50,
+     "a_col": 454,
+     "b_row": 56,
+     "b_col": 470,
+     "half": 2,
+     "t": 1794790329392,
+     "major": true
+    },
+    "v0_index": 90,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.536224,
+     "b_B": 7.290061,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790367741",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 857,
+    "y": 725,
+    "r": 3
+   },
+   "B": {
+    "x": 868,
+    "y": 691,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:52:47.741Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 725,
+     "a_col": 857,
+     "b_row": 691,
+     "b_col": 868,
+     "half": 3,
+     "t": 1794790367741
+    },
+    "v0_index": 91
+   }
+  },
+  {
+   "id": "t=1794790372914",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 782,
+    "y": 683,
+    "r": 3
+   },
+   "B": {
+    "x": 798,
+    "y": 647,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:52:52.914Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 683,
+     "a_col": 782,
+     "b_row": 647,
+     "b_col": 798,
+     "half": 3,
+     "t": 1794790372914
+    },
+    "v0_index": 92
+   }
+  },
+  {
+   "id": "t=1794790374367",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 708,
+    "y": 650,
+    "r": 3
+   },
+   "B": {
+    "x": 730,
+    "y": 611,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:52:54.367Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 650,
+     "a_col": 708,
+     "b_row": 611,
+     "b_col": 730,
+     "half": 3,
+     "t": 1794790374367
+    },
+    "v0_index": 93
+   }
+  },
+  {
+   "id": "t=1794790377192",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 652,
+    "y": 604,
+    "r": 3
+   },
+   "B": {
+    "x": 671,
+    "y": 584,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:52:57.192Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 604,
+     "a_col": 652,
+     "b_row": 584,
+     "b_col": 671,
+     "half": 3,
+     "t": 1794790377192
+    },
+    "v0_index": 94
+   }
+  },
+  {
+   "id": "t=1794790379193",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 605,
+    "y": 576,
+    "r": 3
+   },
+   "B": {
+    "x": 626,
+    "y": 557,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:52:59.193Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 576,
+     "a_col": 605,
+     "b_row": 557,
+     "b_col": 626,
+     "half": 3,
+     "t": 1794790379193
+    },
+    "v0_index": 95
+   }
+  },
+  {
+   "id": "t=1794790380808",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 564,
+    "y": 557,
+    "r": 3
+   },
+   "B": {
+    "x": 585,
+    "y": 537,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:53:00.808Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 557,
+     "a_col": 564,
+     "b_row": 537,
+     "b_col": 585,
+     "half": 3,
+     "t": 1794790380808
+    },
+    "v0_index": 96
+   }
+  },
+  {
+   "id": "t=1794790383452",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 516,
+    "y": 532,
+    "r": 3
+   },
+   "B": {
+    "x": 537,
+    "y": 514,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:53:03.452Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 532,
+     "a_col": 516,
+     "b_row": 514,
+     "b_col": 537,
+     "half": 3,
+     "t": 1794790383452
+    },
+    "v0_index": 97
+   }
+  },
+  {
+   "id": "t=1794790388842",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 443,
+    "y": 493,
+    "r": 3
+   },
+   "B": {
+    "x": 425,
+    "y": 476,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:53:08.842Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 493,
+     "a_col": 443,
+     "b_row": 476,
+     "b_col": 425,
+     "half": 3,
+     "t": 1794790388842
+    },
+    "v0_index": 98
+   }
+  },
+  {
+   "id": "t=1794790392054",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 386,
+    "y": 512,
+    "r": 3
+   },
+   "B": {
+    "x": 371,
+    "y": 492,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:53:12.054Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 512,
+     "a_col": 386,
+     "b_row": 492,
+     "b_col": 371,
+     "half": 3,
+     "t": 1794790392054
+    },
+    "v0_index": 99
+   }
+  },
+  {
+   "id": "t=1794790400170",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 255,
+    "y": 558,
+    "r": 3
+   },
+   "B": {
+    "x": 241,
+    "y": 533,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:53:20.170Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 558,
+     "a_col": 255,
+     "b_row": 533,
+     "b_col": 241,
+     "half": 3,
+     "t": 1794790400170
+    },
+    "v0_index": 100
+   }
+  },
+  {
+   "id": "t=1794790404287",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 321,
+    "y": 519,
+    "r": 3
+   },
+   "B": {
+    "x": 316,
+    "y": 499,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:53:24.287Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 519,
+     "a_col": 321,
+     "b_row": 499,
+     "b_col": 316,
+     "half": 3,
+     "t": 1794790404287
+    },
+    "v0_index": 101
+   }
+  },
+  {
+   "id": "t=1794790407119",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 188,
+    "y": 584,
+    "r": 3
+   },
+   "B": {
+    "x": 170,
+    "y": 550,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:53:27.119Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 584,
+     "a_col": 188,
+     "b_row": 550,
+     "b_col": 170,
+     "half": 3,
+     "t": 1794790407119
+    },
+    "v0_index": 102
+   }
+  },
+  {
+   "id": "t=1794790410584",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 123,
+    "y": 606,
+    "r": 3
+   },
+   "B": {
+    "x": 106,
+    "y": 571,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:53:30.584Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 606,
+     "a_col": 123,
+     "b_row": 571,
+     "b_col": 106,
+     "half": 3,
+     "t": 1794790410584
+    },
+    "v0_index": 103
+   }
+  },
+  {
+   "id": "t=1794790412266",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 56,
+    "y": 633,
+    "r": 3
+   },
+   "B": {
+    "x": 48,
+    "y": 588,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:53:32.266Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 633,
+     "a_col": 56,
+     "b_row": 588,
+     "b_col": 48,
+     "half": 3,
+     "t": 1794790412266
+    },
+    "v0_index": 104
+   }
+  },
+  {
+   "id": "t=1794790419322",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 569,
+    "y": 465,
+    "r": 3
+   },
+   "B": {
+    "x": 590,
+    "y": 452,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:53:39.322Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 465,
+     "a_col": 569,
+     "b_row": 452,
+     "b_col": 590,
+     "half": 3,
+     "t": 1794790419322
+    },
+    "v0_index": 105
+   }
+  },
+  {
+   "id": "t=1794790421985",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 605,
+    "y": 486,
+    "r": 3
+   },
+   "B": {
+    "x": 623,
+    "y": 462,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:53:41.985Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 486,
+     "a_col": 605,
+     "b_row": 462,
+     "b_col": 623,
+     "half": 3,
+     "t": 1794790421985
+    },
+    "v0_index": 106
+   }
+  },
+  {
+   "id": "t=1794790424340",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 645,
+    "y": 505,
+    "r": 3
+   },
+   "B": {
+    "x": 668,
+    "y": 478,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:53:44.340Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 505,
+     "a_col": 645,
+     "b_row": 478,
+     "b_col": 668,
+     "half": 3,
+     "t": 1794790424340
+    },
+    "v0_index": 107
+   }
+  },
+  {
+   "id": "t=1794790425676",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 685,
+    "y": 524,
+    "r": 3
+   },
+   "B": {
+    "x": 702,
+    "y": 502,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:53:45.676Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 524,
+     "a_col": 685,
+     "b_row": 502,
+     "b_col": 702,
+     "half": 3,
+     "t": 1794790425676
+    },
+    "v0_index": 108
+   }
+  },
+  {
+   "id": "t=1794790433857",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 827,
+    "y": 590,
+    "r": 3
+   },
+   "B": {
+    "x": 829,
+    "y": 577,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:53:53.857Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 590,
+     "a_col": 827,
+     "b_row": 577,
+     "b_col": 829,
+     "half": 3,
+     "t": 1794790433857
+    },
+    "v0_index": 109
+   }
+  },
+  {
+   "id": "t=1794790435241",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 853,
+    "y": 601,
+    "r": 3
+   },
+   "B": {
+    "x": 857,
+    "y": 588,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:53:55.241Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 601,
+     "a_col": 853,
+     "b_row": 588,
+     "b_col": 857,
+     "half": 3,
+     "t": 1794790435241
+    },
+    "v0_index": 110
+   }
+  },
+  {
+   "id": "t=1794790442047",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 878,
+    "y": 616,
+    "r": 3
+   },
+   "B": {
+    "x": 881,
+    "y": 595,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:54:02.047Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 616,
+     "a_col": 878,
+     "b_row": 595,
+     "b_col": 881,
+     "half": 3,
+     "t": 1794790442047
+    },
+    "v0_index": 111
+   }
+  },
+  {
+   "id": "t=1794790443995",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 900,
+    "y": 626,
+    "r": 3
+   },
+   "B": {
+    "x": 898,
+    "y": 603,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:54:03.995Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 626,
+     "a_col": 900,
+     "b_row": 603,
+     "b_col": 898,
+     "half": 3,
+     "t": 1794790443995
+    },
+    "v0_index": 112
+   }
+  },
+  {
+   "id": "t=1794790459735",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 609,
+    "y": 449,
+    "r": 2
+   },
+   "B": {
+    "x": 621,
+    "y": 434,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:54:19.735Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 449,
+     "a_col": 609,
+     "b_row": 434,
+     "b_col": 621,
+     "half": 2,
+     "t": 1794790459735,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-16T00:54:21.838Z",
+       "before": {
+        "b_row": 433
+       },
+       "after": {
+        "b_row": 434
+       }
+      }
+     ]
+    },
+    "v0_index": 113
+   }
+  },
+  {
+   "id": "t=1794790476309",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 642,
+    "y": 458,
+    "r": 2
+   },
+   "B": {
+    "x": 647,
+    "y": 442,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:54:36.309Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 458,
+     "a_col": 642,
+     "b_row": 442,
+     "b_col": 647,
+     "half": 2,
+     "t": 1794790476309
+    },
+    "v0_index": 114
+   }
+  },
+  {
+   "id": "t=1794790480589",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 670,
+    "y": 439,
+    "r": 2
+   },
+   "B": {
+    "x": 648,
+    "y": 447,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:54:40.589Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 439,
+     "a_col": 670,
+     "b_row": 447,
+     "b_col": 648,
+     "half": 2,
+     "t": 1794790480589
+    },
+    "v0_index": 115
+   }
+  },
+  {
+   "id": "t=1794790482768",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 646,
+    "y": 430,
+    "r": 2
+   },
+   "B": {
+    "x": 632,
+    "y": 441,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:54:42.768Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 430,
+     "a_col": 646,
+     "b_row": 441,
+     "b_col": 632,
+     "half": 2,
+     "t": 1794790482768
+    },
+    "v0_index": 116
+   }
+  },
+  {
+   "id": "t=1794790484724",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 627,
+    "y": 428,
+    "r": 2
+   },
+   "B": {
+    "x": 608,
+    "y": 433,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:54:44.724Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 428,
+     "a_col": 627,
+     "b_row": 433,
+     "b_col": 608,
+     "half": 2,
+     "t": 1794790484724
+    },
+    "v0_index": 117
+   }
+  },
+  {
+   "id": "t=1794790487087",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 589,
+    "y": 433,
+    "r": 2
+   },
+   "B": {
+    "x": 606,
+    "y": 430,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:54:47.087Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 433,
+     "a_col": 589,
+     "b_row": 430,
+     "b_col": 606,
+     "half": 2,
+     "t": 1794790487087
+    },
+    "v0_index": 118
+   }
+  },
+  {
+   "id": "t=1794790492039",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 661,
+    "y": 448,
+    "r": 2
+   },
+   "B": {
+    "x": 678,
+    "y": 462,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:54:52.039Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 448,
+     "a_col": 661,
+     "b_row": 462,
+     "b_col": 678,
+     "half": 2,
+     "t": 1794790492039
+    },
+    "v0_index": 119
+   }
+  },
+  {
+   "id": "t=1794790502183",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 882,
+    "y": 523,
+    "r": 2
+   },
+   "B": {
+    "x": 901,
+    "y": 524,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:55:02.183Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 523,
+     "a_col": 882,
+     "b_row": 524,
+     "b_col": 901,
+     "half": 2,
+     "t": 1794790502183
+    },
+    "v0_index": 120
+   }
+  },
+  {
+   "id": "t=1794790503552",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 885,
+    "y": 509,
+    "r": 2
+   },
+   "B": {
+    "x": 899,
+    "y": 512,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:55:03.552Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 509,
+     "a_col": 885,
+     "b_row": 512,
+     "b_col": 899,
+     "half": 2,
+     "t": 1794790503552
+    },
+    "v0_index": 121
+   }
+  },
+  {
+   "id": "t=1794790505051",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 887,
+    "y": 498,
+    "r": 2
+   },
+   "B": {
+    "x": 899,
+    "y": 501,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:55:05.051Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 498,
+     "a_col": 887,
+     "b_row": 501,
+     "b_col": 899,
+     "half": 2,
+     "t": 1794790505051
+    },
+    "v0_index": 122
+   }
+  },
+  {
+   "id": "t=1794790514579",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 981,
+    "y": 635,
+    "r": 2
+   },
+   "B": {
+    "x": 975,
+    "y": 618,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:55:14.579Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 635,
+     "a_col": 981,
+     "b_row": 618,
+     "b_col": 975,
+     "half": 2,
+     "t": 1794790514579
+    },
+    "v0_index": 123
+   }
+  },
+  {
+   "id": "t=1794790538091",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 717,
+    "y": 396,
+    "r": 2
+   },
+   "B": {
+    "x": 730,
+    "y": 403,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:55:38.091Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 396,
+     "a_col": 717,
+     "b_row": 403,
+     "b_col": 730,
+     "half": 2,
+     "t": 1794790538091
+    },
+    "v0_index": 124
+   }
+  },
+  {
+   "id": "t=1794790542226",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 724,
+    "y": 395,
+    "r": 2
+   },
+   "B": {
+    "x": 748,
+    "y": 401,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:55:42.226Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 395,
+     "a_col": 724,
+     "b_row": 401,
+     "b_col": 748,
+     "half": 2,
+     "t": 1794790542226
+    },
+    "v0_index": 125
+   }
+  },
+  {
+   "id": "t=1794790550026",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 708,
+    "y": 405,
+    "r": 2
+   },
+   "B": {
+    "x": 728,
+    "y": 410,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:55:50.026Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 405,
+     "a_col": 708,
+     "b_row": 410,
+     "b_col": 728,
+     "half": 2,
+     "t": 1794790550026
+    },
+    "v0_index": 126
+   }
+  },
+  {
+   "id": "t=1794790558353",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 565,
+    "y": 440,
+    "r": 2
+   },
+   "B": {
+    "x": 551,
+    "y": 425,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:55:58.353Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 440,
+     "a_col": 565,
+     "b_row": 425,
+     "b_col": 551,
+     "half": 2,
+     "t": 1794790558353
+    },
+    "v0_index": 127
+   }
+  },
+  {
+   "id": "t=1794790559240",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 582,
+    "y": 433,
+    "r": 2
+   },
+   "B": {
+    "x": 577,
+    "y": 417,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:55:59.240Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 433,
+     "a_col": 582,
+     "b_row": 417,
+     "b_col": 577,
+     "half": 2,
+     "t": 1794790559240
+    },
+    "v0_index": 128
+   }
+  },
+  {
+   "id": "t=1794790561291",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 607,
+    "y": 433,
+    "r": 2
+   },
+   "B": {
+    "x": 608,
+    "y": 416,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:56:01.291Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 433,
+     "a_col": 607,
+     "b_row": 416,
+     "b_col": 608,
+     "half": 2,
+     "t": 1794790561291
+    },
+    "v0_index": 129
+   }
+  },
+  {
+   "id": "t=1794790562407",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 640,
+    "y": 429,
+    "r": 2
+   },
+   "B": {
+    "x": 623,
+    "y": 413,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:56:02.407Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 429,
+     "a_col": 640,
+     "b_row": 413,
+     "b_col": 623,
+     "half": 2,
+     "t": 1794790562407
+    },
+    "v0_index": 130
+   }
+  },
+  {
+   "id": "t=1794790563391",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 660,
+    "y": 422,
+    "r": 2
+   },
+   "B": {
+    "x": 643,
+    "y": 408,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:56:03.391Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 422,
+     "a_col": 660,
+     "b_row": 408,
+     "b_col": 643,
+     "half": 2,
+     "t": 1794790563391
+    },
+    "v0_index": 131
+   }
+  },
+  {
+   "id": "t=1794790564268",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 682,
+    "y": 418,
+    "r": 2
+   },
+   "B": {
+    "x": 659,
+    "y": 403,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:56:04.268Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 418,
+     "a_col": 682,
+     "b_row": 403,
+     "b_col": 659,
+     "half": 2,
+     "t": 1794790564268
+    },
+    "v0_index": 132
+   }
+  },
+  {
+   "id": "t=1794790568361",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 691,
+    "y": 412,
+    "r": 2
+   },
+   "B": {
+    "x": 673,
+    "y": 400,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:56:08.361Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 412,
+     "a_col": 691,
+     "b_row": 400,
+     "b_col": 673,
+     "half": 2,
+     "t": 1794790568361
+    },
+    "v0_index": 133
+   }
+  },
+  {
+   "id": "t=1794790600689",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 178,
+    "y": 435,
+    "r": 2
+   },
+   "B": {
+    "x": 163,
+    "y": 415,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:56:40.689Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 435,
+     "a_col": 178,
+     "b_row": 415,
+     "b_col": 163,
+     "half": 2,
+     "t": 1794790600689,
+     "glossy": true
+    },
+    "v0_index": 134
+   }
+  },
+  {
+   "id": "t=1794790604037",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 224,
+    "y": 415,
+    "r": 2
+   },
+   "B": {
+    "x": 232,
+    "y": 397,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:56:44.037Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 415,
+     "a_col": 224,
+     "b_row": 397,
+     "b_col": 232,
+     "half": 2,
+     "t": 1794790604037,
+     "glossy": true
+    },
+    "v0_index": 135
+   }
+  },
+  {
+   "id": "t=1794790606535",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 245,
+    "y": 445,
+    "r": 2
+   },
+   "B": {
+    "x": 259,
+    "y": 444,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:56:46.535Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 445,
+     "a_col": 245,
+     "b_row": 444,
+     "b_col": 259,
+     "half": 2,
+     "t": 1794790606535,
+     "glossy": true
+    },
+    "v0_index": 136
+   }
+  },
+  {
+   "id": "t=1794790609947",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 213,
+    "y": 494,
+    "r": 2
+   },
+   "B": {
+    "x": 223,
+    "y": 503,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:56:49.947Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 494,
+     "a_col": 213,
+     "b_row": 503,
+     "b_col": 223,
+     "half": 2,
+     "t": 1794790609947,
+     "glossy": true
+    },
+    "v0_index": 137
+   }
+  },
+  {
+   "id": "t=1794790618776",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 167,
+    "y": 515,
+    "r": 2
+   },
+   "B": {
+    "x": 162,
+    "y": 530,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:56:58.776Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 515,
+     "a_col": 167,
+     "b_row": 530,
+     "b_col": 162,
+     "half": 2,
+     "t": 1794790618776,
+     "glossy": true
+    },
+    "v0_index": 138
+   }
+  },
+  {
+   "id": "t=1794790621120",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 144,
+    "y": 482,
+    "r": 2
+   },
+   "B": {
+    "x": 116,
+    "y": 483,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:57:01.120Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 482,
+     "a_col": 144,
+     "b_row": 483,
+     "b_col": 116,
+     "half": 2,
+     "t": 1794790621120,
+     "glossy": true
+    },
+    "v0_index": 139
+   }
+  },
+  {
+   "id": "t=1794790629990",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 196,
+    "y": 459,
+    "r": 2
+   },
+   "B": {
+    "x": 185,
+    "y": 447,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:57:09.990Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 459,
+     "a_col": 196,
+     "b_row": 447,
+     "b_col": 185,
+     "half": 2,
+     "t": 1794790629990,
+     "glossy": true
+    },
+    "v0_index": 140
+   }
+  },
+  {
+   "id": "t=1794790632831",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 191,
+    "y": 467,
+    "r": 2
+   },
+   "B": {
+    "x": 172,
+    "y": 471,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:57:12.831Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 467,
+     "a_col": 191,
+     "b_row": 471,
+     "b_col": 172,
+     "half": 2,
+     "t": 1794790632831,
+     "glossy": true
+    },
+    "v0_index": 141
+   }
+  },
+  {
+   "id": "t=1794790635553",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 193,
+    "y": 469,
+    "r": 2
+   },
+   "B": {
+    "x": 179,
+    "y": 487,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:57:15.553Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 469,
+     "a_col": 193,
+     "b_row": 487,
+     "b_col": 179,
+     "half": 2,
+     "t": 1794790635553,
+     "glossy": true
+    },
+    "v0_index": 142
+   }
+  },
+  {
+   "id": "t=1794790639443",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 198,
+    "y": 465,
+    "r": 2
+   },
+   "B": {
+    "x": 204,
+    "y": 478,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:57:19.443Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 465,
+     "a_col": 198,
+     "b_row": 478,
+     "b_col": 204,
+     "half": 2,
+     "t": 1794790639443,
+     "glossy": true
+    },
+    "v0_index": 143
+   }
+  },
+  {
+   "id": "t=1794790642157",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 200,
+    "y": 461,
+    "r": 2
+   },
+   "B": {
+    "x": 219,
+    "y": 454,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:57:22.157Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 461,
+     "a_col": 200,
+     "b_row": 454,
+     "b_col": 219,
+     "half": 2,
+     "t": 1794790642157,
+     "glossy": true
+    },
+    "v0_index": 144
+   }
+  },
+  {
+   "id": "t=1794790650179",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 301,
+    "y": 285,
+    "r": 2
+   },
+   "B": {
+    "x": 284,
+    "y": 280,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:57:30.179Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 285,
+     "a_col": 301,
+     "b_row": 280,
+     "b_col": 284,
+     "half": 2,
+     "t": 1794790650179,
+     "glossy": true
+    },
+    "v0_index": 145
+   }
+  },
+  {
+   "id": "t=1794790654536",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 323,
+    "y": 288,
+    "r": 2
+   },
+   "B": {
+    "x": 343,
+    "y": 291,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:57:34.536Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 288,
+     "a_col": 323,
+     "b_row": 291,
+     "b_col": 343,
+     "half": 2,
+     "t": 1794790654536,
+     "glossy": true
+    },
+    "v0_index": 146
+   }
+  },
+  {
+   "id": "t=1794790660023",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 448,
+    "y": 308,
+    "r": 2
+   },
+   "B": {
+    "x": 445,
+    "y": 297,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:57:40.023Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 308,
+     "a_col": 448,
+     "b_row": 297,
+     "b_col": 445,
+     "half": 2,
+     "t": 1794790660023,
+     "glossy": true
+    },
+    "v0_index": 147
+   }
+  },
+  {
+   "id": "t=1794790662346",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 461,
+    "y": 311,
+    "r": 2
+   },
+   "B": {
+    "x": 466,
+    "y": 324,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:57:42.346Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 311,
+     "a_col": 461,
+     "b_row": 324,
+     "b_col": 466,
+     "half": 2,
+     "t": 1794790662346,
+     "glossy": true
+    },
+    "v0_index": 148
+   }
+  },
+  {
+   "id": "t=1794790670813",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 534,
+    "y": 380,
+    "r": 2
+   },
+   "B": {
+    "x": 539,
+    "y": 368,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:57:50.813Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 380,
+     "a_col": 534,
+     "b_row": 368,
+     "b_col": 539,
+     "half": 2,
+     "t": 1794790670813,
+     "glossy": true
+    },
+    "v0_index": 149
+   }
+  },
+  {
+   "id": "t=1794790676516",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 533,
+    "y": 401,
+    "r": 2
+   },
+   "B": {
+    "x": 542,
+    "y": 400,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:57:56.516Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 401,
+     "a_col": 533,
+     "b_row": 400,
+     "b_col": 542,
+     "half": 2,
+     "t": 1794790676516,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-16T03:29:38.544Z",
+       "before": {
+        "a_row": 396,
+        "a_col": 534
+       },
+       "after": {
+        "a_row": 400,
+        "a_col": 533
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-16T03:29:47.953Z",
+       "before": {
+        "b_row": 393,
+        "b_col": 543
+       },
+       "after": {
+        "b_row": 400,
+        "b_col": 542
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-16T03:29:52.775Z",
+       "before": {
+        "a_row": 400
+       },
+       "after": {
+        "a_row": 401
+       }
+      }
+     ]
+    },
+    "v0_index": 150
+   }
+  },
+  {
+   "id": "t=1794790682120",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 518,
+    "y": 401,
+    "r": 2
+   },
+   "B": {
+    "x": 513,
+    "y": 389,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:58:02.120Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 401,
+     "a_col": 518,
+     "b_row": 389,
+     "b_col": 513,
+     "half": 2,
+     "t": 1794790682120,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-16T03:29:59.450Z",
+       "before": {
+        "a_row": 397,
+        "a_col": 519
+       },
+       "after": {
+        "a_row": 401,
+        "a_col": 518
+       }
+      }
+     ]
+    },
+    "v0_index": 151
+   }
+  },
+  {
+   "id": "t=1794790685098",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 512,
+    "y": 418,
+    "r": 2
+   },
+   "B": {
+    "x": 496,
+    "y": 423,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:58:05.098Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 418,
+     "a_col": 512,
+     "b_row": 423,
+     "b_col": 496,
+     "half": 2,
+     "t": 1794790685098,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-16T03:30:07.759Z",
+       "before": {
+        "a_row": 416,
+        "a_col": 508
+       },
+       "after": {
+        "a_row": 418,
+        "a_col": 512
+       }
+      }
+     ]
+    },
+    "v0_index": 152
+   }
+  },
+  {
+   "id": "t=1794790701415",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 112,
+    "y": 223,
+    "r": 4
+   },
+   "B": {
+    "x": 93,
+    "y": 203,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:58:21.415Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 223,
+     "a_col": 112,
+     "b_row": 203,
+     "b_col": 93,
+     "half": 4,
+     "t": 1794790701415,
+     "glossy": true,
+     "lightness": true,
+     "edits": [
+      {
+       "op": "lightness",
+       "at": "2026-11-16T05:06:27.849Z",
+       "before": {
+        "lightness": null
+       },
+       "after": {
+        "lightness": true
+       }
+      }
+     ]
+    },
+    "v0_index": 153
+   }
+  },
+  {
+   "id": "t=1794790704525",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 73,
+    "y": 252,
+    "r": 4
+   },
+   "B": {
+    "x": 40,
+    "y": 232,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:58:24.525Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 252,
+     "a_col": 73,
+     "b_row": 232,
+     "b_col": 40,
+     "half": 4,
+     "t": 1794790704525,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-16T05:06:37.781Z",
+       "before": {
+        "b_row": 230,
+        "b_col": 48
+       },
+       "after": {
+        "b_row": 232,
+        "b_col": 40
+       }
+      },
+      {
+       "op": "lightness",
+       "at": "2026-11-16T05:06:39.104Z",
+       "before": {
+        "lightness": null
+       },
+       "after": {
+        "lightness": true
+       }
+      }
+     ],
+     "lightness": true
+    },
+    "v0_index": 154
+   }
+  },
+  {
+   "id": "t=1794790710293",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 23,
+    "y": 276,
+    "r": 6
+   },
+   "B": {
+    "x": 10,
+    "y": 244,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:58:30.293Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 276,
+     "a_col": 23,
+     "b_row": 244,
+     "b_col": 10,
+     "half": 6,
+     "t": 1794790710293,
+     "glossy": true
+    },
+    "v0_index": 155
+   }
+  },
+  {
+   "id": "t=1794790714960",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 73,
+    "y": 189,
+    "r": 6
+   },
+   "B": {
+    "x": 105,
+    "y": 162,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:58:34.960Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 189,
+     "a_col": 73,
+     "b_row": 162,
+     "b_col": 105,
+     "half": 6,
+     "t": 1794790714960,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-16T00:58:41.503Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      },
+      {
+       "op": "lightness",
+       "at": "2026-11-16T05:06:26.958Z",
+       "before": {
+        "lightness": null
+       },
+       "after": {
+        "lightness": true
+       }
+      }
+     ],
+     "lightness": true
+    },
+    "v0_index": 156
+   }
+  },
+  {
+   "id": "t=1794790717865",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 29,
+    "y": 177,
+    "r": 6
+   },
+   "B": {
+    "x": 63,
+    "y": 150,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:58:37.865Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 177,
+     "a_col": 29,
+     "b_row": 150,
+     "b_col": 63,
+     "half": 6,
+     "t": 1794790717865,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "lightness",
+       "at": "2026-11-16T03:35:28.604Z",
+       "before": {
+        "lightness": null
+       },
+       "after": {
+        "lightness": true
+       }
+      },
+      {
+       "op": "lightness",
+       "at": "2026-11-16T05:06:26.037Z",
+       "before": {
+        "lightness": true
+       },
+       "after": {
+        "lightness": null
+       }
+      },
+      {
+       "op": "lightness",
+       "at": "2026-11-16T05:06:46.594Z",
+       "before": {
+        "lightness": null
+       },
+       "after": {
+        "lightness": true
+       }
+      }
+     ],
+     "lightness": true
+    },
+    "v0_index": 157
+   }
+  },
+  {
+   "id": "t=1794790727324",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 55,
+    "y": 139,
+    "r": 6
+   },
+   "B": {
+    "x": 18,
+    "y": 118,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:58:47.324Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 139,
+     "a_col": 55,
+     "b_row": 118,
+     "b_col": 18,
+     "half": 6,
+     "t": 1794790727324,
+     "glossy": true
+    },
+    "v0_index": 158
+   }
+  },
+  {
+   "id": "t=1794790731557",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 76,
+    "y": 100,
+    "r": 6
+   },
+   "B": {
+    "x": 43,
+    "y": 77,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:58:51.557Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 100,
+     "a_col": 76,
+     "b_row": 77,
+     "b_col": 43,
+     "half": 6,
+     "t": 1794790731557,
+     "glossy": true
+    },
+    "v0_index": 159
+   }
+  },
+  {
+   "id": "t=1794790750825",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 152,
+    "y": 86,
+    "r": 6
+   },
+   "B": {
+    "x": 179,
+    "y": 89,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:59:10.825Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 86,
+     "a_col": 152,
+     "b_row": 89,
+     "b_col": 179,
+     "half": 6,
+     "t": 1794790750825,
+     "glossy": true
+    },
+    "v0_index": 160
+   }
+  },
+  {
+   "id": "t=1794790754205",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 154,
+    "y": 137,
+    "r": 6
+   },
+   "B": {
+    "x": 192,
+    "y": 135,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:59:14.205Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 137,
+     "a_col": 154,
+     "b_row": 135,
+     "b_col": 192,
+     "half": 6,
+     "t": 1794790754205,
+     "glossy": true
+    },
+    "v0_index": 161
+   }
+  },
+  {
+   "id": "t=1794790767857",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 190,
+    "y": 199,
+    "r": 6
+   },
+   "B": {
+    "x": 214,
+    "y": 182,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:59:27.857Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 199,
+     "a_col": 190,
+     "b_row": 182,
+     "b_col": 214,
+     "half": 6,
+     "t": 1794790767857,
+     "glossy": true
+    },
+    "v0_index": 162
+   }
+  },
+  {
+   "id": "t=1794790771999",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 245,
+    "y": 231,
+    "r": 6
+   },
+   "B": {
+    "x": 255,
+    "y": 201,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:59:31.999Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 231,
+     "a_col": 245,
+     "b_row": 201,
+     "b_col": 255,
+     "half": 6,
+     "t": 1794790771999,
+     "glossy": true
+    },
+    "v0_index": 163
+   }
+  },
+  {
+   "id": "t=1794790775326",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 300,
+    "y": 248,
+    "r": 6
+   },
+   "B": {
+    "x": 308,
+    "y": 211,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:59:35.326Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 248,
+     "a_col": 300,
+     "b_row": 211,
+     "b_col": 308,
+     "half": 6,
+     "t": 1794790775326,
+     "glossy": true
+    },
+    "v0_index": 164
+   }
+  },
+  {
+   "id": "t=1794790777678",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 345,
+    "y": 256,
+    "r": 6
+   },
+   "B": {
+    "x": 352,
+    "y": 224,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:59:37.678Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 256,
+     "a_col": 345,
+     "b_row": 224,
+     "b_col": 352,
+     "half": 6,
+     "t": 1794790777678,
+     "glossy": true
+    },
+    "v0_index": 165
+   }
+  },
+  {
+   "id": "t=1794790779638",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 395,
+    "y": 271,
+    "r": 6
+   },
+   "B": {
+    "x": 400,
+    "y": 235,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:59:39.638Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 271,
+     "a_col": 395,
+     "b_row": 235,
+     "b_col": 400,
+     "half": 6,
+     "t": 1794790779638,
+     "glossy": true
+    },
+    "v0_index": 166
+   }
+  },
+  {
+   "id": "t=1794790783183",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 455,
+    "y": 291,
+    "r": 6
+   },
+   "B": {
+    "x": 458,
+    "y": 262,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:59:43.183Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 291,
+     "a_col": 455,
+     "b_row": 262,
+     "b_col": 458,
+     "half": 6,
+     "t": 1794790783183,
+     "glossy": true
+    },
+    "v0_index": 167
+   }
+  },
+  {
+   "id": "t=1794790788364",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 494,
+    "y": 302,
+    "r": 6
+   },
+   "B": {
+    "x": 497,
+    "y": 275,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T00:59:48.364Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 302,
+     "a_col": 494,
+     "b_row": 275,
+     "b_col": 497,
+     "half": 6,
+     "t": 1794790788364,
+     "glossy": true
+    },
+    "v0_index": 168
+   }
+  },
+  {
+   "id": "t=1794790806445",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 185,
+    "y": 56,
+    "r": 6
+   },
+   "B": {
+    "x": 189,
+    "y": 97,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:00:06.445Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 56,
+     "a_col": 185,
+     "b_row": 97,
+     "b_col": 189,
+     "half": 6,
+     "t": 1794790806445,
+     "glossy": true
+    },
+    "v0_index": 169
+   }
+  },
+  {
+   "id": "t=1794790812227",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 256,
+    "y": 77,
+    "r": 6
+   },
+   "B": {
+    "x": 255,
+    "y": 110,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:00:12.227Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 77,
+     "a_col": 256,
+     "b_row": 110,
+     "b_col": 255,
+     "half": 6,
+     "t": 1794790812227,
+     "glossy": true
+    },
+    "v0_index": 170
+   }
+  },
+  {
+   "id": "t=1794790816671",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 323,
+    "y": 99,
+    "r": 6
+   },
+   "B": {
+    "x": 320,
+    "y": 136,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:00:16.671Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 99,
+     "a_col": 323,
+     "b_row": 136,
+     "b_col": 320,
+     "half": 6,
+     "t": 1794790816671,
+     "glossy": true
+    },
+    "v0_index": 171
+   }
+  },
+  {
+   "id": "t=1794790820603",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 401,
+    "y": 133,
+    "r": 3
+   },
+   "B": {
+    "x": 386,
+    "y": 165,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:00:20.603Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 133,
+     "a_col": 401,
+     "b_row": 165,
+     "b_col": 386,
+     "half": 3,
+     "t": 1794790820603,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "half",
+       "at": "2026-11-16T01:00:34.489Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-16T01:00:34.718Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-16T01:00:34.911Z",
+       "before": {
+        "half": 4
+       },
+       "after": {
+        "half": 3
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-16T01:00:41.493Z",
+       "before": {
+        "a_row": 126,
+        "a_col": 390
+       },
+       "after": {
+        "a_row": 133,
+        "a_col": 401
+       }
+      }
+     ]
+    },
+    "v0_index": 172
+   }
+  },
+  {
+   "id": "t=1794790830886",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 447,
+    "y": 155,
+    "r": 2
+   },
+   "B": {
+    "x": 445,
+    "y": 177,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:00:30.886Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 155,
+     "a_col": 447,
+     "b_row": 177,
+     "b_col": 445,
+     "half": 2,
+     "t": 1794790830886,
+     "glossy": true
+    },
+    "v0_index": 173
+   }
+  },
+  {
+   "id": "t=1794790852717",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 135,
+    "y": 47,
+    "r": 4
+   },
+   "B": {
+    "x": 167,
+    "y": 29,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:00:52.717Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 47,
+     "a_col": 135,
+     "b_row": 29,
+     "b_col": 167,
+     "half": 4,
+     "t": 1794790852717,
+     "glossy": true
+    },
+    "v0_index": 174
+   }
+  },
+  {
+   "id": "t=1794790856275",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 191,
+    "y": 63,
+    "r": 4
+   },
+   "B": {
+    "x": 188,
+    "y": 35,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:00:56.275Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 63,
+     "a_col": 191,
+     "b_row": 35,
+     "b_col": 188,
+     "half": 4,
+     "t": 1794790856275,
+     "glossy": true
+    },
+    "v0_index": 175
+   }
+  },
+  {
+   "id": "t=1794790875614",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 839,
+    "y": 284,
+    "r": 2
+   },
+   "B": {
+    "x": 848,
+    "y": 269,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:01:15.614Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 284,
+     "a_col": 839,
+     "b_row": 269,
+     "b_col": 848,
+     "half": 2,
+     "t": 1794790875614,
+     "glossy": true
+    },
+    "v0_index": 176
+   }
+  },
+  {
+   "id": "t=1794790880578",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 850,
+    "y": 263,
+    "r": 2
+   },
+   "B": {
+    "x": 857,
+    "y": 251,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:01:20.578Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 263,
+     "a_col": 850,
+     "b_row": 251,
+     "b_col": 857,
+     "half": 2,
+     "t": 1794790880578,
+     "glossy": true
+    },
+    "v0_index": 177
+   }
+  },
+  {
+   "id": "t=1794790900024",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 899,
+    "y": 247,
+    "r": 2
+   },
+   "B": {
+    "x": 910,
+    "y": 224,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:01:40.024Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 247,
+     "a_col": 899,
+     "b_row": 224,
+     "b_col": 910,
+     "half": 2,
+     "t": 1794790900024
+    },
+    "v0_index": 178
+   }
+  },
+  {
+   "id": "t=1794790901397",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 927,
+    "y": 258,
+    "r": 2
+   },
+   "B": {
+    "x": 936,
+    "y": 233,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:01:41.397Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 258,
+     "a_col": 927,
+     "b_row": 233,
+     "b_col": 936,
+     "half": 2,
+     "t": 1794790901397
+    },
+    "v0_index": 179
+   }
+  },
+  {
+   "id": "t=1794790903226",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 970,
+    "y": 270,
+    "r": 2
+   },
+   "B": {
+    "x": 984,
+    "y": 246,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:01:43.226Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 270,
+     "a_col": 970,
+     "b_row": 246,
+     "b_col": 984,
+     "half": 2,
+     "t": 1794790903226
+    },
+    "v0_index": 180
+   }
+  },
+  {
+   "id": "t=1794790907208",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 890,
+    "y": 271,
+    "r": 2
+   },
+   "B": {
+    "x": 878,
+    "y": 286,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:01:47.208Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 271,
+     "a_col": 890,
+     "b_row": 286,
+     "b_col": 878,
+     "half": 2,
+     "t": 1794790907208
+    },
+    "v0_index": 181
+   }
+  },
+  {
+   "id": "t=1794790909368",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 919,
+    "y": 281,
+    "r": 2
+   },
+   "B": {
+    "x": 906,
+    "y": 297,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:01:49.368Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 281,
+     "a_col": 919,
+     "b_row": 297,
+     "b_col": 906,
+     "half": 2,
+     "t": 1794790909368
+    },
+    "v0_index": 182
+   }
+  },
+  {
+   "id": "t=1794790915015",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 961,
+    "y": 298,
+    "r": 2
+   },
+   "B": {
+    "x": 938,
+    "y": 288,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:01:55.015Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 298,
+     "a_col": 961,
+     "b_row": 288,
+     "b_col": 938,
+     "half": 2,
+     "t": 1794790915015
+    },
+    "v0_index": 183,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.86882,
+     "b_B": 7.147997,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790918409",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 845,
+    "y": 224,
+    "r": 2
+   },
+   "B": {
+    "x": 853,
+    "y": 205,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:01:58.409Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 224,
+     "a_col": 845,
+     "b_row": 205,
+     "b_col": 853,
+     "half": 2,
+     "t": 1794790918409
+    },
+    "v0_index": 184
+   }
+  },
+  {
+   "id": "t=1794790919657",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 817,
+    "y": 215,
+    "r": 2
+   },
+   "B": {
+    "x": 830,
+    "y": 196,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:01:59.657Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 215,
+     "a_col": 817,
+     "b_row": 196,
+     "b_col": 830,
+     "half": 2,
+     "t": 1794790919657
+    },
+    "v0_index": 185
+   }
+  },
+  {
+   "id": "t=1794790922676",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 811,
+    "y": 189,
+    "r": 2
+   },
+   "B": {
+    "x": 830,
+    "y": 196,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:02:02.676Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 189,
+     "a_col": 811,
+     "b_row": 196,
+     "b_col": 830,
+     "half": 2,
+     "t": 1794790922676
+    },
+    "v0_index": 186,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.117923,
+     "b_B": 7.928832,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790925471",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 814,
+    "y": 189,
+    "r": 2
+   },
+   "B": {
+    "x": 797,
+    "y": 182,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:02:05.471Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 189,
+     "a_col": 814,
+     "b_row": 182,
+     "b_col": 797,
+     "half": 2,
+     "t": 1794790925471
+    },
+    "v0_index": 187,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.117853,
+     "b_B": 7.984885,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790929581",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 805,
+    "y": 238,
+    "r": 2
+   },
+   "B": {
+    "x": 810,
+    "y": 225,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:02:09.581Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 238,
+     "a_col": 805,
+     "b_row": 225,
+     "b_col": 810,
+     "half": 2,
+     "t": 1794790929581
+    },
+    "v0_index": 188
+   }
+  },
+  {
+   "id": "t=1794790931136",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 806,
+    "y": 239,
+    "r": 2
+   },
+   "B": {
+    "x": 797,
+    "y": 255,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:02:11.136Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 239,
+     "a_col": 806,
+     "b_row": 255,
+     "b_col": 797,
+     "half": 2,
+     "t": 1794790931136
+    },
+    "v0_index": 189
+   }
+  },
+  {
+   "id": "t=1794790938755",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 755,
+    "y": 235,
+    "r": 2
+   },
+   "B": {
+    "x": 765,
+    "y": 220,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:02:18.755Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 235,
+     "a_col": 755,
+     "b_row": 220,
+     "b_col": 765,
+     "half": 2,
+     "t": 1794790938755
+    },
+    "v0_index": 190
+   }
+  },
+  {
+   "id": "t=1794790941154",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 771,
+    "y": 208,
+    "r": 2
+   },
+   "B": {
+    "x": 761,
+    "y": 223,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:02:21.154Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 208,
+     "a_col": 771,
+     "b_row": 223,
+     "b_col": 761,
+     "half": 2,
+     "t": 1794790941154
+    },
+    "v0_index": 191
+   }
+  },
+  {
+   "id": "t=1794790942778",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 792,
+    "y": 215,
+    "r": 2
+   },
+   "B": {
+    "x": 783,
+    "y": 229,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:02:22.778Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 215,
+     "a_col": 792,
+     "b_row": 229,
+     "b_col": 783,
+     "half": 2,
+     "t": 1794790942778
+    },
+    "v0_index": 192
+   }
+  },
+  {
+   "id": "t=1794790944201",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 774,
+    "y": 249,
+    "r": 2
+   },
+   "B": {
+    "x": 785,
+    "y": 230,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:02:24.201Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 249,
+     "a_col": 774,
+     "b_row": 230,
+     "b_col": 785,
+     "half": 2,
+     "t": 1794790944201
+    },
+    "v0_index": 193
+   }
+  },
+  {
+   "id": "t=1794790947390",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 773,
+    "y": 252,
+    "r": 2
+   },
+   "B": {
+    "x": 764,
+    "y": 267,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:02:27.390Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 252,
+     "a_col": 773,
+     "b_row": 267,
+     "b_col": 764,
+     "half": 2,
+     "t": 1794790947390
+    },
+    "v0_index": 194
+   }
+  },
+  {
+   "id": "t=1794790954682",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 750,
+    "y": 245,
+    "r": 2
+   },
+   "B": {
+    "x": 743,
+    "y": 259,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:02:34.682Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 245,
+     "a_col": 750,
+     "b_row": 259,
+     "b_col": 743,
+     "half": 2,
+     "t": 1794790954682
+    },
+    "v0_index": 195
+   }
+  },
+  {
+   "id": "t=1794790956153",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 759,
+    "y": 280,
+    "r": 2
+   },
+   "B": {
+    "x": 766,
+    "y": 266,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:02:36.153Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 280,
+     "a_col": 759,
+     "b_row": 266,
+     "b_col": 766,
+     "half": 2,
+     "t": 1794790956153
+    },
+    "v0_index": 196
+   }
+  },
+  {
+   "id": "t=1794790957761",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 736,
+    "y": 274,
+    "r": 2
+   },
+   "B": {
+    "x": 745,
+    "y": 258,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:02:37.761Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 274,
+     "a_col": 736,
+     "b_row": 258,
+     "b_col": 745,
+     "half": 2,
+     "t": 1794790957761
+    },
+    "v0_index": 197
+   }
+  },
+  {
+   "id": "t=1794790986762",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 993,
+    "y": 241,
+    "r": 2
+   },
+   "B": {
+    "x": 964,
+    "y": 231,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:03:06.762Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 241,
+     "a_col": 993,
+     "b_row": 231,
+     "b_col": 964,
+     "half": 2,
+     "t": 1794790986762
+    },
+    "v0_index": 198,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.266243,
+     "b_B": 7.920537,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794790990774",
+   "image": "acharya_mrudula_048",
+   "type": "i",
+   "A": {
+    "x": 997,
+    "y": 213,
+    "r": 2
+   },
+   "B": {
+    "x": 980,
+    "y": 208,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:03:10.774Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 213,
+     "a_col": 997,
+     "b_row": 208,
+     "b_col": 980,
+     "half": 2,
+     "t": 1794790990774
+    },
+    "v0_index": 199,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.23327,
+     "b_B": 8.011976,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794791004607",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 585,
+    "y": 178,
+    "r": 2
+   },
+   "B": {
+    "x": 575,
+    "y": 191,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:03:24.607Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 178,
+     "a_col": 585,
+     "b_row": 191,
+     "b_col": 575,
+     "half": 2,
+     "t": 1794791004607
+    },
+    "v0_index": 200
+   }
+  },
+  {
+   "id": "t=1794791006160",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 608,
+    "y": 187,
+    "r": 2
+   },
+   "B": {
+    "x": 596,
+    "y": 201,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:03:26.160Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 187,
+     "a_col": 608,
+     "b_row": 201,
+     "b_col": 596,
+     "half": 2,
+     "t": 1794791006160
+    },
+    "v0_index": 201
+   }
+  },
+  {
+   "id": "t=1794791008643",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 658,
+    "y": 215,
+    "r": 2
+   },
+   "B": {
+    "x": 653,
+    "y": 230,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:03:28.643Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 215,
+     "a_col": 658,
+     "b_row": 230,
+     "b_col": 653,
+     "half": 2,
+     "t": 1794791008643
+    },
+    "v0_index": 202
+   }
+  },
+  {
+   "id": "t=1794791011313",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 636,
+    "y": 200,
+    "r": 2
+   },
+   "B": {
+    "x": 629,
+    "y": 210,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:03:31.313Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 200,
+     "a_col": 636,
+     "b_row": 210,
+     "b_col": 629,
+     "half": 2,
+     "t": 1794791011313
+    },
+    "v0_index": 203
+   }
+  },
+  {
+   "id": "t=1794791014663",
+   "image": "acharya_mrudula_048",
+   "type": "m",
+   "A": {
+    "x": 622,
+    "y": 218,
+    "r": 2
+   },
+   "B": {
+    "x": 615,
+    "y": 214,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-16T01:03:34.663Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 218,
+     "a_col": 622,
+     "b_row": 214,
+     "b_col": 615,
+     "half": 2,
+     "t": 1794791014663
+    },
+    "v0_index": 204
+   }
+  }
+ ],
+ "s_seed_log": [],
+ "legacy": {
+  "source_set": "glossy_confirm",
+  "source_file": "illumination_edge/glossy_confirm/frozen/pairs_2026-11-16T05-27-35.json",
+  "source_sha256": "46b0a9645b8600cf56d94ba0500defabb8198f40f09148a9e24cfb72f50868a6",
+  "migrated_by": "metrics/migrate_v0.py 1.0",
+  "deleted": [
+   {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 452,
+     "a_col": 371,
+     "b_row": 455,
+     "b_col": 339,
+     "half": 2,
+     "t": 1794789584876,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-16T00:39:45.818Z"
+      }
+     ],
+     "deleted_at": "2026-11-16T00:39:45.818Z",
+     "deleted_index": 7
+    },
+    "v0_index": 0
+   },
+   {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "i",
+     "a_row": 580,
+     "a_col": 729,
+     "b_row": 574,
+     "b_col": 713,
+     "half": 2,
+     "t": 1794789890517,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-16T00:44:51.491Z"
+      }
+     ],
+     "deleted_at": "2026-11-16T00:44:51.491Z",
+     "deleted_index": 39
+    },
+    "v0_index": 1
+   },
+   {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 613,
+     "a_col": 878,
+     "b_row": 594,
+     "b_col": 888,
+     "half": 3,
+     "t": 1794790437002,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-16T00:53:58.092Z"
+      }
+     ],
+     "deleted_at": "2026-11-16T00:53:58.092Z",
+     "deleted_index": 112
+    },
+    "v0_index": 2
+   },
+   {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 200,
+     "a_col": 180,
+     "b_row": 179,
+     "b_col": 222,
+     "half": 6,
+     "t": 1794790759019,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-16T00:59:22.197Z"
+      }
+     ],
+     "deleted_at": "2026-11-16T00:59:22.197Z",
+     "deleted_index": 163
+    },
+    "v0_index": 3
+   },
+   {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "m",
+     "a_row": 307,
+     "a_col": 929,
+     "b_row": 287,
+     "b_col": 939,
+     "half": 2,
+     "t": 1794790911878,
+     "edits": [
+      {
+       "op": "delete",
+       "at": "2026-11-16T01:02:56.522Z"
+      }
+     ],
+     "deleted_at": "2026-11-16T01:02:56.522Z",
+     "deleted_index": 184
+    },
+    "v0_index": 4
+   },
+   {
+    "v0": {
+     "image": "acharya_mrudula_048",
+     "type": "b",
+     "a_row": 274,
+     "a_col": 517,
+     "b_row": 261,
+     "b_col": 506,
+     "half": 2,
+     "t": 1794789723200,
+     "edits": [
+      {
+       "op": "delete",
+       "at": "2026-11-16T03:39:15.091Z"
+      }
+     ],
+     "deleted_at": "2026-11-16T03:39:15.091Z",
+     "deleted_index": 21
+    },
+    "v0_index": 52
+   }
+  ]
+ }
+}

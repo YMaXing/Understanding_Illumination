@@ -1,0 +1,4321 @@
+{
+ "schema_version": "1.2",
+ "image": "taiwei_cui_100",
+ "set": "glossy_dev",
+ "split": "train",
+ "seen_in_training": "unknown",
+ "width": 1023,
+ "height": 768,
+ "image_sha256": "10516af7d5ab4f0afc2cebc2fd24b4071840c6add1af0cef11bc91a3d6749702",
+ "image_pixel_sha256": "23239d7280a6779398fed9e8b770a4908e438e01322b58193f53e2a4bc404edb",
+ "assigned_to": "yueren",
+ "pairs": [
+  {
+   "id": "t=1794679707326",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 31,
+    "y": 551,
+    "r": 7
+   },
+   "B": {
+    "x": 31,
+    "y": 490,
+    "r": 7
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:08:27.326Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 551,
+     "a_col": 31,
+     "b_row": 490,
+     "b_col": 31,
+     "half": 7,
+     "t": 1794679707326,
+     "major": true
+    },
+    "v0_index": 835,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.139205,
+     "b_B": 7.186024,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794679711976",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 101,
+    "y": 541,
+    "r": 7
+   },
+   "B": {
+    "x": 96,
+    "y": 482,
+    "r": 7
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:08:31.976Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 541,
+     "a_col": 101,
+     "b_row": 482,
+     "b_col": 96,
+     "half": 7,
+     "t": 1794679711976,
+     "major": true
+    },
+    "v0_index": 836,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.332566,
+     "b_B": 7.331399,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794679715410",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 174,
+    "y": 532,
+    "r": 7
+   },
+   "B": {
+    "x": 169,
+    "y": 476,
+    "r": 7
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:08:35.410Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 532,
+     "a_col": 174,
+     "b_row": 476,
+     "b_col": 169,
+     "half": 7,
+     "t": 1794679715410,
+     "major": true
+    },
+    "v0_index": 837,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.528578,
+     "b_B": 7.575933,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794679730937",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 255,
+    "y": 515,
+    "r": 7
+   },
+   "B": {
+    "x": 245,
+    "y": 467,
+    "r": 7
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:08:50.937Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 515,
+     "a_col": 255,
+     "b_row": 467,
+     "b_col": 245,
+     "half": 7,
+     "t": 1794679730937,
+     "major": true
+    },
+    "v0_index": 838,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.653769,
+     "b_B": 7.756285,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794679734475",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 331,
+    "y": 498,
+    "r": 7
+   },
+   "B": {
+    "x": 313,
+    "y": 454,
+    "r": 7
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:08:54.475Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 498,
+     "a_col": 331,
+     "b_row": 454,
+     "b_col": 313,
+     "half": 7,
+     "t": 1794679734475,
+     "major": true
+    },
+    "v0_index": 839,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.583648,
+     "b_B": 7.762114,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794679744070",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 213,
+    "y": 693,
+    "r": 7
+   },
+   "B": {
+    "x": 215,
+    "y": 754,
+    "r": 7
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:09:04.070Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 693,
+     "a_col": 213,
+     "b_row": 754,
+     "b_col": 215,
+     "half": 7,
+     "t": 1794679744070
+    },
+    "v0_index": 840,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.406637,
+     "b_B": 8.28683,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794679746964",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 291,
+    "y": 681,
+    "r": 7
+   },
+   "B": {
+    "x": 299,
+    "y": 751,
+    "r": 7
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:09:06.964Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 681,
+     "a_col": 291,
+     "b_row": 751,
+     "b_col": 299,
+     "half": 7,
+     "t": 1794679746964
+    },
+    "v0_index": 841,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.610433,
+     "b_B": 8.210155,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794679750058",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 385,
+    "y": 676,
+    "r": 7
+   },
+   "B": {
+    "x": 385,
+    "y": 739,
+    "r": 7
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:09:10.058Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 676,
+     "a_col": 385,
+     "b_row": 739,
+     "b_col": 385,
+     "half": 7,
+     "t": 1794679750058
+    },
+    "v0_index": 842,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.617813,
+     "b_B": 8.287038,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794679753910",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 449,
+    "y": 680,
+    "r": 7
+   },
+   "B": {
+    "x": 440,
+    "y": 729,
+    "r": 7
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:09:13.910Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 680,
+     "a_col": 449,
+     "b_row": 729,
+     "b_col": 440,
+     "half": 7,
+     "t": 1794679753910
+    },
+    "v0_index": 843,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.698888,
+     "b_B": 8.446549,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794679756329",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 537,
+    "y": 685,
+    "r": 7
+   },
+   "B": {
+    "x": 538,
+    "y": 736,
+    "r": 7
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:09:16.329Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 685,
+     "a_col": 537,
+     "b_row": 736,
+     "b_col": 538,
+     "half": 7,
+     "t": 1794679756329
+    },
+    "v0_index": 844,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.143388,
+     "b_B": 8.214939,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794679758979",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 578,
+    "y": 666,
+    "r": 7
+   },
+   "B": {
+    "x": 633,
+    "y": 723,
+    "r": 7
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:09:18.979Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 666,
+     "a_col": 578,
+     "b_row": 723,
+     "b_col": 633,
+     "half": 7,
+     "t": 1794679758979
+    },
+    "v0_index": 845,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.928074,
+     "b_B": 7.872797,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794679760482",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 562,
+    "y": 643,
+    "r": 7
+   },
+   "B": {
+    "x": 641,
+    "y": 635,
+    "r": 7
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:09:20.482Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 643,
+     "a_col": 562,
+     "b_row": 635,
+     "b_col": 641,
+     "half": 7,
+     "t": 1794679760482
+    },
+    "v0_index": 846,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.14706,
+     "b_B": 7.984212,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794679762582",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 656,
+    "y": 584,
+    "r": 7
+   },
+   "B": {
+    "x": 675,
+    "y": 628,
+    "r": 7
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:09:22.582Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 584,
+     "a_col": 656,
+     "b_row": 628,
+     "b_col": 675,
+     "half": 7,
+     "t": 1794679762582
+    },
+    "v0_index": 847,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.5268,
+     "b_B": 7.850084,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794679767452",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 743,
+    "y": 728,
+    "r": 7
+   },
+   "B": {
+    "x": 673,
+    "y": 692,
+    "r": 7
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:09:27.452Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 728,
+     "a_col": 743,
+     "b_row": 692,
+     "b_col": 673,
+     "half": 7,
+     "t": 1794679767452
+    },
+    "v0_index": 848,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.75364,
+     "b_B": 8.003294,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794679772667",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 737,
+    "y": 727,
+    "r": 7
+   },
+   "B": {
+    "x": 648,
+    "y": 755,
+    "r": 7
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:09:32.667Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 727,
+     "a_col": 737,
+     "b_row": 755,
+     "b_col": 648,
+     "half": 7,
+     "t": 1794679772667
+    },
+    "v0_index": 849,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.672092,
+     "b_B": 7.548208,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794679793884",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 593,
+    "y": 567,
+    "r": 2
+   },
+   "B": {
+    "x": 588,
+    "y": 540,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:09:53.884Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 567,
+     "a_col": 593,
+     "b_row": 540,
+     "b_col": 588,
+     "half": 2,
+     "t": 1794679793884,
+     "major": true
+    },
+    "v0_index": 850,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.036486,
+     "b_B": 7.712143,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794679804592",
+   "image": "taiwei_cui_100",
+   "type": "b",
+   "A": {
+    "x": 531,
+    "y": 565,
+    "r": 3
+   },
+   "B": {
+    "x": 534,
+    "y": 535,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:10:04.592Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "b",
+     "a_row": 565,
+     "a_col": 531,
+     "b_row": 535,
+     "b_col": 534,
+     "half": 3,
+     "t": 1794679804592,
+     "major": true
+    },
+    "v0_index": 851
+   }
+  },
+  {
+   "id": "t=1794679808473",
+   "image": "taiwei_cui_100",
+   "type": "b",
+   "A": {
+    "x": 563,
+    "y": 568,
+    "r": 3
+   },
+   "B": {
+    "x": 562,
+    "y": 534,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:10:08.473Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "b",
+     "a_row": 568,
+     "a_col": 563,
+     "b_row": 534,
+     "b_col": 562,
+     "half": 3,
+     "t": 1794679808473,
+     "edits": [
+      {
+       "op": "type",
+       "at": "2026-11-14T18:10:14.887Z",
+       "before": {
+        "type": "m"
+       },
+       "after": {
+        "type": "b"
+       }
+      },
+      {
+       "op": "major",
+       "at": "2026-11-14T18:10:17.605Z",
+       "before": {
+        "major": null
+       },
+       "after": {
+        "major": true
+       }
+      }
+     ],
+     "major": true
+    },
+    "v0_index": 852
+   }
+  },
+  {
+   "id": "t=1794679842143",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 616,
+    "y": 559,
+    "r": 2
+   },
+   "B": {
+    "x": 612,
+    "y": 543,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:10:42.143Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 559,
+     "a_col": 616,
+     "b_row": 543,
+     "b_col": 612,
+     "half": 2,
+     "t": 1794679842143,
+     "major": true
+    },
+    "v0_index": 853,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.147333,
+     "b_B": 7.703737,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794679847769",
+   "image": "taiwei_cui_100",
+   "type": "b",
+   "A": {
+    "x": 673,
+    "y": 561,
+    "r": 2
+   },
+   "B": {
+    "x": 672,
+    "y": 544,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:10:47.769Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "b",
+     "a_row": 561,
+     "a_col": 673,
+     "b_row": 544,
+     "b_col": 672,
+     "half": 2,
+     "t": 1794679847769,
+     "major": true,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:31:31.858Z",
+       "before": {
+        "a_row": 560
+       },
+       "after": {
+        "a_row": 561
+       }
+      }
+     ]
+    },
+    "v0_index": 854
+   }
+  },
+  {
+   "id": "t=1794679853858",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 701,
+    "y": 559,
+    "r": 2
+   },
+   "B": {
+    "x": 691,
+    "y": 547,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:10:53.858Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 559,
+     "a_col": 701,
+     "b_row": 547,
+     "b_col": 691,
+     "half": 2,
+     "t": 1794679853858,
+     "major": true
+    },
+    "v0_index": 855,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.116594,
+     "b_B": 7.165229,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794679861439",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 641,
+    "y": 561,
+    "r": 2
+   },
+   "B": {
+    "x": 636,
+    "y": 546,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:11:01.439Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 561,
+     "a_col": 641,
+     "b_row": 546,
+     "b_col": 636,
+     "half": 2,
+     "t": 1794679861439,
+     "major": true
+    },
+    "v0_index": 856,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.125282,
+     "b_B": 7.52594,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794679886376",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 781,
+    "y": 690,
+    "r": 3
+   },
+   "B": {
+    "x": 763,
+    "y": 659,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:11:26.376Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 690,
+     "a_col": 781,
+     "b_row": 659,
+     "b_col": 763,
+     "half": 3,
+     "t": 1794679886376
+    },
+    "v0_index": 857,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.688512,
+     "b_B": 7.659967,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794679899383",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 756,
+    "y": 558,
+    "r": 3
+   },
+   "B": {
+    "x": 751,
+    "y": 544,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:11:39.383Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 558,
+     "a_col": 756,
+     "b_row": 544,
+     "b_col": 751,
+     "half": 3,
+     "t": 1794679899383,
+     "major": true
+    },
+    "v0_index": 858,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.746155,
+     "b_B": 6.801788,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794679902810",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 785,
+    "y": 558,
+    "r": 3
+   },
+   "B": {
+    "x": 779,
+    "y": 541,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:11:42.810Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 558,
+     "a_col": 785,
+     "b_row": 541,
+     "b_col": 779,
+     "half": 3,
+     "t": 1794679902810,
+     "major": true
+    },
+    "v0_index": 859,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.704228,
+     "b_B": 6.828087,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794679906547",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 813,
+    "y": 557,
+    "r": 3
+   },
+   "B": {
+    "x": 806,
+    "y": 535,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:11:46.547Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 557,
+     "a_col": 813,
+     "b_row": 535,
+     "b_col": 806,
+     "half": 3,
+     "t": 1794679906547,
+     "major": true
+    },
+    "v0_index": 860,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.580112,
+     "b_B": 6.796012,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794679913392",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 847,
+    "y": 555,
+    "r": 3
+   },
+   "B": {
+    "x": 838,
+    "y": 537,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:11:53.392Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 555,
+     "a_col": 847,
+     "b_row": 537,
+     "b_col": 838,
+     "half": 3,
+     "t": 1794679913392,
+     "major": true
+    },
+    "v0_index": 861,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.398804,
+     "b_B": 6.727959,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794679916687",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 879,
+    "y": 553,
+    "r": 3
+   },
+   "B": {
+    "x": 872,
+    "y": 534,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:11:56.687Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 553,
+     "a_col": 879,
+     "b_row": 534,
+     "b_col": 872,
+     "half": 3,
+     "t": 1794679916687,
+     "major": true
+    },
+    "v0_index": 862,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.364025,
+     "b_B": 6.749838,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794679921410",
+   "image": "taiwei_cui_100",
+   "type": "b",
+   "A": {
+    "x": 910,
+    "y": 550,
+    "r": 3
+   },
+   "B": {
+    "x": 899,
+    "y": 530,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:12:01.410Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "b",
+     "a_row": 550,
+     "a_col": 910,
+     "b_row": 530,
+     "b_col": 899,
+     "half": 3,
+     "t": 1794679921410,
+     "major": true
+    },
+    "v0_index": 863
+   }
+  },
+  {
+   "id": "t=1794679939070",
+   "image": "taiwei_cui_100",
+   "type": "b",
+   "A": {
+    "x": 934,
+    "y": 549,
+    "r": 3
+   },
+   "B": {
+    "x": 921,
+    "y": 529,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:12:19.070Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "b",
+     "a_row": 549,
+     "a_col": 934,
+     "b_row": 529,
+     "b_col": 921,
+     "half": 3,
+     "t": 1794679939070,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:33:23.882Z",
+       "before": {
+        "a_row": 548,
+        "a_col": 939
+       },
+       "after": {
+        "a_row": 549,
+        "a_col": 934
+       }
+      }
+     ]
+    },
+    "v0_index": 864
+   }
+  },
+  {
+   "id": "t=1794679967619",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 735,
+    "y": 562,
+    "r": 3
+   },
+   "B": {
+    "x": 725,
+    "y": 538,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:12:47.619Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 562,
+     "a_col": 735,
+     "b_row": 538,
+     "b_col": 725,
+     "half": 3,
+     "t": 1794679967619,
+     "major": true
+    },
+    "v0_index": 865,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.898848,
+     "b_B": 6.924082,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794679988317",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 483,
+    "y": 373,
+    "r": 8
+   },
+   "B": {
+    "x": 544,
+    "y": 379,
+    "r": 8
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:13:08.317Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 373,
+     "a_col": 483,
+     "b_row": 379,
+     "b_col": 544,
+     "half": 8,
+     "t": 1794679988317,
+     "major": true,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:28:05.229Z",
+       "before": {
+        "a_row": 374,
+        "a_col": 458
+       },
+       "after": {
+        "a_row": 373,
+        "a_col": 478
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:28:06.074Z",
+       "before": {
+        "b_row": 378,
+        "b_col": 560
+       },
+       "after": {
+        "b_row": 379,
+        "b_col": 544
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:28:07.052Z",
+       "before": {
+        "a_col": 478
+       },
+       "after": {
+        "a_col": 483
+       }
+      }
+     ]
+    },
+    "v0_index": 866,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.988017,
+     "b_B": 8.013737,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794679994120",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 468,
+    "y": 419,
+    "r": 8
+   },
+   "B": {
+    "x": 533,
+    "y": 430,
+    "r": 8
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:13:14.120Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 419,
+     "a_col": 468,
+     "b_row": 430,
+     "b_col": 533,
+     "half": 8,
+     "t": 1794679994120,
+     "major": true,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:28:08.222Z",
+       "before": {
+        "a_col": 453
+       },
+       "after": {
+        "a_col": 465
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:28:09.319Z",
+       "before": {
+        "b_col": 545
+       },
+       "after": {
+        "b_col": 533
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:28:10.996Z",
+       "before": {
+        "a_col": 465
+       },
+       "after": {
+        "a_col": 468
+       }
+      }
+     ]
+    },
+    "v0_index": 867,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.055855,
+     "b_B": 8.098296,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794679999321",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 455,
+    "y": 460,
+    "r": 8
+   },
+   "B": {
+    "x": 511,
+    "y": 468,
+    "r": 8
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:13:19.321Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 460,
+     "a_col": 455,
+     "b_row": 468,
+     "b_col": 511,
+     "half": 8,
+     "t": 1794679999321,
+     "major": true,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:28:12.844Z",
+       "before": {
+        "a_row": 468,
+        "a_col": 448
+       },
+       "after": {
+        "a_row": 461,
+        "a_col": 455
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:28:14.100Z",
+       "before": {
+        "b_col": 517
+       },
+       "after": {
+        "b_col": 508
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:28:20.377Z",
+       "before": {
+        "b_row": 474
+       },
+       "after": {
+        "b_row": 469
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:28:27.828Z",
+       "before": {
+        "b_row": 469,
+        "b_col": 508
+       },
+       "after": {
+        "b_row": 468,
+        "b_col": 511
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:28:28.739Z",
+       "before": {
+        "a_row": 461
+       },
+       "after": {
+        "a_row": 460
+       }
+      },
+      {
+       "op": "glossy",
+       "at": "2026-11-15T06:28:41.502Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ],
+     "glossy": true
+    },
+    "v0_index": 868,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.111884,
+     "b_B": 8.316697,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680027914",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 677,
+    "y": 267,
+    "r": 3
+   },
+   "B": {
+    "x": 671,
+    "y": 279,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:13:47.914Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 267,
+     "a_col": 677,
+     "b_row": 279,
+     "b_col": 671,
+     "half": 3,
+     "t": 1794680027914,
+     "glossy": true,
+     "major": true
+    },
+    "v0_index": 869,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.742233,
+     "b_B": 7.610184,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680037107",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 656,
+    "y": 292,
+    "r": 2
+   },
+   "B": {
+    "x": 668,
+    "y": 279,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:13:57.107Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 292,
+     "a_col": 656,
+     "b_row": 279,
+     "b_col": 668,
+     "half": 2,
+     "t": 1794680037107,
+     "glossy": true,
+     "major": true
+    },
+    "v0_index": 870,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.687917,
+     "b_B": 7.610665,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680047273",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 672,
+    "y": 266,
+    "r": 2
+   },
+   "B": {
+    "x": 671,
+    "y": 252,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:14:07.273Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 266,
+     "a_col": 672,
+     "b_row": 252,
+     "b_col": 671,
+     "half": 2,
+     "t": 1794680047273,
+     "major": true,
+     "glossy": true
+    },
+    "v0_index": 871,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.765731,
+     "b_B": 7.410179,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680060694",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 274,
+    "y": 231,
+    "r": 2
+   },
+   "B": {
+    "x": 290,
+    "y": 213,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:14:20.694Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 231,
+     "a_col": 274,
+     "b_row": 213,
+     "b_col": 290,
+     "half": 2,
+     "t": 1794680060694,
+     "glossy": true,
+     "major": true,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:32:04.805Z",
+       "before": {
+        "a_row": 230,
+        "a_col": 275
+       },
+       "after": {
+        "a_row": 232,
+        "a_col": 273
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:32:11.273Z",
+       "before": {
+        "a_row": 232,
+        "a_col": 273
+       },
+       "after": {
+        "a_row": 228,
+        "a_col": 276
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:32:14.910Z",
+       "before": {
+        "a_row": 228,
+        "a_col": 276
+       },
+       "after": {
+        "a_row": 231,
+        "a_col": 274
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:32:18.549Z",
+       "before": {
+        "b_row": 212,
+        "b_col": 293
+       },
+       "after": {
+        "b_row": 213,
+        "b_col": 290
+       }
+      }
+     ]
+    },
+    "v0_index": 872,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.807314,
+     "b_B": 7.640882,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680092508",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 656,
+    "y": 19,
+    "r": 5
+   },
+   "B": {
+    "x": 641,
+    "y": 53,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:14:52.508Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 19,
+     "a_col": 656,
+     "b_row": 53,
+     "b_col": 641,
+     "half": 5,
+     "t": 1794680092508,
+     "major": true
+    },
+    "v0_index": 873,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.348509,
+     "b_B": 6.841971,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680102950",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 400,
+    "y": 281,
+    "r": 5
+   },
+   "B": {
+    "x": 346,
+    "y": 278,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:15:02.950Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 281,
+     "a_col": 400,
+     "b_row": 278,
+     "b_col": 346,
+     "half": 5,
+     "t": 1794680102950,
+     "major": true,
+     "edits": [
+      {
+       "op": "major",
+       "at": "2026-11-14T18:15:14.670Z",
+       "before": {
+        "major": null
+       },
+       "after": {
+        "major": true
+       }
+      }
+     ]
+    },
+    "v0_index": 874,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.9756,
+     "b_B": 7.887545,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680109267",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 395,
+    "y": 269,
+    "r": 5
+   },
+   "B": {
+    "x": 390,
+    "y": 236,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:15:09.267Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 269,
+     "a_col": 395,
+     "b_row": 236,
+     "b_col": 390,
+     "half": 5,
+     "t": 1794680109267,
+     "major": true
+    },
+    "v0_index": 875,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.769869,
+     "b_B": 7.26528,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680134101",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 544,
+    "y": 307,
+    "r": 5
+   },
+   "B": {
+    "x": 570,
+    "y": 288,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:15:34.101Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 307,
+     "a_col": 544,
+     "b_row": 288,
+     "b_col": 570,
+     "half": 5,
+     "t": 1794680134101,
+     "major": true
+    },
+    "v0_index": 876,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.989792,
+     "b_B": 7.661545,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680153202",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 110,
+    "y": 727,
+    "r": 5
+   },
+   "B": {
+    "x": 100,
+    "y": 706,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:15:53.202Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 727,
+     "a_col": 110,
+     "b_row": 706,
+     "b_col": 100,
+     "half": 5,
+     "t": 1794680153202,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:29:04.415Z",
+       "before": {
+        "a_row": 724,
+        "a_col": 108
+       },
+       "after": {
+        "a_row": 727,
+        "a_col": 110
+       }
+      },
+      {
+       "op": "type",
+       "at": "2026-11-15T06:29:05.201Z",
+       "before": {
+        "type": "b"
+       },
+       "after": {
+        "type": "m"
+       }
+      }
+     ]
+    },
+    "v0_index": 877
+   }
+  },
+  {
+   "id": "t=1794680155957",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 163,
+    "y": 746,
+    "r": 2
+   },
+   "B": {
+    "x": 137,
+    "y": 742,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:15:55.957Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 746,
+     "a_col": 163,
+     "b_row": 742,
+     "b_col": 137,
+     "half": 2,
+     "t": 1794680155957,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:29:17.194Z",
+       "before": {
+        "a_row": 743,
+        "a_col": 140
+       },
+       "after": {
+        "a_row": 745,
+        "a_col": 137
+       }
+      },
+      {
+       "op": "type",
+       "at": "2026-11-15T06:29:20.464Z",
+       "before": {
+        "type": "b"
+       },
+       "after": {
+        "type": "m"
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:29:23.501Z",
+       "before": {
+        "a_row": 745,
+        "a_col": 137
+       },
+       "after": {
+        "a_row": 744,
+        "a_col": 139
+       }
+      },
+      {
+       "op": "swap",
+       "at": "2026-11-15T06:29:24.082Z",
+       "before": {
+        "a_row": 744,
+        "a_col": 139,
+        "b_row": 746,
+        "b_col": 163
+       },
+       "after": {
+        "a_row": 746,
+        "a_col": 163,
+        "b_row": 744,
+        "b_col": 139
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:29:27.808Z",
+       "before": {
+        "b_row": 744,
+        "b_col": 139
+       },
+       "after": {
+        "b_row": 743,
+        "b_col": 136
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:29:28.453Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:29:28.955Z",
+       "before": {
+        "half": 4
+       },
+       "after": {
+        "half": 3
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:29:29.176Z",
+       "before": {
+        "half": 3
+       },
+       "after": {
+        "half": 2
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:29:29.349Z",
+       "before": {
+        "half": 2
+       },
+       "after": {
+        "half": 1
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:29:30.048Z",
+       "before": {
+        "half": 1
+       },
+       "after": {
+        "half": 2
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:29:31.715Z",
+       "before": {
+        "b_row": 743,
+        "b_col": 136
+       },
+       "after": {
+        "b_row": 742,
+        "b_col": 137
+       }
+      }
+     ]
+    },
+    "v0_index": 878
+   }
+  },
+  {
+   "id": "t=1794680165685",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 30,
+    "y": 645,
+    "r": 2
+   },
+   "B": {
+    "x": 39,
+    "y": 629,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:16:05.685Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 645,
+     "a_col": 30,
+     "b_row": 629,
+     "b_col": 39,
+     "half": 2,
+     "t": 1794680165685,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:29:51.829Z",
+       "before": {
+        "b_row": 638,
+        "b_col": 55
+       },
+       "after": {
+        "b_row": 645,
+        "b_col": 30
+       }
+      },
+      {
+       "op": "swap",
+       "at": "2026-11-15T06:29:52.883Z",
+       "before": {
+        "a_row": 627,
+        "a_col": 43,
+        "b_row": 645,
+        "b_col": 30
+       },
+       "after": {
+        "a_row": 645,
+        "a_col": 30,
+        "b_row": 627,
+        "b_col": 43
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:29:55.185Z",
+       "before": {
+        "b_row": 627,
+        "b_col": 43
+       },
+       "after": {
+        "b_row": 629,
+        "b_col": 39
+       }
+      },
+      {
+       "op": "type",
+       "at": "2026-11-15T06:30:01.559Z",
+       "before": {
+        "type": "b"
+       },
+       "after": {
+        "type": "m"
+       }
+      }
+     ]
+    },
+    "v0_index": 879
+   }
+  },
+  {
+   "id": "t=1794680168953",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 32,
+    "y": 617,
+    "r": 2
+   },
+   "B": {
+    "x": 42,
+    "y": 626,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:16:08.953Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 617,
+     "a_col": 32,
+     "b_row": 626,
+     "b_col": 42,
+     "half": 2,
+     "t": 1794680168953,
+     "edits": [
+      {
+       "op": "swap",
+       "at": "2026-11-15T06:29:42.047Z",
+       "before": {
+        "a_row": 626,
+        "a_col": 42,
+        "b_row": 617,
+        "b_col": 32
+       },
+       "after": {
+        "a_row": 617,
+        "a_col": 32,
+        "b_row": 626,
+        "b_col": 42
+       }
+      },
+      {
+       "op": "type",
+       "at": "2026-11-15T06:29:47.972Z",
+       "before": {
+        "type": "b"
+       },
+       "after": {
+        "type": "m"
+       }
+      }
+     ]
+    },
+    "v0_index": 880
+   }
+  },
+  {
+   "id": "t=1794680186407",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 700,
+    "y": 517,
+    "r": 2
+   },
+   "B": {
+    "x": 679,
+    "y": 523,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:16:26.407Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 517,
+     "a_col": 700,
+     "b_row": 523,
+     "b_col": 679,
+     "half": 2,
+     "t": 1794680186407
+    },
+    "v0_index": 881
+   }
+  },
+  {
+   "id": "t=1794680188179",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 716,
+    "y": 535,
+    "r": 2
+   },
+   "B": {
+    "x": 691,
+    "y": 541,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:16:28.179Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 535,
+     "a_col": 716,
+     "b_row": 541,
+     "b_col": 691,
+     "half": 2,
+     "t": 1794680188179
+    },
+    "v0_index": 882
+   }
+  },
+  {
+   "id": "t=1794680190241",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 694,
+    "y": 505,
+    "r": 2
+   },
+   "B": {
+    "x": 672,
+    "y": 504,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:16:30.241Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 505,
+     "a_col": 694,
+     "b_row": 504,
+     "b_col": 672,
+     "half": 2,
+     "t": 1794680190241
+    },
+    "v0_index": 883
+   }
+  },
+  {
+   "id": "t=1794680191342",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 703,
+    "y": 503,
+    "r": 2
+   },
+   "B": {
+    "x": 693,
+    "y": 487,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:16:31.342Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 503,
+     "a_col": 703,
+     "b_row": 487,
+     "b_col": 693,
+     "half": 2,
+     "t": 1794680191342
+    },
+    "v0_index": 884
+   }
+  },
+  {
+   "id": "t=1794680194844",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 727,
+    "y": 502,
+    "r": 2
+   },
+   "B": {
+    "x": 715,
+    "y": 483,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:16:34.844Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 502,
+     "a_col": 727,
+     "b_row": 483,
+     "b_col": 715,
+     "half": 2,
+     "t": 1794680194844
+    },
+    "v0_index": 885
+   }
+  },
+  {
+   "id": "t=1794680195807",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 756,
+    "y": 495,
+    "r": 2
+   },
+   "B": {
+    "x": 741,
+    "y": 480,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:16:35.807Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 495,
+     "a_col": 756,
+     "b_row": 480,
+     "b_col": 741,
+     "half": 2,
+     "t": 1794680195807
+    },
+    "v0_index": 886
+   }
+  },
+  {
+   "id": "t=1794680196758",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 777,
+    "y": 491,
+    "r": 2
+   },
+   "B": {
+    "x": 767,
+    "y": 475,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:16:36.758Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 491,
+     "a_col": 777,
+     "b_row": 475,
+     "b_col": 767,
+     "half": 2,
+     "t": 1794680196758
+    },
+    "v0_index": 887
+   }
+  },
+  {
+   "id": "t=1794680198706",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 793,
+    "y": 518,
+    "r": 2
+   },
+   "B": {
+    "x": 801,
+    "y": 501,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:16:38.706Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 518,
+     "a_col": 793,
+     "b_row": 501,
+     "b_col": 801,
+     "half": 2,
+     "t": 1794680198706
+    },
+    "v0_index": 888
+   }
+  },
+  {
+   "id": "t=1794680200392",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 830,
+    "y": 523,
+    "r": 2
+   },
+   "B": {
+    "x": 824,
+    "y": 507,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:16:40.392Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 523,
+     "a_col": 830,
+     "b_row": 507,
+     "b_col": 824,
+     "half": 2,
+     "t": 1794680200392
+    },
+    "v0_index": 889
+   }
+  },
+  {
+   "id": "t=1794680202611",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 855,
+    "y": 525,
+    "r": 2
+   },
+   "B": {
+    "x": 842,
+    "y": 506,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:16:42.611Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 525,
+     "a_col": 855,
+     "b_row": 506,
+     "b_col": 842,
+     "half": 2,
+     "t": 1794680202611
+    },
+    "v0_index": 890
+   }
+  },
+  {
+   "id": "t=1794680203705",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 883,
+    "y": 517,
+    "r": 2
+   },
+   "B": {
+    "x": 856,
+    "y": 507,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:16:43.705Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 517,
+     "a_col": 883,
+     "b_row": 507,
+     "b_col": 856,
+     "half": 2,
+     "t": 1794680203705
+    },
+    "v0_index": 891
+   }
+  },
+  {
+   "id": "t=1794680205468",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 866,
+    "y": 491,
+    "r": 2
+   },
+   "B": {
+    "x": 856,
+    "y": 504,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:16:45.468Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 491,
+     "a_col": 866,
+     "b_row": 504,
+     "b_col": 856,
+     "half": 2,
+     "t": 1794680205468
+    },
+    "v0_index": 892
+   }
+  },
+  {
+   "id": "t=1794680216070",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 803,
+    "y": 469,
+    "r": 2
+   },
+   "B": {
+    "x": 812,
+    "y": 484,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:16:56.070Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 469,
+     "a_col": 803,
+     "b_row": 484,
+     "b_col": 812,
+     "half": 2,
+     "t": 1794680216070
+    },
+    "v0_index": 893
+   }
+  },
+  {
+   "id": "t=1794680218639",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 826,
+    "y": 465,
+    "r": 2
+   },
+   "B": {
+    "x": 839,
+    "y": 479,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:16:58.639Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 465,
+     "a_col": 826,
+     "b_row": 479,
+     "b_col": 839,
+     "half": 2,
+     "t": 1794680218639
+    },
+    "v0_index": 894
+   }
+  },
+  {
+   "id": "t=1794680220636",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 846,
+    "y": 460,
+    "r": 2
+   },
+   "B": {
+    "x": 861,
+    "y": 474,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:17:00.636Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 460,
+     "a_col": 846,
+     "b_row": 474,
+     "b_col": 861,
+     "half": 2,
+     "t": 1794680220636
+    },
+    "v0_index": 895
+   }
+  },
+  {
+   "id": "t=1794680222457",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 847,
+    "y": 460,
+    "r": 2
+   },
+   "B": {
+    "x": 861,
+    "y": 456,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:17:02.457Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 460,
+     "a_col": 847,
+     "b_row": 456,
+     "b_col": 861,
+     "half": 2,
+     "t": 1794680222457
+    },
+    "v0_index": 896
+   }
+  },
+  {
+   "id": "t=1794680226243",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 873,
+    "y": 450,
+    "r": 2
+   },
+   "B": {
+    "x": 865,
+    "y": 459,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:17:06.243Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 450,
+     "a_col": 873,
+     "b_row": 459,
+     "b_col": 865,
+     "half": 2,
+     "t": 1794680226243
+    },
+    "v0_index": 897
+   }
+  },
+  {
+   "id": "t=1794680227298",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 892,
+    "y": 450,
+    "r": 2
+   },
+   "B": {
+    "x": 881,
+    "y": 461,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:17:07.298Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 450,
+     "a_col": 892,
+     "b_row": 461,
+     "b_col": 881,
+     "half": 2,
+     "t": 1794680227298
+    },
+    "v0_index": 898
+   }
+  },
+  {
+   "id": "t=1794680228502",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 908,
+    "y": 455,
+    "r": 2
+   },
+   "B": {
+    "x": 897,
+    "y": 470,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:17:08.502Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 455,
+     "a_col": 908,
+     "b_row": 470,
+     "b_col": 897,
+     "half": 2,
+     "t": 1794680228502
+    },
+    "v0_index": 899
+   }
+  },
+  {
+   "id": "t=1794680230874",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 930,
+    "y": 468,
+    "r": 2
+   },
+   "B": {
+    "x": 916,
+    "y": 480,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:17:10.874Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 468,
+     "a_col": 930,
+     "b_row": 480,
+     "b_col": 916,
+     "half": 2,
+     "t": 1794680230874
+    },
+    "v0_index": 900
+   }
+  },
+  {
+   "id": "t=1794680232029",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 946,
+    "y": 484,
+    "r": 2
+   },
+   "B": {
+    "x": 933,
+    "y": 496,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:17:12.029Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 484,
+     "a_col": 946,
+     "b_row": 496,
+     "b_col": 933,
+     "half": 2,
+     "t": 1794680232029
+    },
+    "v0_index": 901
+   }
+  },
+  {
+   "id": "t=1794680237674",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 967,
+    "y": 496,
+    "r": 2
+   },
+   "B": {
+    "x": 951,
+    "y": 507,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:17:17.674Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 496,
+     "a_col": 967,
+     "b_row": 507,
+     "b_col": 951,
+     "half": 2,
+     "t": 1794680237674
+    },
+    "v0_index": 902
+   }
+  },
+  {
+   "id": "t=1794680240242",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 980,
+    "y": 520,
+    "r": 2
+   },
+   "B": {
+    "x": 961,
+    "y": 525,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:17:20.242Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 520,
+     "a_col": 980,
+     "b_row": 525,
+     "b_col": 961,
+     "half": 2,
+     "t": 1794680240242
+    },
+    "v0_index": 903
+   }
+  },
+  {
+   "id": "t=1794680248900",
+   "image": "taiwei_cui_100",
+   "type": "b",
+   "A": {
+    "x": 975,
+    "y": 542,
+    "r": 2
+   },
+   "B": {
+    "x": 963,
+    "y": 526,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:17:28.900Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "b",
+     "a_row": 542,
+     "a_col": 975,
+     "b_row": 526,
+     "b_col": 963,
+     "half": 2,
+     "t": 1794680248900,
+     "major": true,
+     "edits": [
+      {
+       "op": "type",
+       "at": "2026-11-15T06:31:12.307Z",
+       "before": {
+        "type": "i"
+       },
+       "after": {
+        "type": "b"
+       }
+      }
+     ]
+    },
+    "v0_index": 904
+   }
+  },
+  {
+   "id": "t=1794680257174",
+   "image": "taiwei_cui_100",
+   "type": "i",
+   "A": {
+    "x": 956,
+    "y": 545,
+    "r": 2
+   },
+   "B": {
+    "x": 941,
+    "y": 530,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:17:37.174Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 545,
+     "a_col": 956,
+     "b_row": 530,
+     "b_col": 941,
+     "half": 2,
+     "t": 1794680257174,
+     "major": true
+    },
+    "v0_index": 905,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.378163,
+     "b_B": 7.018569,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680262628",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 937,
+    "y": 508,
+    "r": 2
+   },
+   "B": {
+    "x": 941,
+    "y": 498,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:17:42.628Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 508,
+     "a_col": 937,
+     "b_row": 498,
+     "b_col": 941,
+     "half": 2,
+     "t": 1794680262628
+    },
+    "v0_index": 906
+   }
+  },
+  {
+   "id": "t=1794680264532",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 937,
+    "y": 507,
+    "r": 2
+   },
+   "B": {
+    "x": 953,
+    "y": 512,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:17:44.532Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 507,
+     "a_col": 937,
+     "b_row": 512,
+     "b_col": 953,
+     "half": 2,
+     "t": 1794680264532
+    },
+    "v0_index": 907
+   }
+  },
+  {
+   "id": "t=1794680266583",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 932,
+    "y": 505,
+    "r": 2
+   },
+   "B": {
+    "x": 913,
+    "y": 512,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:17:46.583Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 505,
+     "a_col": 932,
+     "b_row": 512,
+     "b_col": 913,
+     "half": 2,
+     "t": 1794680266583
+    },
+    "v0_index": 908
+   }
+  },
+  {
+   "id": "t=1794680284925",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 910,
+    "y": 476,
+    "r": 2
+   },
+   "B": {
+    "x": 886,
+    "y": 487,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:18:04.925Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 476,
+     "a_col": 910,
+     "b_row": 487,
+     "b_col": 886,
+     "half": 2,
+     "t": 1794680284925
+    },
+    "v0_index": 909
+   }
+  },
+  {
+   "id": "t=1794680286910",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 920,
+    "y": 494,
+    "r": 3
+   },
+   "B": {
+    "x": 900,
+    "y": 502,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:18:06.910Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 494,
+     "a_col": 920,
+     "b_row": 502,
+     "b_col": 900,
+     "half": 3,
+     "t": 1794680286910,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:33:44.866Z",
+       "before": {
+        "a_row": 489,
+        "a_col": 927
+       },
+       "after": {
+        "a_row": 495,
+        "a_col": 918
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:33:48.397Z",
+       "before": {
+        "a_col": 918
+       },
+       "after": {
+        "a_col": 919
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:33:50.151Z",
+       "before": {
+        "b_row": 499,
+        "b_col": 896
+       },
+       "after": {
+        "b_row": 500,
+        "b_col": 899
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:33:52.179Z",
+       "before": {
+        "b_row": 500,
+        "b_col": 899
+       },
+       "after": {
+        "b_row": 502,
+        "b_col": 900
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:33:53.902Z",
+       "before": {
+        "half": 2
+       },
+       "after": {
+        "half": 3
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:33:55.969Z",
+       "before": {
+        "a_row": 495,
+        "a_col": 919
+       },
+       "after": {
+        "a_row": 494,
+        "a_col": 920
+       }
+      }
+     ]
+    },
+    "v0_index": 910
+   }
+  },
+  {
+   "id": "t=1794680294558",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 1012,
+    "y": 304,
+    "r": 2
+   },
+   "B": {
+    "x": 1012,
+    "y": 283,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:18:14.558Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 304,
+     "a_col": 1012,
+     "b_row": 283,
+     "b_col": 1012,
+     "half": 2,
+     "t": 1794680294558
+    },
+    "v0_index": 911
+   }
+  },
+  {
+   "id": "t=1794680295651",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 983,
+    "y": 305,
+    "r": 2
+   },
+   "B": {
+    "x": 984,
+    "y": 282,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:18:15.651Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 305,
+     "a_col": 983,
+     "b_row": 282,
+     "b_col": 984,
+     "half": 2,
+     "t": 1794680295651
+    },
+    "v0_index": 912
+   }
+  },
+  {
+   "id": "t=1794680297330",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 935,
+    "y": 291,
+    "r": 2
+   },
+   "B": {
+    "x": 962,
+    "y": 279,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:18:17.330Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 291,
+     "a_col": 935,
+     "b_row": 279,
+     "b_col": 962,
+     "half": 2,
+     "t": 1794680297330
+    },
+    "v0_index": 913
+   }
+  },
+  {
+   "id": "t=1794680301288",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 949,
+    "y": 232,
+    "r": 2
+   },
+   "B": {
+    "x": 952,
+    "y": 219,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:18:21.288Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 232,
+     "a_col": 949,
+     "b_row": 219,
+     "b_col": 952,
+     "half": 2,
+     "t": 1794680301288
+    },
+    "v0_index": 914
+   }
+  },
+  {
+   "id": "t=1794680310488",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 931,
+    "y": 252,
+    "r": 2
+   },
+   "B": {
+    "x": 920,
+    "y": 252,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:18:30.488Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 252,
+     "a_col": 931,
+     "b_row": 252,
+     "b_col": 920,
+     "half": 2,
+     "t": 1794680310488
+    },
+    "v0_index": 915
+   }
+  },
+  {
+   "id": "t=1794680335410",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 1015,
+    "y": 144,
+    "r": 2
+   },
+   "B": {
+    "x": 1013,
+    "y": 123,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:18:55.410Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 144,
+     "a_col": 1015,
+     "b_row": 123,
+     "b_col": 1013,
+     "half": 2,
+     "t": 1794680335410
+    },
+    "v0_index": 916
+   }
+  },
+  {
+   "id": "t=1794680337356",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 992,
+    "y": 145,
+    "r": 2
+   },
+   "B": {
+    "x": 991,
+    "y": 125,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:18:57.356Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 145,
+     "a_col": 992,
+     "b_row": 125,
+     "b_col": 991,
+     "half": 2,
+     "t": 1794680337356
+    },
+    "v0_index": 917
+   }
+  },
+  {
+   "id": "t=1794680344551",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 954,
+    "y": 142,
+    "r": 2
+   },
+   "B": {
+    "x": 978,
+    "y": 145,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:19:04.551Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 142,
+     "a_col": 954,
+     "b_row": 145,
+     "b_col": 978,
+     "half": 2,
+     "t": 1794680344551,
+     "edits": [
+      {
+       "op": "swap",
+       "at": "2026-11-15T06:30:20.415Z",
+       "before": {
+        "a_row": 145,
+        "a_col": 978,
+        "b_row": 142,
+        "b_col": 954
+       },
+       "after": {
+        "a_row": 142,
+        "a_col": 954,
+        "b_row": 145,
+        "b_col": 978
+       }
+      },
+      {
+       "op": "type",
+       "at": "2026-11-15T06:30:48.722Z",
+       "before": {
+        "type": "b"
+       },
+       "after": {
+        "type": "m"
+       }
+      }
+     ]
+    },
+    "v0_index": 918
+   }
+  },
+  {
+   "id": "t=1794680346528",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 948,
+    "y": 172,
+    "r": 2
+   },
+   "B": {
+    "x": 969,
+    "y": 170,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:19:06.528Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 172,
+     "a_col": 948,
+     "b_row": 170,
+     "b_col": 969,
+     "half": 2,
+     "t": 1794680346528,
+     "edits": [
+      {
+       "op": "swap",
+       "at": "2026-11-15T06:30:50.670Z",
+       "before": {
+        "a_row": 170,
+        "a_col": 969,
+        "b_row": 172,
+        "b_col": 948
+       },
+       "after": {
+        "a_row": 172,
+        "a_col": 948,
+        "b_row": 170,
+        "b_col": 969
+       }
+      },
+      {
+       "op": "type",
+       "at": "2026-11-15T06:30:51.360Z",
+       "before": {
+        "type": "b"
+       },
+       "after": {
+        "type": "m"
+       }
+      }
+     ]
+    },
+    "v0_index": 919
+   }
+  },
+  {
+   "id": "t=1794680347678",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 943,
+    "y": 190,
+    "r": 2
+   },
+   "B": {
+    "x": 963,
+    "y": 188,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:19:07.678Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 190,
+     "a_col": 943,
+     "b_row": 188,
+     "b_col": 963,
+     "half": 2,
+     "t": 1794680347678,
+     "edits": [
+      {
+       "op": "swap",
+       "at": "2026-11-15T06:30:52.108Z",
+       "before": {
+        "a_row": 188,
+        "a_col": 963,
+        "b_row": 190,
+        "b_col": 943
+       },
+       "after": {
+        "a_row": 190,
+        "a_col": 943,
+        "b_row": 188,
+        "b_col": 963
+       }
+      },
+      {
+       "op": "type",
+       "at": "2026-11-15T06:30:52.750Z",
+       "before": {
+        "type": "b"
+       },
+       "after": {
+        "type": "m"
+       }
+      }
+     ]
+    },
+    "v0_index": 920
+   }
+  },
+  {
+   "id": "t=1794680366750",
+   "image": "taiwei_cui_100",
+   "type": "b",
+   "A": {
+    "x": 438,
+    "y": 284,
+    "r": 3
+   },
+   "B": {
+    "x": 441,
+    "y": 303,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:19:26.750Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "b",
+     "a_row": 284,
+     "a_col": 438,
+     "b_row": 303,
+     "b_col": 441,
+     "half": 3,
+     "t": 1794680366750,
+     "edits": [
+      {
+       "op": "swap",
+       "at": "2026-11-15T06:32:32.048Z",
+       "before": {
+        "a_row": 304,
+        "b_row": 283
+       },
+       "after": {
+        "a_row": 283,
+        "b_row": 304
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:32:35.361Z",
+       "before": {
+        "b_row": 304,
+        "b_col": 437
+       },
+       "after": {
+        "b_row": 303,
+        "b_col": 443
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:32:36.673Z",
+       "before": {
+        "a_row": 283,
+        "a_col": 437
+       },
+       "after": {
+        "a_row": 284,
+        "a_col": 438
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:32:38.067Z",
+       "before": {
+        "b_col": 443
+       },
+       "after": {
+        "b_col": 441
+       }
+      }
+     ]
+    },
+    "v0_index": 921
+   }
+  },
+  {
+   "id": "t=1794680372144",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 485,
+    "y": 308,
+    "r": 3
+   },
+   "B": {
+    "x": 478,
+    "y": 285,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:19:32.144Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 308,
+     "a_col": 485,
+     "b_row": 285,
+     "b_col": 478,
+     "half": 3,
+     "t": 1794680372144,
+     "edits": [
+      {
+       "op": "type",
+       "at": "2026-11-14T18:19:36.161Z",
+       "before": {
+        "type": "b"
+       },
+       "after": {
+        "type": "m"
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:32:55.532Z",
+       "before": {
+        "a_row": 310
+       },
+       "after": {
+        "a_row": 308
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:32:59.176Z",
+       "before": {
+        "b_row": 286,
+        "b_col": 484
+       },
+       "after": {
+        "b_row": 285,
+        "b_col": 478
+       }
+      }
+     ]
+    },
+    "v0_index": 922
+   }
+  },
+  {
+   "id": "t=1794680390945",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 675,
+    "y": 477,
+    "r": 3
+   },
+   "B": {
+    "x": 648,
+    "y": 499,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:19:50.945Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 477,
+     "a_col": 675,
+     "b_row": 499,
+     "b_col": 648,
+     "half": 3,
+     "t": 1794680390945
+    },
+    "v0_index": 923
+   }
+  },
+  {
+   "id": "t=1794680392499",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 647,
+    "y": 459,
+    "r": 3
+   },
+   "B": {
+    "x": 620,
+    "y": 483,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:19:52.499Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 459,
+     "a_col": 647,
+     "b_row": 483,
+     "b_col": 620,
+     "half": 3,
+     "t": 1794680392499
+    },
+    "v0_index": 924
+   }
+  },
+  {
+   "id": "t=1794680394059",
+   "image": "taiwei_cui_100",
+   "type": "m",
+   "A": {
+    "x": 634,
+    "y": 448,
+    "r": 3
+   },
+   "B": {
+    "x": 606,
+    "y": 466,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:19:54.059Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 448,
+     "a_col": 634,
+     "b_row": 466,
+     "b_col": 606,
+     "half": 3,
+     "t": 1794680394059
+    },
+    "v0_index": 925
+   }
+  }
+ ],
+ "s_seed_log": [],
+ "legacy": {
+  "source_set": "glossy_dev",
+  "source_file": "illumination_edge/glossy_dev/frozen/pairs_2026-11-15T19-09-15.json",
+  "source_sha256": "73a0f96b434e8159391c6c8835c38e9699bb2acc04ceb5b3fea0e8a4031283f9",
+  "migrated_by": "metrics/migrate_v0.py 1.0",
+  "deleted": [
+   {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 259,
+     "a_col": 21,
+     "b_row": 228,
+     "b_col": 20,
+     "half": 7,
+     "t": 1794679779057,
+     "edits": [
+      {
+       "op": "delete",
+       "at": "2026-11-14T18:14:34.749Z"
+      }
+     ],
+     "deleted_at": "2026-11-14T18:14:34.749Z",
+     "deleted_index": 880
+    },
+    "v0_index": 46
+   },
+   {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 144,
+     "a_col": 1015,
+     "b_row": 145,
+     "b_col": 997,
+     "half": 2,
+     "t": 1794680322451,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-14T18:18:43.681Z"
+      }
+     ],
+     "deleted_at": "2026-11-14T18:18:43.681Z",
+     "deleted_index": 947
+    },
+    "v0_index": 47
+   },
+   {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "m",
+     "a_row": 145,
+     "a_col": 1015,
+     "b_row": 123,
+     "b_col": 1011,
+     "half": 2,
+     "t": 1794680332191,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-14T18:18:53.151Z"
+      }
+     ],
+     "deleted_at": "2026-11-14T18:18:53.151Z",
+     "deleted_index": 947
+    },
+    "v0_index": 48
+   },
+   {
+    "v0": {
+     "image": "taiwei_cui_100",
+     "type": "i",
+     "a_row": 504,
+     "a_col": 446,
+     "b_row": 512,
+     "b_col": 494,
+     "half": 8,
+     "t": 1794680015655,
+     "glossy": true,
+     "major": true,
+     "edits": [
+      {
+       "op": "delete",
+       "at": "2026-11-15T06:28:18.682Z"
+      }
+     ],
+     "deleted_at": "2026-11-15T06:28:18.682Z",
+     "deleted_index": 869
+    },
+    "v0_index": 100
+   }
+  ]
+ }
+}

@@ -1,0 +1,843 @@
+{
+ "assigned_at": "2026-11-18T20:24:06+00:00",
+ "seed": 20261118,
+ "fractions": {
+  "train": 0.6,
+  "val": 0.2,
+  "test": 0.2
+ },
+ "totals": {
+  "train": 60,
+  "val": 20,
+  "test": 20
+ },
+ "method": "per stratum, the ideal counts n * (0.6, 0.2, 0.2) are floored, then the remaining units go to the\n(stratum, split) cells with the largest fractional parts, subject to each stratum's size and each split's global\ntotal (60 / 20 / 20); ties break by stratum order, then split order. Within a stratum, the stems sorted by name are\npermuted with numpy default_rng(seed + stratum index) and taken in order: train, val, test.",
+ "strata": [
+  {
+   "annotator_group": "A",
+   "glossy": "glossy",
+   "n": 21,
+   "train": 13,
+   "val": 4,
+   "test": 4
+  },
+  {
+   "annotator_group": "A",
+   "glossy": "non-glossy",
+   "n": 25,
+   "train": 15,
+   "val": 5,
+   "test": 5
+  },
+  {
+   "annotator_group": "B",
+   "glossy": "non-glossy",
+   "n": 54,
+   "train": 32,
+   "val": 11,
+   "test": 11
+  }
+ ],
+ "images": [
+  {
+   "stem": "acharya_mrudula_016",
+   "split": "test",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "acharya_mrudula_034",
+   "split": "test",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "acharya_mrudula_039",
+   "split": "test",
+   "set": "heldout",
+   "provenance_group": "dev",
+   "annotator_group": "A",
+   "glossy_pool": false
+  },
+  {
+   "stem": "acharya_mrudula_048",
+   "split": "train",
+   "set": "glossy_confirm",
+   "provenance_group": "glossy_confirm",
+   "annotator_group": "A",
+   "glossy_pool": true
+  },
+  {
+   "stem": "acharya_mrudula_063",
+   "split": "test",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "acharya_mrudula_072",
+   "split": "train",
+   "set": "glossy_dev",
+   "provenance_group": "glossy_dev",
+   "annotator_group": "A",
+   "glossy_pool": true
+  },
+  {
+   "stem": "acharya_mrudula_073",
+   "split": "train",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "acharya_mrudula_075",
+   "split": "val",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "acharya_mrudula_076",
+   "split": "train",
+   "set": "glossy_confirm",
+   "provenance_group": "glossy_confirm",
+   "annotator_group": "A",
+   "glossy_pool": true
+  },
+  {
+   "stem": "acharya_mrudula_079",
+   "split": "test",
+   "set": "heldout",
+   "provenance_group": "dev",
+   "annotator_group": "A",
+   "glossy_pool": false
+  },
+  {
+   "stem": "acharya_mrudula_094",
+   "split": "val",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "acharya_mrudula_101",
+   "split": "val",
+   "set": "heldout",
+   "provenance_group": "dev",
+   "annotator_group": "A",
+   "glossy_pool": false
+  },
+  {
+   "stem": "acharya_mrudula_103",
+   "split": "val",
+   "set": "heldout",
+   "provenance_group": "dev",
+   "annotator_group": "A",
+   "glossy_pool": false
+  },
+  {
+   "stem": "acharya_mrudula_112",
+   "split": "train",
+   "set": "heldout",
+   "provenance_group": "dev",
+   "annotator_group": "A",
+   "glossy_pool": false
+  },
+  {
+   "stem": "acharya_mrudula_113",
+   "split": "train",
+   "set": "glossy_dev",
+   "provenance_group": "glossy_dev",
+   "annotator_group": "A",
+   "glossy_pool": true
+  },
+  {
+   "stem": "adke_neel_006",
+   "split": "test",
+   "set": "glossy_confirm",
+   "provenance_group": "glossy_confirm",
+   "annotator_group": "A",
+   "glossy_pool": true
+  },
+  {
+   "stem": "adke_neel_007",
+   "split": "val",
+   "set": "glossy_confirm",
+   "provenance_group": "glossy_confirm",
+   "annotator_group": "A",
+   "glossy_pool": true
+  },
+  {
+   "stem": "adke_neel_008",
+   "split": "train",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "adke_neel_026",
+   "split": "train",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "adke_neel_028",
+   "split": "train",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "adke_neel_037",
+   "split": "train",
+   "set": "glossy_dev",
+   "provenance_group": "glossy_dev",
+   "annotator_group": "A",
+   "glossy_pool": true
+  },
+  {
+   "stem": "adke_neel_042",
+   "split": "train",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "adke_neel_052",
+   "split": "val",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "adke_neel_054",
+   "split": "train",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "adke_neel_074",
+   "split": "val",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "adke_neel_083",
+   "split": "train",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "adke_neel_085",
+   "split": "train",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "adke_neel_094",
+   "split": "train",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "adke_neel_096",
+   "split": "train",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "adke_neel_097",
+   "split": "train",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "adke_neel_099",
+   "split": "train",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "amir_adnan_000",
+   "split": "train",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "amir_adnan_005",
+   "split": "train",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "amir_adnan_006",
+   "split": "val",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "amir_adnan_016",
+   "split": "val",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "amir_adnan_023",
+   "split": "test",
+   "set": "heldout",
+   "provenance_group": "dev",
+   "annotator_group": "A",
+   "glossy_pool": false
+  },
+  {
+   "stem": "amir_adnan_026",
+   "split": "test",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "amir_adnan_027",
+   "split": "train",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "amir_adnan_037",
+   "split": "train",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "amir_adnan_044",
+   "split": "val",
+   "set": "glossy_confirm",
+   "provenance_group": "glossy_confirm",
+   "annotator_group": "A",
+   "glossy_pool": true
+  },
+  {
+   "stem": "amir_adnan_045",
+   "split": "train",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "amir_adnan_066",
+   "split": "train",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "amir_adnan_069",
+   "split": "train",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "amir_adnan_071",
+   "split": "train",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "amir_adnan_080",
+   "split": "train",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "amir_adnan_096",
+   "split": "train",
+   "set": "heldout",
+   "provenance_group": "dev",
+   "annotator_group": "A",
+   "glossy_pool": false
+  },
+  {
+   "stem": "baskar_akilan_004",
+   "split": "val",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "baskar_akilan_005",
+   "split": "test",
+   "set": "glossy_dev",
+   "provenance_group": "glossy_dev",
+   "annotator_group": "A",
+   "glossy_pool": true
+  },
+  {
+   "stem": "baskar_akilan_013",
+   "split": "val",
+   "set": "glossy_dev",
+   "provenance_group": "glossy_dev",
+   "annotator_group": "A",
+   "glossy_pool": true
+  },
+  {
+   "stem": "baskar_akilan_030",
+   "split": "train",
+   "set": "glossy_dev",
+   "provenance_group": "glossy_dev",
+   "annotator_group": "A",
+   "glossy_pool": true
+  },
+  {
+   "stem": "baskar_akilan_047",
+   "split": "train",
+   "set": "heldout",
+   "provenance_group": "dev",
+   "annotator_group": "A",
+   "glossy_pool": false
+  },
+  {
+   "stem": "baskar_akilan_051",
+   "split": "train",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "baskar_akilan_052",
+   "split": "test",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "baskar_akilan_054",
+   "split": "train",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "baskar_akilan_056",
+   "split": "val",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "baskar_akilan_058",
+   "split": "test",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "baskar_akilan_068",
+   "split": "train",
+   "set": "heldout",
+   "provenance_group": "dev",
+   "annotator_group": "A",
+   "glossy_pool": false
+  },
+  {
+   "stem": "baskar_akilan_072",
+   "split": "train",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "baskar_akilan_076",
+   "split": "train",
+   "set": "heldout",
+   "provenance_group": "dev",
+   "annotator_group": "A",
+   "glossy_pool": false
+  },
+  {
+   "stem": "baskar_akilan_099",
+   "split": "train",
+   "set": "heldout",
+   "provenance_group": "dev",
+   "annotator_group": "A",
+   "glossy_pool": false
+  },
+  {
+   "stem": "gade_surabhi_003",
+   "split": "train",
+   "set": "heldout",
+   "provenance_group": "dev",
+   "annotator_group": "A",
+   "glossy_pool": false
+  },
+  {
+   "stem": "gade_surabhi_008",
+   "split": "val",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "gade_surabhi_013",
+   "split": "test",
+   "set": "glossy_dev",
+   "provenance_group": "glossy_dev",
+   "annotator_group": "A",
+   "glossy_pool": true
+  },
+  {
+   "stem": "gade_surabhi_018",
+   "split": "test",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "gade_surabhi_022",
+   "split": "test",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "gade_surabhi_026",
+   "split": "test",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "gade_surabhi_035",
+   "split": "test",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "gade_surabhi_046",
+   "split": "val",
+   "set": "heldout",
+   "provenance_group": "dev",
+   "annotator_group": "A",
+   "glossy_pool": false
+  },
+  {
+   "stem": "taiwei_cui_070",
+   "split": "val",
+   "set": "dev_v2",
+   "provenance_group": "dev",
+   "annotator_group": "A",
+   "glossy_pool": false
+  },
+  {
+   "stem": "taiwei_cui_071",
+   "split": "train",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "taiwei_cui_075",
+   "split": "train",
+   "set": "dev_v2",
+   "provenance_group": "dev",
+   "annotator_group": "A",
+   "glossy_pool": false
+  },
+  {
+   "stem": "taiwei_cui_076",
+   "split": "train",
+   "set": "dev_v2",
+   "provenance_group": "dev",
+   "annotator_group": "A",
+   "glossy_pool": false
+  },
+  {
+   "stem": "taiwei_cui_079",
+   "split": "train",
+   "set": "dev_v2",
+   "provenance_group": "dev",
+   "annotator_group": "A",
+   "glossy_pool": false
+  },
+  {
+   "stem": "taiwei_cui_080",
+   "split": "train",
+   "set": "dev_v2",
+   "provenance_group": "dev",
+   "annotator_group": "A",
+   "glossy_pool": false
+  },
+  {
+   "stem": "taiwei_cui_082",
+   "split": "train",
+   "set": "dev_v2",
+   "provenance_group": "dev",
+   "annotator_group": "A",
+   "glossy_pool": false
+  },
+  {
+   "stem": "taiwei_cui_083",
+   "split": "train",
+   "set": "dev_v2",
+   "provenance_group": "dev",
+   "annotator_group": "A",
+   "glossy_pool": false
+  },
+  {
+   "stem": "taiwei_cui_084",
+   "split": "test",
+   "set": "dev_v2",
+   "provenance_group": "dev",
+   "annotator_group": "A",
+   "glossy_pool": false
+  },
+  {
+   "stem": "taiwei_cui_088",
+   "split": "train",
+   "set": "dev_v2",
+   "provenance_group": "dev",
+   "annotator_group": "A",
+   "glossy_pool": false
+  },
+  {
+   "stem": "taiwei_cui_089",
+   "split": "train",
+   "set": "glossy_confirm",
+   "provenance_group": "glossy_confirm",
+   "annotator_group": "A",
+   "glossy_pool": true
+  },
+  {
+   "stem": "taiwei_cui_090",
+   "split": "val",
+   "set": "dev_v2",
+   "provenance_group": "dev",
+   "annotator_group": "A",
+   "glossy_pool": false
+  },
+  {
+   "stem": "taiwei_cui_092",
+   "split": "test",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "taiwei_cui_097",
+   "split": "train",
+   "set": "glossy_dev",
+   "provenance_group": "glossy_dev",
+   "annotator_group": "A",
+   "glossy_pool": true
+  },
+  {
+   "stem": "taiwei_cui_100",
+   "split": "train",
+   "set": "glossy_dev",
+   "provenance_group": "glossy_dev",
+   "annotator_group": "A",
+   "glossy_pool": true
+  },
+  {
+   "stem": "taiwei_cui_102",
+   "split": "train",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "taiwei_cui_105",
+   "split": "train",
+   "set": "glossy_dev",
+   "provenance_group": "glossy_dev",
+   "annotator_group": "A",
+   "glossy_pool": true
+  },
+  {
+   "stem": "visaria_keval_003",
+   "split": "train",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "visaria_keval_017",
+   "split": "test",
+   "set": "heldout",
+   "provenance_group": "dev",
+   "annotator_group": "A",
+   "glossy_pool": false
+  },
+  {
+   "stem": "visaria_keval_018",
+   "split": "train",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "visaria_keval_020",
+   "split": "val",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "visaria_keval_025",
+   "split": "train",
+   "set": "glossy_dev",
+   "provenance_group": "glossy_dev",
+   "annotator_group": "A",
+   "glossy_pool": true
+  },
+  {
+   "stem": "visaria_keval_036",
+   "split": "test",
+   "set": "glossy_dev",
+   "provenance_group": "glossy_dev",
+   "annotator_group": "A",
+   "glossy_pool": true
+  },
+  {
+   "stem": "visaria_keval_037",
+   "split": "train",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "visaria_keval_042",
+   "split": "val",
+   "set": "glossy_confirm",
+   "provenance_group": "glossy_confirm",
+   "annotator_group": "A",
+   "glossy_pool": true
+  },
+  {
+   "stem": "visaria_keval_054",
+   "split": "train",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "visaria_keval_069",
+   "split": "train",
+   "set": "glossy_confirm",
+   "provenance_group": "glossy_confirm",
+   "annotator_group": "A",
+   "glossy_pool": true
+  },
+  {
+   "stem": "visaria_keval_074",
+   "split": "val",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "visaria_keval_076",
+   "split": "train",
+   "set": "heldout",
+   "provenance_group": "dev",
+   "annotator_group": "A",
+   "glossy_pool": false
+  },
+  {
+   "stem": "visaria_keval_090",
+   "split": "train",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "visaria_keval_093",
+   "split": "train",
+   "set": "draw54",
+   "provenance_group": "draw54",
+   "annotator_group": "B",
+   "glossy_pool": false
+  },
+  {
+   "stem": "visaria_keval_094",
+   "split": "train",
+   "set": "glossy_confirm",
+   "provenance_group": "glossy_confirm",
+   "annotator_group": "A",
+   "glossy_pool": true
+  }
+ ]
+}

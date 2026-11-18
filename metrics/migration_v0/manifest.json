@@ -1,0 +1,701 @@
+{
+ "tool": "metrics/migrate_v0.py",
+ "version": "1.0",
+ "schema_version": "1.0",
+ "code_sha256": {
+  "migrate_v0.py": "0888a0ab3efa452fee632677535feac75cfcf22a1b06084f2bf22252e752edb7",
+  "core/io.py": "e0be64bbb6ed626fe102beda0bef6d7c205b27f16b806093034664ef1f89a326",
+  "core/patches.py": "b2e2d60f43719c4969357c8b81d60aebcd36a45b968d6710a7190ea26f4ccf2f",
+  "core/config.py": "fe6cd2d925a0d6d8544706cf8152ec6eaeaa97d330dfb55e86e62bc19deb211f",
+  "core/schema.py": "1c88580167c53c94b99efa64a089b854254a61f7893f7afd14978f273006d26b"
+ },
+ "config_sha256": "b84c0ebc0654a011148a7aa78746c92d7c4f929a28b9adf7e90b640d5d4df0e8",
+ "loader": {
+  "read": "illumination_edge/common.py:load_rgb",
+  "log_i": "illumination_edge/common.py:log_rgb",
+  "mask": null
+ },
+ "patch_shape": "square",
+ "annotator": "Yueren",
+ "defaults": {
+  "confidence": "sure",
+  "split": "eval",
+  "overlay_seen": "unknown",
+  "note": ""
+ },
+ "relabels_applied": [
+  {
+   "set": "dev_v2",
+   "image": "taiwei_cui_070",
+   "id": "t=1794165897383",
+   "from": "m",
+   "to": "b",
+   "by": "owner",
+   "at": "2026-11-11",
+   "reason": "crosses a very thin shadow under the car on a material boundary (failure review F10; SPEC_v1 §3)"
+  }
+ ],
+ "sources": {
+  "dev_v2": {
+   "file": "illumination_edge/pairs_2026-11-09T05-33-47.json",
+   "sha256": "6b71702d7ce46dff7a3cb3f48160a68a97279505f6bff85d5b4ad5954e28a952",
+   "fields": {
+    "tool": "annotate_pairs.html",
+    "version": 2,
+    "build_id": "20261108204636",
+    "image_dir": "/mnt/f/NEU_Seattle/CS_7980 Research Capstone/Project/codebase/image_data/depth_and_surface_normal_edges",
+    "saved_at": "2026-11-09T05:33:47.150Z",
+    "coords": "row/col in the stored image frame, 0-based",
+    "loaded_from": [
+     "pairs_2026-11-08T23-09-29.json",
+     "pairs_2026-11-09T00-25-25_autosized.json",
+     "pairs_2026-11-09T00-25-43_balanced.json"
+    ],
+    "n_pairs": 871,
+    "n_edited": 871,
+    "n_deleted": 67,
+    "candidates": [
+     {
+      "image": "taiwei_cui_070",
+      "idx": 1,
+      "verdict": "true",
+      "dark_seed": [
+       200,
+       450
+      ],
+      "lit_seed": [
+       200,
+       340
+      ],
+      "roi": [
+       0,
+       360,
+       450,
+       440
+      ]
+     },
+     {
+      "image": "taiwei_cui_070",
+      "idx": 2,
+      "verdict": "true",
+      "dark_seed": [
+       680,
+       480
+      ],
+      "lit_seed": [
+       680,
+       430
+      ],
+      "roi": [
+       610,
+       400,
+       750,
+       475
+      ]
+     },
+     {
+      "image": "taiwei_cui_075",
+      "idx": 1,
+      "verdict": "true",
+      "dark_seed": [
+       150,
+       480
+      ],
+      "lit_seed": [
+       150,
+       400
+      ],
+      "roi": [
+       0,
+       380,
+       380,
+       470
+      ]
+     },
+     {
+      "image": "taiwei_cui_075",
+      "idx": 2,
+      "verdict": "true",
+      "dark_seed": [
+       150,
+       340
+      ],
+      "lit_seed": [
+       150,
+       395
+      ],
+      "roi": [
+       0,
+       345,
+       380,
+       395
+      ]
+     },
+     {
+      "image": "taiwei_cui_075",
+      "idx": 3,
+      "verdict": "true",
+      "dark_seed": [
+       150,
+       500
+      ],
+      "lit_seed": [
+       200,
+       600
+      ],
+      "roi": [
+       0,
+       480,
+       380,
+       640
+      ]
+     },
+     {
+      "image": "taiwei_cui_075",
+      "idx": 4,
+      "verdict": "true",
+      "dark_seed": [
+       60,
+       730
+      ],
+      "lit_seed": [
+       200,
+       690
+      ],
+      "roi": [
+       0,
+       630,
+       300,
+       768
+      ]
+     },
+     {
+      "image": "taiwei_cui_076",
+      "idx": 1,
+      "verdict": "true",
+      "dark_seed": [
+       100,
+       700
+      ],
+      "lit_seed": [
+       150,
+       880
+      ],
+      "roi": [
+       0,
+       720,
+       320,
+       880
+      ]
+     },
+     {
+      "image": "taiwei_cui_076",
+      "idx": 2,
+      "verdict": "true",
+      "dark_seed": [
+       560,
+       360
+      ],
+      "lit_seed": [
+       580,
+       460
+      ],
+      "roi": [
+       520,
+       330,
+       768,
+       520
+      ]
+     },
+     {
+      "image": "taiwei_cui_079",
+      "idx": 1,
+      "verdict": "true",
+      "dark_seed": [
+       150,
+       450
+      ],
+      "lit_seed": [
+       60,
+       350
+      ],
+      "roi": [
+       40,
+       330,
+       250,
+       580
+      ]
+     },
+     {
+      "image": "taiwei_cui_079",
+      "idx": 2,
+      "verdict": "partly",
+      "dark_seed": [
+       680,
+       880
+      ],
+      "lit_seed": [
+       450,
+       900
+      ],
+      "roi": [
+       430,
+       650,
+       768,
+       1023
+      ]
+     },
+     {
+      "image": "taiwei_cui_079",
+      "idx": 3,
+      "verdict": "true",
+      "dark_seed": [
+       280,
+       690
+      ],
+      "lit_seed": [
+       330,
+       780
+      ],
+      "roi": [
+       220,
+       630,
+       360,
+       760
+      ]
+     },
+     {
+      "image": "taiwei_cui_080",
+      "idx": 1,
+      "verdict": "true",
+      "dark_seed": [
+       600,
+       605
+      ],
+      "lit_seed": [
+       600,
+       540
+      ],
+      "roi": [
+       440,
+       530,
+       768,
+       700
+      ]
+     },
+     {
+      "image": "taiwei_cui_080",
+      "idx": 2,
+      "verdict": "true",
+      "dark_seed": [
+       150,
+       345
+      ],
+      "lit_seed": [
+       150,
+       290
+      ],
+      "roi": [
+       0,
+       270,
+       340,
+       420
+      ]
+     },
+     {
+      "image": "taiwei_cui_082",
+      "idx": 1,
+      "verdict": "true",
+      "dark_seed": [
+       450,
+       810
+      ],
+      "lit_seed": [
+       450,
+       770
+      ],
+      "roi": [
+       230,
+       700,
+       768,
+       1000
+      ]
+     },
+     {
+      "image": "taiwei_cui_082",
+      "idx": 2,
+      "verdict": "true",
+      "dark_seed": [
+       405,
+       450
+      ],
+      "lit_seed": [
+       440,
+       450
+      ],
+      "roi": [
+       380,
+       220,
+       480,
+       700
+      ]
+     },
+     {
+      "image": "taiwei_cui_083",
+      "idx": 1,
+      "verdict": "true",
+      "dark_seed": [
+       150,
+       615
+      ],
+      "lit_seed": [
+       150,
+       700
+      ],
+      "roi": [
+       0,
+       555,
+       320,
+       700
+      ]
+     },
+     {
+      "image": "taiwei_cui_083",
+      "idx": 2,
+      "verdict": "true",
+      "dark_seed": [
+       150,
+       460
+      ],
+      "lit_seed": [
+       150,
+       400
+      ],
+      "roi": [
+       0,
+       410,
+       290,
+       520
+      ]
+     },
+     {
+      "image": "taiwei_cui_083",
+      "idx": 3,
+      "verdict": "true",
+      "dark_seed": [
+       680,
+       385
+      ],
+      "lit_seed": [
+       650,
+       330
+      ],
+      "roi": [
+       580,
+       340,
+       768,
+       430
+      ]
+     },
+     {
+      "image": "taiwei_cui_084",
+      "idx": 1,
+      "verdict": "true",
+      "dark_seed": [
+       400,
+       650
+      ],
+      "lit_seed": [
+       150,
+       560
+      ],
+      "roi": [
+       100,
+       380,
+       640,
+       720
+      ]
+     },
+     {
+      "image": "taiwei_cui_084",
+      "idx": 2,
+      "verdict": "true",
+      "dark_seed": [
+       900,
+       300
+      ],
+      "lit_seed": [
+       600,
+       280
+      ],
+      "roi": [
+       650,
+       200,
+       1023,
+       370
+      ]
+     },
+     {
+      "image": "taiwei_cui_088",
+      "idx": 1,
+      "verdict": "true",
+      "dark_seed": [
+       150,
+       360
+      ],
+      "lit_seed": [
+       150,
+       290
+      ],
+      "roi": [
+       0,
+       300,
+       340,
+       500
+      ]
+     },
+     {
+      "image": "taiwei_cui_088",
+      "idx": 2,
+      "verdict": "true",
+      "dark_seed": [
+       750,
+       320
+      ],
+      "lit_seed": [
+       750,
+       290
+      ],
+      "roi": [
+       580,
+       295,
+       1000,
+       350
+      ]
+     },
+     {
+      "image": "taiwei_cui_088",
+      "idx": 3,
+      "verdict": "true",
+      "dark_seed": [
+       800,
+       150
+      ],
+      "lit_seed": [
+       500,
+       150
+      ],
+      "roi": [
+       560,
+       40,
+       1023,
+       260
+      ]
+     },
+     {
+      "image": "taiwei_cui_090",
+      "idx": 1,
+      "verdict": "true",
+      "dark_seed": [
+       680,
+       640
+      ],
+      "lit_seed": [
+       620,
+       540
+      ],
+      "roi": [
+       560,
+       560,
+       800,
+       768
+      ]
+     }
+    ],
+    "verdict_codes": {
+     "taiwei_cui_070": {
+      "1": 1,
+      "2": 1
+     },
+     "taiwei_cui_075": {
+      "1": 1,
+      "2": 1,
+      "3": 1,
+      "4": 1
+     },
+     "taiwei_cui_076": {
+      "1": 1,
+      "2": 1
+     },
+     "taiwei_cui_079": {
+      "1": 1,
+      "2": 2,
+      "3": 1
+     },
+     "taiwei_cui_080": {
+      "1": 1,
+      "2": 1
+     },
+     "taiwei_cui_082": {
+      "1": 1,
+      "2": 1
+     },
+     "taiwei_cui_083": {
+      "1": 1,
+      "2": 1,
+      "3": 1
+     },
+     "taiwei_cui_084": {
+      "1": 1,
+      "2": 1
+     },
+     "taiwei_cui_088": {
+      "1": 1,
+      "2": 1,
+      "3": 1
+     },
+     "taiwei_cui_090": {
+      "1": 1
+     }
+    }
+   }
+  },
+  "heldout": {
+   "file": "illumination_edge/heldout_frozen/pairs_2026-11-10T04-52-30_autosized.json",
+   "sha256": "0308ad8111f5a71887dd926a4cc51fee617e5900c1023933bc4a09393a3f37e5",
+   "fields": {
+    "tool": "annotate_pairs.html",
+    "version": 2,
+    "build_id": "20261109152012",
+    "image_dir": "/mnt/f/NEU_Seattle/CS_7980 Research Capstone/Project/codebase/illumination_edge/outputs/heldout/images",
+    "saved_at": "2026-11-10T04:52:30.827Z",
+    "coords": "row/col in the stored image frame, 0-based",
+    "loaded_from": [
+     "pairs_2026-11-10T04-23-53.json",
+     "pairs_2026-11-10T04-23-53_heldout_only.json",
+     "pairs_2026-11-10T04-47-25.json"
+    ],
+    "n_pairs": 1098,
+    "n_edited": 1098,
+    "n_deleted": 117,
+    "candidates": [],
+    "verdict_codes": {},
+    "image_log": [
+     {
+      "image": "visaria_keval_087",
+      "action": "exclude",
+      "at": "2026-11-10T02:24:33.618Z"
+     }
+    ],
+    "excluded_images": [
+     "visaria_keval_087"
+    ],
+    "postprocessing": [
+     {
+      "tool": "optimize_patches.py",
+      "version": "1.1",
+      "at": "2026-11-10T04:52:30.827Z",
+      "input": "pairs_2026-11-10T04-47-25.json",
+      "note": "patch sizes grown to <= 4 by checks 1-4 (spec+sides)"
+     }
+    ]
+   }
+  },
+  "glossy_dev": {
+   "file": "illumination_edge/glossy_dev/frozen/pairs_2026-11-15T19-09-15.json",
+   "sha256": "73a0f96b434e8159391c6c8835c38e9699bb2acc04ceb5b3fea0e8a4031283f9",
+   "fields": {
+    "tool": "annotate_pairs.html",
+    "version": 2,
+    "build_id": "20261114151334",
+    "image_dir": "/mnt/f/NEU_Seattle/CS_7980 Research Capstone/Project/codebase/image_data/glossy",
+    "saved_at": "2026-11-15T19:09:15.315Z",
+    "coords": "row/col in the stored image frame, 0-based",
+    "loaded_from": [],
+    "n_pairs": 1428,
+    "n_edited": 569,
+    "n_deleted": 110,
+    "candidates": [],
+    "verdict_codes": {},
+    "image_log": [],
+    "excluded_images": [],
+    "session": "glossy_dev_12"
+   }
+  },
+  "glossy_confirm": {
+   "file": "illumination_edge/glossy_confirm/frozen/pairs_2026-11-16T05-27-35.json",
+   "sha256": "46b0a9645b8600cf56d94ba0500defabb8198f40f09148a9e24cfb72f50868a6",
+   "fields": {
+    "tool": "annotate_pairs.html",
+    "version": 2,
+    "build_id": "20261115135720",
+    "image_dir": "/mnt/f/NEU_Seattle/CS_7980 Research Capstone/Project/codebase/image_data/glossy",
+    "saved_at": "2026-11-16T05:27:35.279Z",
+    "coords": "row/col in the stored image frame, 0-based",
+    "loaded_from": [],
+    "n_pairs": 1614,
+    "n_edited": 181,
+    "n_deleted": 93,
+    "candidates": [],
+    "verdict_codes": {},
+    "image_log": [],
+    "excluded_images": [],
+    "session": "glossy_confirm_9"
+   }
+  }
+ },
+ "migrated_at": "2026-11-18T17:38:29Z",
+ "annotation_files": {
+  "acharya_mrudula_039": "d0c07cd0d9177a39ad33a2970bb86e1599db7d56efaddf1510b20232cc106dae",
+  "acharya_mrudula_048": "43d5d5d72ad5b77eeadc350d7e555409802bf555c6ea1cf16a6dff9f23b9410a",
+  "acharya_mrudula_072": "213037fcc5320b0c4bd9d96c86abc4ccca6d0b16d2c930d1c9bc05104970c639",
+  "acharya_mrudula_076": "86e15f1b6228a2909257e2db5e4047d6ae9d9548888fcc7aeb234afe522fb471",
+  "acharya_mrudula_079": "4b66e298cdaa7fe03e92312da4d9c90711cfbd6b0c17d48a187b3db3b212eb91",
+  "acharya_mrudula_101": "e4ca34083af558f8412bd37bf92f9adac86b907c621a85fe5d1e7d27816b8fec",
+  "acharya_mrudula_103": "632fc82ac81bb3bf604dbe5b65846bd145ff997026730b2daf78cd23af8a31a1",
+  "acharya_mrudula_112": "88d671b042f33d39e7351caba5c44b128f0b67762cbf8423a830277f2c151697",
+  "acharya_mrudula_113": "26e5ec93b872ec84de544e9f2b374c069016e6f00ce6c8505c9b6edd265bc216",
+  "adke_neel_006": "2e3941b397379defdd9b4e90a6d1103155b5aeaa12d74306d596c5f0b7d2fdbc",
+  "adke_neel_007": "c38efce596c2ceec49a583d136903881e07c60e6fabd6bb9fe01b3ab723fcc37",
+  "adke_neel_037": "2e0eb299a1293b4e710e84746d95bc472e6ddc3ddadbfed9902cdd8c06a6d506",
+  "amir_adnan_023": "230925a1225dacbd68568a0aba8fa65886142d9e822cdf7d908fa749250877da",
+  "amir_adnan_044": "774121c24ea82bad33ec774a0276afa4fecda57fd9d4b348a6f920c05d2c646a",
+  "amir_adnan_096": "26de313a13ed7e0c237630d10a832b4e733023b7983825cd5d091b6086079f36",
+  "baskar_akilan_005": "6fa685495ce1535e3d3c7f92fbb09b102669da452ccef7f6e41d39f4a2ededbb",
+  "baskar_akilan_013": "14ac2fe733c1a9cb22f06f4e6ab06377d883e1f40be28e39545d2b9f0ce2aed1",
+  "baskar_akilan_030": "409d16aec5ae15e5960e7d0cd7a389467b6456080440bedfbaec49cafb377598",
+  "baskar_akilan_047": "db1b35534c00720e494515694cefa2b4f5ed5739921f84cedc861e6da0441ce2",
+  "baskar_akilan_068": "464953bdcebb89714426ba102570dc774ac04839ba770320643aaa7659290c31",
+  "baskar_akilan_076": "5baea7a4b21b50aa6d7c7f87d4e445ed24b532c11e67680214fd001560ec9749",
+  "baskar_akilan_099": "c851b71a16b12f9e43aabc6b7bfec3b89bd1f4fb1de83839fd1da4d6e0ec5c73",
+  "gade_surabhi_003": "5f0f41a552c0da19b3674f5b4d95d965ed8c5a09b27a788c758db1b878f9fa02",
+  "gade_surabhi_013": "15c850cc4a3c7aa248eb562e8b648f4dfc00944b4d0861b27a09913b50831300",
+  "gade_surabhi_046": "e33c6321620a488c353526407fe2c338923a9f65b6f45f64f389c02892af1393",
+  "taiwei_cui_070": "39ded98f15ac87ae76476bcc59bc3e8b009751bf132274a533e44dc9888afadb",
+  "taiwei_cui_075": "536f7a6726d552c8f833d91f6440ba563b2031e2b7d01e9fae66c682d03ceb44",
+  "taiwei_cui_076": "c1119cfd9018c213fa2c17ee35e5c43bcd46cce9c84b4ce4606da6128fe40ec7",
+  "taiwei_cui_079": "3691ab6b822b5d38ea92310ca60c868e4bc95f81c60cf564d6a77ebd14cd66e6",
+  "taiwei_cui_080": "7ff6822cd1a3086f1de23eb16134aa46642eceec9a4ff49730d63be70b2855fe",
+  "taiwei_cui_082": "00b265d08f87c98e03584475e767ca674fedef17295023a2d325273d1ad4d0b9",
+  "taiwei_cui_083": "743db2a88f593db573915ec73faf46069f84ac329948e281143d3cd6aec773bd",
+  "taiwei_cui_084": "39c4b2e299d37b1138298958af2ffc296684467f87bb6d92815907ecd328082c",
+  "taiwei_cui_088": "79c0e44afdcc572f09a2770d73509087a5ff67e6cbb14e30ce7177daa9dcb5b6",
+  "taiwei_cui_089": "139395732d7c5aea38b4d3b88230191de9127570d2cdbe483308bb44992de506",
+  "taiwei_cui_090": "521f6a1173a425465fb94148550bb132e0ba999772dba7e26284058e3db84f19",
+  "taiwei_cui_097": "3b4ebded9d620a806a4518b52da4683391d82037253a379aadc9e3f3774a15ad",
+  "taiwei_cui_100": "9b9f3d27d488737598fb4e192530664900105808422b54903909a25a458cd481",
+  "taiwei_cui_105": "49df2636d5c7885c2d69ea3855a7da07f599399fc36169875fd44e00e6dff172",
+  "visaria_keval_017": "e96240923396675c504f2899a4659ff33c53666b16fe47bf102bb870e0526cc5",
+  "visaria_keval_025": "6cb02e9d52de914e5ba4114ca904db0c02d498b643cac7434a85b14c3521efdb",
+  "visaria_keval_036": "50650ef7c55ecac116e591e7b23d4fdd990afbdefc49d9d8982191e64746403f",
+  "visaria_keval_042": "1f414115d3f0e578679bbdfa5ff0ad5605413b26630c41554d202d0011c6f4bd",
+  "visaria_keval_069": "7eb3ff429e290d29ed2610b801a155f01745e088e91f19dff93ad270efa63fe0",
+  "visaria_keval_076": "aadf43896e6d8b2ec9ffb7dbadc84ac1562364942656893d27760319db06f712",
+  "visaria_keval_094": "4c4213e5b5919d9cad737b382798f4e16e028bde98b50f304d064845979d8682"
+ },
+ "lit_end_summary": {
+  "n_i": 2312,
+  "inferred_B": 15,
+  "fallback": 0
+ }
+}

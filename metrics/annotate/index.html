@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pair Annotator v1</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header id="bar">
+  <div class="grp">
+    <button id="prev" title="previous image (p)">&larr;</button>
+    <select autocomplete="off" data-1p-ignore data-lpignore="true" data-form-type="other" id="imgsel" title="image"></select>
+    <button id="next" title="next image (n)">&rarr;</button>
+    <label title="list only the images assigned to your name tag"><input type="checkbox" id="mineonly" checked autocomplete="off" data-1p-ignore data-lpignore="true" data-form-type="other"> mine only</label>
+  </div>
+  <div class="grp" title="Your name tag. Every pair you create carries it.">
+    <label for="namesel">name</label>
+    <select autocomplete="off" data-1p-ignore data-lpignore="true" data-form-type="other" id="namesel"></select>
+  </div>
+  <div class="grp" id="types" title="pair type for the next pair (i m b s d)">
+    <button data-type="i">i</button><button data-type="m">m</button><button data-type="b">b</button>
+    <button data-type="s">s</button><button data-type="d">d</button>
+  </div>
+  <div class="grp">
+    <label>r <span id="rval"></span></label>
+    <button id="seed" title="propose a random s seed (r)">random s seed</button>
+    <button id="relabelb" title="blind relabel mode (Shift+R)">blind relabel</button>
+  </div>
+  <div class="grp" title="display (e: x4 exposure, l: log view)">
+    <label for="ev">exposure</label><input autocomplete="off" data-1p-ignore data-lpignore="true" data-form-type="other" id="ev" type="range" min="-4" max="6" step="0.25" value="0">
+    <label for="gamma">gamma</label><input autocomplete="off" data-1p-ignore data-lpignore="true" data-form-type="other" id="gamma" type="number" min="1" max="3" step="0.1" value="2.2">
+    <label><input autocomplete="off" data-1p-ignore data-lpignore="true" data-form-type="other" id="logv" type="checkbox"> log</label>
+  </div>
+  <div class="grp" id="ovl" title="overlays (off by default; 1 2 3 4; x: invalid pixels)">
+    <label><input autocomplete="off" data-1p-ignore data-lpignore="true" data-form-type="other" type="checkbox" data-ovl="illum"> 1 illum</label>
+    <label><input autocomplete="off" data-1p-ignore data-lpignore="true" data-form-type="other" type="checkbox" data-ovl="material"> 2 material</label>
+    <label><input autocomplete="off" data-1p-ignore data-lpignore="true" data-form-type="other" type="checkbox" data-ovl="geom"> 3 geom</label>
+    <label title="no material-region source exists (n/a)"><input autocomplete="off" data-1p-ignore data-lpignore="true" data-form-type="other" type="checkbox" data-ovl="regions" disabled> 4 regions</label>
+    <label><input autocomplete="off" data-1p-ignore data-lpignore="true" data-form-type="other" type="checkbox" id="badv"> x invalid</label>
+  </div>
+  <div class="grp right"><span id="save" class="dim">loading…</span><button id="helpb" title="keyboard (?)">?</button></div>
+</header>
+<main>
+  <div id="stage"><canvas id="cv"></canvas><div id="relabelbar"></div><div id="hud" class="dim"></div><div id="banner" hidden></div></div>
+  <aside id="side">
+    <section id="editor"><h2>selected pair</h2><div id="edit" class="dim">none (click a pair)</div></section>
+    <section><h2>warnings</h2><div id="warn" class="dim">–</div></section>
+    <section>
+      <h2>progress against targets</h2>
+      <div id="progress"></div>
+    </section>
+    <section>
+      <h2>pairs on this image</h2>
+      <div id="counts" class="dim"></div>
+      <div class="filters">
+        <select autocomplete="off" data-1p-ignore data-lpignore="true" data-form-type="other" id="f_type"><option value="">all types</option><option>i</option><option>m</option><option>b</option><option>s</option><option>d</option></select>
+        <select autocomplete="off" data-1p-ignore data-lpignore="true" data-form-type="other" id="f_conf"><option value="">any confidence</option><option>sure</option><option>unsure</option></select>
+        <select autocomplete="off" data-1p-ignore data-lpignore="true" data-form-type="other" id="f_loss"><option value="">used in a loss or not</option><option value="false">not used in a loss</option><option value="true">used in a loss</option></select>
+        <select autocomplete="off" data-1p-ignore data-lpignore="true" data-form-type="other" id="f_ann"><option value="">all annotators</option></select>
+      </div>
+      <div id="list"></div>
+    </section>
+  </aside>
+</main>
+<div id="modal" hidden tabindex="-1"><div class="box" role="dialog" aria-modal="true"><h3 id="m_title"></h3><div id="m_body"></div><div id="m_err" class="err" role="alert"></div><div class="dim" id="m_hint"></div></div></div>
+<div id="help" hidden tabindex="-1"><div class="box" role="dialog" aria-modal="true"><h3>Keyboard</h3><div id="helptxt"></div><p class="dim">Esc closes</p></div></div>
+<script src="lib.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

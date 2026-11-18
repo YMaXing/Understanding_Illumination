@@ -1,0 +1,396 @@
+{
+ "name": "draw54",
+ "drawn_at": "2026-11-18T20:23:27+00:00",
+ "pool": "dataset.val_set",
+ "pool_tiffs": 503,
+ "n_eligible": 347,
+ "seed": 20261118,
+ "method": "numpy default_rng(seed).permutation over the eligible stems sorted by name; first n",
+ "excluded_counts": {
+  "already annotated": 46,
+  "glossy pool": 40,
+  "fresh protocol span 17-109": 93,
+  "held-out protocol exclusion": 1,
+  "dropped by the held-out annotator (too hard)": 1
+ },
+ "images": [
+  {
+   "rank": 1,
+   "stem": "adke_neel_026",
+   "H": 1020,
+   "W": 768,
+   "sha256": "28e34d1851734e2e6fb0226179f57fe91426407352161e36ff8ec04a963305d4"
+  },
+  {
+   "rank": 2,
+   "stem": "visaria_keval_003",
+   "H": 1365,
+   "W": 768,
+   "sha256": "516ad52e5aa174e51aaf1da1cd4c713cb5000c17cae78820def94d49176c9855"
+  },
+  {
+   "rank": 3,
+   "stem": "visaria_keval_054",
+   "H": 1023,
+   "W": 768,
+   "sha256": "8eaa88fd39709bcffd13370782463581d38fc84a4939dc226c0015483cb8cc9b"
+  },
+  {
+   "rank": 4,
+   "stem": "visaria_keval_090",
+   "H": 1365,
+   "W": 768,
+   "sha256": "9e915dee48748540213d8d2ebbc86b37b57f476a8302c2885cd043a3d6d634d4"
+  },
+  {
+   "rank": 5,
+   "stem": "acharya_mrudula_073",
+   "H": 1023,
+   "W": 768,
+   "sha256": "ff7997a6bb2cf18c43f41f1c43aa716789bfabdc6def78f587d8ae8a6c2d7970"
+  },
+  {
+   "rank": 6,
+   "stem": "adke_neel_008",
+   "H": 1020,
+   "W": 768,
+   "sha256": "d5782c981809f8cc630946866d2ca0e9b2a72e00a82a5eadc2f4590a0d659599"
+  },
+  {
+   "rank": 7,
+   "stem": "gade_surabhi_008",
+   "H": 1020,
+   "W": 768,
+   "sha256": "2b67559ddae5988defca7c4a6f3fd2a8e8c1c294860e72adc51f96df64d8cd6c"
+  },
+  {
+   "rank": 8,
+   "stem": "adke_neel_074",
+   "H": 768,
+   "W": 1020,
+   "sha256": "c8502c6636de82e7422fc67ed64f6e73c5b3fadb84e34d7d7f98596c7f406741"
+  },
+  {
+   "rank": 9,
+   "stem": "adke_neel_052",
+   "H": 1020,
+   "W": 768,
+   "sha256": "605b7e2a0e07e66ff8bd623a6de7b9551f9ce37e2ac328755a576f1714614c6e"
+  },
+  {
+   "rank": 10,
+   "stem": "visaria_keval_018",
+   "H": 1365,
+   "W": 768,
+   "sha256": "8a6e34460561fbc509ec98883334e5152e1aa66ea4896a67f7323c82b2931595"
+  },
+  {
+   "rank": 11,
+   "stem": "baskar_akilan_054",
+   "H": 1023,
+   "W": 768,
+   "sha256": "049c18f81ee109a32e3d967727ba56776efa5dbc0251ef8e52373d9228187514"
+  },
+  {
+   "rank": 12,
+   "stem": "acharya_mrudula_016",
+   "H": 1023,
+   "W": 768,
+   "sha256": "b7bfbc8717bf90ccbac74d39ad189dab3453270c95d0abf5330fc0969984d1ec"
+  },
+  {
+   "rank": 13,
+   "stem": "amir_adnan_006",
+   "H": 1023,
+   "W": 768,
+   "sha256": "90e22d71c884b80f5e1866198c6aa1d2f9343edba8a43f5d23ca067281c52035"
+  },
+  {
+   "rank": 14,
+   "stem": "adke_neel_099",
+   "H": 1019,
+   "W": 768,
+   "sha256": "bf0869fc5a91a4c7027e55a0cfd390e7a25cd8042067b0a3eef98ad618762792"
+  },
+  {
+   "rank": 15,
+   "stem": "amir_adnan_037",
+   "H": 1023,
+   "W": 768,
+   "sha256": "818901041e103140fe1669c444a117041ceb9fa8fcf2a656abc4ab70fac6c7cd"
+  },
+  {
+   "rank": 16,
+   "stem": "amir_adnan_069",
+   "H": 1023,
+   "W": 768,
+   "sha256": "a2dc484e613ede04e1d7a3efb0eda3b3e14f2a12d82f5839969817f14edb866d"
+  },
+  {
+   "rank": 17,
+   "stem": "visaria_keval_020",
+   "H": 1365,
+   "W": 768,
+   "sha256": "0a725bf0a1b3f344f269d6fffdb514016ea52ad5f2f5a054caab2ad72431e535"
+  },
+  {
+   "rank": 18,
+   "stem": "acharya_mrudula_094",
+   "H": 1023,
+   "W": 768,
+   "sha256": "f1e5fad0558d03a67d958fc71e3bad417c913e69c5c1271af6f713876d615023"
+  },
+  {
+   "rank": 19,
+   "stem": "adke_neel_085",
+   "H": 768,
+   "W": 1020,
+   "sha256": "86ea09b29b5fab4274d026f3a8e9f92470a8773d8f7227143f8aa6d2b3a1d1cd"
+  },
+  {
+   "rank": 20,
+   "stem": "baskar_akilan_056",
+   "H": 1023,
+   "W": 768,
+   "sha256": "9f77a88a8886f052aeb86c673653a9ae57a09d8df87fb1ce4d9494da68503eb5"
+  },
+  {
+   "rank": 21,
+   "stem": "baskar_akilan_052",
+   "H": 1023,
+   "W": 768,
+   "sha256": "66e586e0dd40eac751a13304e6b28cd146957d1b27aa84dedf46cf56889b93da"
+  },
+  {
+   "rank": 22,
+   "stem": "gade_surabhi_035",
+   "H": 1020,
+   "W": 768,
+   "sha256": "81de25f53e49b58a853c9eb51e941df3a0583b2fbf968ba911e795372260cacc"
+  },
+  {
+   "rank": 23,
+   "stem": "taiwei_cui_092",
+   "H": 768,
+   "W": 1023,
+   "sha256": "deff89e27773464ec6a03d8eaff2962438eb2e4bfbdc659053bec31a5905f76f"
+  },
+  {
+   "rank": 24,
+   "stem": "adke_neel_094",
+   "H": 1019,
+   "W": 768,
+   "sha256": "d90f4fcbc4bf64c32ec9d93bd46c68c6812007b56e1b5585ff83b3a497afa63f"
+  },
+  {
+   "rank": 25,
+   "stem": "taiwei_cui_102",
+   "H": 768,
+   "W": 1023,
+   "sha256": "d5b520e6ed759e90b45c16ec5c4658af00ab85a0c70221bf85df97fc79228870"
+  },
+  {
+   "rank": 26,
+   "stem": "gade_surabhi_018",
+   "H": 1020,
+   "W": 768,
+   "sha256": "7fc8fddadb855b6665eccad264898171c7930e9f40e25e8b7ffd8402f809e456"
+  },
+  {
+   "rank": 27,
+   "stem": "baskar_akilan_004",
+   "H": 1023,
+   "W": 768,
+   "sha256": "3864a0e932fed8b6896e25a2a9b532ed55cdf790f8acd3e15213665f8a3d5ea7"
+  },
+  {
+   "rank": 28,
+   "stem": "amir_adnan_080",
+   "H": 1023,
+   "W": 768,
+   "sha256": "aa47625ad5f40b776d520d00a894471fbac4bb34c8b60e214dd00e0fe893f84a"
+  },
+  {
+   "rank": 29,
+   "stem": "adke_neel_028",
+   "H": 1020,
+   "W": 768,
+   "sha256": "2788560d5e78ce02c978ad5773496c97fbf1475ba81bd89b0430aa126401b931"
+  },
+  {
+   "rank": 30,
+   "stem": "taiwei_cui_071",
+   "H": 1023,
+   "W": 768,
+   "sha256": "c8ed789536bef9646058e14c5e698e0fedef7589d4412f30dda63cd1a9674e8b"
+  },
+  {
+   "rank": 31,
+   "stem": "visaria_keval_074",
+   "H": 1365,
+   "W": 768,
+   "sha256": "a77f93c24eed903b7f87c550609179c8317bf027ab64cd4f8c4612ca2e6989ec"
+  },
+  {
+   "rank": 32,
+   "stem": "amir_adnan_027",
+   "H": 1023,
+   "W": 768,
+   "sha256": "4048266bb9fd437f195d5c8d9b8d0ebf90ae9ae1958d4b8512db6e173b9ac910"
+  },
+  {
+   "rank": 33,
+   "stem": "amir_adnan_016",
+   "H": 1023,
+   "W": 768,
+   "sha256": "b9c163dca528ee30ef9985c2754c8ef80f7eaa94bcd1735ae044aaad5407157c"
+  },
+  {
+   "rank": 34,
+   "stem": "amir_adnan_026",
+   "H": 1023,
+   "W": 768,
+   "sha256": "ac08c7dc05b461acfcf882d165edff80a5baef8d447b1a55f546c7ed091ed5f5"
+  },
+  {
+   "rank": 35,
+   "stem": "visaria_keval_093",
+   "H": 1365,
+   "W": 768,
+   "sha256": "4544f7b9dc4e15cd118baf57c40076037630037eef903ebecf12fb4446c2bb1e"
+  },
+  {
+   "rank": 36,
+   "stem": "amir_adnan_005",
+   "H": 1023,
+   "W": 768,
+   "sha256": "4242b9d32370da7b5d4497c0df83ce1537fea7148040e7acbd1659a67728fae1"
+  },
+  {
+   "rank": 37,
+   "stem": "baskar_akilan_051",
+   "H": 1023,
+   "W": 768,
+   "sha256": "6b836dd64114427a71a75fb4d657005fece05f8ac997525921fb87ca99bdae59"
+  },
+  {
+   "rank": 38,
+   "stem": "acharya_mrudula_063",
+   "H": 1023,
+   "W": 768,
+   "sha256": "a94662b2f8212326736f2888eccea0f69c8db5bcd6c7185e49fafd1260ef0c38"
+  },
+  {
+   "rank": 39,
+   "stem": "adke_neel_097",
+   "H": 1020,
+   "W": 768,
+   "sha256": "5de7b37ba4f5b9313b67f20060b8f7456101b159d4f2a5fcb4a7b066b0ddc0d1"
+  },
+  {
+   "rank": 40,
+   "stem": "baskar_akilan_058",
+   "H": 1023,
+   "W": 768,
+   "sha256": "48e3c1a6119a28ddfc4644882e1344a32efb832e17b40b4ce31b303865c6e1ab"
+  },
+  {
+   "rank": 41,
+   "stem": "adke_neel_054",
+   "H": 1020,
+   "W": 768,
+   "sha256": "af16611150fa5689849edffccb2355f12b229f9db0aa9502a7864f8ad72533f2"
+  },
+  {
+   "rank": 42,
+   "stem": "gade_surabhi_026",
+   "H": 1020,
+   "W": 768,
+   "sha256": "b93da71ef2ed617773c8469a1b2778792e3535fcb83a3be0007b88953f65f745"
+  },
+  {
+   "rank": 43,
+   "stem": "amir_adnan_066",
+   "H": 1023,
+   "W": 768,
+   "sha256": "5f088908266a2abcc3262d5b8f8fbe557319d0b6254ea02819511dd9ea6cc3d2"
+  },
+  {
+   "rank": 44,
+   "stem": "amir_adnan_071",
+   "H": 1023,
+   "W": 768,
+   "sha256": "133fb2c56ca7c6bc0ca908e2100b1e4f960076d59e8843a2550f9bd692cac3f4"
+  },
+  {
+   "rank": 45,
+   "stem": "amir_adnan_045",
+   "H": 1023,
+   "W": 768,
+   "sha256": "8f88f5ea0ea49a3ccc7aeaed966a8fe61cfbf26f32b02f6d1fff32b684707e6e"
+  },
+  {
+   "rank": 46,
+   "stem": "baskar_akilan_072",
+   "H": 1023,
+   "W": 768,
+   "sha256": "887ad18a5ca716696ae9dea3e4f867b6790777464691f91c2b23a494e96f5a5b"
+  },
+  {
+   "rank": 47,
+   "stem": "adke_neel_096",
+   "H": 1020,
+   "W": 768,
+   "sha256": "927def7ab6304e559656ccc03a0120b2f2b08a67599513c3e93f800136b720d9"
+  },
+  {
+   "rank": 48,
+   "stem": "acharya_mrudula_075",
+   "H": 1023,
+   "W": 768,
+   "sha256": "4b0e82b5d133c0a48de42472a75472718955a0928dc078bdce8d59fc45e5a3e9"
+  },
+  {
+   "rank": 49,
+   "stem": "visaria_keval_037",
+   "H": 1365,
+   "W": 768,
+   "sha256": "e7f0758df923ce3ebde85d850b286c450d736262969990043ddf5b50df3d0388"
+  },
+  {
+   "rank": 50,
+   "stem": "gade_surabhi_022",
+   "H": 1020,
+   "W": 768,
+   "sha256": "dc75a0820cad0ddb11da544a2b02cf779223ad0f1f6c1819812ce593030b83c8"
+  },
+  {
+   "rank": 51,
+   "stem": "acharya_mrudula_034",
+   "H": 768,
+   "W": 1023,
+   "sha256": "03ba04eb6c0402d4f38a1992f8ddeaea2fc4d189685bca55caa8d4c4903cb401"
+  },
+  {
+   "rank": 52,
+   "stem": "amir_adnan_000",
+   "H": 1023,
+   "W": 768,
+   "sha256": "eaa1204ac6896b8f1aebf31ac026d05ee57ea12ec6b7c962d703a656624a0095"
+  },
+  {
+   "rank": 53,
+   "stem": "adke_neel_083",
+   "H": 1020,
+   "W": 768,
+   "sha256": "92a478ee4959b35ced6646b28c3fc0324b8d406f6a227c4f0d0a6096f818e65f"
+  },
+  {
+   "rank": 54,
+   "stem": "adke_neel_042",
+   "H": 1020,
+   "W": 768,
+   "sha256": "ef9d2d0ceaaf5f5023a05343cba7432081808b529aad2286f8978bdf78d4318f"
+  }
+ ]
+}

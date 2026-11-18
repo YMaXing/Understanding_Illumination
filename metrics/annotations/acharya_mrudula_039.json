@@ -1,0 +1,4467 @@
+{
+ "schema_version": "1.2",
+ "image": "acharya_mrudula_039",
+ "set": "heldout",
+ "split": "test",
+ "seen_in_training": "unknown",
+ "width": 768,
+ "height": 1023,
+ "image_sha256": "2ef8aa12e92681611c00e31ff1a561f32f3866fe3459fcdf343f3b3994537a6a",
+ "image_pixel_sha256": "d32e3828cbad783274599918d04c67e9e0099c50b6d4e103f8995f21f6f31cc1",
+ "assigned_to": "yueren",
+ "pairs": [
+  {
+   "id": "t=1794274810526",
+   "image": "acharya_mrudula_039",
+   "type": "i",
+   "A": {
+    "x": 118,
+    "y": 424,
+    "r": 3
+   },
+   "B": {
+    "x": 106,
+    "y": 412,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:40:10.526Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "i",
+     "a_row": 424,
+     "a_col": 118,
+     "b_row": 412,
+     "b_col": 106,
+     "half": 3,
+     "t": 1794274810526,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: own side (reaches 4.2 px, transition starts 5.5)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.634Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: own side (reaches 4.2 px, transition starts 5.5)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 571,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.755964,
+     "b_B": 9.059842,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794274814732",
+   "image": "acharya_mrudula_039",
+   "type": "i",
+   "A": {
+    "x": 144,
+    "y": 403,
+    "r": 3
+   },
+   "B": {
+    "x": 128,
+    "y": 390,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:40:14.732Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "i",
+     "a_row": 403,
+     "a_col": 144,
+     "b_row": 390,
+     "b_col": 128,
+     "half": 3,
+     "t": 1794274814732,
+     "major": true,
+     "half_a": 3,
+     "half_b": 4,
+     "edits": [
+      {
+       "op": "autosize",
+       "at": "2026-11-10T04:52:26.642Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "half_a": null,
+        "half_b": null
+       },
+       "after": {
+        "half_a": 3,
+        "half_b": 4
+       },
+       "criteria": "spec+sides",
+       "stopped_by": {
+        "A": "own side",
+        "B": "reached max"
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.642Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ],
+     "patch_ok": true,
+     "patch_flags": []
+    },
+    "v0_index": 572,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.772445,
+     "b_B": 9.01551,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794274821827",
+   "image": "acharya_mrudula_039",
+   "type": "i",
+   "A": {
+    "x": 168,
+    "y": 381,
+    "r": 3
+   },
+   "B": {
+    "x": 155,
+    "y": 365,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:40:21.827Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "i",
+     "a_row": 381,
+     "a_col": 168,
+     "b_row": 365,
+     "b_col": 155,
+     "half": 3,
+     "t": 1794274821827,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: own side (reaches 4.2 px, transition starts 5.0); homogeneity (spread 0.010 > max(1.5 x 0.004, 2 x 0.002)); sides (an outer row/column differs from the core)",
+      "B at current half 3: homogeneity (spread 0.017 > max(1.5 x 0.007, 2 x 0.004)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.651Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: own side (reaches 4.2 px, transition starts 5.0); homogeneity (spread 0.010 > max(1.5 x 0.004, 2 x 0.002)); sides (an outer row/column differs from the core)",
+         "B at current half 3: homogeneity (spread 0.017 > max(1.5 x 0.007, 2 x 0.004)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 573,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.780385,
+     "b_B": 9.037816,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794274825099",
+   "image": "acharya_mrudula_039",
+   "type": "i",
+   "A": {
+    "x": 194,
+    "y": 360,
+    "r": 3
+   },
+   "B": {
+    "x": 178,
+    "y": 336,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:40:25.099Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "i",
+     "a_row": 360,
+     "a_col": 194,
+     "b_row": 336,
+     "b_col": 178,
+     "half": 3,
+     "t": 1794274825099,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: homogeneity (spread 0.015 > max(1.5 x 0.008, 2 x 0.002))",
+      "B at current half 3: homogeneity (spread 0.015 > max(1.5 x 0.009, 2 x 0.004))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.659Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: homogeneity (spread 0.015 > max(1.5 x 0.008, 2 x 0.002))",
+         "B at current half 3: homogeneity (spread 0.015 > max(1.5 x 0.009, 2 x 0.004))"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 574,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.778936,
+     "b_B": 9.009156,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794274845517",
+   "image": "acharya_mrudula_039",
+   "type": "i",
+   "A": {
+    "x": 220,
+    "y": 326,
+    "r": 3
+   },
+   "B": {
+    "x": 221,
+    "y": 304,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:40:45.517Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "i",
+     "a_row": 326,
+     "a_col": 220,
+     "b_row": 304,
+     "b_col": 221,
+     "half": 3,
+     "t": 1794274845517,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: homogeneity (spread 0.006 > max(1.5 x 0.003, 2 x 0.002))",
+      "B at current half 3: homogeneity (spread 0.010 > max(1.5 x 0.006, 2 x 0.004)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.666Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: homogeneity (spread 0.006 > max(1.5 x 0.003, 2 x 0.002))",
+         "B at current half 3: homogeneity (spread 0.010 > max(1.5 x 0.006, 2 x 0.004)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 575,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.539855,
+     "b_B": 8.981068,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794274855075",
+   "image": "acharya_mrudula_039",
+   "type": "i",
+   "A": {
+    "x": 344,
+    "y": 307,
+    "r": 3
+   },
+   "B": {
+    "x": 344,
+    "y": 282,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:40:55.075Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "i",
+     "a_row": 307,
+     "a_col": 344,
+     "b_row": 282,
+     "b_col": 344,
+     "half": 3,
+     "t": 1794274855075,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 3: sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.674Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 3: sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 576,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.783208,
+     "b_B": 8.77854,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794274860409",
+   "image": "acharya_mrudula_039",
+   "type": "i",
+   "A": {
+    "x": 308,
+    "y": 306,
+    "r": 3
+   },
+   "B": {
+    "x": 308,
+    "y": 288,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:41:00.409Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "i",
+     "a_row": 306,
+     "a_col": 308,
+     "b_row": 288,
+     "b_col": 308,
+     "half": 3,
+     "t": 1794274860409,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: homogeneity (spread 0.010 > max(1.5 x 0.003, 2 x 0.002)); sides (an outer row/column differs from the core)",
+      "B at current half 3: homogeneity (spread 0.027 > max(1.5 x 0.007, 2 x 0.004)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.680Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: homogeneity (spread 0.010 > max(1.5 x 0.003, 2 x 0.002)); sides (an outer row/column differs from the core)",
+         "B at current half 3: homogeneity (spread 0.027 > max(1.5 x 0.007, 2 x 0.004)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 577,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.611973,
+     "b_B": 9.020912,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794274868936",
+   "image": "acharya_mrudula_039",
+   "type": "i",
+   "A": {
+    "x": 402,
+    "y": 220,
+    "r": 3
+   },
+   "B": {
+    "x": 367,
+    "y": 216,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:41:08.936Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "i",
+     "a_row": 220,
+     "a_col": 402,
+     "b_row": 216,
+     "b_col": 367,
+     "half": 3,
+     "t": 1794274868936,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: homogeneity (spread 0.015 > max(1.5 x 0.006, 2 x 0.002)); sides (an outer row/column differs from the core)",
+      "B at current half 3: homogeneity (spread 0.021 > max(1.5 x 0.004, 2 x 0.007)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.685Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: homogeneity (spread 0.015 > max(1.5 x 0.006, 2 x 0.002)); sides (an outer row/column differs from the core)",
+         "B at current half 3: homogeneity (spread 0.021 > max(1.5 x 0.004, 2 x 0.007)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 578,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.808659,
+     "b_B": 7.852726,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794274872653",
+   "image": "acharya_mrudula_039",
+   "type": "i",
+   "A": {
+    "x": 431,
+    "y": 185,
+    "r": 3
+   },
+   "B": {
+    "x": 398,
+    "y": 184,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:41:12.653Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "i",
+     "a_row": 185,
+     "a_col": 431,
+     "b_row": 184,
+     "b_col": 398,
+     "half": 3,
+     "t": 1794274872653,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: homogeneity (spread 0.010 > max(1.5 x 0.006, 2 x 0.002))",
+      "B at current half 3: homogeneity (spread 0.016 > max(1.5 x 0.009, 2 x 0.007))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.691Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: homogeneity (spread 0.010 > max(1.5 x 0.006, 2 x 0.002))",
+         "B at current half 3: homogeneity (spread 0.016 > max(1.5 x 0.009, 2 x 0.007))"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 579,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.769087,
+     "b_B": 7.919229,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794274879081",
+   "image": "acharya_mrudula_039",
+   "type": "i",
+   "A": {
+    "x": 451,
+    "y": 182,
+    "r": 3
+   },
+   "B": {
+    "x": 451,
+    "y": 163,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:41:19.081Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "i",
+     "a_row": 182,
+     "a_col": 451,
+     "b_row": 163,
+     "b_col": 451,
+     "half": 3,
+     "t": 1794274879081,
+     "edits": [
+      {
+       "op": "type",
+       "at": "2026-11-10T01:41:35.630Z",
+       "before": {
+        "type": "m"
+       },
+       "after": {
+        "type": "i"
+       }
+      },
+      {
+       "op": "major",
+       "at": "2026-11-10T01:41:46.460Z",
+       "before": {
+        "major": null
+       },
+       "after": {
+        "major": true
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.696Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: own side (reaches 3.0 px, transition starts 4.0); homogeneity (spread 0.013 > max(1.5 x 0.009, 2 x 0.002))",
+         "B at current half 3: homogeneity (spread 0.071 > max(1.5 x 0.024, 2 x 0.006)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ],
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: own side (reaches 3.0 px, transition starts 4.0); homogeneity (spread 0.013 > max(1.5 x 0.009, 2 x 0.002))",
+      "B at current half 3: homogeneity (spread 0.071 > max(1.5 x 0.024, 2 x 0.006)); sides (an outer row/column differs from the core)"
+     ]
+    },
+    "v0_index": 580,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.774534,
+     "b_B": 7.940476,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794274882087",
+   "image": "acharya_mrudula_039",
+   "type": "i",
+   "A": {
+    "x": 507,
+    "y": 178,
+    "r": 3
+   },
+   "B": {
+    "x": 506,
+    "y": 161,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:41:22.087Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "i",
+     "a_row": 178,
+     "a_col": 507,
+     "b_row": 161,
+     "b_col": 506,
+     "half": 3,
+     "t": 1794274882087,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: own side (reaches 3.2 px, transition starts 3.5); homogeneity (spread 0.007 > max(1.5 x 0.003, 2 x 0.003))",
+      "B at current half 3: homogeneity (spread 0.045 > max(1.5 x 0.016, 2 x 0.006)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.702Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: own side (reaches 3.2 px, transition starts 3.5); homogeneity (spread 0.007 > max(1.5 x 0.003, 2 x 0.003))",
+         "B at current half 3: homogeneity (spread 0.045 > max(1.5 x 0.016, 2 x 0.006)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 581,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.755722,
+     "b_B": 7.985269,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794274910009",
+   "image": "acharya_mrudula_039",
+   "type": "i",
+   "A": {
+    "x": 568,
+    "y": 177,
+    "r": 3
+   },
+   "B": {
+    "x": 565,
+    "y": 154,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:41:50.009Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "i",
+     "a_row": 177,
+     "a_col": 568,
+     "b_row": 154,
+     "b_col": 565,
+     "half": 3,
+     "t": 1794274910009,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: homogeneity (spread 0.012 > max(1.5 x 0.005, 2 x 0.003)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.707Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: homogeneity (spread 0.012 > max(1.5 x 0.005, 2 x 0.003)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 582,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.739995,
+     "b_B": 7.88918,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794274913844",
+   "image": "acharya_mrudula_039",
+   "type": "i",
+   "A": {
+    "x": 616,
+    "y": 173,
+    "r": 3
+   },
+   "B": {
+    "x": 610,
+    "y": 154,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:41:53.844Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "i",
+     "a_row": 173,
+     "a_col": 616,
+     "b_row": 154,
+     "b_col": 610,
+     "half": 3,
+     "t": 1794274913844,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: homogeneity (spread 0.012 > max(1.5 x 0.004, 2 x 0.003)); sides (an outer row/column differs from the core)",
+      "B at current half 3: homogeneity (spread 0.063 > max(1.5 x 0.026, 2 x 0.006)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.712Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: homogeneity (spread 0.012 > max(1.5 x 0.004, 2 x 0.003)); sides (an outer row/column differs from the core)",
+         "B at current half 3: homogeneity (spread 0.063 > max(1.5 x 0.026, 2 x 0.006)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 583,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.691977,
+     "b_B": 7.939153,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794274933712",
+   "image": "acharya_mrudula_039",
+   "type": "i",
+   "A": {
+    "x": 359,
+    "y": 312,
+    "r": 3
+   },
+   "B": {
+    "x": 366,
+    "y": 300,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:42:13.712Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "i",
+     "a_row": 312,
+     "a_col": 359,
+     "b_row": 300,
+     "b_col": 366,
+     "half": 3,
+     "t": 1794274933712,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: own side (reaches 4.1 px, transition starts 6.0); homogeneity (spread 0.017 > max(1.5 x 0.008, 2 x 0.002)); sides (an outer row/column differs from the core)",
+      "B at current half 3: own side (reaches 9.8 px, transition ends 9.5); homogeneity (spread 0.116 > max(1.5 x 0.056, 2 x 0.004)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.718Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: own side (reaches 4.1 px, transition starts 6.0); homogeneity (spread 0.017 > max(1.5 x 0.008, 2 x 0.002)); sides (an outer row/column differs from the core)",
+         "B at current half 3: own side (reaches 9.8 px, transition ends 9.5); homogeneity (spread 0.116 > max(1.5 x 0.056, 2 x 0.004)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 584,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.778337,
+     "b_B": 9.05951,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794274946640",
+   "image": "acharya_mrudula_039",
+   "type": "i",
+   "A": {
+    "x": 394,
+    "y": 330,
+    "r": 2
+   },
+   "B": {
+    "x": 400,
+    "y": 321,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:42:26.640Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "i",
+     "a_row": 330,
+     "a_col": 394,
+     "b_row": 321,
+     "b_col": 400,
+     "half": 2,
+     "t": 1794274946640,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: own side (reaches 2.8 px, transition starts 4.5)",
+      "B at current half 2: own side (reaches 8.0 px, transition ends 7.5)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.724Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: own side (reaches 2.8 px, transition starts 4.5)",
+         "B at current half 2: own side (reaches 8.0 px, transition ends 7.5)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 585,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.731214,
+     "b_B": 9.062366,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794274968576",
+   "image": "acharya_mrudula_039",
+   "type": "i",
+   "A": {
+    "x": 416,
+    "y": 359,
+    "r": 2
+   },
+   "B": {
+    "x": 429,
+    "y": 347,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:42:48.576Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "i",
+     "a_row": 359,
+     "a_col": 416,
+     "b_row": 347,
+     "b_col": 429,
+     "half": 2,
+     "t": 1794274968576,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: homogeneity (spread 0.010 > max(1.5 x 0.005, 2 x 0.002))",
+      "B at current half 2: own side (reaches 14.9 px, transition ends 13.5)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.730Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: homogeneity (spread 0.010 > max(1.5 x 0.005, 2 x 0.002))",
+         "B at current half 2: own side (reaches 14.9 px, transition ends 13.5)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 586,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.782475,
+     "b_B": 8.937701,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794274996270",
+   "image": "acharya_mrudula_039",
+   "type": "i",
+   "A": {
+    "x": 461,
+    "y": 392,
+    "r": 2
+   },
+   "B": {
+    "x": 469,
+    "y": 383,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:43:16.270Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "i",
+     "a_row": 392,
+     "a_col": 461,
+     "b_row": 383,
+     "b_col": 469,
+     "half": 2,
+     "t": 1794274996270,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: own side (reaches 2.8 px, transition starts 4.0)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.736Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: own side (reaches 2.8 px, transition starts 4.0)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 587,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.830473,
+     "b_B": 9.338145,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794275006421",
+   "image": "acharya_mrudula_039",
+   "type": "i",
+   "A": {
+    "x": 614,
+    "y": 96,
+    "r": 2
+   },
+   "B": {
+    "x": 603,
+    "y": 89,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:43:26.421Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "i",
+     "a_row": 96,
+     "a_col": 614,
+     "b_row": 89,
+     "b_col": 603,
+     "half": 2,
+     "t": 1794275006421,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 2: homogeneity (spread 0.025 > max(1.5 x 0.014, 2 x 0.004))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.741Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 2: homogeneity (spread 0.025 > max(1.5 x 0.014, 2 x 0.004))"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 588,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.243105,
+     "b_B": 8.913756,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794275013228",
+   "image": "acharya_mrudula_039",
+   "type": "i",
+   "A": {
+    "x": 605,
+    "y": 111,
+    "r": 2
+   },
+   "B": {
+    "x": 597,
+    "y": 104,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:43:33.228Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "i",
+     "a_row": 111,
+     "a_col": 605,
+     "b_row": 104,
+     "b_col": 597,
+     "half": 2,
+     "t": 1794275013228,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: own side (reaches 2.8 px, transition starts 2.5); homogeneity (spread 0.011 > max(1.5 x 0.005, 2 x 0.002)); sides (an outer row/column differs from the core)",
+      "B at current half 2: own side (reaches 7.8 px, transition ends 6.5); homogeneity (spread 0.019 > max(1.5 x 0.005, 2 x 0.004)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.747Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: own side (reaches 2.8 px, transition starts 2.5); homogeneity (spread 0.011 > max(1.5 x 0.005, 2 x 0.002)); sides (an outer row/column differs from the core)",
+         "B at current half 2: own side (reaches 7.8 px, transition ends 6.5); homogeneity (spread 0.019 > max(1.5 x 0.005, 2 x 0.004)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 589,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.531616,
+     "b_B": 9.021554,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794275029585",
+   "image": "acharya_mrudula_039",
+   "type": "i",
+   "A": {
+    "x": 273,
+    "y": 161,
+    "r": 2
+   },
+   "B": {
+    "x": 252,
+    "y": 161,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:43:49.585Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "i",
+     "a_row": 161,
+     "a_col": 273,
+     "b_row": 161,
+     "b_col": 252,
+     "half": 2,
+     "t": 1794275029585,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: homogeneity (spread 0.016 > max(1.5 x 0.011, 2 x 0.002))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.751Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: homogeneity (spread 0.016 > max(1.5 x 0.011, 2 x 0.002))"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 590,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.242639,
+     "b_B": 8.828331,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794275034711",
+   "image": "acharya_mrudula_039",
+   "type": "i",
+   "A": {
+    "x": 270,
+    "y": 182,
+    "r": 2
+   },
+   "B": {
+    "x": 261,
+    "y": 174,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:43:54.711Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "i",
+     "a_row": 182,
+     "a_col": 270,
+     "b_row": 174,
+     "b_col": 261,
+     "half": 2,
+     "t": 1794275034711,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: homogeneity (spread 0.009 > max(1.5 x 0.005, 2 x 0.002))",
+      "B at current half 2: own side (reaches 9.2 px, transition ends 8.0); plateau (18% of step > 10%); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.757Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: homogeneity (spread 0.009 > max(1.5 x 0.005, 2 x 0.002))",
+         "B at current half 2: own side (reaches 9.2 px, transition ends 8.0); plateau (18% of step > 10%); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 591,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.504683,
+     "b_B": 8.906238,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794275043075",
+   "image": "acharya_mrudula_039",
+   "type": "i",
+   "A": {
+    "x": 94,
+    "y": 461,
+    "r": 2
+   },
+   "B": {
+    "x": 82,
+    "y": 465,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:44:03.075Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "i",
+     "a_row": 461,
+     "a_col": 94,
+     "b_row": 465,
+     "b_col": 82,
+     "half": 2,
+     "t": 1794275043075,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: homogeneity (spread 0.017 > max(1.5 x 0.010, 2 x 0.002))",
+      "B at current half 2: own side (reaches 10.1 px, transition ends 8.5); homogeneity (spread 0.053 > max(1.5 x 0.031, 2 x 0.007))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.762Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: homogeneity (spread 0.017 > max(1.5 x 0.010, 2 x 0.002))",
+         "B at current half 2: own side (reaches 10.1 px, transition ends 8.5); homogeneity (spread 0.053 > max(1.5 x 0.031, 2 x 0.007))"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 592,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.785002,
+     "b_B": 7.709712,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794275050539",
+   "image": "acharya_mrudula_039",
+   "type": "i",
+   "A": {
+    "x": 12,
+    "y": 520,
+    "r": 3
+   },
+   "B": {
+    "x": 17,
+    "y": 493,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:44:10.539Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "i",
+     "a_row": 520,
+     "a_col": 12,
+     "b_row": 493,
+     "b_col": 17,
+     "half": 3,
+     "t": 1794275050539,
+     "edits": [
+      {
+       "op": "half",
+       "at": "2026-11-10T01:44:19.632Z",
+       "before": {
+        "half": 2
+       },
+       "after": {
+        "half": 3
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.767Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: homogeneity (spread 0.012 > max(1.5 x 0.007, 2 x 0.002)); sides (an outer row/column differs from the core)",
+         "B at current half 3: homogeneity (spread 0.024 > max(1.5 x 0.011, 2 x 0.004))"
+        ]
+       }
+      }
+     ],
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: homogeneity (spread 0.012 > max(1.5 x 0.007, 2 x 0.002)); sides (an outer row/column differs from the core)",
+      "B at current half 3: homogeneity (spread 0.024 > max(1.5 x 0.011, 2 x 0.004))"
+     ]
+    },
+    "v0_index": 593,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.652755,
+     "b_B": 8.964844,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794275078134",
+   "image": "acharya_mrudula_039",
+   "type": "i",
+   "A": {
+    "x": 152,
+    "y": 955,
+    "r": 2
+   },
+   "B": {
+    "x": 145,
+    "y": 970,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:44:38.134Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "i",
+     "a_row": 955,
+     "a_col": 152,
+     "b_row": 970,
+     "b_col": 145,
+     "half": 2,
+     "t": 1794275078134,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: homogeneity (spread 0.031 > max(1.5 x 0.016, 2 x 0.008)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.772Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: homogeneity (spread 0.031 > max(1.5 x 0.016, 2 x 0.008)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 594,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 7.566494,
+     "b_B": 5.972368,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794275079714",
+   "image": "acharya_mrudula_039",
+   "type": "i",
+   "A": {
+    "x": 171,
+    "y": 977,
+    "r": 2
+   },
+   "B": {
+    "x": 167,
+    "y": 997,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:44:39.714Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "i",
+     "a_row": 977,
+     "a_col": 171,
+     "b_row": 997,
+     "b_col": 167,
+     "half": 2,
+     "t": 1794275079714,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 2: homogeneity (spread 0.018 > max(1.5 x 0.008, 2 x 0.005))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.777Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 2: homogeneity (spread 0.018 > max(1.5 x 0.008, 2 x 0.005))"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 595,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.297135,
+     "b_B": 8.499819,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794275082251",
+   "image": "acharya_mrudula_039",
+   "type": "i",
+   "A": {
+    "x": 161,
+    "y": 969,
+    "r": 2
+   },
+   "B": {
+    "x": 160,
+    "y": 985,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:44:42.251Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "i",
+     "a_row": 969,
+     "a_col": 161,
+     "b_row": 985,
+     "b_col": 160,
+     "half": 2,
+     "t": 1794275082251,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: homogeneity (spread 0.021 > max(1.5 x 0.006, 2 x 0.002)); sides (an outer row/column differs from the core)",
+      "B at current half 2: homogeneity (spread 0.048 > max(1.5 x 0.032, 2 x 0.005)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.781Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: homogeneity (spread 0.021 > max(1.5 x 0.006, 2 x 0.002)); sides (an outer row/column differs from the core)",
+         "B at current half 2: homogeneity (spread 0.048 > max(1.5 x 0.032, 2 x 0.005)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 596,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.326189,
+     "b_B": 8.420458,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794275086449",
+   "image": "acharya_mrudula_039",
+   "type": "i",
+   "A": {
+    "x": 131,
+    "y": 928,
+    "r": 2
+   },
+   "B": {
+    "x": 124,
+    "y": 955,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:44:46.449Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "i",
+     "a_row": 928,
+     "a_col": 131,
+     "b_row": 955,
+     "b_col": 124,
+     "half": 2,
+     "t": 1794275086449,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: homogeneity (spread 0.027 > max(1.5 x 0.012, 2 x 0.008)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.785Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: homogeneity (spread 0.027 > max(1.5 x 0.012, 2 x 0.008)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 597,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 7.552262,
+     "b_B": 5.805357,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794275133259",
+   "image": "acharya_mrudula_039",
+   "type": "i",
+   "A": {
+    "x": 583,
+    "y": 453,
+    "r": 3
+   },
+   "B": {
+    "x": 566,
+    "y": 458,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:45:33.259Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "i",
+     "a_row": 453,
+     "a_col": 583,
+     "b_row": 458,
+     "b_col": 566,
+     "half": 2,
+     "t": 1794275133259,
+     "half_a": 3,
+     "half_b": 2,
+     "edits": [
+      {
+       "op": "autosize",
+       "at": "2026-11-10T04:52:26.791Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "half_a": null,
+        "half_b": null
+       },
+       "after": {
+        "half_a": 3,
+        "half_b": 2
+       },
+       "criteria": "spec+sides",
+       "stopped_by": {
+        "A": "own side",
+        "B": "homogeneity"
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.791Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ],
+     "patch_ok": true,
+     "patch_flags": []
+    },
+    "v0_index": 598,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.776846,
+     "b_B": 7.57431,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794275143805",
+   "image": "acharya_mrudula_039",
+   "type": "b",
+   "A": {
+    "x": 622,
+    "y": 501,
+    "r": 2
+   },
+   "B": {
+    "x": 608,
+    "y": 508,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:45:43.805Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "b",
+     "a_row": 501,
+     "a_col": 622,
+     "b_row": 508,
+     "b_col": 608,
+     "half": 2,
+     "t": 1794275143805,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: homogeneity (spread 0.020 > max(1.5 x 0.013, 2 x 0.002)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.795Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: homogeneity (spread 0.020 > max(1.5 x 0.013, 2 x 0.002)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 599
+   }
+  },
+  {
+   "id": "t=1794275150163",
+   "image": "acharya_mrudula_039",
+   "type": "b",
+   "A": {
+    "x": 722,
+    "y": 628,
+    "r": 2
+   },
+   "B": {
+    "x": 713,
+    "y": 644,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:45:50.163Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "b",
+     "a_row": 628,
+     "a_col": 722,
+     "b_row": 644,
+     "b_col": 713,
+     "half": 2,
+     "t": 1794275150163,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: plateau (47% of step > 10%); homogeneity (spread 0.440 > max(1.5 x 0.265, 2 x 0.004)); sides (an outer row/column differs from the core)",
+      "B at current half 2: own side (reaches 15.6 px, transition ends 15.5); plateau (39% of step > 10%); homogeneity (spread 0.044 > max(1.5 x 0.013, 2 x 0.004)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.801Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: plateau (47% of step > 10%); homogeneity (spread 0.440 > max(1.5 x 0.265, 2 x 0.004)); sides (an outer row/column differs from the core)",
+         "B at current half 2: own side (reaches 15.6 px, transition ends 15.5); plateau (39% of step > 10%); homogeneity (spread 0.044 > max(1.5 x 0.013, 2 x 0.004)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 600
+   }
+  },
+  {
+   "id": "t=1794275156256",
+   "image": "acharya_mrudula_039",
+   "type": "i",
+   "A": {
+    "x": 558,
+    "y": 724,
+    "r": 2
+   },
+   "B": {
+    "x": 543,
+    "y": 711,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:45:56.256Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "i",
+     "a_row": 724,
+     "a_col": 558,
+     "b_row": 711,
+     "b_col": 543,
+     "half": 2,
+     "t": 1794275156256,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 2: homogeneity (spread 0.082 > max(1.5 x 0.040, 2 x 0.015)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.805Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 2: homogeneity (spread 0.082 > max(1.5 x 0.040, 2 x 0.015)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 601,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.427269,
+     "b_B": 6.371537,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794275157575",
+   "image": "acharya_mrudula_039",
+   "type": "i",
+   "A": {
+    "x": 602,
+    "y": 714,
+    "r": 2
+   },
+   "B": {
+    "x": 577,
+    "y": 705,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:45:57.575Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "i",
+     "a_row": 714,
+     "a_col": 602,
+     "b_row": 705,
+     "b_col": 577,
+     "half": 2,
+     "t": 1794275157575,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: homogeneity (spread 0.134 > max(1.5 x 0.028, 2 x 0.005)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.810Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: homogeneity (spread 0.134 > max(1.5 x 0.028, 2 x 0.005)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 602,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.556509,
+     "b_B": 6.453666,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794275208193",
+   "image": "acharya_mrudula_039",
+   "type": "m",
+   "A": {
+    "x": 532,
+    "y": 355,
+    "r": 4
+   },
+   "B": {
+    "x": 551,
+    "y": 356,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:46:48.193Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 355,
+     "a_col": 532,
+     "b_row": 356,
+     "b_col": 551,
+     "half": 4,
+     "t": 1794275208193,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: homogeneity (spread 0.011 > max(1.5 x 0.004, 2 x 0.003))",
+      "B at current half 4: own side (reaches 14.8 px, transition ends 17.5); homogeneity (spread 0.029 > max(1.5 x 0.011, 2 x 0.002)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.814Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: homogeneity (spread 0.011 > max(1.5 x 0.004, 2 x 0.003))",
+         "B at current half 4: own side (reaches 14.8 px, transition ends 17.5); homogeneity (spread 0.029 > max(1.5 x 0.011, 2 x 0.002)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 603
+   }
+  },
+  {
+   "id": "t=1794275221456",
+   "image": "acharya_mrudula_039",
+   "type": "m",
+   "A": {
+    "x": 687,
+    "y": 278,
+    "r": 4
+   },
+   "B": {
+    "x": 652,
+    "y": 282,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:47:01.456Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 278,
+     "a_col": 687,
+     "b_row": 282,
+     "b_col": 652,
+     "half": 4,
+     "t": 1794275221456,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: sides (an outer row/column differs from the core)",
+      "B at current half 4: homogeneity (spread 0.031 > max(1.5 x 0.009, 2 x 0.002)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.818Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: sides (an outer row/column differs from the core)",
+         "B at current half 4: homogeneity (spread 0.031 > max(1.5 x 0.009, 2 x 0.002)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 604
+   }
+  },
+  {
+   "id": "t=1794275230392",
+   "image": "acharya_mrudula_039",
+   "type": "m",
+   "A": {
+    "x": 650,
+    "y": 260,
+    "r": 4
+   },
+   "B": {
+    "x": 615,
+    "y": 260,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:47:10.392Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 260,
+     "a_col": 650,
+     "b_row": 260,
+     "b_col": 615,
+     "half": 4,
+     "t": 1794275230392,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: homogeneity (spread 0.008 > max(1.5 x 0.003, 2 x 0.002)); sides (an outer row/column differs from the core)",
+      "B at current half 4: homogeneity (spread 0.114 > max(1.5 x 0.049, 2 x 0.003)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.822Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: homogeneity (spread 0.008 > max(1.5 x 0.003, 2 x 0.002)); sides (an outer row/column differs from the core)",
+         "B at current half 4: homogeneity (spread 0.114 > max(1.5 x 0.049, 2 x 0.003)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 605
+   }
+  },
+  {
+   "id": "t=1794275234151",
+   "image": "acharya_mrudula_039",
+   "type": "m",
+   "A": {
+    "x": 718,
+    "y": 501,
+    "r": 4
+   },
+   "B": {
+    "x": 718,
+    "y": 481,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:47:14.151Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 501,
+     "a_col": 718,
+     "b_row": 481,
+     "b_col": 718,
+     "half": 4,
+     "t": 1794275234151,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: own side (reaches 4.0 px, transition starts 5.0); plateau (16% of step > 10%)",
+      "B at current half 4: own side (reaches 16.0 px, transition ends 17.5); plateau (32% of step > 10%); homogeneity (spread 0.117 > max(1.5 x 0.006, 2 x 0.003)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.826Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: own side (reaches 4.0 px, transition starts 5.0); plateau (16% of step > 10%)",
+         "B at current half 4: own side (reaches 16.0 px, transition ends 17.5); plateau (32% of step > 10%); homogeneity (spread 0.117 > max(1.5 x 0.006, 2 x 0.003)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 606
+   }
+  },
+  {
+   "id": "t=1794275235581",
+   "image": "acharya_mrudula_039",
+   "type": "m",
+   "A": {
+    "x": 754,
+    "y": 527,
+    "r": 4
+   },
+   "B": {
+    "x": 723,
+    "y": 533,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:47:15.581Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 527,
+     "a_col": 754,
+     "b_row": 533,
+     "b_col": 723,
+     "half": 4,
+     "t": 1794275235581,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 4: homogeneity (spread 0.020 > max(1.5 x 0.012, 2 x 0.002)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.829Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 4: homogeneity (spread 0.020 > max(1.5 x 0.012, 2 x 0.002)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 607
+   }
+  },
+  {
+   "id": "t=1794275245922",
+   "image": "acharya_mrudula_039",
+   "type": "m",
+   "A": {
+    "x": 137,
+    "y": 844,
+    "r": 4
+   },
+   "B": {
+    "x": 138,
+    "y": 823,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:47:25.922Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 844,
+     "a_col": 137,
+     "b_row": 823,
+     "b_col": 138,
+     "half": 4,
+     "t": 1794275245922,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: own side (reaches 4.2 px, transition starts 2.0)",
+      "B at current half 4: homogeneity (spread 0.012 > max(1.5 x 0.003, 2 x 0.003)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.833Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: own side (reaches 4.2 px, transition starts 2.0)",
+         "B at current half 4: homogeneity (spread 0.012 > max(1.5 x 0.003, 2 x 0.003)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 608
+   }
+  },
+  {
+   "id": "t=1794275249300",
+   "image": "acharya_mrudula_039",
+   "type": "m",
+   "A": {
+    "x": 104,
+    "y": 811,
+    "r": 4
+   },
+   "B": {
+    "x": 126,
+    "y": 807,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:47:29.300Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 811,
+     "a_col": 104,
+     "b_row": 807,
+     "b_col": 126,
+     "half": 4,
+     "t": 1794275249300,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: plateau (182% of step > 10%); homogeneity (spread 0.345 > max(1.5 x 0.068, 2 x 0.003)); sides (an outer row/column differs from the core)",
+      "B at current half 4: homogeneity (spread 0.018 > max(1.5 x 0.007, 2 x 0.003)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.837Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: plateau (182% of step > 10%); homogeneity (spread 0.345 > max(1.5 x 0.068, 2 x 0.003)); sides (an outer row/column differs from the core)",
+         "B at current half 4: homogeneity (spread 0.018 > max(1.5 x 0.007, 2 x 0.003)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 609
+   }
+  },
+  {
+   "id": "t=1794275250690",
+   "image": "acharya_mrudula_039",
+   "type": "m",
+   "A": {
+    "x": 209,
+    "y": 828,
+    "r": 4
+   },
+   "B": {
+    "x": 213,
+    "y": 806,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:47:30.690Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 828,
+     "a_col": 209,
+     "b_row": 806,
+     "b_col": 213,
+     "half": 4,
+     "t": 1794275250690,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: own side (reaches 4.7 px, transition starts 3.5); plateau (15% of step > 10%); homogeneity (spread 0.193 > max(1.5 x 0.081, 2 x 0.002)); sides (an outer row/column differs from the core)",
+      "B at current half 4: homogeneity (spread 0.020 > max(1.5 x 0.010, 2 x 0.003)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.841Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: own side (reaches 4.7 px, transition starts 3.5); plateau (15% of step > 10%); homogeneity (spread 0.193 > max(1.5 x 0.081, 2 x 0.002)); sides (an outer row/column differs from the core)",
+         "B at current half 4: homogeneity (spread 0.020 > max(1.5 x 0.010, 2 x 0.003)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 610
+   }
+  },
+  {
+   "id": "t=1794275251972",
+   "image": "acharya_mrudula_039",
+   "type": "m",
+   "A": {
+    "x": 270,
+    "y": 831,
+    "r": 4
+   },
+   "B": {
+    "x": 274,
+    "y": 805,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:47:31.972Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 831,
+     "a_col": 270,
+     "b_row": 805,
+     "b_col": 274,
+     "half": 4,
+     "t": 1794275251972,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: own side (reaches 4.6 px, transition starts 2.0); homogeneity (spread 0.076 > max(1.5 x 0.032, 2 x 0.002)); sides (an outer row/column differs from the core)",
+      "B at current half 4: homogeneity (spread 0.017 > max(1.5 x 0.006, 2 x 0.003)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.844Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: own side (reaches 4.6 px, transition starts 2.0); homogeneity (spread 0.076 > max(1.5 x 0.032, 2 x 0.002)); sides (an outer row/column differs from the core)",
+         "B at current half 4: homogeneity (spread 0.017 > max(1.5 x 0.006, 2 x 0.003)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 611
+   }
+  },
+  {
+   "id": "t=1794275253632",
+   "image": "acharya_mrudula_039",
+   "type": "m",
+   "A": {
+    "x": 299,
+    "y": 859,
+    "r": 4
+   },
+   "B": {
+    "x": 320,
+    "y": 863,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:47:33.632Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 859,
+     "a_col": 299,
+     "b_row": 863,
+     "b_col": 320,
+     "half": 4,
+     "t": 1794275253632,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: own side (reaches 4.7 px, transition starts 4.5)",
+      "B at current half 4: sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.848Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: own side (reaches 4.7 px, transition starts 4.5)",
+         "B at current half 4: sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 612
+   }
+  },
+  {
+   "id": "t=1794275256150",
+   "image": "acharya_mrudula_039",
+   "type": "m",
+   "A": {
+    "x": 432,
+    "y": 886,
+    "r": 4
+   },
+   "B": {
+    "x": 410,
+    "y": 887,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:47:36.150Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 886,
+     "a_col": 432,
+     "b_row": 887,
+     "b_col": 410,
+     "half": 4,
+     "t": 1794275256150,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: homogeneity (spread 0.044 > max(1.5 x 0.017, 2 x 0.007)); sides (an outer row/column differs from the core)",
+      "B at current half 4: homogeneity (spread 0.016 > max(1.5 x 0.004, 2 x 0.005)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.851Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: homogeneity (spread 0.044 > max(1.5 x 0.017, 2 x 0.007)); sides (an outer row/column differs from the core)",
+         "B at current half 4: homogeneity (spread 0.016 > max(1.5 x 0.004, 2 x 0.005)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 613
+   }
+  },
+  {
+   "id": "t=1794275279483",
+   "image": "acharya_mrudula_039",
+   "type": "m",
+   "A": {
+    "x": 324,
+    "y": 379,
+    "r": 4
+   },
+   "B": {
+    "x": 305,
+    "y": 378,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:47:59.483Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 379,
+     "a_col": 324,
+     "b_row": 378,
+     "b_col": 305,
+     "half": 4,
+     "t": 1794275279483,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: homogeneity (spread 0.027 > max(1.5 x 0.009, 2 x 0.002)); sides (an outer row/column differs from the core)",
+      "B at current half 4: plateau (40% of step > 10%); homogeneity (spread 0.030 > max(1.5 x 0.009, 2 x 0.002)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.855Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: homogeneity (spread 0.027 > max(1.5 x 0.009, 2 x 0.002)); sides (an outer row/column differs from the core)",
+         "B at current half 4: plateau (40% of step > 10%); homogeneity (spread 0.030 > max(1.5 x 0.009, 2 x 0.002)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 614
+   }
+  },
+  {
+   "id": "t=1794275303136",
+   "image": "acharya_mrudula_039",
+   "type": "m",
+   "A": {
+    "x": 148,
+    "y": 264,
+    "r": 2
+   },
+   "B": {
+    "x": 159,
+    "y": 275,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:48:23.136Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 264,
+     "a_col": 148,
+     "b_row": 275,
+     "b_col": 159,
+     "half": 2,
+     "t": 1794275303136,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 2: own side (reaches 12.7 px, transition ends 14.5); plateau (90% of step > 10%); homogeneity (spread 0.039 > max(1.5 x 0.016, 2 x 0.004)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.859Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 2: own side (reaches 12.7 px, transition ends 14.5); plateau (90% of step > 10%); homogeneity (spread 0.039 > max(1.5 x 0.016, 2 x 0.004)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 615
+   }
+  },
+  {
+   "id": "t=1794275317524",
+   "image": "acharya_mrudula_039",
+   "type": "m",
+   "A": {
+    "x": 413,
+    "y": 123,
+    "r": 2
+   },
+   "B": {
+    "x": 408,
+    "y": 113,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:48:37.524Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 123,
+     "a_col": 413,
+     "b_row": 113,
+     "b_col": 408,
+     "half": 2,
+     "t": 1794275317524,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: own side (reaches 2.7 px, transition starts 3.0); plateau (23% of step > 10%)",
+      "B at current half 2: own side (reaches 8.5 px, transition ends 9.0); plateau (56% of step > 10%); homogeneity (spread 0.035 > max(1.5 x 0.011, 2 x 0.004)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.862Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: own side (reaches 2.7 px, transition starts 3.0); plateau (23% of step > 10%)",
+         "B at current half 2: own side (reaches 8.5 px, transition ends 9.0); plateau (56% of step > 10%); homogeneity (spread 0.035 > max(1.5 x 0.011, 2 x 0.004)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 616
+   }
+  },
+  {
+   "id": "t=1794275325564",
+   "image": "acharya_mrudula_039",
+   "type": "m",
+   "A": {
+    "x": 49,
+    "y": 631,
+    "r": 5
+   },
+   "B": {
+    "x": 78,
+    "y": 633,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:48:45.564Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 631,
+     "a_col": 49,
+     "b_row": 633,
+     "b_col": 78,
+     "half": 5,
+     "t": 1794275325564,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 5: homogeneity (spread 0.067 > max(1.5 x 0.019, 2 x 0.006)); sides (an outer row/column differs from the core)",
+      "B at current half 5: homogeneity (spread 0.026 > max(1.5 x 0.005, 2 x 0.002)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.866Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 5: homogeneity (spread 0.067 > max(1.5 x 0.019, 2 x 0.006)); sides (an outer row/column differs from the core)",
+         "B at current half 5: homogeneity (spread 0.026 > max(1.5 x 0.005, 2 x 0.002)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 617
+   }
+  },
+  {
+   "id": "t=1794275329700",
+   "image": "acharya_mrudula_039",
+   "type": "m",
+   "A": {
+    "x": 59,
+    "y": 541,
+    "r": 5
+   },
+   "B": {
+    "x": 83,
+    "y": 542,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:48:49.700Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 541,
+     "a_col": 59,
+     "b_row": 542,
+     "b_col": 83,
+     "half": 5,
+     "t": 1794275329700,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 5: homogeneity (spread 0.024 > max(1.5 x 0.004, 2 x 0.002)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.870Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 5: homogeneity (spread 0.024 > max(1.5 x 0.004, 2 x 0.002)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 618
+   }
+  },
+  {
+   "id": "t=1794275331711",
+   "image": "acharya_mrudula_039",
+   "type": "m",
+   "A": {
+    "x": 181,
+    "y": 656,
+    "r": 5
+   },
+   "B": {
+    "x": 164,
+    "y": 653,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:48:51.711Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 656,
+     "a_col": 181,
+     "b_row": 653,
+     "b_col": 164,
+     "half": 5,
+     "t": 1794275331711,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 5: own side (reaches 5.8 px, transition starts 7.5); homogeneity (spread 0.014 > max(1.5 x 0.009, 2 x 0.002)); sides (an outer row/column differs from the core)",
+      "B at current half 5: own side (reaches 11.5 px, transition ends 11.5); homogeneity (spread 0.068 > max(1.5 x 0.025, 2 x 0.010)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.876Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 5: own side (reaches 5.8 px, transition starts 7.5); homogeneity (spread 0.014 > max(1.5 x 0.009, 2 x 0.002)); sides (an outer row/column differs from the core)",
+         "B at current half 5: own side (reaches 11.5 px, transition ends 11.5); homogeneity (spread 0.068 > max(1.5 x 0.025, 2 x 0.010)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 619
+   }
+  },
+  {
+   "id": "t=1794275333789",
+   "image": "acharya_mrudula_039",
+   "type": "m",
+   "A": {
+    "x": 219,
+    "y": 633,
+    "r": 5
+   },
+   "B": {
+    "x": 188,
+    "y": 627,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:48:53.789Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 633,
+     "a_col": 219,
+     "b_row": 627,
+     "b_col": 188,
+     "half": 5,
+     "t": 1794275333789,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 5: own side (reaches 25.7 px, transition ends 24.0); homogeneity (spread 0.017 > max(1.5 x 0.004, 2 x 0.002)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.880Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 5: own side (reaches 25.7 px, transition ends 24.0); homogeneity (spread 0.017 > max(1.5 x 0.004, 2 x 0.002)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 620
+   }
+  },
+  {
+   "id": "t=1794275335118",
+   "image": "acharya_mrudula_039",
+   "type": "m",
+   "A": {
+    "x": 270,
+    "y": 610,
+    "r": 5
+   },
+   "B": {
+    "x": 306,
+    "y": 603,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:48:55.118Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 610,
+     "a_col": 270,
+     "b_row": 603,
+     "b_col": 306,
+     "half": 5,
+     "t": 1794275335118,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 5: homogeneity (spread 0.064 > max(1.5 x 0.029, 2 x 0.006)); sides (an outer row/column differs from the core)",
+      "B at current half 5: homogeneity (spread 0.032 > max(1.5 x 0.018, 2 x 0.002)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.885Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 5: homogeneity (spread 0.064 > max(1.5 x 0.029, 2 x 0.006)); sides (an outer row/column differs from the core)",
+         "B at current half 5: homogeneity (spread 0.032 > max(1.5 x 0.018, 2 x 0.002)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 621
+   }
+  },
+  {
+   "id": "t=1794275340217",
+   "image": "acharya_mrudula_039",
+   "type": "m",
+   "A": {
+    "x": 271,
+    "y": 495,
+    "r": 5
+   },
+   "B": {
+    "x": 272,
+    "y": 469,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:49:00.217Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 495,
+     "a_col": 271,
+     "b_row": 469,
+     "b_col": 272,
+     "half": 5,
+     "t": 1794275340217,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 5: own side (reaches 5.2 px, transition starts 2.0)",
+      "B at current half 5: homogeneity (spread 0.026 > max(1.5 x 0.014, 2 x 0.003)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.890Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 5: own side (reaches 5.2 px, transition starts 2.0)",
+         "B at current half 5: homogeneity (spread 0.026 > max(1.5 x 0.014, 2 x 0.003)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 622
+   }
+  },
+  {
+   "id": "t=1794275341881",
+   "image": "acharya_mrudula_039",
+   "type": "m",
+   "A": {
+    "x": 226,
+    "y": 510,
+    "r": 5
+   },
+   "B": {
+    "x": 192,
+    "y": 507,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:49:01.881Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 510,
+     "a_col": 226,
+     "b_row": 507,
+     "b_col": 192,
+     "half": 5,
+     "t": 1794275341881,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 5: homogeneity (spread 0.040 > max(1.5 x 0.022, 2 x 0.005)); sides (an outer row/column differs from the core)",
+      "B at current half 5: homogeneity (spread 0.018 > max(1.5 x 0.007, 2 x 0.002)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.894Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 5: homogeneity (spread 0.040 > max(1.5 x 0.022, 2 x 0.005)); sides (an outer row/column differs from the core)",
+         "B at current half 5: homogeneity (spread 0.018 > max(1.5 x 0.007, 2 x 0.002)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 623
+   }
+  },
+  {
+   "id": "t=1794275343153",
+   "image": "acharya_mrudula_039",
+   "type": "m",
+   "A": {
+    "x": 277,
+    "y": 513,
+    "r": 5
+   },
+   "B": {
+    "x": 310,
+    "y": 507,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:49:03.153Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 513,
+     "a_col": 277,
+     "b_row": 507,
+     "b_col": 310,
+     "half": 5,
+     "t": 1794275343153,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 5: homogeneity (spread 0.050 > max(1.5 x 0.005, 2 x 0.006)); sides (an outer row/column differs from the core)",
+      "B at current half 5: homogeneity (spread 0.056 > max(1.5 x 0.013, 2 x 0.002)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.897Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 5: homogeneity (spread 0.050 > max(1.5 x 0.005, 2 x 0.006)); sides (an outer row/column differs from the core)",
+         "B at current half 5: homogeneity (spread 0.056 > max(1.5 x 0.013, 2 x 0.002)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 624
+   }
+  },
+  {
+   "id": "t=1794275345849",
+   "image": "acharya_mrudula_039",
+   "type": "m",
+   "A": {
+    "x": 422,
+    "y": 511,
+    "r": 5
+   },
+   "B": {
+    "x": 383,
+    "y": 523,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:49:05.849Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 511,
+     "a_col": 422,
+     "b_row": 523,
+     "b_col": 383,
+     "half": 5,
+     "t": 1794275345849,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 5: homogeneity (spread 0.021 > max(1.5 x 0.007, 2 x 0.002)); sides (an outer row/column differs from the core)",
+      "B at current half 5: sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.900Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 5: homogeneity (spread 0.021 > max(1.5 x 0.007, 2 x 0.002)); sides (an outer row/column differs from the core)",
+         "B at current half 5: sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 625
+   }
+  },
+  {
+   "id": "t=1794275347726",
+   "image": "acharya_mrudula_039",
+   "type": "m",
+   "A": {
+    "x": 422,
+    "y": 612,
+    "r": 5
+   },
+   "B": {
+    "x": 458,
+    "y": 612,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:49:07.726Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 612,
+     "a_col": 422,
+     "b_row": 612,
+     "b_col": 458,
+     "half": 5,
+     "t": 1794275347726,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 5: homogeneity (spread 0.031 > max(1.5 x 0.003, 2 x 0.002)); sides (an outer row/column differs from the core)",
+      "B at current half 5: homogeneity (spread 0.045 > max(1.5 x 0.020, 2 x 0.006)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.904Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 5: homogeneity (spread 0.031 > max(1.5 x 0.003, 2 x 0.002)); sides (an outer row/column differs from the core)",
+         "B at current half 5: homogeneity (spread 0.045 > max(1.5 x 0.020, 2 x 0.006)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 626
+   }
+  },
+  {
+   "id": "t=1794275363738",
+   "image": "acharya_mrudula_039",
+   "type": "i",
+   "A": {
+    "x": 447,
+    "y": 467,
+    "r": 4
+   },
+   "B": {
+    "x": 469,
+    "y": 465,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:49:23.738Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "i",
+     "a_row": 467,
+     "a_col": 447,
+     "b_row": 465,
+     "b_col": 469,
+     "half": 4,
+     "t": 1794275363738,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: homogeneity (spread 0.032 > max(1.5 x 0.011, 2 x 0.003)); sides (an outer row/column differs from the core)",
+      "B at current half 4: homogeneity (spread 0.125 > max(1.5 x 0.043, 2 x 0.007)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.907Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: homogeneity (spread 0.032 > max(1.5 x 0.011, 2 x 0.003)); sides (an outer row/column differs from the core)",
+         "B at current half 4: homogeneity (spread 0.125 > max(1.5 x 0.043, 2 x 0.007)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 627,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.617456,
+     "b_B": 7.655736,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794275372740",
+   "image": "acharya_mrudula_039",
+   "type": "m",
+   "A": {
+    "x": 371,
+    "y": 477,
+    "r": 4
+   },
+   "B": {
+    "x": 373,
+    "y": 462,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:49:32.740Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 477,
+     "a_col": 371,
+     "b_row": 462,
+     "b_col": 373,
+     "half": 4,
+     "t": 1794275372740,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: own side (reaches 4.5 px, transition starts 0.5); homogeneity (spread 0.078 > max(1.5 x 0.013, 2 x 0.002)); sides (an outer row/column differs from the core)",
+      "B at current half 4: own side (reaches 10.6 px, transition ends 13.5)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.910Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: own side (reaches 4.5 px, transition starts 0.5); homogeneity (spread 0.078 > max(1.5 x 0.013, 2 x 0.002)); sides (an outer row/column differs from the core)",
+         "B at current half 4: own side (reaches 10.6 px, transition ends 13.5)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 628
+   }
+  },
+  {
+   "id": "t=1794275380961",
+   "image": "acharya_mrudula_039",
+   "type": "m",
+   "A": {
+    "x": 498,
+    "y": 728,
+    "r": 4
+   },
+   "B": {
+    "x": 501,
+    "y": 709,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:49:40.961Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 728,
+     "a_col": 498,
+     "b_row": 709,
+     "b_col": 501,
+     "half": 4,
+     "t": 1794275380961,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: own side (reaches 4.6 px, transition starts 2.5)",
+      "B at current half 4: homogeneity (spread 0.013 > max(1.5 x 0.005, 2 x 0.002)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.913Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: own side (reaches 4.6 px, transition starts 2.5)",
+         "B at current half 4: homogeneity (spread 0.013 > max(1.5 x 0.005, 2 x 0.002)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 629
+   }
+  },
+  {
+   "id": "t=1794275382637",
+   "image": "acharya_mrudula_039",
+   "type": "m",
+   "A": {
+    "x": 539,
+    "y": 666,
+    "r": 4
+   },
+   "B": {
+    "x": 561,
+    "y": 664,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:49:42.637Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 666,
+     "a_col": 539,
+     "b_row": 664,
+     "b_col": 561,
+     "half": 4,
+     "t": 1794275382637,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: own side (reaches 4.3 px, transition starts 6.0); homogeneity (spread 0.018 > max(1.5 x 0.005, 2 x 0.009)); sides (an outer row/column differs from the core)",
+      "B at current half 4: homogeneity (spread 0.054 > max(1.5 x 0.020, 2 x 0.018)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.916Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: own side (reaches 4.3 px, transition starts 6.0); homogeneity (spread 0.018 > max(1.5 x 0.005, 2 x 0.009)); sides (an outer row/column differs from the core)",
+         "B at current half 4: homogeneity (spread 0.054 > max(1.5 x 0.020, 2 x 0.018)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 630
+   }
+  },
+  {
+   "id": "t=1794275384325",
+   "image": "acharya_mrudula_039",
+   "type": "m",
+   "A": {
+    "x": 541,
+    "y": 526,
+    "r": 4
+   },
+   "B": {
+    "x": 569,
+    "y": 527,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:49:44.325Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 526,
+     "a_col": 541,
+     "b_row": 527,
+     "b_col": 569,
+     "half": 4,
+     "t": 1794275384325,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: own side (reaches 4.1 px, transition starts 3.5); homogeneity (spread 0.034 > max(1.5 x 0.009, 2 x 0.009)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.919Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: own side (reaches 4.1 px, transition starts 3.5); homogeneity (spread 0.034 > max(1.5 x 0.009, 2 x 0.009)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 631
+   }
+  },
+  {
+   "id": "t=1794275387380",
+   "image": "acharya_mrudula_039",
+   "type": "m",
+   "A": {
+    "x": 680,
+    "y": 496,
+    "r": 4
+   },
+   "B": {
+    "x": 682,
+    "y": 483,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:49:47.380Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 496,
+     "a_col": 680,
+     "b_row": 483,
+     "b_col": 682,
+     "half": 4,
+     "t": 1794275387380,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: own side (reaches 4.6 px, transition starts 1.5); plateau (21% of step > 10%); sides (an outer row/column differs from the core)",
+      "B at current half 4: plateau (44% of step > 10%); homogeneity (spread 0.118 > max(1.5 x 0.004, 2 x 0.003)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.923Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: own side (reaches 4.6 px, transition starts 1.5); plateau (21% of step > 10%); sides (an outer row/column differs from the core)",
+         "B at current half 4: plateau (44% of step > 10%); homogeneity (spread 0.118 > max(1.5 x 0.004, 2 x 0.003)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 632
+   }
+  },
+  {
+   "id": "t=1794275394824",
+   "image": "acharya_mrudula_039",
+   "type": "m",
+   "A": {
+    "x": 545,
+    "y": 937,
+    "r": 4
+   },
+   "B": {
+    "x": 514,
+    "y": 935,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:49:54.824Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 937,
+     "a_col": 545,
+     "b_row": 935,
+     "b_col": 514,
+     "half": 4,
+     "t": 1794275394824,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: homogeneity (spread 0.063 > max(1.5 x 0.017, 2 x 0.017)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.927Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: homogeneity (spread 0.063 > max(1.5 x 0.017, 2 x 0.017)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 633
+   }
+  },
+  {
+   "id": "t=1794275400878",
+   "image": "acharya_mrudula_039",
+   "type": "m",
+   "A": {
+    "x": 656,
+    "y": 975,
+    "r": 4
+   },
+   "B": {
+    "x": 680,
+    "y": 972,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:50:00.878Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 975,
+     "a_col": 656,
+     "b_row": 972,
+     "b_col": 680,
+     "half": 4,
+     "t": 1794275400878,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: homogeneity (spread 0.068 > max(1.5 x 0.022, 2 x 0.016)); sides (an outer row/column differs from the core)",
+      "B at current half 4: sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.930Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: homogeneity (spread 0.068 > max(1.5 x 0.022, 2 x 0.016)); sides (an outer row/column differs from the core)",
+         "B at current half 4: sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 634
+   }
+  },
+  {
+   "id": "t=1794275407624",
+   "image": "acharya_mrudula_039",
+   "type": "m",
+   "A": {
+    "x": 287,
+    "y": 992,
+    "r": 4
+   },
+   "B": {
+    "x": 314,
+    "y": 996,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:50:07.624Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 992,
+     "a_col": 287,
+     "b_row": 996,
+     "b_col": 314,
+     "half": 4,
+     "t": 1794275407624,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: homogeneity (spread 0.020 > max(1.5 x 0.013, 2 x 0.002)); sides (an outer row/column differs from the core)",
+      "B at current half 4: homogeneity (spread 0.203 > max(1.5 x 0.046, 2 x 0.007)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.933Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: homogeneity (spread 0.020 > max(1.5 x 0.013, 2 x 0.002)); sides (an outer row/column differs from the core)",
+         "B at current half 4: homogeneity (spread 0.203 > max(1.5 x 0.046, 2 x 0.007)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 635
+   }
+  },
+  {
+   "id": "t=1794275431734",
+   "image": "acharya_mrudula_039",
+   "type": "m",
+   "A": {
+    "x": 45,
+    "y": 818,
+    "r": 4
+   },
+   "B": {
+    "x": 47,
+    "y": 802,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:50:31.734Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 818,
+     "a_col": 45,
+     "b_row": 802,
+     "b_col": 47,
+     "half": 4,
+     "t": 1794275431734,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: own side (reaches 4.5 px, transition starts 1.5)",
+      "B at current half 4: plateau (15% of step > 10%); homogeneity (spread 0.042 > max(1.5 x 0.009, 2 x 0.003)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.938Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: own side (reaches 4.5 px, transition starts 1.5)",
+         "B at current half 4: plateau (15% of step > 10%); homogeneity (spread 0.042 > max(1.5 x 0.009, 2 x 0.003)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 636
+   }
+  },
+  {
+   "id": "t=1794275447398",
+   "image": "acharya_mrudula_039",
+   "type": "i",
+   "A": {
+    "x": 687,
+    "y": 217,
+    "r": 2
+   },
+   "B": {
+    "x": 698,
+    "y": 212,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:50:47.398Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "i",
+     "a_row": 217,
+     "a_col": 687,
+     "b_row": 212,
+     "b_col": 698,
+     "half": 2,
+     "t": 1794275447398,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 2: own side (reaches 9.4 px, transition ends 9.0)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.941Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 2: own side (reaches 9.4 px, transition ends 9.0)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 637,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.599011,
+     "b_B": 7.708257,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794275454568",
+   "image": "acharya_mrudula_039",
+   "type": "i",
+   "A": {
+    "x": 739,
+    "y": 263,
+    "r": 2
+   },
+   "B": {
+    "x": 756,
+    "y": 259,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:50:54.568Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "i",
+     "a_row": 263,
+     "a_col": 739,
+     "b_row": 259,
+     "b_col": 756,
+     "half": 2,
+     "t": 1794275454568,
+     "patch_ok": true,
+     "patch_flags": [],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.945Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ]
+    },
+    "v0_index": 638,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.584411,
+     "b_B": 7.65943,
+     "agrees_guide_A_lit": true
+    }
+   }
+  }
+ ],
+ "s_seed_log": [],
+ "legacy": {
+  "source_set": "heldout",
+  "source_file": "illumination_edge/heldout_frozen/pairs_2026-11-10T04-52-30_autosized.json",
+  "source_sha256": "0308ad8111f5a71887dd926a4cc51fee617e5900c1023933bc4a09393a3f37e5",
+  "migrated_by": "metrics/migrate_v0.py 1.0",
+  "deleted": [
+   {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 282,
+     "a_col": 679,
+     "b_row": 266,
+     "b_col": 651,
+     "half": 4,
+     "t": 1794275215377,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-10T01:46:57.117Z"
+      }
+     ],
+     "deleted_at": "2026-11-10T01:46:57.117Z",
+     "deleted_index": 1479
+    },
+    "v0_index": 59
+   },
+   {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 315,
+     "a_col": 685,
+     "b_row": 308,
+     "b_col": 650,
+     "half": 4,
+     "t": 1794275214031,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-10T01:46:57.283Z"
+      }
+     ],
+     "deleted_at": "2026-11-10T01:46:57.283Z",
+     "deleted_index": 1478
+    },
+    "v0_index": 60
+   },
+   {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 349,
+     "a_col": 681,
+     "b_row": 347,
+     "b_col": 653,
+     "half": 4,
+     "t": 1794275212101,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-10T01:46:57.547Z"
+      }
+     ],
+     "deleted_at": "2026-11-10T01:46:57.547Z",
+     "deleted_index": 1477
+    },
+    "v0_index": 61
+   },
+   {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 356,
+     "a_col": 300,
+     "b_row": 356,
+     "b_col": 284,
+     "half": 4,
+     "t": 1794275269754,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-10T01:47:56.386Z"
+      }
+     ],
+     "deleted_at": "2026-11-10T01:47:56.386Z",
+     "deleted_index": 1488
+    },
+    "v0_index": 62
+   },
+   {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 377,
+     "a_col": 324,
+     "b_row": 376,
+     "b_col": 308,
+     "half": 4,
+     "t": 1794275267138,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-10T01:47:56.579Z"
+      }
+     ],
+     "deleted_at": "2026-11-10T01:47:56.579Z",
+     "deleted_index": 1487
+    },
+    "v0_index": 63
+   },
+   {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 266,
+     "a_col": 148,
+     "b_row": 277,
+     "b_col": 157,
+     "half": 4,
+     "t": 1794275293097,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-10T01:48:14.562Z"
+      }
+     ],
+     "deleted_at": "2026-11-10T01:48:14.562Z",
+     "deleted_index": 1489
+    },
+    "v0_index": 64
+   },
+   {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 217,
+     "a_col": 276,
+     "b_row": 197,
+     "b_col": 281,
+     "half": 4,
+     "t": 1794275283540,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-10T01:48:14.783Z"
+      }
+     ],
+     "deleted_at": "2026-11-10T01:48:14.783Z",
+     "deleted_index": 1488
+    },
+    "v0_index": 65
+   },
+   {
+    "v0": {
+     "image": "acharya_mrudula_039",
+     "type": "m",
+     "a_row": 484,
+     "a_col": 452,
+     "b_row": 466,
+     "b_col": 447,
+     "half": 5,
+     "t": 1794275352532,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-10T01:49:16.410Z"
+      }
+     ],
+     "deleted_at": "2026-11-10T01:49:16.410Z",
+     "deleted_index": 1500
+    },
+    "v0_index": 66
+   }
+  ]
+ }
+}

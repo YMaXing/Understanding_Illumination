@@ -1,0 +1,2048 @@
+{
+ "schema_version": "1.2",
+ "image": "amir_adnan_096",
+ "set": "heldout",
+ "split": "train",
+ "seen_in_training": "unknown",
+ "width": 768,
+ "height": 1023,
+ "image_sha256": "87478a1dca3232f670a5d499eba7882747cdc642393a31fa5856e260f4de8a28",
+ "image_pixel_sha256": "e665f0f580602c7d8b888122825878deb5887d68b2052051ab7dc6c57afaaee4",
+ "assigned_to": "yueren",
+ "pairs": [
+  {
+   "id": "t=1794284385650",
+   "image": "amir_adnan_096",
+   "type": "i",
+   "A": {
+    "x": 741,
+    "y": 552,
+    "r": 5
+   },
+   "B": {
+    "x": 744,
+    "y": 491,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T04:19:45.650Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "i",
+     "a_row": 552,
+     "a_col": 741,
+     "b_row": 491,
+     "b_col": 744,
+     "half": 5,
+     "t": 1794284385650,
+     "major": true,
+     "patch_ok": true,
+     "patch_flags": [],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:30.692Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ]
+    },
+    "v0_index": 1065,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.489476,
+     "b_B": 7.476303,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794284391349",
+   "image": "amir_adnan_096",
+   "type": "i",
+   "A": {
+    "x": 675,
+    "y": 550,
+    "r": 5
+   },
+   "B": {
+    "x": 679,
+    "y": 478,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T04:19:51.349Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "i",
+     "a_row": 550,
+     "a_col": 675,
+     "b_row": 478,
+     "b_col": 679,
+     "half": 5,
+     "t": 1794284391349,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 5: homogeneity (spread 0.273 > max(1.5 x 0.168, 2 x 0.004)); sides (an outer row/column differs from the core)",
+      "B at current half 5: sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:30.696Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 5: homogeneity (spread 0.273 > max(1.5 x 0.168, 2 x 0.004)); sides (an outer row/column differs from the core)",
+         "B at current half 5: sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 1066,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.585695,
+     "b_B": 7.488331,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794284396167",
+   "image": "amir_adnan_096",
+   "type": "i",
+   "A": {
+    "x": 621,
+    "y": 544,
+    "r": 5
+   },
+   "B": {
+    "x": 625,
+    "y": 478,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T04:19:56.167Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "i",
+     "a_row": 544,
+     "a_col": 621,
+     "b_row": 478,
+     "b_col": 625,
+     "half": 5,
+     "t": 1794284396167,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 5: sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:30.699Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 5: sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 1067,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.412012,
+     "b_B": 7.490699,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794284401390",
+   "image": "amir_adnan_096",
+   "type": "i",
+   "A": {
+    "x": 748,
+    "y": 737,
+    "r": 5
+   },
+   "B": {
+    "x": 750,
+    "y": 789,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T04:20:01.390Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "i",
+     "a_row": 737,
+     "a_col": 748,
+     "b_row": 789,
+     "b_col": 750,
+     "half": 5,
+     "t": 1794284401390,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 5: own side (reaches 5.2 px, transition starts 5.5); homogeneity (spread 0.252 > max(1.5 x 0.149, 2 x 0.006)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:30.704Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 5: own side (reaches 5.2 px, transition starts 5.5); homogeneity (spread 0.252 > max(1.5 x 0.149, 2 x 0.006)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 1068,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.005614,
+     "b_B": 7.903081,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794284404392",
+   "image": "amir_adnan_096",
+   "type": "i",
+   "A": {
+    "x": 654,
+    "y": 732,
+    "r": 5
+   },
+   "B": {
+    "x": 655,
+    "y": 802,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T04:20:04.392Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "i",
+     "a_row": 732,
+     "a_col": 654,
+     "b_row": 802,
+     "b_col": 655,
+     "half": 5,
+     "t": 1794284404392,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 5: own side (reaches 5.1 px, transition starts 5.0); homogeneity (spread 0.202 > max(1.5 x 0.099, 2 x 0.005)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:30.708Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 5: own side (reaches 5.1 px, transition starts 5.0); homogeneity (spread 0.202 > max(1.5 x 0.099, 2 x 0.005)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 1069,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.136732,
+     "b_B": 7.945498,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794284420011",
+   "image": "amir_adnan_096",
+   "type": "i",
+   "A": {
+    "x": 512,
+    "y": 729,
+    "r": 5
+   },
+   "B": {
+    "x": 510,
+    "y": 799,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T04:20:20.011Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "i",
+     "a_row": 729,
+     "a_col": 512,
+     "b_row": 799,
+     "b_col": 510,
+     "half": 5,
+     "t": 1794284420011,
+     "major": true,
+     "patch_ok": true,
+     "patch_flags": [],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:30.712Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ]
+    },
+    "v0_index": 1070,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.25992,
+     "b_B": 8.026315,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794284433146",
+   "image": "amir_adnan_096",
+   "type": "i",
+   "A": {
+    "x": 329,
+    "y": 728,
+    "r": 5
+   },
+   "B": {
+    "x": 324,
+    "y": 796,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T04:20:33.146Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "i",
+     "a_row": 728,
+     "a_col": 329,
+     "b_row": 796,
+     "b_col": 324,
+     "half": 5,
+     "t": 1794284433146,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 5: own side (reaches 5.4 px, transition starts 3.5); homogeneity (spread 0.240 > max(1.5 x 0.109, 2 x 0.005)); sides (an outer row/column differs from the core)",
+      "B at current half 5: homogeneity (spread 0.157 > max(1.5 x 0.053, 2 x 0.016)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:30.716Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 5: own side (reaches 5.4 px, transition starts 3.5); homogeneity (spread 0.240 > max(1.5 x 0.109, 2 x 0.005)); sides (an outer row/column differs from the core)",
+         "B at current half 5: homogeneity (spread 0.157 > max(1.5 x 0.053, 2 x 0.016)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 1071,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.217338,
+     "b_B": 8.005453,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794284437836",
+   "image": "amir_adnan_096",
+   "type": "i",
+   "A": {
+    "x": 211,
+    "y": 723,
+    "r": 5
+   },
+   "B": {
+    "x": 207,
+    "y": 793,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T04:20:37.836Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "i",
+     "a_row": 723,
+     "a_col": 211,
+     "b_row": 793,
+     "b_col": 207,
+     "half": 5,
+     "t": 1794284437836,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 5: own side (reaches 5.3 px, transition starts 6.0); homogeneity (spread 0.229 > max(1.5 x 0.096, 2 x 0.005)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:30.720Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 5: own side (reaches 5.3 px, transition starts 6.0); homogeneity (spread 0.229 > max(1.5 x 0.096, 2 x 0.005)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 1072,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.301183,
+     "b_B": 7.86071,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794284441214",
+   "image": "amir_adnan_096",
+   "type": "i",
+   "A": {
+    "x": 128,
+    "y": 720,
+    "r": 5
+   },
+   "B": {
+    "x": 121,
+    "y": 782,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T04:20:41.214Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "i",
+     "a_row": 720,
+     "a_col": 128,
+     "b_row": 782,
+     "b_col": 121,
+     "half": 5,
+     "t": 1794284441214,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 5: own side (reaches 5.5 px, transition starts 6.5)",
+      "B at current half 5: homogeneity (spread 0.184 > max(1.5 x 0.066, 2 x 0.018)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:30.724Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 5: own side (reaches 5.5 px, transition starts 6.5)",
+         "B at current half 5: homogeneity (spread 0.184 > max(1.5 x 0.066, 2 x 0.018)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 1073,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.363109,
+     "b_B": 7.859612,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794284449971",
+   "image": "amir_adnan_096",
+   "type": "i",
+   "A": {
+    "x": 108,
+    "y": 732,
+    "r": 5
+   },
+   "B": {
+    "x": 69,
+    "y": 728,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T04:20:49.971Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "i",
+     "a_row": 732,
+     "a_col": 108,
+     "b_row": 728,
+     "b_col": 69,
+     "half": 5,
+     "t": 1794284449971,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 5: sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:30.728Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 5: sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 1074,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.757354,
+     "b_B": 7.788968,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794284454240",
+   "image": "amir_adnan_096",
+   "type": "i",
+   "A": {
+    "x": 112,
+    "y": 666,
+    "r": 5
+   },
+   "B": {
+    "x": 77,
+    "y": 661,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T04:20:54.240Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "i",
+     "a_row": 666,
+     "a_col": 112,
+     "b_row": 661,
+     "b_col": 77,
+     "half": 5,
+     "t": 1794284454240,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 5: homogeneity (spread 0.228 > max(1.5 x 0.117, 2 x 0.004))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:30.732Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 5: homogeneity (spread 0.228 > max(1.5 x 0.117, 2 x 0.004))"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 1075,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.652549,
+     "b_B": 7.906554,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794284457199",
+   "image": "amir_adnan_096",
+   "type": "i",
+   "A": {
+    "x": 120,
+    "y": 621,
+    "r": 5
+   },
+   "B": {
+    "x": 79,
+    "y": 613,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T04:20:57.199Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "i",
+     "a_row": 621,
+     "a_col": 120,
+     "b_row": 613,
+     "b_col": 79,
+     "half": 5,
+     "t": 1794284457199,
+     "major": true,
+     "patch_ok": true,
+     "patch_flags": [],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:30.735Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ]
+    },
+    "v0_index": 1076,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.675384,
+     "b_B": 7.807965,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794284460216",
+   "image": "amir_adnan_096",
+   "type": "i",
+   "A": {
+    "x": 128,
+    "y": 575,
+    "r": 5
+   },
+   "B": {
+    "x": 81,
+    "y": 571,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T04:21:00.216Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "i",
+     "a_row": 575,
+     "a_col": 128,
+     "b_row": 571,
+     "b_col": 81,
+     "half": 5,
+     "t": 1794284460216,
+     "major": true,
+     "patch_ok": true,
+     "patch_flags": [],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:30.739Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ]
+    },
+    "v0_index": 1077,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.629608,
+     "b_B": 7.79585,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794284470382",
+   "image": "amir_adnan_096",
+   "type": "i",
+   "A": {
+    "x": 562,
+    "y": 545,
+    "r": 6
+   },
+   "B": {
+    "x": 560,
+    "y": 493,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T04:21:10.382Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "i",
+     "a_row": 545,
+     "a_col": 562,
+     "b_row": 493,
+     "b_col": 560,
+     "half": 6,
+     "t": 1794284470382,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 6: sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:30.742Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 6: sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 1078,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.584549,
+     "b_B": 7.587385,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794284500228",
+   "image": "amir_adnan_096",
+   "type": "i",
+   "A": {
+    "x": 259,
+    "y": 562,
+    "r": 3
+   },
+   "B": {
+    "x": 263,
+    "y": 534,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T04:21:40.228Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "i",
+     "a_row": 562,
+     "a_col": 259,
+     "b_row": 534,
+     "b_col": 263,
+     "half": 3,
+     "t": 1794284500228,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: homogeneity (spread 0.116 > max(1.5 x 0.067, 2 x 0.005))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:30.746Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: homogeneity (spread 0.116 > max(1.5 x 0.067, 2 x 0.005))"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 1079,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.402894,
+     "b_B": 7.593898,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794284512910",
+   "image": "amir_adnan_096",
+   "type": "m",
+   "A": {
+    "x": 591,
+    "y": 586,
+    "r": 4
+   },
+   "B": {
+    "x": 621,
+    "y": 588,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T04:21:52.910Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "m",
+     "a_row": 586,
+     "a_col": 591,
+     "b_row": 588,
+     "b_col": 621,
+     "half": 4,
+     "t": 1794284512910,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: homogeneity (spread 0.031 > max(1.5 x 0.015, 2 x 0.004))",
+      "B at current half 4: plateau (11% of step > 10%); homogeneity (spread 0.174 > max(1.5 x 0.078, 2 x 0.004)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:30.750Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: homogeneity (spread 0.031 > max(1.5 x 0.015, 2 x 0.004))",
+         "B at current half 4: plateau (11% of step > 10%); homogeneity (spread 0.174 > max(1.5 x 0.078, 2 x 0.004)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 1080
+   }
+  },
+  {
+   "id": "t=1794284517695",
+   "image": "amir_adnan_096",
+   "type": "m",
+   "A": {
+    "x": 556,
+    "y": 329,
+    "r": 4
+   },
+   "B": {
+    "x": 601,
+    "y": 326,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T04:21:57.695Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "m",
+     "a_row": 329,
+     "a_col": 556,
+     "b_row": 326,
+     "b_col": 601,
+     "half": 4,
+     "t": 1794284517695,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: plateau (41% of step > 10%)",
+      "B at current half 4: plateau (90% of step > 10%); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:30.754Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: plateau (41% of step > 10%)",
+         "B at current half 4: plateau (90% of step > 10%); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 1081
+   }
+  },
+  {
+   "id": "t=1794284518730",
+   "image": "amir_adnan_096",
+   "type": "m",
+   "A": {
+    "x": 561,
+    "y": 387,
+    "r": 4
+   },
+   "B": {
+    "x": 633,
+    "y": 393,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T04:21:58.730Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "m",
+     "a_row": 387,
+     "a_col": 561,
+     "b_row": 393,
+     "b_col": 633,
+     "half": 4,
+     "t": 1794284518730,
+     "patch_ok": true,
+     "patch_flags": [],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:30.757Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ]
+    },
+    "v0_index": 1082
+   }
+  },
+  {
+   "id": "t=1794284519642",
+   "image": "amir_adnan_096",
+   "type": "m",
+   "A": {
+    "x": 571,
+    "y": 452,
+    "r": 4
+   },
+   "B": {
+    "x": 630,
+    "y": 451,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T04:21:59.642Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "m",
+     "a_row": 452,
+     "a_col": 571,
+     "b_row": 451,
+     "b_col": 630,
+     "half": 4,
+     "t": 1794284519642,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 4: plateau (36% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:30.760Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 4: plateau (36% of step > 10%)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 1083
+   }
+  },
+  {
+   "id": "t=1794284523592",
+   "image": "amir_adnan_096",
+   "type": "m",
+   "A": {
+    "x": 580,
+    "y": 551,
+    "r": 4
+   },
+   "B": {
+    "x": 614,
+    "y": 558,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T04:22:03.592Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "m",
+     "a_row": 551,
+     "a_col": 580,
+     "b_row": 558,
+     "b_col": 614,
+     "half": 4,
+     "t": 1794284523592,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 4: plateau (18% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:30.764Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 4: plateau (18% of step > 10%)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 1084
+   }
+  },
+  {
+   "id": "t=1794284527210",
+   "image": "amir_adnan_096",
+   "type": "m",
+   "A": {
+    "x": 500,
+    "y": 516,
+    "r": 4
+   },
+   "B": {
+    "x": 523,
+    "y": 515,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T04:22:07.210Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "m",
+     "a_row": 516,
+     "a_col": 500,
+     "b_row": 515,
+     "b_col": 523,
+     "half": 4,
+     "t": 1794284527210,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 4: own side (reaches 18.9 px, transition ends 17.0); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:30.766Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 4: own side (reaches 18.9 px, transition ends 17.0); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 1085
+   }
+  },
+  {
+   "id": "t=1794284528723",
+   "image": "amir_adnan_096",
+   "type": "m",
+   "A": {
+    "x": 494,
+    "y": 461,
+    "r": 4
+   },
+   "B": {
+    "x": 518,
+    "y": 459,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T04:22:08.723Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "m",
+     "a_row": 461,
+     "a_col": 494,
+     "b_row": 459,
+     "b_col": 518,
+     "half": 4,
+     "t": 1794284528723,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 4: own side (reaches 19.8 px, transition ends 19.0)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:30.770Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 4: own side (reaches 19.8 px, transition ends 19.0)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 1086
+   }
+  },
+  {
+   "id": "t=1794284531831",
+   "image": "amir_adnan_096",
+   "type": "m",
+   "A": {
+    "x": 483,
+    "y": 387,
+    "r": 4
+   },
+   "B": {
+    "x": 514,
+    "y": 384,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T04:22:11.831Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "m",
+     "a_row": 387,
+     "a_col": 483,
+     "b_row": 384,
+     "b_col": 514,
+     "half": 4,
+     "t": 1794284531831,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 4: plateau (46% of step > 10%); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:30.773Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 4: plateau (46% of step > 10%); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 1087
+   }
+  },
+  {
+   "id": "t=1794284534205",
+   "image": "amir_adnan_096",
+   "type": "m",
+   "A": {
+    "x": 441,
+    "y": 346,
+    "r": 4
+   },
+   "B": {
+    "x": 444,
+    "y": 313,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T04:22:14.205Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "m",
+     "a_row": 346,
+     "a_col": 441,
+     "b_row": 313,
+     "b_col": 444,
+     "half": 4,
+     "t": 1794284534205,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 4: sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:30.776Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 4: sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 1088
+   }
+  },
+  {
+   "id": "t=1794284538437",
+   "image": "amir_adnan_096",
+   "type": "m",
+   "A": {
+    "x": 302,
+    "y": 339,
+    "r": 4
+   },
+   "B": {
+    "x": 263,
+    "y": 337,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T04:22:18.437Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "m",
+     "a_row": 339,
+     "a_col": 302,
+     "b_row": 337,
+     "b_col": 263,
+     "half": 4,
+     "t": 1794284538437,
+     "patch_ok": true,
+     "patch_flags": [],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:30.780Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ]
+    },
+    "v0_index": 1089
+   }
+  },
+  {
+   "id": "t=1794284539883",
+   "image": "amir_adnan_096",
+   "type": "m",
+   "A": {
+    "x": 311,
+    "y": 457,
+    "r": 4
+   },
+   "B": {
+    "x": 264,
+    "y": 459,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T04:22:19.883Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "m",
+     "a_row": 457,
+     "a_col": 311,
+     "b_row": 459,
+     "b_col": 264,
+     "half": 4,
+     "t": 1794284539883,
+     "patch_ok": true,
+     "patch_flags": [],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:30.783Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ]
+    },
+    "v0_index": 1090
+   }
+  },
+  {
+   "id": "t=1794284540964",
+   "image": "amir_adnan_096",
+   "type": "m",
+   "A": {
+    "x": 261,
+    "y": 491,
+    "r": 4
+   },
+   "B": {
+    "x": 213,
+    "y": 494,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T04:22:20.964Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "m",
+     "a_row": 491,
+     "a_col": 261,
+     "b_row": 494,
+     "b_col": 213,
+     "half": 4,
+     "t": 1794284540964,
+     "patch_ok": true,
+     "patch_flags": [],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:30.786Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ]
+    },
+    "v0_index": 1091
+   }
+  },
+  {
+   "id": "t=1794284542330",
+   "image": "amir_adnan_096",
+   "type": "m",
+   "A": {
+    "x": 264,
+    "y": 413,
+    "r": 4
+   },
+   "B": {
+    "x": 215,
+    "y": 413,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T04:22:22.330Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "m",
+     "a_row": 413,
+     "a_col": 264,
+     "b_row": 413,
+     "b_col": 215,
+     "half": 4,
+     "t": 1794284542330,
+     "patch_ok": true,
+     "patch_flags": [],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:30.789Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ]
+    },
+    "v0_index": 1092
+   }
+  },
+  {
+   "id": "t=1794284551747",
+   "image": "amir_adnan_096",
+   "type": "b",
+   "A": {
+    "x": 522,
+    "y": 632,
+    "r": 4
+   },
+   "B": {
+    "x": 519,
+    "y": 587,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T04:22:31.747Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "b",
+     "a_row": 632,
+     "a_col": 522,
+     "b_row": 587,
+     "b_col": 519,
+     "half": 4,
+     "t": 1794284551747,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: plateau (71% of step > 10%)",
+      "B at current half 4: plateau (21% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:30.793Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: plateau (71% of step > 10%)",
+         "B at current half 4: plateau (21% of step > 10%)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 1093
+   }
+  },
+  {
+   "id": "t=1794284553077",
+   "image": "amir_adnan_096",
+   "type": "b",
+   "A": {
+    "x": 362,
+    "y": 620,
+    "r": 4
+   },
+   "B": {
+    "x": 364,
+    "y": 582,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T04:22:33.077Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "b",
+     "a_row": 620,
+     "a_col": 362,
+     "b_row": 582,
+     "b_col": 364,
+     "half": 4,
+     "t": 1794284553077,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: plateau (159% of step > 10%)",
+      "B at current half 4: plateau (141% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:30.797Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: plateau (159% of step > 10%)",
+         "B at current half 4: plateau (141% of step > 10%)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 1094
+   }
+  },
+  {
+   "id": "t=1794284554159",
+   "image": "amir_adnan_096",
+   "type": "b",
+   "A": {
+    "x": 211,
+    "y": 621,
+    "r": 4
+   },
+   "B": {
+    "x": 220,
+    "y": 575,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T04:22:34.159Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "b",
+     "a_row": 621,
+     "a_col": 211,
+     "b_row": 575,
+     "b_col": 220,
+     "half": 4,
+     "t": 1794284554159,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: plateau (355% of step > 10%)",
+      "B at current half 4: plateau (91% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:30.801Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: plateau (355% of step > 10%)",
+         "B at current half 4: plateau (91% of step > 10%)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 1095
+   }
+  },
+  {
+   "id": "t=1794284563562",
+   "image": "amir_adnan_096",
+   "type": "m",
+   "A": {
+    "x": 50,
+    "y": 611,
+    "r": 4
+   },
+   "B": {
+    "x": 58,
+    "y": 569,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T04:22:43.562Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "m",
+     "a_row": 611,
+     "a_col": 50,
+     "b_row": 569,
+     "b_col": 58,
+     "half": 4,
+     "t": 1794284563562,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: own side (reaches 4.7 px, transition starts 1.0); plateau (17% of step > 10%)",
+      "B at current half 4: plateau (12% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:30.807Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: own side (reaches 4.7 px, transition starts 1.0); plateau (17% of step > 10%)",
+         "B at current half 4: plateau (12% of step > 10%)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 1096
+   }
+  },
+  {
+   "id": "t=1794284566595",
+   "image": "amir_adnan_096",
+   "type": "m",
+   "A": {
+    "x": 104,
+    "y": 329,
+    "r": 4
+   },
+   "B": {
+    "x": 109,
+    "y": 299,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T04:22:46.595Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "m",
+     "a_row": 329,
+     "a_col": 104,
+     "b_row": 299,
+     "b_col": 109,
+     "half": 4,
+     "t": 1794284566595,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 4: plateau (52% of step > 10%); homogeneity (spread 0.121 > max(1.5 x 0.049, 2 x 0.032)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:30.811Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 4: plateau (52% of step > 10%); homogeneity (spread 0.121 > max(1.5 x 0.049, 2 x 0.032)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 1097
+   }
+  }
+ ],
+ "s_seed_log": [],
+ "legacy": {
+  "source_set": "heldout",
+  "source_file": "illumination_edge/heldout_frozen/pairs_2026-11-10T04-52-30_autosized.json",
+  "source_sha256": "0308ad8111f5a71887dd926a4cc51fee617e5900c1023933bc4a09393a3f37e5",
+  "migrated_by": "metrics/migrate_v0.py 1.0",
+  "deleted": [
+   {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "i",
+     "a_row": 731,
+     "a_col": 544,
+     "b_row": 804,
+     "b_col": 535,
+     "half": 5,
+     "t": 1794284408267,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-10T04:20:16.833Z"
+      }
+     ],
+     "deleted_at": "2026-11-10T04:20:16.833Z",
+     "deleted_index": 1946
+    },
+    "v0_index": 110
+   },
+   {
+    "v0": {
+     "image": "amir_adnan_096",
+     "type": "m",
+     "a_row": 516,
+     "a_col": 579,
+     "b_row": 502,
+     "b_col": 613,
+     "half": 4,
+     "t": 1794284521267,
+     "edits": [
+      {
+       "op": "delete",
+       "at": "2026-11-10T04:23:03.828Z"
+      }
+     ],
+     "deleted_at": "2026-11-10T04:23:03.828Z",
+     "deleted_index": 1960
+    },
+    "v0_index": 111
+   }
+  ]
+ }
+}
