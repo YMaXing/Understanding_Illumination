@@ -361,6 +361,27 @@ Q8 keep the placeholder, fail loudly; Q9 keep the paths, verify is maintainer-on
   pair until pulled; refuses a code change made on GitHub). check_pr's default base is now
   `origin/metric-pair-annotation`; SETUP.md and README updated.
 
+## Teammate report: greyed s button (2026-11-19)
+
+- Cause: by design since Checkpoint 6, the s type button (targeted s, maintainer-only) is off on images without
+  overlay maps, i.e. every image on an annotator's machine (and the 54 draw54 images here, which have no maps yet).
+  Random s pairs come from the **random s seed** button / r. The explanation was only a tooltip on a *disabled*
+  button: Chrome shows neither the tooltip nor any reaction to a click, so it never reached her.
+- Fix: the button is greyed but clickable (class `off`, aria-disabled); a click or the s key keeps the current type,
+  shows the reason in the banner and highlights the seed button for 3 s. Guide: tour row 3 and troubleshooting.
+  Selftest step 12b on adke_neel_026 (no overlays): real mouse click on s, then the seed button proposes a seed with
+  no overlays (49/49).
+- Found on the way (the owner's 349 new pairs on 12 images, 2026-11-19, uncommitted): `migrate_v0.py verify` assumed
+  every pair on a migrated image was migrated (KeyError on tool-made pairs). Now it checks only pairs with
+  `legacy.v0`, including ones deleted later (tombstones), and skips the field check for pairs edited in the tool
+  (`last_edited_by`). `test_cli_prediction_path` no longer hardcodes 39 pairs.
+- **Open question (Q11): float32 tie on the widened H rule.** Textured s pairs pass when `H_R <= max(tau, H_I)`;
+  all_R has `H_R == H_I` exactly and passes on the tie. The same prediction stored as float32 (the required
+  format) gives `H_R = H_I + 1e-7` and fails: pair t=1795055865898 on taiwei_cui_070 (H_I 0.1126111, tolH_wide =
+  H_I). `test_cli_prediction_path` fails on it (deliberately left failing). Lean: compare with a numerical slack
+  of 1e-6 on input-referenced tolerances (`H_R <= max(tau, H_I) + 1e-6`), far below any meaningful excursion; the
+  alternative is to keep the rule and document that ties are precision-dependent.
+
 ## Deviations from Part A (implementation; approved at Checkpoint 1)
 
 1. **Patch size per end inside A/B:** `A = {x, y, r}`, `B = {x, y, r}` instead of one pair-level `r` (old pairs have

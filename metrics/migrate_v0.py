@@ -249,7 +249,10 @@ def verify(cfg):
         mine = {st: f for st, f in files.items() if f["set"] == name}
         if set(mine) != set(cfg["image_sets"][name]):
             problems.append(f"{name}: files {sorted(mine)} != config list")
-        P = sorted(((p["legacy"]["v0_index"], p) for f in mine.values() for p in f["pairs"]), key=lambda kv: kv[0])
+        # Only migrated pairs (legacy.v0), live or deleted later in the tool: pairs made in the tool have no v0 record.
+        P = sorted(((p["legacy"]["v0_index"], p) for f in mine.values()
+                    for p in f["pairs"] + [t["pair"] for t in f.get("deleted_pairs", [])] if "v0" in p.get("legacy", {})),
+                   key=lambda kv: kv[0])
         D = sorted(((d["v0_index"], d["v0"]) for f in mine.values() for d in f["legacy"].get("deleted", [])), key=lambda kv: kv[0])
         if [p["legacy"]["v0"] for _, p in P] != s["obj"]["pairs"] or [k for k, _ in P] != list(range(len(s["obj"]["pairs"]))):
             problems.append(f"{name}: rebuilt pairs list differs from the source")
@@ -260,6 +263,8 @@ def verify(cfg):
             if man["sources"][name]["fields"] != hdr or man["sources"][name]["sha256"] != s["sha"]:
                 problems.append(f"{name}: manifest source fields differ from the source")
         for _, p in P:
+            if p.get("last_edited_by"):
+                continue                               # edited in the tool after migration: v0 keeps the original
             q = p["legacy"]["v0"]
             want_type = relabels[p["id"]]["to"] if p["id"] in relabels else q["type"]
             if (p["id"] != f"t={int(q['t'])}" or p["type"] != want_type or p["A"] != end(q, "a") or p["B"] != end(q, "b")

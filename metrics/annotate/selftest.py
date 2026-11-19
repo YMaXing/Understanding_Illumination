@@ -37,6 +37,7 @@ def powershell():
     return (K.load_config().get("tools") or {}).get("powershell") or PS_STD
 NAME = "Selftest Bot"
 NAME_ID = "selftest_bot"              # the stable id the server derives from the name (schema 1.2)
+NO_OVL = "adke_neel_026"                # a draw54 image: no overlay maps on any machine yet
 
 
 def winpath(p):
@@ -254,6 +255,23 @@ def build(url, shot):
     s.ev("pairs_after_relabel", "fetch('/api/ann/'+__ann.S.stem).then(r=>r.json()).then(f=>JSON.stringify(f.pairs))")
     s.ev("urls", "performance.getEntriesByType('resource').map(r=>new URL(r.name).pathname)")
     s.append({"shot": shot})
+    # 12b. an image without overlay maps (an annotator's machine): the greyed s button, clicked with the mouse, says why
+    #      and points to the seed button; the seed button then works with no overlays
+    s.append({"nav": url.split("?")[0] + "?image=" + NO_OVL})
+    s.wait("__ann.modal() && __ann.title().includes('assigned to')"); s.key("1"); s.ready()
+    btn = lambda sel: f"(()=>{{const r=document.querySelector('{sel}').getBoundingClientRect(); return [r.x+r.width/2, r.y+r.height/2]}})()"
+    s.ev("s_off_state", "(()=>{const b=document.querySelector('#types button[data-type=\"s\"]'); "
+                        "return [Object.keys(__ann.S.ovlImg).length, b.classList.contains('off'), b.disabled, __ann.S.type]})()")
+    s.click_js(btn('#types button[data-type="s"]')); s.append({"sleep": 300})
+    s.ev("s_off_click", "[__ann.S.type, !document.getElementById('banner').hidden, document.getElementById('banner').textContent, "
+                        "document.getElementById('seed').classList.contains('hint')]")
+    s.append({"shot": shot.replace("screenshot.png", "screenshot_s_off.png")})
+    s.click_js(btn("#seed")); s.wait("!!__ann.S.seed")
+    s.ev("seed_no_ovl", "[!!__ann.S.seed, __ann.S.file.s_seed_log[__ann.S.file.s_seed_log.length-1].outcome]")
+    s.key("Escape"); s.wait("__ann.modal() && document.getElementById('m_text')")
+    s.typekeys("selftest"); s.key("Enter"); s.wait("!__ann.modal()")
+    s.ready()                                      # saved: leaving with unsaved changes opens the browser's own prompt
+    s.ev("seed_no_ovl_after", "__ann.S.file.s_seed_log[__ann.S.file.s_seed_log.length-1]")
     # 13. review page (separate page; server started with --review)
     s.append({"nav": url.replace("/?image=", "/review.html?run=baselines_v1&image=")})
     s.wait("window.__rev && __rev.ready()", 30000)
@@ -285,6 +303,7 @@ def main():
     real_sha = hashlib.sha256(real.read_bytes()).hexdigest()
     shutil.copy2(real, ann / real.name)
     shutil.copy2(M / "annotations" / "annotators.json", ann / "annotators.json")
+    shutil.copy2(M / "annotations" / f"{NO_OVL}.json", ann / f"{NO_OVL}.json")
     srv = SV.make_server(HERE / "cache" / "manifest.json", "127.0.0.1", 0, annotations=str(ann), review=str(M / "runs"))
     port = srv.server_address[1]
     threading.Thread(target=srv.serve_forever, daemon=True).start()
@@ -339,6 +358,13 @@ def main():
     ok("exhausted mark saved with name and note; removable", (es[0] or {}).get("b", {}).get("note") == "only two edges where both change" and es[0]["b"]["by"] == NAME_ID
        and "exhausted" in es[1] and g("exh_removed") is None, [es, g("exh_removed")])
     ok("image picker and progress show the image's data split", (g("split_label") or [""])[0].split(" · ")[0] in ("TRAIN", "VAL", "TEST") and g("split_label")[1] is True, g("split_label"))
+    so, sc = g("s_off_state") or [None] * 4, g("s_off_click") or [None] * 4
+    ok("no overlays: the s button is greyed but clickable (not disabled)", so[0] == 0 and so[1] is True and so[2] is False, so)
+    ok("no overlays: clicking s keeps the type, shows why in the banner and highlights the seed button",
+       sc[0] == so[3] and sc[0] != "s" and sc[1] is True and "random s seed" in (sc[2] or "") and sc[3] is True, sc)
+    sn, sa = g("seed_no_ovl") or [False, None], g("seed_no_ovl_after") or {}
+    ok("no overlays: the random s seed button proposes a seed (then abandoned with a reason)",
+       sn == [True, "pending"] and sa.get("outcome") == "abandoned" and sa.get("reason") == "selftest", [sn, sa])
     aw = g("assigned_warning") or ["", 0]
     ok("opening another annotator's image warns and asks (open / blind relabel / stay)", "assigned to Yueren" in aw[0] and aw[1] == 3, aw)
     rc = g("rename_collision") or ["", ""]
