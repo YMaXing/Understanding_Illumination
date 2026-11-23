@@ -97,9 +97,21 @@ def last_snapshot(g, parent):
     return None
 
 
-def not_contained(g, parent, src):
-    """Annotation files on `parent` whose content metrics-v1 does not already contain (merge would change it)."""
+def same_content(a, b):
+    """Annotation files equal up to order: pairs, tombstones and seed-log entries are compared by id / seed."""
+    key = dict(pairs="id", deleted_pairs="id", s_seed_log="seed")
+    norm = lambda f: {k: ({json.dumps(x, sort_keys=True) for x in v} if k in key else v) for k, v in f.items()}
+    return norm(a) == norm(b)
+
+
+def not_contained(g, parent, src, snap=None):
+    """Annotation files changed on `parent` since the last snapshot `snap` (all of them if there is none) whose
+    content metrics-v1 does not already contain (merging them in would change it). A file GitHub has not touched
+    since the snapshot is metrics-v1's own earlier version: later local edits and deletions are not a conflict."""
     theirs, mine = g.blobs(parent, ANN), g.blobs(src, ANN)
+    if snap:
+        touched = set(g.run("diff", "--name-only", snap, parent, "--", ANN).splitlines())
+        theirs = {p: b for p, b in theirs.items() if p in touched}
     bad = []
     for path, blob in sorted(theirs.items()):
         if mine.get(path) == blob:
@@ -120,7 +132,7 @@ def not_contained(g, parent, src):
                 bad.append(f"{path}: relabels not contained")
         elif "/" not in name and name.endswith(".json"):
             merged, rep = MR.merge_file(m, t)
-            if rep["conflicts"] or merged != m:
+            if rep["conflicts"] or not same_content(merged, m):
                 bad.append(f"{path}: +{len(rep['added'])} entries, {len(rep['conflicts'])} conflicts")
         else:
             bad.append(f"{path}: differs")
@@ -141,7 +153,7 @@ def build(repo, remote=REMOTE, base="origin/main", trailers=()):
                  if (p.startswith("metrics/") and not p.startswith(ANN)) or p == HOOK]
         if moved:
             raise SystemExit("changed on GitHub since the last snapshot (would be overwritten):\n  " + "\n  ".join(moved))
-    bad = not_contained(g, parent, src)
+    bad = not_contained(g, parent, src, snap)
     if bad:
         raise SystemExit("annotations on GitHub that metrics-v1 does not contain yet:\n  " + "\n  ".join(bad) +
                          "\nRun: metrics/run.sh tools/publish.py pull --apply, then commit with "

@@ -3262,9 +3262,1479 @@
     },
     "v0_index": 1423
    }
+  },
+  {
+   "id": "t=1795060428816",
+   "image": "baskar_akilan_005",
+   "type": "d",
+   "A": {
+    "x": 623,
+    "y": 880,
+    "r": 4
+   },
+   "B": {
+    "x": 47,
+    "y": 987,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-19T03:53:48.816Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "same",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-19T03:59:28.992Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-19T03:53:51.192Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 623,
+       "y": 880,
+       "r": 2
+      },
+      "B": {
+       "x": 455,
+       "y": 865,
+       "r": 2
+      }
+     },
+     "after": {
+      "A": {
+       "x": 623,
+       "y": 880,
+       "r": 4
+      },
+      "B": {
+       "x": 455,
+       "y": 865,
+       "r": 4
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-19T03:53:51.357Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 623,
+       "y": 880,
+       "r": 3
+      },
+      "B": {
+       "x": 455,
+       "y": 865,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 623,
+       "y": 880,
+       "r": 4
+      },
+      "B": {
+       "x": 455,
+       "y": 865,
+       "r": 4
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-19T03:59:28.992Z",
+     "by": "yueren",
+     "before": {
+      "B": {
+       "x": 455,
+       "y": 865,
+       "r": 4
+      }
+     },
+     "after": {
+      "B": {
+       "x": 47,
+       "y": 987,
+       "r": 4
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795060436330",
+   "image": "baskar_akilan_005",
+   "type": "d",
+   "A": {
+    "x": 402,
+    "y": 857,
+    "r": 4
+   },
+   "B": {
+    "x": 725,
+    "y": 969,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-19T03:53:56.330Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-19T03:54:00.119Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-19T03:53:58.759Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 402,
+       "y": 857,
+       "r": 2
+      },
+      "B": {
+       "x": 725,
+       "y": 969,
+       "r": 2
+      }
+     },
+     "after": {
+      "A": {
+       "x": 402,
+       "y": 857,
+       "r": 4
+      },
+      "B": {
+       "x": 725,
+       "y": 969,
+       "r": 4
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-19T03:54:00.119Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 402,
+       "y": 857,
+       "r": 3
+      },
+      "B": {
+       "x": 725,
+       "y": 969,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 402,
+       "y": 857,
+       "r": 4
+      },
+      "B": {
+       "x": 725,
+       "y": 969,
+       "r": 4
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795060446716",
+   "image": "baskar_akilan_005",
+   "type": "d",
+   "A": {
+    "x": 623,
+    "y": 774,
+    "r": 3
+   },
+   "B": {
+    "x": 517,
+    "y": 261,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-19T03:54:06.716Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-19T03:54:10.554Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-19T03:54:10.554Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 623,
+       "y": 774,
+       "r": 2
+      },
+      "B": {
+       "x": 517,
+       "y": 261,
+       "r": 2
+      }
+     },
+     "after": {
+      "A": {
+       "x": 623,
+       "y": 774,
+       "r": 3
+      },
+      "B": {
+       "x": 517,
+       "y": 261,
+       "r": 3
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795060456173",
+   "image": "baskar_akilan_005",
+   "type": "d",
+   "A": {
+    "x": 623,
+    "y": 544,
+    "r": 6
+   },
+   "B": {
+    "x": 427,
+    "y": 433,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-19T03:54:16.173Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-19T03:54:18.423Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-19T03:54:18.018Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 623,
+       "y": 544,
+       "r": 2
+      },
+      "B": {
+       "x": 427,
+       "y": 433,
+       "r": 2
+      }
+     },
+     "after": {
+      "A": {
+       "x": 623,
+       "y": 544,
+       "r": 6
+      },
+      "B": {
+       "x": 427,
+       "y": 433,
+       "r": 6
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-19T03:54:18.175Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 623,
+       "y": 544,
+       "r": 3
+      },
+      "B": {
+       "x": 427,
+       "y": 433,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 623,
+       "y": 544,
+       "r": 6
+      },
+      "B": {
+       "x": 427,
+       "y": 433,
+       "r": 6
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-19T03:54:18.325Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 623,
+       "y": 544,
+       "r": 4
+      },
+      "B": {
+       "x": 427,
+       "y": 433,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 623,
+       "y": 544,
+       "r": 6
+      },
+      "B": {
+       "x": 427,
+       "y": 433,
+       "r": 6
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-19T03:54:18.423Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 623,
+       "y": 544,
+       "r": 5
+      },
+      "B": {
+       "x": 427,
+       "y": 433,
+       "r": 5
+      }
+     },
+     "after": {
+      "A": {
+       "x": 623,
+       "y": 544,
+       "r": 6
+      },
+      "B": {
+       "x": 427,
+       "y": 433,
+       "r": 6
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795060481314",
+   "image": "baskar_akilan_005",
+   "type": "d",
+   "A": {
+    "x": 238,
+    "y": 788,
+    "r": 3
+   },
+   "B": {
+    "x": 516,
+    "y": 284,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-19T03:54:41.314Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-19T03:54:44.582Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-19T03:54:43.606Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 238,
+       "y": 788,
+       "r": 2
+      },
+      "B": {
+       "x": 516,
+       "y": 284,
+       "r": 2
+      }
+     },
+     "after": {
+      "A": {
+       "x": 238,
+       "y": 788,
+       "r": 3
+      },
+      "B": {
+       "x": 516,
+       "y": 284,
+       "r": 3
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-19T03:54:43.929Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 238,
+       "y": 788,
+       "r": 3
+      },
+      "B": {
+       "x": 516,
+       "y": 284,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 238,
+       "y": 788,
+       "r": 3
+      },
+      "B": {
+       "x": 516,
+       "y": 284,
+       "r": 3
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-19T03:54:44.582Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 238,
+       "y": 788,
+       "r": 4
+      },
+      "B": {
+       "x": 516,
+       "y": 284,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 238,
+       "y": 788,
+       "r": 3
+      },
+      "B": {
+       "x": 516,
+       "y": 284,
+       "r": 3
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795060671159",
+   "image": "baskar_akilan_005",
+   "type": "s",
+   "A": {
+    "x": 387,
+    "y": 516,
+    "r": 2
+   },
+   "B": {
+    "x": 376,
+    "y": 469,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-19T03:57:51.159Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "shadow",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795060674920",
+   "image": "baskar_akilan_005",
+   "type": "s",
+   "A": {
+    "x": 62,
+    "y": 64,
+    "r": 2
+   },
+   "B": {
+    "x": 55,
+    "y": 129,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-19T03:57:54.920Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795060692127",
+   "image": "baskar_akilan_005",
+   "type": "s",
+   "A": {
+    "x": 493,
+    "y": 425,
+    "r": 2
+   },
+   "B": {
+    "x": 487,
+    "y": 476,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-19T03:58:12.127Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795060695288",
+   "image": "baskar_akilan_005",
+   "type": "s",
+   "A": {
+    "x": 245,
+    "y": 793,
+    "r": 2
+   },
+   "B": {
+    "x": 176,
+    "y": 787,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-19T03:58:15.288Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795060697581",
+   "image": "baskar_akilan_005",
+   "type": "s",
+   "A": {
+    "x": 734,
+    "y": 541,
+    "r": 2
+   },
+   "B": {
+    "x": 696,
+    "y": 514,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-19T03:58:17.581Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795060700471",
+   "image": "baskar_akilan_005",
+   "type": "s",
+   "A": {
+    "x": 702,
+    "y": 646,
+    "r": 2
+   },
+   "B": {
+    "x": 710,
+    "y": 620,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-19T03:58:20.471Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795060704394",
+   "image": "baskar_akilan_005",
+   "type": "s",
+   "A": {
+    "x": 259,
+    "y": 566,
+    "r": 2
+   },
+   "B": {
+    "x": 204,
+    "y": 558,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-19T03:58:24.394Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795060708742",
+   "image": "baskar_akilan_005",
+   "type": "s",
+   "A": {
+    "x": 356,
+    "y": 59,
+    "r": 2
+   },
+   "B": {
+    "x": 370,
+    "y": 100,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-19T03:58:28.742Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "shadow",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795060712248",
+   "image": "baskar_akilan_005",
+   "type": "s",
+   "A": {
+    "x": 317,
+    "y": 490,
+    "r": 2
+   },
+   "B": {
+    "x": 344,
+    "y": 453,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-19T03:58:32.248Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "shadow",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795060723482",
+   "image": "baskar_akilan_005",
+   "type": "s",
+   "A": {
+    "x": 109,
+    "y": 623,
+    "r": 5
+   },
+   "B": {
+    "x": 152,
+    "y": 645,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-19T03:58:43.482Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-19T03:58:46.847Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-19T03:58:46.504Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 109,
+       "y": 623,
+       "r": 2
+      },
+      "B": {
+       "x": 152,
+       "y": 645,
+       "r": 2
+      }
+     },
+     "after": {
+      "A": {
+       "x": 109,
+       "y": 623,
+       "r": 5
+      },
+      "B": {
+       "x": 152,
+       "y": 645,
+       "r": 5
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-19T03:58:46.688Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 109,
+       "y": 623,
+       "r": 3
+      },
+      "B": {
+       "x": 152,
+       "y": 645,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 109,
+       "y": 623,
+       "r": 5
+      },
+      "B": {
+       "x": 152,
+       "y": 645,
+       "r": 5
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-19T03:58:46.847Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 109,
+       "y": 623,
+       "r": 4
+      },
+      "B": {
+       "x": 152,
+       "y": 645,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 109,
+       "y": 623,
+       "r": 5
+      },
+      "B": {
+       "x": 152,
+       "y": 645,
+       "r": 5
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795060729792",
+   "image": "baskar_akilan_005",
+   "type": "s",
+   "A": {
+    "x": 293,
+    "y": 935,
+    "r": 5
+   },
+   "B": {
+    "x": 238,
+    "y": 968,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-19T03:58:49.792Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-19T03:58:52.447Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-19T03:58:52.086Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 293,
+       "y": 935,
+       "r": 2
+      },
+      "B": {
+       "x": 238,
+       "y": 968,
+       "r": 2
+      }
+     },
+     "after": {
+      "A": {
+       "x": 293,
+       "y": 935,
+       "r": 5
+      },
+      "B": {
+       "x": 238,
+       "y": 968,
+       "r": 5
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-19T03:58:52.273Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 293,
+       "y": 935,
+       "r": 3
+      },
+      "B": {
+       "x": 238,
+       "y": 968,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 293,
+       "y": 935,
+       "r": 5
+      },
+      "B": {
+       "x": 238,
+       "y": 968,
+       "r": 5
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-19T03:58:52.447Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 293,
+       "y": 935,
+       "r": 4
+      },
+      "B": {
+       "x": 238,
+       "y": 968,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 293,
+       "y": 935,
+       "r": 5
+      },
+      "B": {
+       "x": 238,
+       "y": 968,
+       "r": 5
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795060740070",
+   "image": "baskar_akilan_005",
+   "type": "s",
+   "A": {
+    "x": 575,
+    "y": 341,
+    "r": 5
+   },
+   "B": {
+    "x": 634,
+    "y": 328,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-19T03:59:00.070Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-19T03:59:02.519Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-19T03:59:02.202Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 575,
+       "y": 341,
+       "r": 2
+      },
+      "B": {
+       "x": 634,
+       "y": 328,
+       "r": 2
+      }
+     },
+     "after": {
+      "A": {
+       "x": 575,
+       "y": 341,
+       "r": 5
+      },
+      "B": {
+       "x": 634,
+       "y": 328,
+       "r": 5
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-19T03:59:02.377Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 575,
+       "y": 341,
+       "r": 3
+      },
+      "B": {
+       "x": 634,
+       "y": 328,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 575,
+       "y": 341,
+       "r": 5
+      },
+      "B": {
+       "x": 634,
+       "y": 328,
+       "r": 5
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-19T03:59:02.519Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 575,
+       "y": 341,
+       "r": 4
+      },
+      "B": {
+       "x": 634,
+       "y": 328,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 575,
+       "y": 341,
+       "r": 5
+      },
+      "B": {
+       "x": 634,
+       "y": 328,
+       "r": 5
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795060746195",
+   "image": "baskar_akilan_005",
+   "type": "s",
+   "A": {
+    "x": 609,
+    "y": 806,
+    "r": 2
+   },
+   "B": {
+    "x": 631,
+    "y": 849,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-19T03:59:06.195Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795060750805",
+   "image": "baskar_akilan_005",
+   "type": "s",
+   "A": {
+    "x": 609,
+    "y": 540,
+    "r": 2
+   },
+   "B": {
+    "x": 642,
+    "y": 506,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-19T03:59:10.805Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795060756939",
+   "image": "baskar_akilan_005",
+   "type": "s",
+   "A": {
+    "x": 369,
+    "y": 591,
+    "r": 3
+   },
+   "B": {
+    "x": 382,
+    "y": 642,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-19T03:59:16.939Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "shadow",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-19T03:59:18.670Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-19T03:59:18.670Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 369,
+       "y": 591,
+       "r": 2
+      },
+      "B": {
+       "x": 382,
+       "y": 642,
+       "r": 2
+      }
+     },
+     "after": {
+      "A": {
+       "x": 369,
+       "y": 591,
+       "r": 3
+      },
+      "B": {
+       "x": 382,
+       "y": 642,
+       "r": 3
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795060775960",
+   "image": "baskar_akilan_005",
+   "type": "d",
+   "A": {
+    "x": 60,
+    "y": 788,
+    "r": 4
+   },
+   "B": {
+    "x": 699,
+    "y": 771,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-19T03:59:35.960Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "same",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-19T03:59:38.588Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-19T03:59:38.377Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 60,
+       "y": 788,
+       "r": 2
+      },
+      "B": {
+       "x": 699,
+       "y": 771,
+       "r": 2
+      }
+     },
+     "after": {
+      "A": {
+       "x": 60,
+       "y": 788,
+       "r": 4
+      },
+      "B": {
+       "x": 699,
+       "y": 771,
+       "r": 4
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-19T03:59:38.588Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 60,
+       "y": 788,
+       "r": 3
+      },
+      "B": {
+       "x": 699,
+       "y": 771,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 60,
+       "y": 788,
+       "r": 4
+      },
+      "B": {
+       "x": 699,
+       "y": 771,
+       "r": 4
+      }
+     }
+    }
+   ]
   }
  ],
- "s_seed_log": [],
+ "s_seed_log": [
+  {
+   "index": 0,
+   "seed": "20261118:baskar_akilan_005:0",
+   "x": 393,
+   "y": 516,
+   "proposed_at": "2026-11-19T03:57:48.860Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-19T03:57:51.827Z",
+   "resolved_by": "yueren",
+   "final_x": 387,
+   "final_y": 516,
+   "pair_id": "t=1795060671159"
+  },
+  {
+   "index": 1,
+   "seed": "20261118:baskar_akilan_005:1",
+   "x": 62,
+   "y": 64,
+   "proposed_at": "2026-11-19T03:57:54.204Z",
+   "proposed_by": "yueren",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-19T03:57:55.915Z",
+   "resolved_by": "yueren",
+   "final_x": 62,
+   "final_y": 64,
+   "pair_id": "t=1795060674920"
+  },
+  {
+   "index": 2,
+   "seed": "20261118:baskar_akilan_005:2",
+   "x": 502,
+   "y": 422,
+   "proposed_at": "2026-11-19T03:57:57.959Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-19T03:58:12.738Z",
+   "resolved_by": "yueren",
+   "final_x": 493,
+   "final_y": 425,
+   "pair_id": "t=1795060692127"
+  },
+  {
+   "index": 3,
+   "seed": "20261118:baskar_akilan_005:3",
+   "x": 245,
+   "y": 793,
+   "proposed_at": "2026-11-19T03:58:13.594Z",
+   "proposed_by": "yueren",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-19T03:58:15.937Z",
+   "resolved_by": "yueren",
+   "final_x": 245,
+   "final_y": 793,
+   "pair_id": "t=1795060695288"
+  },
+  {
+   "index": 4,
+   "seed": "20261118:baskar_akilan_005:4",
+   "x": 734,
+   "y": 541,
+   "proposed_at": "2026-11-19T03:58:16.427Z",
+   "proposed_by": "yueren",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-19T03:58:18.374Z",
+   "resolved_by": "yueren",
+   "final_x": 734,
+   "final_y": 541,
+   "pair_id": "t=1795060697581"
+  },
+  {
+   "index": 5,
+   "seed": "20261118:baskar_akilan_005:5",
+   "x": 702,
+   "y": 646,
+   "proposed_at": "2026-11-19T03:58:20.233Z",
+   "proposed_by": "yueren",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-19T03:58:21.246Z",
+   "resolved_by": "yueren",
+   "final_x": 702,
+   "final_y": 646,
+   "pair_id": "t=1795060700471"
+  },
+  {
+   "index": 6,
+   "seed": "20261118:baskar_akilan_005:6",
+   "x": 259,
+   "y": 566,
+   "proposed_at": "2026-11-19T03:58:23.654Z",
+   "proposed_by": "yueren",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-19T03:58:25.285Z",
+   "resolved_by": "yueren",
+   "final_x": 259,
+   "final_y": 566,
+   "pair_id": "t=1795060704394"
+  },
+  {
+   "index": 7,
+   "seed": "20261118:baskar_akilan_005:7",
+   "x": 356,
+   "y": 59,
+   "proposed_at": "2026-11-19T03:58:26.806Z",
+   "proposed_by": "yueren",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-19T03:58:29.296Z",
+   "resolved_by": "yueren",
+   "final_x": 356,
+   "final_y": 59,
+   "pair_id": "t=1795060708742"
+  },
+  {
+   "index": 8,
+   "seed": "20261118:baskar_akilan_005:8",
+   "x": 317,
+   "y": 490,
+   "proposed_at": "2026-11-19T03:58:30.788Z",
+   "proposed_by": "yueren",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-19T03:58:32.993Z",
+   "resolved_by": "yueren",
+   "final_x": 317,
+   "final_y": 490,
+   "pair_id": "t=1795060712248"
+  },
+  {
+   "index": 9,
+   "seed": "20261118:baskar_akilan_005:9",
+   "x": 109,
+   "y": 623,
+   "proposed_at": "2026-11-19T03:58:41.674Z",
+   "proposed_by": "yueren",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-19T03:58:45.585Z",
+   "resolved_by": "yueren",
+   "final_x": 109,
+   "final_y": 623,
+   "pair_id": "t=1795060723482"
+  },
+  {
+   "index": 10,
+   "seed": "20261118:baskar_akilan_005:10",
+   "x": 293,
+   "y": 935,
+   "proposed_at": "2026-11-19T03:58:48.210Z",
+   "proposed_by": "yueren",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-19T03:58:51.540Z",
+   "resolved_by": "yueren",
+   "final_x": 293,
+   "final_y": 935,
+   "pair_id": "t=1795060729792"
+  },
+  {
+   "index": 11,
+   "seed": "20261118:baskar_akilan_005:11",
+   "x": 575,
+   "y": 341,
+   "proposed_at": "2026-11-19T03:58:59.354Z",
+   "proposed_by": "yueren",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-19T03:59:01.675Z",
+   "resolved_by": "yueren",
+   "final_x": 575,
+   "final_y": 341,
+   "pair_id": "t=1795060740070"
+  },
+  {
+   "index": 12,
+   "seed": "20261118:baskar_akilan_005:12",
+   "x": 609,
+   "y": 797,
+   "proposed_at": "2026-11-19T03:59:04.380Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-19T03:59:06.919Z",
+   "resolved_by": "yueren",
+   "final_x": 609,
+   "final_y": 806,
+   "pair_id": "t=1795060746195"
+  },
+  {
+   "index": 13,
+   "seed": "20261118:baskar_akilan_005:13",
+   "x": 609,
+   "y": 540,
+   "proposed_at": "2026-11-19T03:59:09.899Z",
+   "proposed_by": "yueren",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-19T03:59:12.319Z",
+   "resolved_by": "yueren",
+   "final_x": 609,
+   "final_y": 540,
+   "pair_id": "t=1795060750805"
+  },
+  {
+   "index": 14,
+   "seed": "20261118:baskar_akilan_005:14",
+   "x": 369,
+   "y": 591,
+   "proposed_at": "2026-11-19T03:59:14.317Z",
+   "proposed_by": "yueren",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-19T03:59:17.648Z",
+   "resolved_by": "yueren",
+   "final_x": 369,
+   "final_y": 591,
+   "pair_id": "t=1795060756939"
+  }
+ ],
  "legacy": {
   "source_set": "glossy_dev",
   "source_file": "illumination_edge/glossy_dev/frozen/pairs_2026-11-15T19-09-15.json",
@@ -3421,5 +4891,6 @@
     "v0_index": 85
    }
   ]
- }
+ },
+ "deleted_pairs": []
 }

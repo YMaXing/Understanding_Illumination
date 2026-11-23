@@ -75,6 +75,23 @@ def test_publish_flow(repos):
     assert PB.build(work) == c1                                         # nothing new: no second commit
     git(work, "push", "-q", "origin", PB.BRANCH)
 
+    # the maintainer edits one pair and deletes two (tombstones in deletion order, not id order); GitHub is unchanged
+    fp = work / "metrics" / "annotations" / f"{STEM}.json"
+    for k in range(3):
+        add_pair(fp, "yueren", f"t=999999999810{k}")
+    f = json.loads(fp.read_text())
+    f["pairs"][0]["note"] = "edited after publishing"
+    f["pairs"][0]["last_edited_by"] = "yueren"
+    gone = sorted(f["pairs"][1:3], key=lambda q: q["id"], reverse=True)
+    f["pairs"] = [q for q in f["pairs"] if q not in gone]
+    f["deleted_pairs"] = f.get("deleted_pairs", []) + [dict(id=q["id"], deleted_at="2026-11-20T00:00:00Z",
+                                                            deleted_by="yueren", pair=q) for q in gone]
+    fp.write_text(json.dumps(f, indent=1))
+    commit_all(work, "annotations: own edits")
+    c2 = PB.build(work)                                                 # not a conflict: GitHub has not touched the file
+    assert json.loads(git(work, "show", f"{c2}:metrics/annotations/{STEM}.json")) == f
+    git(work, "push", "-q", "origin", PB.BRANCH)
+
     her = tmp / "her"                                                   # annotator: clone, branch, annotate, "merged PR"
     subprocess.run(["git", "clone", "-q", "--branch", PB.BRANCH, str(origin), str(her)], check=True)
     add_pair(her / "metrics" / "annotations" / f"{STEM}.json", "annotator_b", "t=9999999999001")
