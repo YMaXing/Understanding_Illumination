@@ -9,8 +9,2006 @@
  "image_sha256": "8eaa88fd39709bcffd13370782463581d38fc84a4939dc226c0015483cb8cc9b",
  "image_pixel_sha256": "0c689df20acc8bed9c2738eb62e95cb14c7a91d30012379f49033cfe681605e8",
  "assigned_to": "annotator_b",
- "pairs": [],
- "s_seed_log": [],
+ "pairs": [
+  {
+   "id": "t=1795062677765",
+   "image": "visaria_keval_054",
+   "type": "m",
+   "A": {
+    "x": 317,
+    "y": 781,
+    "r": 4
+   },
+   "B": {
+    "x": 373,
+    "y": 803,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-19T04:31:17.765Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795062679982",
+   "image": "visaria_keval_054",
+   "type": "m",
+   "A": {
+    "x": 384,
+    "y": 669,
+    "r": 4
+   },
+   "B": {
+    "x": 428,
+    "y": 682,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-19T04:31:19.982Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795062682431",
+   "image": "visaria_keval_054",
+   "type": "m",
+   "A": {
+    "x": 403,
+    "y": 761,
+    "r": 4
+   },
+   "B": {
+    "x": 430,
+    "y": 715,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-19T04:31:22.431Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795062685198",
+   "image": "visaria_keval_054",
+   "type": "m",
+   "A": {
+    "x": 248,
+    "y": 908,
+    "r": 4
+   },
+   "B": {
+    "x": 302,
+    "y": 923,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-19T04:31:25.198Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795062691281",
+   "image": "visaria_keval_054",
+   "type": "m",
+   "A": {
+    "x": 694,
+    "y": 420,
+    "r": 4
+   },
+   "B": {
+    "x": 647,
+    "y": 405,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-19T04:31:31.281Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795062695081",
+   "image": "visaria_keval_054",
+   "type": "m",
+   "A": {
+    "x": 734,
+    "y": 627,
+    "r": 4
+   },
+   "B": {
+    "x": 676,
+    "y": 611,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-19T04:31:35.081Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795062697148",
+   "image": "visaria_keval_054",
+   "type": "m",
+   "A": {
+    "x": 676,
+    "y": 567,
+    "r": 4
+   },
+   "B": {
+    "x": 617,
+    "y": 554,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-19T04:31:37.148Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795062698881",
+   "image": "visaria_keval_054",
+   "type": "m",
+   "A": {
+    "x": 607,
+    "y": 894,
+    "r": 4
+   },
+   "B": {
+    "x": 549,
+    "y": 874,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-19T04:31:38.881Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795062701131",
+   "image": "visaria_keval_054",
+   "type": "m",
+   "A": {
+    "x": 606,
+    "y": 820,
+    "r": 4
+   },
+   "B": {
+    "x": 631,
+    "y": 769,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-19T04:31:41.131Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795204410751",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 471,
+    "y": 508,
+    "r": 4
+   },
+   "B": {
+    "x": 436,
+    "y": 571,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:53:30.751Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204414284",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 448,
+    "y": 505,
+    "r": 4
+   },
+   "B": {
+    "x": 425,
+    "y": 546,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:53:34.284Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204417451",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 419,
+    "y": 503,
+    "r": 4
+   },
+   "B": {
+    "x": 391,
+    "y": 548,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:53:37.451Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204421217",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 399,
+    "y": 494,
+    "r": 4
+   },
+   "B": {
+    "x": 371,
+    "y": 543,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:53:41.217Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204424734",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 366,
+    "y": 491,
+    "r": 4
+   },
+   "B": {
+    "x": 344,
+    "y": 534,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:53:44.734Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204428283",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 339,
+    "y": 494,
+    "r": 4
+   },
+   "B": {
+    "x": 316,
+    "y": 540,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:53:48.283Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204431984",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 315,
+    "y": 491,
+    "r": 4
+   },
+   "B": {
+    "x": 290,
+    "y": 534,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:53:51.984Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204435550",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 290,
+    "y": 492,
+    "r": 4
+   },
+   "B": {
+    "x": 274,
+    "y": 522,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:53:55.550Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204440553",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 533,
+    "y": 471,
+    "r": 4
+   },
+   "B": {
+    "x": 534,
+    "y": 520,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:54:00.553Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204445566",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 263,
+    "y": 482,
+    "r": 4
+   },
+   "B": {
+    "x": 245,
+    "y": 521,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:54:05.566Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204458700",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 235,
+    "y": 478,
+    "r": 4
+   },
+   "B": {
+    "x": 214,
+    "y": 524,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:54:18.700Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204464017",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 210,
+    "y": 475,
+    "r": 4
+   },
+   "B": {
+    "x": 179,
+    "y": 523,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:54:24.017Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204470350",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 421,
+    "y": 372,
+    "r": 4
+   },
+   "B": {
+    "x": 377,
+    "y": 360,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:54:30.350Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204479655",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 468,
+    "y": 344,
+    "r": 4
+   },
+   "B": {
+    "x": 514,
+    "y": 356,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:54:39.655Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204484417",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 178,
+    "y": 475,
+    "r": 4
+   },
+   "B": {
+    "x": 150,
+    "y": 513,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:54:44.417Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204489133",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 419,
+    "y": 437,
+    "r": 4
+   },
+   "B": {
+    "x": 427,
+    "y": 407,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:54:49.133Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204493350",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 383,
+    "y": 401,
+    "r": 4
+   },
+   "B": {
+    "x": 320,
+    "y": 387,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:54:53.350Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204497533",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 143,
+    "y": 469,
+    "r": 4
+   },
+   "B": {
+    "x": 122,
+    "y": 507,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:54:57.533Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204501566",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 120,
+    "y": 465,
+    "r": 4
+   },
+   "B": {
+    "x": 90,
+    "y": 508,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:55:01.567Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204505638",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 97,
+    "y": 457,
+    "r": 4
+   },
+   "B": {
+    "x": 66,
+    "y": 501,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:55:05.638Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204514967",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 76,
+    "y": 458,
+    "r": 4
+   },
+   "B": {
+    "x": 32,
+    "y": 503,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:55:14.967Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204523883",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 105,
+    "y": 439,
+    "r": 4
+   },
+   "B": {
+    "x": 55,
+    "y": 426,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:55:23.883Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204531988",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 126,
+    "y": 428,
+    "r": 4
+   },
+   "B": {
+    "x": 78,
+    "y": 408,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:55:31.988Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204536083",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 138,
+    "y": 414,
+    "r": 4
+   },
+   "B": {
+    "x": 99,
+    "y": 393,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:55:36.083Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204540700",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 158,
+    "y": 408,
+    "r": 4
+   },
+   "B": {
+    "x": 114,
+    "y": 380,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:55:40.700Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204547366",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 179,
+    "y": 403,
+    "r": 4
+   },
+   "B": {
+    "x": 145,
+    "y": 362,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:55:47.366Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204553833",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 202,
+    "y": 411,
+    "r": 4
+   },
+   "B": {
+    "x": 201,
+    "y": 368,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:55:53.833Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204557300",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 230,
+    "y": 417,
+    "r": 4
+   },
+   "B": {
+    "x": 225,
+    "y": 370,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:55:57.300Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204560818",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 258,
+    "y": 418,
+    "r": 4
+   },
+   "B": {
+    "x": 254,
+    "y": 375,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:56:00.818Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204564483",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 277,
+    "y": 419,
+    "r": 4
+   },
+   "B": {
+    "x": 277,
+    "y": 382,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:56:04.483Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204569966",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 506,
+    "y": 318,
+    "r": 4
+   },
+   "B": {
+    "x": 558,
+    "y": 332,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:56:09.966Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204574516",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 565,
+    "y": 295,
+    "r": 4
+   },
+   "B": {
+    "x": 615,
+    "y": 307,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:56:14.516Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204578616",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 526,
+    "y": 292,
+    "r": 4
+   },
+   "B": {
+    "x": 467,
+    "y": 279,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:56:18.616Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204585533",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 536,
+    "y": 265,
+    "r": 4
+   },
+   "B": {
+    "x": 480,
+    "y": 254,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:56:25.533Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204590332",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 566,
+    "y": 241,
+    "r": 4
+   },
+   "B": {
+    "x": 508,
+    "y": 235,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:56:30.332Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204594816",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 592,
+    "y": 223,
+    "r": 4
+   },
+   "B": {
+    "x": 552,
+    "y": 216,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:56:34.816Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204600549",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 644,
+    "y": 202,
+    "r": 4
+   },
+   "B": {
+    "x": 701,
+    "y": 219,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:56:40.549Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204609499",
+   "image": "visaria_keval_054",
+   "type": "i",
+   "A": {
+    "x": 643,
+    "y": 184,
+    "r": 4
+   },
+   "B": {
+    "x": 601,
+    "y": 175,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:56:49.499Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795204625350",
+   "image": "visaria_keval_054",
+   "type": "s",
+   "A": {
+    "x": 531,
+    "y": 987,
+    "r": 4
+   },
+   "B": {
+    "x": 467,
+    "y": 977,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:57:05.350Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795204633250",
+   "image": "visaria_keval_054",
+   "type": "s",
+   "A": {
+    "x": 243,
+    "y": 418,
+    "r": 4
+   },
+   "B": {
+    "x": 243,
+    "y": 450,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:57:13.250Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "shadow",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795204642199",
+   "image": "visaria_keval_054",
+   "type": "s",
+   "A": {
+    "x": 383,
+    "y": 55,
+    "r": 4
+   },
+   "B": {
+    "x": 424,
+    "y": 59,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:57:22.199Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795204655449",
+   "image": "visaria_keval_054",
+   "type": "s",
+   "A": {
+    "x": 498,
+    "y": 117,
+    "r": 4
+   },
+   "B": {
+    "x": 453,
+    "y": 116,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:57:35.449Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795204664083",
+   "image": "visaria_keval_054",
+   "type": "s",
+   "A": {
+    "x": 371,
+    "y": 417,
+    "r": 4
+   },
+   "B": {
+    "x": 360,
+    "y": 445,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:57:44.083Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "shadow",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795204671466",
+   "image": "visaria_keval_054",
+   "type": "s",
+   "A": {
+    "x": 455,
+    "y": 44,
+    "r": 4
+   },
+   "B": {
+    "x": 488,
+    "y": 51,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:57:51.466Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795204680718",
+   "image": "visaria_keval_054",
+   "type": "s",
+   "A": {
+    "x": 313,
+    "y": 579,
+    "r": 4
+   },
+   "B": {
+    "x": 315,
+    "y": 610,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:58:00.718Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795204696000",
+   "image": "visaria_keval_054",
+   "type": "s",
+   "A": {
+    "x": 278,
+    "y": 928,
+    "r": 4
+   },
+   "B": {
+    "x": 278,
+    "y": 964,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:58:16.000Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795204709799",
+   "image": "visaria_keval_054",
+   "type": "s",
+   "A": {
+    "x": 508,
+    "y": 400,
+    "r": 4
+   },
+   "B": {
+    "x": 478,
+    "y": 383,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:58:29.799Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795204717632",
+   "image": "visaria_keval_054",
+   "type": "s",
+   "A": {
+    "x": 527,
+    "y": 566,
+    "r": 4
+   },
+   "B": {
+    "x": 503,
+    "y": 607,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:58:37.632Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795204726599",
+   "image": "visaria_keval_054",
+   "type": "s",
+   "A": {
+    "x": 480,
+    "y": 98,
+    "r": 4
+   },
+   "B": {
+    "x": 438,
+    "y": 95,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:58:46.599Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795204733899",
+   "image": "visaria_keval_054",
+   "type": "s",
+   "A": {
+    "x": 192,
+    "y": 513,
+    "r": 4
+   },
+   "B": {
+    "x": 186,
+    "y": 552,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:58:53.899Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795204741368",
+   "image": "visaria_keval_054",
+   "type": "s",
+   "A": {
+    "x": 44,
+    "y": 334,
+    "r": 4
+   },
+   "B": {
+    "x": 41,
+    "y": 370,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:59:01.368Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795204782966",
+   "image": "visaria_keval_054",
+   "type": "m",
+   "A": {
+    "x": 179,
+    "y": 362,
+    "r": 4
+   },
+   "B": {
+    "x": 194,
+    "y": 334,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-20T19:59:42.966Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795222890556",
+   "image": "visaria_keval_054",
+   "type": "b",
+   "A": {
+    "x": 471,
+    "y": 318,
+    "r": 4
+   },
+   "B": {
+    "x": 459,
+    "y": 285,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-21T01:01:30.556Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795222896524",
+   "image": "visaria_keval_054",
+   "type": "b",
+   "A": {
+    "x": 712,
+    "y": 185,
+    "r": 4
+   },
+   "B": {
+    "x": 734,
+    "y": 218,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-21T01:01:36.524Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795222900856",
+   "image": "visaria_keval_054",
+   "type": "b",
+   "A": {
+    "x": 664,
+    "y": 159,
+    "r": 4
+   },
+   "B": {
+    "x": 649,
+    "y": 131,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-21T01:01:40.856Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795452739964",
+   "image": "visaria_keval_054",
+   "type": "s",
+   "A": {
+    "x": 349,
+    "y": 319,
+    "r": 4
+   },
+   "B": {
+    "x": 374,
+    "y": 273,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-23T16:52:19.964Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795452744080",
+   "image": "visaria_keval_054",
+   "type": "s",
+   "A": {
+    "x": 105,
+    "y": 1004,
+    "r": 4
+   },
+   "B": {
+    "x": 128,
+    "y": 971,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-23T16:52:24.080Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795452751014",
+   "image": "visaria_keval_054",
+   "type": "s",
+   "A": {
+    "x": 263,
+    "y": 534,
+    "r": 4
+   },
+   "B": {
+    "x": 245,
+    "y": 579,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-23T16:52:31.014Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795452756897",
+   "image": "visaria_keval_054",
+   "type": "d",
+   "A": {
+    "x": 319,
+    "y": 449,
+    "r": 4
+   },
+   "B": {
+    "x": 301,
+    "y": 73,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-23T16:52:36.897Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "different",
+   "illumination": "different"
+  },
+  {
+   "id": "t=1795452762730",
+   "image": "visaria_keval_054",
+   "type": "d",
+   "A": {
+    "x": 382,
+    "y": 458,
+    "r": 4
+   },
+   "B": {
+    "x": 150,
+    "y": 741,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-23T16:52:42.730Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different"
+  },
+  {
+   "id": "t=1795452768464",
+   "image": "visaria_keval_054",
+   "type": "d",
+   "A": {
+    "x": 614,
+    "y": 232,
+    "r": 4
+   },
+   "B": {
+    "x": 549,
+    "y": 773,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-23T16:52:48.464Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different"
+  },
+  {
+   "id": "t=1795452778080",
+   "image": "visaria_keval_054",
+   "type": "d",
+   "A": {
+    "x": 654,
+    "y": 231,
+    "r": 4
+   },
+   "B": {
+    "x": 225,
+    "y": 15,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-23T16:52:58.080Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different"
+  },
+  {
+   "id": "t=1795452782963",
+   "image": "visaria_keval_054",
+   "type": "d",
+   "A": {
+    "x": 174,
+    "y": 439,
+    "r": 4
+   },
+   "B": {
+    "x": 9,
+    "y": 806,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-23T16:53:02.963Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different"
+  },
+  {
+   "id": "t=1795452788147",
+   "image": "visaria_keval_054",
+   "type": "d",
+   "A": {
+    "x": 479,
+    "y": 464,
+    "r": 4
+   },
+   "B": {
+    "x": 187,
+    "y": 906,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-23T16:53:08.147Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different"
+  },
+  {
+   "id": "t=1795452808702",
+   "image": "visaria_keval_054",
+   "type": "d",
+   "A": {
+    "x": 633,
+    "y": 240,
+    "r": 4
+   },
+   "B": {
+    "x": 581,
+    "y": 819,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-23T16:53:28.702Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different"
+  },
+  {
+   "id": "t=1795452823180",
+   "image": "visaria_keval_054",
+   "type": "d",
+   "A": {
+    "x": 53,
+    "y": 984,
+    "r": 4
+   },
+   "B": {
+    "x": 274,
+    "y": 663,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-23T16:53:43.180Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "same"
+  },
+  {
+   "id": "t=1795452828763",
+   "image": "visaria_keval_054",
+   "type": "d",
+   "A": {
+    "x": 34,
+    "y": 293,
+    "r": 4
+   },
+   "B": {
+    "x": 29,
+    "y": 26,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-23T16:53:48.763Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "same"
+  }
+ ],
+ "s_seed_log": [
+  {
+   "index": 0,
+   "seed": "20261118:visaria_keval_054:0",
+   "x": 532,
+   "y": 978,
+   "proposed_at": "2026-11-20T19:56:57.926Z",
+   "proposed_by": "annotator_b",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-20T19:57:06.739Z",
+   "resolved_by": "annotator_b",
+   "final_x": 531,
+   "final_y": 987,
+   "pair_id": "t=1795204625350"
+  },
+  {
+   "index": 1,
+   "seed": "20261118:visaria_keval_054:1",
+   "x": 243,
+   "y": 418,
+   "proposed_at": "2026-11-20T19:57:08.305Z",
+   "proposed_by": "annotator_b",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-20T19:57:14.941Z",
+   "resolved_by": "annotator_b",
+   "final_x": 243,
+   "final_y": 418,
+   "pair_id": "t=1795204633250"
+  },
+  {
+   "index": 2,
+   "seed": "20261118:visaria_keval_054:2",
+   "x": 392,
+   "y": 51,
+   "proposed_at": "2026-11-20T19:57:17.328Z",
+   "proposed_by": "annotator_b",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-20T19:57:29.041Z",
+   "resolved_by": "annotator_b",
+   "final_x": 383,
+   "final_y": 55,
+   "pair_id": "t=1795204642199"
+  },
+  {
+   "index": 3,
+   "seed": "20261118:visaria_keval_054:3",
+   "x": 494,
+   "y": 108,
+   "proposed_at": "2026-11-20T19:57:31.307Z",
+   "proposed_by": "annotator_b",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-20T19:57:38.155Z",
+   "resolved_by": "annotator_b",
+   "final_x": 498,
+   "final_y": 117,
+   "pair_id": "t=1795204655449"
+  },
+  {
+   "index": 4,
+   "seed": "20261118:visaria_keval_054:4",
+   "x": 374,
+   "y": 408,
+   "proposed_at": "2026-11-20T19:57:40.107Z",
+   "proposed_by": "annotator_b",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-20T19:57:45.573Z",
+   "resolved_by": "annotator_b",
+   "final_x": 371,
+   "final_y": 417,
+   "pair_id": "t=1795204664083"
+  },
+  {
+   "index": 5,
+   "seed": "20261118:visaria_keval_054:5",
+   "x": 455,
+   "y": 35,
+   "proposed_at": "2026-11-20T19:57:47.072Z",
+   "proposed_by": "annotator_b",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-20T19:57:53.038Z",
+   "resolved_by": "annotator_b",
+   "final_x": 455,
+   "final_y": 44,
+   "pair_id": "t=1795204671466"
+  },
+  {
+   "index": 6,
+   "seed": "20261118:visaria_keval_054:6",
+   "x": 313,
+   "y": 578,
+   "proposed_at": "2026-11-20T19:57:54.356Z",
+   "proposed_by": "annotator_b",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-20T19:58:03.924Z",
+   "resolved_by": "annotator_b",
+   "final_x": 313,
+   "final_y": 579,
+   "pair_id": "t=1795204680718"
+  },
+  {
+   "index": 7,
+   "seed": "20261118:visaria_keval_054:7",
+   "x": 271,
+   "y": 921,
+   "proposed_at": "2026-11-20T19:58:06.156Z",
+   "proposed_by": "annotator_b",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-20T19:58:17.073Z",
+   "resolved_by": "annotator_b",
+   "final_x": 278,
+   "final_y": 928,
+   "pair_id": "t=1795204696000"
+  },
+  {
+   "index": 8,
+   "seed": "20261118:visaria_keval_054:8",
+   "x": 503,
+   "y": 408,
+   "proposed_at": "2026-11-20T19:58:18.590Z",
+   "proposed_by": "annotator_b",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-20T19:58:31.474Z",
+   "resolved_by": "annotator_b",
+   "final_x": 508,
+   "final_y": 400,
+   "pair_id": "t=1795204709799"
+  },
+  {
+   "index": 9,
+   "seed": "20261118:visaria_keval_054:9",
+   "x": 537,
+   "y": 566,
+   "proposed_at": "2026-11-20T19:58:33.158Z",
+   "proposed_by": "annotator_b",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-20T19:58:39.440Z",
+   "resolved_by": "annotator_b",
+   "final_x": 527,
+   "final_y": 566,
+   "pair_id": "t=1795204717632"
+  },
+  {
+   "index": 10,
+   "seed": "20261118:visaria_keval_054:10",
+   "x": 488,
+   "y": 92,
+   "proposed_at": "2026-11-20T19:58:42.008Z",
+   "proposed_by": "annotator_b",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-20T19:58:47.891Z",
+   "resolved_by": "annotator_b",
+   "final_x": 480,
+   "final_y": 98,
+   "pair_id": "t=1795204726599"
+  },
+  {
+   "index": 11,
+   "seed": "20261118:visaria_keval_054:11",
+   "x": 193,
+   "y": 504,
+   "proposed_at": "2026-11-20T19:58:49.056Z",
+   "proposed_by": "annotator_b",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-20T19:58:55.073Z",
+   "resolved_by": "annotator_b",
+   "final_x": 192,
+   "final_y": 513,
+   "pair_id": "t=1795204733899"
+  },
+  {
+   "index": 12,
+   "seed": "20261118:visaria_keval_054:12",
+   "x": 46,
+   "y": 325,
+   "proposed_at": "2026-11-20T19:58:56.573Z",
+   "proposed_by": "annotator_b",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-20T19:59:02.856Z",
+   "resolved_by": "annotator_b",
+   "final_x": 44,
+   "final_y": 334,
+   "pair_id": "t=1795204741368"
+  },
+  {
+   "index": 13,
+   "seed": "20261118:visaria_keval_054:13",
+   "x": 212,
+   "y": 507,
+   "proposed_at": "2026-11-20T19:59:07.240Z",
+   "proposed_by": "annotator_b",
+   "outcome": "abandoned",
+   "resolved_at": "2026-11-22T01:49:42.193Z",
+   "resolved_by": "annotator_b",
+   "reason": "no"
+  },
+  {
+   "index": 14,
+   "seed": "20261118:visaria_keval_054:14",
+   "x": 349,
+   "y": 319,
+   "proposed_at": "2026-11-23T16:52:17.104Z",
+   "proposed_by": "annotator_b",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-23T16:52:20.883Z",
+   "resolved_by": "annotator_b",
+   "final_x": 349,
+   "final_y": 319,
+   "pair_id": "t=1795452739964"
+  },
+  {
+   "index": 15,
+   "seed": "20261118:visaria_keval_054:15",
+   "x": 105,
+   "y": 1004,
+   "proposed_at": "2026-11-23T16:52:22.168Z",
+   "proposed_by": "annotator_b",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-23T16:52:25.484Z",
+   "resolved_by": "annotator_b",
+   "final_x": 105,
+   "final_y": 1004,
+   "pair_id": "t=1795452744080"
+  },
+  {
+   "index": 16,
+   "seed": "20261118:visaria_keval_054:16",
+   "x": 266,
+   "y": 525,
+   "proposed_at": "2026-11-23T16:52:26.467Z",
+   "proposed_by": "annotator_b",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-23T16:52:31.772Z",
+   "resolved_by": "annotator_b",
+   "final_x": 263,
+   "final_y": 534,
+   "pair_id": "t=1795452751014"
+  }
+ ],
  "legacy": {},
  "deleted_pairs": []
 }

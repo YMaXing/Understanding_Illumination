@@ -9,8 +9,2191 @@
  "image_sha256": "48e3c1a6119a28ddfc4644882e1344a32efb832e17b40b4ce31b303865c6e1ab",
  "image_pixel_sha256": "d6d0732fb62c00160f8e3a884dfb394175f4b3aa51c964147eedd0e9ea1e5d2e",
  "assigned_to": "annotator_b",
- "pairs": [],
- "s_seed_log": [],
+ "pairs": [
+  {
+   "id": "t=1795128619686",
+   "image": "baskar_akilan_058",
+   "type": "i",
+   "A": {
+    "x": 440,
+    "y": 831,
+    "r": 4
+   },
+   "B": {
+    "x": 425,
+    "y": 850,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-19T22:50:19.686Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795128628631",
+   "image": "baskar_akilan_058",
+   "type": "i",
+   "A": {
+    "x": 465,
+    "y": 836,
+    "r": 4
+   },
+   "B": {
+    "x": 451,
+    "y": 850,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-19T22:50:28.631Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795128639164",
+   "image": "baskar_akilan_058",
+   "type": "i",
+   "A": {
+    "x": 588,
+    "y": 840,
+    "r": 4
+   },
+   "B": {
+    "x": 558,
+    "y": 851,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-19T22:50:39.164Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795128645681",
+   "image": "baskar_akilan_058",
+   "type": "i",
+   "A": {
+    "x": 690,
+    "y": 851,
+    "r": 4
+   },
+   "B": {
+    "x": 676,
+    "y": 863,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-19T22:50:45.681Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795128650281",
+   "image": "baskar_akilan_058",
+   "type": "i",
+   "A": {
+    "x": 732,
+    "y": 850,
+    "r": 4
+   },
+   "B": {
+    "x": 717,
+    "y": 867,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-19T22:50:50.281Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795128655877",
+   "image": "baskar_akilan_058",
+   "type": "i",
+   "A": {
+    "x": 671,
+    "y": 845,
+    "r": 4
+   },
+   "B": {
+    "x": 645,
+    "y": 858,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-19T22:50:55.877Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795128666014",
+   "image": "baskar_akilan_058",
+   "type": "i",
+   "A": {
+    "x": 374,
+    "y": 499,
+    "r": 4
+   },
+   "B": {
+    "x": 319,
+    "y": 495,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-19T22:51:06.014Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795128711897",
+   "image": "baskar_akilan_058",
+   "type": "s",
+   "A": {
+    "x": 413,
+    "y": 370,
+    "r": 4
+   },
+   "B": {
+    "x": 393,
+    "y": 363,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-19T22:51:51.897Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "shadow",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795221983545",
+   "image": "baskar_akilan_058",
+   "type": "i",
+   "A": {
+    "x": 520,
+    "y": 825,
+    "r": 4
+   },
+   "B": {
+    "x": 516,
+    "y": 850,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-21T00:46:23.545Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795309267158",
+   "image": "baskar_akilan_058",
+   "type": "m",
+   "A": {
+    "x": 361,
+    "y": 911,
+    "r": 4
+   },
+   "B": {
+    "x": 391,
+    "y": 875,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:01:07.158Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795309269525",
+   "image": "baskar_akilan_058",
+   "type": "m",
+   "A": {
+    "x": 198,
+    "y": 850,
+    "r": 4
+   },
+   "B": {
+    "x": 200,
+    "y": 885,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:01:09.525Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795309273192",
+   "image": "baskar_akilan_058",
+   "type": "m",
+   "A": {
+    "x": 180,
+    "y": 790,
+    "r": 4
+   },
+   "B": {
+    "x": 123,
+    "y": 788,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:01:13.192Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795309287325",
+   "image": "baskar_akilan_058",
+   "type": "m",
+   "A": {
+    "x": 446,
+    "y": 316,
+    "r": 4
+   },
+   "B": {
+    "x": 430,
+    "y": 333,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:01:27.325Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795309297491",
+   "image": "baskar_akilan_058",
+   "type": "b",
+   "A": {
+    "x": 381,
+    "y": 152,
+    "r": 4
+   },
+   "B": {
+    "x": 406,
+    "y": 151,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:01:37.491Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795309305075",
+   "image": "baskar_akilan_058",
+   "type": "b",
+   "A": {
+    "x": 363,
+    "y": 227,
+    "r": 4
+   },
+   "B": {
+    "x": 330,
+    "y": 225,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:01:45.075Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795309307009",
+   "image": "baskar_akilan_058",
+   "type": "b",
+   "A": {
+    "x": 367,
+    "y": 253,
+    "r": 4
+   },
+   "B": {
+    "x": 330,
+    "y": 254,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:01:47.009Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795309323108",
+   "image": "baskar_akilan_058",
+   "type": "m",
+   "A": {
+    "x": 247,
+    "y": 542,
+    "r": 4
+   },
+   "B": {
+    "x": 188,
+    "y": 583,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:02:03.108Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795309327158",
+   "image": "baskar_akilan_058",
+   "type": "m",
+   "A": {
+    "x": 204,
+    "y": 287,
+    "r": 4
+   },
+   "B": {
+    "x": 224,
+    "y": 289,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:02:07.158Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795309328508",
+   "image": "baskar_akilan_058",
+   "type": "m",
+   "A": {
+    "x": 224,
+    "y": 269,
+    "r": 4
+   },
+   "B": {
+    "x": 243,
+    "y": 272,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:02:08.508Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795309330475",
+   "image": "baskar_akilan_058",
+   "type": "m",
+   "A": {
+    "x": 352,
+    "y": 286,
+    "r": 4
+   },
+   "B": {
+    "x": 325,
+    "y": 285,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:02:10.475Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795309338325",
+   "image": "baskar_akilan_058",
+   "type": "m",
+   "A": {
+    "x": 294,
+    "y": 55,
+    "r": 4
+   },
+   "B": {
+    "x": 295,
+    "y": 129,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:02:18.325Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795309361024",
+   "image": "baskar_akilan_058",
+   "type": "i",
+   "A": {
+    "x": 37,
+    "y": 877,
+    "r": 4
+   },
+   "B": {
+    "x": 70,
+    "y": 896,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:02:41.024Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795309366425",
+   "image": "baskar_akilan_058",
+   "type": "i",
+   "A": {
+    "x": 9,
+    "y": 880,
+    "r": 4
+   },
+   "B": {
+    "x": 18,
+    "y": 906,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:02:46.425Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795309570091",
+   "image": "baskar_akilan_058",
+   "type": "i",
+   "A": {
+    "x": 21,
+    "y": 875,
+    "r": 4
+   },
+   "B": {
+    "x": 41,
+    "y": 905,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:06:10.091Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795309590058",
+   "image": "baskar_akilan_058",
+   "type": "i",
+   "A": {
+    "x": 495,
+    "y": 831,
+    "r": 4
+   },
+   "B": {
+    "x": 486,
+    "y": 850,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:06:30.058Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795309698074",
+   "image": "baskar_akilan_058",
+   "type": "m",
+   "A": {
+    "x": 503,
+    "y": 891,
+    "r": 4
+   },
+   "B": {
+    "x": 487,
+    "y": 914,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:08:18.074Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795309699707",
+   "image": "baskar_akilan_058",
+   "type": "m",
+   "A": {
+    "x": 658,
+    "y": 921,
+    "r": 4
+   },
+   "B": {
+    "x": 620,
+    "y": 901,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:08:19.707Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795309725841",
+   "image": "baskar_akilan_058",
+   "type": "i",
+   "A": {
+    "x": 371,
+    "y": 530,
+    "r": 4
+   },
+   "B": {
+    "x": 340,
+    "y": 533,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:08:45.841Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795309730007",
+   "image": "baskar_akilan_058",
+   "type": "i",
+   "A": {
+    "x": 301,
+    "y": 761,
+    "r": 4
+   },
+   "B": {
+    "x": 328,
+    "y": 722,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:08:50.007Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795309973783",
+   "image": "baskar_akilan_058",
+   "type": "i",
+   "A": {
+    "x": 364,
+    "y": 831,
+    "r": 4
+   },
+   "B": {
+    "x": 345,
+    "y": 849,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:12:53.783Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795309979234",
+   "image": "baskar_akilan_058",
+   "type": "i",
+   "A": {
+    "x": 345,
+    "y": 833,
+    "r": 4
+   },
+   "B": {
+    "x": 332,
+    "y": 849,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:12:59.234Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795309982532",
+   "image": "baskar_akilan_058",
+   "type": "i",
+   "A": {
+    "x": 286,
+    "y": 840,
+    "r": 4
+   },
+   "B": {
+    "x": 315,
+    "y": 849,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:13:02.532Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795309989448",
+   "image": "baskar_akilan_058",
+   "type": "i",
+   "A": {
+    "x": 388,
+    "y": 835,
+    "r": 4
+   },
+   "B": {
+    "x": 370,
+    "y": 849,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:13:09.449Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795309993798",
+   "image": "baskar_akilan_058",
+   "type": "i",
+   "A": {
+    "x": 406,
+    "y": 834,
+    "r": 4
+   },
+   "B": {
+    "x": 392,
+    "y": 849,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:13:13.798Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795309997199",
+   "image": "baskar_akilan_058",
+   "type": "i",
+   "A": {
+    "x": 422,
+    "y": 836,
+    "r": 4
+   },
+   "B": {
+    "x": 409,
+    "y": 850,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:13:17.199Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795310005269",
+   "image": "baskar_akilan_058",
+   "type": "i",
+   "A": {
+    "x": 654,
+    "y": 846,
+    "r": 4
+   },
+   "B": {
+    "x": 624,
+    "y": 858,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:13:25.269Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795310011648",
+   "image": "baskar_akilan_058",
+   "type": "b",
+   "A": {
+    "x": 614,
+    "y": 841,
+    "r": 4
+   },
+   "B": {
+    "x": 607,
+    "y": 857,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:13:31.648Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795310019198",
+   "image": "baskar_akilan_058",
+   "type": "i",
+   "A": {
+    "x": 548,
+    "y": 836,
+    "r": 4
+   },
+   "B": {
+    "x": 537,
+    "y": 851,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:13:39.198Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795310030631",
+   "image": "baskar_akilan_058",
+   "type": "i",
+   "A": {
+    "x": 750,
+    "y": 850,
+    "r": 4
+   },
+   "B": {
+    "x": 740,
+    "y": 868,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:13:50.631Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795310033498",
+   "image": "baskar_akilan_058",
+   "type": "i",
+   "A": {
+    "x": 716,
+    "y": 846,
+    "r": 4
+   },
+   "B": {
+    "x": 700,
+    "y": 864,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:13:53.498Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795310046332",
+   "image": "baskar_akilan_058",
+   "type": "i",
+   "A": {
+    "x": 762,
+    "y": 844,
+    "r": 4
+   },
+   "B": {
+    "x": 758,
+    "y": 873,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:14:06.332Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795310062181",
+   "image": "baskar_akilan_058",
+   "type": "m",
+   "A": {
+    "x": 732,
+    "y": 767,
+    "r": 4
+   },
+   "B": {
+    "x": 744,
+    "y": 759,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:14:22.181Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795310069447",
+   "image": "baskar_akilan_058",
+   "type": "m",
+   "A": {
+    "x": 664,
+    "y": 746,
+    "r": 4
+   },
+   "B": {
+    "x": 644,
+    "y": 740,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:14:29.447Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795310074664",
+   "image": "baskar_akilan_058",
+   "type": "m",
+   "A": {
+    "x": 684,
+    "y": 744,
+    "r": 4
+   },
+   "B": {
+    "x": 714,
+    "y": 755,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:14:34.664Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795310080414",
+   "image": "baskar_akilan_058",
+   "type": "m",
+   "A": {
+    "x": 610,
+    "y": 436,
+    "r": 4
+   },
+   "B": {
+    "x": 607,
+    "y": 461,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:14:40.414Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795310083964",
+   "image": "baskar_akilan_058",
+   "type": "m",
+   "A": {
+    "x": 739,
+    "y": 452,
+    "r": 4
+   },
+   "B": {
+    "x": 745,
+    "y": 421,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:14:43.964Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795310093031",
+   "image": "baskar_akilan_058",
+   "type": "m",
+   "A": {
+    "x": 696,
+    "y": 324,
+    "r": 4
+   },
+   "B": {
+    "x": 662,
+    "y": 295,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:14:53.031Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795310099230",
+   "image": "baskar_akilan_058",
+   "type": "m",
+   "A": {
+    "x": 414,
+    "y": 419,
+    "r": 4
+   },
+   "B": {
+    "x": 438,
+    "y": 410,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:14:59.230Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795310100781",
+   "image": "baskar_akilan_058",
+   "type": "m",
+   "A": {
+    "x": 436,
+    "y": 455,
+    "r": 4
+   },
+   "B": {
+    "x": 417,
+    "y": 455,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:15:00.781Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795310103231",
+   "image": "baskar_akilan_058",
+   "type": "m",
+   "A": {
+    "x": 388,
+    "y": 405,
+    "r": 4
+   },
+   "B": {
+    "x": 383,
+    "y": 372,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:15:03.231Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795310117586",
+   "image": "baskar_akilan_058",
+   "type": "m",
+   "A": {
+    "x": 404,
+    "y": 959,
+    "r": 4
+   },
+   "B": {
+    "x": 373,
+    "y": 1005,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:15:17.586Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795310121031",
+   "image": "baskar_akilan_058",
+   "type": "m",
+   "A": {
+    "x": 526,
+    "y": 125,
+    "r": 4
+   },
+   "B": {
+    "x": 560,
+    "y": 99,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:15:21.031Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795310123480",
+   "image": "baskar_akilan_058",
+   "type": "m",
+   "A": {
+    "x": 482,
+    "y": 64,
+    "r": 4
+   },
+   "B": {
+    "x": 540,
+    "y": 31,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:15:23.480Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795310127747",
+   "image": "baskar_akilan_058",
+   "type": "m",
+   "A": {
+    "x": 293,
+    "y": 39,
+    "r": 4
+   },
+   "B": {
+    "x": 329,
+    "y": 27,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:15:27.747Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795310131297",
+   "image": "baskar_akilan_058",
+   "type": "m",
+   "A": {
+    "x": 261,
+    "y": 150,
+    "r": 4
+   },
+   "B": {
+    "x": 251,
+    "y": 194,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:15:31.297Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795310134848",
+   "image": "baskar_akilan_058",
+   "type": "m",
+   "A": {
+    "x": 227,
+    "y": 47,
+    "r": 4
+   },
+   "B": {
+    "x": 228,
+    "y": 72,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:15:34.848Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795310139148",
+   "image": "baskar_akilan_058",
+   "type": "m",
+   "A": {
+    "x": 255,
+    "y": 228,
+    "r": 4
+   },
+   "B": {
+    "x": 286,
+    "y": 228,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T01:15:39.148Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795390595636",
+   "image": "baskar_akilan_058",
+   "type": "s",
+   "A": {
+    "x": 722,
+    "y": 486,
+    "r": 4
+   },
+   "B": {
+    "x": 726,
+    "y": 512,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T23:36:35.636Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "shadow",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795390602035",
+   "image": "baskar_akilan_058",
+   "type": "s",
+   "A": {
+    "x": 39,
+    "y": 50,
+    "r": 4
+   },
+   "B": {
+    "x": 38,
+    "y": 96,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T23:36:42.035Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "shadow",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795390606785",
+   "image": "baskar_akilan_058",
+   "type": "s",
+   "A": {
+    "x": 106,
+    "y": 814,
+    "r": 4
+   },
+   "B": {
+    "x": 130,
+    "y": 809,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T23:36:46.785Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795390613035",
+   "image": "baskar_akilan_058",
+   "type": "s",
+   "A": {
+    "x": 145,
+    "y": 950,
+    "r": 4
+   },
+   "B": {
+    "x": 196,
+    "y": 941,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T23:36:53.035Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795390618219",
+   "image": "baskar_akilan_058",
+   "type": "s",
+   "A": {
+    "x": 277,
+    "y": 986,
+    "r": 4
+   },
+   "B": {
+    "x": 321,
+    "y": 991,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T23:36:58.219Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795390628352",
+   "image": "baskar_akilan_058",
+   "type": "s",
+   "A": {
+    "x": 77,
+    "y": 867,
+    "r": 4
+   },
+   "B": {
+    "x": 133,
+    "y": 869,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T23:37:08.352Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "shadow",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795390635519",
+   "image": "baskar_akilan_058",
+   "type": "s",
+   "A": {
+    "x": 411,
+    "y": 702,
+    "r": 4
+   },
+   "B": {
+    "x": 448,
+    "y": 702,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T23:37:15.519Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "shadow",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795390641769",
+   "image": "baskar_akilan_058",
+   "type": "b",
+   "A": {
+    "x": 384,
+    "y": 717,
+    "r": 4
+   },
+   "B": {
+    "x": 364,
+    "y": 730,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T23:37:21.769Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795390643002",
+   "image": "baskar_akilan_058",
+   "type": "b",
+   "A": {
+    "x": 385,
+    "y": 736,
+    "r": 4
+   },
+   "B": {
+    "x": 364,
+    "y": 750,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T23:37:23.002Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795390644352",
+   "image": "baskar_akilan_058",
+   "type": "b",
+   "A": {
+    "x": 390,
+    "y": 752,
+    "r": 4
+   },
+   "B": {
+    "x": 365,
+    "y": 772,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T23:37:24.352Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795390645402",
+   "image": "baskar_akilan_058",
+   "type": "b",
+   "A": {
+    "x": 384,
+    "y": 778,
+    "r": 4
+   },
+   "B": {
+    "x": 363,
+    "y": 785,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T23:37:25.402Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795390646535",
+   "image": "baskar_akilan_058",
+   "type": "b",
+   "A": {
+    "x": 387,
+    "y": 793,
+    "r": 4
+   },
+   "B": {
+    "x": 371,
+    "y": 794,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T23:37:26.535Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795390650551",
+   "image": "baskar_akilan_058",
+   "type": "i",
+   "A": {
+    "x": 380,
+    "y": 689,
+    "r": 4
+   },
+   "B": {
+    "x": 360,
+    "y": 689,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T23:37:30.551Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795390654685",
+   "image": "baskar_akilan_058",
+   "type": "i",
+   "A": {
+    "x": 383,
+    "y": 674,
+    "r": 4
+   },
+   "B": {
+    "x": 360,
+    "y": 674,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T23:37:34.685Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795390657318",
+   "image": "baskar_akilan_058",
+   "type": "i",
+   "A": {
+    "x": 368,
+    "y": 551,
+    "r": 4
+   },
+   "B": {
+    "x": 344,
+    "y": 554,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T23:37:37.318Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795390663952",
+   "image": "baskar_akilan_058",
+   "type": "i",
+   "A": {
+    "x": 305,
+    "y": 770,
+    "r": 4
+   },
+   "B": {
+    "x": 326,
+    "y": 748,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T23:37:43.952Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795390668002",
+   "image": "baskar_akilan_058",
+   "type": "i",
+   "A": {
+    "x": 300,
+    "y": 748,
+    "r": 4
+   },
+   "B": {
+    "x": 283,
+    "y": 777,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T23:37:48.002Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795390671402",
+   "image": "baskar_akilan_058",
+   "type": "i",
+   "A": {
+    "x": 303,
+    "y": 784,
+    "r": 4
+   },
+   "B": {
+    "x": 280,
+    "y": 797,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T23:37:51.402Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "B"
+  },
+  {
+   "id": "t=1795390699885",
+   "image": "baskar_akilan_058",
+   "type": "s",
+   "A": {
+    "x": 541,
+    "y": 658,
+    "r": 4
+   },
+   "B": {
+    "x": 569,
+    "y": 658,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T23:38:19.885Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "shadow",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795390706835",
+   "image": "baskar_akilan_058",
+   "type": "s",
+   "A": {
+    "x": 555,
+    "y": 395,
+    "r": 4
+   },
+   "B": {
+    "x": 524,
+    "y": 401,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T23:38:26.835Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "shadow",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795390731702",
+   "image": "baskar_akilan_058",
+   "type": "s",
+   "A": {
+    "x": 317,
+    "y": 634,
+    "r": 4
+   },
+   "B": {
+    "x": 317,
+    "y": 676,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T23:38:51.702Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795390737634",
+   "image": "baskar_akilan_058",
+   "type": "s",
+   "A": {
+    "x": 499,
+    "y": 177,
+    "r": 4
+   },
+   "B": {
+    "x": 501,
+    "y": 146,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T23:38:57.634Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795390743018",
+   "image": "baskar_akilan_058",
+   "type": "s",
+   "A": {
+    "x": 610,
+    "y": 226,
+    "r": 4
+   },
+   "B": {
+    "x": 583,
+    "y": 211,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T23:39:03.018Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795390748767",
+   "image": "baskar_akilan_058",
+   "type": "s",
+   "A": {
+    "x": 663,
+    "y": 178,
+    "r": 4
+   },
+   "B": {
+    "x": 650,
+    "y": 154,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T23:39:08.767Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795390758301",
+   "image": "baskar_akilan_058",
+   "type": "d",
+   "A": {
+    "x": 645,
+    "y": 813,
+    "r": 4
+   },
+   "B": {
+    "x": 566,
+    "y": 891,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T23:39:18.301Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different"
+  },
+  {
+   "id": "t=1795390789035",
+   "image": "baskar_akilan_058",
+   "type": "d",
+   "A": {
+    "x": 729,
+    "y": 802,
+    "r": 4
+   },
+   "B": {
+    "x": 599,
+    "y": 902,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T23:39:49.035Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different"
+  },
+  {
+   "id": "t=1795390803351",
+   "image": "baskar_akilan_058",
+   "type": "d",
+   "A": {
+    "x": 309,
+    "y": 857,
+    "r": 4
+   },
+   "B": {
+    "x": 16,
+    "y": 927,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T23:40:03.351Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different"
+  },
+  {
+   "id": "t=1795390821434",
+   "image": "baskar_akilan_058",
+   "type": "d",
+   "A": {
+    "x": 538,
+    "y": 877,
+    "r": 4
+   },
+   "B": {
+    "x": 575,
+    "y": 991,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T23:40:21.434Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "different",
+   "illumination": "same"
+  },
+  {
+   "id": "t=1795390831534",
+   "image": "baskar_akilan_058",
+   "type": "d",
+   "A": {
+    "x": 459,
+    "y": 282,
+    "r": 4
+   },
+   "B": {
+    "x": 452,
+    "y": 118,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "annotator_b",
+   "created": "2026-11-22T23:40:31.534Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "same"
+  }
+ ],
+ "s_seed_log": [
+  {
+   "index": 0,
+   "seed": "20261118:baskar_akilan_058:0",
+   "x": 271,
+   "y": 126,
+   "proposed_at": "2026-11-19T22:51:22.890Z",
+   "proposed_by": "annotator_b",
+   "outcome": "abandoned",
+   "resolved_at": "2026-11-19T22:51:38.548Z",
+   "resolved_by": "annotator_b",
+   "reason": "not on even surface"
+  },
+  {
+   "index": 1,
+   "seed": "20261118:baskar_akilan_058:1",
+   "x": 421,
+   "y": 376,
+   "proposed_at": "2026-11-19T22:51:41.460Z",
+   "proposed_by": "annotator_b",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-19T22:51:53.034Z",
+   "resolved_by": "annotator_b",
+   "final_x": 413,
+   "final_y": 370,
+   "pair_id": "t=1795128711897"
+  },
+  {
+   "index": 2,
+   "seed": "20261118:baskar_akilan_058:2",
+   "x": 722,
+   "y": 486,
+   "proposed_at": "2026-11-22T23:36:33.343Z",
+   "proposed_by": "annotator_b",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-22T23:36:36.447Z",
+   "resolved_by": "annotator_b",
+   "final_x": 722,
+   "final_y": 486,
+   "pair_id": "t=1795390595636"
+  },
+  {
+   "index": 3,
+   "seed": "20261118:baskar_akilan_058:3",
+   "x": 30,
+   "y": 49,
+   "proposed_at": "2026-11-22T23:36:37.793Z",
+   "proposed_by": "annotator_b",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-22T23:36:43.007Z",
+   "resolved_by": "annotator_b",
+   "final_x": 39,
+   "final_y": 50,
+   "pair_id": "t=1795390602035"
+  },
+  {
+   "index": 4,
+   "seed": "20261118:baskar_akilan_058:4",
+   "x": 106,
+   "y": 814,
+   "proposed_at": "2026-11-22T23:36:44.760Z",
+   "proposed_by": "annotator_b",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-22T23:36:48.878Z",
+   "resolved_by": "annotator_b",
+   "final_x": 106,
+   "final_y": 814,
+   "pair_id": "t=1795390606785"
+  },
+  {
+   "index": 5,
+   "seed": "20261118:baskar_akilan_058:5",
+   "x": 145,
+   "y": 950,
+   "proposed_at": "2026-11-22T23:36:49.842Z",
+   "proposed_by": "annotator_b",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-22T23:36:53.894Z",
+   "resolved_by": "annotator_b",
+   "final_x": 145,
+   "final_y": 950,
+   "pair_id": "t=1795390613035"
+  },
+  {
+   "index": 6,
+   "seed": "20261118:baskar_akilan_058:6",
+   "x": 277,
+   "y": 986,
+   "proposed_at": "2026-11-22T23:36:55.341Z",
+   "proposed_by": "annotator_b",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-22T23:36:59.010Z",
+   "resolved_by": "annotator_b",
+   "final_x": 277,
+   "final_y": 986,
+   "pair_id": "t=1795390618219"
+  },
+  {
+   "index": 7,
+   "seed": "20261118:baskar_akilan_058:7",
+   "x": 81,
+   "y": 876,
+   "proposed_at": "2026-11-22T23:37:01.208Z",
+   "proposed_by": "annotator_b",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-22T23:37:09.594Z",
+   "resolved_by": "annotator_b",
+   "final_x": 77,
+   "final_y": 867,
+   "pair_id": "t=1795390628352"
+  },
+  {
+   "index": 8,
+   "seed": "20261118:baskar_akilan_058:8",
+   "x": 411,
+   "y": 702,
+   "proposed_at": "2026-11-22T23:37:12.923Z",
+   "proposed_by": "annotator_b",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-22T23:37:16.193Z",
+   "resolved_by": "annotator_b",
+   "final_x": 411,
+   "final_y": 702,
+   "pair_id": "t=1795390635519"
+  },
+  {
+   "index": 9,
+   "seed": "20261118:baskar_akilan_058:9",
+   "x": 541,
+   "y": 658,
+   "proposed_at": "2026-11-22T23:38:16.129Z",
+   "proposed_by": "annotator_b",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-22T23:38:20.847Z",
+   "resolved_by": "annotator_b",
+   "final_x": 541,
+   "final_y": 658,
+   "pair_id": "t=1795390699885"
+  },
+  {
+   "index": 10,
+   "seed": "20261118:baskar_akilan_058:10",
+   "x": 555,
+   "y": 395,
+   "proposed_at": "2026-11-22T23:38:22.743Z",
+   "proposed_by": "annotator_b",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-22T23:38:27.861Z",
+   "resolved_by": "annotator_b",
+   "final_x": 555,
+   "final_y": 395,
+   "pair_id": "t=1795390706835"
+  },
+  {
+   "index": 11,
+   "seed": "20261118:baskar_akilan_058:11",
+   "x": 574,
+   "y": 703,
+   "proposed_at": "2026-11-22T23:38:29.308Z",
+   "proposed_by": "annotator_b",
+   "outcome": "abandoned",
+   "resolved_at": "2026-11-22T23:38:46.392Z",
+   "resolved_by": "annotator_b",
+   "reason": "wrongly marked"
+  },
+  {
+   "index": 12,
+   "seed": "20261118:baskar_akilan_058:12",
+   "x": 317,
+   "y": 634,
+   "proposed_at": "2026-11-22T23:38:49.061Z",
+   "proposed_by": "annotator_b",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-22T23:38:52.457Z",
+   "resolved_by": "annotator_b",
+   "final_x": 317,
+   "final_y": 634,
+   "pair_id": "t=1795390731702"
+  },
+  {
+   "index": 13,
+   "seed": "20261118:baskar_akilan_058:13",
+   "x": 495,
+   "y": 176,
+   "proposed_at": "2026-11-22T23:38:54.480Z",
+   "proposed_by": "annotator_b",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-22T23:38:58.695Z",
+   "resolved_by": "annotator_b",
+   "final_x": 499,
+   "final_y": 177,
+   "pair_id": "t=1795390737634"
+  },
+  {
+   "index": 14,
+   "seed": "20261118:baskar_akilan_058:14",
+   "x": 610,
+   "y": 226,
+   "proposed_at": "2026-11-22T23:38:59.959Z",
+   "proposed_by": "annotator_b",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-22T23:39:03.913Z",
+   "resolved_by": "annotator_b",
+   "final_x": 610,
+   "final_y": 226,
+   "pair_id": "t=1795390743018"
+  },
+  {
+   "index": 15,
+   "seed": "20261118:baskar_akilan_058:15",
+   "x": 663,
+   "y": 178,
+   "proposed_at": "2026-11-22T23:39:05.224Z",
+   "proposed_by": "annotator_b",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-22T23:39:09.562Z",
+   "resolved_by": "annotator_b",
+   "final_x": 663,
+   "final_y": 178,
+   "pair_id": "t=1795390748767"
+  }
+ ],
  "legacy": {},
  "deleted_pairs": []
 }
