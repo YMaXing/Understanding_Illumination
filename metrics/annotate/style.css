@@ -69,4 +69,5 @@ body.relabel #ovl, body.relabel #seed, body.relabel #types { opacity: .35; point
 #modal.corner .box { pointer-events: auto; box-shadow: 0 4px 18px rgba(0,0,0,.6); }
 button.exh { padding: 0 4px; font-size: 11px; color: var(--dim); }
 button.exh.on { color: #111; background: var(--ok); border-color: var(--ok); }
-#types button:disabled { opacity: .35; cursor: not-allowed; }
+#types button:disabled, #types button.off { opacity: .35; cursor: help; }
+#seed.hint { outline: 2px solid var(--acc); outline-offset: 1px; background: var(--acc); color: #111; }

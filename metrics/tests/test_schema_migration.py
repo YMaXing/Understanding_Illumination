@@ -101,12 +101,14 @@ def test_migration_defaults_and_070(cfg, files):
     n = 0
     ids = set()
     for f in files.values():
-        for p in f["pairs"]:
+        for p in f["pairs"] + [t["pair"] for t in f.get("deleted_pairs", [])]:   # deleted later in the tool: tombstones
             if "v0" not in p.get("legacy", {}):
                 continue                                                    # new pairs (tool), not migrated
             n += 1
             assert p["id"] not in ids
             ids.add(p["id"])
+            if p.get("last_edited_by"):
+                continue                                                    # edited in the tool after migration
             assert (p["annotator"], p["confidence"], p["used_in_loss"], p["overlay_seen"]) == ("yueren", "sure", False, "unknown")
         assert f["seen_in_training"] == "unknown"
     assert n == 871 + 1098 + 1428 + 1614
@@ -124,7 +126,7 @@ def test_annotators_file(cfg):
     a = json.loads((K.repo_path(cfg["paths"]["annotations"]) / "annotators.json").read_text())
     assert SC.validate(a, SC.load_schema(K.METRICS / "schema" / "annotators.schema.json")) == []
     assert [(e["id"], e["name"]) for e in a["annotators"]][0] == ("yueren", "Yueren")
-    assert {e["id"] for e in a["annotators"]} == {"yueren", "annotator_b"}
+    assert {e["id"] for e in a["annotators"]} >= {"yueren", "annotator_b"}         # annotators may add tags
 
 
 def test_assignments_and_reflective(cfg, files):

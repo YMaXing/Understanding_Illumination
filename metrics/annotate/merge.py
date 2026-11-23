@@ -8,9 +8,12 @@ Per image file present in OTHER_DIR:
   - present: pairs are unioned by id. Same id + identical content: kept once. Same id + different content: a CONFLICT,
     reported; this folder's version is kept (never overwritten). An id deleted on either side (deleted_pairs tombstone)
     is not resurrected; a pair edited on one side and deleted on the other is a conflict.
+  - exhausted marks: union by type; the same type with a different mark is a conflict (this folder's kept). A mark
+    removed on one side comes back from the other (there are no tombstones for marks).
   - s_seed_log: union by seed (the seeded RNG gives both machines the same seed for the same index). Same seed with a
     different outcome: a conflict, this folder's entry kept. Seeds only in OTHER_DIR are appended in index order.
-annotators.json: union by id; the same id with a different name is a conflict (reported, never overwritten). relabels/<stem>.json: union by (pair_id, relabeler); differing entries are conflicts. Every written file is schema-validated; the old one is backed up to
+annotators.json: union by id; a rename recorded only in OTHER_DIR's history is taken over; the same id with a different
+name otherwise (renamed on both sides, or no record) is a conflict (reported, never overwritten). relabels/<stem>.json: union by (pair_id, relabeler); differing entries are conflicts. Every written file is schema-validated; the old one is backed up to
 <into>/.backups/<stem>/ first. Exit code 1 if there were conflicts (after writing the non-conflicting union).
 """
 
@@ -84,6 +87,15 @@ def merge_file(mine, theirs):
             out["s_seed_log"].append(copy.deepcopy(e))
             rep["added"].append(f"seed {e['seed']}")
     out["s_seed_log"].sort(key=lambda e: e["index"])
+    ex = dict(mine.get("exhausted") or {})                     # exhausted marks: union by type; a type marked
+    for k, v in (theirs.get("exhausted") or {}).items():      # differently on the two sides is a conflict (ours kept)
+        if k not in ex:
+            ex[k] = copy.deepcopy(v)
+            rep["added"].append(f"exhausted {k}")
+        elif ex[k] != v:
+            rep["conflicts"].append(f"exhausted {k}: marked differently on the two machines (kept this folder's)")
+    if ex or "exhausted" in out:
+        out["exhausted"] = ex or out.get("exhausted")
     return out, rep
 
 
@@ -100,10 +112,20 @@ def merge_annotators(mine, theirs):
                 continue
             add.append(copy.deepcopy(e))
             continue
-        if h["name"] != e["name"]:
-            conflicts.append(f"{e['id']}: named {h['name']!r} here and {e['name']!r} there (kept {h['name']!r})")
         seen = {json.dumps(x, sort_keys=True) for x in h["history"]}
         new = [x for x in e["history"] if json.dumps(x, sort_keys=True) not in seen]
+        theirs_seen = {json.dumps(x, sort_keys=True) for x in e["history"]}
+        ours_only = [x for x in h["history"] if json.dumps(x, sort_keys=True) not in theirs_seen]
+        if h["name"] != e["name"]:
+            # A rename recorded only on their side (their history extends ours and ends in their name) is taken over;
+            # a rename on both sides, or an unrecorded difference, is a conflict and this folder's name is kept.
+            renamed_there = new and not ours_only and e["history"][-1]["to"] == e["name"]
+            clash = any(x["name"].casefold() == e["name"].casefold() for x in mine["annotators"] if x["id"] != e["id"])
+            if renamed_there and not clash:
+                h["name"] = e["name"]
+                mine.setdefault("_renamed", []).append(f"{e['id']}: {e['history'][-1]['from']!r} -> {e['name']!r}")
+            else:
+                conflicts.append(f"{e['id']}: named {h['name']!r} here and {e['name']!r} there (kept {h['name']!r})")
         if new:
             h["history"] = sorted(h["history"] + new, key=lambda x: x["at"])
             mine.setdefault("_changed", True)
@@ -176,6 +198,8 @@ def main():
         if add:
             print(f"annotators: + {[(e['id'], e['name']) for e in add]}")
         changed = mine.pop("_changed", False)
+        for r in mine.pop("_renamed", []):
+            print(f"annotators: renamed there, taken over: {r}")
         if a.apply and (add or changed):
             mine["annotators"] += add
             write(da, mine, backups)

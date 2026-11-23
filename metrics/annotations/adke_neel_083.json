@@ -1036,13 +1036,13 @@
    "image": "adke_neel_083",
    "type": "i",
    "A": {
-    "x": 732,
-    "y": 740,
+    "x": 726,
+    "y": 751,
     "r": 4
    },
    "B": {
-    "x": 752,
-    "y": 663,
+    "x": 735,
+    "y": 690,
     "r": 4
    },
    "confidence": "sure",
@@ -1052,7 +1052,87 @@
    "created": "2026-11-23T00:25:05.131Z",
    "note": "",
    "schema_version": "1.2",
-   "lit_end": "B"
+   "lit_end": "B",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-23T18:55:32.861Z",
+   "history": [
+    {
+     "op": "drag",
+     "at": "2026-11-23T18:55:15.691Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 732,
+       "y": 740,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 726,
+       "y": 751,
+       "r": 4
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-23T18:55:17.673Z",
+     "by": "yueren",
+     "before": {
+      "B": {
+       "x": 752,
+       "y": 663,
+       "r": 4
+      }
+     },
+     "after": {
+      "B": {
+       "x": 735,
+       "y": 690,
+       "r": 4
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-23T18:55:30.741Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 727,
+       "y": 746,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 726,
+       "y": 751,
+       "r": 4
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-23T18:55:32.861Z",
+     "by": "yueren",
+     "before": {
+      "B": {
+       "x": 740,
+       "y": 698,
+       "r": 4
+      }
+     },
+     "after": {
+      "B": {
+       "x": 735,
+       "y": 690,
+       "r": 4
+      }
+     }
+    }
+   ]
   },
   {
    "id": "t=1795393521081",
@@ -1145,6 +1225,204 @@
    "note": "",
    "schema_version": "1.2",
    "lit_end": "B"
+  },
+  {
+   "id": "t=1795460154372",
+   "image": "adke_neel_083",
+   "type": "m",
+   "A": {
+    "x": 128,
+    "y": 213,
+    "r": 4
+   },
+   "B": {
+    "x": 175,
+    "y": 181,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T18:55:54.372Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795460157904",
+   "image": "adke_neel_083",
+   "type": "m",
+   "A": {
+    "x": 726,
+    "y": 258,
+    "r": 4
+   },
+   "B": {
+    "x": 684,
+    "y": 222,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T18:55:57.904Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795460160150",
+   "image": "adke_neel_083",
+   "type": "m",
+   "A": {
+    "x": 661,
+    "y": 325,
+    "r": 4
+   },
+   "B": {
+    "x": 615,
+    "y": 293,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T18:56:00.150Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795460165869",
+   "image": "adke_neel_083",
+   "type": "m",
+   "A": {
+    "x": 31,
+    "y": 134,
+    "r": 4
+   },
+   "B": {
+    "x": 85,
+    "y": 88,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T18:56:05.869Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795460167551",
+   "image": "adke_neel_083",
+   "type": "m",
+   "A": {
+    "x": 288,
+    "y": 381,
+    "r": 4
+   },
+   "B": {
+    "x": 338,
+    "y": 335,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T18:56:07.551Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795460169226",
+   "image": "adke_neel_083",
+   "type": "m",
+   "A": {
+    "x": 209,
+    "y": 288,
+    "r": 4
+   },
+   "B": {
+    "x": 253,
+    "y": 253,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T18:56:09.226Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795460174372",
+   "image": "adke_neel_083",
+   "type": "m",
+   "A": {
+    "x": 332,
+    "y": 888,
+    "r": 4
+   },
+   "B": {
+    "x": 260,
+    "y": 823,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T18:56:14.372Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795460175609",
+   "image": "adke_neel_083",
+   "type": "m",
+   "A": {
+    "x": 243,
+    "y": 977,
+    "r": 4
+   },
+   "B": {
+    "x": 148,
+    "y": 932,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T18:56:15.609Z",
+   "note": "",
+   "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795460178009",
+   "image": "adke_neel_083",
+   "type": "m",
+   "A": {
+    "x": 413,
+    "y": 933,
+    "r": 4
+   },
+   "B": {
+    "x": 534,
+    "y": 960,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T18:56:18.009Z",
+   "note": "",
+   "schema_version": "1.2"
   }
  ],
  "s_seed_log": [

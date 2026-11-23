@@ -1,6 +1,7 @@
 """Phase 3: aggregation (§5 + deltas), dense diagnostics (§6), and the CLI prediction path."""
 
 import csv
+import json
 import subprocess
 import sys
 from pathlib import Path
@@ -114,7 +115,8 @@ def test_cli_prediction_path(cfg, tmp_path):
     rows = list(csv.DictReader(open(out / "per_pair.csv", newline="")))
     mod = {x["id"]: x for x in rows if x["method"] == "model"}
     base = {x["id"]: x for x in rows if x["method"] == "all_R"}
-    assert mod.keys() == base.keys() and len(mod) == 39
+    n = len(json.loads((M / "annotations" / f"{stem}.json").read_text())["pairs"])   # grows as pairs are added
+    assert mod.keys() == base.keys() and len(mod) == n
     for k in mod:
         assert (mod[k]["pass_wide"], mod[k]["bin_wide"], mod[k]["exclusions"]) == \
                (base[k]["pass_wide"], base[k]["bin_wide"], base[k]["exclusions"]), k

@@ -90,24 +90,25 @@ def test_rejections(srv, tamper, needle):
 def test_seed_log_append_only_and_deterministic(srv, tmp_path):
     call, ann = srv
     st, et, obj = call(f"/api/ann/{STEM}")
+    k = len(obj["s_seed_log"])                                          # the image may already have seeds
     assert call(f"/api/seed/{STEM}", "POST", {"annotator": "ghost"}, {"If-Match": et})[0] == 400   # unknown tag
     st, et, r = call(f"/api/seed/{STEM}", "POST", {"annotator": "yueren"}, {"If-Match": et})
-    assert st == 200 and r["seed"]["index"] == 0 and r["seed"]["outcome"] == "pending"
+    assert st == 200 and r["seed"]["index"] == k and r["seed"]["outcome"] == "pending"
     first = r["seed"]
     obj = r["file"]
-    obj["s_seed_log"][0]["x"] += 1                                      # immutable
+    obj["s_seed_log"][k]["x"] += 1                                      # immutable
     assert put(call, obj, et)[0] == 400
-    obj["s_seed_log"][0]["x"] -= 1
-    obj["s_seed_log"][0].update(outcome="rejected")                     # rejected needs a reason (schema)
+    obj["s_seed_log"][k]["x"] -= 1
+    obj["s_seed_log"][k].update(outcome="rejected")                     # rejected needs a reason (schema)
     assert put(call, obj, et)[0] == 400
-    obj["s_seed_log"][0].update(reason="specular", resolved_at="2026-11-18T00:00:00Z", resolved_by="yueren")
+    obj["s_seed_log"][k].update(reason="specular", resolved_at="2026-11-18T00:00:00Z", resolved_by="yueren")
     st, et, _ = put(call, obj, et)
     assert st == 200
-    obj["s_seed_log"] = []                                              # removal refused
+    obj["s_seed_log"] = obj["s_seed_log"][:k]                           # removal refused
     assert put(call, obj, et)[0] == 400
-    store = SV.Store(MAN, str(copy_ann(tmp_path / "other")))            # another machine: same seed for index 0
+    store = SV.Store(MAN, str(copy_ann(tmp_path / "other")))            # another machine: same seed for index k
     e2, _, _ = store.propose_seed(STEM, "yueren", store.read(STEM)[1])
-    assert (e2["seed"], e2["x"], e2["y"]) == (first["seed"], first["x"], first["y"])
+    assert (e2["index"], e2["seed"], e2["x"], e2["y"]) == (k, first["seed"], first["x"], first["y"])
 
 
 def test_annotators_and_routes(srv):
@@ -225,6 +226,20 @@ def test_rename_changes_only_annotators_json(srv):
     assert next(t for t in tags["annotators"] if t["id"] == "yueren")["name"] == "Yueren Xing"
 
 
+def test_merge_exhausted_marks():
+    base = dict(image="x", set="draw54", pairs=[], deleted_pairs=[], s_seed_log=[], exhausted=None)
+    mine = dict(base, exhausted={"b": dict(by="yueren", at="2026-11-19T00:00:00Z", note="ours")})
+    theirs = dict(base, exhausted={"i": dict(by="annotator_b", at="2026-11-19T00:00:00Z", note="theirs"),
+                                   "b": dict(by="annotator_b", at="2026-11-19T00:00:00Z", note="different")})
+    out, rep = MR.merge_file(mine, theirs)
+    assert out["exhausted"]["i"]["note"] == "theirs" and out["exhausted"]["b"]["note"] == "ours"
+    assert "exhausted i" in rep["added"] and len(rep["conflicts"]) == 1
+    out, rep = MR.merge_file(base, dict(base, exhausted={"d": dict(by="annotator_b", at="t", note="n")}))
+    assert out["exhausted"] == {"d": dict(by="annotator_b", at="t", note="n")}       # null on our side
+    out, rep = MR.merge_file(base, base)
+    assert out["exhausted"] is None and rep["added"] == []
+
+
 def test_merge_annotators_by_id():
     mine = dict(schema_version="1.2", annotators=[dict(id="yueren", name="Yueren", created="2026-11-18T00:00:00Z", history=[])])
     theirs = dict(schema_version="1.2", annotators=[
@@ -232,9 +247,19 @@ def test_merge_annotators_by_id():
              "at": "2026-11-18T01:00:00Z", "by": "yueren"})]),
         dict(id="annotator_b", name="Ana", created="2026-11-18T00:00:00Z", history=[])])
     add, conf = MR.merge_annotators(mine, theirs)
-    assert [e["id"] for e in add] == ["annotator_b"]
-    assert len(conf) == 1 and "kept 'Yueren'" in conf[0]
-    assert mine["annotators"][0]["name"] == "Yueren"                           # never overwritten
+    assert [e["id"] for e in add] == ["annotator_b"] and conf == []
+    assert mine["annotators"][0]["name"] == "Yueren X"                         # a rename recorded only there is taken over
+    assert mine["annotators"][0]["history"] == theirs["annotators"][0]["history"] and mine.pop("_renamed")
+
+    both = dict(schema_version="1.2", annotators=[dict(id="yueren", name="Yueren Y", created="2026-11-18T00:00:00Z",
+                history=[dict(**{"from": "Yueren", "to": "Yueren Y", "at": "2026-11-18T02:00:00Z", "by": "yueren"})])])
+    add, conf = MR.merge_annotators(both, theirs)                              # renamed on both sides: conflict
+    assert len(conf) == 1 and "kept 'Yueren Y'" in conf[0] and both["annotators"][0]["name"] == "Yueren Y"
+
+    plain = dict(schema_version="1.2", annotators=[dict(id="yueren", name="Yueren", created="2026-11-18T00:00:00Z", history=[])])
+    other = dict(schema_version="1.2", annotators=[dict(id="yueren", name="Someone", created="2026-11-18T00:00:00Z", history=[])])
+    add, conf = MR.merge_annotators(plain, other)                              # different name, no record: conflict
+    assert len(conf) == 1 and plain["annotators"][0]["name"] == "Yueren"
 
 
 def test_exports_show_renamed_name(cfg, tmp_path):

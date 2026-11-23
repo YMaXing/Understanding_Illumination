@@ -10453,9 +10453,3887 @@
     },
     "v0_index": 448
    }
+  },
+  {
+   "id": "t=1795228044950",
+   "image": "acharya_mrudula_076",
+   "type": "s",
+   "A": {
+    "x": 422,
+    "y": 442,
+    "r": 4
+   },
+   "B": {
+    "x": 393,
+    "y": 441,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:27:24.951Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "shadow",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795228174442",
+   "image": "acharya_mrudula_076",
+   "type": "s",
+   "A": {
+    "x": 465,
+    "y": 866,
+    "r": 4
+   },
+   "B": {
+    "x": 437,
+    "y": 864,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:29:34.442Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795228180748",
+   "image": "acharya_mrudula_076",
+   "type": "s",
+   "A": {
+    "x": 126,
+    "y": 370,
+    "r": 1
+   },
+   "B": {
+    "x": 142,
+    "y": 369,
+    "r": 1
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:29:40.748Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-21T02:30:20.846Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-21T02:29:42.804Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 127,
+       "y": 370,
+       "r": 4
+      },
+      "B": {
+       "x": 142,
+       "y": 370,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 126,
+       "y": 370,
+       "r": 1
+      },
+      "B": {
+       "x": 142,
+       "y": 369,
+       "r": 1
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-21T02:29:43.015Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 127,
+       "y": 370,
+       "r": 3
+      },
+      "B": {
+       "x": 142,
+       "y": 370,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 126,
+       "y": 370,
+       "r": 1
+      },
+      "B": {
+       "x": 142,
+       "y": 369,
+       "r": 1
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-21T02:29:43.512Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 127,
+       "y": 370,
+       "r": 2
+      },
+      "B": {
+       "x": 142,
+       "y": 370,
+       "r": 2
+      }
+     },
+     "after": {
+      "A": {
+       "x": 126,
+       "y": 370,
+       "r": 1
+      },
+      "B": {
+       "x": 142,
+       "y": 369,
+       "r": 1
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:29:48.435Z",
+     "by": "yueren",
+     "before": {
+      "B": {
+       "x": 142,
+       "y": 370,
+       "r": 1
+      }
+     },
+     "after": {
+      "B": {
+       "x": 142,
+       "y": 369,
+       "r": 1
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:29:50.342Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 127,
+       "y": 370,
+       "r": 1
+      }
+     },
+     "after": {
+      "A": {
+       "x": 126,
+       "y": 370,
+       "r": 1
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:29:54.843Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 126,
+       "y": 370,
+       "r": 1
+      }
+     },
+     "after": {
+      "A": {
+       "x": 126,
+       "y": 370,
+       "r": 1
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:30:00.586Z",
+     "by": "yueren",
+     "before": {
+      "B": {
+       "x": 143,
+       "y": 370,
+       "r": 1
+      }
+     },
+     "after": {
+      "B": {
+       "x": 142,
+       "y": 369,
+       "r": 1
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:30:05.730Z",
+     "by": "yueren",
+     "before": {
+      "B": {
+       "x": 144,
+       "y": 370,
+       "r": 1
+      }
+     },
+     "after": {
+      "B": {
+       "x": 142,
+       "y": 369,
+       "r": 1
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:30:07.198Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 125,
+       "y": 370,
+       "r": 1
+      }
+     },
+     "after": {
+      "A": {
+       "x": 126,
+       "y": 370,
+       "r": 1
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-21T02:30:13.951Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 125,
+       "y": 371,
+       "r": 1
+      },
+      "B": {
+       "x": 144,
+       "y": 368,
+       "r": 1
+      }
+     },
+     "after": {
+      "A": {
+       "x": 126,
+       "y": 370,
+       "r": 1
+      },
+      "B": {
+       "x": 142,
+       "y": 369,
+       "r": 1
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-21T02:30:14.436Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 125,
+       "y": 371,
+       "r": 2
+      },
+      "B": {
+       "x": 144,
+       "y": 368,
+       "r": 2
+      }
+     },
+     "after": {
+      "A": {
+       "x": 126,
+       "y": 370,
+       "r": 1
+      },
+      "B": {
+       "x": 142,
+       "y": 369,
+       "r": 1
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:30:19.958Z",
+     "by": "yueren",
+     "before": {
+      "B": {
+       "x": 144,
+       "y": 368,
+       "r": 1
+      }
+     },
+     "after": {
+      "B": {
+       "x": 142,
+       "y": 369,
+       "r": 1
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:30:20.846Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 125,
+       "y": 371,
+       "r": 1
+      }
+     },
+     "after": {
+      "A": {
+       "x": 126,
+       "y": 370,
+       "r": 1
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795228232038",
+   "image": "acharya_mrudula_076",
+   "type": "s",
+   "A": {
+    "x": 33,
+    "y": 605,
+    "r": 2
+   },
+   "B": {
+    "x": 5,
+    "y": 613,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:30:32.038Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-21T02:30:37.002Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-21T02:30:33.883Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 29,
+       "y": 606,
+       "r": 4
+      },
+      "B": {
+       "x": 5,
+       "y": 613,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 33,
+       "y": 605,
+       "r": 2
+      },
+      "B": {
+       "x": 5,
+       "y": 613,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-21T02:30:34.137Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 29,
+       "y": 606,
+       "r": 3
+      },
+      "B": {
+       "x": 5,
+       "y": 613,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 33,
+       "y": 605,
+       "r": 2
+      },
+      "B": {
+       "x": 5,
+       "y": 613,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:30:37.002Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 29,
+       "y": 606,
+       "r": 2
+      }
+     },
+     "after": {
+      "A": {
+       "x": 33,
+       "y": 605,
+       "r": 2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795228242300",
+   "image": "acharya_mrudula_076",
+   "type": "s",
+   "A": {
+    "x": 350,
+    "y": 867,
+    "r": 3
+   },
+   "B": {
+    "x": 377,
+    "y": 871,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:30:42.300Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-21T02:30:55.591Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-21T02:30:50.362Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 384,
+       "y": 870,
+       "r": 4
+      },
+      "B": {
+       "x": 418,
+       "y": 867,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 350,
+       "y": 867,
+       "r": 3
+      },
+      "B": {
+       "x": 377,
+       "y": 871,
+       "r": 3
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:30:53.559Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 384,
+       "y": 870,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 350,
+       "y": 867,
+       "r": 3
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:30:55.591Z",
+     "by": "yueren",
+     "before": {
+      "B": {
+       "x": 418,
+       "y": 867,
+       "r": 3
+      }
+     },
+     "after": {
+      "B": {
+       "x": 377,
+       "y": 871,
+       "r": 3
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795228650895",
+   "image": "acharya_mrudula_076",
+   "type": "s",
+   "A": {
+    "x": 392,
+    "y": 349,
+    "r": 4
+   },
+   "B": {
+    "x": 422,
+    "y": 342,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:37:30.895Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "shadow",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795228669044",
+   "image": "acharya_mrudula_076",
+   "type": "s",
+   "A": {
+    "x": 537,
+    "y": 691,
+    "r": 4
+   },
+   "B": {
+    "x": 554,
+    "y": 708,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:37:49.044Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795228676487",
+   "image": "acharya_mrudula_076",
+   "type": "s",
+   "A": {
+    "x": 259,
+    "y": 892,
+    "r": 1
+   },
+   "B": {
+    "x": 286,
+    "y": 890,
+    "r": 1
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:37:56.487Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-21T02:38:01.158Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-21T02:37:58.439Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 259,
+       "y": 890,
+       "r": 4
+      },
+      "B": {
+       "x": 286,
+       "y": 890,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 259,
+       "y": 892,
+       "r": 1
+      },
+      "B": {
+       "x": 286,
+       "y": 890,
+       "r": 1
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-21T02:37:58.680Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 259,
+       "y": 890,
+       "r": 3
+      },
+      "B": {
+       "x": 286,
+       "y": 890,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 259,
+       "y": 892,
+       "r": 1
+      },
+      "B": {
+       "x": 286,
+       "y": 890,
+       "r": 1
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-21T02:37:59.337Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 259,
+       "y": 890,
+       "r": 2
+      },
+      "B": {
+       "x": 286,
+       "y": 890,
+       "r": 2
+      }
+     },
+     "after": {
+      "A": {
+       "x": 259,
+       "y": 892,
+       "r": 1
+      },
+      "B": {
+       "x": 286,
+       "y": 890,
+       "r": 1
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:38:01.158Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 259,
+       "y": 890,
+       "r": 1
+      }
+     },
+     "after": {
+      "A": {
+       "x": 259,
+       "y": 892,
+       "r": 1
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795228688974",
+   "image": "acharya_mrudula_076",
+   "type": "s",
+   "A": {
+    "x": 726,
+    "y": 509,
+    "r": 3
+   },
+   "B": {
+    "x": 704,
+    "y": 505,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:38:08.974Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "shadow",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-21T02:38:11.932Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-21T02:38:11.932Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 726,
+       "y": 509,
+       "r": 4
+      },
+      "B": {
+       "x": 704,
+       "y": 505,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 726,
+       "y": 509,
+       "r": 3
+      },
+      "B": {
+       "x": 704,
+       "y": 505,
+       "r": 3
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795228699261",
+   "image": "acharya_mrudula_076",
+   "type": "s",
+   "A": {
+    "x": 502,
+    "y": 87,
+    "r": 2
+   },
+   "B": {
+    "x": 530,
+    "y": 80,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:38:19.261Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "shadow",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-21T02:38:23.701Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-21T02:38:21.504Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 503,
+       "y": 81,
+       "r": 4
+      },
+      "B": {
+       "x": 530,
+       "y": 80,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 502,
+       "y": 87,
+       "r": 2
+      },
+      "B": {
+       "x": 530,
+       "y": 80,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-21T02:38:21.932Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 503,
+       "y": 81,
+       "r": 3
+      },
+      "B": {
+       "x": 530,
+       "y": 80,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 502,
+       "y": 87,
+       "r": 2
+      },
+      "B": {
+       "x": 530,
+       "y": 80,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:38:23.701Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 503,
+       "y": 81,
+       "r": 2
+      }
+     },
+     "after": {
+      "A": {
+       "x": 502,
+       "y": 87,
+       "r": 2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795228731251",
+   "image": "acharya_mrudula_076",
+   "type": "s",
+   "A": {
+    "x": 364,
+    "y": 20,
+    "r": 4
+   },
+   "B": {
+    "x": 340,
+    "y": 16,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:38:51.251Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795228735928",
+   "image": "acharya_mrudula_076",
+   "type": "s",
+   "A": {
+    "x": 64,
+    "y": 233,
+    "r": 2
+   },
+   "B": {
+    "x": 49,
+    "y": 220,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:38:55.928Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-21T02:38:57.881Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-21T02:38:57.666Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 64,
+       "y": 233,
+       "r": 4
+      },
+      "B": {
+       "x": 49,
+       "y": 220,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 64,
+       "y": 233,
+       "r": 2
+      },
+      "B": {
+       "x": 49,
+       "y": 220,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-21T02:38:57.881Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 64,
+       "y": 233,
+       "r": 3
+      },
+      "B": {
+       "x": 49,
+       "y": 220,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 64,
+       "y": 233,
+       "r": 2
+      },
+      "B": {
+       "x": 49,
+       "y": 220,
+       "r": 2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795228742856",
+   "image": "acharya_mrudula_076",
+   "type": "s",
+   "A": {
+    "x": 54,
+    "y": 953,
+    "r": 4
+   },
+   "B": {
+    "x": 49,
+    "y": 895,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:39:02.856Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "shadow",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-21T02:39:05.800Z",
+   "history": [
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:39:05.800Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 55,
+       "y": 953,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 54,
+       "y": 953,
+       "r": 4
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795228749183",
+   "image": "acharya_mrudula_076",
+   "type": "s",
+   "A": {
+    "x": 530,
+    "y": 107,
+    "r": 4
+   },
+   "B": {
+    "x": 558,
+    "y": 110,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:39:09.183Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "shadow",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-21T02:39:12.702Z",
+   "history": [
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:39:12.702Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 527,
+       "y": 106,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 530,
+       "y": 107,
+       "r": 4
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795228756592",
+   "image": "acharya_mrudula_076",
+   "type": "s",
+   "A": {
+    "x": 92,
+    "y": 973,
+    "r": 4
+   },
+   "B": {
+    "x": 124,
+    "y": 974,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:39:16.592Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795228763948",
+   "image": "acharya_mrudula_076",
+   "type": "s",
+   "A": {
+    "x": 324,
+    "y": 202,
+    "r": 4
+   },
+   "B": {
+    "x": 298,
+    "y": 209,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:39:23.948Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795228776400",
+   "image": "acharya_mrudula_076",
+   "type": "s",
+   "A": {
+    "x": 428,
+    "y": 900,
+    "r": 1
+   },
+   "B": {
+    "x": 471,
+    "y": 898,
+    "r": 1
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:39:36.400Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-21T02:39:39.717Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-21T02:39:37.825Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 428,
+       "y": 902,
+       "r": 4
+      },
+      "B": {
+       "x": 471,
+       "y": 898,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 428,
+       "y": 900,
+       "r": 1
+      },
+      "B": {
+       "x": 471,
+       "y": 898,
+       "r": 1
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-21T02:39:38.057Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 428,
+       "y": 902,
+       "r": 3
+      },
+      "B": {
+       "x": 471,
+       "y": 898,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 428,
+       "y": 900,
+       "r": 1
+      },
+      "B": {
+       "x": 471,
+       "y": 898,
+       "r": 1
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-21T02:39:38.299Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 428,
+       "y": 902,
+       "r": 2
+      },
+      "B": {
+       "x": 471,
+       "y": 898,
+       "r": 2
+      }
+     },
+     "after": {
+      "A": {
+       "x": 428,
+       "y": 900,
+       "r": 1
+      },
+      "B": {
+       "x": 471,
+       "y": 898,
+       "r": 1
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:39:39.717Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 428,
+       "y": 902,
+       "r": 1
+      }
+     },
+     "after": {
+      "A": {
+       "x": 428,
+       "y": 900,
+       "r": 1
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795228788454",
+   "image": "acharya_mrudula_076",
+   "type": "s",
+   "A": {
+    "x": 384,
+    "y": 864,
+    "r": 3
+   },
+   "B": {
+    "x": 416,
+    "y": 870,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:39:48.454Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-21T02:39:50.503Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-21T02:39:50.503Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 384,
+       "y": 864,
+       "r": 4
+      },
+      "B": {
+       "x": 416,
+       "y": 870,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 384,
+       "y": 864,
+       "r": 3
+      },
+      "B": {
+       "x": 416,
+       "y": 870,
+       "r": 3
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795228796208",
+   "image": "acharya_mrudula_076",
+   "type": "s",
+   "A": {
+    "x": 56,
+    "y": 866,
+    "r": 4
+   },
+   "B": {
+    "x": 44,
+    "y": 833,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:39:56.208Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "shadow",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-21T02:40:01.004Z",
+   "history": [
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:39:59.008Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 59,
+       "y": 865,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 56,
+       "y": 866,
+       "r": 4
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:40:01.004Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 57,
+       "y": 867,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 56,
+       "y": 866,
+       "r": 4
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795228809936",
+   "image": "acharya_mrudula_076",
+   "type": "s",
+   "A": {
+    "x": 452,
+    "y": 579,
+    "r": 1
+   },
+   "B": {
+    "x": 488,
+    "y": 577,
+    "r": 1
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:40:09.936Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-21T02:40:22.873Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-21T02:40:12.596Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 453,
+       "y": 580,
+       "r": 4
+      },
+      "B": {
+       "x": 488,
+       "y": 577,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 452,
+       "y": 579,
+       "r": 1
+      },
+      "B": {
+       "x": 488,
+       "y": 577,
+       "r": 1
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-21T02:40:12.827Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 453,
+       "y": 580,
+       "r": 3
+      },
+      "B": {
+       "x": 488,
+       "y": 577,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 452,
+       "y": 579,
+       "r": 1
+      },
+      "B": {
+       "x": 488,
+       "y": 577,
+       "r": 1
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-21T02:40:13.158Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 453,
+       "y": 580,
+       "r": 2
+      },
+      "B": {
+       "x": 488,
+       "y": 577,
+       "r": 2
+      }
+     },
+     "after": {
+      "A": {
+       "x": 452,
+       "y": 579,
+       "r": 1
+      },
+      "B": {
+       "x": 488,
+       "y": 577,
+       "r": 1
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:40:14.255Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 453,
+       "y": 580,
+       "r": 1
+      }
+     },
+     "after": {
+      "A": {
+       "x": 452,
+       "y": 579,
+       "r": 1
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:40:21.549Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 452,
+       "y": 580,
+       "r": 1
+      }
+     },
+     "after": {
+      "A": {
+       "x": 452,
+       "y": 579,
+       "r": 1
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:40:22.873Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 451,
+       "y": 579,
+       "r": 1
+      }
+     },
+     "after": {
+      "A": {
+       "x": 452,
+       "y": 579,
+       "r": 1
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795228827622",
+   "image": "acharya_mrudula_076",
+   "type": "s",
+   "A": {
+    "x": 754,
+    "y": 391,
+    "r": 3
+   },
+   "B": {
+    "x": 726,
+    "y": 385,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:40:27.622Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "shadow",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-21T02:40:31.531Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-21T02:40:29.524Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 752,
+       "y": 393,
+       "r": 4
+      },
+      "B": {
+       "x": 726,
+       "y": 385,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 754,
+       "y": 391,
+       "r": 3
+      },
+      "B": {
+       "x": 726,
+       "y": 385,
+       "r": 3
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:40:31.531Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 752,
+       "y": 393,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 754,
+       "y": 391,
+       "r": 3
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795228839582",
+   "image": "acharya_mrudula_076",
+   "type": "s",
+   "A": {
+    "x": 501,
+    "y": 38,
+    "r": 4
+   },
+   "B": {
+    "x": 532,
+    "y": 39,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:40:39.582Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "shadow",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795228867505",
+   "image": "acharya_mrudula_076",
+   "type": "s",
+   "A": {
+    "x": 247,
+    "y": 750,
+    "r": 1
+   },
+   "B": {
+    "x": 250,
+    "y": 725,
+    "r": 1
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:41:07.505Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "shadow",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-21T02:41:13.684Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-21T02:41:09.745Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 246,
+       "y": 742,
+       "r": 4
+      },
+      "B": {
+       "x": 250,
+       "y": 711,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 247,
+       "y": 750,
+       "r": 1
+      },
+      "B": {
+       "x": 250,
+       "y": 725,
+       "r": 1
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-21T02:41:09.979Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 246,
+       "y": 742,
+       "r": 3
+      },
+      "B": {
+       "x": 250,
+       "y": 711,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 247,
+       "y": 750,
+       "r": 1
+      },
+      "B": {
+       "x": 250,
+       "y": 725,
+       "r": 1
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-21T02:41:10.122Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 246,
+       "y": 742,
+       "r": 2
+      },
+      "B": {
+       "x": 250,
+       "y": 711,
+       "r": 2
+      }
+     },
+     "after": {
+      "A": {
+       "x": 247,
+       "y": 750,
+       "r": 1
+      },
+      "B": {
+       "x": 250,
+       "y": 725,
+       "r": 1
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:41:11.984Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 246,
+       "y": 742,
+       "r": 1
+      }
+     },
+     "after": {
+      "A": {
+       "x": 247,
+       "y": 750,
+       "r": 1
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:41:13.684Z",
+     "by": "yueren",
+     "before": {
+      "B": {
+       "x": 250,
+       "y": 711,
+       "r": 1
+      }
+     },
+     "after": {
+      "B": {
+       "x": 250,
+       "y": 725,
+       "r": 1
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795228893666",
+   "image": "acharya_mrudula_076",
+   "type": "s",
+   "A": {
+    "x": 63,
+    "y": 157,
+    "r": 2
+   },
+   "B": {
+    "x": 49,
+    "y": 138,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:41:33.666Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "shadow",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-21T02:41:35.536Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-21T02:41:35.333Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 63,
+       "y": 157,
+       "r": 4
+      },
+      "B": {
+       "x": 49,
+       "y": 138,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 63,
+       "y": 157,
+       "r": 2
+      },
+      "B": {
+       "x": 49,
+       "y": 138,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-21T02:41:35.536Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 63,
+       "y": 157,
+       "r": 3
+      },
+      "B": {
+       "x": 49,
+       "y": 138,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 63,
+       "y": 157,
+       "r": 2
+      },
+      "B": {
+       "x": 49,
+       "y": 138,
+       "r": 2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795228909966",
+   "image": "acharya_mrudula_076",
+   "type": "s",
+   "A": {
+    "x": 441,
+    "y": 950,
+    "r": 4
+   },
+   "B": {
+    "x": 409,
+    "y": 941,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:41:49.966Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795228918063",
+   "image": "acharya_mrudula_076",
+   "type": "s",
+   "A": {
+    "x": 185,
+    "y": 710,
+    "r": 3
+   },
+   "B": {
+    "x": 176,
+    "y": 686,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:41:58.063Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-21T02:42:00.101Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-21T02:42:00.101Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 185,
+       "y": 710,
+       "r": 4
+      },
+      "B": {
+       "x": 176,
+       "y": 686,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 185,
+       "y": 710,
+       "r": 3
+      },
+      "B": {
+       "x": 176,
+       "y": 686,
+       "r": 3
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795228929035",
+   "image": "acharya_mrudula_076",
+   "type": "s",
+   "A": {
+    "x": 488,
+    "y": 44,
+    "r": 2
+   },
+   "B": {
+    "x": 481,
+    "y": 33,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:42:09.035Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "shadow",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-21T02:42:12.310Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-21T02:42:10.617Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 487,
+       "y": 43,
+       "r": 4
+      },
+      "B": {
+       "x": 481,
+       "y": 33,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 488,
+       "y": 44,
+       "r": 2
+      },
+      "B": {
+       "x": 481,
+       "y": 33,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-21T02:42:10.849Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 487,
+       "y": 43,
+       "r": 3
+      },
+      "B": {
+       "x": 481,
+       "y": 33,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 488,
+       "y": 44,
+       "r": 2
+      },
+      "B": {
+       "x": 481,
+       "y": 33,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:42:12.310Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 487,
+       "y": 43,
+       "r": 2
+      }
+     },
+     "after": {
+      "A": {
+       "x": 488,
+       "y": 44,
+       "r": 2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795228938499",
+   "image": "acharya_mrudula_076",
+   "type": "s",
+   "A": {
+    "x": 244,
+    "y": 552,
+    "r": 4
+   },
+   "B": {
+    "x": 245,
+    "y": 582,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:42:18.499Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795228952535",
+   "image": "acharya_mrudula_076",
+   "type": "s",
+   "A": {
+    "x": 674,
+    "y": 251,
+    "r": 4
+   },
+   "B": {
+    "x": 705,
+    "y": 246,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:42:32.535Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "shadow",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795228970235",
+   "image": "acharya_mrudula_076",
+   "type": "d",
+   "A": {
+    "x": 295,
+    "y": 900,
+    "r": 4
+   },
+   "B": {
+    "x": 499,
+    "y": 929,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:42:50.235Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different"
+  },
+  {
+   "id": "t=1795228998466",
+   "image": "acharya_mrudula_076",
+   "type": "d",
+   "A": {
+    "x": 411,
+    "y": 674,
+    "r": 2
+   },
+   "B": {
+    "x": 505,
+    "y": 576,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:43:18.466Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "same",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-21T02:43:23.264Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-21T02:43:20.692Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 411,
+       "y": 674,
+       "r": 4
+      },
+      "B": {
+       "x": 504,
+       "y": 575,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 411,
+       "y": 674,
+       "r": 2
+      },
+      "B": {
+       "x": 505,
+       "y": 576,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-21T02:43:20.945Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 411,
+       "y": 674,
+       "r": 3
+      },
+      "B": {
+       "x": 504,
+       "y": 575,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 411,
+       "y": 674,
+       "r": 2
+      },
+      "B": {
+       "x": 505,
+       "y": 576,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:43:23.264Z",
+     "by": "yueren",
+     "before": {
+      "B": {
+       "x": 504,
+       "y": 575,
+       "r": 2
+      }
+     },
+     "after": {
+      "B": {
+       "x": 505,
+       "y": 576,
+       "r": 2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795229016239",
+   "image": "acharya_mrudula_076",
+   "type": "d",
+   "A": {
+    "x": 272,
+    "y": 573,
+    "r": 3
+   },
+   "B": {
+    "x": 675,
+    "y": 557,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:43:36.239Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-21T02:43:38.894Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-21T02:43:38.894Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 272,
+       "y": 573,
+       "r": 4
+      },
+      "B": {
+       "x": 675,
+       "y": 557,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 272,
+       "y": 573,
+       "r": 3
+      },
+      "B": {
+       "x": 675,
+       "y": 557,
+       "r": 3
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795229024423",
+   "image": "acharya_mrudula_076",
+   "type": "d",
+   "A": {
+    "x": 526,
+    "y": 513,
+    "r": 4
+   },
+   "B": {
+    "x": 298,
+    "y": 441,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:43:44.423Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different"
+  },
+  {
+   "id": "t=1795229040722",
+   "image": "acharya_mrudula_076",
+   "type": "d",
+   "A": {
+    "x": 19,
+    "y": 517,
+    "r": 3
+   },
+   "B": {
+    "x": 101,
+    "y": 404,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:44:00.722Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "same",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-21T02:44:05.583Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-21T02:44:03.187Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 19,
+       "y": 517,
+       "r": 4
+      },
+      "B": {
+       "x": 100,
+       "y": 403,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 19,
+       "y": 517,
+       "r": 3
+      },
+      "B": {
+       "x": 101,
+       "y": 404,
+       "r": 3
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:44:05.583Z",
+     "by": "yueren",
+     "before": {
+      "B": {
+       "x": 100,
+       "y": 403,
+       "r": 3
+      }
+     },
+     "after": {
+      "B": {
+       "x": 101,
+       "y": 404,
+       "r": 3
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795229066339",
+   "image": "acharya_mrudula_076",
+   "type": "d",
+   "A": {
+    "x": 119,
+    "y": 918,
+    "r": 4
+   },
+   "B": {
+    "x": 201,
+    "y": 819,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:44:26.339Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-21T02:44:31.302Z",
+   "history": [
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:44:31.302Z",
+     "by": "yueren",
+     "before": {
+      "B": {
+       "x": 204,
+       "y": 818,
+       "r": 4
+      }
+     },
+     "after": {
+      "B": {
+       "x": 201,
+       "y": 819,
+       "r": 4
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795229091321",
+   "image": "acharya_mrudula_076",
+   "type": "d",
+   "A": {
+    "x": 84,
+    "y": 105,
+    "r": 2
+   },
+   "B": {
+    "x": 24,
+    "y": 567,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:44:51.321Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-21T02:45:00.072Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-21T02:44:56.481Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 82,
+       "y": 85,
+       "r": 4
+      },
+      "B": {
+       "x": 24,
+       "y": 567,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 84,
+       "y": 105,
+       "r": 2
+      },
+      "B": {
+       "x": 24,
+       "y": 567,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:44:59.317Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 82,
+       "y": 85,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 84,
+       "y": 105,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-21T02:45:00.072Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 84,
+       "y": 105,
+       "r": 3
+      },
+      "B": {
+       "x": 24,
+       "y": 567,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 84,
+       "y": 105,
+       "r": 2
+      },
+      "B": {
+       "x": 24,
+       "y": 567,
+       "r": 2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795229111860",
+   "image": "acharya_mrudula_076",
+   "type": "d",
+   "A": {
+    "x": 752,
+    "y": 462,
+    "r": 4
+   },
+   "B": {
+    "x": 305,
+    "y": 299,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:45:11.860Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different"
+  },
+  {
+   "id": "t=1795229128501",
+   "image": "acharya_mrudula_076",
+   "type": "d",
+   "A": {
+    "x": 432,
+    "y": 266,
+    "r": 4
+   },
+   "B": {
+    "x": 525,
+    "y": 268,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:45:28.501Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "same",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-21T02:45:30.395Z",
+   "history": [
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:45:30.395Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 428,
+       "y": 261,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 432,
+       "y": 266,
+       "r": 4
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795229267241",
+   "image": "acharya_mrudula_076",
+   "type": "d",
+   "A": {
+    "x": 672,
+    "y": 775,
+    "r": 3
+   },
+   "B": {
+    "x": 330,
+    "y": 781,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:47:47.241Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "same"
+  },
+  {
+   "id": "t=1795229277479",
+   "image": "acharya_mrudula_076",
+   "type": "d",
+   "A": {
+    "x": 641,
+    "y": 758,
+    "r": 3
+   },
+   "B": {
+    "x": 363,
+    "y": 774,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:47:57.479Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different"
+  },
+  {
+   "id": "t=1795229281699",
+   "image": "acharya_mrudula_076",
+   "type": "d",
+   "A": {
+    "x": 433,
+    "y": 784,
+    "r": 2
+   },
+   "B": {
+    "x": 463,
+    "y": 646,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:48:01.699Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-21T02:48:27.739Z",
+   "history": [
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:48:22.344Z",
+     "by": "yueren",
+     "before": {
+      "B": {
+       "x": 434,
+       "y": 712,
+       "r": 3
+      }
+     },
+     "after": {
+      "B": {
+       "x": 463,
+       "y": 646,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:48:24.629Z",
+     "by": "yueren",
+     "before": {
+      "B": {
+       "x": 461,
+       "y": 648,
+       "r": 3
+      }
+     },
+     "after": {
+      "B": {
+       "x": 463,
+       "y": 646,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-21T02:48:27.739Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 433,
+       "y": 784,
+       "r": 3
+      },
+      "B": {
+       "x": 463,
+       "y": 646,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 433,
+       "y": 784,
+       "r": 2
+      },
+      "B": {
+       "x": 463,
+       "y": 646,
+       "r": 2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795229327081",
+   "image": "acharya_mrudula_076",
+   "type": "d",
+   "A": {
+    "x": 108,
+    "y": 641,
+    "r": 3
+   },
+   "B": {
+    "x": 62,
+    "y": 384,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:48:47.081Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different"
+  },
+  {
+   "id": "t=1795229371648",
+   "image": "acharya_mrudula_076",
+   "type": "d",
+   "A": {
+    "x": 576,
+    "y": 129,
+    "r": 3
+   },
+   "B": {
+    "x": 378,
+    "y": 85,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:49:31.648Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different"
+  },
+  {
+   "id": "t=1795229376289",
+   "image": "acharya_mrudula_076",
+   "type": "d",
+   "A": {
+    "x": 700,
+    "y": 32,
+    "r": 3
+   },
+   "B": {
+    "x": 291,
+    "y": 43,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:49:36.289Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-21T02:49:41.167Z",
+   "history": [
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:49:41.167Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 699,
+       "y": 28,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 700,
+       "y": 32,
+       "r": 3
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795229410196",
+   "image": "acharya_mrudula_076",
+   "type": "d",
+   "A": {
+    "x": 206,
+    "y": 368,
+    "r": 1
+   },
+   "B": {
+    "x": 203,
+    "y": 85,
+    "r": 1
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:50:10.196Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "same",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-21T02:50:13.156Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-21T02:50:12.905Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 206,
+       "y": 368,
+       "r": 3
+      },
+      "B": {
+       "x": 203,
+       "y": 85,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 206,
+       "y": 368,
+       "r": 1
+      },
+      "B": {
+       "x": 203,
+       "y": 85,
+       "r": 1
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-21T02:50:13.156Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 206,
+       "y": 368,
+       "r": 2
+      },
+      "B": {
+       "x": 203,
+       "y": 85,
+       "r": 2
+      }
+     },
+     "after": {
+      "A": {
+       "x": 206,
+       "y": 368,
+       "r": 1
+      },
+      "B": {
+       "x": 203,
+       "y": 85,
+       "r": 1
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795229425034",
+   "image": "acharya_mrudula_076",
+   "type": "d",
+   "A": {
+    "x": 112,
+    "y": 128,
+    "r": 2
+   },
+   "B": {
+    "x": 8,
+    "y": 246,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:50:25.034Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-21T02:50:50.772Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-21T02:50:30.150Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 112,
+       "y": 128,
+       "r": 3
+      },
+      "B": {
+       "x": 11,
+       "y": 140,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 112,
+       "y": 128,
+       "r": 2
+      },
+      "B": {
+       "x": 8,
+       "y": 246,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-21T02:50:30.368Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 112,
+       "y": 128,
+       "r": 2
+      },
+      "B": {
+       "x": 11,
+       "y": 140,
+       "r": 2
+      }
+     },
+     "after": {
+      "A": {
+       "x": 112,
+       "y": 128,
+       "r": 2
+      },
+      "B": {
+       "x": 8,
+       "y": 246,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-21T02:50:32.228Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 112,
+       "y": 128,
+       "r": 1
+      },
+      "B": {
+       "x": 11,
+       "y": 140,
+       "r": 1
+      }
+     },
+     "after": {
+      "A": {
+       "x": 112,
+       "y": 128,
+       "r": 2
+      },
+      "B": {
+       "x": 8,
+       "y": 246,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-21T02:50:34.430Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 112,
+       "y": 128,
+       "r": 2
+      },
+      "B": {
+       "x": 11,
+       "y": 140,
+       "r": 2
+      }
+     },
+     "after": {
+      "A": {
+       "x": 112,
+       "y": 128,
+       "r": 2
+      },
+      "B": {
+       "x": 8,
+       "y": 246,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:50:38.343Z",
+     "by": "yueren",
+     "before": {
+      "B": {
+       "x": 11,
+       "y": 140,
+       "r": 1
+      }
+     },
+     "after": {
+      "B": {
+       "x": 8,
+       "y": 246,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-21T02:50:39.061Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 112,
+       "y": 128,
+       "r": 1
+      },
+      "B": {
+       "x": 10,
+       "y": 140,
+       "r": 1
+      }
+     },
+     "after": {
+      "A": {
+       "x": 112,
+       "y": 128,
+       "r": 2
+      },
+      "B": {
+       "x": 8,
+       "y": 246,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:50:45.558Z",
+     "by": "yueren",
+     "before": {
+      "B": {
+       "x": 10,
+       "y": 140,
+       "r": 2
+      }
+     },
+     "after": {
+      "B": {
+       "x": 8,
+       "y": 246,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:50:50.772Z",
+     "by": "yueren",
+     "before": {
+      "B": {
+       "x": 10,
+       "y": 205,
+       "r": 2
+      }
+     },
+     "after": {
+      "B": {
+       "x": 8,
+       "y": 246,
+       "r": 2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795229471327",
+   "image": "acharya_mrudula_076",
+   "type": "d",
+   "A": {
+    "x": 210,
+    "y": 638,
+    "r": 1
+   },
+   "B": {
+    "x": 195,
+    "y": 556,
+    "r": 1
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:51:11.327Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-21T02:51:21.132Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-21T02:51:13.361Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 210,
+       "y": 638,
+       "r": 3
+      },
+      "B": {
+       "x": 180,
+       "y": 564,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 210,
+       "y": 638,
+       "r": 1
+      },
+      "B": {
+       "x": 195,
+       "y": 556,
+       "r": 1
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-21T02:51:13.589Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 210,
+       "y": 638,
+       "r": 2
+      },
+      "B": {
+       "x": 180,
+       "y": 564,
+       "r": 2
+      }
+     },
+     "after": {
+      "A": {
+       "x": 210,
+       "y": 638,
+       "r": 1
+      },
+      "B": {
+       "x": 195,
+       "y": 556,
+       "r": 1
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-21T02:51:21.132Z",
+     "by": "yueren",
+     "before": {
+      "B": {
+       "x": 180,
+       "y": 564,
+       "r": 1
+      }
+     },
+     "after": {
+      "B": {
+       "x": 195,
+       "y": 556,
+       "r": 1
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795229507660",
+   "image": "acharya_mrudula_076",
+   "type": "d",
+   "A": {
+    "x": 506,
+    "y": 842,
+    "r": 3
+   },
+   "B": {
+    "x": 705,
+    "y": 934,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-21T02:51:47.660Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different"
   }
  ],
- "s_seed_log": [],
+ "s_seed_log": [
+  {
+   "index": 0,
+   "seed": "20261118:acharya_mrudula_076:0",
+   "x": 286,
+   "y": 830,
+   "proposed_at": "2026-11-21T02:27:10.056Z",
+   "proposed_by": "yueren",
+   "outcome": "abandoned",
+   "resolved_at": "2026-11-21T02:27:19.462Z",
+   "resolved_by": "yueren",
+   "reason": "edge"
+  },
+  {
+   "index": 1,
+   "seed": "20261118:acharya_mrudula_076:1",
+   "x": 429,
+   "y": 449,
+   "proposed_at": "2026-11-21T02:27:21.307Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-21T02:27:26.182Z",
+   "resolved_by": "yueren",
+   "final_x": 422,
+   "final_y": 442,
+   "pair_id": "t=1795228044950"
+  },
+  {
+   "index": 2,
+   "seed": "20261118:acharya_mrudula_076:2",
+   "x": 465,
+   "y": 860,
+   "proposed_at": "2026-11-21T02:29:29.356Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-21T02:29:35.371Z",
+   "resolved_by": "yueren",
+   "final_x": 465,
+   "final_y": 866,
+   "pair_id": "t=1795228174442"
+  },
+  {
+   "index": 3,
+   "seed": "20261118:acharya_mrudula_076:3",
+   "x": 121,
+   "y": 365,
+   "proposed_at": "2026-11-21T02:29:37.033Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-21T02:29:41.897Z",
+   "resolved_by": "yueren",
+   "final_x": 127,
+   "final_y": 370,
+   "pair_id": "t=1795228180748"
+  },
+  {
+   "index": 4,
+   "seed": "20261118:acharya_mrudula_076:4",
+   "x": 14,
+   "y": 844,
+   "proposed_at": "2026-11-21T02:30:22.007Z",
+   "proposed_by": "yueren",
+   "outcome": "abandoned",
+   "resolved_at": "2026-11-21T02:30:26.180Z",
+   "resolved_by": "yueren",
+   "reason": "clutter"
+  },
+  {
+   "index": 5,
+   "seed": "20261118:acharya_mrudula_076:5",
+   "x": 29,
+   "y": 606,
+   "proposed_at": "2026-11-21T02:30:27.838Z",
+   "proposed_by": "yueren",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-21T02:30:33.040Z",
+   "resolved_by": "yueren",
+   "final_x": 29,
+   "final_y": 606,
+   "pair_id": "t=1795228232038"
+  },
+  {
+   "index": 6,
+   "seed": "20261118:acharya_mrudula_076:6",
+   "x": 384,
+   "y": 877,
+   "proposed_at": "2026-11-21T02:30:38.688Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-21T02:30:48.177Z",
+   "resolved_by": "yueren",
+   "final_x": 384,
+   "final_y": 870,
+   "pair_id": "t=1795228242300"
+  },
+  {
+   "index": 7,
+   "seed": "20261118:acharya_mrudula_076:7",
+   "x": 95,
+   "y": 560,
+   "proposed_at": "2026-11-21T02:31:45.706Z",
+   "proposed_by": "yueren",
+   "outcome": "abandoned",
+   "resolved_at": "2026-11-21T02:31:52.956Z",
+   "resolved_by": "yueren",
+   "reason": "small"
+  },
+  {
+   "index": 8,
+   "seed": "20261118:acharya_mrudula_076:8",
+   "x": 384,
+   "y": 351,
+   "proposed_at": "2026-11-21T02:37:23.672Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-21T02:37:32.092Z",
+   "resolved_by": "yueren",
+   "final_x": 392,
+   "final_y": 349,
+   "pair_id": "t=1795228650895"
+  },
+  {
+   "index": 9,
+   "seed": "20261118:acharya_mrudula_076:9",
+   "x": 532,
+   "y": 683,
+   "proposed_at": "2026-11-21T02:37:40.598Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-21T02:37:49.875Z",
+   "resolved_by": "yueren",
+   "final_x": 537,
+   "final_y": 691,
+   "pair_id": "t=1795228669044"
+  },
+  {
+   "index": 10,
+   "seed": "20261118:acharya_mrudula_076:10",
+   "x": 250,
+   "y": 886,
+   "proposed_at": "2026-11-21T02:37:50.581Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-21T02:37:57.361Z",
+   "resolved_by": "yueren",
+   "final_x": 259,
+   "final_y": 890,
+   "pair_id": "t=1795228676487"
+  },
+  {
+   "index": 11,
+   "seed": "20261118:acharya_mrudula_076:11",
+   "x": 730,
+   "y": 518,
+   "proposed_at": "2026-11-21T02:38:02.867Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-21T02:38:11.050Z",
+   "resolved_by": "yueren",
+   "final_x": 726,
+   "final_y": 509,
+   "pair_id": "t=1795228688974"
+  },
+  {
+   "index": 12,
+   "seed": "20261118:acharya_mrudula_076:12",
+   "x": 495,
+   "y": 80,
+   "proposed_at": "2026-11-21T02:38:13.064Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-21T02:38:20.474Z",
+   "resolved_by": "yueren",
+   "final_x": 503,
+   "final_y": 81,
+   "pair_id": "t=1795228699261"
+  },
+  {
+   "index": 13,
+   "seed": "20261118:acharya_mrudula_076:13",
+   "x": 380,
+   "y": 927,
+   "proposed_at": "2026-11-21T02:38:24.677Z",
+   "proposed_by": "yueren",
+   "outcome": "abandoned",
+   "resolved_at": "2026-11-21T02:38:35.267Z",
+   "resolved_by": "yueren",
+   "reason": "edge"
+  },
+  {
+   "index": 14,
+   "seed": "20261118:acharya_mrudula_076:14",
+   "x": 428,
+   "y": 917,
+   "proposed_at": "2026-11-21T02:38:37.449Z",
+   "proposed_by": "yueren",
+   "outcome": "abandoned",
+   "resolved_at": "2026-11-21T02:38:41.588Z",
+   "resolved_by": "yueren",
+   "reason": "edge"
+  },
+  {
+   "index": 15,
+   "seed": "20261118:acharya_mrudula_076:15",
+   "x": 613,
+   "y": 908,
+   "proposed_at": "2026-11-21T02:38:43.816Z",
+   "proposed_by": "yueren",
+   "outcome": "abandoned",
+   "resolved_at": "2026-11-21T02:38:47.133Z",
+   "resolved_by": "yueren",
+   "reason": "edge"
+  },
+  {
+   "index": 16,
+   "seed": "20261118:acharya_mrudula_076:16",
+   "x": 355,
+   "y": 22,
+   "proposed_at": "2026-11-21T02:38:48.609Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-21T02:38:51.835Z",
+   "resolved_by": "yueren",
+   "final_x": 364,
+   "final_y": 20,
+   "pair_id": "t=1795228731251"
+  },
+  {
+   "index": 17,
+   "seed": "20261118:acharya_mrudula_076:17",
+   "x": 60,
+   "y": 234,
+   "proposed_at": "2026-11-21T02:38:52.563Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-21T02:38:57.025Z",
+   "resolved_by": "yueren",
+   "final_x": 64,
+   "final_y": 233,
+   "pair_id": "t=1795228735928"
+  },
+  {
+   "index": 18,
+   "seed": "20261118:acharya_mrudula_076:18",
+   "x": 56,
+   "y": 944,
+   "proposed_at": "2026-11-21T02:38:58.890Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-21T02:39:03.959Z",
+   "resolved_by": "yueren",
+   "final_x": 55,
+   "final_y": 953,
+   "pair_id": "t=1795228742856"
+  },
+  {
+   "index": 19,
+   "seed": "20261118:acharya_mrudula_076:19",
+   "x": 519,
+   "y": 102,
+   "proposed_at": "2026-11-21T02:39:07.230Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-21T02:39:10.354Z",
+   "resolved_by": "yueren",
+   "final_x": 527,
+   "final_y": 106,
+   "pair_id": "t=1795228749183"
+  },
+  {
+   "index": 20,
+   "seed": "20261118:acharya_mrudula_076:20",
+   "x": 92,
+   "y": 973,
+   "proposed_at": "2026-11-21T02:39:13.799Z",
+   "proposed_by": "yueren",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-21T02:39:17.370Z",
+   "resolved_by": "yueren",
+   "final_x": 92,
+   "final_y": 973,
+   "pair_id": "t=1795228756592"
+  },
+  {
+   "index": 21,
+   "seed": "20261118:acharya_mrudula_076:21",
+   "x": 326,
+   "y": 198,
+   "proposed_at": "2026-11-21T02:39:19.683Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-21T02:39:24.837Z",
+   "resolved_by": "yueren",
+   "final_x": 324,
+   "final_y": 202,
+   "pair_id": "t=1795228763948"
+  },
+  {
+   "index": 22,
+   "seed": "20261118:acharya_mrudula_076:22",
+   "x": 424,
+   "y": 894,
+   "proposed_at": "2026-11-21T02:39:31.338Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-21T02:39:37.307Z",
+   "resolved_by": "yueren",
+   "final_x": 428,
+   "final_y": 902,
+   "pair_id": "t=1795228776400"
+  },
+  {
+   "index": 23,
+   "seed": "20261118:acharya_mrudula_076:23",
+   "x": 375,
+   "y": 862,
+   "proposed_at": "2026-11-21T02:39:43.075Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-21T02:39:49.503Z",
+   "resolved_by": "yueren",
+   "final_x": 384,
+   "final_y": 864,
+   "pair_id": "t=1795228788454"
+  },
+  {
+   "index": 24,
+   "seed": "20261118:acharya_mrudula_076:24",
+   "x": 68,
+   "y": 869,
+   "proposed_at": "2026-11-21T02:39:53.017Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-21T02:39:57.323Z",
+   "resolved_by": "yueren",
+   "final_x": 59,
+   "final_y": 865,
+   "pair_id": "t=1795228796208"
+  },
+  {
+   "index": 25,
+   "seed": "20261118:acharya_mrudula_076:25",
+   "x": 448,
+   "y": 581,
+   "proposed_at": "2026-11-21T02:40:01.582Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-21T02:40:11.595Z",
+   "resolved_by": "yueren",
+   "final_x": 453,
+   "final_y": 580,
+   "pair_id": "t=1795228809936"
+  },
+  {
+   "index": 26,
+   "seed": "20261118:acharya_mrudula_076:26",
+   "x": 743,
+   "y": 397,
+   "proposed_at": "2026-11-21T02:40:23.912Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-21T02:40:28.533Z",
+   "resolved_by": "yueren",
+   "final_x": 752,
+   "final_y": 393,
+   "pair_id": "t=1795228827622"
+  },
+  {
+   "index": 27,
+   "seed": "20261118:acharya_mrudula_076:27",
+   "x": 492,
+   "y": 41,
+   "proposed_at": "2026-11-21T02:40:36.517Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-21T02:40:40.378Z",
+   "resolved_by": "yueren",
+   "final_x": 501,
+   "final_y": 38,
+   "pair_id": "t=1795228839582"
+  },
+  {
+   "index": 28,
+   "seed": "20261118:acharya_mrudula_076:28",
+   "x": 52,
+   "y": 321,
+   "proposed_at": "2026-11-21T02:40:41.026Z",
+   "proposed_by": "yueren",
+   "outcome": "abandoned",
+   "resolved_at": "2026-11-21T02:40:49.670Z",
+   "resolved_by": "yueren",
+   "reason": "small"
+  },
+  {
+   "index": 29,
+   "seed": "20261118:acharya_mrudula_076:29",
+   "x": 246,
+   "y": 741,
+   "proposed_at": "2026-11-21T02:40:54.408Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-21T02:41:08.725Z",
+   "resolved_by": "yueren",
+   "final_x": 246,
+   "final_y": 742,
+   "pair_id": "t=1795228867505"
+  },
+  {
+   "index": 30,
+   "seed": "20261118:acharya_mrudula_076:30",
+   "x": 70,
+   "y": 160,
+   "proposed_at": "2026-11-21T02:41:16.750Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-21T02:41:34.652Z",
+   "resolved_by": "yueren",
+   "final_x": 63,
+   "final_y": 157,
+   "pair_id": "t=1795228893666"
+  },
+  {
+   "index": 31,
+   "seed": "20261118:acharya_mrudula_076:31",
+   "x": 441,
+   "y": 950,
+   "proposed_at": "2026-11-21T02:41:37.532Z",
+   "proposed_by": "yueren",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-21T02:41:50.977Z",
+   "resolved_by": "yueren",
+   "final_x": 441,
+   "final_y": 950,
+   "pair_id": "t=1795228909966"
+  },
+  {
+   "index": 32,
+   "seed": "20261118:acharya_mrudula_076:32",
+   "x": 194,
+   "y": 710,
+   "proposed_at": "2026-11-21T02:41:52.723Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-21T02:41:59.185Z",
+   "resolved_by": "yueren",
+   "final_x": 185,
+   "final_y": 710,
+   "pair_id": "t=1795228918063"
+  },
+  {
+   "index": 33,
+   "seed": "20261118:acharya_mrudula_076:33",
+   "x": 487,
+   "y": 37,
+   "proposed_at": "2026-11-21T02:42:01.388Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-21T02:42:10.182Z",
+   "resolved_by": "yueren",
+   "final_x": 487,
+   "final_y": 43,
+   "pair_id": "t=1795228929035"
+  },
+  {
+   "index": 34,
+   "seed": "20261118:acharya_mrudula_076:34",
+   "x": 239,
+   "y": 549,
+   "proposed_at": "2026-11-21T02:42:15.449Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-21T02:42:19.302Z",
+   "resolved_by": "yueren",
+   "final_x": 244,
+   "final_y": 552,
+   "pair_id": "t=1795228938499"
+  },
+  {
+   "index": 35,
+   "seed": "20261118:acharya_mrudula_076:35",
+   "x": 391,
+   "y": 579,
+   "proposed_at": "2026-11-21T02:42:20.600Z",
+   "proposed_by": "yueren",
+   "outcome": "abandoned",
+   "resolved_at": "2026-11-21T02:42:27.755Z",
+   "resolved_by": "yueren",
+   "reason": "small"
+  },
+  {
+   "index": 36,
+   "seed": "20261118:acharya_mrudula_076:36",
+   "x": 666,
+   "y": 257,
+   "proposed_at": "2026-11-21T02:42:29.597Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-21T02:42:33.261Z",
+   "resolved_by": "yueren",
+   "final_x": 674,
+   "final_y": 251,
+   "pair_id": "t=1795228952535"
+  },
+  {
+   "index": 37,
+   "seed": "20261118:acharya_mrudula_076:37",
+   "x": 81,
+   "y": 158,
+   "proposed_at": "2026-11-21T02:42:34.204Z",
+   "proposed_by": "yueren",
+   "outcome": "abandoned",
+   "resolved_at": "2026-11-21T02:42:36.996Z",
+   "resolved_by": "yueren",
+   "reason": "small"
+  }
+ ],
  "legacy": {
   "source_set": "glossy_confirm",
   "source_file": "illumination_edge/glossy_confirm/frozen/pairs_2026-11-16T05-27-35.json",
@@ -10713,5 +14591,6 @@
     "v0_index": 15
    }
   ]
- }
+ },
+ "deleted_pairs": []
 }

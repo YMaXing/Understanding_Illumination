@@ -9558,9 +9558,3453 @@
     },
     "v0_index": 341
    }
+  },
+  {
+   "id": "t=1795404638021",
+   "image": "taiwei_cui_083",
+   "type": "s",
+   "A": {
+    "x": 350,
+    "y": 262,
+    "r": 4
+   },
+   "B": {
+    "x": 380,
+    "y": 277,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:30:38.021Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795404642991",
+   "image": "taiwei_cui_083",
+   "type": "s",
+   "A": {
+    "x": 17,
+    "y": 226,
+    "r": 2
+   },
+   "B": {
+    "x": 37,
+    "y": 224,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:30:42.991Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-23T03:30:52.734Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-23T03:30:49.619Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 17,
+       "y": 223,
+       "r": 4
+      },
+      "B": {
+       "x": 38,
+       "y": 222,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 17,
+       "y": 226,
+       "r": 2
+      },
+      "B": {
+       "x": 37,
+       "y": 224,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-23T03:30:49.915Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 17,
+       "y": 223,
+       "r": 3
+      },
+      "B": {
+       "x": 38,
+       "y": 222,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 17,
+       "y": 226,
+       "r": 2
+      },
+      "B": {
+       "x": 37,
+       "y": 224,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-23T03:30:51.142Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 17,
+       "y": 223,
+       "r": 2
+      }
+     },
+     "after": {
+      "A": {
+       "x": 17,
+       "y": 226,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-23T03:30:52.734Z",
+     "by": "yueren",
+     "before": {
+      "B": {
+       "x": 38,
+       "y": 222,
+       "r": 2
+      }
+     },
+     "after": {
+      "B": {
+       "x": 37,
+       "y": 224,
+       "r": 2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795404656025",
+   "image": "taiwei_cui_083",
+   "type": "s",
+   "A": {
+    "x": 535,
+    "y": 367,
+    "r": 2
+   },
+   "B": {
+    "x": 526,
+    "y": 354,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:30:56.025Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-23T03:30:58.327Z",
+   "history": [
+    {
+     "op": "drag",
+     "at": "2026-11-23T03:30:57.702Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 529,
+       "y": 361,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 535,
+       "y": 367,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-23T03:30:58.140Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 535,
+       "y": 367,
+       "r": 4
+      },
+      "B": {
+       "x": 526,
+       "y": 354,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 535,
+       "y": 367,
+       "r": 2
+      },
+      "B": {
+       "x": 526,
+       "y": 354,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-23T03:30:58.327Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 535,
+       "y": 367,
+       "r": 3
+      },
+      "B": {
+       "x": 526,
+       "y": 354,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 535,
+       "y": 367,
+       "r": 2
+      },
+      "B": {
+       "x": 526,
+       "y": 354,
+       "r": 2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795404663082",
+   "image": "taiwei_cui_083",
+   "type": "s",
+   "A": {
+    "x": 138,
+    "y": 765,
+    "r": 4
+   },
+   "B": {
+    "x": 145,
+    "y": 806,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:31:03.082Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-23T03:31:04.715Z",
+   "history": [
+    {
+     "op": "drag",
+     "at": "2026-11-23T03:31:04.715Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 135,
+       "y": 757,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 138,
+       "y": 765,
+       "r": 4
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795404688404",
+   "image": "taiwei_cui_083",
+   "type": "s",
+   "A": {
+    "x": 506,
+    "y": 854,
+    "r": 4
+   },
+   "B": {
+    "x": 551,
+    "y": 891,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:31:28.404Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795404702278",
+   "image": "taiwei_cui_083",
+   "type": "s",
+   "A": {
+    "x": 154,
+    "y": 861,
+    "r": 4
+   },
+   "B": {
+    "x": 222,
+    "y": 851,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:31:42.278Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795404706319",
+   "image": "taiwei_cui_083",
+   "type": "s",
+   "A": {
+    "x": 538,
+    "y": 300,
+    "r": 2
+   },
+   "B": {
+    "x": 549,
+    "y": 309,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:31:46.319Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-23T03:31:48.739Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-23T03:31:48.214Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 538,
+       "y": 300,
+       "r": 4
+      },
+      "B": {
+       "x": 549,
+       "y": 309,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 538,
+       "y": 300,
+       "r": 2
+      },
+      "B": {
+       "x": 549,
+       "y": 309,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-23T03:31:48.739Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 538,
+       "y": 300,
+       "r": 3
+      },
+      "B": {
+       "x": 549,
+       "y": 309,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 538,
+       "y": 300,
+       "r": 2
+      },
+      "B": {
+       "x": 549,
+       "y": 309,
+       "r": 2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795404712132",
+   "image": "taiwei_cui_083",
+   "type": "s",
+   "A": {
+    "x": 701,
+    "y": 459,
+    "r": 4
+   },
+   "B": {
+    "x": 742,
+    "y": 466,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:31:52.132Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "shadow",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-23T03:31:56.571Z",
+   "history": [
+    {
+     "op": "drag",
+     "at": "2026-11-23T03:31:55.327Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 682,
+       "y": 492,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 701,
+       "y": 459,
+       "r": 4
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-23T03:31:56.571Z",
+     "by": "yueren",
+     "before": {
+      "B": {
+       "x": 717,
+       "y": 508,
+       "r": 4
+      }
+     },
+     "after": {
+      "B": {
+       "x": 742,
+       "y": 466,
+       "r": 4
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795404725522",
+   "image": "taiwei_cui_083",
+   "type": "s",
+   "A": {
+    "x": 412,
+    "y": 90,
+    "r": 2
+   },
+   "B": {
+    "x": 397,
+    "y": 82,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:32:05.522Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-23T03:32:07.204Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-23T03:32:07.034Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 412,
+       "y": 90,
+       "r": 4
+      },
+      "B": {
+       "x": 397,
+       "y": 82,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 412,
+       "y": 90,
+       "r": 2
+      },
+      "B": {
+       "x": 397,
+       "y": 82,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-23T03:32:07.204Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 412,
+       "y": 90,
+       "r": 3
+      },
+      "B": {
+       "x": 397,
+       "y": 82,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 412,
+       "y": 90,
+       "r": 2
+      },
+      "B": {
+       "x": 397,
+       "y": 82,
+       "r": 2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795404730252",
+   "image": "taiwei_cui_083",
+   "type": "s",
+   "A": {
+    "x": 147,
+    "y": 547,
+    "r": 3
+   },
+   "B": {
+    "x": 104,
+    "y": 555,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:32:10.252Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-23T03:32:13.532Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-23T03:32:11.753Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 147,
+       "y": 547,
+       "r": 4
+      },
+      "B": {
+       "x": 113,
+       "y": 550,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 147,
+       "y": 547,
+       "r": 3
+      },
+      "B": {
+       "x": 104,
+       "y": 555,
+       "r": 3
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-23T03:32:13.532Z",
+     "by": "yueren",
+     "before": {
+      "B": {
+       "x": 113,
+       "y": 550,
+       "r": 3
+      }
+     },
+     "after": {
+      "B": {
+       "x": 104,
+       "y": 555,
+       "r": 3
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795404737159",
+   "image": "taiwei_cui_083",
+   "type": "s",
+   "A": {
+    "x": 540,
+    "y": 522,
+    "r": 3
+   },
+   "B": {
+    "x": 561,
+    "y": 494,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:32:17.159Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-23T03:32:22.751Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-23T03:32:21.777Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 540,
+       "y": 522,
+       "r": 4
+      },
+      "B": {
+       "x": 561,
+       "y": 494,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 540,
+       "y": 522,
+       "r": 3
+      },
+      "B": {
+       "x": 561,
+       "y": 494,
+       "r": 3
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-23T03:32:21.957Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 540,
+       "y": 522,
+       "r": 3
+      },
+      "B": {
+       "x": 561,
+       "y": 494,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 540,
+       "y": 522,
+       "r": 3
+      },
+      "B": {
+       "x": 561,
+       "y": 494,
+       "r": 3
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-23T03:32:22.751Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 540,
+       "y": 522,
+       "r": 2
+      },
+      "B": {
+       "x": 561,
+       "y": 494,
+       "r": 2
+      }
+     },
+     "after": {
+      "A": {
+       "x": 540,
+       "y": 522,
+       "r": 3
+      },
+      "B": {
+       "x": 561,
+       "y": 494,
+       "r": 3
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795404747798",
+   "image": "taiwei_cui_083",
+   "type": "s",
+   "A": {
+    "x": 439,
+    "y": 880,
+    "r": 4
+   },
+   "B": {
+    "x": 418,
+    "y": 921,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:32:27.798Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795404757987",
+   "image": "taiwei_cui_083",
+   "type": "s",
+   "A": {
+    "x": 327,
+    "y": 368,
+    "r": 4
+   },
+   "B": {
+    "x": 304,
+    "y": 319,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:32:37.987Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "shadow",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795404762123",
+   "image": "taiwei_cui_083",
+   "type": "s",
+   "A": {
+    "x": 577,
+    "y": 724,
+    "r": 4
+   },
+   "B": {
+    "x": 558,
+    "y": 690,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:32:42.123Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-23T03:32:46.669Z",
+   "history": [
+    {
+     "op": "drag",
+     "at": "2026-11-23T03:32:46.669Z",
+     "by": "yueren",
+     "before": {
+      "B": {
+       "x": 561,
+       "y": 680,
+       "r": 4
+      }
+     },
+     "after": {
+      "B": {
+       "x": 558,
+       "y": 690,
+       "r": 4
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795404772687",
+   "image": "taiwei_cui_083",
+   "type": "s",
+   "A": {
+    "x": 108,
+    "y": 208,
+    "r": 2
+   },
+   "B": {
+    "x": 103,
+    "y": 195,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:32:52.687Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "shadow",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-23T03:32:54.185Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-23T03:32:54.020Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 108,
+       "y": 208,
+       "r": 4
+      },
+      "B": {
+       "x": 103,
+       "y": 195,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 108,
+       "y": 208,
+       "r": 2
+      },
+      "B": {
+       "x": 103,
+       "y": 195,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-23T03:32:54.185Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 108,
+       "y": 208,
+       "r": 3
+      },
+      "B": {
+       "x": 103,
+       "y": 195,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 108,
+       "y": 208,
+       "r": 2
+      },
+      "B": {
+       "x": 103,
+       "y": 195,
+       "r": 2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795404778788",
+   "image": "taiwei_cui_083",
+   "type": "s",
+   "A": {
+    "x": 376,
+    "y": 626,
+    "r": 3
+   },
+   "B": {
+    "x": 345,
+    "y": 617,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:32:58.788Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "shadow",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-23T03:33:04.275Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-23T03:32:59.946Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 363,
+       "y": 644,
+       "r": 4
+      },
+      "B": {
+       "x": 345,
+       "y": 617,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 376,
+       "y": 626,
+       "r": 3
+      },
+      "B": {
+       "x": 345,
+       "y": 617,
+       "r": 3
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-23T03:33:04.275Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 363,
+       "y": 644,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 376,
+       "y": 626,
+       "r": 3
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795404789854",
+   "image": "taiwei_cui_083",
+   "type": "s",
+   "A": {
+    "x": 385,
+    "y": 763,
+    "r": 4
+   },
+   "B": {
+    "x": 312,
+    "y": 772,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:33:09.854Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-23T03:33:12.532Z",
+   "history": [
+    {
+     "op": "drag",
+     "at": "2026-11-23T03:33:12.532Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 536,
+       "y": 726,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 385,
+       "y": 763,
+       "r": 4
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795404796672",
+   "image": "taiwei_cui_083",
+   "type": "s",
+   "A": {
+    "x": 106,
+    "y": 358,
+    "r": 2
+   },
+   "B": {
+    "x": 77,
+    "y": 363,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:33:16.672Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-23T03:33:22.491Z",
+   "history": [
+    {
+     "op": "drag",
+     "at": "2026-11-23T03:33:18.225Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 100,
+       "y": 353,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 106,
+       "y": 358,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-23T03:33:18.550Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 106,
+       "y": 358,
+       "r": 4
+      },
+      "B": {
+       "x": 75,
+       "y": 365,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 106,
+       "y": 358,
+       "r": 2
+      },
+      "B": {
+       "x": 77,
+       "y": 363,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-23T03:33:18.723Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 106,
+       "y": 358,
+       "r": 3
+      },
+      "B": {
+       "x": 75,
+       "y": 365,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 106,
+       "y": 358,
+       "r": 2
+      },
+      "B": {
+       "x": 77,
+       "y": 363,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-23T03:33:22.491Z",
+     "by": "yueren",
+     "before": {
+      "B": {
+       "x": 75,
+       "y": 365,
+       "r": 2
+      }
+     },
+     "after": {
+      "B": {
+       "x": 77,
+       "y": 363,
+       "r": 2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795404808795",
+   "image": "taiwei_cui_083",
+   "type": "s",
+   "A": {
+    "x": 143,
+    "y": 624,
+    "r": 4
+   },
+   "B": {
+    "x": 206,
+    "y": 602,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:33:28.795Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "shadow",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795404817598",
+   "image": "taiwei_cui_083",
+   "type": "s",
+   "A": {
+    "x": 43,
+    "y": 723,
+    "r": 4
+   },
+   "B": {
+    "x": 11,
+    "y": 683,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:33:37.598Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-23T03:33:41.546Z",
+   "history": [
+    {
+     "op": "drag",
+     "at": "2026-11-23T03:33:41.546Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 98,
+       "y": 791,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 43,
+       "y": 723,
+       "r": 4
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795404831793",
+   "image": "taiwei_cui_083",
+   "type": "d",
+   "A": {
+    "x": 735,
+    "y": 776,
+    "r": 4
+   },
+   "B": {
+    "x": 584,
+    "y": 942,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:33:51.793Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "same"
+  },
+  {
+   "id": "t=1795404840709",
+   "image": "taiwei_cui_083",
+   "type": "d",
+   "A": {
+    "x": 640,
+    "y": 681,
+    "r": 4
+   },
+   "B": {
+    "x": 573,
+    "y": 904,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:34:00.709Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "same"
+  },
+  {
+   "id": "t=1795404857874",
+   "image": "taiwei_cui_083",
+   "type": "d",
+   "A": {
+    "x": 716,
+    "y": 669,
+    "r": 4
+   },
+   "B": {
+    "x": 45,
+    "y": 938,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:34:17.874Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "same"
+  },
+  {
+   "id": "t=1795404870828",
+   "image": "taiwei_cui_083",
+   "type": "d",
+   "A": {
+    "x": 219,
+    "y": 247,
+    "r": 2
+   },
+   "B": {
+    "x": 486,
+    "y": 200,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:34:30.828Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-23T03:34:35.323Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-23T03:34:33.077Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 219,
+       "y": 247,
+       "r": 4
+      },
+      "B": {
+       "x": 486,
+       "y": 200,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 219,
+       "y": 247,
+       "r": 2
+      },
+      "B": {
+       "x": 486,
+       "y": 200,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-23T03:34:33.248Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 219,
+       "y": 247,
+       "r": 5
+      },
+      "B": {
+       "x": 486,
+       "y": 200,
+       "r": 5
+      }
+     },
+     "after": {
+      "A": {
+       "x": 219,
+       "y": 247,
+       "r": 2
+      },
+      "B": {
+       "x": 486,
+       "y": 200,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-23T03:34:34.236Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 219,
+       "y": 247,
+       "r": 6
+      },
+      "B": {
+       "x": 486,
+       "y": 200,
+       "r": 6
+      }
+     },
+     "after": {
+      "A": {
+       "x": 219,
+       "y": 247,
+       "r": 2
+      },
+      "B": {
+       "x": 486,
+       "y": 200,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-23T03:34:34.741Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 219,
+       "y": 247,
+       "r": 5
+      },
+      "B": {
+       "x": 486,
+       "y": 200,
+       "r": 5
+      }
+     },
+     "after": {
+      "A": {
+       "x": 219,
+       "y": 247,
+       "r": 2
+      },
+      "B": {
+       "x": 486,
+       "y": 200,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-23T03:34:34.775Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 219,
+       "y": 247,
+       "r": 4
+      },
+      "B": {
+       "x": 486,
+       "y": 200,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 219,
+       "y": 247,
+       "r": 2
+      },
+      "B": {
+       "x": 486,
+       "y": 200,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-23T03:34:34.792Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 219,
+       "y": 247,
+       "r": 3
+      },
+      "B": {
+       "x": 486,
+       "y": 200,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 219,
+       "y": 247,
+       "r": 2
+      },
+      "B": {
+       "x": 486,
+       "y": 200,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-23T03:34:34.834Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 219,
+       "y": 247,
+       "r": 2
+      },
+      "B": {
+       "x": 486,
+       "y": 200,
+       "r": 2
+      }
+     },
+     "after": {
+      "A": {
+       "x": 219,
+       "y": 247,
+       "r": 2
+      },
+      "B": {
+       "x": 486,
+       "y": 200,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-23T03:34:35.323Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 219,
+       "y": 247,
+       "r": 1
+      },
+      "B": {
+       "x": 486,
+       "y": 200,
+       "r": 1
+      }
+     },
+     "after": {
+      "A": {
+       "x": 219,
+       "y": 247,
+       "r": 2
+      },
+      "B": {
+       "x": 486,
+       "y": 200,
+       "r": 2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795404883702",
+   "image": "taiwei_cui_083",
+   "type": "d",
+   "A": {
+    "x": 158,
+    "y": 589,
+    "r": 4
+   },
+   "B": {
+    "x": 494,
+    "y": 486,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:34:43.702Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different"
+  },
+  {
+   "id": "t=1795404904600",
+   "image": "taiwei_cui_083",
+   "type": "d",
+   "A": {
+    "x": 229,
+    "y": 137,
+    "r": 3
+   },
+   "B": {
+    "x": 485,
+    "y": 446,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:35:04.600Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-23T03:35:21.102Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-23T03:35:21.102Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 229,
+       "y": 137,
+       "r": 4
+      },
+      "B": {
+       "x": 485,
+       "y": 446,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 229,
+       "y": 137,
+       "r": 3
+      },
+      "B": {
+       "x": 485,
+       "y": 446,
+       "r": 3
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795404909699",
+   "image": "taiwei_cui_083",
+   "type": "d",
+   "A": {
+    "x": 141,
+    "y": 128,
+    "r": 2
+   },
+   "B": {
+    "x": 476,
+    "y": 450,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:35:09.699Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-23T03:35:14.449Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-23T03:35:13.002Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 141,
+       "y": 126,
+       "r": 4
+      },
+      "B": {
+       "x": 476,
+       "y": 450,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 141,
+       "y": 128,
+       "r": 2
+      },
+      "B": {
+       "x": 476,
+       "y": 450,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-23T03:35:13.212Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 141,
+       "y": 126,
+       "r": 3
+      },
+      "B": {
+       "x": 476,
+       "y": 450,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 141,
+       "y": 128,
+       "r": 2
+      },
+      "B": {
+       "x": 476,
+       "y": 450,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-23T03:35:14.449Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 141,
+       "y": 126,
+       "r": 2
+      }
+     },
+     "after": {
+      "A": {
+       "x": 141,
+       "y": 128,
+       "r": 2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795404926602",
+   "image": "taiwei_cui_083",
+   "type": "d",
+   "A": {
+    "x": 46,
+    "y": 613,
+    "r": 4
+   },
+   "B": {
+    "x": 44,
+    "y": 277,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:35:26.602Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different"
+  },
+  {
+   "id": "t=1795404936380",
+   "image": "taiwei_cui_083",
+   "type": "d",
+   "A": {
+    "x": 668,
+    "y": 427,
+    "r": 4
+   },
+   "B": {
+    "x": 117,
+    "y": 589,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:35:36.380Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different"
+  },
+  {
+   "id": "t=1795404940979",
+   "image": "taiwei_cui_083",
+   "type": "d",
+   "A": {
+    "x": 601,
+    "y": 196,
+    "r": 4
+   },
+   "B": {
+    "x": 491,
+    "y": 418,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:35:40.979Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-23T03:36:07.547Z",
+   "history": [
+    {
+     "op": "drag",
+     "at": "2026-11-23T03:36:07.547Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 602,
+       "y": 195,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 601,
+       "y": 196,
+       "r": 4
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795404959150",
+   "image": "taiwei_cui_083",
+   "type": "d",
+   "A": {
+    "x": 502,
+    "y": 290,
+    "r": 3
+   },
+   "B": {
+    "x": 245,
+    "y": 374,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:35:59.150Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "same",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-23T03:36:02.253Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-23T03:36:01.181Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 503,
+       "y": 289,
+       "r": 4
+      },
+      "B": {
+       "x": 245,
+       "y": 374,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 502,
+       "y": 290,
+       "r": 3
+      },
+      "B": {
+       "x": 245,
+       "y": 374,
+       "r": 3
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-23T03:36:02.253Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 503,
+       "y": 289,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 502,
+       "y": 290,
+       "r": 3
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795404983614",
+   "image": "taiwei_cui_083",
+   "type": "d",
+   "A": {
+    "x": 742,
+    "y": 244,
+    "r": 2
+   },
+   "B": {
+    "x": 733,
+    "y": 406,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:36:23.614Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-23T03:36:33.024Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-23T03:36:25.783Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 745,
+       "y": 244,
+       "r": 4
+      },
+      "B": {
+       "x": 733,
+       "y": 406,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 742,
+       "y": 244,
+       "r": 2
+      },
+      "B": {
+       "x": 733,
+       "y": 406,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-23T03:36:26.123Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 745,
+       "y": 244,
+       "r": 3
+      },
+      "B": {
+       "x": 733,
+       "y": 406,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 742,
+       "y": 244,
+       "r": 2
+      },
+      "B": {
+       "x": 733,
+       "y": 406,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-23T03:36:26.622Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 745,
+       "y": 244,
+       "r": 2
+      },
+      "B": {
+       "x": 733,
+       "y": 406,
+       "r": 2
+      }
+     },
+     "after": {
+      "A": {
+       "x": 742,
+       "y": 244,
+       "r": 2
+      },
+      "B": {
+       "x": 733,
+       "y": 406,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-23T03:36:30.844Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 745,
+       "y": 244,
+       "r": 3
+      },
+      "B": {
+       "x": 733,
+       "y": 406,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 742,
+       "y": 244,
+       "r": 2
+      },
+      "B": {
+       "x": 733,
+       "y": 406,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-23T03:36:31.936Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 745,
+       "y": 244,
+       "r": 2
+      }
+     },
+     "after": {
+      "A": {
+       "x": 742,
+       "y": 244,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-23T03:36:32.100Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 742,
+       "y": 244,
+       "r": 2
+      },
+      "B": {
+       "x": 733,
+       "y": 406,
+       "r": 2
+      }
+     },
+     "after": {
+      "A": {
+       "x": 742,
+       "y": 244,
+       "r": 2
+      },
+      "B": {
+       "x": 733,
+       "y": 406,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-23T03:36:33.024Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 742,
+       "y": 244,
+       "r": 1
+      },
+      "B": {
+       "x": 733,
+       "y": 406,
+       "r": 1
+      }
+     },
+     "after": {
+      "A": {
+       "x": 742,
+       "y": 244,
+       "r": 2
+      },
+      "B": {
+       "x": 733,
+       "y": 406,
+       "r": 2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795404999179",
+   "image": "taiwei_cui_083",
+   "type": "d",
+   "A": {
+    "x": 762,
+    "y": 449,
+    "r": 4
+   },
+   "B": {
+    "x": 507,
+    "y": 550,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:36:39.179Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different"
+  },
+  {
+   "id": "t=1795405037141",
+   "image": "taiwei_cui_083",
+   "type": "d",
+   "A": {
+    "x": 94,
+    "y": 444,
+    "r": 4
+   },
+   "B": {
+    "x": 243,
+    "y": 326,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:37:17.141Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different"
+  },
+  {
+   "id": "t=1795405045136",
+   "image": "taiwei_cui_083",
+   "type": "d",
+   "A": {
+    "x": 462,
+    "y": 85,
+    "r": 2
+   },
+   "B": {
+    "x": 485,
+    "y": 407,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:37:25.136Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "same",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-23T03:37:28.256Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-23T03:37:28.077Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 462,
+       "y": 85,
+       "r": 4
+      },
+      "B": {
+       "x": 485,
+       "y": 407,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 462,
+       "y": 85,
+       "r": 2
+      },
+      "B": {
+       "x": 485,
+       "y": 407,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-23T03:37:28.256Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 462,
+       "y": 85,
+       "r": 3
+      },
+      "B": {
+       "x": 485,
+       "y": 407,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 462,
+       "y": 85,
+       "r": 2
+      },
+      "B": {
+       "x": 485,
+       "y": 407,
+       "r": 2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795405056547",
+   "image": "taiwei_cui_083",
+   "type": "s",
+   "A": {
+    "x": 290,
+    "y": 528,
+    "r": 4
+   },
+   "B": {
+    "x": 288,
+    "y": 553,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:37:36.547Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-23T03:37:38.723Z",
+   "history": [
+    {
+     "op": "drag",
+     "at": "2026-11-23T03:37:38.723Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 296,
+       "y": 531,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 290,
+       "y": 528,
+       "r": 4
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795405062326",
+   "image": "taiwei_cui_083",
+   "type": "s",
+   "A": {
+    "x": 662,
+    "y": 284,
+    "r": 2
+   },
+   "B": {
+    "x": 680,
+    "y": 279,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:37:42.326Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-23T03:37:43.670Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-23T03:37:43.493Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 662,
+       "y": 284,
+       "r": 4
+      },
+      "B": {
+       "x": 680,
+       "y": 279,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 662,
+       "y": 284,
+       "r": 2
+      },
+      "B": {
+       "x": 680,
+       "y": 279,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-23T03:37:43.670Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 662,
+       "y": 284,
+       "r": 3
+      },
+      "B": {
+       "x": 680,
+       "y": 279,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 662,
+       "y": 284,
+       "r": 2
+      },
+      "B": {
+       "x": 680,
+       "y": 279,
+       "r": 2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795405066824",
+   "image": "taiwei_cui_083",
+   "type": "s",
+   "A": {
+    "x": 621,
+    "y": 495,
+    "r": 3
+   },
+   "B": {
+    "x": 584,
+    "y": 498,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:37:46.824Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-23T03:37:49.943Z",
+   "history": [
+    {
+     "op": "drag",
+     "at": "2026-11-23T03:37:49.176Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 630,
+       "y": 497,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 621,
+       "y": 495,
+       "r": 3
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-23T03:37:49.943Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 621,
+       "y": 495,
+       "r": 4
+      },
+      "B": {
+       "x": 584,
+       "y": 498,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 621,
+       "y": 495,
+       "r": 3
+      },
+      "B": {
+       "x": 584,
+       "y": 498,
+       "r": 3
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795405074184",
+   "image": "taiwei_cui_083",
+   "type": "s",
+   "A": {
+    "x": 393,
+    "y": 403,
+    "r": 4
+   },
+   "B": {
+    "x": 427,
+    "y": 402,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:37:54.184Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-23T03:37:56.615Z",
+   "history": [
+    {
+     "op": "drag",
+     "at": "2026-11-23T03:37:55.580Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 390,
+       "y": 401,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 393,
+       "y": 403,
+       "r": 4
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-23T03:37:56.615Z",
+     "by": "yueren",
+     "before": {
+      "B": {
+       "x": 428,
+       "y": 404,
+       "r": 4
+      }
+     },
+     "after": {
+      "B": {
+       "x": 427,
+       "y": 402,
+       "r": 4
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795405108551",
+   "image": "taiwei_cui_083",
+   "type": "s",
+   "A": {
+    "x": 382,
+    "y": 850,
+    "r": 4
+   },
+   "B": {
+    "x": 320,
+    "y": 873,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:38:28.551Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-23T03:38:31.357Z",
+   "history": [
+    {
+     "op": "drag",
+     "at": "2026-11-23T03:38:31.357Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 370,
+       "y": 901,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 382,
+       "y": 850,
+       "r": 4
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795405114757",
+   "image": "taiwei_cui_083",
+   "type": "s",
+   "A": {
+    "x": 106,
+    "y": 931,
+    "r": 4
+   },
+   "B": {
+    "x": 28,
+    "y": 929,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:38:34.757Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795405124065",
+   "image": "taiwei_cui_083",
+   "type": "s",
+   "A": {
+    "x": 483,
+    "y": 480,
+    "r": 2
+   },
+   "B": {
+    "x": 503,
+    "y": 492,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:38:44.065Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-23T03:38:47.866Z",
+   "history": [
+    {
+     "op": "r",
+     "at": "2026-11-23T03:38:45.559Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 488,
+       "y": 470,
+       "r": 4
+      },
+      "B": {
+       "x": 503,
+       "y": 492,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 483,
+       "y": 480,
+       "r": 2
+      },
+      "B": {
+       "x": 503,
+       "y": 492,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-23T03:38:46.074Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 488,
+       "y": 470,
+       "r": 3
+      },
+      "B": {
+       "x": 503,
+       "y": 492,
+       "r": 3
+      }
+     },
+     "after": {
+      "A": {
+       "x": 483,
+       "y": 480,
+       "r": 2
+      },
+      "B": {
+       "x": 503,
+       "y": 492,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-23T03:38:46.085Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 488,
+       "y": 470,
+       "r": 2
+      },
+      "B": {
+       "x": 503,
+       "y": 492,
+       "r": 2
+      }
+     },
+     "after": {
+      "A": {
+       "x": 483,
+       "y": 480,
+       "r": 2
+      },
+      "B": {
+       "x": 503,
+       "y": 492,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-23T03:38:47.205Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 488,
+       "y": 470,
+       "r": 1
+      }
+     },
+     "after": {
+      "A": {
+       "x": 483,
+       "y": 480,
+       "r": 2
+      }
+     }
+    },
+    {
+     "op": "r",
+     "at": "2026-11-23T03:38:47.866Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 483,
+       "y": 480,
+       "r": 1
+      },
+      "B": {
+       "x": 503,
+       "y": 492,
+       "r": 1
+      }
+     },
+     "after": {
+      "A": {
+       "x": 483,
+       "y": 480,
+       "r": 2
+      },
+      "B": {
+       "x": 503,
+       "y": 492,
+       "r": 2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795405138466",
+   "image": "taiwei_cui_083",
+   "type": "s",
+   "A": {
+    "x": 425,
+    "y": 350,
+    "r": 4
+   },
+   "B": {
+    "x": 464,
+    "y": 321,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:38:58.466Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-23T03:39:03.897Z",
+   "history": [
+    {
+     "op": "drag",
+     "at": "2026-11-23T03:38:59.959Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 405,
+       "y": 357,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 425,
+       "y": 350,
+       "r": 4
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-23T03:39:01.835Z",
+     "by": "yueren",
+     "before": {
+      "B": {
+       "x": 452,
+       "y": 342,
+       "r": 4
+      }
+     },
+     "after": {
+      "B": {
+       "x": 464,
+       "y": 321,
+       "r": 4
+      }
+     }
+    },
+    {
+     "op": "drag",
+     "at": "2026-11-23T03:39:03.897Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 416,
+       "y": 353,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 425,
+       "y": 350,
+       "r": 4
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "t=1795405149595",
+   "image": "taiwei_cui_083",
+   "type": "s",
+   "A": {
+    "x": 751,
+    "y": 379,
+    "r": 4
+   },
+   "B": {
+    "x": 724,
+    "y": 383,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:39:09.595Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "shadow",
+   "pool": "random"
+  },
+  {
+   "id": "t=1795405164061",
+   "image": "taiwei_cui_083",
+   "type": "s",
+   "A": {
+    "x": 405,
+    "y": 520,
+    "r": 4
+   },
+   "B": {
+    "x": 424,
+    "y": 472,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T03:39:24.061Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lighting": "lit",
+   "pool": "random",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-23T03:39:29.784Z",
+   "history": [
+    {
+     "op": "drag",
+     "at": "2026-11-23T03:39:29.784Z",
+     "by": "yueren",
+     "before": {
+      "A": {
+       "x": 155,
+       "y": 805,
+       "r": 4
+      }
+     },
+     "after": {
+      "A": {
+       "x": 405,
+       "y": 520,
+       "r": 4
+      }
+     }
+    }
+   ]
   }
  ],
- "s_seed_log": [],
+ "s_seed_log": [
+  {
+   "index": 0,
+   "seed": "20261118:taiwei_cui_083:0",
+   "x": 341,
+   "y": 260,
+   "proposed_at": "2026-11-23T03:30:34.526Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-23T03:30:38.546Z",
+   "resolved_by": "yueren",
+   "final_x": 350,
+   "final_y": 262,
+   "pair_id": "t=1795404638021"
+  },
+  {
+   "index": 1,
+   "seed": "20261118:taiwei_cui_083:1",
+   "x": 17,
+   "y": 223,
+   "proposed_at": "2026-11-23T03:30:39.457Z",
+   "proposed_by": "yueren",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-23T03:30:43.597Z",
+   "resolved_by": "yueren",
+   "final_x": 17,
+   "final_y": 223,
+   "pair_id": "t=1795404642991"
+  },
+  {
+   "index": 2,
+   "seed": "20261118:taiwei_cui_083:2",
+   "x": 529,
+   "y": 361,
+   "proposed_at": "2026-11-23T03:30:53.211Z",
+   "proposed_by": "yueren",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-23T03:30:56.876Z",
+   "resolved_by": "yueren",
+   "final_x": 529,
+   "final_y": 361,
+   "pair_id": "t=1795404656025"
+  },
+  {
+   "index": 3,
+   "seed": "20261118:taiwei_cui_083:3",
+   "x": 135,
+   "y": 757,
+   "proposed_at": "2026-11-23T03:31:00.355Z",
+   "proposed_by": "yueren",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-23T03:31:03.838Z",
+   "resolved_by": "yueren",
+   "final_x": 135,
+   "final_y": 757,
+   "pair_id": "t=1795404663082"
+  },
+  {
+   "index": 4,
+   "seed": "20261118:taiwei_cui_083:4",
+   "x": 500,
+   "y": 846,
+   "proposed_at": "2026-11-23T03:31:25.386Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-23T03:31:28.996Z",
+   "resolved_by": "yueren",
+   "final_x": 506,
+   "final_y": 854,
+   "pair_id": "t=1795404688404"
+  },
+  {
+   "index": 5,
+   "seed": "20261118:taiwei_cui_083:5",
+   "x": 154,
+   "y": 861,
+   "proposed_at": "2026-11-23T03:31:39.462Z",
+   "proposed_by": "yueren",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-23T03:31:42.844Z",
+   "resolved_by": "yueren",
+   "final_x": 154,
+   "final_y": 861,
+   "pair_id": "t=1795404702278"
+  },
+  {
+   "index": 6,
+   "seed": "20261118:taiwei_cui_083:6",
+   "x": 529,
+   "y": 296,
+   "proposed_at": "2026-11-23T03:31:43.610Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-23T03:31:47.807Z",
+   "resolved_by": "yueren",
+   "final_x": 538,
+   "final_y": 300,
+   "pair_id": "t=1795404706319"
+  },
+  {
+   "index": 7,
+   "seed": "20261118:taiwei_cui_083:7",
+   "x": 682,
+   "y": 492,
+   "proposed_at": "2026-11-23T03:31:49.568Z",
+   "proposed_by": "yueren",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-23T03:31:52.893Z",
+   "resolved_by": "yueren",
+   "final_x": 682,
+   "final_y": 492,
+   "pair_id": "t=1795404712132"
+  },
+  {
+   "index": 8,
+   "seed": "20261118:taiwei_cui_083:8",
+   "x": 421,
+   "y": 88,
+   "proposed_at": "2026-11-23T03:31:57.121Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-23T03:32:06.563Z",
+   "resolved_by": "yueren",
+   "final_x": 412,
+   "final_y": 90,
+   "pair_id": "t=1795404725522"
+  },
+  {
+   "index": 9,
+   "seed": "20261118:taiwei_cui_083:9",
+   "x": 147,
+   "y": 547,
+   "proposed_at": "2026-11-23T03:32:08.672Z",
+   "proposed_by": "yueren",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-23T03:32:10.996Z",
+   "resolved_by": "yueren",
+   "final_x": 147,
+   "final_y": 547,
+   "pair_id": "t=1795404730252"
+  },
+  {
+   "index": 10,
+   "seed": "20261118:taiwei_cui_083:10",
+   "x": 540,
+   "y": 522,
+   "proposed_at": "2026-11-23T03:32:15.299Z",
+   "proposed_by": "yueren",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-23T03:32:20.154Z",
+   "resolved_by": "yueren",
+   "final_x": 540,
+   "final_y": 522,
+   "pair_id": "t=1795404737159"
+  },
+  {
+   "index": 11,
+   "seed": "20261118:taiwei_cui_083:11",
+   "x": 439,
+   "y": 880,
+   "proposed_at": "2026-11-23T03:32:23.812Z",
+   "proposed_by": "yueren",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-23T03:32:28.494Z",
+   "resolved_by": "yueren",
+   "final_x": 439,
+   "final_y": 880,
+   "pair_id": "t=1795404747798"
+  },
+  {
+   "index": 12,
+   "seed": "20261118:taiwei_cui_083:12",
+   "x": 683,
+   "y": 5,
+   "proposed_at": "2026-11-23T03:32:29.017Z",
+   "proposed_by": "yueren",
+   "outcome": "abandoned",
+   "resolved_at": "2026-11-23T03:32:34.697Z",
+   "resolved_by": "yueren",
+   "reason": "edge"
+  },
+  {
+   "index": 13,
+   "seed": "20261118:taiwei_cui_083:13",
+   "x": 327,
+   "y": 368,
+   "proposed_at": "2026-11-23T03:32:35.173Z",
+   "proposed_by": "yueren",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-23T03:32:39.274Z",
+   "resolved_by": "yueren",
+   "final_x": 327,
+   "final_y": 368,
+   "pair_id": "t=1795404757987"
+  },
+  {
+   "index": 14,
+   "seed": "20261118:taiwei_cui_083:14",
+   "x": 577,
+   "y": 724,
+   "proposed_at": "2026-11-23T03:32:40.248Z",
+   "proposed_by": "yueren",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-23T03:32:43.562Z",
+   "resolved_by": "yueren",
+   "final_x": 577,
+   "final_y": 724,
+   "pair_id": "t=1795404762123"
+  },
+  {
+   "index": 15,
+   "seed": "20261118:taiwei_cui_083:15",
+   "x": 104,
+   "y": 217,
+   "proposed_at": "2026-11-23T03:32:49.495Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-23T03:32:53.330Z",
+   "resolved_by": "yueren",
+   "final_x": 108,
+   "final_y": 208,
+   "pair_id": "t=1795404772687"
+  },
+  {
+   "index": 16,
+   "seed": "20261118:taiwei_cui_083:16",
+   "x": 372,
+   "y": 642,
+   "proposed_at": "2026-11-23T03:32:56.273Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-23T03:32:59.459Z",
+   "resolved_by": "yueren",
+   "final_x": 363,
+   "final_y": 644,
+   "pair_id": "t=1795404778788"
+  },
+  {
+   "index": 17,
+   "seed": "20261118:taiwei_cui_083:17",
+   "x": 536,
+   "y": 726,
+   "proposed_at": "2026-11-23T03:33:05.014Z",
+   "proposed_by": "yueren",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-23T03:33:10.910Z",
+   "resolved_by": "yueren",
+   "final_x": 536,
+   "final_y": 726,
+   "pair_id": "t=1795404789854"
+  },
+  {
+   "index": 18,
+   "seed": "20261118:taiwei_cui_083:18",
+   "x": 100,
+   "y": 353,
+   "proposed_at": "2026-11-23T03:33:13.938Z",
+   "proposed_by": "yueren",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-23T03:33:17.388Z",
+   "resolved_by": "yueren",
+   "final_x": 100,
+   "final_y": 353,
+   "pair_id": "t=1795404796672"
+  },
+  {
+   "index": 19,
+   "seed": "20261118:taiwei_cui_083:19",
+   "x": 134,
+   "y": 622,
+   "proposed_at": "2026-11-23T03:33:24.464Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-23T03:33:29.333Z",
+   "resolved_by": "yueren",
+   "final_x": 143,
+   "final_y": 624,
+   "pair_id": "t=1795404808795"
+  },
+  {
+   "index": 20,
+   "seed": "20261118:taiwei_cui_083:20",
+   "x": 106,
+   "y": 787,
+   "proposed_at": "2026-11-23T03:33:31.086Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-23T03:33:38.513Z",
+   "resolved_by": "yueren",
+   "final_x": 98,
+   "final_y": 791,
+   "pair_id": "t=1795404817598"
+  },
+  {
+   "index": 21,
+   "seed": "20261118:taiwei_cui_083:21",
+   "x": 305,
+   "y": 531,
+   "proposed_at": "2026-11-23T03:37:32.838Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-23T03:37:37.387Z",
+   "resolved_by": "yueren",
+   "final_x": 296,
+   "final_y": 531,
+   "pair_id": "t=1795405056547"
+  },
+  {
+   "index": 22,
+   "seed": "20261118:taiwei_cui_083:22",
+   "x": 659,
+   "y": 285,
+   "proposed_at": "2026-11-23T03:37:39.933Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-23T03:37:42.856Z",
+   "resolved_by": "yueren",
+   "final_x": 662,
+   "final_y": 284,
+   "pair_id": "t=1795405062326"
+  },
+  {
+   "index": 23,
+   "seed": "20261118:taiwei_cui_083:23",
+   "x": 630,
+   "y": 497,
+   "proposed_at": "2026-11-23T03:37:45.015Z",
+   "proposed_by": "yueren",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-23T03:37:47.771Z",
+   "resolved_by": "yueren",
+   "final_x": 630,
+   "final_y": 497,
+   "pair_id": "t=1795405066824"
+  },
+  {
+   "index": 24,
+   "seed": "20261118:taiwei_cui_083:24",
+   "x": 383,
+   "y": 394,
+   "proposed_at": "2026-11-23T03:37:50.797Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-23T03:37:54.785Z",
+   "resolved_by": "yueren",
+   "final_x": 390,
+   "final_y": 401,
+   "pair_id": "t=1795405074184"
+  },
+  {
+   "index": 25,
+   "seed": "20261118:taiwei_cui_083:25",
+   "x": 117,
+   "y": 8,
+   "proposed_at": "2026-11-23T03:37:58.003Z",
+   "proposed_by": "yueren",
+   "outcome": "abandoned",
+   "resolved_at": "2026-11-23T03:38:06.467Z",
+   "resolved_by": "yueren",
+   "reason": "small"
+  },
+  {
+   "index": 26,
+   "seed": "20261118:taiwei_cui_083:26",
+   "x": 59,
+   "y": 162,
+   "proposed_at": "2026-11-23T03:38:06.983Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-23T03:38:12.501Z",
+   "resolved_by": "yueren",
+   "final_x": 55,
+   "final_y": 163,
+   "pair_id": "t=1795405091780"
+  },
+  {
+   "index": 27,
+   "seed": "20261118:taiwei_cui_083:27",
+   "x": 378,
+   "y": 905,
+   "proposed_at": "2026-11-23T03:38:24.899Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-23T03:38:29.677Z",
+   "resolved_by": "yueren",
+   "final_x": 370,
+   "final_y": 901,
+   "pair_id": "t=1795405108551"
+  },
+  {
+   "index": 28,
+   "seed": "20261118:taiwei_cui_083:28",
+   "x": 114,
+   "y": 936,
+   "proposed_at": "2026-11-23T03:38:31.710Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-23T03:38:35.464Z",
+   "resolved_by": "yueren",
+   "final_x": 106,
+   "final_y": 931,
+   "pair_id": "t=1795405114757"
+  },
+  {
+   "index": 29,
+   "seed": "20261118:taiwei_cui_083:29",
+   "x": 491,
+   "y": 465,
+   "proposed_at": "2026-11-23T03:38:36.743Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-23T03:38:44.663Z",
+   "resolved_by": "yueren",
+   "final_x": 488,
+   "final_y": 470,
+   "pair_id": "t=1795405124065"
+  },
+  {
+   "index": 30,
+   "seed": "20261118:taiwei_cui_083:30",
+   "x": 399,
+   "y": 365,
+   "proposed_at": "2026-11-23T03:38:54.628Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-23T03:38:59.173Z",
+   "resolved_by": "yueren",
+   "final_x": 405,
+   "final_y": 357,
+   "pair_id": "t=1795405138466"
+  },
+  {
+   "index": 31,
+   "seed": "20261118:taiwei_cui_083:31",
+   "x": 756,
+   "y": 372,
+   "proposed_at": "2026-11-23T03:39:04.830Z",
+   "proposed_by": "yueren",
+   "outcome": "nudged",
+   "resolved_at": "2026-11-23T03:39:10.158Z",
+   "resolved_by": "yueren",
+   "final_x": 751,
+   "final_y": 379,
+   "pair_id": "t=1795405149595"
+  },
+  {
+   "index": 32,
+   "seed": "20261118:taiwei_cui_083:32",
+   "x": 155,
+   "y": 805,
+   "proposed_at": "2026-11-23T03:39:11.197Z",
+   "proposed_by": "yueren",
+   "outcome": "accepted",
+   "resolved_at": "2026-11-23T03:39:24.645Z",
+   "resolved_by": "yueren",
+   "final_x": 155,
+   "final_y": 805,
+   "pair_id": "t=1795405164061"
+  }
+ ],
  "legacy": {
   "source_set": "dev_v2",
   "source_file": "illumination_edge/pairs_2026-11-09T05-33-47.json",
@@ -9813,5 +13257,165 @@
     "v0_index": 56
    }
   ]
- }
+ },
+ "deleted_pairs": [
+  {
+   "id": "t=1795405091780",
+   "deleted_at": "2026-11-23T03:38:23.823Z",
+   "deleted_by": "yueren",
+   "pair": {
+    "id": "t=1795405091780",
+    "image": "taiwei_cui_083",
+    "type": "s",
+    "A": {
+     "x": 76,
+     "y": 146,
+     "r": 1
+    },
+    "B": {
+     "x": 42,
+     "y": 172,
+     "r": 1
+    },
+    "confidence": "sure",
+    "used_in_loss": false,
+    "overlay_seen": false,
+    "annotator": "yueren",
+    "created": "2026-11-23T03:38:11.780Z",
+    "note": "",
+    "schema_version": "1.2",
+    "lighting": "lit",
+    "pool": "random",
+    "last_edited_by": "yueren",
+    "edited": "2026-11-23T03:38:22.437Z",
+    "history": [
+     {
+      "op": "r",
+      "at": "2026-11-23T03:38:13.404Z",
+      "by": "yueren",
+      "before": {
+       "A": {
+        "x": 55,
+        "y": 163,
+        "r": 4
+       },
+       "B": {
+        "x": 31,
+        "y": 175,
+        "r": 4
+       }
+      },
+      "after": {
+       "A": {
+        "x": 76,
+        "y": 146,
+        "r": 1
+       },
+       "B": {
+        "x": 42,
+        "y": 172,
+        "r": 1
+       }
+      }
+     },
+     {
+      "op": "r",
+      "at": "2026-11-23T03:38:13.641Z",
+      "by": "yueren",
+      "before": {
+       "A": {
+        "x": 55,
+        "y": 163,
+        "r": 3
+       },
+       "B": {
+        "x": 31,
+        "y": 175,
+        "r": 3
+       }
+      },
+      "after": {
+       "A": {
+        "x": 76,
+        "y": 146,
+        "r": 1
+       },
+       "B": {
+        "x": 42,
+        "y": 172,
+        "r": 1
+       }
+      }
+     },
+     {
+      "op": "r",
+      "at": "2026-11-23T03:38:13.866Z",
+      "by": "yueren",
+      "before": {
+       "A": {
+        "x": 55,
+        "y": 163,
+        "r": 2
+       },
+       "B": {
+        "x": 31,
+        "y": 175,
+        "r": 2
+       }
+      },
+      "after": {
+       "A": {
+        "x": 76,
+        "y": 146,
+        "r": 1
+       },
+       "B": {
+        "x": 42,
+        "y": 172,
+        "r": 1
+       }
+      }
+     },
+     {
+      "op": "drag",
+      "at": "2026-11-23T03:38:19.252Z",
+      "by": "yueren",
+      "before": {
+       "B": {
+        "x": 31,
+        "y": 175,
+        "r": 1
+       }
+      },
+      "after": {
+       "B": {
+        "x": 42,
+        "y": 172,
+        "r": 1
+       }
+      }
+     },
+     {
+      "op": "drag",
+      "at": "2026-11-23T03:38:22.437Z",
+      "by": "yueren",
+      "before": {
+       "A": {
+        "x": 55,
+        "y": 163,
+        "r": 1
+       }
+      },
+      "after": {
+       "A": {
+        "x": 76,
+        "y": 146,
+        "r": 1
+       }
+      }
+     }
+    ]
+   }
+  }
+ ]
 }

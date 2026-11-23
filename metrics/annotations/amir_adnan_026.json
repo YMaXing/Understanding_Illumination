@@ -1466,121 +1466,6 @@
    "illumination": "different"
   },
   {
-   "id": "t=1795127754000",
-   "image": "amir_adnan_026",
-   "type": "i",
-   "A": {
-    "x": 162,
-    "y": 71,
-    "r": 4
-   },
-   "B": {
-    "x": 161,
-    "y": 122,
-    "r": 4
-   },
-   "confidence": "sure",
-   "used_in_loss": false,
-   "overlay_seen": false,
-   "annotator": "annotator_b",
-   "created": "2026-11-19T22:35:54.000Z",
-   "note": "",
-   "schema_version": "1.2",
-   "lit_end": "A"
-  },
-  {
-   "id": "t=1795127757917",
-   "image": "amir_adnan_026",
-   "type": "i",
-   "A": {
-    "x": 213,
-    "y": 75,
-    "r": 4
-   },
-   "B": {
-    "x": 214,
-    "y": 127,
-    "r": 4
-   },
-   "confidence": "sure",
-   "used_in_loss": false,
-   "overlay_seen": false,
-   "annotator": "annotator_b",
-   "created": "2026-11-19T22:35:57.917Z",
-   "note": "",
-   "schema_version": "1.2",
-   "lit_end": "A"
-  },
-  {
-   "id": "t=1795127761801",
-   "image": "amir_adnan_026",
-   "type": "i",
-   "A": {
-    "x": 299,
-    "y": 82,
-    "r": 4
-   },
-   "B": {
-    "x": 308,
-    "y": 137,
-    "r": 4
-   },
-   "confidence": "sure",
-   "used_in_loss": false,
-   "overlay_seen": false,
-   "annotator": "annotator_b",
-   "created": "2026-11-19T22:36:01.801Z",
-   "note": "",
-   "schema_version": "1.2",
-   "lit_end": "A"
-  },
-  {
-   "id": "t=1795127766601",
-   "image": "amir_adnan_026",
-   "type": "i",
-   "A": {
-    "x": 396,
-    "y": 88,
-    "r": 4
-   },
-   "B": {
-    "x": 399,
-    "y": 158,
-    "r": 4
-   },
-   "confidence": "sure",
-   "used_in_loss": false,
-   "overlay_seen": false,
-   "annotator": "annotator_b",
-   "created": "2026-11-19T22:36:06.601Z",
-   "note": "",
-   "schema_version": "1.2",
-   "lit_end": "A"
-  },
-  {
-   "id": "t=1795127772700",
-   "image": "amir_adnan_026",
-   "type": "i",
-   "A": {
-    "x": 66,
-    "y": 108,
-    "r": 4
-   },
-   "B": {
-    "x": 72,
-    "y": 44,
-    "r": 4
-   },
-   "confidence": "sure",
-   "used_in_loss": false,
-   "overlay_seen": false,
-   "annotator": "annotator_b",
-   "created": "2026-11-19T22:36:12.700Z",
-   "note": "",
-   "schema_version": "1.2",
-   "lit_end": "B"
-  },
-  {
    "id": "t=1795127799517",
    "image": "amir_adnan_026",
    "type": "i",
@@ -1924,6 +1809,167 @@
    "note": "",
    "schema_version": "1.2",
    "lit_end": "B"
+  },
+  {
+   "id": "t=1795459794218",
+   "image": "amir_adnan_026",
+   "type": "i",
+   "A": {
+    "x": 695,
+    "y": 184,
+    "r": 4
+   },
+   "B": {
+    "x": 735,
+    "y": 187,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T18:49:54.218Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A"
+  },
+  {
+   "id": "t=1795459796644",
+   "image": "amir_adnan_026",
+   "type": "i",
+   "A": {
+    "x": 692,
+    "y": 239,
+    "r": 4
+   },
+   "B": {
+    "x": 734,
+    "y": 241,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T18:49:56.644Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A"
+  },
+  {
+   "id": "t=1795459800132",
+   "image": "amir_adnan_026",
+   "type": "i",
+   "A": {
+    "x": 691,
+    "y": 301,
+    "r": 4
+   },
+   "B": {
+    "x": 733,
+    "y": 303,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T18:50:00.132Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A"
+  },
+  {
+   "id": "t=1795459804756",
+   "image": "amir_adnan_026",
+   "type": "i",
+   "A": {
+    "x": 688,
+    "y": 421,
+    "r": 4
+   },
+   "B": {
+    "x": 732,
+    "y": 421,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T18:50:04.756Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A"
+  },
+  {
+   "id": "t=1795459810061",
+   "image": "amir_adnan_026",
+   "type": "i",
+   "A": {
+    "x": 679,
+    "y": 741,
+    "r": 4
+   },
+   "B": {
+    "x": 726,
+    "y": 743,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T18:50:10.061Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A"
+  },
+  {
+   "id": "t=1795459813213",
+   "image": "amir_adnan_026",
+   "type": "i",
+   "A": {
+    "x": 680,
+    "y": 822,
+    "r": 4
+   },
+   "B": {
+    "x": 732,
+    "y": 828,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T18:50:13.213Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-23T18:50:20.969Z",
+   "history": [
+    {
+     "op": "drag",
+     "at": "2026-11-23T18:50:20.969Z",
+     "by": "yueren",
+     "before": {
+      "B": {
+       "x": 727,
+       "y": 828,
+       "r": 4
+      }
+     },
+     "after": {
+      "B": {
+       "x": 732,
+       "y": 828,
+       "r": 4
+      }
+     }
+    }
+   ]
   }
  ],
  "s_seed_log": [
@@ -2123,5 +2169,146 @@
   }
  ],
  "legacy": {},
- "deleted_pairs": []
+ "deleted_pairs": [
+  {
+   "id": "t=1795127766601",
+   "deleted_at": "2026-11-23T18:49:27.212Z",
+   "deleted_by": "yueren",
+   "pair": {
+    "id": "t=1795127766601",
+    "image": "amir_adnan_026",
+    "type": "i",
+    "A": {
+     "x": 396,
+     "y": 88,
+     "r": 4
+    },
+    "B": {
+     "x": 399,
+     "y": 158,
+     "r": 4
+    },
+    "confidence": "sure",
+    "used_in_loss": false,
+    "overlay_seen": false,
+    "annotator": "annotator_b",
+    "created": "2026-11-19T22:36:06.601Z",
+    "note": "",
+    "schema_version": "1.2",
+    "lit_end": "A"
+   }
+  },
+  {
+   "id": "t=1795127761801",
+   "deleted_at": "2026-11-23T18:49:32.636Z",
+   "deleted_by": "yueren",
+   "pair": {
+    "id": "t=1795127761801",
+    "image": "amir_adnan_026",
+    "type": "i",
+    "A": {
+     "x": 299,
+     "y": 82,
+     "r": 4
+    },
+    "B": {
+     "x": 308,
+     "y": 137,
+     "r": 4
+    },
+    "confidence": "sure",
+    "used_in_loss": false,
+    "overlay_seen": false,
+    "annotator": "annotator_b",
+    "created": "2026-11-19T22:36:01.801Z",
+    "note": "",
+    "schema_version": "1.2",
+    "lit_end": "A"
+   }
+  },
+  {
+   "id": "t=1795127757917",
+   "deleted_at": "2026-11-23T18:49:34.031Z",
+   "deleted_by": "yueren",
+   "pair": {
+    "id": "t=1795127757917",
+    "image": "amir_adnan_026",
+    "type": "i",
+    "A": {
+     "x": 213,
+     "y": 75,
+     "r": 4
+    },
+    "B": {
+     "x": 214,
+     "y": 127,
+     "r": 4
+    },
+    "confidence": "sure",
+    "used_in_loss": false,
+    "overlay_seen": false,
+    "annotator": "annotator_b",
+    "created": "2026-11-19T22:35:57.917Z",
+    "note": "",
+    "schema_version": "1.2",
+    "lit_end": "A"
+   }
+  },
+  {
+   "id": "t=1795127754000",
+   "deleted_at": "2026-11-23T18:49:35.303Z",
+   "deleted_by": "yueren",
+   "pair": {
+    "id": "t=1795127754000",
+    "image": "amir_adnan_026",
+    "type": "i",
+    "A": {
+     "x": 162,
+     "y": 71,
+     "r": 4
+    },
+    "B": {
+     "x": 161,
+     "y": 122,
+     "r": 4
+    },
+    "confidence": "sure",
+    "used_in_loss": false,
+    "overlay_seen": false,
+    "annotator": "annotator_b",
+    "created": "2026-11-19T22:35:54.000Z",
+    "note": "",
+    "schema_version": "1.2",
+    "lit_end": "A"
+   }
+  },
+  {
+   "id": "t=1795127772700",
+   "deleted_at": "2026-11-23T18:49:39.880Z",
+   "deleted_by": "yueren",
+   "pair": {
+    "id": "t=1795127772700",
+    "image": "amir_adnan_026",
+    "type": "i",
+    "A": {
+     "x": 66,
+     "y": 108,
+     "r": 4
+    },
+    "B": {
+     "x": 72,
+     "y": 44,
+     "r": 4
+    },
+    "confidence": "sure",
+    "used_in_loss": false,
+    "overlay_seen": false,
+    "annotator": "annotator_b",
+    "created": "2026-11-19T22:36:12.700Z",
+    "note": "",
+    "schema_version": "1.2",
+    "lit_end": "B"
+   }
+  }
+ ]
 }

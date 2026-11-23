@@ -58,7 +58,7 @@ If you place a pair by mistake, press **u** to undo it.
 |---|---|---|
 | 1 | Image picker | Choose the image. Each entry starts with the image's data split (VAL, TEST, TRAIN). The arrows (or **n** / **p**) go to the next / previous image. **mine only** (on by default) lists only the images assigned to your name tag. |
 | 2 | Name tag | Who you are. Every pair you place carries this tag. You cannot place pairs without one. The menu also has **Add new…** and **Rename this tag…**. |
-| 3 | Pair type | The type of the next pair: **i m b s d** (section 3). The highlighted one is active. |
+| 3 | Pair type | The type of the next pair: **i m b s d** (section 3). The highlighted one is active. The **s** button here is only for *targeted* s pairs (maintainer only): it is grey on images without overlay maps. **Random s pairs come from the random s seed button (4), or the r key.** |
 | 4 | Patch size, random s, relabel | `r 4` is the size of new patches. **random s seed** starts a random s pair. **blind relabel** starts relabel mode (section 7). |
 | 5 | Exposure / gamma / log view | Make dark areas visible. These only change the display, never the data. |
 | 6 | Overlays | Lines drawn by a computer detector. **Off by default** (section 6). |
@@ -503,9 +503,11 @@ keeps happening, tell the project lead.
 Check that the terminal still shows `annotation tool: http://127.0.0.1:8765/`. On Windows with WSL, open
 `http://localhost:8765/` in the Windows browser.
 
-**The s button is grey, or the overlays say n/a.**
-Expected on an annotator's machine: overlays and targeted s pairs are maintainer only. Random s pairs use the
-**random s seed** button, which always works.
+**The s button is grey, or the overlays say n/a. How do I make s pairs?**
+Expected on an annotator's machine. The grey **s** button is only for *targeted* s pairs, which are maintainer only
+and need overlay maps. Your s pairs are **random s** pairs: click **random s seed** in the toolbar (or press **r**),
+then follow section 4a, step 5. Clicking the grey **s** shows this reminder and highlights the **random s seed**
+button. The random s seed button always works.
 
 **The image picker shows fewer images than I expected.**
 **mine only** is ticked, so it lists only the images assigned to your tag. Check that the right tag is chosen in the

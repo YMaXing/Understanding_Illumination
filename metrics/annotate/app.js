@@ -152,9 +152,11 @@ async function openImage(i, opts = {}) {
     el.parentElement.title = el.disabled ? (k === "regions" ? "n/a: no region source" : "n/a: map not available for this image") : "";
   });
   const sb = document.querySelector('#types button[data-type="s"]');
-  sb.disabled = !targetedAvailable();
-  sb.title = sb.disabled ? TARGETED_OFF : "targeted s (maintainer-only): needs an overlay on; random s comes from the seed button";
-  if (S.type === "s" && sb.disabled) setType("m");
+  // Greyed, not disabled: a disabled button swallows clicks and hides its tooltip, so the reason would never show.
+  const off = !targetedAvailable();
+  sb.classList.toggle("off", off); sb.setAttribute("aria-disabled", String(off));
+  sb.title = off ? TARGETED_OFF : "targeted s (maintainer-only): needs an overlay on; random s comes from the seed button";
+  if (S.type === "s" && off) setType("m");
   S.badCanvas = null;
   renderBase();
   fit();
@@ -625,10 +627,11 @@ function openHelp() { $("help").hidden = false; $("help").focus(); }
 const HOTKEYS = new Set([..."imbsduzqtwgNelxnpfrR1234[]?", "Delete", "Backspace", "Escape", "Enter", "PageUp", "PageDown",
                          "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"]);
 // Targeted s is maintainer-only: it needs overlay maps, which only maintainers have. Without them the control is off.
-const TARGETED_OFF = "targeted s is maintainer-only and needs overlay maps (absent for this image); random s: use the seed button (r)";
+const TARGETED_OFF = "This s button is for targeted s pairs (maintainer only; they need overlay maps, which this machine does not have). " +
+                     "For random s pairs, click \u201crandom s seed\u201d or press r.";
 function targetedAvailable() { return Object.keys(S.ovlImg || {}).length > 0; }
 function setType(t) {
-  if (t === "s" && !targetedAvailable()) { flash(TARGETED_OFF); return; }
+  if (t === "s" && !targetedAvailable()) { flash(TARGETED_OFF); banner(TARGETED_OFF, true); hintSeed(); return; }
   S.type = t; document.querySelectorAll("#types button").forEach(b => b.classList.toggle("on", b.dataset.type === t)); }
 
 // A closed dialog must not keep keyboard focus (its hidden field would swallow the next hotkey until the browser's
@@ -862,6 +865,7 @@ function renderAll() { $("rval").textContent = S.r; renderEditor(); renderWarn()
 // ------------------------------------------------------------------ misc
 function esc(s) { return String(s).replace(/[&<>"']/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"}[c])); }
 function status(t, cls) { const el = $("save"); el.textContent = t; el.className = cls || "dim"; }
+function hintSeed() { const b = $("seed"); b.classList.add("hint"); clearTimeout(S.hintT); S.hintT = setTimeout(() => b.classList.remove("hint"), 3000); }
 function flash(t) { S.msg = t; hud(); clearTimeout(S.msgT); S.msgT = setTimeout(() => { S.msg = ""; hud(); }, 4000); }
 function banner(t, info) { const b = $("banner"); b.textContent = t; b.className = info ? "info" : ""; b.hidden = false;
   clearTimeout(S.banT); if (info) S.banT = setTimeout(() => { b.hidden = true; }, 5000); }
