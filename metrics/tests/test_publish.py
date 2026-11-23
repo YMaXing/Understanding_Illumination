@@ -111,6 +111,24 @@ def test_publish_flow(repos):
     assert git(work, "show", f"{c3}:metrics/code.py") == "v = 2"
     git(work, "push", "-q", "origin", PB.BRANCH)
 
+    # another merged PR, pulled, then reviewed here
+    git(her, "pull", "-q", "origin", PB.BRANCH)
+    add_pair(her / "metrics" / "annotations" / f"{STEM}.json", "annotator_b", "t=9999999999002")
+    commit_all(her, "more annotations")
+    git(her, "push", "-q", "origin", PB.BRANCH)
+    git(work, "fetch", "-q", "origin")
+    assert PB.pull(work, apply=True, into=work / "metrics" / "annotations") == 0
+    commit_all(work, "annotations: merged again")
+    f = json.loads(fp.read_text())
+    mine = next(q for q in f["pairs"] if q["id"] == "t=9999999999002")
+    mine.update(note="reviewed", last_edited_by="yueren")                # the maintainer edits her pair
+    fp.write_text(json.dumps(f, indent=1))
+    commit_all(work, "annotations: review")
+    c4 = PB.build(work)                                                 # her version is in metrics-v1's history: no refusal
+    f = json.loads(git(work, "show", f"{c4}:metrics/annotations/{STEM}.json"))
+    assert next(q for q in f["pairs"] if q["id"] == "t=9999999999002")["note"] == "reviewed"
+    git(work, "push", "-q", "origin", PB.BRANCH)
+
     git(her, "pull", "-q", "origin", PB.BRANCH)                         # a code change made on GitHub is refused
     (her / "metrics" / "code.py").write_text("v = 99\n")
     commit_all(her, "edit code on github")

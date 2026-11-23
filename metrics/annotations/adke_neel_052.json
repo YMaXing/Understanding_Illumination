@@ -365,8 +365,8 @@
     "r": 4
    },
    "B": {
-    "x": 159,
-    "y": 831,
+    "x": 177,
+    "y": 835,
     "r": 4
    },
    "confidence": "sure",
@@ -375,7 +375,30 @@
    "annotator": "annotator_b",
    "created": "2026-11-19T04:20:50.901Z",
    "note": "",
-   "schema_version": "1.2"
+   "schema_version": "1.2",
+   "last_edited_by": "yueren",
+   "edited": "2026-11-23T18:26:38.860Z",
+   "history": [
+    {
+     "op": "drag",
+     "at": "2026-11-23T18:26:38.860Z",
+     "by": "yueren",
+     "before": {
+      "B": {
+       "x": 159,
+       "y": 831,
+       "r": 4
+      }
+     },
+     "after": {
+      "B": {
+       "x": 177,
+       "y": 835,
+       "r": 4
+      }
+     }
+    }
+   ]
   },
   {
    "id": "t=1795062053967",
@@ -1275,6 +1298,54 @@
    "created": "2026-11-21T00:49:09.778Z",
    "note": "",
    "schema_version": "1.2"
+  },
+  {
+   "id": "t=1795458377158",
+   "image": "adke_neel_052",
+   "type": "d",
+   "A": {
+    "x": 229,
+    "y": 787,
+    "r": 4
+   },
+   "B": {
+    "x": 622,
+    "y": 886,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T18:26:17.158Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different"
+  },
+  {
+   "id": "t=1795458381457",
+   "image": "adke_neel_052",
+   "type": "d",
+   "A": {
+    "x": 440,
+    "y": 958,
+    "r": 4
+   },
+   "B": {
+    "x": 250,
+    "y": 691,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": false,
+   "annotator": "yueren",
+   "created": "2026-11-23T18:26:21.457Z",
+   "note": "",
+   "schema_version": "1.2",
+   "material": "same",
+   "illumination": "different"
   }
  ],
  "s_seed_log": [

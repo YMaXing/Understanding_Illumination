@@ -104,18 +104,48 @@ def same_content(a, b):
     return norm(a) == norm(b)
 
 
+def history_blobs(g, rev, path):
+    """Every version (blob id) `path` has had on `rev`'s history."""
+    out = g.run("log", "--format=", "--raw", "--no-abbrev", "--no-renames", rev, "--", path, ok=True) or ""
+    return {ln.split()[3] for ln in out.splitlines() if ln.startswith(":")}
+
+
+def entries(f):
+    """An image annotation file as a set of entries: each pair, tombstone, seed-log entry, exhausted mark, header field."""
+    out = set()
+    for k, v in f.items():
+        if k in ("pairs", "deleted_pairs", "s_seed_log"):
+            out |= {(k, json.dumps(x, sort_keys=True)) for x in v}
+        elif k == "exhausted":
+            out |= {(k, t, json.dumps(m, sort_keys=True)) for t, m in (v or {}).items()}
+        else:
+            out.add(("header", k, json.dumps(v, sort_keys=True)))
+    return out
+
+
+def seen_entries(g, rev, path):
+    """Union of entries(...) over every version `path` has had on `rev`'s history."""
+    seen = set()
+    for b in history_blobs(g, rev, path):
+        seen |= entries(json.loads(g.run("cat-file", "blob", b)))
+    return seen
+
+
 def not_contained(g, parent, src, snap=None):
     """Annotation files changed on `parent` since the last snapshot `snap` (all of them if there is none) whose
     content metrics-v1 does not already contain (merging them in would change it). A file GitHub has not touched
-    since the snapshot is metrics-v1's own earlier version: later local edits and deletions are not a conflict."""
+    since the snapshot is metrics-v1's own earlier version. An image file is also contained when every entry of
+    GitHub's version (pair, tombstone, seed-log entry, exhausted mark, header field) appeared identically in some
+    version metrics-v1 has had: it was pulled in earlier, and what differs now are later local edits (e.g. a
+    maintainer's review of an annotator's pairs), not anything new from GitHub."""
     theirs, mine = g.blobs(parent, ANN), g.blobs(src, ANN)
     if snap:
         touched = set(g.run("diff", "--name-only", snap, parent, "--", ANN).splitlines())
         theirs = {p: b for p, b in theirs.items() if p in touched}
     bad = []
     for path, blob in sorted(theirs.items()):
-        if mine.get(path) == blob:
-            continue
+        if mine.get(path) == blob or blob in history_blobs(g, src, path):
+            continue                    # identical, or this exact version was in metrics-v1 and edited locally since
         if path not in mine:
             bad.append(f"{path}: only on GitHub")
             continue
@@ -132,7 +162,7 @@ def not_contained(g, parent, src, snap=None):
                 bad.append(f"{path}: relabels not contained")
         elif "/" not in name and name.endswith(".json"):
             merged, rep = MR.merge_file(m, t)
-            if rep["conflicts"] or not same_content(merged, m):
+            if (rep["conflicts"] or not same_content(merged, m)) and not entries(t) <= seen_entries(g, src, path):
                 bad.append(f"{path}: +{len(rep['added'])} entries, {len(rep['conflicts'])} conflicts")
         else:
             bad.append(f"{path}: differs")
