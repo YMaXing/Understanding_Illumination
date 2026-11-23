@@ -1,0 +1,8 @@
+runs/
+.venv/
+__pycache__/
+.pytest_cache/
+annotations/.backups/
+annotate/cache/
+config.local.yaml
+!uv.lock

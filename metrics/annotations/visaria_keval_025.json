@@ -1,0 +1,9273 @@
+{
+ "schema_version": "1.2",
+ "image": "visaria_keval_025",
+ "set": "glossy_dev",
+ "split": "train",
+ "seen_in_training": "unknown",
+ "width": 768,
+ "height": 1365,
+ "image_sha256": "e1fd36a11c2b0f2b5d8ee80ee9b16879a21c9e09f16b88f4bb46e6ea02541000",
+ "image_pixel_sha256": "b12cdc27233c57255e76589d4aef43b0410ac04830907348619c89bc8f8981a6",
+ "assigned_to": "yueren",
+ "pairs": [
+  {
+   "id": "t=1794680406048",
+   "image": "visaria_keval_025",
+   "type": "i",
+   "A": {
+    "x": 64,
+    "y": 1067,
+    "r": 6
+   },
+   "B": {
+    "x": 120,
+    "y": 1057,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:20:06.048Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "i",
+     "a_row": 1067,
+     "a_col": 64,
+     "b_row": 1057,
+     "b_col": 120,
+     "half": 6,
+     "t": 1794680406048,
+     "major": true
+    },
+    "v0_index": 926,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.760602,
+     "b_B": 7.441611,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680409194",
+   "image": "visaria_keval_025",
+   "type": "i",
+   "A": {
+    "x": 68,
+    "y": 999,
+    "r": 6
+   },
+   "B": {
+    "x": 131,
+    "y": 1000,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:20:09.194Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "i",
+     "a_row": 999,
+     "a_col": 68,
+     "b_row": 1000,
+     "b_col": 131,
+     "half": 6,
+     "t": 1794680409194,
+     "major": true
+    },
+    "v0_index": 927,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.820096,
+     "b_B": 7.651692,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680415715",
+   "image": "visaria_keval_025",
+   "type": "i",
+   "A": {
+    "x": 137,
+    "y": 754,
+    "r": 6
+   },
+   "B": {
+    "x": 169,
+    "y": 741,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:20:15.715Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "i",
+     "a_row": 754,
+     "a_col": 137,
+     "b_row": 741,
+     "b_col": 169,
+     "half": 6,
+     "t": 1794680415715,
+     "major": true
+    },
+    "v0_index": 928,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.121593,
+     "b_B": 7.782261,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680419444",
+   "image": "visaria_keval_025",
+   "type": "i",
+   "A": {
+    "x": 131,
+    "y": 782,
+    "r": 6
+   },
+   "B": {
+    "x": 174,
+    "y": 789,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:20:19.444Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "i",
+     "a_row": 782,
+     "a_col": 131,
+     "b_row": 789,
+     "b_col": 174,
+     "half": 6,
+     "t": 1794680419444,
+     "major": true
+    },
+    "v0_index": 929,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.309102,
+     "b_B": 7.963928,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680422518",
+   "image": "visaria_keval_025",
+   "type": "i",
+   "A": {
+    "x": 103,
+    "y": 814,
+    "r": 6
+   },
+   "B": {
+    "x": 152,
+    "y": 821,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:20:22.518Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "i",
+     "a_row": 814,
+     "a_col": 103,
+     "b_row": 821,
+     "b_col": 152,
+     "half": 6,
+     "t": 1794680422518,
+     "major": true
+    },
+    "v0_index": 930,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.243366,
+     "b_B": 7.988876,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680426266",
+   "image": "visaria_keval_025",
+   "type": "b",
+   "A": {
+    "x": 96,
+    "y": 862,
+    "r": 6
+   },
+   "B": {
+    "x": 139,
+    "y": 859,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:20:26.266Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "b",
+     "a_row": 862,
+     "a_col": 96,
+     "b_row": 859,
+     "b_col": 139,
+     "half": 6,
+     "t": 1794680426266,
+     "major": true
+    },
+    "v0_index": 931
+   }
+  },
+  {
+   "id": "t=1794680435590",
+   "image": "visaria_keval_025",
+   "type": "b",
+   "A": {
+    "x": 102,
+    "y": 888,
+    "r": 6
+   },
+   "B": {
+    "x": 135,
+    "y": 888,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:20:35.590Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "b",
+     "a_row": 888,
+     "a_col": 102,
+     "b_row": 888,
+     "b_col": 135,
+     "half": 6,
+     "t": 1794680435590,
+     "major": true
+    },
+    "v0_index": 932
+   }
+  },
+  {
+   "id": "t=1794680439091",
+   "image": "visaria_keval_025",
+   "type": "b",
+   "A": {
+    "x": 96,
+    "y": 927,
+    "r": 6
+   },
+   "B": {
+    "x": 130,
+    "y": 930,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:20:39.091Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "b",
+     "a_row": 927,
+     "a_col": 96,
+     "b_row": 930,
+     "b_col": 130,
+     "half": 6,
+     "t": 1794680439091,
+     "major": true
+    },
+    "v0_index": 933
+   }
+  },
+  {
+   "id": "t=1794680447605",
+   "image": "visaria_keval_025",
+   "type": "b",
+   "A": {
+    "x": 92,
+    "y": 960,
+    "r": 6
+   },
+   "B": {
+    "x": 130,
+    "y": 962,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:20:47.605Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "b",
+     "a_row": 960,
+     "a_col": 92,
+     "b_row": 962,
+     "b_col": 130,
+     "half": 6,
+     "t": 1794680447605,
+     "major": true
+    },
+    "v0_index": 934
+   }
+  },
+  {
+   "id": "t=1794680459671",
+   "image": "visaria_keval_025",
+   "type": "i",
+   "A": {
+    "x": 734,
+    "y": 670,
+    "r": 6
+   },
+   "B": {
+    "x": 754,
+    "y": 638,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:20:59.671Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "i",
+     "a_row": 670,
+     "a_col": 734,
+     "b_row": 638,
+     "b_col": 754,
+     "half": 6,
+     "t": 1794680459671,
+     "glossy": true,
+     "major": true
+    },
+    "v0_index": 935,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.598296,
+     "b_B": 7.708329,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680463801",
+   "image": "visaria_keval_025",
+   "type": "i",
+   "A": {
+    "x": 687,
+    "y": 654,
+    "r": 6
+   },
+   "B": {
+    "x": 712,
+    "y": 626,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:21:03.801Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "i",
+     "a_row": 654,
+     "a_col": 687,
+     "b_row": 626,
+     "b_col": 712,
+     "half": 6,
+     "t": 1794680463801,
+     "major": true
+    },
+    "v0_index": 936,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.739697,
+     "b_B": 7.820985,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680467086",
+   "image": "visaria_keval_025",
+   "type": "i",
+   "A": {
+    "x": 650,
+    "y": 642,
+    "r": 6
+   },
+   "B": {
+    "x": 668,
+    "y": 616,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:21:07.086Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "i",
+     "a_row": 642,
+     "a_col": 650,
+     "b_row": 616,
+     "b_col": 668,
+     "half": 6,
+     "t": 1794680467086,
+     "glossy": true,
+     "major": true
+    },
+    "v0_index": 937,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.776388,
+     "b_B": 7.908923,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680477714",
+   "image": "visaria_keval_025",
+   "type": "i",
+   "A": {
+    "x": 625,
+    "y": 632,
+    "r": 6
+   },
+   "B": {
+    "x": 653,
+    "y": 606,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:21:17.714Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "i",
+     "a_row": 632,
+     "a_col": 625,
+     "b_row": 606,
+     "b_col": 653,
+     "half": 6,
+     "t": 1794680477714,
+     "glossy": true,
+     "major": true
+    },
+    "v0_index": 938,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.81628,
+     "b_B": 7.919686,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680484069",
+   "image": "visaria_keval_025",
+   "type": "i",
+   "A": {
+    "x": 594,
+    "y": 618,
+    "r": 6
+   },
+   "B": {
+    "x": 622,
+    "y": 585,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:21:24.069Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "i",
+     "a_row": 618,
+     "a_col": 594,
+     "b_row": 585,
+     "b_col": 622,
+     "half": 6,
+     "t": 1794680484069,
+     "glossy": true,
+     "major": true
+    },
+    "v0_index": 939,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.051324,
+     "b_B": 8.021454,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680487750",
+   "image": "visaria_keval_025",
+   "type": "i",
+   "A": {
+    "x": 563,
+    "y": 605,
+    "r": 6
+   },
+   "B": {
+    "x": 597,
+    "y": 571,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:21:27.750Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "i",
+     "a_row": 605,
+     "a_col": 563,
+     "b_row": 571,
+     "b_col": 597,
+     "half": 6,
+     "t": 1794680487750,
+     "glossy": true,
+     "major": true
+    },
+    "v0_index": 940,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.083071,
+     "b_B": 8.040528,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680491358",
+   "image": "visaria_keval_025",
+   "type": "i",
+   "A": {
+    "x": 529,
+    "y": 587,
+    "r": 6
+   },
+   "B": {
+    "x": 559,
+    "y": 556,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:21:31.358Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "i",
+     "a_row": 587,
+     "a_col": 529,
+     "b_row": 556,
+     "b_col": 559,
+     "half": 6,
+     "t": 1794680491358,
+     "glossy": true,
+     "major": true
+    },
+    "v0_index": 941,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.971328,
+     "b_B": 8.05295,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680494544",
+   "image": "visaria_keval_025",
+   "type": "i",
+   "A": {
+    "x": 504,
+    "y": 582,
+    "r": 6
+   },
+   "B": {
+    "x": 533,
+    "y": 550,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:21:34.544Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "i",
+     "a_row": 582,
+     "a_col": 504,
+     "b_row": 550,
+     "b_col": 533,
+     "half": 6,
+     "t": 1794680494544,
+     "glossy": true,
+     "major": true
+    },
+    "v0_index": 942,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.015455,
+     "b_B": 8.091933,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680505217",
+   "image": "visaria_keval_025",
+   "type": "i",
+   "A": {
+    "x": 489,
+    "y": 564,
+    "r": 6
+   },
+   "B": {
+    "x": 507,
+    "y": 545,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:21:45.217Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "i",
+     "a_row": 564,
+     "a_col": 489,
+     "b_row": 545,
+     "b_col": 507,
+     "half": 6,
+     "t": 1794680505217,
+     "glossy": true,
+     "major": true
+    },
+    "v0_index": 943,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.981543,
+     "b_B": 8.102029,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680517643",
+   "image": "visaria_keval_025",
+   "type": "i",
+   "A": {
+    "x": 472,
+    "y": 559,
+    "r": 4
+   },
+   "B": {
+    "x": 489,
+    "y": 540,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:21:57.643Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "i",
+     "a_row": 559,
+     "a_col": 472,
+     "b_row": 540,
+     "b_col": 489,
+     "half": 4,
+     "t": 1794680517643,
+     "glossy": true,
+     "major": true
+    },
+    "v0_index": 944,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.951271,
+     "b_B": 8.069979,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680522848",
+   "image": "visaria_keval_025",
+   "type": "i",
+   "A": {
+    "x": 451,
+    "y": 547,
+    "r": 4
+   },
+   "B": {
+    "x": 470,
+    "y": 530,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:22:02.848Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "i",
+     "a_row": 547,
+     "a_col": 451,
+     "b_row": 530,
+     "b_col": 470,
+     "half": 4,
+     "t": 1794680522848,
+     "glossy": true,
+     "major": true
+    },
+    "v0_index": 945,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.937219,
+     "b_B": 8.072564,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680528384",
+   "image": "visaria_keval_025",
+   "type": "i",
+   "A": {
+    "x": 428,
+    "y": 533,
+    "r": 4
+   },
+   "B": {
+    "x": 442,
+    "y": 517,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:22:08.384Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "i",
+     "a_row": 533,
+     "a_col": 428,
+     "b_row": 517,
+     "b_col": 442,
+     "half": 4,
+     "t": 1794680528384,
+     "glossy": true,
+     "major": true
+    },
+    "v0_index": 946,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.965183,
+     "b_B": 8.075098,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680531753",
+   "image": "visaria_keval_025",
+   "type": "i",
+   "A": {
+    "x": 406,
+    "y": 529,
+    "r": 4
+   },
+   "B": {
+    "x": 423,
+    "y": 510,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:22:11.753Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "i",
+     "a_row": 529,
+     "a_col": 406,
+     "b_row": 510,
+     "b_col": 423,
+     "half": 4,
+     "t": 1794680531753,
+     "glossy": true,
+     "major": true
+    },
+    "v0_index": 947,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.858025,
+     "b_B": 8.069002,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680536222",
+   "image": "visaria_keval_025",
+   "type": "i",
+   "A": {
+    "x": 389,
+    "y": 521,
+    "r": 3
+   },
+   "B": {
+    "x": 408,
+    "y": 504,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:22:16.222Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "i",
+     "a_row": 521,
+     "a_col": 389,
+     "b_row": 504,
+     "b_col": 408,
+     "half": 3,
+     "t": 1794680536222,
+     "glossy": true,
+     "major": true
+    },
+    "v0_index": 948,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.06226,
+     "b_B": 8.073928,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680541644",
+   "image": "visaria_keval_025",
+   "type": "i",
+   "A": {
+    "x": 376,
+    "y": 514,
+    "r": 3
+   },
+   "B": {
+    "x": 390,
+    "y": 499,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:22:21.644Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "i",
+     "a_row": 514,
+     "a_col": 376,
+     "b_row": 499,
+     "b_col": 390,
+     "half": 3,
+     "t": 1794680541644,
+     "glossy": true,
+     "major": true
+    },
+    "v0_index": 949,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.057454,
+     "b_B": 8.103653,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680545127",
+   "image": "visaria_keval_025",
+   "type": "i",
+   "A": {
+    "x": 363,
+    "y": 507,
+    "r": 3
+   },
+   "B": {
+    "x": 378,
+    "y": 492,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:22:25.127Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "i",
+     "a_row": 507,
+     "a_col": 363,
+     "b_row": 492,
+     "b_col": 378,
+     "half": 3,
+     "t": 1794680545127,
+     "glossy": true,
+     "major": true
+    },
+    "v0_index": 950,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.931899,
+     "b_B": 8.093046,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680549808",
+   "image": "visaria_keval_025",
+   "type": "i",
+   "A": {
+    "x": 350,
+    "y": 501,
+    "r": 3
+   },
+   "B": {
+    "x": 365,
+    "y": 487,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:22:29.808Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "i",
+     "a_row": 501,
+     "a_col": 350,
+     "b_row": 487,
+     "b_col": 365,
+     "half": 3,
+     "t": 1794680549808,
+     "glossy": true,
+     "major": true
+    },
+    "v0_index": 951,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.970002,
+     "b_B": 8.064744,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680553980",
+   "image": "visaria_keval_025",
+   "type": "i",
+   "A": {
+    "x": 338,
+    "y": 495,
+    "r": 3
+   },
+   "B": {
+    "x": 351,
+    "y": 481,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:22:33.980Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "i",
+     "a_row": 495,
+     "a_col": 338,
+     "b_row": 481,
+     "b_col": 351,
+     "half": 3,
+     "t": 1794680553980,
+     "glossy": true
+    },
+    "v0_index": 952,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.90714,
+     "b_B": 8.015786,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680557163",
+   "image": "visaria_keval_025",
+   "type": "i",
+   "A": {
+    "x": 326,
+    "y": 488,
+    "r": 3
+   },
+   "B": {
+    "x": 339,
+    "y": 477,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:22:37.163Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "i",
+     "a_row": 488,
+     "a_col": 326,
+     "b_row": 477,
+     "b_col": 339,
+     "half": 3,
+     "t": 1794680557163,
+     "glossy": true,
+     "major": true
+    },
+    "v0_index": 953,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.877569,
+     "b_B": 8.019765,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680562293",
+   "image": "visaria_keval_025",
+   "type": "i",
+   "A": {
+    "x": 312,
+    "y": 483,
+    "r": 3
+   },
+   "B": {
+    "x": 325,
+    "y": 468,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:22:42.293Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "i",
+     "a_row": 483,
+     "a_col": 312,
+     "b_row": 468,
+     "b_col": 325,
+     "half": 3,
+     "t": 1794680562293,
+     "glossy": true,
+     "major": true
+    },
+    "v0_index": 954,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.089552,
+     "b_B": 8.033917,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680565768",
+   "image": "visaria_keval_025",
+   "type": "i",
+   "A": {
+    "x": 300,
+    "y": 478,
+    "r": 3
+   },
+   "B": {
+    "x": 312,
+    "y": 462,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:22:45.768Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "i",
+     "a_row": 478,
+     "a_col": 300,
+     "b_row": 462,
+     "b_col": 312,
+     "half": 3,
+     "t": 1794680565768,
+     "glossy": true,
+     "major": true
+    },
+    "v0_index": 955,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.059562,
+     "b_B": 7.97135,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680568653",
+   "image": "visaria_keval_025",
+   "type": "i",
+   "A": {
+    "x": 292,
+    "y": 459,
+    "r": 3
+   },
+   "B": {
+    "x": 309,
+    "y": 459,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:22:48.653Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "i",
+     "a_row": 459,
+     "a_col": 292,
+     "b_row": 459,
+     "b_col": 309,
+     "half": 3,
+     "t": 1794680568653,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T06:39:12.421Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 956,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.560054,
+     "b_B": 7.958769,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794680574299",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 287,
+    "y": 456,
+    "r": 2
+   },
+   "B": {
+    "x": 294,
+    "y": 446,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:22:54.299Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 456,
+     "a_col": 287,
+     "b_row": 446,
+     "b_col": 294,
+     "half": 2,
+     "t": 1794680574299,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:45.318Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 957
+   }
+  },
+  {
+   "id": "t=1794680581466",
+   "image": "visaria_keval_025",
+   "type": "b",
+   "A": {
+    "x": 266,
+    "y": 450,
+    "r": 2
+   },
+   "B": {
+    "x": 266,
+    "y": 436,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:23:01.466Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "b",
+     "a_row": 450,
+     "a_col": 266,
+     "b_row": 436,
+     "b_col": 266,
+     "half": 2,
+     "t": 1794680581466,
+     "major": true,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:46.439Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 958
+   }
+  },
+  {
+   "id": "t=1794680586769",
+   "image": "visaria_keval_025",
+   "type": "b",
+   "A": {
+    "x": 241,
+    "y": 451,
+    "r": 2
+   },
+   "B": {
+    "x": 240,
+    "y": 437,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:23:06.769Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "b",
+     "a_row": 451,
+     "a_col": 241,
+     "b_row": 437,
+     "b_col": 240,
+     "half": 2,
+     "t": 1794680586769,
+     "edits": [
+      {
+       "op": "type",
+       "at": "2026-11-14T18:23:11.236Z",
+       "before": {
+        "type": "m"
+       },
+       "after": {
+        "type": "b"
+       }
+      },
+      {
+       "op": "major",
+       "at": "2026-11-14T18:23:11.581Z",
+       "before": {
+        "major": null
+       },
+       "after": {
+        "major": true
+       }
+      },
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:47.068Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ],
+     "major": true,
+     "glossy": true
+    },
+    "v0_index": 959
+   }
+  },
+  {
+   "id": "t=1794680598352",
+   "image": "visaria_keval_025",
+   "type": "b",
+   "A": {
+    "x": 215,
+    "y": 452,
+    "r": 2
+   },
+   "B": {
+    "x": 212,
+    "y": 438,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:23:18.352Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "b",
+     "a_row": 452,
+     "a_col": 215,
+     "b_row": 438,
+     "b_col": 212,
+     "half": 2,
+     "t": 1794680598352,
+     "major": true,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:47.988Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 960
+   }
+  },
+  {
+   "id": "t=1794680600943",
+   "image": "visaria_keval_025",
+   "type": "b",
+   "A": {
+    "x": 186,
+    "y": 454,
+    "r": 2
+   },
+   "B": {
+    "x": 185,
+    "y": 437,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:23:20.943Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "b",
+     "a_row": 454,
+     "a_col": 186,
+     "b_row": 437,
+     "b_col": 185,
+     "half": 2,
+     "t": 1794680600943,
+     "major": true,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:49.040Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 961
+   }
+  },
+  {
+   "id": "t=1794680603447",
+   "image": "visaria_keval_025",
+   "type": "b",
+   "A": {
+    "x": 156,
+    "y": 454,
+    "r": 2
+   },
+   "B": {
+    "x": 155,
+    "y": 438,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:23:23.447Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "b",
+     "a_row": 454,
+     "a_col": 156,
+     "b_row": 438,
+     "b_col": 155,
+     "half": 2,
+     "t": 1794680603447,
+     "major": true,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:52.168Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 962
+   }
+  },
+  {
+   "id": "t=1794680607186",
+   "image": "visaria_keval_025",
+   "type": "b",
+   "A": {
+    "x": 103,
+    "y": 454,
+    "r": 2
+   },
+   "B": {
+    "x": 103,
+    "y": 438,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:23:27.186Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "b",
+     "a_row": 454,
+     "a_col": 103,
+     "b_row": 438,
+     "b_col": 103,
+     "half": 2,
+     "t": 1794680607186,
+     "major": true,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:52.966Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 963
+   }
+  },
+  {
+   "id": "t=1794680618966",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 739,
+    "y": 556,
+    "r": 4
+   },
+   "B": {
+    "x": 756,
+    "y": 529,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:23:38.966Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 556,
+     "a_col": 739,
+     "b_row": 529,
+     "b_col": 756,
+     "half": 4,
+     "t": 1794680618966,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:34.054Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 964
+   }
+  },
+  {
+   "id": "t=1794680620257",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 677,
+    "y": 538,
+    "r": 4
+   },
+   "B": {
+    "x": 695,
+    "y": 513,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:23:40.257Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 538,
+     "a_col": 677,
+     "b_row": 513,
+     "b_col": 695,
+     "half": 4,
+     "t": 1794680620257,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:35.475Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 965
+   }
+  },
+  {
+   "id": "t=1794680624825",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 549,
+    "y": 521,
+    "r": 4
+   },
+   "B": {
+    "x": 574,
+    "y": 492,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:23:44.825Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 521,
+     "a_col": 549,
+     "b_row": 492,
+     "b_col": 574,
+     "half": 4,
+     "t": 1794680624825,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:37.637Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 966
+   }
+  },
+  {
+   "id": "t=1794680626123",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 508,
+    "y": 503,
+    "r": 4
+   },
+   "B": {
+    "x": 525,
+    "y": 478,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:23:46.123Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 503,
+     "a_col": 508,
+     "b_row": 478,
+     "b_col": 525,
+     "half": 4,
+     "t": 1794680626123,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:39.990Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 967
+   }
+  },
+  {
+   "id": "t=1794680629011",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 478,
+    "y": 495,
+    "r": 4
+   },
+   "B": {
+    "x": 498,
+    "y": 472,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:23:49.011Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 495,
+     "a_col": 478,
+     "b_row": 472,
+     "b_col": 498,
+     "half": 4,
+     "t": 1794680629011,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:40.467Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 968
+   }
+  },
+  {
+   "id": "t=1794680634640",
+   "image": "visaria_keval_025",
+   "type": "b",
+   "A": {
+    "x": 446,
+    "y": 484,
+    "r": 4
+   },
+   "B": {
+    "x": 457,
+    "y": 466,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:23:54.640Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "b",
+     "a_row": 484,
+     "a_col": 446,
+     "b_row": 466,
+     "b_col": 457,
+     "half": 4,
+     "t": 1794680634640,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:40.919Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 969
+   }
+  },
+  {
+   "id": "t=1794680642587",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 395,
+    "y": 473,
+    "r": 3
+   },
+   "B": {
+    "x": 409,
+    "y": 457,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:24:02.587Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 473,
+     "a_col": 395,
+     "b_row": 457,
+     "b_col": 409,
+     "half": 3,
+     "t": 1794680642587,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:41.659Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 970
+   }
+  },
+  {
+   "id": "t=1794680644192",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 367,
+    "y": 465,
+    "r": 3
+   },
+   "B": {
+    "x": 375,
+    "y": 451,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:24:04.192Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 465,
+     "a_col": 367,
+     "b_row": 451,
+     "b_col": 375,
+     "half": 3,
+     "t": 1794680644192,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:42.385Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 971
+   }
+  },
+  {
+   "id": "t=1794680645702",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 341,
+    "y": 457,
+    "r": 3
+   },
+   "B": {
+    "x": 352,
+    "y": 446,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:24:05.702Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 457,
+     "a_col": 341,
+     "b_row": 446,
+     "b_col": 352,
+     "half": 3,
+     "t": 1794680645702,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:42.991Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 972
+   }
+  },
+  {
+   "id": "t=1794680648224",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 316,
+    "y": 452,
+    "r": 3
+   },
+   "B": {
+    "x": 324,
+    "y": 440,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:24:08.224Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 452,
+     "a_col": 316,
+     "b_row": 440,
+     "b_col": 324,
+     "half": 3,
+     "t": 1794680648224,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:43.644Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 973
+   }
+  },
+  {
+   "id": "t=1794680656216",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 303,
+    "y": 447,
+    "r": 2
+   },
+   "B": {
+    "x": 302,
+    "y": 438,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:24:16.216Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 447,
+     "a_col": 303,
+     "b_row": 438,
+     "b_col": 302,
+     "half": 2,
+     "t": 1794680656216,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:44.876Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 974
+   }
+  },
+  {
+   "id": "t=1794680663500",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 448,
+    "y": 644,
+    "r": 4
+   },
+   "B": {
+    "x": 403,
+    "y": 664,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:24:23.500Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 644,
+     "a_col": 448,
+     "b_row": 664,
+     "b_col": 403,
+     "half": 4,
+     "t": 1794680663500,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:24:54.401Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 975
+   }
+  },
+  {
+   "id": "t=1794680674386",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 401,
+    "y": 600,
+    "r": 4
+   },
+   "B": {
+    "x": 364,
+    "y": 633,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:24:34.386Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 600,
+     "a_col": 401,
+     "b_row": 633,
+     "b_col": 364,
+     "half": 4,
+     "t": 1794680674386,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:24:55.833Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 976
+   }
+  },
+  {
+   "id": "t=1794680676043",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 376,
+    "y": 583,
+    "r": 4
+   },
+   "B": {
+    "x": 344,
+    "y": 613,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:24:36.043Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 583,
+     "a_col": 376,
+     "b_row": 613,
+     "b_col": 344,
+     "half": 4,
+     "t": 1794680676043,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:24:56.596Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 977
+   }
+  },
+  {
+   "id": "t=1794680677747",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 362,
+    "y": 563,
+    "r": 4
+   },
+   "B": {
+    "x": 326,
+    "y": 592,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:24:37.747Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 563,
+     "a_col": 362,
+     "b_row": 592,
+     "b_col": 326,
+     "half": 4,
+     "t": 1794680677747,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:24:57.222Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 978
+   }
+  },
+  {
+   "id": "t=1794680679059",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 337,
+    "y": 544,
+    "r": 4
+   },
+   "B": {
+    "x": 307,
+    "y": 572,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:24:39.059Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 544,
+     "a_col": 337,
+     "b_row": 572,
+     "b_col": 307,
+     "half": 4,
+     "t": 1794680679059,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:24:58.139Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 979
+   }
+  },
+  {
+   "id": "t=1794680680437",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 323,
+    "y": 526,
+    "r": 4
+   },
+   "B": {
+    "x": 287,
+    "y": 549,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:24:40.437Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 526,
+     "a_col": 323,
+     "b_row": 549,
+     "b_col": 287,
+     "half": 4,
+     "t": 1794680680437,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:24:58.592Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 980
+   }
+  },
+  {
+   "id": "t=1794680689642",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 565,
+    "y": 911,
+    "r": 4
+   },
+   "B": {
+    "x": 581,
+    "y": 877,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:24:49.642Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 911,
+     "a_col": 565,
+     "b_row": 877,
+     "b_col": 581,
+     "half": 4,
+     "t": 1794680689642,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:16.358Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 981
+   }
+  },
+  {
+   "id": "t=1794680691231",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 527,
+    "y": 883,
+    "r": 4
+   },
+   "B": {
+    "x": 550,
+    "y": 834,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:24:51.231Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 883,
+     "a_col": 527,
+     "b_row": 834,
+     "b_col": 550,
+     "half": 4,
+     "t": 1794680691231,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:16.789Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 982
+   }
+  },
+  {
+   "id": "t=1794680692226",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 512,
+    "y": 849,
+    "r": 4
+   },
+   "B": {
+    "x": 524,
+    "y": 812,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:24:52.226Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 849,
+     "a_col": 512,
+     "b_row": 812,
+     "b_col": 524,
+     "half": 4,
+     "t": 1794680692226,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:17.357Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 983
+   }
+  },
+  {
+   "id": "t=1794680707554",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 492,
+    "y": 816,
+    "r": 4
+   },
+   "B": {
+    "x": 503,
+    "y": 791,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:25:07.554Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 816,
+     "a_col": 492,
+     "b_row": 791,
+     "b_col": 503,
+     "half": 4,
+     "t": 1794680707554,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:24.561Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 984
+   }
+  },
+  {
+   "id": "t=1794680709869",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 481,
+    "y": 799,
+    "r": 4
+   },
+   "B": {
+    "x": 493,
+    "y": 772,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:25:09.869Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 799,
+     "a_col": 481,
+     "b_row": 772,
+     "b_col": 493,
+     "half": 4,
+     "t": 1794680709869,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:25.637Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 985
+   }
+  },
+  {
+   "id": "t=1794680711716",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 458,
+    "y": 779,
+    "r": 4
+   },
+   "B": {
+    "x": 471,
+    "y": 748,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:25:11.716Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 779,
+     "a_col": 458,
+     "b_row": 748,
+     "b_col": 471,
+     "half": 4,
+     "t": 1794680711716,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-14T18:25:16.908Z",
+       "before": {
+        "b_row": 753,
+        "b_col": 468
+       },
+       "after": {
+        "b_row": 748,
+        "b_col": 471
+       }
+      },
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:26.103Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ],
+     "glossy": true
+    },
+    "v0_index": 986
+   }
+  },
+  {
+   "id": "t=1794680712949",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 446,
+    "y": 765,
+    "r": 4
+   },
+   "B": {
+    "x": 460,
+    "y": 734,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:25:12.949Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 765,
+     "a_col": 446,
+     "b_row": 734,
+     "b_col": 460,
+     "half": 4,
+     "t": 1794680712949,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:26.987Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 987
+   }
+  },
+  {
+   "id": "t=1794680726384",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 509,
+    "y": 893,
+    "r": 4
+   },
+   "B": {
+    "x": 489,
+    "y": 915,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:25:26.384Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 893,
+     "a_col": 509,
+     "b_row": 915,
+     "b_col": 489,
+     "half": 4,
+     "t": 1794680726384,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T18:54:22.787Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 988
+   }
+  },
+  {
+   "id": "t=1794680729781",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 485,
+    "y": 855,
+    "r": 4
+   },
+   "B": {
+    "x": 473,
+    "y": 881,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:25:29.781Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 855,
+     "a_col": 485,
+     "b_row": 881,
+     "b_col": 473,
+     "half": 4,
+     "t": 1794680729781,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:17.807Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      },
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:21.318Z",
+       "before": {
+        "glossy": true
+       },
+       "after": {
+        "glossy": null
+       }
+      },
+      {
+       "op": "glossy",
+       "at": "2026-11-15T18:54:24.452Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ],
+     "glossy": true
+    },
+    "v0_index": 989
+   }
+  },
+  {
+   "id": "t=1794680732601",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 458,
+    "y": 825,
+    "r": 4
+   },
+   "B": {
+    "x": 449,
+    "y": 846,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:25:32.601Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 825,
+     "a_col": 458,
+     "b_row": 846,
+     "b_col": 449,
+     "half": 4,
+     "t": 1794680732601,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T18:54:25.048Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 990
+   }
+  },
+  {
+   "id": "t=1794680745326",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 505,
+    "y": 1308,
+    "r": 10
+   },
+   "B": {
+    "x": 605,
+    "y": 1273,
+    "r": 10
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:25:45.326Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 1308,
+     "a_col": 505,
+     "b_row": 1273,
+     "b_col": 605,
+     "half": 10,
+     "t": 1794680745326,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:12.898Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 991
+   }
+  },
+  {
+   "id": "t=1794680747201",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 459,
+    "y": 1208,
+    "r": 10
+   },
+   "B": {
+    "x": 560,
+    "y": 1171,
+    "r": 10
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:25:47.201Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 1208,
+     "a_col": 459,
+     "b_row": 1171,
+     "b_col": 560,
+     "half": 10,
+     "t": 1794680747201,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:12.174Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 992
+   }
+  },
+  {
+   "id": "t=1794680748582",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 417,
+    "y": 1119,
+    "r": 10
+   },
+   "B": {
+    "x": 518,
+    "y": 1087,
+    "r": 10
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:25:48.582Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 1119,
+     "a_col": 417,
+     "b_row": 1087,
+     "b_col": 518,
+     "half": 10,
+     "t": 1794680748582,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:11.589Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 993
+   }
+  },
+  {
+   "id": "t=1794680760128",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 61,
+    "y": 937,
+    "r": 9
+   },
+   "B": {
+    "x": 13,
+    "y": 923,
+    "r": 9
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:26:00.128Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 937,
+     "a_col": 61,
+     "b_row": 923,
+     "b_col": 13,
+     "half": 9,
+     "t": 1794680760128,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T02:59:30.084Z",
+       "before": {
+        "b_row": 922,
+        "b_col": 8
+       },
+       "after": {
+        "b_row": 923,
+        "b_col": 13
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T02:59:30.698Z",
+       "before": {
+        "half": 10
+       },
+       "after": {
+        "half": 9
+       }
+      }
+     ],
+     "review_verdicts": [
+      {
+       "verdict": "fixed",
+       "at": "2026-11-15T02:59:31.800Z",
+       "list": "hard_violations_2026-11-14T23-00-18.csv"
+      }
+     ]
+    },
+    "v0_index": 994
+   }
+  },
+  {
+   "id": "t=1794680761425",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 70,
+    "y": 891,
+    "r": 10
+   },
+   "B": {
+    "x": 15,
+    "y": 898,
+    "r": 10
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:26:01.425Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 891,
+     "a_col": 70,
+     "b_row": 898,
+     "b_col": 15,
+     "half": 10,
+     "t": 1794680761425
+    },
+    "v0_index": 995
+   }
+  },
+  {
+   "id": "t=1794680765829",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 32,
+    "y": 861,
+    "r": 4
+   },
+   "B": {
+    "x": 21,
+    "y": 887,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:26:05.829Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 861,
+     "a_col": 32,
+     "b_row": 887,
+     "b_col": 21,
+     "half": 4,
+     "t": 1794680765829
+    },
+    "v0_index": 996
+   }
+  },
+  {
+   "id": "t=1794680768543",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 69,
+    "y": 860,
+    "r": 4
+   },
+   "B": {
+    "x": 74,
+    "y": 831,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:26:08.543Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 860,
+     "a_col": 69,
+     "b_row": 831,
+     "b_col": 74,
+     "half": 4,
+     "t": 1794680768543
+    },
+    "v0_index": 997
+   }
+  },
+  {
+   "id": "t=1794680770117",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 12,
+    "y": 866,
+    "r": 4
+   },
+   "B": {
+    "x": 16,
+    "y": 835,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:26:10.117Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 866,
+     "a_col": 12,
+     "b_row": 835,
+     "b_col": 16,
+     "half": 4,
+     "t": 1794680770117
+    },
+    "v0_index": 998
+   }
+  },
+  {
+   "id": "t=1794680772420",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 46,
+    "y": 859,
+    "r": 4
+   },
+   "B": {
+    "x": 48,
+    "y": 830,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:26:12.420Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 859,
+     "a_col": 46,
+     "b_row": 830,
+     "b_col": 48,
+     "half": 4,
+     "t": 1794680772420
+    },
+    "v0_index": 999
+   }
+  },
+  {
+   "id": "t=1794680781396",
+   "image": "visaria_keval_025",
+   "type": "b",
+   "A": {
+    "x": 38,
+    "y": 956,
+    "r": 4
+   },
+   "B": {
+    "x": 34,
+    "y": 991,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:26:21.396Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "b",
+     "a_row": 956,
+     "a_col": 38,
+     "b_row": 991,
+     "b_col": 34,
+     "half": 4,
+     "t": 1794680781396
+    },
+    "v0_index": 1000
+   }
+  },
+  {
+   "id": "t=1794680786185",
+   "image": "visaria_keval_025",
+   "type": "b",
+   "A": {
+    "x": 58,
+    "y": 951,
+    "r": 4
+   },
+   "B": {
+    "x": 60,
+    "y": 982,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:26:26.185Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "b",
+     "a_row": 951,
+     "a_col": 58,
+     "b_row": 982,
+     "b_col": 60,
+     "half": 4,
+     "t": 1794680786185
+    },
+    "v0_index": 1001
+   }
+  },
+  {
+   "id": "t=1794680795967",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 161,
+    "y": 671,
+    "r": 4
+   },
+   "B": {
+    "x": 189,
+    "y": 666,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:26:35.967Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 671,
+     "a_col": 161,
+     "b_row": 666,
+     "b_col": 189,
+     "half": 4,
+     "t": 1794680795967,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:03.033Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 1002
+   }
+  },
+  {
+   "id": "t=1794680797242",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 124,
+    "y": 671,
+    "r": 4
+   },
+   "B": {
+    "x": 94,
+    "y": 677,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:26:37.242Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 671,
+     "a_col": 124,
+     "b_row": 677,
+     "b_col": 94,
+     "half": 4,
+     "t": 1794680797242,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:04.099Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 1003
+   }
+  },
+  {
+   "id": "t=1794680798516",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 65,
+    "y": 685,
+    "r": 4
+   },
+   "B": {
+    "x": 87,
+    "y": 680,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:26:38.516Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 685,
+     "a_col": 65,
+     "b_row": 680,
+     "b_col": 87,
+     "half": 4,
+     "t": 1794680798516,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:08.236Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 1004
+   }
+  },
+  {
+   "id": "t=1794680800728",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 193,
+    "y": 664,
+    "r": 4
+   },
+   "B": {
+    "x": 221,
+    "y": 663,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:26:40.728Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 664,
+     "a_col": 193,
+     "b_row": 663,
+     "b_col": 221,
+     "half": 4,
+     "t": 1794680800728,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:02.229Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 1005
+   }
+  },
+  {
+   "id": "t=1794680802483",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 229,
+    "y": 550,
+    "r": 4
+   },
+   "B": {
+    "x": 227,
+    "y": 518,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:26:42.483Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 550,
+     "a_col": 229,
+     "b_row": 518,
+     "b_col": 227,
+     "half": 4,
+     "t": 1794680802483,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:24:59.976Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 1006
+   }
+  },
+  {
+   "id": "t=1794680803708",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 260,
+    "y": 548,
+    "r": 4
+   },
+   "B": {
+    "x": 258,
+    "y": 518,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:26:43.708Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 548,
+     "a_col": 260,
+     "b_row": 518,
+     "b_col": 258,
+     "half": 4,
+     "t": 1794680803708,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:24:59.223Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 1007
+   }
+  },
+  {
+   "id": "t=1794680804695",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 193,
+    "y": 552,
+    "r": 4
+   },
+   "B": {
+    "x": 194,
+    "y": 521,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:26:44.695Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 552,
+     "a_col": 193,
+     "b_row": 521,
+     "b_col": 194,
+     "half": 4,
+     "t": 1794680804695,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:00.668Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 1008
+   }
+  },
+  {
+   "id": "t=1794680805827",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 165,
+    "y": 557,
+    "r": 4
+   },
+   "B": {
+    "x": 156,
+    "y": 521,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:26:45.827Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 557,
+     "a_col": 165,
+     "b_row": 521,
+     "b_col": 156,
+     "half": 4,
+     "t": 1794680805827,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:01.141Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 1009
+   }
+  },
+  {
+   "id": "t=1794680821004",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 514,
+    "y": 691,
+    "r": 7
+   },
+   "B": {
+    "x": 556,
+    "y": 723,
+    "r": 7
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:27:01.004Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 691,
+     "a_col": 514,
+     "b_row": 723,
+     "b_col": 556,
+     "half": 7,
+     "t": 1794680821004,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:24:53.641Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 1010
+   }
+  },
+  {
+   "id": "t=1794680822556",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 534,
+    "y": 651,
+    "r": 7
+   },
+   "B": {
+    "x": 489,
+    "y": 620,
+    "r": 7
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:27:02.556Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 651,
+     "a_col": 534,
+     "b_row": 620,
+     "b_col": 489,
+     "half": 7,
+     "t": 1794680822556,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:24:53.008Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 1011
+   }
+  },
+  {
+   "id": "t=1794680824226",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 573,
+    "y": 633,
+    "r": 7
+   },
+   "B": {
+    "x": 612,
+    "y": 661,
+    "r": 7
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:27:04.226Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 633,
+     "a_col": 573,
+     "b_row": 661,
+     "b_col": 612,
+     "half": 7,
+     "t": 1794680824226,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:24:52.102Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 1012
+   }
+  },
+  {
+   "id": "t=1794680825510",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 635,
+    "y": 565,
+    "r": 7
+   },
+   "B": {
+    "x": 691,
+    "y": 591,
+    "r": 7
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:27:05.510Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 565,
+     "a_col": 635,
+     "b_row": 591,
+     "b_col": 691,
+     "half": 7,
+     "t": 1794680825510,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:36.443Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 1013
+   }
+  },
+  {
+   "id": "t=1794680827302",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 645,
+    "y": 546,
+    "r": 7
+   },
+   "B": {
+    "x": 581,
+    "y": 523,
+    "r": 7
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:27:07.302Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 546,
+     "a_col": 645,
+     "b_row": 523,
+     "b_col": 581,
+     "half": 7,
+     "t": 1794680827302,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:25:35.982Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      }
+     ]
+    },
+    "v0_index": 1014
+   }
+  },
+  {
+   "id": "t=1794680836296",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 629,
+    "y": 837,
+    "r": 3
+   },
+   "B": {
+    "x": 623,
+    "y": 818,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:27:16.296Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 837,
+     "a_col": 629,
+     "b_row": 818,
+     "b_col": 623,
+     "half": 3,
+     "t": 1794680836296,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:23:30.926Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      },
+      {
+       "op": "delete",
+       "at": "2026-11-15T06:45:34.579Z"
+      },
+      {
+       "op": "restore",
+       "at": "2026-11-15T06:45:39.707Z",
+       "before": {
+        "deleted_at": "2026-11-15T06:45:34.579Z"
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:45:42.355Z",
+       "before": {
+        "a_row": 842,
+        "a_col": 674
+       },
+       "after": {
+        "a_row": 846,
+        "a_col": 660
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:45:48.536Z",
+       "before": {
+        "a_col": 660
+       },
+       "after": {
+        "a_col": 630
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:45:49.697Z",
+       "before": {
+        "b_row": 790,
+        "b_col": 661
+       },
+       "after": {
+        "b_row": 802,
+        "b_col": 626
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:45:50.415Z",
+       "before": {
+        "a_row": 846,
+        "a_col": 630
+       },
+       "after": {
+        "a_row": 844,
+        "a_col": 631
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:45:50.960Z",
+       "before": {
+        "half": 7
+       },
+       "after": {
+        "half": 6
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:45:51.106Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:45:51.256Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:45:51.416Z",
+       "before": {
+        "half": 4
+       },
+       "after": {
+        "half": 3
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:45:51.649Z",
+       "before": {
+        "half": 3
+       },
+       "after": {
+        "half": 2
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:45:51.814Z",
+       "before": {
+        "half": 2
+       },
+       "after": {
+        "half": 1
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:45:52.344Z",
+       "before": {
+        "half": 1
+       },
+       "after": {
+        "half": 2
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:45:52.729Z",
+       "before": {
+        "half": 2
+       },
+       "after": {
+        "half": 3
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:45:53.625Z",
+       "before": {
+        "a_row": 844,
+        "a_col": 631
+       },
+       "after": {
+        "a_row": 837,
+        "a_col": 629
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:45:54.673Z",
+       "before": {
+        "b_row": 802,
+        "b_col": 626
+       },
+       "after": {
+        "b_row": 818,
+        "b_col": 623
+       }
+      }
+     ]
+    },
+    "v0_index": 1015
+   }
+  },
+  {
+   "id": "t=1794680837475",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 694,
+    "y": 818,
+    "r": 2
+   },
+   "B": {
+    "x": 686,
+    "y": 800,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:27:17.475Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 818,
+     "a_col": 694,
+     "b_row": 800,
+     "b_col": 686,
+     "half": 2,
+     "t": 1794680837475,
+     "glossy": true,
+     "edits": [
+      {
+       "op": "glossy",
+       "at": "2026-11-15T03:23:30.172Z",
+       "before": {
+        "glossy": null
+       },
+       "after": {
+        "glossy": true
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:45:56.503Z",
+       "before": {
+        "half": 7
+       },
+       "after": {
+        "half": 6
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:45:56.663Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:45:56.794Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:45:56.969Z",
+       "before": {
+        "half": 4
+       },
+       "after": {
+        "half": 3
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:45:57.145Z",
+       "before": {
+        "half": 3
+       },
+       "after": {
+        "half": 2
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:45:59.058Z",
+       "before": {
+        "a_col": 721
+       },
+       "after": {
+        "a_col": 719
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:45:59.155Z",
+       "before": {
+        "half": 2
+       },
+       "after": {
+        "half": 1
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:45:59.779Z",
+       "before": {
+        "half": 1
+       },
+       "after": {
+        "half": 2
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:46:00.831Z",
+       "before": {
+        "a_row": 830,
+        "a_col": 719
+       },
+       "after": {
+        "a_row": 818,
+        "a_col": 694
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:46:02.224Z",
+       "before": {
+        "b_row": 779,
+        "b_col": 705
+       },
+       "after": {
+        "b_row": 800,
+        "b_col": 686
+       }
+      }
+     ]
+    },
+    "v0_index": 1016
+   }
+  },
+  {
+   "id": "t=1794680857819",
+   "image": "visaria_keval_025",
+   "type": "b",
+   "A": {
+    "x": 117,
+    "y": 761,
+    "r": 7
+   },
+   "B": {
+    "x": 89,
+    "y": 737,
+    "r": 7
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:27:37.819Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "b",
+     "a_row": 761,
+     "a_col": 117,
+     "b_row": 737,
+     "b_col": 89,
+     "half": 7,
+     "t": 1794680857819
+    },
+    "v0_index": 1017
+   }
+  },
+  {
+   "id": "t=1794680859086",
+   "image": "visaria_keval_025",
+   "type": "b",
+   "A": {
+    "x": 85,
+    "y": 781,
+    "r": 7
+   },
+   "B": {
+    "x": 63,
+    "y": 752,
+    "r": 7
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:27:39.086Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "b",
+     "a_row": 781,
+     "a_col": 85,
+     "b_row": 752,
+     "b_col": 63,
+     "half": 7,
+     "t": 1794680859086
+    },
+    "v0_index": 1018
+   }
+  },
+  {
+   "id": "t=1794680860104",
+   "image": "visaria_keval_025",
+   "type": "b",
+   "A": {
+    "x": 46,
+    "y": 805,
+    "r": 7
+   },
+   "B": {
+    "x": 17,
+    "y": 771,
+    "r": 7
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:27:40.104Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "b",
+     "a_row": 805,
+     "a_col": 46,
+     "b_row": 771,
+     "b_col": 17,
+     "half": 7,
+     "t": 1794680860104
+    },
+    "v0_index": 1019
+   }
+  },
+  {
+   "id": "t=1794680865710",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 312,
+    "y": 341,
+    "r": 7
+   },
+   "B": {
+    "x": 312,
+    "y": 309,
+    "r": 7
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:27:45.710Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 341,
+     "a_col": 312,
+     "b_row": 309,
+     "b_col": 312,
+     "half": 7,
+     "t": 1794680865710
+    },
+    "v0_index": 1020
+   }
+  },
+  {
+   "id": "t=1794680866644",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 357,
+    "y": 343,
+    "r": 7
+   },
+   "B": {
+    "x": 356,
+    "y": 309,
+    "r": 7
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:27:46.644Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 343,
+     "a_col": 357,
+     "b_row": 309,
+     "b_col": 356,
+     "half": 7,
+     "t": 1794680866644
+    },
+    "v0_index": 1021
+   }
+  },
+  {
+   "id": "t=1794680872919",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 391,
+    "y": 343,
+    "r": 7
+   },
+   "B": {
+    "x": 385,
+    "y": 312,
+    "r": 7
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:27:52.919Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 343,
+     "a_col": 391,
+     "b_row": 312,
+     "b_col": 385,
+     "half": 7,
+     "t": 1794680872919
+    },
+    "v0_index": 1022
+   }
+  },
+  {
+   "id": "t=1794680873958",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 423,
+    "y": 349,
+    "r": 7
+   },
+   "B": {
+    "x": 422,
+    "y": 314,
+    "r": 7
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:27:53.958Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 349,
+     "a_col": 423,
+     "b_row": 314,
+     "b_col": 422,
+     "half": 7,
+     "t": 1794680873958
+    },
+    "v0_index": 1023
+   }
+  },
+  {
+   "id": "t=1794680880277",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 207,
+    "y": 388,
+    "r": 7
+   },
+   "B": {
+    "x": 212,
+    "y": 419,
+    "r": 7
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:28:00.277Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 388,
+     "a_col": 207,
+     "b_row": 419,
+     "b_col": 212,
+     "half": 7,
+     "t": 1794680880277
+    },
+    "v0_index": 1024
+   }
+  },
+  {
+   "id": "t=1794680887223",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 365,
+    "y": 391,
+    "r": 6
+   },
+   "B": {
+    "x": 368,
+    "y": 420,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:28:07.223Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 391,
+     "a_col": 365,
+     "b_row": 420,
+     "b_col": 368,
+     "half": 6,
+     "t": 1794680887223
+    },
+    "v0_index": 1025
+   }
+  },
+  {
+   "id": "t=1794680890234",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 309,
+    "y": 390,
+    "r": 6
+   },
+   "B": {
+    "x": 308,
+    "y": 417,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:28:10.234Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 390,
+     "a_col": 309,
+     "b_row": 417,
+     "b_col": 308,
+     "half": 6,
+     "t": 1794680890234
+    },
+    "v0_index": 1026
+   }
+  },
+  {
+   "id": "t=1794680906035",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 318,
+    "y": 214,
+    "r": 6
+   },
+   "B": {
+    "x": 321,
+    "y": 181,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:28:26.035Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 214,
+     "a_col": 318,
+     "b_row": 181,
+     "b_col": 321,
+     "half": 6,
+     "t": 1794680906035
+    },
+    "v0_index": 1027
+   }
+  },
+  {
+   "id": "t=1794680907541",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 354,
+    "y": 219,
+    "r": 6
+   },
+   "B": {
+    "x": 356,
+    "y": 190,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:28:27.541Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 219,
+     "a_col": 354,
+     "b_row": 190,
+     "b_col": 356,
+     "half": 6,
+     "t": 1794680907541
+    },
+    "v0_index": 1028
+   }
+  },
+  {
+   "id": "t=1794680909211",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 341,
+    "y": 179,
+    "r": 6
+   },
+   "B": {
+    "x": 345,
+    "y": 150,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:28:29.211Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 179,
+     "a_col": 341,
+     "b_row": 150,
+     "b_col": 345,
+     "half": 6,
+     "t": 1794680909211
+    },
+    "v0_index": 1029
+   }
+  },
+  {
+   "id": "t=1794680910698",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 309,
+    "y": 177,
+    "r": 6
+   },
+   "B": {
+    "x": 316,
+    "y": 155,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:28:30.698Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 177,
+     "a_col": 309,
+     "b_row": 155,
+     "b_col": 316,
+     "half": 6,
+     "t": 1794680910698
+    },
+    "v0_index": 1030
+   }
+  },
+  {
+   "id": "t=1794680913151",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 192,
+    "y": 178,
+    "r": 6
+   },
+   "B": {
+    "x": 193,
+    "y": 212,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:28:33.151Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 178,
+     "a_col": 192,
+     "b_row": 212,
+     "b_col": 193,
+     "half": 6,
+     "t": 1794680913151
+    },
+    "v0_index": 1031
+   }
+  },
+  {
+   "id": "t=1794680914984",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 152,
+    "y": 178,
+    "r": 6
+   },
+   "B": {
+    "x": 162,
+    "y": 212,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:28:34.984Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 178,
+     "a_col": 152,
+     "b_row": 212,
+     "b_col": 162,
+     "half": 6,
+     "t": 1794680914984
+    },
+    "v0_index": 1032
+   }
+  },
+  {
+   "id": "t=1794680918804",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 155,
+    "y": 169,
+    "r": 6
+   },
+   "B": {
+    "x": 152,
+    "y": 140,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:28:38.804Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 169,
+     "a_col": 155,
+     "b_row": 140,
+     "b_col": 152,
+     "half": 6,
+     "t": 1794680918804
+    },
+    "v0_index": 1033
+   }
+  },
+  {
+   "id": "t=1794680920865",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 186,
+    "y": 171,
+    "r": 6
+   },
+   "B": {
+    "x": 182,
+    "y": 143,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:28:40.865Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 171,
+     "a_col": 186,
+     "b_row": 143,
+     "b_col": 182,
+     "half": 6,
+     "t": 1794680920865
+    },
+    "v0_index": 1034
+   }
+  },
+  {
+   "id": "t=1794680939442",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 208,
+    "y": 369,
+    "r": 6
+   },
+   "B": {
+    "x": 209,
+    "y": 337,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:28:59.442Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 369,
+     "a_col": 208,
+     "b_row": 337,
+     "b_col": 209,
+     "half": 6,
+     "t": 1794680939442
+    },
+    "v0_index": 1035
+   }
+  },
+  {
+   "id": "t=1794680942108",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 312,
+    "y": 372,
+    "r": 6
+   },
+   "B": {
+    "x": 312,
+    "y": 338,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:29:02.108Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 372,
+     "a_col": 312,
+     "b_row": 338,
+     "b_col": 312,
+     "half": 6,
+     "t": 1794680942108
+    },
+    "v0_index": 1036
+   }
+  },
+  {
+   "id": "t=1794680943302",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 365,
+    "y": 370,
+    "r": 6
+   },
+   "B": {
+    "x": 364,
+    "y": 338,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:29:03.302Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 370,
+     "a_col": 365,
+     "b_row": 338,
+     "b_col": 364,
+     "half": 6,
+     "t": 1794680943302
+    },
+    "v0_index": 1037
+   }
+  },
+  {
+   "id": "t=1794680945317",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 429,
+    "y": 379,
+    "r": 6
+   },
+   "B": {
+    "x": 429,
+    "y": 342,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:29:05.317Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 379,
+     "a_col": 429,
+     "b_row": 342,
+     "b_col": 429,
+     "half": 6,
+     "t": 1794680945317
+    },
+    "v0_index": 1038
+   }
+  },
+  {
+   "id": "t=1794680953873",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 172,
+    "y": 385,
+    "r": 6
+   },
+   "B": {
+    "x": 173,
+    "y": 418,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:29:13.873Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 385,
+     "a_col": 172,
+     "b_row": 418,
+     "b_col": 173,
+     "half": 6,
+     "t": 1794680953873
+    },
+    "v0_index": 1039
+   }
+  },
+  {
+   "id": "t=1794680957145",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 268,
+    "y": 419,
+    "r": 6
+   },
+   "B": {
+    "x": 255,
+    "y": 390,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:29:17.145Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 419,
+     "a_col": 268,
+     "b_row": 390,
+     "b_col": 255,
+     "half": 6,
+     "t": 1794680957145,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:40:32.432Z",
+       "before": {
+        "b_row": 389,
+        "b_col": 265
+       },
+       "after": {
+        "b_row": 390,
+        "b_col": 255
+       }
+      }
+     ]
+    },
+    "v0_index": 1040
+   }
+  },
+  {
+   "id": "t=1794680958929",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 255,
+    "y": 368,
+    "r": 6
+   },
+   "B": {
+    "x": 258,
+    "y": 331,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:29:18.929Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 368,
+     "a_col": 255,
+     "b_row": 331,
+     "b_col": 258,
+     "half": 6,
+     "t": 1794680958929,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:40:19.263Z",
+       "before": {
+        "a_row": 371,
+        "a_col": 257
+       },
+       "after": {
+        "a_row": 368,
+        "a_col": 255
+       }
+      }
+     ]
+    },
+    "v0_index": 1041
+   }
+  },
+  {
+   "id": "t=1794680959999",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 274,
+    "y": 369,
+    "r": 6
+   },
+   "B": {
+    "x": 285,
+    "y": 334,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:29:19.999Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 369,
+     "a_col": 274,
+     "b_row": 334,
+     "b_col": 285,
+     "half": 6,
+     "t": 1794680959999,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-14T18:29:33.777Z",
+       "before": {
+        "a_row": 370,
+        "a_col": 280
+       },
+       "after": {
+        "a_row": 371,
+        "a_col": 274
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:40:20.350Z",
+       "before": {
+        "a_row": 371,
+        "a_col": 274
+       },
+       "after": {
+        "a_row": 370,
+        "a_col": 275
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:40:21.581Z",
+       "before": {
+        "a_col": 275
+       },
+       "after": {
+        "a_col": 277
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:40:28.941Z",
+       "before": {
+        "a_row": 370,
+        "a_col": 277
+       },
+       "after": {
+        "a_row": 369,
+        "a_col": 274
+       }
+      }
+     ]
+    },
+    "v0_index": 1042
+   }
+  },
+  {
+   "id": "t=1794680962233",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 392,
+    "y": 371,
+    "r": 3
+   },
+   "B": {
+    "x": 395,
+    "y": 342,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:29:22.233Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 371,
+     "a_col": 392,
+     "b_row": 342,
+     "b_col": 395,
+     "half": 3,
+     "t": 1794680962233,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:40:43.938Z",
+       "before": {
+        "a_row": 373,
+        "a_col": 393
+       },
+       "after": {
+        "a_row": 371,
+        "a_col": 392
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:40:47.305Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:40:47.511Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:40:47.727Z",
+       "before": {
+        "half": 4
+       },
+       "after": {
+        "half": 3
+       }
+      }
+     ]
+    },
+    "v0_index": 1043
+   }
+  },
+  {
+   "id": "t=1794680964245",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 391,
+    "y": 394,
+    "r": 3
+   },
+   "B": {
+    "x": 367,
+    "y": 393,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:29:24.245Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 394,
+     "a_col": 391,
+     "b_row": 393,
+     "b_col": 367,
+     "half": 3,
+     "t": 1794680964245,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:40:57.014Z",
+       "before": {
+        "a_row": 396,
+        "a_col": 397
+       },
+       "after": {
+        "a_row": 394,
+        "a_col": 391
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:40:57.101Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:40:57.300Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:40:57.482Z",
+       "before": {
+        "half": 4
+       },
+       "after": {
+        "half": 3
+       }
+      }
+     ]
+    },
+    "v0_index": 1044
+   }
+  },
+  {
+   "id": "t=1794680965687",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 407,
+    "y": 394,
+    "r": 4
+   },
+   "B": {
+    "x": 428,
+    "y": 394,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:29:25.687Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 394,
+     "a_col": 407,
+     "b_row": 394,
+     "b_col": 428,
+     "half": 4,
+     "t": 1794680965687,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:40:53.804Z",
+       "before": {
+        "a_row": 391,
+        "a_col": 403
+       },
+       "after": {
+        "a_row": 394,
+        "a_col": 407
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:40:54.279Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:40:54.467Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:40:55.983Z",
+       "before": {
+        "b_row": 385,
+        "b_col": 429
+       },
+       "after": {
+        "b_row": 394,
+        "b_col": 428
+       }
+      }
+     ]
+    },
+    "v0_index": 1045
+   }
+  },
+  {
+   "id": "t=1794680966832",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 392,
+    "y": 371,
+    "r": 3
+   },
+   "B": {
+    "x": 364,
+    "y": 369,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:29:26.832Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 371,
+     "a_col": 392,
+     "b_row": 369,
+     "b_col": 364,
+     "half": 3,
+     "t": 1794680966832,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:40:45.227Z",
+       "before": {
+        "a_row": 373,
+        "a_col": 396
+       },
+       "after": {
+        "a_row": 371,
+        "a_col": 392
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:40:46.095Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:40:46.355Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:40:46.599Z",
+       "before": {
+        "half": 4
+       },
+       "after": {
+        "half": 3
+       }
+      }
+     ]
+    },
+    "v0_index": 1046
+   }
+  },
+  {
+   "id": "t=1794680977058",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 255,
+    "y": 368,
+    "r": 6
+   },
+   "B": {
+    "x": 224,
+    "y": 368,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:29:37.058Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 368,
+     "a_col": 255,
+     "b_row": 368,
+     "b_col": 224,
+     "half": 6,
+     "t": 1794680977058,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:40:26.277Z",
+       "before": {
+        "a_row": 369,
+        "a_col": 267
+       },
+       "after": {
+        "a_row": 368,
+        "a_col": 255
+       }
+      }
+     ]
+    },
+    "v0_index": 1047
+   }
+  },
+  {
+   "id": "t=1794680978413",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 274,
+    "y": 369,
+    "r": 6
+   },
+   "B": {
+    "x": 304,
+    "y": 372,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:29:38.413Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 369,
+     "a_col": 274,
+     "b_row": 372,
+     "b_col": 304,
+     "half": 6,
+     "t": 1794680978413,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:40:27.799Z",
+       "before": {
+        "a_row": 371,
+        "a_col": 262
+       },
+       "after": {
+        "a_row": 370,
+        "a_col": 277
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:40:30.491Z",
+       "before": {
+        "a_row": 370,
+        "a_col": 277
+       },
+       "after": {
+        "a_row": 369,
+        "a_col": 274
+       }
+      }
+     ]
+    },
+    "v0_index": 1048
+   }
+  },
+  {
+   "id": "t=1794680979966",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 275,
+    "y": 392,
+    "r": 6
+   },
+   "B": {
+    "x": 307,
+    "y": 388,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:29:39.966Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 392,
+     "a_col": 275,
+     "b_row": 388,
+     "b_col": 307,
+     "half": 6,
+     "t": 1794680979966,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:40:31.561Z",
+       "before": {
+        "a_col": 271
+       },
+       "after": {
+        "a_col": 275
+       }
+      }
+     ]
+    },
+    "v0_index": 1049
+   }
+  },
+  {
+   "id": "t=1794680981032",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 255,
+    "y": 390,
+    "r": 6
+   },
+   "B": {
+    "x": 226,
+    "y": 388,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:29:41.032Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 390,
+     "a_col": 255,
+     "b_row": 388,
+     "b_col": 226,
+     "half": 6,
+     "t": 1794680981032,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:40:33.838Z",
+       "before": {
+        "a_row": 389,
+        "a_col": 263
+       },
+       "after": {
+        "a_row": 390,
+        "a_col": 255
+       }
+      }
+     ]
+    },
+    "v0_index": 1050
+   }
+  },
+  {
+   "id": "t=1794680984508",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 242,
+    "y": 275,
+    "r": 3
+   },
+   "B": {
+    "x": 245,
+    "y": 303,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:29:44.508Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 275,
+     "a_col": 242,
+     "b_row": 303,
+     "b_col": 245,
+     "half": 3,
+     "t": 1794680984508,
+     "edits": [
+      {
+       "op": "swap",
+       "at": "2026-11-15T03:26:01.010Z",
+       "before": {
+        "a_row": 302,
+        "a_col": 251,
+        "b_row": 272,
+        "b_col": 241
+       },
+       "after": {
+        "a_row": 272,
+        "a_col": 241,
+        "b_row": 302,
+        "b_col": 251
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:41:31.189Z",
+       "before": {
+        "b_row": 302,
+        "b_col": 251
+       },
+       "after": {
+        "b_row": 303,
+        "b_col": 245
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:41:31.956Z",
+       "before": {
+        "a_row": 272,
+        "a_col": 241
+       },
+       "after": {
+        "a_row": 275,
+        "a_col": 242
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:32.017Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:32.202Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:32.374Z",
+       "before": {
+        "half": 4
+       },
+       "after": {
+        "half": 3
+       }
+      }
+     ]
+    },
+    "v0_index": 1051
+   }
+  },
+  {
+   "id": "t=1794680985220",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 276,
+    "y": 278,
+    "r": 3
+   },
+   "B": {
+    "x": 277,
+    "y": 301,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:29:45.220Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 278,
+     "a_col": 276,
+     "b_row": 301,
+     "b_col": 277,
+     "half": 3,
+     "t": 1794680985220,
+     "edits": [
+      {
+       "op": "swap",
+       "at": "2026-11-15T03:26:03.560Z",
+       "before": {
+        "a_row": 301,
+        "b_row": 272
+       },
+       "after": {
+        "a_row": 272,
+        "b_row": 301
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:41:28.183Z",
+       "before": {
+        "a_row": 272,
+        "a_col": 277
+       },
+       "after": {
+        "a_row": 278,
+        "a_col": 276
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:28.767Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:28.933Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:29.140Z",
+       "before": {
+        "half": 4
+       },
+       "after": {
+        "half": 3
+       }
+      }
+     ]
+    },
+    "v0_index": 1052
+   }
+  },
+  {
+   "id": "t=1794680986651",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 315,
+    "y": 280,
+    "r": 4
+   },
+   "B": {
+    "x": 292,
+    "y": 280,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:29:46.651Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 280,
+     "a_col": 315,
+     "b_row": 280,
+     "b_col": 292,
+     "half": 4,
+     "t": 1794680986651,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:41:21.673Z",
+       "before": {
+        "a_row": 275,
+        "a_col": 286
+       },
+       "after": {
+        "a_row": 280,
+        "a_col": 292
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:22.370Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:22.542Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:22.719Z",
+       "before": {
+        "half": 4
+       },
+       "after": {
+        "half": 3
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:22.884Z",
+       "before": {
+        "half": 3
+       },
+       "after": {
+        "half": 2
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:41:24.489Z",
+       "before": {
+        "b_row": 276,
+        "b_col": 316
+       },
+       "after": {
+        "b_row": 280,
+        "b_col": 315
+       }
+      },
+      {
+       "op": "swap",
+       "at": "2026-11-15T06:41:25.155Z",
+       "before": {
+        "a_col": 292,
+        "b_col": 315
+       },
+       "after": {
+        "a_col": 315,
+        "b_col": 292
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:26.573Z",
+       "before": {
+        "half": 2
+       },
+       "after": {
+        "half": 3
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:26.730Z",
+       "before": {
+        "half": 3
+       },
+       "after": {
+        "half": 4
+       }
+      }
+     ]
+    },
+    "v0_index": 1053
+   }
+  },
+  {
+   "id": "t=1794680987860",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 320,
+    "y": 259,
+    "r": 4
+   },
+   "B": {
+    "x": 292,
+    "y": 258,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:29:47.860Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 259,
+     "a_col": 320,
+     "b_row": 258,
+     "b_col": 292,
+     "half": 4,
+     "t": 1794680987860,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:42:53.798Z",
+       "before": {
+        "a_row": 251,
+        "a_col": 284
+       },
+       "after": {
+        "a_row": 258,
+        "a_col": 291
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:42:55.154Z",
+       "before": {
+        "a_col": 291
+       },
+       "after": {
+        "a_col": 292
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:55.923Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:56.096Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:42:56.794Z",
+       "before": {
+        "b_row": 249,
+        "b_col": 324
+       },
+       "after": {
+        "b_row": 259,
+        "b_col": 320
+       }
+      },
+      {
+       "op": "swap",
+       "at": "2026-11-15T06:42:57.877Z",
+       "before": {
+        "a_row": 258,
+        "a_col": 292,
+        "b_row": 259,
+        "b_col": 320
+       },
+       "after": {
+        "a_row": 259,
+        "a_col": 320,
+        "b_row": 258,
+        "b_col": 292
+       }
+      }
+     ]
+    },
+    "v0_index": 1054
+   }
+  },
+  {
+   "id": "t=1794680990024",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 219,
+    "y": 212,
+    "r": 3
+   },
+   "B": {
+    "x": 187,
+    "y": 223,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:29:50.024Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 212,
+     "a_col": 219,
+     "b_row": 223,
+     "b_col": 187,
+     "half": 3,
+     "t": 1794680990024,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:42:42.726Z",
+       "before": {
+        "a_row": 217,
+        "a_col": 239
+       },
+       "after": {
+        "a_row": 212,
+        "a_col": 237
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:43.360Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:43.549Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:43.703Z",
+       "before": {
+        "half": 4
+       },
+       "after": {
+        "half": 3
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T18:47:24.006Z",
+       "before": {
+        "a_col": 237
+       },
+       "after": {
+        "a_col": 219
+       }
+      }
+     ]
+    },
+    "v0_index": 1055
+   }
+  },
+  {
+   "id": "t=1794680992714",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 222,
+    "y": 255,
+    "r": 3
+   },
+   "B": {
+    "x": 196,
+    "y": 251,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:29:52.714Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 255,
+     "a_col": 222,
+     "b_row": 251,
+     "b_col": 196,
+     "half": 3,
+     "t": 1794680992714,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:42:46.300Z",
+       "before": {
+        "a_row": 241,
+        "a_col": 231
+       },
+       "after": {
+        "a_row": 239,
+        "a_col": 222
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:42:46.494Z",
+       "before": {
+        "a_row": 239
+       },
+       "after": {
+        "a_row": 240
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:42:48.370Z",
+       "before": {
+        "a_row": 240,
+        "a_col": 222
+       },
+       "after": {
+        "a_row": 257,
+        "a_col": 223
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:42:49.089Z",
+       "before": {
+        "b_row": 244,
+        "b_col": 194
+       },
+       "after": {
+        "b_row": 251,
+        "b_col": 196
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:42:51.994Z",
+       "before": {
+        "a_row": 257,
+        "a_col": 223
+       },
+       "after": {
+        "a_row": 255,
+        "a_col": 222
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:52.245Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:52.421Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:52.648Z",
+       "before": {
+        "half": 4
+       },
+       "after": {
+        "half": 3
+       }
+      }
+     ]
+    },
+    "v0_index": 1056
+   }
+  },
+  {
+   "id": "t=1794680995857",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 289,
+    "y": 216,
+    "r": 3
+   },
+   "B": {
+    "x": 313,
+    "y": 220,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:29:55.857Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 216,
+     "a_col": 289,
+     "b_row": 220,
+     "b_col": 313,
+     "half": 3,
+     "t": 1794680995857,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:43:17.127Z",
+       "before": {
+        "a_row": 221,
+        "a_col": 284
+       },
+       "after": {
+        "a_row": 216,
+        "a_col": 289
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:43:17.898Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:43:18.064Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:43:18.244Z",
+       "before": {
+        "half": 4
+       },
+       "after": {
+        "half": 3
+       }
+      }
+     ]
+    },
+    "v0_index": 1057
+   }
+  },
+  {
+   "id": "t=1794680996983",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 373,
+    "y": 226,
+    "r": 3
+   },
+   "B": {
+    "x": 344,
+    "y": 224,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:29:56.983Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 226,
+     "a_col": 373,
+     "b_row": 224,
+     "b_col": 344,
+     "half": 3,
+     "t": 1794680996983,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:43:01.254Z",
+       "before": {
+        "a_row": 229,
+        "a_col": 384
+       },
+       "after": {
+        "a_row": 226,
+        "a_col": 373
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:43:02.029Z",
+       "before": {
+        "b_row": 227,
+        "b_col": 345
+       },
+       "after": {
+        "b_row": 224,
+        "b_col": 344
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:43:02.749Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:43:02.955Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:43:03.106Z",
+       "before": {
+        "half": 4
+       },
+       "after": {
+        "half": 3
+       }
+      }
+     ]
+    },
+    "v0_index": 1058
+   }
+  },
+  {
+   "id": "t=1794680998036",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 372,
+    "y": 266,
+    "r": 2
+   },
+   "B": {
+    "x": 350,
+    "y": 261,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:29:58.036Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 266,
+     "a_col": 372,
+     "b_row": 261,
+     "b_col": 350,
+     "half": 2,
+     "t": 1794680998036,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:41:14.005Z",
+       "before": {
+        "a_row": 256,
+        "a_col": 385
+       },
+       "after": {
+        "a_row": 265,
+        "a_col": 375
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:41:14.703Z",
+       "before": {
+        "b_row": 256,
+        "b_col": 349
+       },
+       "after": {
+        "b_row": 261,
+        "b_col": 350
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:15.222Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:15.395Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:15.645Z",
+       "before": {
+        "half": 4
+       },
+       "after": {
+        "half": 3
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:15.822Z",
+       "before": {
+        "half": 3
+       },
+       "after": {
+        "half": 2
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:15.996Z",
+       "before": {
+        "half": 2
+       },
+       "after": {
+        "half": 1
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:16.549Z",
+       "before": {
+        "half": 1
+       },
+       "after": {
+        "half": 2
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:41:17.275Z",
+       "before": {
+        "a_row": 265,
+        "a_col": 375
+       },
+       "after": {
+        "a_row": 266,
+        "a_col": 372
+       }
+      }
+     ]
+    },
+    "v0_index": 1059
+   }
+  },
+  {
+   "id": "t=1794680998974",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 351,
+    "y": 285,
+    "r": 2
+   },
+   "B": {
+    "x": 372,
+    "y": 286,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:29:58.974Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 285,
+     "a_col": 351,
+     "b_row": 286,
+     "b_col": 372,
+     "half": 2,
+     "t": 1794680998974,
+     "edits": [
+      {
+       "op": "swap",
+       "at": "2026-11-15T06:41:02.785Z",
+       "before": {
+        "a_row": 286,
+        "a_col": 376,
+        "b_row": 282,
+        "b_col": 350
+       },
+       "after": {
+        "a_row": 282,
+        "a_col": 350,
+        "b_row": 286,
+        "b_col": 376
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:41:03.347Z",
+       "before": {
+        "a_row": 277,
+        "a_col": 387,
+        "b_row": 282,
+        "b_col": 350
+       },
+       "after": {
+        "a_row": 286,
+        "a_col": 375,
+        "b_row": 286,
+        "b_col": 376
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:41:07.014Z",
+       "before": {
+        "a_row": 286,
+        "a_col": 375
+       },
+       "after": {
+        "a_row": 285,
+        "a_col": 351
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:41:07.909Z",
+       "before": {
+        "b_col": 376
+       },
+       "after": {
+        "b_col": 374
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:08.609Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:08.825Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:09.175Z",
+       "before": {
+        "half": 4
+       },
+       "after": {
+        "half": 3
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:09.371Z",
+       "before": {
+        "half": 3
+       },
+       "after": {
+        "half": 2
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:09.564Z",
+       "before": {
+        "half": 2
+       },
+       "after": {
+        "half": 1
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:10.305Z",
+       "before": {
+        "half": 1
+       },
+       "after": {
+        "half": 2
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:41:11.419Z",
+       "before": {
+        "b_col": 374
+       },
+       "after": {
+        "b_col": 372
+       }
+      }
+     ]
+    },
+    "v0_index": 1060
+   }
+  },
+  {
+   "id": "t=1794681000695",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 386,
+    "y": 227,
+    "r": 3
+   },
+   "B": {
+    "x": 387,
+    "y": 199,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:30:00.695Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 227,
+     "a_col": 386,
+     "b_row": 199,
+     "b_col": 387,
+     "half": 3,
+     "t": 1794681000695,
+     "edits": [
+      {
+       "op": "half",
+       "at": "2026-11-15T06:43:06.293Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:43:06.467Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:43:06.626Z",
+       "before": {
+        "half": 4
+       },
+       "after": {
+        "half": 3
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:43:07.922Z",
+       "before": {
+        "a_row": 236
+       },
+       "after": {
+        "a_row": 227
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:43:25.086Z",
+       "before": {
+        "a_col": 388
+       },
+       "after": {
+        "a_col": 386
+       }
+      }
+     ]
+    },
+    "v0_index": 1061
+   }
+  },
+  {
+   "id": "t=1794681001612",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 415,
+    "y": 231,
+    "r": 3
+   },
+   "B": {
+    "x": 413,
+    "y": 198,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:30:01.612Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 231,
+     "a_col": 415,
+     "b_row": 198,
+     "b_col": 413,
+     "half": 3,
+     "t": 1794681001612,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:43:08.669Z",
+       "before": {
+        "a_row": 239,
+        "a_col": 417
+       },
+       "after": {
+        "a_row": 234,
+        "a_col": 418
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:43:08.722Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:43:08.882Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:43:09.044Z",
+       "before": {
+        "half": 4
+       },
+       "after": {
+        "half": 3
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:43:09.717Z",
+       "before": {
+        "a_row": 234,
+        "a_col": 418
+       },
+       "after": {
+        "a_row": 231,
+        "a_col": 415
+       }
+      }
+     ]
+    },
+    "v0_index": 1062
+   }
+  },
+  {
+   "id": "t=1794681003145",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 272,
+    "y": 213,
+    "r": 3
+   },
+   "B": {
+    "x": 272,
+    "y": 183,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:30:03.145Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 213,
+     "a_col": 272,
+     "b_row": 183,
+     "b_col": 272,
+     "half": 3,
+     "t": 1794681003145,
+     "edits": [
+      {
+       "op": "half",
+       "at": "2026-11-15T06:43:19.997Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:43:20.003Z",
+       "before": {
+        "a_row": 216,
+        "a_col": 280,
+        "half": 6
+       },
+       "after": {
+        "a_row": 213,
+        "a_col": 272,
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:43:20.183Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:43:20.355Z",
+       "before": {
+        "half": 4
+       },
+       "after": {
+        "half": 3
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:43:21.132Z",
+       "before": {
+        "b_row": 182,
+        "b_col": 282
+       },
+       "after": {
+        "b_row": 183,
+        "b_col": 272
+       }
+      }
+     ]
+    },
+    "v0_index": 1063
+   }
+  },
+  {
+   "id": "t=1794681005963",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 238,
+    "y": 214,
+    "r": 3
+   },
+   "B": {
+    "x": 239,
+    "y": 180,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:30:05.963Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 214,
+     "a_col": 238,
+     "b_row": 180,
+     "b_col": 239,
+     "half": 3,
+     "t": 1794681005963,
+     "edits": [
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:44.680Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:42:44.702Z",
+       "before": {
+        "a_row": 221,
+        "a_col": 239,
+        "half": 6
+       },
+       "after": {
+        "a_row": 214,
+        "a_col": 238,
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:44.873Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:45.053Z",
+       "before": {
+        "half": 4
+       },
+       "after": {
+        "half": 3
+       }
+      }
+     ]
+    },
+    "v0_index": 1064
+   }
+  },
+  {
+   "id": "t=1794681011933",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 285,
+    "y": 149,
+    "r": 4
+   },
+   "B": {
+    "x": 315,
+    "y": 142,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:30:11.933Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 149,
+     "a_col": 285,
+     "b_row": 142,
+     "b_col": 315,
+     "half": 4,
+     "t": 1794681011933,
+     "edits": [
+      {
+       "op": "swap",
+       "at": "2026-11-15T03:26:22.126Z",
+       "before": {
+        "a_col": 315,
+        "b_col": 275
+       },
+       "after": {
+        "a_col": 275,
+        "b_col": 315
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:42:13.831Z",
+       "before": {
+        "a_row": 142,
+        "a_col": 275
+       },
+       "after": {
+        "a_row": 149,
+        "a_col": 285
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:14.430Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:14.606Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      }
+     ]
+    },
+    "v0_index": 1065
+   }
+  },
+  {
+   "id": "t=1794681013265",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 371,
+    "y": 142,
+    "r": 3
+   },
+   "B": {
+    "x": 337,
+    "y": 138,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:30:13.265Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 142,
+     "a_col": 371,
+     "b_row": 138,
+     "b_col": 337,
+     "half": 3,
+     "t": 1794681013265,
+     "edits": [
+      {
+       "op": "swap",
+       "at": "2026-11-15T03:26:18.984Z",
+       "before": {
+        "a_row": 138,
+        "a_col": 337,
+        "b_row": 143,
+        "b_col": 387
+       },
+       "after": {
+        "a_row": 143,
+        "a_col": 387,
+        "b_row": 138,
+        "b_col": 337
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:34.936Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:42:36.257Z",
+       "before": {
+        "a_row": 143,
+        "a_col": 387
+       },
+       "after": {
+        "a_row": 142,
+        "a_col": 371
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:36.333Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:36.516Z",
+       "before": {
+        "half": 4
+       },
+       "after": {
+        "half": 3
+       }
+      }
+     ]
+    },
+    "v0_index": 1066
+   }
+  },
+  {
+   "id": "t=1794681014278",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 372,
+    "y": 99,
+    "r": 4
+   },
+   "B": {
+    "x": 346,
+    "y": 93,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:30:14.278Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 99,
+     "a_col": 372,
+     "b_row": 93,
+     "b_col": 346,
+     "half": 4,
+     "t": 1794681014278,
+     "edits": [
+      {
+       "op": "swap",
+       "at": "2026-11-15T03:26:17.364Z",
+       "before": {
+        "a_row": 93,
+        "a_col": 346,
+        "b_row": 101,
+        "b_col": 386
+       },
+       "after": {
+        "a_row": 101,
+        "a_col": 386,
+        "b_row": 93,
+        "b_col": 346
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:42:25.416Z",
+       "before": {
+        "a_row": 101,
+        "a_col": 386
+       },
+       "after": {
+        "a_row": 99,
+        "a_col": 372
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:26.012Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:26.178Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      }
+     ]
+    },
+    "v0_index": 1067
+   }
+  },
+  {
+   "id": "t=1794681019717",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 388,
+    "y": 83,
+    "r": 3
+   },
+   "B": {
+    "x": 389,
+    "y": 50,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:30:19.717Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 83,
+     "a_col": 388,
+     "b_row": 50,
+     "b_col": 389,
+     "half": 3,
+     "t": 1794681019717,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:42:27.434Z",
+       "before": {
+        "a_row": 96,
+        "a_col": 379
+       },
+       "after": {
+        "a_row": 83,
+        "a_col": 388
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:27.513Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:27.660Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:27.830Z",
+       "before": {
+        "half": 4
+       },
+       "after": {
+        "half": 3
+       }
+      }
+     ]
+    },
+    "v0_index": 1068
+   }
+  },
+  {
+   "id": "t=1794681020698",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 417,
+    "y": 90,
+    "r": 3
+   },
+   "B": {
+    "x": 426,
+    "y": 55,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:30:20.698Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 90,
+     "a_col": 417,
+     "b_row": 55,
+     "b_col": 426,
+     "half": 3,
+     "t": 1794681020698,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:42:28.994Z",
+       "before": {
+        "a_row": 99
+       },
+       "after": {
+        "a_row": 91
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:29.018Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:29.171Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:29.334Z",
+       "before": {
+        "half": 4
+       },
+       "after": {
+        "half": 3
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:42:30.539Z",
+       "before": {
+        "a_row": 91,
+        "a_col": 419
+       },
+       "after": {
+        "a_row": 90,
+        "a_col": 417
+       }
+      }
+     ]
+    },
+    "v0_index": 1069
+   }
+  },
+  {
+   "id": "t=1794681024826",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 372,
+    "y": 119,
+    "r": 3
+   },
+   "B": {
+    "x": 338,
+    "y": 106,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:30:24.826Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 119,
+     "a_col": 372,
+     "b_row": 106,
+     "b_col": 338,
+     "half": 3,
+     "t": 1794681024826,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:42:33.283Z",
+       "before": {
+        "a_row": 105,
+        "a_col": 386
+       },
+       "after": {
+        "a_row": 119,
+        "a_col": 372
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:33.308Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:33.484Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:33.647Z",
+       "before": {
+        "half": 4
+       },
+       "after": {
+        "half": 3
+       }
+      }
+     ]
+    },
+    "v0_index": 1070
+   }
+  },
+  {
+   "id": "t=1794681026625",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 286,
+    "y": 107,
+    "r": 3
+   },
+   "B": {
+    "x": 327,
+    "y": 107,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:30:26.625Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 107,
+     "a_col": 286,
+     "b_row": 107,
+     "b_col": 327,
+     "half": 3,
+     "t": 1794681026625,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:42:16.899Z",
+       "before": {
+        "a_row": 104,
+        "a_col": 270
+       },
+       "after": {
+        "a_row": 107,
+        "a_col": 286
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:16.964Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:17.159Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:17.346Z",
+       "before": {
+        "half": 4
+       },
+       "after": {
+        "half": 3
+       }
+      }
+     ]
+    },
+    "v0_index": 1071
+   }
+  },
+  {
+   "id": "t=1794681027862",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 283,
+    "y": 64,
+    "r": 4
+   },
+   "B": {
+    "x": 319,
+    "y": 70,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:30:27.862Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 64,
+     "a_col": 283,
+     "b_row": 70,
+     "b_col": 319,
+     "half": 4,
+     "t": 1794681027862,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:42:20.277Z",
+       "before": {
+        "a_col": 272
+       },
+       "after": {
+        "a_col": 283
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:20.304Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:20.478Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      }
+     ]
+    },
+    "v0_index": 1072
+   }
+  },
+  {
+   "id": "t=1794681033528",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 307,
+    "y": 69,
+    "r": 6
+   },
+   "B": {
+    "x": 315,
+    "y": 35,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:30:33.528Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 69,
+     "a_col": 307,
+     "b_row": 35,
+     "b_col": 315,
+     "half": 6,
+     "t": 1794681033528
+    },
+    "v0_index": 1073
+   }
+  },
+  {
+   "id": "t=1794681035845",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 345,
+    "y": 75,
+    "r": 6
+   },
+   "B": {
+    "x": 357,
+    "y": 41,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:30:35.845Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 75,
+     "a_col": 345,
+     "b_row": 41,
+     "b_col": 357,
+     "half": 6,
+     "t": 1794681035845
+    },
+    "v0_index": 1074
+   }
+  },
+  {
+   "id": "t=1794681038532",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 207,
+    "y": 36,
+    "r": 4
+   },
+   "B": {
+    "x": 208,
+    "y": 60,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:30:38.532Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 36,
+     "a_col": 207,
+     "b_row": 60,
+     "b_col": 208,
+     "half": 4,
+     "t": 1794681038532,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:42:08.684Z",
+       "before": {
+        "a_row": 67,
+        "a_col": 220
+       },
+       "after": {
+        "a_row": 60,
+        "a_col": 208
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:08.740Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:08.932Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:42:10.533Z",
+       "before": {
+        "b_row": 35,
+        "b_col": 215
+       },
+       "after": {
+        "b_row": 36,
+        "b_col": 207
+       }
+      },
+      {
+       "op": "swap",
+       "at": "2026-11-15T06:42:10.874Z",
+       "before": {
+        "a_row": 60,
+        "a_col": 208,
+        "b_row": 36,
+        "b_col": 207
+       },
+       "after": {
+        "a_row": 36,
+        "a_col": 207,
+        "b_row": 60,
+        "b_col": 208
+       }
+      }
+     ]
+    },
+    "v0_index": 1075
+   }
+  },
+  {
+   "id": "t=1794681039975",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 264,
+    "y": 63,
+    "r": 4
+   },
+   "B": {
+    "x": 263,
+    "y": 37,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:30:39.975Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 63,
+     "a_col": 264,
+     "b_row": 37,
+     "b_col": 263,
+     "half": 4,
+     "t": 1794681039975,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:42:19.186Z",
+       "before": {
+        "a_row": 73,
+        "a_col": 262
+       },
+       "after": {
+        "a_row": 63,
+        "a_col": 264
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:19.227Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:19.386Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      }
+     ]
+    },
+    "v0_index": 1076
+   }
+  },
+  {
+   "id": "t=1794681040966",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 210,
+    "y": 81,
+    "r": 3
+   },
+   "B": {
+    "x": 179,
+    "y": 79,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:30:40.966Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 81,
+     "a_col": 210,
+     "b_row": 79,
+     "b_col": 179,
+     "half": 3,
+     "t": 1794681040966,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:42:04.440Z",
+       "before": {
+        "a_row": 76,
+        "a_col": 228
+       },
+       "after": {
+        "a_row": 81,
+        "a_col": 210
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:04.471Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:04.638Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:04.802Z",
+       "before": {
+        "half": 4
+       },
+       "after": {
+        "half": 3
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:42:05.539Z",
+       "before": {
+        "b_row": 74,
+        "b_col": 178
+       },
+       "after": {
+        "b_row": 79,
+        "b_col": 179
+       }
+      }
+     ]
+    },
+    "v0_index": 1077
+   }
+  },
+  {
+   "id": "t=1794681042111",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 211,
+    "y": 102,
+    "r": 3
+   },
+   "B": {
+    "x": 183,
+    "y": 103,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:30:42.111Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 102,
+     "a_col": 211,
+     "b_row": 103,
+     "b_col": 183,
+     "half": 3,
+     "t": 1794681042111,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:42:02.074Z",
+       "before": {
+        "a_row": 103,
+        "a_col": 228
+       },
+       "after": {
+        "a_row": 102,
+        "a_col": 211
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:02.098Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:02.299Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:42:02.465Z",
+       "before": {
+        "half": 4
+       },
+       "after": {
+        "half": 3
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:42:03.377Z",
+       "before": {
+        "b_row": 110,
+        "b_col": 177
+       },
+       "after": {
+        "b_row": 103,
+        "b_col": 183
+       }
+      }
+     ]
+    },
+    "v0_index": 1078
+   }
+  },
+  {
+   "id": "t=1794681043485",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 212,
+    "y": 124,
+    "r": 4
+   },
+   "B": {
+    "x": 176,
+    "y": 130,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:30:43.485Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 124,
+     "a_col": 212,
+     "b_row": 130,
+     "b_col": 176,
+     "half": 4,
+     "t": 1794681043485,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:41:43.044Z",
+       "before": {
+        "a_row": 133,
+        "a_col": 233
+       },
+       "after": {
+        "a_row": 125,
+        "a_col": 231
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:41:44.779Z",
+       "before": {
+        "a_row": 125,
+        "a_col": 231
+       },
+       "after": {
+        "a_row": 124,
+        "a_col": 212
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:45.277Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:45.416Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      }
+     ]
+    },
+    "v0_index": 1079
+   }
+  },
+  {
+   "id": "t=1794681044956",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 122,
+    "y": 126,
+    "r": 3
+   },
+   "B": {
+    "x": 150,
+    "y": 130,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:30:44.956Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 126,
+     "a_col": 122,
+     "b_row": 130,
+     "b_col": 150,
+     "half": 3,
+     "t": 1794681044956,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:41:36.351Z",
+       "before": {
+        "a_row": 132,
+        "a_col": 113
+       },
+       "after": {
+        "a_row": 146,
+        "a_col": 123
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:41:38.728Z",
+       "before": {
+        "a_row": 146,
+        "a_col": 123
+       },
+       "after": {
+        "a_row": 126,
+        "a_col": 122
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:39.146Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:39.332Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:39.506Z",
+       "before": {
+        "half": 4
+       },
+       "after": {
+        "half": 3
+       }
+      }
+     ]
+    },
+    "v0_index": 1080
+   }
+  },
+  {
+   "id": "t=1794681045997",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 120,
+    "y": 105,
+    "r": 3
+   },
+   "B": {
+    "x": 143,
+    "y": 103,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:30:45.997Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 105,
+     "a_col": 120,
+     "b_row": 103,
+     "b_col": 143,
+     "half": 3,
+     "t": 1794681045997,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:41:59.211Z",
+       "before": {
+        "a_row": 99,
+        "a_col": 111
+       },
+       "after": {
+        "a_row": 105,
+        "a_col": 120
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:59.231Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:59.449Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:59.611Z",
+       "before": {
+        "half": 4
+       },
+       "after": {
+        "half": 3
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:42:00.561Z",
+       "before": {
+        "b_row": 92,
+        "b_col": 156
+       },
+       "after": {
+        "b_row": 103,
+        "b_col": 143
+       }
+      }
+     ]
+    },
+    "v0_index": 1081
+   }
+  },
+  {
+   "id": "t=1794681047034",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 119,
+    "y": 83,
+    "r": 4
+   },
+   "B": {
+    "x": 150,
+    "y": 76,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:30:47.034Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 83,
+     "a_col": 119,
+     "b_row": 76,
+     "b_col": 150,
+     "half": 4,
+     "t": 1794681047034,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:41:51.621Z",
+       "before": {
+        "a_row": 72,
+        "a_col": 110
+       },
+       "after": {
+        "a_row": 73,
+        "a_col": 112
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:41:56.966Z",
+       "before": {
+        "a_row": 73,
+        "a_col": 112
+       },
+       "after": {
+        "a_row": 83,
+        "a_col": 119
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:57.056Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:57.248Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:41:58.202Z",
+       "before": {
+        "b_row": 71
+       },
+       "after": {
+        "b_row": 76
+       }
+      }
+     ]
+    },
+    "v0_index": 1082
+   }
+  },
+  {
+   "id": "t=1794681048356",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 152,
+    "y": 60,
+    "r": 6
+   },
+   "B": {
+    "x": 145,
+    "y": 35,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:30:48.356Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 60,
+     "a_col": 152,
+     "b_row": 35,
+     "b_col": 145,
+     "half": 6,
+     "t": 1794681048356
+    },
+    "v0_index": 1083
+   }
+  },
+  {
+   "id": "t=1794681049525",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 178,
+    "y": 64,
+    "r": 6
+   },
+   "B": {
+    "x": 181,
+    "y": 35,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:30:49.525Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 64,
+     "a_col": 178,
+     "b_row": 35,
+     "b_col": 181,
+     "half": 6,
+     "t": 1794681049525
+    },
+    "v0_index": 1084
+   }
+  },
+  {
+   "id": "t=1794681052097",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 101,
+    "y": 66,
+    "r": 4
+   },
+   "B": {
+    "x": 107,
+    "y": 35,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:30:52.097Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 66,
+     "a_col": 101,
+     "b_row": 35,
+     "b_col": 107,
+     "half": 4,
+     "t": 1794681052097,
+     "edits": [
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:41:49.702Z",
+       "before": {
+        "a_row": 78,
+        "a_col": 96
+       },
+       "after": {
+        "a_row": 69,
+        "a_col": 103
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:41:54.195Z",
+       "before": {
+        "a_row": 69,
+        "a_col": 103
+       },
+       "after": {
+        "a_row": 67,
+        "a_col": 102
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:54.664Z",
+       "before": {
+        "half": 6
+       },
+       "after": {
+        "half": 5
+       }
+      },
+      {
+       "op": "half",
+       "at": "2026-11-15T06:41:54.862Z",
+       "before": {
+        "half": 5
+       },
+       "after": {
+        "half": 4
+       }
+      },
+      {
+       "op": "drag",
+       "at": "2026-11-15T06:41:55.717Z",
+       "before": {
+        "a_row": 67,
+        "a_col": 102
+       },
+       "after": {
+        "a_row": 66,
+        "a_col": 101
+       }
+      }
+     ]
+    },
+    "v0_index": 1085
+   }
+  },
+  {
+   "id": "t=1794681030505",
+   "image": "visaria_keval_025",
+   "type": "m",
+   "A": {
+    "x": 325,
+    "y": 78,
+    "r": 6
+   },
+   "B": {
+    "x": 331,
+    "y": 32,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-14T18:30:30.505Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 78,
+     "a_col": 325,
+     "b_row": 32,
+     "b_col": 331,
+     "half": 6,
+     "t": 1794681030505,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-14T18:30:31.758Z"
+      },
+      {
+       "op": "restore",
+       "at": "2026-11-15T06:41:04.687Z",
+       "before": {
+        "deleted_at": "2026-11-14T18:30:31.758Z"
+       }
+      }
+     ]
+    },
+    "v0_index": 1104
+   }
+  }
+ ],
+ "s_seed_log": [],
+ "legacy": {
+  "source_set": "glossy_dev",
+  "source_file": "illumination_edge/glossy_dev/frozen/pairs_2026-11-15T19-09-15.json",
+  "source_sha256": "73a0f96b434e8159391c6c8835c38e9699bb2acc04ceb5b3fea0e8a4031283f9",
+  "migrated_by": "metrics/migrate_v0.py 1.0",
+  "deleted": [
+   {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "i",
+     "a_row": 634,
+     "a_col": 623,
+     "b_row": 604,
+     "b_col": 651,
+     "half": 6,
+     "t": 1794680470882,
+     "major": true,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-14T18:21:12.939Z"
+      }
+     ],
+     "deleted_at": "2026-11-14T18:21:12.939Z",
+     "deleted_index": 969
+    },
+    "v0_index": 49
+   },
+   {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "b",
+     "a_row": 473,
+     "a_col": 401,
+     "b_row": 456,
+     "b_col": 409,
+     "half": 4,
+     "t": 1794680636269,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-14T18:23:58.138Z"
+      }
+     ],
+     "deleted_at": "2026-11-14T18:23:58.138Z",
+     "deleted_index": 1001
+    },
+    "v0_index": 50
+   },
+   {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "b",
+     "a_row": 594,
+     "a_col": 403,
+     "b_row": 631,
+     "b_col": 366,
+     "half": 4,
+     "t": 1794680668661,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-14T18:24:31.018Z"
+      }
+     ],
+     "deleted_at": "2026-11-14T18:24:31.018Z",
+     "deleted_index": 1007
+    },
+    "v0_index": 51
+   },
+   {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 903,
+     "a_col": 62,
+     "b_row": 895,
+     "b_col": 19,
+     "half": 10,
+     "t": 1794680754714,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-14T18:25:58.056Z"
+      }
+     ],
+     "deleted_at": "2026-11-14T18:25:58.056Z",
+     "deleted_index": 1026
+    },
+    "v0_index": 52
+   },
+   {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 941,
+     "a_col": 53,
+     "b_row": 928,
+     "b_col": 15,
+     "half": 10,
+     "t": 1794680753289,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-14T18:25:58.390Z"
+      }
+     ],
+     "deleted_at": "2026-11-14T18:25:58.390Z",
+     "deleted_index": 1025
+    },
+    "v0_index": 53
+   },
+   {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 346,
+     "a_col": 392,
+     "b_row": 313,
+     "b_col": 387,
+     "half": 7,
+     "t": 1794680867932,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-14T18:27:49.969Z"
+      }
+     ],
+     "deleted_at": "2026-11-14T18:27:49.969Z",
+     "deleted_index": 1053
+    },
+    "v0_index": 54
+   },
+   {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 377,
+     "a_col": 170,
+     "b_row": 422,
+     "b_col": 173,
+     "half": 6,
+     "t": 1794680949271,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-14T18:29:10.999Z"
+      }
+     ],
+     "deleted_at": "2026-11-14T18:29:10.999Z",
+     "deleted_index": 1070
+    },
+    "v0_index": 55
+   },
+   {
+    "v0": {
+     "image": "visaria_keval_025",
+     "type": "m",
+     "a_row": 221,
+     "a_col": 253,
+     "b_row": 183,
+     "b_col": 247,
+     "half": 6,
+     "t": 1794681004176,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-14T18:30:04.797Z"
+      }
+     ],
+     "deleted_at": "2026-11-14T18:30:04.797Z",
+     "deleted_index": 1095
+    },
+    "v0_index": 56
+   }
+  ]
+ }
+}

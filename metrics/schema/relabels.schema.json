@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "metrics/schema/relabels.schema.json",
+  "title": "Blind relabels of one image's pairs",
+  "description": "Written by the annotation tool's blind relabel mode; append-only. The original pair files are never changed. One entry per (pair_id, relabeler).",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "image",
+    "relabels"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.2"
+    },
+    "image": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_.-]+$"
+    },
+    "relabels": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/entry"
+      }
+    }
+  },
+  "$defs": {
+    "name": {
+      "type": "string",
+      "pattern": "^\\S(.*\\S)?$",
+      "minLength": 1
+    },
+    "entry": {
+      "type": "object",
+      "required": [
+        "pair_id",
+        "relabeler",
+        "at",
+        "type",
+        "confidence"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "pair_id": {
+          "type": "string",
+          "pattern": "^t=\\d+$"
+        },
+        "relabeler": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_]*$"
+        },
+        "at": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?Z$"
+        },
+        "type": {
+          "enum": [
+            "i",
+            "m",
+            "b",
+            "s",
+            "d"
+          ]
+        },
+        "lit_end": {
+          "enum": [
+            "A",
+            "B"
+          ]
+        },
+        "lighting": {
+          "enum": [
+            "lit",
+            "shadow"
+          ]
+        },
+        "material": {
+          "enum": [
+            "same",
+            "different",
+            "unsure"
+          ]
+        },
+        "illumination": {
+          "enum": [
+            "same",
+            "different",
+            "unsure"
+          ]
+        },
+        "confidence": {
+          "enum": [
+            "sure",
+            "unsure"
+          ]
+        },
+        "note": {
+          "type": "string"
+        },
+        "own_pair": {
+          "type": "boolean"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "i"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "lit_end"
+            ]
+          },
+          "else": {
+            "not": {
+              "required": [
+                "lit_end"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "s"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "lighting"
+            ]
+          },
+          "else": {
+            "not": {
+              "required": [
+                "lighting"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "d"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "material",
+              "illumination"
+            ]
+          },
+          "else": {
+            "allOf": [
+              {
+                "not": {
+                  "required": [
+                    "material"
+                  ]
+                }
+              },
+              {
+                "not": {
+                  "required": [
+                    "illumination"
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

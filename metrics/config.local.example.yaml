@@ -1,0 +1,22 @@
+# Copy to metrics/config.local.yaml (untracked) and edit. Merged over config.yaml; only keys you set change.
+# Paths may be absolute or relative to the repository root.
+
+dataset:
+  val_set: /path/to/your/val_set          # the folder with <stem>.tif for all 100 images (val_set has every one)
+
+# Optional: detector maps, if you built them (most annotators import an overlay archive instead; see docs/SETUP.md).
+# maps:
+#   geom_v1_1:
+#     dirs: {dev_v2: path/to/geom_v1_1, heldout: ..., glossy_dev: ..., glossy_confirm: ..., draw54: ...}
+#   smoothness_weight: {dev_v2: {dir: path/to/weights/default, key: w_union}}
+#   illum_edges:       {dev_v2: {dir: path/to/weights/default, key: illum}}
+#   material_edges:    {dev_v2: {dir: path/to/det/h29_h35sb, key: material}}
+
+# Optional: the parity reference (illumination_edge/outputs/annotate/frozen_v2_pairs_fullres.csv on the owner's machine).
+# parity:
+#   csv: path/to/frozen_v2_pairs_fullres.csv
+
+# Optional: browser tests (annotate/selftest.py) on WSL2 + Windows Chrome.
+# tools:
+#   chrome: /mnt/c/Program Files/Google/Chrome/Application/chrome.exe
+#   powershell: /mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe

@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "metrics/schema/annotators.schema.json",
+  "title": "Name tags (schema 1.2)",
+  "description": "Stable ids; pairs store the id; a rename changes only this file.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "annotators"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.2"
+    },
+    "annotators": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/entry"
+      }
+    }
+  },
+  "$defs": {
+    "iso": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?Z$"
+    },
+    "name": {
+      "type": "string",
+      "pattern": "^\\S(.*\\S)?$",
+      "minLength": 1
+    },
+    "entry": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "created",
+        "history"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_]*$"
+        },
+        "name": {
+          "$ref": "#/$defs/name"
+        },
+        "created": {
+          "$ref": "#/$defs/iso"
+        },
+        "history": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "from",
+              "to",
+              "at",
+              "by"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "from": {
+                "$ref": "#/$defs/name"
+              },
+              "to": {
+                "$ref": "#/$defs/name"
+              },
+              "at": {
+                "$ref": "#/$defs/iso"
+              },
+              "by": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9_]*$"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

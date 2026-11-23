@@ -1,0 +1,561 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "metrics/schema/pairs.schema.json",
+  "title": "Metrics v1 annotation file (one per image)",
+  "description": "DESIGN.md §3 as amended by its 'Deltas from Checkpoint ...' sections (1.1: per-image split, pair used_in_loss, exhausted marks; 1.2: annotator ids, pixel hash, assigned_to, reflective_advisory). Validated by metrics/core/schema.py (stdlib; supports exactly the keywords used here). Coordinates: x = column, y = row, 0-based integer pixel indices in the stored full-resolution TIFF frame. A.r / B.r: patch half-size per end (square (2r+1)^2) or disc radius, per config patch.shape.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "image",
+    "set",
+    "split",
+    "seen_in_training",
+    "assigned_to",
+    "image_pixel_sha256",
+    "width",
+    "height",
+    "pairs",
+    "s_seed_log",
+    "legacy"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.2"
+    },
+    "image": {
+      "$ref": "#/$defs/stem"
+    },
+    "set": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+    },
+    "seen_in_training": {
+      "enum": [
+        "unknown",
+        "yes",
+        "no"
+      ]
+    },
+    "width": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "height": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "image_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "pairs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/pair"
+      }
+    },
+    "s_seed_log": {
+      "description": "Random s pool: every proposed seed (server RNG) and its outcome. Append-only: the server refuses edits to the immutable fields or removal of entries.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/seed"
+      }
+    },
+    "legacy": {
+      "description": "Migration provenance: source set/file/SHA-256, original pair order, and deleted v0 records verbatim (never scored). Empty object for images with no v0 source.",
+      "type": "object"
+    },
+    "deleted_pairs": {
+      "description": "Tombstones of pairs deleted in the tool (never scored); lets merge.py avoid resurrecting deleted pairs.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/tombstone"
+      }
+    },
+    "split": {
+      "description": "Data split of the image (Checkpoint 5): train / val / test; tools/assign_splits.py.",
+      "enum": [
+        "train",
+        "val",
+        "test"
+      ]
+    },
+    "exhausted": {
+      "description": "Per-type 'exhausted' marks: the annotator found no more good pairs of that type on this image; counts as the target met.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "i": {
+          "$ref": "#/$defs/exhausted_mark"
+        },
+        "m": {
+          "$ref": "#/$defs/exhausted_mark"
+        },
+        "b": {
+          "$ref": "#/$defs/exhausted_mark"
+        },
+        "s_random": {
+          "$ref": "#/$defs/exhausted_mark"
+        },
+        "d": {
+          "$ref": "#/$defs/exhausted_mark"
+        }
+      }
+    },
+    "assigned_to": {
+      "description": "Annotator id (annotators.json) this image is assigned to.",
+      "$ref": "#/$defs/annotator_id"
+    },
+    "image_pixel_sha256": {
+      "description": "SHA-256 of the decoded image (loader.read: uint16 RGB) prefixed by '<shape>|<dtype>|'; identity check that survives metadata edits.",
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "reflective_advisory": {
+      "description": "Advisory: the image looks glossy or reflective on the draw contact sheet (a stratum; never used to drop or re-split).",
+      "type": "boolean"
+    }
+  },
+  "$defs": {
+    "stem": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_.-]+$",
+      "minLength": 1
+    },
+    "iso_time": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?Z$"
+    },
+    "name": {
+      "type": "string",
+      "pattern": "^\\S(.*\\S)?$",
+      "minLength": 1
+    },
+    "end": {
+      "type": "object",
+      "required": [
+        "x",
+        "y",
+        "r"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "x": {
+          "type": "integer"
+        },
+        "y": {
+          "type": "integer"
+        },
+        "r": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "pair": {
+      "type": "object",
+      "required": [
+        "id",
+        "image",
+        "type",
+        "A",
+        "B",
+        "confidence",
+        "used_in_loss",
+        "overlay_seen",
+        "annotator",
+        "created",
+        "note",
+        "schema_version"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^t=\\d+$"
+        },
+        "image": {
+          "$ref": "#/$defs/stem"
+        },
+        "type": {
+          "enum": [
+            "i",
+            "m",
+            "b",
+            "s",
+            "d"
+          ]
+        },
+        "A": {
+          "$ref": "#/$defs/end"
+        },
+        "B": {
+          "$ref": "#/$defs/end"
+        },
+        "confidence": {
+          "enum": [
+            "sure",
+            "unsure"
+          ]
+        },
+        "overlay_seen": {
+          "enum": [
+            true,
+            false,
+            "unknown"
+          ]
+        },
+        "annotator": {
+          "$ref": "#/$defs/annotator_id"
+        },
+        "created": {
+          "$ref": "#/$defs/iso_time"
+        },
+        "note": {
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "1.2"
+        },
+        "lit_end": {
+          "enum": [
+            "A",
+            "B"
+          ]
+        },
+        "lighting": {
+          "enum": [
+            "lit",
+            "shadow"
+          ]
+        },
+        "pool": {
+          "enum": [
+            "random",
+            "targeted"
+          ]
+        },
+        "gap_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "material": {
+          "enum": [
+            "same",
+            "different",
+            "unsure"
+          ]
+        },
+        "illumination": {
+          "enum": [
+            "same",
+            "different",
+            "unsure"
+          ]
+        },
+        "last_edited_by": {
+          "$ref": "#/$defs/annotator_id"
+        },
+        "edited": {
+          "$ref": "#/$defs/iso_time"
+        },
+        "history": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "legacy": {
+          "type": "object"
+        },
+        "used_in_loss": {
+          "description": "True when a training loss consumes this pair (e.g. the future pair loss). Such pairs are scored only in a separate 'supervised fit' block.",
+          "type": "boolean"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "i"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "lit_end"
+            ]
+          },
+          "else": {
+            "not": {
+              "required": [
+                "lit_end"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "s"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "lighting",
+              "pool"
+            ]
+          },
+          "else": {
+            "allOf": [
+              {
+                "not": {
+                  "required": [
+                    "lighting"
+                  ]
+                }
+              },
+              {
+                "not": {
+                  "required": [
+                    "pool"
+                  ]
+                }
+              },
+              {
+                "not": {
+                  "required": [
+                    "gap_ref"
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "s"
+              },
+              "pool": {
+                "const": "targeted"
+              }
+            },
+            "required": [
+              "pool"
+            ]
+          },
+          "then": {
+            "required": [
+              "gap_ref"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "s"
+              },
+              "pool": {
+                "const": "random"
+              }
+            },
+            "required": [
+              "pool"
+            ]
+          },
+          "then": {
+            "not": {
+              "required": [
+                "gap_ref"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "d"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "material",
+              "illumination"
+            ]
+          },
+          "else": {
+            "allOf": [
+              {
+                "not": {
+                  "required": [
+                    "material"
+                  ]
+                }
+              },
+              {
+                "not": {
+                  "required": [
+                    "illumination"
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "seed": {
+      "type": "object",
+      "required": [
+        "index",
+        "seed",
+        "x",
+        "y",
+        "proposed_at",
+        "proposed_by",
+        "outcome"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "seed": {
+          "type": "string",
+          "minLength": 1
+        },
+        "x": {
+          "type": "integer"
+        },
+        "y": {
+          "type": "integer"
+        },
+        "proposed_at": {
+          "$ref": "#/$defs/iso_time"
+        },
+        "proposed_by": {
+          "$ref": "#/$defs/annotator_id"
+        },
+        "outcome": {
+          "enum": [
+            "pending",
+            "accepted",
+            "nudged",
+            "rejected",
+            "abandoned",
+            "undone"
+          ]
+        },
+        "reason": {
+          "type": "string"
+        },
+        "final_x": {
+          "type": "integer"
+        },
+        "final_y": {
+          "type": "integer"
+        },
+        "pair_id": {
+          "type": "string",
+          "pattern": "^t=\\d+$"
+        },
+        "resolved_at": {
+          "$ref": "#/$defs/iso_time"
+        },
+        "resolved_by": {
+          "$ref": "#/$defs/annotator_id"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "outcome": {
+                "const": "rejected"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "reason"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "outcome": {
+                "const": "abandoned"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "reason"
+            ]
+          }
+        }
+      ]
+    },
+    "tombstone": {
+      "type": "object",
+      "required": [
+        "id",
+        "deleted_at",
+        "deleted_by",
+        "pair"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^t=\\d+$"
+        },
+        "deleted_at": {
+          "$ref": "#/$defs/iso_time"
+        },
+        "deleted_by": {
+          "$ref": "#/$defs/annotator_id"
+        },
+        "pair": {
+          "type": "object"
+        }
+      }
+    },
+    "exhausted_mark": {
+      "type": "object",
+      "required": [
+        "by",
+        "at",
+        "note"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "by": {
+          "$ref": "#/$defs/annotator_id"
+        },
+        "at": {
+          "$ref": "#/$defs/iso_time"
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "annotator_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_]*$"
+    }
+  }
+}

@@ -1,0 +1,236 @@
+# Metrics v1 configuration. Defaults are from DESIGN.md (Part A) as amended by its "Deltas from Checkpoint ..." sections.
+# Relative paths resolve against the repository root (the parent of metrics/), unless stated otherwise.
+# Machine-specific values (dataset location, detector-map folders, local reference files, browser paths) belong in the
+# untracked metrics/config.local.yaml (see config.local.example.yaml), which is merged over this file.
+
+schema_version: "1.2"
+
+paths:
+  annotations: metrics/annotations          # one <stem>.json per image (schema v1) + annotators.json
+  migration: metrics/migration_v0           # migration manifest and counts table (written by migrate_v0.py)
+  runs: metrics/runs                        # run outputs (git-ignored)
+  schema: metrics/schema/pairs.schema.json
+  split_assignment: metrics/splits/split100.json   # the 100-image train / val / test assignment (tracked record)
+  glossy_pool: metrics/reference/glossy_pool.json  # the 40-image glossy pool (tracked record)
+
+# The raw dataset. Every image used here is in val_set (the 46 annotated images are byte-identical there; checked by
+# SHA-256 against each annotation file). Override the location in config.local.yaml.
+dataset:
+  val_set: image_data/val_set
+
+# ℓI hook (B1, interim). "file.py:function", relative to the repo root; imported, never copied.
+#   read(path) -> (H, W, 3) uint16 linear RGB      log_i(I) -> (H, W, 3) float log I      mask(I) -> (H, W) bool or null
+# Switch these to the training loader once it exists, and re-run the parity test at 1e-6.
+loader:
+  read: illumination_edge/common.py:load_rgb
+  log_i: illumination_edge/common.py:log_rgb      # log(max(I, 1.0)), float64; no black level, no scaling
+  mask: null                                     # extra loader mask (none in the interim loader)
+  # common.py imports log_chromaticity/material_edges at import time; that folder is git-ignored. None of the hook
+  # functions uses it, so on a clone without it an inert placeholder is registered instead (doctor reports it).
+  optional_imports: [material_edges]
+
+# Pixel validity (§2, C1, C2). A pixel is invalid if any channel <= eps_dn or >= sat_dn, or the loader masks it.
+# The near-black floor of the old annotator is deliberately not part of this mask (C2).
+validity:
+  eps_dn: 0
+  sat_dn: 65000              # C1: the detectors' SAT, not §2's "within 2% of saturation" (= 64224)
+  sat_report_lo_dn: 64224    # pixels in [64224, 65000) are counted per image for the report
+
+# Patch statistic (§2, C3).
+patch:
+  shape: square              # square: (2r+1)^2 with r = the annotated half-size per end | disc: radius r
+  default_r: 4               # new pairs in the tool (the old tool's default half-size)
+  min_valid_frac: 0.70
+  se_median_factor: 1.2533   # SE of the median = 1.2533 * 1.4826 * MAD / sqrt(n)
+  mad_to_sigma: 1.4826
+
+# Thresholds (§2). Every §4 threshold defaults to tau.
+thresholds:
+  tau: 0.10
+  tau_sweep: [0.05, 0.10, 0.20]
+  snr_divisor: 3             # low-SNR if RMS_c sqrt(SE_A^2 + SE_B^2) on ℓI > tau / snr_divisor
+  alpha_min_factor: 2        # alpha undefined when ||ΔℓI|| < alpha_min_factor * tau
+  bin_eps: 1.0e-4            # numerical slack at the 0 and 1 bin edges (float32 predictions give |alpha err| <~ 1e-5)
+
+# Sensor noise (Delta Q1): low_snr uses the SE of the patch median from this model, imported (never copied).
+#   model(I) -> [(g, r2)] per channel, var(I_c) = g * I_c + r2 (DN^2). Per pixel sigma_log = sqrt(g I + r2) / I;
+#   SE = se_median_factor * sqrt(mean sigma_log^2 over the patch's valid pixels / n).
+noise:
+  model: illumination_edge/common.py:estimate_noise_robust
+
+# Texture (Delta Q1): se_tex = MAD-based SE (§2 formula) on ℓI, combined over both patches like the noise SE.
+# Reported + stratum only; never excludes. R-flat types (i, s, same-material d): E <= max(tau, k_tex * se_tex),
+# H_R <= max(tau, H_I). m (and the d L-drift diagnostic) keep plain tau.
+texture:
+  k_tex: 2.5                 # Checkpoint 2 D1 (fallback approved; was 2)
+  profile_ref: H_I           # R-flat H tolerance reference: H_I (ruled) | iso (H_ref, D1 alternative under test)
+  textured_se_tex: 0.0333    # stratum: textured if se_tex > this (= tau/3 at tau 0.10; fixed across the tau sweep)
+  strong_se_tex: 0.065       # moderate | strong boundary for the GT-floor estimate: midpoint of the Monte Carlo textured
+                             # pairs' mean se_tex at grey SD 0.10 (0.051) and 0.20 (0.079); reference/texture_mc_d1.json
+  floor_reference: metrics/reference/texture_mc_d1.json
+  floor_option: sigma3       # the Monte Carlo option that matches this config (sigma_t_textured 3, profile_ref H_I)
+
+# Path profile (§2).
+profile:
+  step_px: 1
+  band_half_width_px: 1
+  sigma_t_px: 1.5
+  sigma_t_textured_px: 3       # §2 'raise sigma_t for textured materials' (Checkpoint 2 D1 fallback): profiles of
+                               # pairs with se_tex > texture.textured_se_tex use this sigma_t; null = off
+
+# Pair types (C4): type decides near vs distant; lengths are tool warnings and a flag only.
+pairs:
+  near_types: [i, m, b, s]
+  distant_types: [d]
+  near_max_px: 80
+  distant_min_px: 150
+
+# Predictions (B1). <pred>/<stem>.npz, key log_R float32 (H, W, 3), natural log, full res, stored TIFF frame.
+predictions:
+  key_log_R: log_R
+  key_log_L: log_L           # optional; if present the identity log_L = ℓI - log_R is checked
+  dtype: float32
+  log_L_tol: 1.0e-5          # [flag] for a float32 log_L key; see PROGRESS.md
+identity_tol: 1.0e-6         # §7: ℓL derived here (float64) vs ℓI - ℓR
+
+# Parity (§7 as amended by B1): ℓI patch medians vs the frozen exporter CSV (5 decimals).
+parity:
+  csv: null                   # local (untracked outputs/): set in config.local.yaml; the parity test skips without it
+  tol: 5.0e-6
+
+# Material regions (B2): pluggable; none exists, so detector_split, D4, A1, A2 report "n/a: no region source".
+regions:
+  source: null
+
+# Maps (full res, stored TIFF frame). geom_cross: the A-B segment passes a geom_v1_1 pixel with w < edge_thr.
+maps:
+  # Folders are machine-specific (built outputs, git-ignored): set them in config.local.yaml, per image set. A set
+  # without an entry reports "n/a: map not available" (and the tool runs without that overlay).
+  geom_v1_1:
+    key: w
+    edge_thr: 0.5             # the repo's geometric-edge convention (candidates.py geom_thr; geom_regions)
+    dirs: {}
+  # Dense-diagnostic maps (§6): default illumination detector = export_weights "default" = h29_h35sb (working default,
+  # not validated). {set: {dir, key}}. Never re-derived here.
+  smoothness_weight: {}       # w_union = clip(min(geom_v1_1 w, w_illum), 0.05, 1): 1 away from edges (confirmed)
+  illum_edges: {}
+  material_edges: {}          # the default arm's material edges (after H35-SB)
+  detector_arm: h29_h35sb
+
+# Dense diagnostics (§6). Central differences on ℓ (a gradient is valid where the pixel and its 4 neighbours are
+# valid), channel norm sqrt(mean_c (gx_c^2 + gy_c^2)). Region-based ones (D4, A1, A2) need regions.source.
+dense:
+  d1_weight_min: 0.9          # D1 over pixels with smoothness weight >= this
+  d3_exclude_illum_px: 2      # D3: material pixels farther than this from an illumination pixel (repo remove_px 2)
+  anchor_q: [0.90, 0.95]
+
+# Degenerate baselines (§7), always run alongside the model.
+baselines:
+  names: [all_R, all_L, blur_L]
+  blur_sigma_px: 8
+  blur_truncate: 4.0          # Gaussian support = truncate * sigma; reflect at the borders
+
+# Aggregation (§5).
+aggregate:
+  # Data splits (Checkpoint 5): the per-image field split (train / val / test) defines the report blocks. They are
+  # never pooled. test is reported only with run_metrics.py --test. Pairs with used_in_loss = true are scored in a
+  # separate "supervised fit" block per split, never pooled with unused pairs.
+  data_splits: [train, val, test]
+  report_splits: [train, val]
+  # Provenance (strata only): the original image sets, and the annotator group.
+  provenance_groups:
+    dev: [dev_v2, heldout]
+    glossy_dev: [glossy_dev]
+    glossy_confirm: [glossy_confirm]
+    draw54: [draw54]
+  annotator_groups:
+    A: [dev_v2, heldout, glossy_dev, glossy_confirm]   # the 46 migrated images (Yueren)
+    B: [draw54]                                        # the 54 new images (the second annotator)
+  bootstrap_n: 2000
+  bootstrap_seed: 20261118
+
+# Image sets (provenance). images = a key of `dataset`. Sources are read-only; SHA-256 checked before use.
+sets:
+  dev_v2:
+    images: val_set
+    source: illumination_edge/pairs_2026-11-09T05-33-47.json
+    sha256: 6b71702d7ce46dff7a3cb3f48160a68a97279505f6bff85d5b4ad5954e28a952
+  heldout:
+    images: val_set
+    source: illumination_edge/heldout_frozen/pairs_2026-11-10T04-52-30_autosized.json
+    sha256: 0308ad8111f5a71887dd926a4cc51fee617e5900c1023933bc4a09393a3f37e5
+  glossy_dev:
+    images: val_set
+    source: illumination_edge/glossy_dev/frozen/pairs_2026-11-15T19-09-15.json
+    sha256: 73a0f96b434e8159391c6c8835c38e9699bb2acc04ceb5b3fea0e8a4031283f9
+  glossy_confirm:
+    images: val_set
+    source: illumination_edge/glossy_confirm/frozen/pairs_2026-11-16T05-27-35.json
+    sha256: 46b0a9645b8600cf56d94ba0500defabb8198f40f09148a9e24cfb72f50868a6
+  draw54:                          # new annotations only; drawn by tools/draw_images.py (metrics/splits/draw54.json)
+    images: val_set
+    source: null
+    sha256: null
+
+# Migration (C5, C6, §3).
+migration:
+  annotator: yueren          # annotator id (schema 1.2; display name "Yueren" in annotators.json)
+  defaults: {confidence: sure, used_in_loss: false, overlay_seen: unknown, note: ""}
+  relabels:                  # failure-review rulings applied on migration
+    - {id: "t=1794165897383", image: taiwei_cui_070, from: m, to: b, by: owner, at: "2026-11-11",
+       reason: "crosses a very thin shadow under the car on a material boundary (failure review F10; SPEC_v1 §3)"}
+
+# The images (per provenance set). The data split of each image is its annotation file's `split` field, assigned by
+# tools/assign_splits.py (record: paths.split_assignment). seen_in_training is per image (default unknown).
+image_sets:
+  dev_v2: [taiwei_cui_070, taiwei_cui_075, taiwei_cui_076, taiwei_cui_079, taiwei_cui_080,
+           taiwei_cui_082, taiwei_cui_083, taiwei_cui_084, taiwei_cui_088, taiwei_cui_090]
+  heldout: [acharya_mrudula_039, acharya_mrudula_079, acharya_mrudula_101, acharya_mrudula_103, acharya_mrudula_112,
+            amir_adnan_023, amir_adnan_096, baskar_akilan_047, baskar_akilan_068, baskar_akilan_076,
+            baskar_akilan_099, gade_surabhi_003, gade_surabhi_046, visaria_keval_017, visaria_keval_076]
+  glossy_dev: [acharya_mrudula_072, acharya_mrudula_113, adke_neel_037, baskar_akilan_005, baskar_akilan_013,
+               baskar_akilan_030, gade_surabhi_013, taiwei_cui_097, taiwei_cui_100, taiwei_cui_105,
+               visaria_keval_025, visaria_keval_036]
+  glossy_confirm: [acharya_mrudula_048, acharya_mrudula_076, adke_neel_006, adke_neel_007, amir_adnan_044,
+                   taiwei_cui_089, visaria_keval_042, visaria_keval_069, visaria_keval_094]
+  draw54: [adke_neel_026, visaria_keval_003, visaria_keval_054, visaria_keval_090, acharya_mrudula_073, adke_neel_008,
+           gade_surabhi_008, adke_neel_074, adke_neel_052, visaria_keval_018, baskar_akilan_054, acharya_mrudula_016,
+           amir_adnan_006, adke_neel_099, amir_adnan_037, amir_adnan_069, visaria_keval_020, acharya_mrudula_094,
+           adke_neel_085, baskar_akilan_056, baskar_akilan_052, gade_surabhi_035, taiwei_cui_092, adke_neel_094,
+           taiwei_cui_102, gade_surabhi_018, baskar_akilan_004, amir_adnan_080, adke_neel_028, taiwei_cui_071,
+           visaria_keval_074, amir_adnan_027, amir_adnan_016, amir_adnan_026, visaria_keval_093, amir_adnan_005,
+           baskar_akilan_051, acharya_mrudula_063, adke_neel_097, baskar_akilan_058, adke_neel_054, gade_surabhi_026,
+           amir_adnan_066, amir_adnan_071, amir_adnan_045, baskar_akilan_072, adke_neel_096, acharya_mrudula_075,
+           visaria_keval_037, gade_surabhi_022, acharya_mrudula_034, amir_adnan_000, adke_neel_083, adke_neel_042]   # tools/draw_images.py (metrics/splits/draw54.json)
+seen_in_training_default: unknown
+
+# Annotation tool (Phase 4). prepare.py writes the cache (git-ignored) + cache/manifest.json; the stdlib server reads
+# only that manifest (no YAML at serve time). The tool never loads predictions.
+annotate:
+  cache: metrics/annotate/cache
+  backups: metrics/annotations/.backups
+  host: 127.0.0.1
+  port: 8765
+  seed_base: "20261118"       # random s pool: random.Random(f"{seed_base}:{stem}:{index}") per proposal (logged)
+  nudge_max_px: 10
+  s_partner_px: [20, 80]
+  autosize: {max_r: 4, plateau_shift_px: 3, plateau_tol: 0.10}   # old tool's auto-sizer (C3): largest r <= max_r with
+                                                                  # both patches fully valid and on a plateau
+  # Per-image targets, the same on every split (Checkpoint 5): i / m / b = the per-type MEDIANS over the 25 former dev
+  # images (2026-11-18: medians 33 / 33 / 3; means 37.0 / 36.7 / 5.0, pulled up by dense images such as 070). Targets
+  # are guidance: a type can be marked "exhausted" on an image (with a note) and then counts as met.
+  targets:
+    i: 33
+    m: 33
+    b: 3
+    s_random: [12, 15]
+    s_targeted: null            # as gaps are found
+    d: [12, 15]
+    d_same_material_diff_illum_min_frac: 0.5
+  relabels: metrics/annotations/relabels     # blind relabel results, one <stem>.json per image (never the pair files)
+  image_order: [val, test, train]            # annotate val / test first, then train (Checkpoint 5)
+
+# Helper programs for the browser tests (machine-specific: set in config.local.yaml; null = search standard locations)
+tools:
+  chrome: null
+  powershell: null

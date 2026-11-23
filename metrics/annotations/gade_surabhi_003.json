@@ -1,0 +1,4020 @@
+{
+ "schema_version": "1.2",
+ "image": "gade_surabhi_003",
+ "set": "heldout",
+ "split": "train",
+ "seen_in_training": "unknown",
+ "width": 768,
+ "height": 1020,
+ "image_sha256": "8777faf8cd992e0f3290cac23d2af57616845c747a576c74303cc458fdb8ad03",
+ "image_pixel_sha256": "d8eebe447bb66f4bdccab07a796996ec6c738f3a0665add3071707fea340aec3",
+ "assigned_to": "yueren",
+ "pairs": [
+  {
+   "id": "t=1794272752785",
+   "image": "gade_surabhi_003",
+   "type": "i",
+   "A": {
+    "x": 673,
+    "y": 806,
+    "r": 4
+   },
+   "B": {
+    "x": 652,
+    "y": 802,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:05:52.785Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "i",
+     "a_row": 806,
+     "a_col": 673,
+     "b_row": 802,
+     "b_col": 652,
+     "half": 4,
+     "t": 1794272752785,
+     "major": true,
+     "edits": [
+      {
+       "op": "autosize",
+       "at": "2026-11-10T04:52:26.028Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "half": 3
+       },
+       "after": {
+        "half": 4
+       },
+       "criteria": "spec+sides",
+       "stopped_by": {
+        "A": "reached max",
+        "B": "reached max"
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.028Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ],
+     "patch_ok": true,
+     "patch_flags": []
+    },
+    "v0_index": 510,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.94113,
+     "b_B": 8.622056,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794272759952",
+   "image": "gade_surabhi_003",
+   "type": "i",
+   "A": {
+    "x": 676,
+    "y": 735,
+    "r": 4
+   },
+   "B": {
+    "x": 663,
+    "y": 771,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:05:59.952Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "i",
+     "a_row": 735,
+     "a_col": 676,
+     "b_row": 771,
+     "b_col": 663,
+     "half": 3,
+     "t": 1794272759952,
+     "major": true,
+     "half_a": 4,
+     "half_b": 3,
+     "edits": [
+      {
+       "op": "autosize",
+       "at": "2026-11-10T04:52:26.033Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "half_a": null,
+        "half_b": null
+       },
+       "after": {
+        "half_a": 4,
+        "half_b": 3
+       },
+       "criteria": "spec+sides",
+       "stopped_by": {
+        "A": "reached max",
+        "B": "homogeneity"
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.033Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ],
+     "patch_ok": true,
+     "patch_flags": []
+    },
+    "v0_index": 511,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.016877,
+     "b_B": 8.622391,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794272764109",
+   "image": "gade_surabhi_003",
+   "type": "i",
+   "A": {
+    "x": 621,
+    "y": 717,
+    "r": 3
+   },
+   "B": {
+    "x": 603,
+    "y": 738,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:06:04.109Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "i",
+     "a_row": 717,
+     "a_col": 621,
+     "b_row": 738,
+     "b_col": 603,
+     "half": 3,
+     "t": 1794272764109,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 3: own side (reaches 23.4 px, transition ends 25.0); homogeneity (spread 0.067 > max(1.5 x 0.040, 2 x 0.011)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.037Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 3: own side (reaches 23.4 px, transition ends 25.0); homogeneity (spread 0.067 > max(1.5 x 0.040, 2 x 0.011)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 512,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.095631,
+     "b_B": 8.582528,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794272772022",
+   "image": "gade_surabhi_003",
+   "type": "i",
+   "A": {
+    "x": 569,
+    "y": 698,
+    "r": 3
+   },
+   "B": {
+    "x": 552,
+    "y": 714,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:06:12.022Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "i",
+     "a_row": 698,
+     "a_col": 569,
+     "b_row": 714,
+     "b_col": 552,
+     "half": 3,
+     "t": 1794272772022,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: sides (an outer row/column differs from the core)",
+      "B at current half 3: own side (reaches 19.1 px, transition ends 21.0); homogeneity (spread 0.048 > max(1.5 x 0.023, 2 x 0.012)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.041Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: sides (an outer row/column differs from the core)",
+         "B at current half 3: own side (reaches 19.1 px, transition ends 21.0); homogeneity (spread 0.048 > max(1.5 x 0.023, 2 x 0.012)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 513,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.149705,
+     "b_B": 8.511391,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794272782549",
+   "image": "gade_surabhi_003",
+   "type": "i",
+   "A": {
+    "x": 597,
+    "y": 824,
+    "r": 2
+   },
+   "B": {
+    "x": 609,
+    "y": 808,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:06:22.549Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "i",
+     "a_row": 824,
+     "a_col": 597,
+     "b_row": 808,
+     "b_col": 609,
+     "half": 2,
+     "t": 1794272782549,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 2: own side (reaches 17.2 px, transition ends 18.5); plateau (21% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.046Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 2: own side (reaches 17.2 px, transition ends 18.5); plateau (21% of step > 10%)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 514,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.018161,
+     "b_B": 8.594614,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794272786982",
+   "image": "gade_surabhi_003",
+   "type": "i",
+   "A": {
+    "x": 632,
+    "y": 842,
+    "r": 4
+   },
+   "B": {
+    "x": 646,
+    "y": 822,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:06:26.982Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "i",
+     "a_row": 842,
+     "a_col": 632,
+     "b_row": 822,
+     "b_col": 646,
+     "half": 4,
+     "t": 1794272786982,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: sides (an outer row/column differs from the core)",
+      "B at current half 4: homogeneity (spread 0.038 > max(1.5 x 0.015, 2 x 0.011))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.050Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: sides (an outer row/column differs from the core)",
+         "B at current half 4: homogeneity (spread 0.038 > max(1.5 x 0.015, 2 x 0.011))"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 515,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.935488,
+     "b_B": 8.599995,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794272792660",
+   "image": "gade_surabhi_003",
+   "type": "i",
+   "A": {
+    "x": 539,
+    "y": 800,
+    "r": 3
+   },
+   "B": {
+    "x": 552,
+    "y": 780,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:06:32.660Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "i",
+     "a_row": 800,
+     "a_col": 539,
+     "b_row": 780,
+     "b_col": 552,
+     "half": 3,
+     "t": 1794272792660,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 3: own side (reaches 19.7 px, transition ends 21.5); homogeneity (spread 0.045 > max(1.5 x 0.017, 2 x 0.012)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.054Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 3: own side (reaches 19.7 px, transition ends 21.5); homogeneity (spread 0.045 > max(1.5 x 0.017, 2 x 0.012)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 516,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.050892,
+     "b_B": 8.518981,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794272798892",
+   "image": "gade_surabhi_003",
+   "type": "i",
+   "A": {
+    "x": 516,
+    "y": 791,
+    "r": 3
+   },
+   "B": {
+    "x": 482,
+    "y": 779,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:06:38.892Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "i",
+     "a_row": 791,
+     "a_col": 516,
+     "b_row": 779,
+     "b_col": 482,
+     "half": 3,
+     "t": 1794272798892,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 3: homogeneity (spread 0.046 > max(1.5 x 0.031, 2 x 0.013))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.058Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 3: homogeneity (spread 0.046 > max(1.5 x 0.031, 2 x 0.013))"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 517,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.114185,
+     "b_B": 8.353953,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794272801911",
+   "image": "gade_surabhi_003",
+   "type": "i",
+   "A": {
+    "x": 540,
+    "y": 724,
+    "r": 3
+   },
+   "B": {
+    "x": 500,
+    "y": 713,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:06:41.911Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "i",
+     "a_row": 724,
+     "a_col": 540,
+     "b_row": 713,
+     "b_col": 500,
+     "half": 3,
+     "t": 1794272801911,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 3: homogeneity (spread 0.034 > max(1.5 x 0.017, 2 x 0.013))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.062Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 3: homogeneity (spread 0.034 > max(1.5 x 0.017, 2 x 0.013))"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 518,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.158733,
+     "b_B": 8.334121,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794272804452",
+   "image": "gade_surabhi_003",
+   "type": "i",
+   "A": {
+    "x": 527,
+    "y": 747,
+    "r": 3
+   },
+   "B": {
+    "x": 492,
+    "y": 736,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:06:44.452Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "i",
+     "a_row": 747,
+     "a_col": 527,
+     "b_row": 736,
+     "b_col": 492,
+     "half": 3,
+     "t": 1794272804452,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: homogeneity (spread 0.047 > max(1.5 x 0.020, 2 x 0.005)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.066Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: homogeneity (spread 0.047 > max(1.5 x 0.020, 2 x 0.005)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 519,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.168496,
+     "b_B": 8.311765,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794272807368",
+   "image": "gade_surabhi_003",
+   "type": "i",
+   "A": {
+    "x": 440,
+    "y": 812,
+    "r": 4
+   },
+   "B": {
+    "x": 464,
+    "y": 771,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:06:47.368Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "i",
+     "a_row": 812,
+     "a_col": 440,
+     "b_row": 771,
+     "b_col": 464,
+     "half": 3,
+     "t": 1794272807368,
+     "major": true,
+     "half_a": 4,
+     "half_b": 3,
+     "edits": [
+      {
+       "op": "autosize",
+       "at": "2026-11-10T04:52:26.071Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "half_a": null,
+        "half_b": null
+       },
+       "after": {
+        "half_a": 4,
+        "half_b": 3
+       },
+       "criteria": "spec+sides",
+       "stopped_by": {
+        "A": "reached max",
+        "B": "homogeneity"
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.071Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ],
+     "patch_ok": true,
+     "patch_flags": []
+    },
+    "v0_index": 520,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.108464,
+     "b_B": 8.310661,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794272809863",
+   "image": "gade_surabhi_003",
+   "type": "i",
+   "A": {
+    "x": 409,
+    "y": 798,
+    "r": 3
+   },
+   "B": {
+    "x": 435,
+    "y": 761,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:06:49.863Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "i",
+     "a_row": 798,
+     "a_col": 409,
+     "b_row": 761,
+     "b_col": 435,
+     "half": 3,
+     "t": 1794272809863,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: homogeneity (spread 0.061 > max(1.5 x 0.030, 2 x 0.005))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.075Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: homogeneity (spread 0.061 > max(1.5 x 0.030, 2 x 0.005))"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 521,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.099508,
+     "b_B": 8.282399,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794272813153",
+   "image": "gade_surabhi_003",
+   "type": "i",
+   "A": {
+    "x": 368,
+    "y": 780,
+    "r": 4
+   },
+   "B": {
+    "x": 402,
+    "y": 749,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:06:53.153Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "i",
+     "a_row": 780,
+     "a_col": 368,
+     "b_row": 749,
+     "b_col": 402,
+     "half": 4,
+     "t": 1794272813153,
+     "major": true,
+     "edits": [
+      {
+       "op": "autosize",
+       "at": "2026-11-10T04:52:26.080Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "half": 3
+       },
+       "after": {
+        "half": 4
+       },
+       "criteria": "spec+sides",
+       "stopped_by": {
+        "A": "reached max",
+        "B": "reached max"
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.080Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ],
+     "patch_ok": true,
+     "patch_flags": []
+    },
+    "v0_index": 522,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.155279,
+     "b_B": 8.216443,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794272817821",
+   "image": "gade_surabhi_003",
+   "type": "i",
+   "A": {
+    "x": 313,
+    "y": 768,
+    "r": 4
+   },
+   "B": {
+    "x": 357,
+    "y": 726,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:06:57.821Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "i",
+     "a_row": 768,
+     "a_col": 313,
+     "b_row": 726,
+     "b_col": 357,
+     "half": 4,
+     "t": 1794272817821,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 4: homogeneity (spread 0.080 > max(1.5 x 0.050, 2 x 0.039))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.084Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 4: homogeneity (spread 0.080 > max(1.5 x 0.050, 2 x 0.039))"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 523,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.115038,
+     "b_B": 6.802681,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794272822384",
+   "image": "gade_surabhi_003",
+   "type": "i",
+   "A": {
+    "x": 256,
+    "y": 739,
+    "r": 4
+   },
+   "B": {
+    "x": 301,
+    "y": 700,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:07:02.384Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "i",
+     "a_row": 739,
+     "a_col": 256,
+     "b_row": 700,
+     "b_col": 301,
+     "half": 4,
+     "t": 1794272822384,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: homogeneity (spread 0.148 > max(1.5 x 0.072, 2 x 0.009)); sides (an outer row/column differs from the core)",
+      "B at current half 4: own side (reaches 53.9 px, transition ends 54.5); homogeneity (spread 0.160 > max(1.5 x 0.105, 2 x 0.059)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.088Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: homogeneity (spread 0.148 > max(1.5 x 0.072, 2 x 0.009)); sides (an outer row/column differs from the core)",
+         "B at current half 4: own side (reaches 53.9 px, transition ends 54.5); homogeneity (spread 0.160 > max(1.5 x 0.105, 2 x 0.059)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 524,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.029029,
+     "b_B": 6.247489,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794272828418",
+   "image": "gade_surabhi_003",
+   "type": "i",
+   "A": {
+    "x": 562,
+    "y": 682,
+    "r": 4
+   },
+   "B": {
+    "x": 526,
+    "y": 676,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:07:08.418Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "i",
+     "a_row": 682,
+     "a_col": 562,
+     "b_row": 676,
+     "b_col": 526,
+     "half": 4,
+     "t": 1794272828418,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 4: homogeneity (spread 0.046 > max(1.5 x 0.031, 2 x 0.013))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.092Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 4: homogeneity (spread 0.046 > max(1.5 x 0.031, 2 x 0.013))"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 525,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.168603,
+     "b_B": 8.369059,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794272836112",
+   "image": "gade_surabhi_003",
+   "type": "i",
+   "A": {
+    "x": 545,
+    "y": 752,
+    "r": 3
+   },
+   "B": {
+    "x": 530,
+    "y": 769,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:07:16.112Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "i",
+     "a_row": 752,
+     "a_col": 545,
+     "b_row": 769,
+     "b_col": 530,
+     "half": 3,
+     "t": 1794272836112,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 3: own side (reaches 18.4 px, transition ends 19.0); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.097Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 3: own side (reaches 18.4 px, transition ends 19.0); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 526,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.141658,
+     "b_B": 8.493005,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794272849924",
+   "image": "gade_surabhi_003",
+   "type": "i",
+   "A": {
+    "x": 566,
+    "y": 746,
+    "r": 3
+   },
+   "B": {
+    "x": 576,
+    "y": 726,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:07:29.924Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "i",
+     "a_row": 746,
+     "a_col": 566,
+     "b_row": 726,
+     "b_col": 576,
+     "half": 3,
+     "t": 1794272849924,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 3: own side (reaches 18.3 px, transition ends 20.0); homogeneity (spread 0.104 > max(1.5 x 0.017, 2 x 0.012)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.101Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 3: own side (reaches 18.3 px, transition ends 20.0); homogeneity (spread 0.104 > max(1.5 x 0.017, 2 x 0.012)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 527,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.086284,
+     "b_B": 8.525392,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794272857270",
+   "image": "gade_surabhi_003",
+   "type": "i",
+   "A": {
+    "x": 529,
+    "y": 718,
+    "r": 3
+   },
+   "B": {
+    "x": 539,
+    "y": 708,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:07:37.270Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "i",
+     "a_row": 718,
+     "a_col": 529,
+     "b_row": 708,
+     "b_col": 539,
+     "half": 3,
+     "t": 1794272857270,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 3: own side (reaches 9.9 px, transition ends 11.5); homogeneity (spread 0.045 > max(1.5 x 0.016, 2 x 0.012)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.106Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 3: own side (reaches 9.9 px, transition ends 11.5); homogeneity (spread 0.045 > max(1.5 x 0.016, 2 x 0.012)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 528,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.176054,
+     "b_B": 8.463424,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794272863502",
+   "image": "gade_surabhi_003",
+   "type": "i",
+   "A": {
+    "x": 624,
+    "y": 771,
+    "r": 2
+   },
+   "B": {
+    "x": 633,
+    "y": 751,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:07:43.502Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "i",
+     "a_row": 771,
+     "a_col": 624,
+     "b_row": 751,
+     "b_col": 633,
+     "half": 2,
+     "t": 1794272863502,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 2: own side (reaches 19.3 px, transition ends 20.0); plateau (63% of step > 10%); homogeneity (spread 0.111 > max(1.5 x 0.068, 2 x 0.011)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.111Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 2: own side (reaches 19.3 px, transition ends 20.0); plateau (63% of step > 10%); homogeneity (spread 0.111 > max(1.5 x 0.068, 2 x 0.011)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 529,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.01796,
+     "b_B": 8.642147,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794272880393",
+   "image": "gade_surabhi_003",
+   "type": "i",
+   "A": {
+    "x": 432,
+    "y": 596,
+    "r": 5
+   },
+   "B": {
+    "x": 408,
+    "y": 618,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:08:00.393Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "i",
+     "a_row": 596,
+     "a_col": 432,
+     "b_row": 618,
+     "b_col": 408,
+     "half": 5,
+     "t": 1794272880393,
+     "major": true,
+     "patch_ok": true,
+     "patch_flags": [],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.115Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ]
+    },
+    "v0_index": 530,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.977856,
+     "b_B": 6.348671,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794272886414",
+   "image": "gade_surabhi_003",
+   "type": "i",
+   "A": {
+    "x": 523,
+    "y": 620,
+    "r": 5
+   },
+   "B": {
+    "x": 488,
+    "y": 662,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:08:06.414Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "i",
+     "a_row": 620,
+     "a_col": 523,
+     "b_row": 662,
+     "b_col": 488,
+     "half": 5,
+     "t": 1794272886414,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 5: homogeneity (spread 0.047 > max(1.5 x 0.020, 2 x 0.014)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.120Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 5: homogeneity (spread 0.047 > max(1.5 x 0.020, 2 x 0.014)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 531,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.295939,
+     "b_B": 8.218678,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794272893087",
+   "image": "gade_surabhi_003",
+   "type": "i",
+   "A": {
+    "x": 564,
+    "y": 652,
+    "r": 5
+   },
+   "B": {
+    "x": 537,
+    "y": 674,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:08:13.087Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "i",
+     "a_row": 652,
+     "a_col": 564,
+     "b_row": 674,
+     "b_col": 537,
+     "half": 5,
+     "t": 1794272893087,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 5: homogeneity (spread 0.044 > max(1.5 x 0.009, 2 x 0.005)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.124Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 5: homogeneity (spread 0.044 > max(1.5 x 0.009, 2 x 0.005)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 532,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.18921,
+     "b_B": 8.42485,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794272905921",
+   "image": "gade_surabhi_003",
+   "type": "i",
+   "A": {
+    "x": 130,
+    "y": 407,
+    "r": 5
+   },
+   "B": {
+    "x": 95,
+    "y": 388,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:08:25.921Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "i",
+     "a_row": 407,
+     "a_col": 130,
+     "b_row": 388,
+     "b_col": 95,
+     "half": 5,
+     "t": 1794272905921,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 5: own side (reaches 6.8 px, transition starts 5.5); plateau (17% of step > 10%); homogeneity (spread 0.870 > max(1.5 x 0.509, 2 x 0.008)); sides (an outer row/column differs from the core)",
+      "B at current half 5: homogeneity (spread 0.348 > max(1.5 x 0.107, 2 x 0.037)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.129Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 5: own side (reaches 6.8 px, transition starts 5.5); plateau (17% of step > 10%); homogeneity (spread 0.870 > max(1.5 x 0.509, 2 x 0.008)); sides (an outer row/column differs from the core)",
+         "B at current half 5: homogeneity (spread 0.348 > max(1.5 x 0.107, 2 x 0.037)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 533,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.181725,
+     "b_B": 6.744294,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794272908032",
+   "image": "gade_surabhi_003",
+   "type": "i",
+   "A": {
+    "x": 229,
+    "y": 362,
+    "r": 5
+   },
+   "B": {
+    "x": 190,
+    "y": 340,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:08:28.032Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "i",
+     "a_row": 362,
+     "a_col": 229,
+     "b_row": 340,
+     "b_col": 190,
+     "half": 5,
+     "t": 1794272908032,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 5: sides (an outer row/column differs from the core)",
+      "B at current half 5: own side (reaches 38.0 px, transition ends 37.0); homogeneity (spread 0.542 > max(1.5 x 0.344, 2 x 0.043)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.133Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 5: sides (an outer row/column differs from the core)",
+         "B at current half 5: own side (reaches 38.0 px, transition ends 37.0); homogeneity (spread 0.542 > max(1.5 x 0.344, 2 x 0.043)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 534,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.44372,
+     "b_B": 6.54701,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794272915448",
+   "image": "gade_surabhi_003",
+   "type": "i",
+   "A": {
+    "x": 406,
+    "y": 265,
+    "r": 5
+   },
+   "B": {
+    "x": 381,
+    "y": 252,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:08:35.448Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "i",
+     "a_row": 265,
+     "a_col": 406,
+     "b_row": 252,
+     "b_col": 381,
+     "half": 5,
+     "t": 1794272915448,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 5: own side (reaches 21.4 px, transition ends 26.0); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.138Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 5: own side (reaches 21.4 px, transition ends 26.0); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 535,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.547034,
+     "b_B": 6.941185,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794272937121",
+   "image": "gade_surabhi_003",
+   "type": "m",
+   "A": {
+    "x": 164,
+    "y": 954,
+    "r": 18
+   },
+   "B": {
+    "x": 258,
+    "y": 976,
+    "r": 18
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:08:57.121Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 954,
+     "a_col": 164,
+     "b_row": 976,
+     "b_col": 258,
+     "half": 18,
+     "t": 1794272937121,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 18: homogeneity (spread 0.157 > max(1.5 x 0.104, 2 x 0.008))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.142Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 18: homogeneity (spread 0.157 > max(1.5 x 0.104, 2 x 0.008))"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 536
+   }
+  },
+  {
+   "id": "t=1794272938868",
+   "image": "gade_surabhi_003",
+   "type": "m",
+   "A": {
+    "x": 217,
+    "y": 842,
+    "r": 18
+   },
+   "B": {
+    "x": 320,
+    "y": 881,
+    "r": 18
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:08:58.868Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 842,
+     "a_col": 217,
+     "b_row": 881,
+     "b_col": 320,
+     "half": 18,
+     "t": 1794272938868,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 18: sides (an outer row/column differs from the core)",
+      "B at current half 18: homogeneity (spread 0.066 > max(1.5 x 0.035, 2 x 0.006)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.147Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 18: sides (an outer row/column differs from the core)",
+         "B at current half 18: homogeneity (spread 0.066 > max(1.5 x 0.035, 2 x 0.006)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 537
+   }
+  },
+  {
+   "id": "t=1794272941124",
+   "image": "gade_surabhi_003",
+   "type": "m",
+   "A": {
+    "x": 745,
+    "y": 965,
+    "r": 18
+   },
+   "B": {
+    "x": 684,
+    "y": 948,
+    "r": 18
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:09:01.124Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 965,
+     "a_col": 745,
+     "b_row": 948,
+     "b_col": 684,
+     "half": 18,
+     "t": 1794272941124,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 18: homogeneity (spread 0.157 > max(1.5 x 0.072, 2 x 0.007)); sides (an outer row/column differs from the core)",
+      "B at current half 18: homogeneity (spread 0.109 > max(1.5 x 0.028, 2 x 0.006)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.161Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 18: homogeneity (spread 0.157 > max(1.5 x 0.072, 2 x 0.007)); sides (an outer row/column differs from the core)",
+         "B at current half 18: homogeneity (spread 0.109 > max(1.5 x 0.028, 2 x 0.006)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 538
+   }
+  },
+  {
+   "id": "t=1794272949823",
+   "image": "gade_surabhi_003",
+   "type": "m",
+   "A": {
+    "x": 754,
+    "y": 862,
+    "r": 12
+   },
+   "B": {
+    "x": 694,
+    "y": 842,
+    "r": 12
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:09:09.823Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 862,
+     "a_col": 754,
+     "b_row": 842,
+     "b_col": 694,
+     "half": 12,
+     "t": 1794272949823,
+     "edits": [
+      {
+       "op": "move",
+       "at": "2026-11-10T04:44:59.382Z",
+       "before": {
+        "a_col": 756
+       },
+       "after": {
+        "a_col": 754
+       },
+       "n": 2
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.166Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 12: sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ],
+     "review_verdicts": [
+      {
+       "verdict": "fixed",
+       "at": "2026-11-10T04:45:01.574Z",
+       "list": "hard_violations_2026-11-10T04-23-53.csv"
+      }
+     ],
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 12: sides (an outer row/column differs from the core)"
+     ]
+    },
+    "v0_index": 539
+   }
+  },
+  {
+   "id": "t=1794272958343",
+   "image": "gade_surabhi_003",
+   "type": "m",
+   "A": {
+    "x": 353,
+    "y": 705,
+    "r": 12
+   },
+   "B": {
+    "x": 404,
+    "y": 718,
+    "r": 12
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:09:18.343Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 705,
+     "a_col": 353,
+     "b_row": 718,
+     "b_col": 404,
+     "half": 12,
+     "t": 1794272958343,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 12: homogeneity (spread 0.153 > max(1.5 x 0.058, 2 x 0.048)); sides (an outer row/column differs from the core)",
+      "B at current half 12: homogeneity (spread 0.064 > max(1.5 x 0.032, 2 x 0.015)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.170Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 12: homogeneity (spread 0.153 > max(1.5 x 0.058, 2 x 0.048)); sides (an outer row/column differs from the core)",
+         "B at current half 12: homogeneity (spread 0.064 > max(1.5 x 0.032, 2 x 0.015)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 540
+   }
+  },
+  {
+   "id": "t=1794272959765",
+   "image": "gade_surabhi_003",
+   "type": "m",
+   "A": {
+    "x": 395,
+    "y": 649,
+    "r": 12
+   },
+   "B": {
+    "x": 446,
+    "y": 669,
+    "r": 12
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:09:19.765Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 649,
+     "a_col": 395,
+     "b_row": 669,
+     "b_col": 446,
+     "half": 12,
+     "t": 1794272959765,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 12: homogeneity (spread 0.162 > max(1.5 x 0.093, 2 x 0.051)); sides (an outer row/column differs from the core)",
+      "B at current half 12: sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.175Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 12: homogeneity (spread 0.162 > max(1.5 x 0.093, 2 x 0.051)); sides (an outer row/column differs from the core)",
+         "B at current half 12: sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 541
+   }
+  },
+  {
+   "id": "t=1794272961202",
+   "image": "gade_surabhi_003",
+   "type": "m",
+   "A": {
+    "x": 439,
+    "y": 549,
+    "r": 12
+   },
+   "B": {
+    "x": 522,
+    "y": 592,
+    "r": 12
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:09:21.202Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 549,
+     "a_col": 439,
+     "b_row": 592,
+     "b_col": 522,
+     "half": 12,
+     "t": 1794272961202,
+     "edits": [
+      {
+       "op": "move",
+       "at": "2026-11-10T04:45:16.881Z",
+       "before": {
+        "b_col": 513,
+        "b_row": 588
+       },
+       "after": {
+        "b_col": 522,
+        "b_row": 592
+       },
+       "n": 39
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.179Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 12: homogeneity (spread 0.047 > max(1.5 x 0.031, 2 x 0.005))"
+        ]
+       }
+      }
+     ],
+     "review_verdicts": [
+      {
+       "verdict": "fixed",
+       "at": "2026-11-10T04:45:19.038Z",
+       "list": "hard_violations_2026-11-10T04-23-53.csv"
+      }
+     ],
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 12: homogeneity (spread 0.047 > max(1.5 x 0.031, 2 x 0.005))"
+     ]
+    },
+    "v0_index": 542
+   }
+  },
+  {
+   "id": "t=1794272965147",
+   "image": "gade_surabhi_003",
+   "type": "m",
+   "A": {
+    "x": 503,
+    "y": 482,
+    "r": 12
+   },
+   "B": {
+    "x": 582,
+    "y": 513,
+    "r": 12
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:09:25.147Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 482,
+     "a_col": 503,
+     "b_row": 513,
+     "b_col": 582,
+     "half": 12,
+     "t": 1794272965147,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 12: homogeneity (spread 0.087 > max(1.5 x 0.045, 2 x 0.009)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.184Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 12: homogeneity (spread 0.087 > max(1.5 x 0.045, 2 x 0.009)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 543
+   }
+  },
+  {
+   "id": "t=1794272966238",
+   "image": "gade_surabhi_003",
+   "type": "m",
+   "A": {
+    "x": 561,
+    "y": 396,
+    "r": 12
+   },
+   "B": {
+    "x": 663,
+    "y": 419,
+    "r": 12
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:09:26.238Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 396,
+     "a_col": 561,
+     "b_row": 419,
+     "b_col": 663,
+     "half": 12,
+     "t": 1794272966238,
+     "patch_ok": true,
+     "patch_flags": [],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.189Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ]
+    },
+    "v0_index": 544
+   }
+  },
+  {
+   "id": "t=1794272967345",
+   "image": "gade_surabhi_003",
+   "type": "m",
+   "A": {
+    "x": 647,
+    "y": 289,
+    "r": 12
+   },
+   "B": {
+    "x": 729,
+    "y": 304,
+    "r": 12
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:09:27.345Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 289,
+     "a_col": 647,
+     "b_row": 304,
+     "b_col": 729,
+     "half": 12,
+     "t": 1794272967345,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 12: homogeneity (spread 0.042 > max(1.5 x 0.023, 2 x 0.006)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.195Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 12: homogeneity (spread 0.042 > max(1.5 x 0.023, 2 x 0.006)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 545
+   }
+  },
+  {
+   "id": "t=1794272969395",
+   "image": "gade_surabhi_003",
+   "type": "m",
+   "A": {
+    "x": 715,
+    "y": 214,
+    "r": 12
+   },
+   "B": {
+    "x": 752,
+    "y": 255,
+    "r": 12
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:09:29.395Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 214,
+     "a_col": 715,
+     "b_row": 255,
+     "b_col": 752,
+     "half": 12,
+     "t": 1794272969395,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 12: homogeneity (spread 0.041 > max(1.5 x 0.024, 2 x 0.008)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.199Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 12: homogeneity (spread 0.041 > max(1.5 x 0.024, 2 x 0.008)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 546
+   }
+  },
+  {
+   "id": "t=1794272975945",
+   "image": "gade_surabhi_003",
+   "type": "m",
+   "A": {
+    "x": 60,
+    "y": 621,
+    "r": 12
+   },
+   "B": {
+    "x": 19,
+    "y": 664,
+    "r": 12
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:09:35.945Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 621,
+     "a_col": 60,
+     "b_row": 664,
+     "b_col": 19,
+     "half": 12,
+     "t": 1794272975945,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 12: own side (reaches 17.0 px, transition starts 2.0)",
+      "B at current half 12: homogeneity (spread 0.595 > max(1.5 x 0.185, 2 x 0.007)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.204Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 12: own side (reaches 17.0 px, transition starts 2.0)",
+         "B at current half 12: homogeneity (spread 0.595 > max(1.5 x 0.185, 2 x 0.007)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 547
+   }
+  },
+  {
+   "id": "t=1794272977043",
+   "image": "gade_surabhi_003",
+   "type": "m",
+   "A": {
+    "x": 40,
+    "y": 565,
+    "r": 12
+   },
+   "B": {
+    "x": 91,
+    "y": 514,
+    "r": 12
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:09:37.043Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 565,
+     "a_col": 40,
+     "b_row": 514,
+     "b_col": 91,
+     "half": 12,
+     "t": 1794272977043,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 12: own side (reaches 17.0 px, transition starts 17.0)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.212Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 12: own side (reaches 17.0 px, transition starts 17.0)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 548
+   }
+  },
+  {
+   "id": "t=1794272978470",
+   "image": "gade_surabhi_003",
+   "type": "m",
+   "A": {
+    "x": 36,
+    "y": 474,
+    "r": 12
+   },
+   "B": {
+    "x": 91,
+    "y": 444,
+    "r": 12
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:09:38.470Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 474,
+     "a_col": 36,
+     "b_row": 444,
+     "b_col": 91,
+     "half": 12,
+     "t": 1794272978470,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 12: plateau (18% of step > 10%); homogeneity (spread 0.550 > max(1.5 x 0.148, 2 x 0.007)); sides (an outer row/column differs from the core)",
+      "B at current half 12: homogeneity (spread 0.195 > max(1.5 x 0.058, 2 x 0.006)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.220Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 12: plateau (18% of step > 10%); homogeneity (spread 0.550 > max(1.5 x 0.148, 2 x 0.007)); sides (an outer row/column differs from the core)",
+         "B at current half 12: homogeneity (spread 0.195 > max(1.5 x 0.058, 2 x 0.006)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 549
+   }
+  },
+  {
+   "id": "t=1794272979550",
+   "image": "gade_surabhi_003",
+   "type": "m",
+   "A": {
+    "x": 174,
+    "y": 423,
+    "r": 12
+   },
+   "B": {
+    "x": 138,
+    "y": 462,
+    "r": 12
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:09:39.550Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 423,
+     "a_col": 174,
+     "b_row": 462,
+     "b_col": 138,
+     "half": 12,
+     "t": 1794272979550,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 12: own side (reaches 17.0 px, transition starts 4.0); plateau (30% of step > 10%); homogeneity (spread 0.574 > max(1.5 x 0.272, 2 x 0.006)); sides (an outer row/column differs from the core)",
+      "B at current half 12: sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.226Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 12: own side (reaches 17.0 px, transition starts 4.0); plateau (30% of step > 10%); homogeneity (spread 0.574 > max(1.5 x 0.272, 2 x 0.006)); sides (an outer row/column differs from the core)",
+         "B at current half 12: sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 550
+   }
+  },
+  {
+   "id": "t=1794272980944",
+   "image": "gade_surabhi_003",
+   "type": "m",
+   "A": {
+    "x": 203,
+    "y": 388,
+    "r": 12
+   },
+   "B": {
+    "x": 254,
+    "y": 368,
+    "r": 12
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:09:40.944Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 388,
+     "a_col": 203,
+     "b_row": 368,
+     "b_col": 254,
+     "half": 12,
+     "t": 1794272980944,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 12: homogeneity (spread 0.106 > max(1.5 x 0.070, 2 x 0.005))",
+      "B at current half 12: own side (reaches 39.2 px, transition ends 38.5)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.231Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 12: homogeneity (spread 0.106 > max(1.5 x 0.070, 2 x 0.005))",
+         "B at current half 12: own side (reaches 39.2 px, transition ends 38.5)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 551
+   }
+  },
+  {
+   "id": "t=1794273009732",
+   "image": "gade_surabhi_003",
+   "type": "i",
+   "A": {
+    "x": 266,
+    "y": 448,
+    "r": 12
+   },
+   "B": {
+    "x": 306,
+    "y": 482,
+    "r": 12
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:10:09.732Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "i",
+     "a_row": 448,
+     "a_col": 266,
+     "b_row": 482,
+     "b_col": 306,
+     "half": 12,
+     "t": 1794273009732,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 12: own side (reaches 16.9 px, transition starts 16.0)",
+      "B at current half 12: homogeneity (spread 0.105 > max(1.5 x 0.028, 2 x 0.025)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.235Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 12: own side (reaches 16.9 px, transition starts 16.0)",
+         "B at current half 12: homogeneity (spread 0.105 > max(1.5 x 0.028, 2 x 0.025)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 552,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.691802,
+     "b_B": 7.305544,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794273024623",
+   "image": "gade_surabhi_003",
+   "type": "i",
+   "A": {
+    "x": 370,
+    "y": 382,
+    "r": 3
+   },
+   "B": {
+    "x": 381,
+    "y": 393,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:10:24.623Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "i",
+     "a_row": 382,
+     "a_col": 370,
+     "b_row": 393,
+     "b_col": 381,
+     "half": 3,
+     "t": 1794273024623,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: own side (reaches 4.2 px, transition starts 4.5)",
+      "B at current half 3: own side (reaches 11.3 px, transition ends 12.0); homogeneity (spread 0.111 > max(1.5 x 0.036, 2 x 0.037)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.238Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: own side (reaches 4.2 px, transition starts 4.5)",
+         "B at current half 3: own side (reaches 11.3 px, transition ends 12.0); homogeneity (spread 0.111 > max(1.5 x 0.036, 2 x 0.037)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 553,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.383689,
+     "b_B": 7.190235,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794273044794",
+   "image": "gade_surabhi_003",
+   "type": "m",
+   "A": {
+    "x": 412,
+    "y": 345,
+    "r": 3
+   },
+   "B": {
+    "x": 425,
+    "y": 333,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:10:44.794Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 345,
+     "a_col": 412,
+     "b_row": 333,
+     "b_col": 425,
+     "half": 3,
+     "t": 1794273044794,
+     "patch_ok": true,
+     "patch_flags": [],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.241Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ]
+    },
+    "v0_index": 554
+   }
+  },
+  {
+   "id": "t=1794273066555",
+   "image": "gade_surabhi_003",
+   "type": "m",
+   "A": {
+    "x": 116,
+    "y": 736,
+    "r": 5
+   },
+   "B": {
+    "x": 89,
+    "y": 704,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:11:06.555Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 736,
+     "a_col": 116,
+     "b_row": 704,
+     "b_col": 89,
+     "half": 5,
+     "t": 1794273066555,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 5: homogeneity (spread 0.237 > max(1.5 x 0.128, 2 x 0.008)); sides (an outer row/column differs from the core)",
+      "B at current half 5: own side (reaches 34.8 px, transition ends 40.5); homogeneity (spread 0.167 > max(1.5 x 0.072, 2 x 0.005)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.245Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 5: homogeneity (spread 0.237 > max(1.5 x 0.128, 2 x 0.008)); sides (an outer row/column differs from the core)",
+         "B at current half 5: own side (reaches 34.8 px, transition ends 40.5); homogeneity (spread 0.167 > max(1.5 x 0.072, 2 x 0.005)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 555
+   }
+  },
+  {
+   "id": "t=1794273082697",
+   "image": "gade_surabhi_003",
+   "type": "m",
+   "A": {
+    "x": 141,
+    "y": 654,
+    "r": 5
+   },
+   "B": {
+    "x": 124,
+    "y": 640,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:11:22.697Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 654,
+     "a_col": 141,
+     "b_row": 640,
+     "b_col": 124,
+     "half": 5,
+     "t": 1794273082697,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 5: own side (reaches 7.0 px, transition starts 4.0); homogeneity (spread 0.064 > max(1.5 x 0.038, 2 x 0.005))",
+      "B at current half 5: own side (reaches 15.0 px, transition ends 15.0)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.248Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 5: own side (reaches 7.0 px, transition starts 4.0); homogeneity (spread 0.064 > max(1.5 x 0.038, 2 x 0.005))",
+         "B at current half 5: own side (reaches 15.0 px, transition ends 15.0)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 556
+   }
+  },
+  {
+   "id": "t=1794273085631",
+   "image": "gade_surabhi_003",
+   "type": "m",
+   "A": {
+    "x": 204,
+    "y": 647,
+    "r": 5
+   },
+   "B": {
+    "x": 180,
+    "y": 622,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:11:25.631Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 647,
+     "a_col": 204,
+     "b_row": 622,
+     "b_col": 180,
+     "half": 5,
+     "t": 1794273085631,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 5: sides (an outer row/column differs from the core)",
+      "B at current half 5: own side (reaches 27.6 px, transition ends 30.5); homogeneity (spread 0.047 > max(1.5 x 0.022, 2 x 0.005))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.252Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 5: sides (an outer row/column differs from the core)",
+         "B at current half 5: own side (reaches 27.6 px, transition ends 30.5); homogeneity (spread 0.047 > max(1.5 x 0.022, 2 x 0.005))"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 557
+   }
+  },
+  {
+   "id": "t=1794273090067",
+   "image": "gade_surabhi_003",
+   "type": "m",
+   "A": {
+    "x": 485,
+    "y": 408,
+    "r": 5
+   },
+   "B": {
+    "x": 455,
+    "y": 389,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:11:30.067Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 408,
+     "a_col": 485,
+     "b_row": 389,
+     "b_col": 455,
+     "half": 5,
+     "t": 1794273090067,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 5: own side (reaches 28.6 px, transition ends 30.0); homogeneity (spread 0.091 > max(1.5 x 0.034, 2 x 0.007)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.256Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 5: own side (reaches 28.6 px, transition ends 30.0); homogeneity (spread 0.091 > max(1.5 x 0.034, 2 x 0.007)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 558
+   }
+  },
+  {
+   "id": "t=1794273095935",
+   "image": "gade_surabhi_003",
+   "type": "m",
+   "A": {
+    "x": 562,
+    "y": 327,
+    "r": 3
+   },
+   "B": {
+    "x": 541,
+    "y": 314,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:11:35.935Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 327,
+     "a_col": 562,
+     "b_row": 314,
+     "b_col": 541,
+     "half": 3,
+     "t": 1794273095935,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 3: own side (reaches 20.6 px, transition ends 20.0); plateau (63% of step > 10%); homogeneity (spread 0.074 > max(1.5 x 0.021, 2 x 0.007)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.261Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 3: own side (reaches 20.6 px, transition ends 20.0); plateau (63% of step > 10%); homogeneity (spread 0.074 > max(1.5 x 0.021, 2 x 0.007)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 559
+   }
+  },
+  {
+   "id": "t=1794273100905",
+   "image": "gade_surabhi_003",
+   "type": "m",
+   "A": {
+    "x": 639,
+    "y": 251,
+    "r": 3
+   },
+   "B": {
+    "x": 626,
+    "y": 243,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:11:40.905Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 251,
+     "a_col": 639,
+     "b_row": 243,
+     "b_col": 626,
+     "half": 3,
+     "t": 1794273100905,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: homogeneity (spread 0.034 > max(1.5 x 0.023, 2 x 0.008))",
+      "B at current half 3: own side (reaches 11.1 px, transition ends 13.5); plateau (96% of step > 10%); homogeneity (spread 0.108 > max(1.5 x 0.035, 2 x 0.007)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.265Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: homogeneity (spread 0.034 > max(1.5 x 0.023, 2 x 0.008))",
+         "B at current half 3: own side (reaches 11.1 px, transition ends 13.5); plateau (96% of step > 10%); homogeneity (spread 0.108 > max(1.5 x 0.035, 2 x 0.007)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 560
+   }
+  },
+  {
+   "id": "t=1794273106516",
+   "image": "gade_surabhi_003",
+   "type": "m",
+   "A": {
+    "x": 709,
+    "y": 189,
+    "r": 2
+   },
+   "B": {
+    "x": 699,
+    "y": 182,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:11:46.516Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 189,
+     "a_col": 709,
+     "b_row": 182,
+     "b_col": 699,
+     "half": 2,
+     "t": 1794273106516,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: plateau (11% of step > 10%)",
+      "B at current half 2: own side (reaches 9.4 px, transition ends 11.0); plateau (52% of step > 10%); homogeneity (spread 0.130 > max(1.5 x 0.045, 2 x 0.007)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.269Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: plateau (11% of step > 10%)",
+         "B at current half 2: own side (reaches 9.4 px, transition ends 11.0); plateau (52% of step > 10%); homogeneity (spread 0.130 > max(1.5 x 0.045, 2 x 0.007)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 561
+   }
+  },
+  {
+   "id": "t=1794273114280",
+   "image": "gade_surabhi_003",
+   "type": "m",
+   "A": {
+    "x": 759,
+    "y": 154,
+    "r": 2
+   },
+   "B": {
+    "x": 744,
+    "y": 146,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:11:54.280Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 154,
+     "a_col": 759,
+     "b_row": 146,
+     "b_col": 744,
+     "half": 2,
+     "t": 1794273114280,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: plateau (13% of step > 10%)",
+      "B at current half 2: own side (reaches 14.3 px, transition ends 16.0); plateau (107% of step > 10%); homogeneity (spread 0.147 > max(1.5 x 0.095, 2 x 0.007))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.274Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: plateau (13% of step > 10%)",
+         "B at current half 2: own side (reaches 14.3 px, transition ends 16.0); plateau (107% of step > 10%); homogeneity (spread 0.147 > max(1.5 x 0.095, 2 x 0.007))"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 562
+   }
+  },
+  {
+   "id": "t=1794273164178",
+   "image": "gade_surabhi_003",
+   "type": "m",
+   "A": {
+    "x": 502,
+    "y": 299,
+    "r": 4
+   },
+   "B": {
+    "x": 513,
+    "y": 288,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:12:44.178Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 299,
+     "a_col": 502,
+     "b_row": 288,
+     "b_col": 513,
+     "half": 4,
+     "t": 1794273164178,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: plateau (20% of step > 10%); homogeneity (spread 0.125 > max(1.5 x 0.025, 2 x 0.006)); sides (an outer row/column differs from the core)",
+      "B at current half 4: plateau (48% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.279Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: plateau (20% of step > 10%); homogeneity (spread 0.125 > max(1.5 x 0.025, 2 x 0.006)); sides (an outer row/column differs from the core)",
+         "B at current half 4: plateau (48% of step > 10%)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 563
+   }
+  },
+  {
+   "id": "t=1794273165852",
+   "image": "gade_surabhi_003",
+   "type": "m",
+   "A": {
+    "x": 488,
+    "y": 281,
+    "r": 4
+   },
+   "B": {
+    "x": 499,
+    "y": 267,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:12:45.852Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 281,
+     "a_col": 488,
+     "b_row": 267,
+     "b_col": 499,
+     "half": 4,
+     "t": 1794273165852,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: plateau (37% of step > 10%); homogeneity (spread 0.438 > max(1.5 x 0.238, 2 x 0.007))",
+      "B at current half 4: plateau (68% of step > 10%); homogeneity (spread 0.298 > max(1.5 x 0.111, 2 x 0.006)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.284Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: plateau (37% of step > 10%); homogeneity (spread 0.438 > max(1.5 x 0.238, 2 x 0.007))",
+         "B at current half 4: plateau (68% of step > 10%); homogeneity (spread 0.298 > max(1.5 x 0.111, 2 x 0.006)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 564
+   }
+  },
+  {
+   "id": "t=1794273185297",
+   "image": "gade_surabhi_003",
+   "type": "m",
+   "A": {
+    "x": 261,
+    "y": 622,
+    "r": 4
+   },
+   "B": {
+    "x": 279,
+    "y": 613,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:13:05.297Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 622,
+     "a_col": 261,
+     "b_row": 613,
+     "b_col": 279,
+     "half": 4,
+     "t": 1794273185297,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 4: sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.288Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 4: sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 565
+   }
+  },
+  {
+   "id": "t=1794273213056",
+   "image": "gade_surabhi_003",
+   "type": "m",
+   "A": {
+    "x": 262,
+    "y": 664,
+    "r": 4
+   },
+   "B": {
+    "x": 267,
+    "y": 648,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:13:33.056Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 664,
+     "a_col": 262,
+     "b_row": 648,
+     "b_col": 267,
+     "half": 4,
+     "t": 1794273213056,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: homogeneity (spread 0.165 > max(1.5 x 0.060, 2 x 0.010)); sides (an outer row/column differs from the core)",
+      "B at current half 4: own side (reaches 11.8 px, transition ends 11.5); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.292Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: homogeneity (spread 0.165 > max(1.5 x 0.060, 2 x 0.010)); sides (an outer row/column differs from the core)",
+         "B at current half 4: own side (reaches 11.8 px, transition ends 11.5); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 566
+   }
+  },
+  {
+   "id": "t=1794273221042",
+   "image": "gade_surabhi_003",
+   "type": "i",
+   "A": {
+    "x": 247,
+    "y": 707,
+    "r": 3
+   },
+   "B": {
+    "x": 272,
+    "y": 693,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:13:41.042Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "i",
+     "a_row": 707,
+     "a_col": 247,
+     "b_row": 693,
+     "b_col": 272,
+     "half": 3,
+     "t": 1794273221042,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 3: own side (reaches 24.6 px, transition ends 24.0)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.296Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 3: own side (reaches 24.6 px, transition ends 24.0)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 567,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.040253,
+     "b_B": 6.513551,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794273230873",
+   "image": "gade_surabhi_003",
+   "type": "m",
+   "A": {
+    "x": 220,
+    "y": 507,
+    "r": 3
+   },
+   "B": {
+    "x": 224,
+    "y": 536,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:13:50.873Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 507,
+     "a_col": 220,
+     "b_row": 536,
+     "b_col": 224,
+     "half": 3,
+     "t": 1794273230873,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: own side (reaches 3.4 px, transition starts 1.0)",
+      "B at current half 3: sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.300Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: own side (reaches 3.4 px, transition starts 1.0)",
+         "B at current half 3: sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 568
+   }
+  },
+  {
+   "id": "t=1794273238313",
+   "image": "gade_surabhi_003",
+   "type": "m",
+   "A": {
+    "x": 217,
+    "y": 485,
+    "r": 3
+   },
+   "B": {
+    "x": 201,
+    "y": 484,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:13:58.313Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 485,
+     "a_col": 217,
+     "b_row": 484,
+     "b_col": 201,
+     "half": 3,
+     "t": 1794273238313,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: own side (reaches 3.2 px, transition starts 4.0); plateau (49% of step > 10%)",
+      "B at current half 3: own side (reaches 12.8 px, transition ends 11.5); plateau (14% of step > 10%); homogeneity (spread 0.584 > max(1.5 x 0.299, 2 x 0.038)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.305Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: own side (reaches 3.2 px, transition starts 4.0); plateau (49% of step > 10%)",
+         "B at current half 3: own side (reaches 12.8 px, transition ends 11.5); plateau (14% of step > 10%); homogeneity (spread 0.584 > max(1.5 x 0.299, 2 x 0.038)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 569
+   }
+  },
+  {
+   "id": "t=1794273260385",
+   "image": "gade_surabhi_003",
+   "type": "i",
+   "A": {
+    "x": 355,
+    "y": 437,
+    "r": 2
+   },
+   "B": {
+    "x": 343,
+    "y": 430,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T01:14:20.385Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "i",
+     "a_row": 437,
+     "a_col": 355,
+     "b_row": 430,
+     "b_col": 343,
+     "half": 2,
+     "t": 1794273260385,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: plateau (20% of step > 10%); homogeneity (spread 0.039 > max(1.5 x 0.022, 2 x 0.012)); sides (an outer row/column differs from the core)",
+      "B at current half 2: own side (reaches 11.2 px, transition ends 9.5)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:26.309Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: plateau (20% of step > 10%); homogeneity (spread 0.039 > max(1.5 x 0.022, 2 x 0.012)); sides (an outer row/column differs from the core)",
+         "B at current half 2: own side (reaches 11.2 px, transition ends 9.5)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 570,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.829719,
+     "b_B": 6.781815,
+     "agrees_guide_A_lit": true
+    }
+   }
+  }
+ ],
+ "s_seed_log": [],
+ "legacy": {
+  "source_set": "heldout",
+  "source_file": "illumination_edge/heldout_frozen/pairs_2026-11-10T04-52-30_autosized.json",
+  "source_sha256": "0308ad8111f5a71887dd926a4cc51fee617e5900c1023933bc4a09393a3f37e5",
+  "migrated_by": "metrics/migrate_v0.py 1.0",
+  "deleted": [
+   {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 657,
+     "a_col": 138,
+     "b_row": 626,
+     "b_col": 102,
+     "half": 5,
+     "t": 1794273072908,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-10T01:11:16.958Z"
+      }
+     ],
+     "deleted_at": "2026-11-10T01:11:16.958Z",
+     "deleted_index": 1430
+    },
+    "v0_index": 54
+   },
+   {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 667,
+     "a_col": 203,
+     "b_row": 634,
+     "b_col": 168,
+     "half": 5,
+     "t": 1794273071796,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-10T01:11:17.834Z"
+      }
+     ],
+     "deleted_at": "2026-11-10T01:11:17.834Z",
+     "deleted_index": 1429
+    },
+    "v0_index": 55
+   },
+   {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 299,
+     "a_col": 484,
+     "b_row": 284,
+     "b_col": 502,
+     "half": 2,
+     "t": 1794273148787,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-10T01:12:33.396Z"
+      }
+     ],
+     "deleted_at": "2026-11-10T01:12:33.396Z",
+     "deleted_index": 1436
+    },
+    "v0_index": 56
+   },
+   {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 280,
+     "a_col": 410,
+     "b_row": 301,
+     "b_col": 393,
+     "half": 4,
+     "t": 1794273176492,
+     "edits": [
+      {
+       "op": "delete",
+       "at": "2026-11-10T01:13:11.090Z"
+      }
+     ],
+     "deleted_at": "2026-11-10T01:13:11.090Z",
+     "deleted_index": 1439
+    },
+    "v0_index": 57
+   },
+   {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "m",
+     "a_row": 253,
+     "a_col": 500,
+     "b_row": 241,
+     "b_col": 509,
+     "half": 4,
+     "t": 1794273170200,
+     "edits": [
+      {
+       "op": "delete",
+       "at": "2026-11-10T01:15:10.651Z"
+      }
+     ],
+     "deleted_at": "2026-11-10T01:15:10.651Z",
+     "deleted_index": 1438
+    },
+    "v0_index": 58
+   },
+   {
+    "v0": {
+     "image": "gade_surabhi_003",
+     "type": "i",
+     "a_row": 620,
+     "a_col": 488,
+     "b_row": 648,
+     "b_col": 453,
+     "half": 5,
+     "t": 1794272884072,
+     "major": true,
+     "edits": [
+      {
+       "op": "move",
+       "at": "2026-11-10T04:44:52.106Z",
+       "before": {
+        "a_row": 610,
+        "a_col": 482
+       },
+       "after": {
+        "a_row": 620,
+        "a_col": 488
+       },
+       "n": 38
+      },
+      {
+       "op": "delete",
+       "at": "2026-11-10T04:44:56.212Z"
+      }
+     ],
+     "review_verdicts": [
+      {
+       "verdict": "delete",
+       "at": "2026-11-10T04:44:56.212Z",
+       "list": "hard_violations_2026-11-10T04-23-53.csv"
+      }
+     ],
+     "deleted_at": "2026-11-10T04:44:56.212Z",
+     "deleted_index": 531
+    },
+    "v0_index": 113
+   }
+  ]
+ }
+}

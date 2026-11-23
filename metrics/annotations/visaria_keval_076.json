@@ -1,0 +1,8109 @@
+{
+ "schema_version": "1.2",
+ "image": "visaria_keval_076",
+ "set": "heldout",
+ "split": "train",
+ "seen_in_training": "unknown",
+ "width": 768,
+ "height": 1365,
+ "image_sha256": "a20892894b0f622ff6e0d01489ca8d6279ddd055c5680a092e17a7dd64663f55",
+ "image_pixel_sha256": "c324fc7b629de88528c806c58717629e330190fc8a924ba38af7da5c5b4d9a35",
+ "assigned_to": "yueren",
+ "pairs": [
+  {
+   "id": "t=1794270205042",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 486,
+    "y": 778,
+    "r": 5
+   },
+   "B": {
+    "x": 490,
+    "y": 742,
+    "r": 5
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:23:25.042Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 778,
+     "a_col": 486,
+     "b_row": 742,
+     "b_col": 490,
+     "half": 5,
+     "t": 1794270205042,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 5: sides (an outer row/column differs from the core)",
+      "B at current half 5: own side (reaches 30.7 px, transition ends 33.5); homogeneity (spread 0.089 > max(1.5 x 0.035, 2 x 0.026))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.788Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 5: sides (an outer row/column differs from the core)",
+         "B at current half 5: own side (reaches 30.7 px, transition ends 33.5); homogeneity (spread 0.089 > max(1.5 x 0.035, 2 x 0.026))"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 225,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.266127,
+     "b_B": 8.303781,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270212745",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 525,
+    "y": 694,
+    "r": 3
+   },
+   "B": {
+    "x": 507,
+    "y": 676,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:23:32.745Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 694,
+     "a_col": 525,
+     "b_row": 676,
+     "b_col": 507,
+     "half": 3,
+     "t": 1794270212745,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: homogeneity (spread 0.047 > max(1.5 x 0.013, 2 x 0.008)); sides (an outer row/column differs from the core)",
+      "B at current half 3: own side (reaches 21.2 px, transition ends 20.0); homogeneity (spread 0.101 > max(1.5 x 0.038, 2 x 0.020)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.794Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: homogeneity (spread 0.047 > max(1.5 x 0.013, 2 x 0.008)); sides (an outer row/column differs from the core)",
+         "B at current half 3: own side (reaches 21.2 px, transition ends 20.0); homogeneity (spread 0.101 > max(1.5 x 0.038, 2 x 0.020)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 226,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.749254,
+     "b_B": 8.834181,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270219305",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 709,
+    "y": 830,
+    "r": 3
+   },
+   "B": {
+    "x": 687,
+    "y": 798,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:23:39.305Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 830,
+     "a_col": 709,
+     "b_row": 798,
+     "b_col": 687,
+     "half": 3,
+     "t": 1794270219305,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: homogeneity (spread 0.083 > max(1.5 x 0.035, 2 x 0.009)); sides (an outer row/column differs from the core)",
+      "B at current half 3: homogeneity (spread 0.054 > max(1.5 x 0.026, 2 x 0.022)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.799Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: homogeneity (spread 0.083 > max(1.5 x 0.035, 2 x 0.009)); sides (an outer row/column differs from the core)",
+         "B at current half 3: homogeneity (spread 0.054 > max(1.5 x 0.026, 2 x 0.022)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 227,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.454113,
+     "b_B": 8.6571,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270223032",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 712,
+    "y": 797,
+    "r": 3
+   },
+   "B": {
+    "x": 710,
+    "y": 754,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:23:43.032Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 797,
+     "a_col": 712,
+     "b_row": 754,
+     "b_col": 710,
+     "half": 3,
+     "t": 1794270223032,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: homogeneity (spread 0.138 > max(1.5 x 0.077, 2 x 0.010)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.804Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: homogeneity (spread 0.138 > max(1.5 x 0.077, 2 x 0.010)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 228,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.295085,
+     "b_B": 8.693449,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270230901",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 704,
+    "y": 856,
+    "r": 2
+   },
+   "B": {
+    "x": 683,
+    "y": 842,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:23:50.901Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 856,
+     "a_col": 704,
+     "b_row": 842,
+     "b_col": 683,
+     "half": 2,
+     "t": 1794270230901,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: homogeneity (spread 0.028 > max(1.5 x 0.006, 2 x 0.008)); sides (an outer row/column differs from the core)",
+      "B at current half 2: own side (reaches 22.5 px, transition ends 21.5)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.809Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: homogeneity (spread 0.028 > max(1.5 x 0.006, 2 x 0.008)); sides (an outer row/column differs from the core)",
+         "B at current half 2: own side (reaches 22.5 px, transition ends 21.5)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 229,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.701225,
+     "b_B": 8.538102,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270237957",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 665,
+    "y": 921,
+    "r": 4
+   },
+   "B": {
+    "x": 667,
+    "y": 893,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:23:57.957Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 921,
+     "a_col": 665,
+     "b_row": 893,
+     "b_col": 667,
+     "half": 4,
+     "t": 1794270237957,
+     "patch_ok": true,
+     "patch_flags": [],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.815Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ]
+    },
+    "v0_index": 230,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.831666,
+     "b_B": 8.308703,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270242023",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 631,
+    "y": 908,
+    "r": 4
+   },
+   "B": {
+    "x": 638,
+    "y": 879,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:24:02.023Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 908,
+     "a_col": 631,
+     "b_row": 879,
+     "b_col": 638,
+     "half": 4,
+     "t": 1794270242023,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: homogeneity (spread 0.123 > max(1.5 x 0.068, 2 x 0.020)); sides (an outer row/column differs from the core)",
+      "B at current half 4: homogeneity (spread 0.075 > max(1.5 x 0.030, 2 x 0.028))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.819Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: homogeneity (spread 0.123 > max(1.5 x 0.068, 2 x 0.020)); sides (an outer row/column differs from the core)",
+         "B at current half 4: homogeneity (spread 0.075 > max(1.5 x 0.030, 2 x 0.028))"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 231,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.788582,
+     "b_B": 8.165269,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270245721",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 612,
+    "y": 897,
+    "r": 4
+   },
+   "B": {
+    "x": 589,
+    "y": 896,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:24:05.721Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 897,
+     "a_col": 612,
+     "b_row": 896,
+     "b_col": 589,
+     "half": 4,
+     "t": 1794270245721,
+     "major": true,
+     "patch_ok": true,
+     "patch_flags": [],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.824Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ]
+    },
+    "v0_index": 232,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.838977,
+     "b_B": 8.155316,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270248397",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 615,
+    "y": 935,
+    "r": 4
+   },
+   "B": {
+    "x": 589,
+    "y": 932,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:24:08.397Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 935,
+     "a_col": 615,
+     "b_row": 932,
+     "b_col": 589,
+     "half": 4,
+     "t": 1794270248397,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: homogeneity (spread 0.146 > max(1.5 x 0.067, 2 x 0.020)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.829Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: homogeneity (spread 0.146 > max(1.5 x 0.067, 2 x 0.020)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 233,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.818697,
+     "b_B": 8.150736,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270251629",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 621,
+    "y": 959,
+    "r": 4
+   },
+   "B": {
+    "x": 590,
+    "y": 958,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:24:11.629Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 959,
+     "a_col": 621,
+     "b_row": 958,
+     "b_col": 590,
+     "half": 4,
+     "t": 1794270251629,
+     "major": true,
+     "patch_ok": true,
+     "patch_flags": [],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.834Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ]
+    },
+    "v0_index": 234,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.029114,
+     "b_B": 8.205258,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270263529",
+   "image": "visaria_keval_076",
+   "type": "b",
+   "A": {
+    "x": 670,
+    "y": 1029,
+    "r": 4
+   },
+   "B": {
+    "x": 633,
+    "y": 1024,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:24:23.529Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "b",
+     "a_row": 1029,
+     "a_col": 670,
+     "b_row": 1024,
+     "b_col": 633,
+     "half": 4,
+     "t": 1794270263529,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 4: plateau (17% of step > 10%); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.839Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 4: plateau (17% of step > 10%); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 235
+   }
+  },
+  {
+   "id": "t=1794270268446",
+   "image": "visaria_keval_076",
+   "type": "b",
+   "A": {
+    "x": 654,
+    "y": 1185,
+    "r": 4
+   },
+   "B": {
+    "x": 631,
+    "y": 1164,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:24:28.446Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "b",
+     "a_row": 1185,
+     "a_col": 654,
+     "b_row": 1164,
+     "b_col": 631,
+     "half": 4,
+     "t": 1794270268446,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: own side (reaches 5.7 px, transition starts 4.5)",
+      "B at current half 4: sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.843Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: own side (reaches 5.7 px, transition starts 4.5)",
+         "B at current half 4: sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 236
+   }
+  },
+  {
+   "id": "t=1794270270881",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 641,
+    "y": 1235,
+    "r": 4
+   },
+   "B": {
+    "x": 611,
+    "y": 1233,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:24:30.881Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 1235,
+     "a_col": 641,
+     "b_row": 1233,
+     "b_col": 611,
+     "half": 4,
+     "t": 1794270270881,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: plateau (14% of step > 10%)",
+      "B at current half 4: homogeneity (spread 0.059 > max(1.5 x 0.015, 2 x 0.027))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.848Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: plateau (14% of step > 10%)",
+         "B at current half 4: homogeneity (spread 0.059 > max(1.5 x 0.015, 2 x 0.027))"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 237,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.825706,
+     "b_B": 8.212415,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270276374",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 675,
+    "y": 1239,
+    "r": 4
+   },
+   "B": {
+    "x": 676,
+    "y": 1214,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:24:36.374Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 1239,
+     "a_col": 675,
+     "b_row": 1214,
+     "b_col": 676,
+     "half": 4,
+     "t": 1794270276374,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: plateau (13% of step > 10%); homogeneity (spread 0.136 > max(1.5 x 0.086, 2 x 0.021))",
+      "B at current half 4: own side (reaches 20.9 px, transition ends 20.0); homogeneity (spread 0.066 > max(1.5 x 0.027, 2 x 0.026)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.854Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: plateau (13% of step > 10%); homogeneity (spread 0.136 > max(1.5 x 0.086, 2 x 0.021))",
+         "B at current half 4: own side (reaches 20.9 px, transition ends 20.0); homogeneity (spread 0.066 > max(1.5 x 0.027, 2 x 0.026)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 238,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.760419,
+     "b_B": 8.259817,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270282386",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 654,
+    "y": 1260,
+    "r": 4
+   },
+   "B": {
+    "x": 615,
+    "y": 1258,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:24:42.386Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 1260,
+     "a_col": 654,
+     "b_row": 1258,
+     "b_col": 615,
+     "half": 4,
+     "t": 1794270282386,
+     "major": true,
+     "patch_ok": true,
+     "patch_flags": [],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.858Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ]
+    },
+    "v0_index": 239,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.878966,
+     "b_B": 8.205336,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270291896",
+   "image": "visaria_keval_076",
+   "type": "b",
+   "A": {
+    "x": 700,
+    "y": 1314,
+    "r": 4
+   },
+   "B": {
+    "x": 657,
+    "y": 1315,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:24:51.896Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "b",
+     "a_row": 1314,
+     "a_col": 700,
+     "b_row": 1315,
+     "b_col": 657,
+     "half": 4,
+     "t": 1794270291896,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: plateau (15% of step > 10%); homogeneity (spread 0.154 > max(1.5 x 0.052, 2 x 0.019)); sides (an outer row/column differs from the core)",
+      "B at current half 4: own side (reaches 38.9 px, transition ends 41.0); homogeneity (spread 0.213 > max(1.5 x 0.049, 2 x 0.025)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.864Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: plateau (15% of step > 10%); homogeneity (spread 0.154 > max(1.5 x 0.052, 2 x 0.019)); sides (an outer row/column differs from the core)",
+         "B at current half 4: own side (reaches 38.9 px, transition ends 41.0); homogeneity (spread 0.213 > max(1.5 x 0.049, 2 x 0.025)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 240
+   }
+  },
+  {
+   "id": "t=1794270367186",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 487,
+    "y": 1327,
+    "r": 3
+   },
+   "B": {
+    "x": 467,
+    "y": 1326,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:26:07.186Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 1327,
+     "a_col": 487,
+     "b_row": 1326,
+     "b_col": 467,
+     "half": 3,
+     "t": 1794270367186,
+     "half_a": 3,
+     "half_b": 4,
+     "edits": [
+      {
+       "op": "autosize",
+       "at": "2026-11-10T04:52:23.869Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "half": 2,
+        "half_a": null,
+        "half_b": null
+       },
+       "after": {
+        "half": 3,
+        "half_a": 3,
+        "half_b": 4
+       },
+       "criteria": "spec+sides",
+       "stopped_by": {
+        "A": "sides",
+        "B": "reached max"
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.869Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ],
+     "patch_ok": true,
+     "patch_flags": []
+    },
+    "v0_index": 241,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.479349,
+     "b_B": 9.41118,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270368727",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 481,
+    "y": 1310,
+    "r": 2
+   },
+   "B": {
+    "x": 454,
+    "y": 1298,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:26:08.727Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 1310,
+     "a_col": 481,
+     "b_row": 1298,
+     "b_col": 454,
+     "half": 2,
+     "t": 1794270368727,
+     "patch_ok": true,
+     "patch_flags": [],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.874Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ]
+    },
+    "v0_index": 242,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.472457,
+     "b_B": 9.285355,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270373833",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 447,
+    "y": 1326,
+    "r": 2
+   },
+   "B": {
+    "x": 440,
+    "y": 1330,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:26:13.833Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 1326,
+     "a_col": 447,
+     "b_row": 1330,
+     "b_col": 440,
+     "half": 2,
+     "t": 1794270373833,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: own side (reaches 2.7 px, transition starts 3.0)",
+      "B at current half 2: own side (reaches 5.3 px, transition ends 6.0)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.879Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: own side (reaches 2.7 px, transition starts 3.0)",
+         "B at current half 2: own side (reaches 5.3 px, transition ends 6.0)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 243,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.424472,
+     "b_B": 9.363954,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270376015",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 468,
+    "y": 1353,
+    "r": 4
+   },
+   "B": {
+    "x": 451,
+    "y": 1353,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:26:16.015Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 1353,
+     "a_col": 468,
+     "b_row": 1353,
+     "b_col": 451,
+     "half": 2,
+     "t": 1794270376015,
+     "half_a": 4,
+     "half_b": 2,
+     "edits": [
+      {
+       "op": "autosize",
+       "at": "2026-11-10T04:52:23.884Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "half_a": null,
+        "half_b": null
+       },
+       "after": {
+        "half_a": 4,
+        "half_b": 2
+       },
+       "criteria": "spec+sides",
+       "stopped_by": {
+        "A": "reached max",
+        "B": "own side"
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.884Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ],
+     "patch_ok": true,
+     "patch_flags": []
+    },
+    "v0_index": 244,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.460079,
+     "b_B": 9.411792,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270378213",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 418,
+    "y": 1314,
+    "r": 3
+   },
+   "B": {
+    "x": 417,
+    "y": 1295,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:26:18.213Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 1314,
+     "a_col": 418,
+     "b_row": 1295,
+     "b_col": 417,
+     "half": 2,
+     "t": 1794270378213,
+     "half_a": 3,
+     "half_b": 2,
+     "edits": [
+      {
+       "op": "autosize",
+       "at": "2026-11-10T04:52:23.890Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "half_a": null,
+        "half_b": null
+       },
+       "after": {
+        "half_a": 3,
+        "half_b": 2
+       },
+       "criteria": "spec+sides",
+       "stopped_by": {
+        "A": "sides",
+        "B": "own side"
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.890Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ],
+     "patch_ok": true,
+     "patch_flags": []
+    },
+    "v0_index": 245,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.435414,
+     "b_B": 9.237986,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270379871",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 393,
+    "y": 1308,
+    "r": 2
+   },
+   "B": {
+    "x": 396,
+    "y": 1296,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:26:19.871Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 1308,
+     "a_col": 393,
+     "b_row": 1296,
+     "b_col": 396,
+     "half": 2,
+     "t": 1794270379871,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 2: own side (reaches 9.9 px, transition ends 9.5); plateau (37% of step > 10%); homogeneity (spread 0.089 > max(1.5 x 0.037, 2 x 0.017)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.895Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 2: own side (reaches 9.9 px, transition ends 9.5); plateau (37% of step > 10%); homogeneity (spread 0.089 > max(1.5 x 0.037, 2 x 0.017)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 246,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.416507,
+     "b_B": 9.202689,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270382789",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 391,
+    "y": 1328,
+    "r": 4
+   },
+   "B": {
+    "x": 370,
+    "y": 1328,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:26:22.789Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 1328,
+     "a_col": 391,
+     "b_row": 1328,
+     "b_col": 370,
+     "half": 4,
+     "t": 1794270382789,
+     "edits": [
+      {
+       "op": "autosize",
+       "at": "2026-11-10T04:52:23.900Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "half": 2
+       },
+       "after": {
+        "half": 4
+       },
+       "criteria": "spec+sides",
+       "stopped_by": {
+        "A": "reached max",
+        "B": "reached max"
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.900Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ],
+     "patch_ok": true,
+     "patch_flags": []
+    },
+    "v0_index": 247,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.403146,
+     "b_B": 9.175083,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270384042",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 392,
+    "y": 1350,
+    "r": 4
+   },
+   "B": {
+    "x": 372,
+    "y": 1355,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:26:24.042Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 1350,
+     "a_col": 392,
+     "b_row": 1355,
+     "b_col": 372,
+     "half": 3,
+     "t": 1794270384042,
+     "half_a": 4,
+     "half_b": 3,
+     "edits": [
+      {
+       "op": "autosize",
+       "at": "2026-11-10T04:52:23.906Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "half": 2,
+        "half_a": null,
+        "half_b": null
+       },
+       "after": {
+        "half": 3,
+        "half_a": 4,
+        "half_b": 3
+       },
+       "criteria": "spec+sides",
+       "stopped_by": {
+        "A": "reached max",
+        "B": "own side"
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.906Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ],
+     "patch_ok": true,
+     "patch_flags": []
+    },
+    "v0_index": 248,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.40071,
+     "b_B": 9.190495,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270388034",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 466,
+    "y": 1257,
+    "r": 2
+   },
+   "B": {
+    "x": 442,
+    "y": 1259,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:26:28.034Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 1257,
+     "a_col": 466,
+     "b_row": 1259,
+     "b_col": 442,
+     "half": 2,
+     "t": 1794270388034,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: plateau (28% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.912Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: plateau (28% of step > 10%)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 249,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.985267,
+     "b_B": 8.290154,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270401804",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 376,
+    "y": 1259,
+    "r": 4
+   },
+   "B": {
+    "x": 357,
+    "y": 1257,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:26:41.804Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 1259,
+     "a_col": 376,
+     "b_row": 1257,
+     "b_col": 357,
+     "half": 4,
+     "t": 1794270401804,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: homogeneity (spread 0.077 > max(1.5 x 0.034, 2 x 0.017)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.917Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: homogeneity (spread 0.077 > max(1.5 x 0.034, 2 x 0.017)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 250,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.209211,
+     "b_B": 8.330337,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270405580",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 377,
+    "y": 1222,
+    "r": 4
+   },
+   "B": {
+    "x": 354,
+    "y": 1222,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:26:45.580Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 1222,
+     "a_col": 377,
+     "b_row": 1222,
+     "b_col": 354,
+     "half": 4,
+     "t": 1794270405580,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 4: homogeneity (spread 0.163 > max(1.5 x 0.059, 2 x 0.016)); sides (an outer row/column differs from the core)",
+      "B at current half 4: homogeneity (spread 0.058 > max(1.5 x 0.027, 2 x 0.026))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.921Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 4: homogeneity (spread 0.163 > max(1.5 x 0.059, 2 x 0.016)); sides (an outer row/column differs from the core)",
+         "B at current half 4: homogeneity (spread 0.058 > max(1.5 x 0.027, 2 x 0.026))"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 251,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.231582,
+     "b_B": 8.286281,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270419402",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 359,
+    "y": 761,
+    "r": 2
+   },
+   "B": {
+    "x": 349,
+    "y": 762,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:26:59.402Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 761,
+     "a_col": 359,
+     "b_row": 762,
+     "b_col": 349,
+     "half": 2,
+     "t": 1794270419402,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: own side (reaches 2.2 px, transition starts 2.5); plateau (15% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.927Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: own side (reaches 2.2 px, transition starts 2.5); plateau (15% of step > 10%)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 252,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.332566,
+     "b_B": 8.306467,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270423676",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 360,
+    "y": 798,
+    "r": 2
+   },
+   "B": {
+    "x": 352,
+    "y": 798,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:27:03.676Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 798,
+     "a_col": 360,
+     "b_row": 798,
+     "b_col": 352,
+     "half": 2,
+     "t": 1794270423676,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: own side (reaches 2.0 px, transition starts 1.5); plateau (35% of step > 10%)",
+      "B at current half 2: own side (reaches 6.0 px, transition ends 5.0); homogeneity (spread 0.063 > max(1.5 x 0.025, 2 x 0.026)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.931Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: own side (reaches 2.0 px, transition starts 1.5); plateau (35% of step > 10%)",
+         "B at current half 2: own side (reaches 6.0 px, transition ends 5.0); homogeneity (spread 0.063 > max(1.5 x 0.025, 2 x 0.026)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 253,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.355294,
+     "b_B": 8.258711,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270432220",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 366,
+    "y": 863,
+    "r": 2
+   },
+   "B": {
+    "x": 351,
+    "y": 864,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:27:12.220Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 863,
+     "a_col": 366,
+     "b_row": 864,
+     "b_col": 351,
+     "half": 2,
+     "t": 1794270432220,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: homogeneity (spread 0.098 > max(1.5 x 0.038, 2 x 0.016)); sides (an outer row/column differs from the core)",
+      "B at current half 2: sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.936Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: homogeneity (spread 0.098 > max(1.5 x 0.038, 2 x 0.016)); sides (an outer row/column differs from the core)",
+         "B at current half 2: sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 254,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.259254,
+     "b_B": 8.278464,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270436609",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 366,
+    "y": 907,
+    "r": 2
+   },
+   "B": {
+    "x": 351,
+    "y": 907,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:27:16.609Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 907,
+     "a_col": 366,
+     "b_row": 907,
+     "b_col": 351,
+     "half": 2,
+     "t": 1794270436609,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.941Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 255,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.261245,
+     "b_B": 8.306691,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270448767",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 368,
+    "y": 941,
+    "r": 2
+   },
+   "B": {
+    "x": 355,
+    "y": 937,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:27:28.767Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 941,
+     "a_col": 368,
+     "b_row": 937,
+     "b_col": 355,
+     "half": 2,
+     "t": 1794270448767,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 2: own side (reaches 11.1 px, transition ends 10.5)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.946Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 2: own side (reaches 11.1 px, transition ends 10.5)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 256,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.46822,
+     "b_B": 8.349876,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270463117",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 486,
+    "y": 1220,
+    "r": 2
+   },
+   "B": {
+    "x": 485,
+    "y": 1204,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:27:43.117Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 1220,
+     "a_col": 486,
+     "b_row": 1204,
+     "b_col": 485,
+     "half": 2,
+     "t": 1794270463117,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: plateau (11% of step > 10%); homogeneity (spread 0.208 > max(1.5 x 0.133, 2 x 0.017))",
+      "B at current half 2: homogeneity (spread 0.048 > max(1.5 x 0.028, 2 x 0.023))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.950Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: plateau (11% of step > 10%); homogeneity (spread 0.208 > max(1.5 x 0.133, 2 x 0.017))",
+         "B at current half 2: homogeneity (spread 0.048 > max(1.5 x 0.028, 2 x 0.023))"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 257,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.184836,
+     "b_B": 8.573976,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270465484",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 442,
+    "y": 1216,
+    "r": 2
+   },
+   "B": {
+    "x": 444,
+    "y": 1205,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:27:45.484Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 1216,
+     "a_col": 442,
+     "b_row": 1205,
+     "b_col": 444,
+     "half": 2,
+     "t": 1794270465484,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: own side (reaches 2.3 px, transition starts 3.5); plateau (19% of step > 10%)",
+      "B at current half 2: own side (reaches 8.9 px, transition ends 7.5); plateau (13% of step > 10%); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.955Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: own side (reaches 2.3 px, transition starts 3.5); plateau (19% of step > 10%)",
+         "B at current half 2: own side (reaches 8.9 px, transition ends 7.5); plateau (13% of step > 10%); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 258,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.217818,
+     "b_B": 8.469991,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270491280",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 392,
+    "y": 1215,
+    "r": 2
+   },
+   "B": {
+    "x": 392,
+    "y": 1205,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:28:11.280Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 1215,
+     "a_col": 392,
+     "b_row": 1205,
+     "b_col": 392,
+     "half": 2,
+     "t": 1794270491280,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: plateau (27% of step > 10%); homogeneity (spread 0.102 > max(1.5 x 0.056, 2 x 0.016)); sides (an outer row/column differs from the core)",
+      "B at current half 2: own side (reaches 8.0 px, transition ends 8.5); plateau (24% of step > 10%); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.960Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: plateau (27% of step > 10%); homogeneity (spread 0.102 > max(1.5 x 0.056, 2 x 0.016)); sides (an outer row/column differs from the core)",
+         "B at current half 2: own side (reaches 8.0 px, transition ends 8.5); plateau (24% of step > 10%); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 259,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.306002,
+     "b_B": 8.543313,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270551846",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 261,
+    "y": 713,
+    "r": 3
+   },
+   "B": {
+    "x": 264,
+    "y": 693,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:29:11.846Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 713,
+     "a_col": 261,
+     "b_row": 693,
+     "b_col": 264,
+     "half": 3,
+     "t": 1794270551846,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: plateau (12% of step > 10%); homogeneity (spread 0.221 > max(1.5 x 0.024, 2 x 0.014)); sides (an outer row/column differs from the core)",
+      "B at current half 3: own side (reaches 16.8 px, transition ends 15.0)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.964Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: plateau (12% of step > 10%); homogeneity (spread 0.221 > max(1.5 x 0.024, 2 x 0.014)); sides (an outer row/column differs from the core)",
+         "B at current half 3: own side (reaches 16.8 px, transition ends 15.0)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 260,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.490437,
+     "b_B": 8.349945,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270558867",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 132,
+    "y": 729,
+    "r": 4
+   },
+   "B": {
+    "x": 135,
+    "y": 705,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:29:18.867Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 729,
+     "a_col": 132,
+     "b_row": 705,
+     "b_col": 135,
+     "half": 4,
+     "t": 1794270558867,
+     "major": true,
+     "edits": [
+      {
+       "op": "autosize",
+       "at": "2026-11-10T04:52:23.969Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "half": 3
+       },
+       "after": {
+        "half": 4
+       },
+       "criteria": "spec+sides",
+       "stopped_by": {
+        "A": "reached max",
+        "B": "reached max"
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.969Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ],
+     "patch_ok": true,
+     "patch_flags": []
+    },
+    "v0_index": 261,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.415829,
+     "b_B": 8.200988,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270571483",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 131,
+    "y": 762,
+    "r": 3
+   },
+   "B": {
+    "x": 112,
+    "y": 763,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:29:31.483Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 762,
+     "a_col": 131,
+     "b_row": 763,
+     "b_col": 112,
+     "half": 3,
+     "t": 1794270571483,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: homogeneity (spread 0.093 > max(1.5 x 0.028, 2 x 0.015)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.973Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: homogeneity (spread 0.093 > max(1.5 x 0.028, 2 x 0.015)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 262,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.369305,
+     "b_B": 8.237447,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270577388",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 84,
+    "y": 647,
+    "r": 3
+   },
+   "B": {
+    "x": 100,
+    "y": 642,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:29:37.388Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 647,
+     "a_col": 84,
+     "b_row": 642,
+     "b_col": 100,
+     "half": 3,
+     "t": 1794270577388,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: own side (reaches 3.8 px, transition starts 4.5); homogeneity (spread 0.113 > max(1.5 x 0.074, 2 x 0.009)); sides (an outer row/column differs from the core)",
+      "B at current half 3: own side (reaches 13.0 px, transition ends 11.5); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.977Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: own side (reaches 3.8 px, transition starts 4.5); homogeneity (spread 0.113 > max(1.5 x 0.074, 2 x 0.009)); sides (an outer row/column differs from the core)",
+         "B at current half 3: own side (reaches 13.0 px, transition ends 11.5); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 263,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.535833,
+     "b_B": 8.718871,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270591054",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 130,
+    "y": 811,
+    "r": 3
+   },
+   "B": {
+    "x": 111,
+    "y": 811,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:29:51.054Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 811,
+     "a_col": 130,
+     "b_row": 811,
+     "b_col": 111,
+     "half": 3,
+     "t": 1794270591054,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: sides (an outer row/column differs from the core)",
+      "B at current half 3: homogeneity (spread 0.066 > max(1.5 x 0.040, 2 x 0.026))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.981Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: sides (an outer row/column differs from the core)",
+         "B at current half 3: homogeneity (spread 0.066 > max(1.5 x 0.040, 2 x 0.026))"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 264,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.315952,
+     "b_B": 8.249965,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270594817",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 126,
+    "y": 876,
+    "r": 3
+   },
+   "B": {
+    "x": 109,
+    "y": 877,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:29:54.817Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 876,
+     "a_col": 126,
+     "b_row": 877,
+     "b_col": 109,
+     "half": 3,
+     "t": 1794270594817,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 3: sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.986Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 3: sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 265,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.3794,
+     "b_B": 8.227074,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270600189",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 124,
+    "y": 991,
+    "r": 4
+   },
+   "B": {
+    "x": 105,
+    "y": 993,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:30:00.189Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 991,
+     "a_col": 124,
+     "b_row": 993,
+     "b_col": 105,
+     "half": 4,
+     "t": 1794270600189,
+     "major": true,
+     "edits": [
+      {
+       "op": "autosize",
+       "at": "2026-11-10T04:52:23.992Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "half": 3
+       },
+       "after": {
+        "half": 4
+       },
+       "criteria": "spec+sides",
+       "stopped_by": {
+        "A": "reached max",
+        "B": "reached max"
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.992Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ],
+     "patch_ok": true,
+     "patch_flags": []
+    },
+    "v0_index": 266,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.305079,
+     "b_B": 8.237293,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270603893",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 122,
+    "y": 1108,
+    "r": 3
+   },
+   "B": {
+    "x": 103,
+    "y": 1110,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:30:03.893Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 1108,
+     "a_col": 122,
+     "b_row": 1110,
+     "b_col": 103,
+     "half": 3,
+     "t": 1794270603893,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 3: sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:23.996Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 3: sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 267,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.352782,
+     "b_B": 8.30138,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270619429",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 120,
+    "y": 1224,
+    "r": 3
+   },
+   "B": {
+    "x": 96,
+    "y": 1226,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:30:19.429Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 1224,
+     "a_col": 120,
+     "b_row": 1226,
+     "b_col": 96,
+     "half": 3,
+     "t": 1794270619429,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.000Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 268,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.383301,
+     "b_B": 8.260638,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270627670",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 114,
+    "y": 1350,
+    "r": 2
+   },
+   "B": {
+    "x": 99,
+    "y": 1359,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:30:27.670Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 1350,
+     "a_col": 114,
+     "b_row": 1359,
+     "b_col": 99,
+     "half": 2,
+     "t": 1794270627670,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 2: own side (reaches 14.7 px, transition ends 13.0)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.005Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 2: own side (reaches 14.7 px, transition ends 13.0)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 269,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.370997,
+     "b_B": 8.833509,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270652226",
+   "image": "visaria_keval_076",
+   "type": "b",
+   "A": {
+    "x": 120,
+    "y": 1078,
+    "r": 2
+   },
+   "B": {
+    "x": 157,
+    "y": 1080,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:30:52.226Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "b",
+     "a_row": 1078,
+     "a_col": 120,
+     "b_row": 1080,
+     "b_col": 157,
+     "half": 2,
+     "t": 1794270652226,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: homogeneity (spread 0.074 > max(1.5 x 0.036, 2 x 0.016)); sides (an outer row/column differs from the core)",
+      "B at current half 2: homogeneity (spread 0.213 > max(1.5 x 0.029, 2 x 0.020)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.009Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: homogeneity (spread 0.074 > max(1.5 x 0.036, 2 x 0.016)); sides (an outer row/column differs from the core)",
+         "B at current half 2: homogeneity (spread 0.213 > max(1.5 x 0.029, 2 x 0.020)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 270
+   }
+  },
+  {
+   "id": "t=1794270653685",
+   "image": "visaria_keval_076",
+   "type": "b",
+   "A": {
+    "x": 258,
+    "y": 1077,
+    "r": 2
+   },
+   "B": {
+    "x": 219,
+    "y": 1077,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:30:53.685Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "b",
+     "a_row": 1077,
+     "a_col": 258,
+     "b_row": 1077,
+     "b_col": 219,
+     "half": 2,
+     "t": 1794270653685,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: plateau (14% of step > 10%); homogeneity (spread 0.039 > max(1.5 x 0.017, 2 x 0.016)); sides (an outer row/column differs from the core)",
+      "B at current half 2: own side (reaches 37.0 px, transition ends 36.0)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.014Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: plateau (14% of step > 10%); homogeneity (spread 0.039 > max(1.5 x 0.017, 2 x 0.016)); sides (an outer row/column differs from the core)",
+         "B at current half 2: own side (reaches 37.0 px, transition ends 36.0)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 271
+   }
+  },
+  {
+   "id": "t=1794270664603",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 470,
+    "y": 994,
+    "r": 2
+   },
+   "B": {
+    "x": 468,
+    "y": 978,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:31:04.603Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 994,
+     "a_col": 470,
+     "b_row": 978,
+     "b_col": 468,
+     "half": 2,
+     "t": 1794270664603,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 2: own side (reaches 13.9 px, transition ends 12.0)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.020Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 2: own side (reaches 13.9 px, transition ends 12.0)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 272,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.4512,
+     "b_B": 8.871974,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270674946",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 229,
+    "y": 768,
+    "r": 2
+   },
+   "B": {
+    "x": 228,
+    "y": 782,
+    "r": 2
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:31:14.946Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 768,
+     "a_col": 229,
+     "b_row": 782,
+     "b_col": 228,
+     "half": 2,
+     "t": 1794270674946,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 2: homogeneity (spread 0.056 > max(1.5 x 0.032, 2 x 0.009))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.025Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 2: homogeneity (spread 0.056 > max(1.5 x 0.032, 2 x 0.009))"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 273,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.512398,
+     "b_B": 9.733841,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270689354",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 679,
+    "y": 337,
+    "r": 6
+   },
+   "B": {
+    "x": 679,
+    "y": 297,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:31:29.354Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 337,
+     "a_col": 679,
+     "b_row": 297,
+     "b_col": 679,
+     "half": 6,
+     "t": 1794270689354,
+     "major": true,
+     "patch_ok": true,
+     "patch_flags": [],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.030Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ]
+    },
+    "v0_index": 274,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.403376,
+     "b_B": 7.858997,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270694087",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 562,
+    "y": 355,
+    "r": 6
+   },
+   "B": {
+    "x": 565,
+    "y": 318,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:31:34.087Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 355,
+     "a_col": 562,
+     "b_row": 318,
+     "b_col": 565,
+     "half": 6,
+     "t": 1794270694087,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 6: homogeneity (spread 0.071 > max(1.5 x 0.020, 2 x 0.032)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.035Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 6: homogeneity (spread 0.071 > max(1.5 x 0.020, 2 x 0.032)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 275,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.425529,
+     "b_B": 7.871642,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270698147",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 459,
+    "y": 372,
+    "r": 6
+   },
+   "B": {
+    "x": 463,
+    "y": 335,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:31:38.147Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 372,
+     "a_col": 459,
+     "b_row": 335,
+     "b_col": 463,
+     "half": 6,
+     "t": 1794270698147,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 6: homogeneity (spread 0.160 > max(1.5 x 0.102, 2 x 0.015)); sides (an outer row/column differs from the core)",
+      "B at current half 6: homogeneity (spread 0.068 > max(1.5 x 0.026, 2 x 0.032)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.039Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 6: homogeneity (spread 0.160 > max(1.5 x 0.102, 2 x 0.015)); sides (an outer row/column differs from the core)",
+         "B at current half 6: homogeneity (spread 0.068 > max(1.5 x 0.026, 2 x 0.032)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 276,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.402878,
+     "b_B": 7.859523,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270701770",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 373,
+    "y": 382,
+    "r": 6
+   },
+   "B": {
+    "x": 374,
+    "y": 348,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:31:41.770Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 382,
+     "a_col": 373,
+     "b_row": 348,
+     "b_col": 374,
+     "half": 6,
+     "t": 1794270701770,
+     "major": true,
+     "patch_ok": true,
+     "patch_flags": [],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.044Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ]
+    },
+    "v0_index": 277,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.428163,
+     "b_B": 7.813763,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270707489",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 309,
+    "y": 390,
+    "r": 6
+   },
+   "B": {
+    "x": 314,
+    "y": 363,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:31:47.489Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 390,
+     "a_col": 309,
+     "b_row": 363,
+     "b_col": 314,
+     "half": 6,
+     "t": 1794270707489,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 6: sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.049Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 6: sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 278,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.496999,
+     "b_B": 7.748463,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270710465",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 314,
+    "y": 418,
+    "r": 6
+   },
+   "B": {
+    "x": 273,
+    "y": 428,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:31:50.465Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 418,
+     "a_col": 314,
+     "b_row": 428,
+     "b_col": 273,
+     "half": 6,
+     "t": 1794270710465,
+     "major": true,
+     "patch_ok": true,
+     "patch_flags": [],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.054Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ]
+    },
+    "v0_index": 279,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.474548,
+     "b_B": 7.734419,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270716018",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 308,
+    "y": 470,
+    "r": 6
+   },
+   "B": {
+    "x": 276,
+    "y": 475,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:31:56.018Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 470,
+     "a_col": 308,
+     "b_row": 475,
+     "b_col": 276,
+     "half": 6,
+     "t": 1794270716018,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 6: homogeneity (spread 0.107 > max(1.5 x 0.064, 2 x 0.015)); sides (an outer row/column differs from the core)",
+      "B at current half 6: sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.058Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 6: homogeneity (spread 0.107 > max(1.5 x 0.064, 2 x 0.015)); sides (an outer row/column differs from the core)",
+         "B at current half 6: sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 280,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.429283,
+     "b_B": 7.751098,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270720846",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 310,
+    "y": 506,
+    "r": 6
+   },
+   "B": {
+    "x": 278,
+    "y": 505,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:32:00.846Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 506,
+     "a_col": 310,
+     "b_row": 505,
+     "b_col": 278,
+     "half": 6,
+     "t": 1794270720846,
+     "major": true,
+     "patch_ok": true,
+     "patch_flags": [],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.063Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ]
+    },
+    "v0_index": 281,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 9.477387,
+     "b_B": 7.804007,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270738312",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 231,
+    "y": 1257,
+    "r": 6
+   },
+   "B": {
+    "x": 256,
+    "y": 1262,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:32:18.312Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 1257,
+     "a_col": 231,
+     "b_row": 1262,
+     "b_col": 256,
+     "half": 6,
+     "t": 1794270738312,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 6: homogeneity (spread 0.033 > max(1.5 x 0.011, 2 x 0.015)); sides (an outer row/column differs from the core)",
+      "B at current half 6: own side (reaches 18.4 px, transition ends 17.0); plateau (24% of step > 10%); homogeneity (spread 0.241 > max(1.5 x 0.155, 2 x 0.015)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.068Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 6: homogeneity (spread 0.033 > max(1.5 x 0.011, 2 x 0.015)); sides (an outer row/column differs from the core)",
+         "B at current half 6: own side (reaches 18.4 px, transition ends 17.0); plateau (24% of step > 10%); homogeneity (spread 0.241 > max(1.5 x 0.155, 2 x 0.015)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 282
+   }
+  },
+  {
+   "id": "t=1794270740265",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 192,
+    "y": 1256,
+    "r": 6
+   },
+   "B": {
+    "x": 191,
+    "y": 1231,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:32:20.265Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 1256,
+     "a_col": 192,
+     "b_row": 1231,
+     "b_col": 191,
+     "half": 6,
+     "t": 1794270740265,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 6: sides (an outer row/column differs from the core)",
+      "B at current half 6: plateau (16% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.073Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 6: sides (an outer row/column differs from the core)",
+         "B at current half 6: plateau (16% of step > 10%)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 283
+   }
+  },
+  {
+   "id": "t=1794270741800",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 137,
+    "y": 1256,
+    "r": 6
+   },
+   "B": {
+    "x": 140,
+    "y": 1235,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:32:21.800Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 1256,
+     "a_col": 137,
+     "b_row": 1235,
+     "b_col": 140,
+     "half": 6,
+     "t": 1794270741800,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 6: sides (an outer row/column differs from the core)",
+      "B at current half 6: own side (reaches 14.4 px, transition ends 19.5); homogeneity (spread 0.188 > max(1.5 x 0.008, 2 x 0.016)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.078Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 6: sides (an outer row/column differs from the core)",
+         "B at current half 6: own side (reaches 14.4 px, transition ends 19.5); homogeneity (spread 0.188 > max(1.5 x 0.008, 2 x 0.016)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 284
+   }
+  },
+  {
+   "id": "t=1794270750502",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 670,
+    "y": 1258,
+    "r": 6
+   },
+   "B": {
+    "x": 694,
+    "y": 1263,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:32:30.502Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 1258,
+     "a_col": 670,
+     "b_row": 1263,
+     "b_col": 694,
+     "half": 6,
+     "t": 1794270750502,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 6: own side (reaches 7.1 px, transition starts 7.5); homogeneity (spread 0.050 > max(1.5 x 0.012, 2 x 0.019)); sides (an outer row/column differs from the core)",
+      "B at current half 6: own side (reaches 17.4 px, transition ends 16.5); plateau (20% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.083Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 6: own side (reaches 7.1 px, transition starts 7.5); homogeneity (spread 0.050 > max(1.5 x 0.012, 2 x 0.019)); sides (an outer row/column differs from the core)",
+         "B at current half 6: own side (reaches 17.4 px, transition ends 16.5); plateau (20% of step > 10%)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 285
+   }
+  },
+  {
+   "id": "t=1794270757299",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 603,
+    "y": 1250,
+    "r": 6
+   },
+   "B": {
+    "x": 592,
+    "y": 1227,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:32:37.299Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 1250,
+     "a_col": 603,
+     "b_row": 1227,
+     "b_col": 592,
+     "half": 6,
+     "t": 1794270757299,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 6: own side (reaches 8.0 px, transition starts 9.0)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.088Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 6: own side (reaches 8.0 px, transition starts 9.0)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 286
+   }
+  },
+  {
+   "id": "t=1794270762926",
+   "image": "visaria_keval_076",
+   "type": "b",
+   "A": {
+    "x": 694,
+    "y": 1344,
+    "r": 6
+   },
+   "B": {
+    "x": 644,
+    "y": 1340,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:32:42.926Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "b",
+     "a_row": 1344,
+     "a_col": 694,
+     "b_row": 1340,
+     "b_col": 644,
+     "half": 6,
+     "t": 1794270762926,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 6: homogeneity (spread 0.087 > max(1.5 x 0.031, 2 x 0.013)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.093Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 6: homogeneity (spread 0.087 > max(1.5 x 0.031, 2 x 0.013)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 287
+   }
+  },
+  {
+   "id": "t=1794270766987",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 737,
+    "y": 1335,
+    "r": 6
+   },
+   "B": {
+    "x": 734,
+    "y": 1317,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:32:46.987Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 1335,
+     "a_col": 737,
+     "b_row": 1317,
+     "b_col": 734,
+     "half": 6,
+     "t": 1794270766987,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 6: homogeneity (spread 0.063 > max(1.5 x 0.032, 2 x 0.010)); sides (an outer row/column differs from the core)",
+      "B at current half 6: own side (reaches 11.3 px, transition ends 16.0); plateau (13% of step > 10%); homogeneity (spread 0.113 > max(1.5 x 0.025, 2 x 0.009)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.098Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 6: homogeneity (spread 0.063 > max(1.5 x 0.032, 2 x 0.010)); sides (an outer row/column differs from the core)",
+         "B at current half 6: own side (reaches 11.3 px, transition ends 16.0); plateau (13% of step > 10%); homogeneity (spread 0.113 > max(1.5 x 0.025, 2 x 0.009)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 288
+   }
+  },
+  {
+   "id": "t=1794270769283",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 571,
+    "y": 1340,
+    "r": 6
+   },
+   "B": {
+    "x": 577,
+    "y": 1317,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:32:49.283Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 1340,
+     "a_col": 571,
+     "b_row": 1317,
+     "b_col": 577,
+     "half": 6,
+     "t": 1794270769283,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 6: homogeneity (spread 0.052 > max(1.5 x 0.015, 2 x 0.012)); sides (an outer row/column differs from the core)",
+      "B at current half 6: own side (reaches 16.4 px, transition ends 21.0); homogeneity (spread 0.066 > max(1.5 x 0.037, 2 x 0.011)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.102Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 6: homogeneity (spread 0.052 > max(1.5 x 0.015, 2 x 0.012)); sides (an outer row/column differs from the core)",
+         "B at current half 6: own side (reaches 16.4 px, transition ends 21.0); homogeneity (spread 0.066 > max(1.5 x 0.037, 2 x 0.011)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 289
+   }
+  },
+  {
+   "id": "t=1794270771628",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 525,
+    "y": 1338,
+    "r": 6
+   },
+   "B": {
+    "x": 525,
+    "y": 1318,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:32:51.628Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 1338,
+     "a_col": 525,
+     "b_row": 1318,
+     "b_col": 525,
+     "half": 6,
+     "t": 1794270771628,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 6: own side (reaches 14.0 px, transition ends 15.5); homogeneity (spread 0.025 > max(1.5 x 0.008, 2 x 0.009)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.107Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 6: own side (reaches 14.0 px, transition ends 15.5); homogeneity (spread 0.025 > max(1.5 x 0.008, 2 x 0.009)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 290
+   }
+  },
+  {
+   "id": "t=1794270783374",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 325,
+    "y": 1346,
+    "r": 6
+   },
+   "B": {
+    "x": 324,
+    "y": 1322,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:33:03.374Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 1346,
+     "a_col": 325,
+     "b_row": 1322,
+     "b_col": 324,
+     "half": 6,
+     "t": 1794270783374,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 6: own side (reaches 17.8 px, transition ends 20.5); homogeneity (spread 0.025 > max(1.5 x 0.014, 2 x 0.009)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.111Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 6: own side (reaches 17.8 px, transition ends 20.5); homogeneity (spread 0.025 > max(1.5 x 0.014, 2 x 0.009)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 291
+   }
+  },
+  {
+   "id": "t=1794270784794",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 278,
+    "y": 1344,
+    "r": 6
+   },
+   "B": {
+    "x": 278,
+    "y": 1323,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:33:04.794Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 1344,
+     "a_col": 278,
+     "b_row": 1323,
+     "b_col": 278,
+     "half": 6,
+     "t": 1794270784794,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 6: own side (reaches 15.0 px, transition ends 18.0); homogeneity (spread 0.030 > max(1.5 x 0.011, 2 x 0.009)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.116Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 6: own side (reaches 15.0 px, transition ends 18.0); homogeneity (spread 0.030 > max(1.5 x 0.011, 2 x 0.009)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 292
+   }
+  },
+  {
+   "id": "t=1794270791959",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 65,
+    "y": 1350,
+    "r": 6
+   },
+   "B": {
+    "x": 65,
+    "y": 1333,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:33:11.959Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 1350,
+     "a_col": 65,
+     "b_row": 1333,
+     "b_col": 65,
+     "half": 6,
+     "t": 1794270791959,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 6: own side (reaches 11.0 px, transition ends 13.0); homogeneity (spread 0.032 > max(1.5 x 0.005, 2 x 0.009)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.121Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 6: own side (reaches 11.0 px, transition ends 13.0); homogeneity (spread 0.032 > max(1.5 x 0.005, 2 x 0.009)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 293
+   }
+  },
+  {
+   "id": "t=1794270794409",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 19,
+    "y": 1350,
+    "r": 6
+   },
+   "B": {
+    "x": 19,
+    "y": 1334,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:33:14.409Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 1350,
+     "a_col": 19,
+     "b_row": 1334,
+     "b_col": 19,
+     "half": 6,
+     "t": 1794270794409,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 6: homogeneity (spread 0.039 > max(1.5 x 0.025, 2 x 0.010))",
+      "B at current half 6: own side (reaches 10.0 px, transition ends 11.5); homogeneity (spread 0.036 > max(1.5 x 0.014, 2 x 0.009)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.126Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 6: homogeneity (spread 0.039 > max(1.5 x 0.025, 2 x 0.010))",
+         "B at current half 6: own side (reaches 10.0 px, transition ends 11.5); homogeneity (spread 0.036 > max(1.5 x 0.014, 2 x 0.009)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 294
+   }
+  },
+  {
+   "id": "t=1794270802386",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 115,
+    "y": 1343,
+    "r": 6
+   },
+   "B": {
+    "x": 115,
+    "y": 1317,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:33:22.386Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 1343,
+     "a_col": 115,
+     "b_row": 1317,
+     "b_col": 115,
+     "half": 6,
+     "t": 1794270802386,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 6: own side (reaches 6.0 px, transition starts 7.5); homogeneity (spread 0.047 > max(1.5 x 0.025, 2 x 0.009))",
+      "B at current half 6: homogeneity (spread 0.154 > max(1.5 x 0.014, 2 x 0.016)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.130Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 6: own side (reaches 6.0 px, transition starts 7.5); homogeneity (spread 0.047 > max(1.5 x 0.025, 2 x 0.009))",
+         "B at current half 6: homogeneity (spread 0.154 > max(1.5 x 0.014, 2 x 0.016)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 295
+   }
+  },
+  {
+   "id": "t=1794270813791",
+   "image": "visaria_keval_076",
+   "type": "b",
+   "A": {
+    "x": 14,
+    "y": 545,
+    "r": 6
+   },
+   "B": {
+    "x": 20,
+    "y": 580,
+    "r": 6
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:33:33.791Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "b",
+     "a_row": 545,
+     "a_col": 14,
+     "b_row": 580,
+     "b_col": 20,
+     "half": 6,
+     "t": 1794270813791,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 6: own side (reaches 6.9 px, transition starts 2.0); plateau (27% of step > 10%); homogeneity (spread 0.330 > max(1.5 x 0.064, 2 x 0.015)); sides (an outer row/column differs from the core)",
+      "B at current half 6: sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.136Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 6: own side (reaches 6.9 px, transition starts 2.0); plateau (27% of step > 10%); homogeneity (spread 0.330 > max(1.5 x 0.064, 2 x 0.015)); sides (an outer row/column differs from the core)",
+         "B at current half 6: sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 296
+   }
+  },
+  {
+   "id": "t=1794270826338",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 53,
+    "y": 486,
+    "r": 3
+   },
+   "B": {
+    "x": 64,
+    "y": 483,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:33:46.338Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 486,
+     "a_col": 53,
+     "b_row": 483,
+     "b_col": 64,
+     "half": 3,
+     "t": 1794270826338,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: own side (reaches 3.7 px, transition starts 1.0); homogeneity (spread 0.560 > max(1.5 x 0.235, 2 x 0.017)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.141Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: own side (reaches 3.7 px, transition starts 1.0); homogeneity (spread 0.560 > max(1.5 x 0.235, 2 x 0.017)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 297
+   }
+  },
+  {
+   "id": "t=1794270833056",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 58,
+    "y": 244,
+    "r": 3
+   },
+   "B": {
+    "x": 73,
+    "y": 240,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:33:53.056Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 244,
+     "a_col": 58,
+     "b_row": 240,
+     "b_col": 73,
+     "half": 3,
+     "t": 1794270833056,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: own side (reaches 3.7 px, transition starts 1.0); plateau (63% of step > 10%); homogeneity (spread 0.798 > max(1.5 x 0.273, 2 x 0.018)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.147Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: own side (reaches 3.7 px, transition starts 1.0); plateau (63% of step > 10%); homogeneity (spread 0.798 > max(1.5 x 0.273, 2 x 0.018)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 298
+   }
+  },
+  {
+   "id": "t=1794270835509",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 350,
+    "y": 349,
+    "r": 3
+   },
+   "B": {
+    "x": 347,
+    "y": 338,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:33:55.509Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 349,
+     "a_col": 350,
+     "b_row": 338,
+     "b_col": 347,
+     "half": 3,
+     "t": 1794270835509,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 3: own side (reaches 7.7 px, transition ends 8.5)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.152Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 3: own side (reaches 7.7 px, transition ends 8.5)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 299
+   }
+  },
+  {
+   "id": "t=1794270837017",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 414,
+    "y": 339,
+    "r": 3
+   },
+   "B": {
+    "x": 412,
+    "y": 328,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:33:57.017Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 339,
+     "a_col": 414,
+     "b_row": 328,
+     "b_col": 412,
+     "half": 3,
+     "t": 1794270837017,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: homogeneity (spread 0.082 > max(1.5 x 0.047, 2 x 0.033))",
+      "B at current half 3: own side (reaches 7.7 px, transition ends 10.0); homogeneity (spread 0.105 > max(1.5 x 0.035, 2 x 0.023)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.157Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: homogeneity (spread 0.082 > max(1.5 x 0.047, 2 x 0.033))",
+         "B at current half 3: own side (reaches 7.7 px, transition ends 10.0); homogeneity (spread 0.105 > max(1.5 x 0.035, 2 x 0.023)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 300
+   }
+  },
+  {
+   "id": "t=1794270838827",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 259,
+    "y": 368,
+    "r": 3
+   },
+   "B": {
+    "x": 257,
+    "y": 352,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:33:58.827Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 368,
+     "a_col": 259,
+     "b_row": 352,
+     "b_col": 257,
+     "half": 3,
+     "t": 1794270838827,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 3: own side (reaches 12.8 px, transition ends 13.0); plateau (14% of step > 10%); homogeneity (spread 0.061 > max(1.5 x 0.024, 2 x 0.028))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.163Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 3: own side (reaches 12.8 px, transition ends 13.0); plateau (14% of step > 10%); homogeneity (spread 0.061 > max(1.5 x 0.024, 2 x 0.028))"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 301
+   }
+  },
+  {
+   "id": "t=1794270840937",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 199,
+    "y": 449,
+    "r": 3
+   },
+   "B": {
+    "x": 220,
+    "y": 448,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:34:00.937Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 449,
+     "a_col": 199,
+     "b_row": 448,
+     "b_col": 220,
+     "half": 3,
+     "t": 1794270840937,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: own side (reaches 3.1 px, transition starts 5.0); plateau (34% of step > 10%); sides (an outer row/column differs from the core)",
+      "B at current half 3: plateau (38% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.169Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: own side (reaches 3.1 px, transition starts 5.0); plateau (34% of step > 10%); sides (an outer row/column differs from the core)",
+         "B at current half 3: plateau (38% of step > 10%)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 302
+   }
+  },
+  {
+   "id": "t=1794270846252",
+   "image": "visaria_keval_076",
+   "type": "b",
+   "A": {
+    "x": 196,
+    "y": 494,
+    "r": 3
+   },
+   "B": {
+    "x": 222,
+    "y": 497,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:34:06.252Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "b",
+     "a_row": 494,
+     "a_col": 196,
+     "b_row": 497,
+     "b_col": 222,
+     "half": 3,
+     "t": 1794270846252,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: own side (reaches 3.3 px, transition starts 1.0); plateau (31% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.174Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: own side (reaches 3.3 px, transition starts 1.0); plateau (31% of step > 10%)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 303
+   }
+  },
+  {
+   "id": "t=1794270864496",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 308,
+    "y": 642,
+    "r": 3
+   },
+   "B": {
+    "x": 308,
+    "y": 614,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:34:24.496Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 642,
+     "a_col": 308,
+     "b_row": 614,
+     "b_col": 308,
+     "half": 3,
+     "t": 1794270864496,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: homogeneity (spread 0.077 > max(1.5 x 0.041, 2 x 0.008)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.179Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: homogeneity (spread 0.077 > max(1.5 x 0.041, 2 x 0.008)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 304,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 10.599105,
+     "b_B": 8.998009,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270878746",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 444,
+    "y": 666,
+    "r": 4
+   },
+   "B": {
+    "x": 484,
+    "y": 672,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:34:38.746Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 666,
+     "a_col": 444,
+     "b_row": 672,
+     "b_col": 484,
+     "half": 3,
+     "t": 1794270878746,
+     "half_a": 4,
+     "half_b": 3,
+     "edits": [
+      {
+       "op": "autosize",
+       "at": "2026-11-10T04:52:24.185Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "half_a": null,
+        "half_b": null
+       },
+       "after": {
+        "half_a": 4,
+        "half_b": 3
+       },
+       "criteria": "spec+sides",
+       "stopped_by": {
+        "A": "reached max",
+        "B": "plateau"
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.185Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ],
+     "patch_ok": true,
+     "patch_flags": []
+    },
+    "v0_index": 305
+   }
+  },
+  {
+   "id": "t=1794270879922",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 385,
+    "y": 664,
+    "r": 3
+   },
+   "B": {
+    "x": 381,
+    "y": 641,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:34:39.922Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 664,
+     "a_col": 385,
+     "b_row": 641,
+     "b_col": 381,
+     "half": 3,
+     "t": 1794270879922,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: own side (reaches 3.5 px, transition starts 1.5); plateau (16% of step > 10%)",
+      "B at current half 3: plateau (87% of step > 10%); homogeneity (spread 0.088 > max(1.5 x 0.024, 2 x 0.028)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.190Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: own side (reaches 3.5 px, transition starts 1.5); plateau (16% of step > 10%)",
+         "B at current half 3: plateau (87% of step > 10%); homogeneity (spread 0.088 > max(1.5 x 0.024, 2 x 0.028)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 306
+   }
+  },
+  {
+   "id": "t=1794270880883",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 582,
+    "y": 685,
+    "r": 3
+   },
+   "B": {
+    "x": 591,
+    "y": 660,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:34:40.883Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 685,
+     "a_col": 582,
+     "b_row": 660,
+     "b_col": 591,
+     "half": 3,
+     "t": 1794270880883,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: plateau (13% of step > 10%)",
+      "B at current half 3: plateau (12% of step > 10%); homogeneity (spread 0.076 > max(1.5 x 0.044, 2 x 0.031))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.196Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: plateau (13% of step > 10%)",
+         "B at current half 3: plateau (12% of step > 10%); homogeneity (spread 0.076 > max(1.5 x 0.044, 2 x 0.031))"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 307
+   }
+  },
+  {
+   "id": "t=1794270881792",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 635,
+    "y": 695,
+    "r": 3
+   },
+   "B": {
+    "x": 654,
+    "y": 703,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:34:41.792Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 695,
+     "a_col": 635,
+     "b_row": 703,
+     "b_col": 654,
+     "half": 3,
+     "t": 1794270881792,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 3: own side (reaches 16.7 px, transition ends 19.5)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.202Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 3: own side (reaches 16.7 px, transition ends 19.5)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 308
+   }
+  },
+  {
+   "id": "t=1794270884713",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 229,
+    "y": 665,
+    "r": 3
+   },
+   "B": {
+    "x": 238,
+    "y": 640,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:34:44.713Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 665,
+     "a_col": 229,
+     "b_row": 640,
+     "b_col": 238,
+     "half": 3,
+     "t": 1794270884713,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: plateau (22% of step > 10%)",
+      "B at current half 3: own side (reaches 22.7 px, transition ends 25.0); plateau (69% of step > 10%); homogeneity (spread 0.103 > max(1.5 x 0.043, 2 x 0.028)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.207Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: plateau (22% of step > 10%)",
+         "B at current half 3: own side (reaches 22.7 px, transition ends 25.0); plateau (69% of step > 10%); homogeneity (spread 0.103 > max(1.5 x 0.043, 2 x 0.028)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 309
+   }
+  },
+  {
+   "id": "t=1794270889099",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 177,
+    "y": 670,
+    "r": 3
+   },
+   "B": {
+    "x": 170,
+    "y": 647,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:34:49.099Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 670,
+     "a_col": 177,
+     "b_row": 647,
+     "b_col": 170,
+     "half": 3,
+     "t": 1794270889099,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: own side (reaches 3.7 px, transition starts 4.0); plateau (45% of step > 10%); sides (an outer row/column differs from the core)",
+      "B at current half 3: own side (reaches 20.3 px, transition ends 23.0)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.212Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: own side (reaches 3.7 px, transition starts 4.0); plateau (45% of step > 10%); sides (an outer row/column differs from the core)",
+         "B at current half 3: own side (reaches 20.3 px, transition ends 23.0)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 310
+   }
+  },
+  {
+   "id": "t=1794270890444",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 156,
+    "y": 669,
+    "r": 3
+   },
+   "B": {
+    "x": 128,
+    "y": 673,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:34:50.444Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 669,
+     "a_col": 156,
+     "b_row": 673,
+     "b_col": 128,
+     "half": 3,
+     "t": 1794270890444,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 3: plateau (20% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.218Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 3: plateau (20% of step > 10%)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 311
+   }
+  },
+  {
+   "id": "t=1794270899940",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 740,
+    "y": 402,
+    "r": 3
+   },
+   "B": {
+    "x": 721,
+    "y": 407,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:34:59.940Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 402,
+     "a_col": 740,
+     "b_row": 407,
+     "b_col": 721,
+     "half": 3,
+     "t": 1794270899940,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: own side (reaches 3.7 px, transition starts 4.0); plateau (564% of step > 10%); homogeneity (spread 0.384 > max(1.5 x 0.118, 2 x 0.016)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.224Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: own side (reaches 3.7 px, transition starts 4.0); plateau (564% of step > 10%); homogeneity (spread 0.384 > max(1.5 x 0.118, 2 x 0.016)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 312
+   }
+  },
+  {
+   "id": "t=1794270901386",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 749,
+    "y": 516,
+    "r": 3
+   },
+   "B": {
+    "x": 719,
+    "y": 520,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:35:01.386Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 516,
+     "a_col": 749,
+     "b_row": 520,
+     "b_col": 719,
+     "half": 3,
+     "t": 1794270901386,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: own side (reaches 3.4 px, transition starts 1.5); plateau (73% of step > 10%); homogeneity (spread 0.122 > max(1.5 x 0.046, 2 x 0.014)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.229Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: own side (reaches 3.4 px, transition starts 1.5); plateau (73% of step > 10%); homogeneity (spread 0.122 > max(1.5 x 0.046, 2 x 0.014)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 313
+   }
+  },
+  {
+   "id": "t=1794270906557",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 726,
+    "y": 554,
+    "r": 3
+   },
+   "B": {
+    "x": 691,
+    "y": 535,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:35:06.557Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 554,
+     "a_col": 726,
+     "b_row": 535,
+     "b_col": 691,
+     "half": 3,
+     "t": 1794270906557,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: own side (reaches 4.1 px, transition starts 2.5); homogeneity (spread 0.070 > max(1.5 x 0.041, 2 x 0.015))",
+      "B at current half 3: own side (reaches 35.8 px, transition ends 35.5); plateau (27% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.235Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: own side (reaches 4.1 px, transition starts 2.5); homogeneity (spread 0.070 > max(1.5 x 0.041, 2 x 0.015))",
+         "B at current half 3: own side (reaches 35.8 px, transition ends 35.5); plateau (27% of step > 10%)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 314
+   }
+  },
+  {
+   "id": "t=1794270910877",
+   "image": "visaria_keval_076",
+   "type": "b",
+   "A": {
+    "x": 328,
+    "y": 474,
+    "r": 3
+   },
+   "B": {
+    "x": 354,
+    "y": 474,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:35:10.877Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "b",
+     "a_row": 474,
+     "a_col": 328,
+     "b_row": 474,
+     "b_col": 354,
+     "half": 3,
+     "t": 1794270910877,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: plateau (46% of step > 10%); homogeneity (spread 0.224 > max(1.5 x 0.097, 2 x 0.014)); sides (an outer row/column differs from the core)",
+      "B at current half 3: own side (reaches 23.0 px, transition ends 24.0); plateau (27% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.240Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: plateau (46% of step > 10%); homogeneity (spread 0.224 > max(1.5 x 0.097, 2 x 0.014)); sides (an outer row/column differs from the core)",
+         "B at current half 3: own side (reaches 23.0 px, transition ends 24.0); plateau (27% of step > 10%)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 315
+   }
+  },
+  {
+   "id": "t=1794270912532",
+   "image": "visaria_keval_076",
+   "type": "b",
+   "A": {
+    "x": 329,
+    "y": 426,
+    "r": 3
+   },
+   "B": {
+    "x": 352,
+    "y": 424,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:35:12.532Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "b",
+     "a_row": 426,
+     "a_col": 329,
+     "b_row": 424,
+     "b_col": 352,
+     "half": 3,
+     "t": 1794270912532,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: plateau (87% of step > 10%); homogeneity (spread 0.338 > max(1.5 x 0.218, 2 x 0.015)); sides (an outer row/column differs from the core)",
+      "B at current half 3: plateau (28% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.246Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: plateau (87% of step > 10%); homogeneity (spread 0.338 > max(1.5 x 0.218, 2 x 0.015)); sides (an outer row/column differs from the core)",
+         "B at current half 3: plateau (28% of step > 10%)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 316
+   }
+  },
+  {
+   "id": "t=1794270914026",
+   "image": "visaria_keval_076",
+   "type": "b",
+   "A": {
+    "x": 327,
+    "y": 392,
+    "r": 3
+   },
+   "B": {
+    "x": 366,
+    "y": 400,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:35:14.026Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "b",
+     "a_row": 392,
+     "a_col": 327,
+     "b_row": 400,
+     "b_col": 366,
+     "half": 3,
+     "t": 1794270914026,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: plateau (108% of step > 10%); homogeneity (spread 0.152 > max(1.5 x 0.061, 2 x 0.015)); sides (an outer row/column differs from the core)",
+      "B at current half 3: plateau (27% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.251Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: plateau (108% of step > 10%); homogeneity (spread 0.152 > max(1.5 x 0.061, 2 x 0.015)); sides (an outer row/column differs from the core)",
+         "B at current half 3: plateau (27% of step > 10%)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 317
+   }
+  },
+  {
+   "id": "t=1794270926572",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 125,
+    "y": 312,
+    "r": 3
+   },
+   "B": {
+    "x": 149,
+    "y": 312,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:35:26.572Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 312,
+     "a_col": 125,
+     "b_row": 312,
+     "b_col": 149,
+     "half": 3,
+     "t": 1794270926572,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: plateau (19% of step > 10%)",
+      "B at current half 3: own side (reaches 21.0 px, transition ends 22.0); plateau (39% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.257Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: plateau (19% of step > 10%)",
+         "B at current half 3: own side (reaches 21.0 px, transition ends 22.0); plateau (39% of step > 10%)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 318
+   }
+  },
+  {
+   "id": "t=1794270928148",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 167,
+    "y": 352,
+    "r": 3
+   },
+   "B": {
+    "x": 185,
+    "y": 348,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:35:28.148Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 352,
+     "a_col": 167,
+     "b_row": 348,
+     "b_col": 185,
+     "half": 3,
+     "t": 1794270928148,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: own side (reaches 3.6 px, transition starts 1.5); plateau (42% of step > 10%); homogeneity (spread 0.144 > max(1.5 x 0.026, 2 x 0.041)); sides (an outer row/column differs from the core)",
+      "B at current half 3: sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.263Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: own side (reaches 3.6 px, transition starts 1.5); plateau (42% of step > 10%); homogeneity (spread 0.144 > max(1.5 x 0.026, 2 x 0.041)); sides (an outer row/column differs from the core)",
+         "B at current half 3: sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 319
+   }
+  },
+  {
+   "id": "t=1794270936283",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 161,
+    "y": 297,
+    "r": 3
+   },
+   "B": {
+    "x": 178,
+    "y": 296,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:35:36.283Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 297,
+     "a_col": 161,
+     "b_row": 296,
+     "b_col": 178,
+     "half": 3,
+     "t": 1794270936283,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: own side (reaches 3.2 px, transition starts 1.0); plateau (17% of step > 10%); homogeneity (spread 0.165 > max(1.5 x 0.090, 2 x 0.035)); sides (an outer row/column differs from the core)",
+      "B at current half 3: own side (reaches 13.9 px, transition ends 13.0)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.268Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: own side (reaches 3.2 px, transition starts 1.0); plateau (17% of step > 10%); homogeneity (spread 0.165 > max(1.5 x 0.090, 2 x 0.035)); sides (an outer row/column differs from the core)",
+         "B at current half 3: own side (reaches 13.9 px, transition ends 13.0)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 320
+   }
+  },
+  {
+   "id": "t=1794270939264",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 195,
+    "y": 239,
+    "r": 3
+   },
+   "B": {
+    "x": 181,
+    "y": 238,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:35:39.264Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 239,
+     "a_col": 195,
+     "b_row": 238,
+     "b_col": 181,
+     "half": 3,
+     "t": 1794270939264,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 3: own side (reaches 10.8 px, transition ends 11.5)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.273Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 3: own side (reaches 10.8 px, transition ends 11.5)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 321
+   }
+  },
+  {
+   "id": "t=1794270940994",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 122,
+    "y": 239,
+    "r": 3
+   },
+   "B": {
+    "x": 147,
+    "y": 241,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:35:40.994Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 239,
+     "a_col": 122,
+     "b_row": 241,
+     "b_col": 147,
+     "half": 3,
+     "t": 1794270940994,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 3: own side (reaches 21.9 px, transition ends 22.5); plateau (61% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.278Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 3: own side (reaches 21.9 px, transition ends 22.5); plateau (61% of step > 10%)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 322
+   }
+  },
+  {
+   "id": "t=1794270950224",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 251,
+    "y": 826,
+    "r": 3
+   },
+   "B": {
+    "x": 242,
+    "y": 817,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:35:50.224Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 826,
+     "a_col": 251,
+     "b_row": 817,
+     "b_col": 242,
+     "half": 3,
+     "t": 1794270950224,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: own side (reaches 4.2 px, transition starts 5.5)",
+      "B at current half 3: own side (reaches 8.5 px, transition ends 11.0); homogeneity (spread 0.098 > max(1.5 x 0.025, 2 x 0.008)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.283Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: own side (reaches 4.2 px, transition starts 5.5)",
+         "B at current half 3: own side (reaches 8.5 px, transition ends 11.0); homogeneity (spread 0.098 > max(1.5 x 0.025, 2 x 0.008)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 323
+   }
+  },
+  {
+   "id": "t=1794270955342",
+   "image": "visaria_keval_076",
+   "type": "b",
+   "A": {
+    "x": 198,
+    "y": 846,
+    "r": 3
+   },
+   "B": {
+    "x": 199,
+    "y": 867,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:35:55.342Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "b",
+     "a_row": 846,
+     "a_col": 198,
+     "b_row": 867,
+     "b_col": 199,
+     "half": 3,
+     "t": 1794270955342,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: plateau (23% of step > 10%); homogeneity (spread 0.042 > max(1.5 x 0.014, 2 x 0.015)); sides (an outer row/column differs from the core)",
+      "B at current half 3: own side (reaches 17.9 px, transition ends 20.0); plateau (59% of step > 10%); homogeneity (spread 0.303 > max(1.5 x 0.036, 2 x 0.014)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.288Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: plateau (23% of step > 10%); homogeneity (spread 0.042 > max(1.5 x 0.014, 2 x 0.015)); sides (an outer row/column differs from the core)",
+         "B at current half 3: own side (reaches 17.9 px, transition ends 20.0); plateau (59% of step > 10%); homogeneity (spread 0.303 > max(1.5 x 0.036, 2 x 0.014)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 324
+   }
+  },
+  {
+   "id": "t=1794270957144",
+   "image": "visaria_keval_076",
+   "type": "b",
+   "A": {
+    "x": 148,
+    "y": 850,
+    "r": 3
+   },
+   "B": {
+    "x": 156,
+    "y": 875,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:35:57.144Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "b",
+     "a_row": 850,
+     "a_col": 148,
+     "b_row": 875,
+     "b_col": 156,
+     "half": 3,
+     "t": 1794270957144,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: own side (reaches 3.8 px, transition starts 1.5); plateau (19% of step > 10%); homogeneity (spread 0.077 > max(1.5 x 0.037, 2 x 0.014)); sides (an outer row/column differs from the core)",
+      "B at current half 3: homogeneity (spread 0.093 > max(1.5 x 0.023, 2 x 0.015)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.293Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: own side (reaches 3.8 px, transition starts 1.5); plateau (19% of step > 10%); homogeneity (spread 0.077 > max(1.5 x 0.037, 2 x 0.014)); sides (an outer row/column differs from the core)",
+         "B at current half 3: homogeneity (spread 0.093 > max(1.5 x 0.023, 2 x 0.015)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 325
+   }
+  },
+  {
+   "id": "t=1794270959598",
+   "image": "visaria_keval_076",
+   "type": "b",
+   "A": {
+    "x": 389,
+    "y": 844,
+    "r": 3
+   },
+   "B": {
+    "x": 392,
+    "y": 872,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:35:59.598Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "b",
+     "a_row": 844,
+     "a_col": 389,
+     "b_row": 872,
+     "b_col": 392,
+     "half": 3,
+     "t": 1794270959598,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: own side (reaches 3.3 px, transition starts 2.0); plateau (12% of step > 10%); homogeneity (spread 0.055 > max(1.5 x 0.036, 2 x 0.015)); sides (an outer row/column differs from the core)",
+      "B at current half 3: plateau (29% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.298Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: own side (reaches 3.3 px, transition starts 2.0); plateau (12% of step > 10%); homogeneity (spread 0.055 > max(1.5 x 0.036, 2 x 0.015)); sides (an outer row/column differs from the core)",
+         "B at current half 3: plateau (29% of step > 10%)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 326
+   }
+  },
+  {
+   "id": "t=1794270960874",
+   "image": "visaria_keval_076",
+   "type": "b",
+   "A": {
+    "x": 447,
+    "y": 845,
+    "r": 3
+   },
+   "B": {
+    "x": 452,
+    "y": 870,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:36:00.874Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "b",
+     "a_row": 845,
+     "a_col": 447,
+     "b_row": 870,
+     "b_col": 452,
+     "half": 3,
+     "t": 1794270960874,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: own side (reaches 3.5 px, transition starts 3.5); plateau (39% of step > 10%)",
+      "B at current half 3: homogeneity (spread 0.159 > max(1.5 x 0.051, 2 x 0.017)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.303Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: own side (reaches 3.5 px, transition starts 3.5); plateau (39% of step > 10%)",
+         "B at current half 3: homogeneity (spread 0.159 > max(1.5 x 0.051, 2 x 0.017)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 327
+   }
+  },
+  {
+   "id": "t=1794270970471",
+   "image": "visaria_keval_076",
+   "type": "i",
+   "A": {
+    "x": 604,
+    "y": 858,
+    "r": 3
+   },
+   "B": {
+    "x": 582,
+    "y": 856,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:36:10.471Z",
+   "note": "",
+   "schema_version": "1.2",
+   "lit_end": "A",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 858,
+     "a_col": 604,
+     "b_row": 856,
+     "b_col": 582,
+     "half": 3,
+     "t": 1794270970471,
+     "major": true,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: homogeneity (spread 0.084 > max(1.5 x 0.055, 2 x 0.021))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.308Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: homogeneity (spread 0.084 > max(1.5 x 0.055, 2 x 0.021))"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 328,
+    "lit_end": {
+     "rule": "brighter b(P(lI))",
+     "b_A": 8.780332,
+     "b_B": 8.096964,
+     "agrees_guide_A_lit": true
+    }
+   }
+  },
+  {
+   "id": "t=1794270974825",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 656,
+    "y": 824,
+    "r": 4
+   },
+   "B": {
+    "x": 634,
+    "y": 827,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:36:14.825Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 824,
+     "a_col": 656,
+     "b_row": 827,
+     "b_col": 634,
+     "half": 3,
+     "t": 1794270974825,
+     "half_a": 4,
+     "half_b": 3,
+     "edits": [
+      {
+       "op": "autosize",
+       "at": "2026-11-10T04:52:24.313Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "half_a": null,
+        "half_b": null
+       },
+       "after": {
+        "half_a": 4,
+        "half_b": 3
+       },
+       "criteria": "spec+sides",
+       "stopped_by": {
+        "A": "reached max",
+        "B": "sides"
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.313Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ],
+     "patch_ok": true,
+     "patch_flags": []
+    },
+    "v0_index": 329
+   }
+  },
+  {
+   "id": "t=1794270975806",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 652,
+    "y": 769,
+    "r": 3
+   },
+   "B": {
+    "x": 621,
+    "y": 768,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:36:15.806Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 769,
+     "a_col": 652,
+     "b_row": 768,
+     "b_col": 621,
+     "half": 3,
+     "t": 1794270975806,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 3: plateau (20% of step > 10%)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.318Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 3: plateau (20% of step > 10%)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 330
+   }
+  },
+  {
+   "id": "t=1794270977037",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 655,
+    "y": 733,
+    "r": 3
+   },
+   "B": {
+    "x": 615,
+    "y": 723,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:36:17.037Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 733,
+     "a_col": 655,
+     "b_row": 723,
+     "b_col": 615,
+     "half": 3,
+     "t": 1794270977037,
+     "patch_ok": true,
+     "patch_flags": [],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.324Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ]
+    },
+    "v0_index": 331
+   }
+  },
+  {
+   "id": "t=1794270978775",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 557,
+    "y": 724,
+    "r": 3
+   },
+   "B": {
+    "x": 573,
+    "y": 724,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:36:18.775Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 724,
+     "a_col": 557,
+     "b_row": 724,
+     "b_col": 573,
+     "half": 3,
+     "t": 1794270978775,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: own side (reaches 3.0 px, transition starts 4.5)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.328Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: own side (reaches 3.0 px, transition starts 4.5)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 332
+   }
+  },
+  {
+   "id": "t=1794270980087",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 559,
+    "y": 771,
+    "r": 3
+   },
+   "B": {
+    "x": 575,
+    "y": 773,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:36:20.087Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 771,
+     "a_col": 559,
+     "b_row": 773,
+     "b_col": 575,
+     "half": 3,
+     "t": 1794270980087,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: own side (reaches 3.3 px, transition starts 5.0)",
+      "B at current half 3: homogeneity (spread 0.161 > max(1.5 x 0.072, 2 x 0.024)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.334Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: own side (reaches 3.3 px, transition starts 5.0)",
+         "B at current half 3: homogeneity (spread 0.161 > max(1.5 x 0.072, 2 x 0.024)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 333
+   }
+  },
+  {
+   "id": "t=1794270981225",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 560,
+    "y": 813,
+    "r": 3
+   },
+   "B": {
+    "x": 578,
+    "y": 816,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:36:21.225Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 813,
+     "a_col": 560,
+     "b_row": 816,
+     "b_col": 578,
+     "half": 3,
+     "t": 1794270981225,
+     "half_a": 3,
+     "half_b": 4,
+     "edits": [
+      {
+       "op": "autosize",
+       "at": "2026-11-10T04:52:24.339Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "half_a": null,
+        "half_b": null
+       },
+       "after": {
+        "half_a": 3,
+        "half_b": 4
+       },
+       "criteria": "spec+sides",
+       "stopped_by": {
+        "A": "own side",
+        "B": "reached max"
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.339Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ],
+     "patch_ok": true,
+     "patch_flags": []
+    },
+    "v0_index": 334
+   }
+  },
+  {
+   "id": "t=1794270983030",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 485,
+    "y": 822,
+    "r": 3
+   },
+   "B": {
+    "x": 443,
+    "y": 823,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:36:23.030Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 822,
+     "a_col": 485,
+     "b_row": 823,
+     "b_col": 443,
+     "half": 3,
+     "t": 1794270983030,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: own side (reaches 3.1 px, transition starts 1.5); homogeneity (spread 0.139 > max(1.5 x 0.042, 2 x 0.016)); sides (an outer row/column differs from the core)",
+      "B at current half 3: homogeneity (spread 0.056 > max(1.5 x 0.018, 2 x 0.015)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.344Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: own side (reaches 3.1 px, transition starts 1.5); homogeneity (spread 0.139 > max(1.5 x 0.042, 2 x 0.016)); sides (an outer row/column differs from the core)",
+         "B at current half 3: homogeneity (spread 0.056 > max(1.5 x 0.018, 2 x 0.015)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 335
+   }
+  },
+  {
+   "id": "t=1794270985008",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 484,
+    "y": 802,
+    "r": 3
+   },
+   "B": {
+    "x": 433,
+    "y": 803,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:36:25.008Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 802,
+     "a_col": 484,
+     "b_row": 803,
+     "b_col": 433,
+     "half": 3,
+     "t": 1794270985008,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: plateau (10% of step > 10%); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.350Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: plateau (10% of step > 10%); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 336
+   }
+  },
+  {
+   "id": "t=1794270986728",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 474,
+    "y": 735,
+    "r": 3
+   },
+   "B": {
+    "x": 442,
+    "y": 736,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:36:26.728Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 735,
+     "a_col": 474,
+     "b_row": 736,
+     "b_col": 442,
+     "half": 3,
+     "t": 1794270986728,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: homogeneity (spread 0.094 > max(1.5 x 0.036, 2 x 0.026))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.355Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: homogeneity (spread 0.094 > max(1.5 x 0.036, 2 x 0.026))"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 337
+   }
+  },
+  {
+   "id": "t=1794270991526",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 349,
+    "y": 703,
+    "r": 4
+   },
+   "B": {
+    "x": 389,
+    "y": 703,
+    "r": 4
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:36:31.526Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 703,
+     "a_col": 349,
+     "b_row": 703,
+     "b_col": 389,
+     "half": 4,
+     "t": 1794270991526,
+     "edits": [
+      {
+       "op": "autosize",
+       "at": "2026-11-10T04:52:24.361Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "half": 3
+       },
+       "after": {
+        "half": 4
+       },
+       "criteria": "spec+sides",
+       "stopped_by": {
+        "A": "reached max",
+        "B": "reached max"
+       }
+      },
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.361Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ],
+     "patch_ok": true,
+     "patch_flags": []
+    },
+    "v0_index": 338
+   }
+  },
+  {
+   "id": "t=1794270993093",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 419,
+    "y": 667,
+    "r": 3
+   },
+   "B": {
+    "x": 426,
+    "y": 693,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:36:33.093Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 667,
+     "a_col": 419,
+     "b_row": 693,
+     "b_col": 426,
+     "half": 3,
+     "t": 1794270993093,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: own side (reaches 3.7 px, transition starts 5.5)",
+      "B at current half 3: plateau (16% of step > 10%); homogeneity (spread 0.070 > max(1.5 x 0.044, 2 x 0.024))"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.368Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: own side (reaches 3.7 px, transition starts 5.5)",
+         "B at current half 3: plateau (16% of step > 10%); homogeneity (spread 0.070 > max(1.5 x 0.044, 2 x 0.024))"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 339
+   }
+  },
+  {
+   "id": "t=1794270995288",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 611,
+    "y": 693,
+    "r": 3
+   },
+   "B": {
+    "x": 596,
+    "y": 724,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:36:35.288Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 693,
+     "a_col": 611,
+     "b_row": 724,
+     "b_col": 596,
+     "half": 3,
+     "t": 1794270995288,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: own side (reaches 4.0 px, transition starts 2.5)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.374Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: own side (reaches 4.0 px, transition starts 2.5)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 340
+   }
+  },
+  {
+   "id": "t=1794270999872",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 213,
+    "y": 666,
+    "r": 3
+   },
+   "B": {
+    "x": 215,
+    "y": 699,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:36:39.872Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 666,
+     "a_col": 213,
+     "b_row": 699,
+     "b_col": 215,
+     "half": 3,
+     "t": 1794270999872,
+     "patch_ok": true,
+     "patch_flags": [],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.381Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": true,
+        "patch_flags": []
+       }
+      }
+     ]
+    },
+    "v0_index": 341
+   }
+  },
+  {
+   "id": "t=1794271033886",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 353,
+    "y": 1156,
+    "r": 3
+   },
+   "B": {
+    "x": 370,
+    "y": 1159,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:37:13.886Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 1156,
+     "a_col": 353,
+     "b_row": 1159,
+     "b_col": 370,
+     "half": 3,
+     "t": 1794271033886,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 3: homogeneity (spread 0.041 > max(1.5 x 0.022, 2 x 0.019)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.388Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 3: homogeneity (spread 0.041 > max(1.5 x 0.022, 2 x 0.019)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 342
+   }
+  },
+  {
+   "id": "t=1794271035152",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 351,
+    "y": 1096,
+    "r": 3
+   },
+   "B": {
+    "x": 369,
+    "y": 1095,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:37:15.152Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 1096,
+     "a_col": 351,
+     "b_row": 1095,
+     "b_col": 369,
+     "half": 3,
+     "t": 1794271035152,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 3: homogeneity (spread 0.044 > max(1.5 x 0.013, 2 x 0.019)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.393Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 3: homogeneity (spread 0.044 > max(1.5 x 0.013, 2 x 0.019)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 343
+   }
+  },
+  {
+   "id": "t=1794271036686",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 352,
+    "y": 1016,
+    "r": 3
+   },
+   "B": {
+    "x": 369,
+    "y": 1019,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:37:16.686Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 1016,
+     "a_col": 352,
+     "b_row": 1019,
+     "b_col": 369,
+     "half": 3,
+     "t": 1794271036686,
+     "patch_ok": false,
+     "patch_flags": [
+      "B at current half 3: plateau (25% of step > 10%); homogeneity (spread 0.046 > max(1.5 x 0.023, 2 x 0.019)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.400Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "B at current half 3: plateau (25% of step > 10%); homogeneity (spread 0.046 > max(1.5 x 0.023, 2 x 0.019)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 344
+   }
+  },
+  {
+   "id": "t=1794271038727",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 504,
+    "y": 1037,
+    "r": 3
+   },
+   "B": {
+    "x": 471,
+    "y": 1034,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:37:18.727Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 1037,
+     "a_col": 504,
+     "b_row": 1034,
+     "b_col": 471,
+     "half": 3,
+     "t": 1794271038727,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: plateau (12% of step > 10%)",
+      "B at current half 3: homogeneity (spread 0.034 > max(1.5 x 0.023, 2 x 0.009)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.406Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: plateau (12% of step > 10%)",
+         "B at current half 3: homogeneity (spread 0.034 > max(1.5 x 0.023, 2 x 0.009)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 345
+   }
+  },
+  {
+   "id": "t=1794271039986",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 500,
+    "y": 1082,
+    "r": 3
+   },
+   "B": {
+    "x": 473,
+    "y": 1084,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:37:19.986Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 1082,
+     "a_col": 500,
+     "b_row": 1084,
+     "b_col": 473,
+     "half": 3,
+     "t": 1794271039986,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: homogeneity (spread 0.117 > max(1.5 x 0.064, 2 x 0.016)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.412Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: homogeneity (spread 0.117 > max(1.5 x 0.064, 2 x 0.016)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 346
+   }
+  },
+  {
+   "id": "t=1794271042543",
+   "image": "visaria_keval_076",
+   "type": "m",
+   "A": {
+    "x": 500,
+    "y": 1127,
+    "r": 3
+   },
+   "B": {
+    "x": 474,
+    "y": 1130,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:37:22.543Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 1127,
+     "a_col": 500,
+     "b_row": 1130,
+     "b_col": 474,
+     "half": 3,
+     "t": 1794271042543,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: homogeneity (spread 0.057 > max(1.5 x 0.020, 2 x 0.018)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.418Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: homogeneity (spread 0.057 > max(1.5 x 0.020, 2 x 0.018)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 347
+   }
+  },
+  {
+   "id": "t=1794271048014",
+   "image": "visaria_keval_076",
+   "type": "b",
+   "A": {
+    "x": 220,
+    "y": 1217,
+    "r": 3
+   },
+   "B": {
+    "x": 222,
+    "y": 1194,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:37:28.014Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "b",
+     "a_row": 1217,
+     "a_col": 220,
+     "b_row": 1194,
+     "b_col": 222,
+     "half": 3,
+     "t": 1794271048014,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: plateau (11% of step > 10%)",
+      "B at current half 3: homogeneity (spread 0.037 > max(1.5 x 0.018, 2 x 0.014)); sides (an outer row/column differs from the core)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.425Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: plateau (11% of step > 10%)",
+         "B at current half 3: homogeneity (spread 0.037 > max(1.5 x 0.018, 2 x 0.014)); sides (an outer row/column differs from the core)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 348
+   }
+  },
+  {
+   "id": "t=1794271052925",
+   "image": "visaria_keval_076",
+   "type": "b",
+   "A": {
+    "x": 153,
+    "y": 1219,
+    "r": 3
+   },
+   "B": {
+    "x": 156,
+    "y": 1198,
+    "r": 3
+   },
+   "confidence": "sure",
+   "used_in_loss": false,
+   "overlay_seen": "unknown",
+   "annotator": "yueren",
+   "created": "2026-11-10T00:37:32.925Z",
+   "note": "",
+   "schema_version": "1.2",
+   "legacy": {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "b",
+     "a_row": 1219,
+     "a_col": 153,
+     "b_row": 1198,
+     "b_col": 156,
+     "half": 3,
+     "t": 1794271052925,
+     "patch_ok": false,
+     "patch_flags": [
+      "A at current half 3: own side (reaches 3.4 px, transition starts 1.0); plateau (14% of step > 10%); sides (an outer row/column differs from the core)",
+      "B at current half 3: own side (reaches 17.8 px, transition ends 16.5)"
+     ],
+     "edits": [
+      {
+       "op": "patch_qc",
+       "at": "2026-11-10T04:52:24.431Z",
+       "tool": "optimize_patches.py",
+       "version": "1.1",
+       "before": {
+        "patch_ok": null,
+        "patch_flags": null
+       },
+       "after": {
+        "patch_ok": false,
+        "patch_flags": [
+         "A at current half 3: own side (reaches 3.4 px, transition starts 1.0); plateau (14% of step > 10%); sides (an outer row/column differs from the core)",
+         "B at current half 3: own side (reaches 17.8 px, transition ends 16.5)"
+        ]
+       }
+      }
+     ]
+    },
+    "v0_index": 349
+   }
+  }
+ ],
+ "s_seed_log": [],
+ "legacy": {
+  "source_set": "heldout",
+  "source_file": "illumination_edge/heldout_frozen/pairs_2026-11-10T04-52-30_autosized.json",
+  "source_sha256": "0308ad8111f5a71887dd926a4cc51fee617e5900c1023933bc4a09393a3f37e5",
+  "migrated_by": "metrics/migrate_v0.py 1.0",
+  "deleted": [
+   {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 1356,
+     "a_col": 391,
+     "b_row": 1356,
+     "b_col": 372,
+     "half": 2,
+     "t": 1794270334677,
+     "major": true,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-10T00:26:01.267Z"
+      }
+     ],
+     "deleted_at": "2026-11-10T00:26:01.267Z",
+     "deleted_index": 1120
+    },
+    "v0_index": 25
+   },
+   {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 1328,
+     "a_col": 391,
+     "b_row": 1327,
+     "b_col": 367,
+     "half": 2,
+     "t": 1794270331649,
+     "major": true,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-10T00:26:01.561Z"
+      }
+     ],
+     "deleted_at": "2026-11-10T00:26:01.561Z",
+     "deleted_index": 1119
+    },
+    "v0_index": 26
+   },
+   {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 1307,
+     "a_col": 395,
+     "b_row": 1296,
+     "b_col": 399,
+     "half": 2,
+     "t": 1794270327554,
+     "major": true,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-10T00:26:01.748Z"
+      }
+     ],
+     "deleted_at": "2026-11-10T00:26:01.748Z",
+     "deleted_index": 1118
+    },
+    "v0_index": 27
+   },
+   {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 1304,
+     "a_col": 493,
+     "b_row": 1287,
+     "b_col": 493,
+     "half": 2,
+     "t": 1794270324327,
+     "major": true,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-10T00:26:01.928Z"
+      }
+     ],
+     "deleted_at": "2026-11-10T00:26:01.928Z",
+     "deleted_index": 1117
+    },
+    "v0_index": 28
+   },
+   {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 1307,
+     "a_col": 478,
+     "b_row": 1307,
+     "b_col": 462,
+     "half": 2,
+     "t": 1794270317333,
+     "major": true,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-10T00:26:02.082Z"
+      }
+     ],
+     "deleted_at": "2026-11-10T00:26:02.082Z",
+     "deleted_index": 1116
+    },
+    "v0_index": 29
+   },
+   {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 1347,
+     "a_col": 432,
+     "b_row": 1342,
+     "b_col": 446,
+     "half": 2,
+     "t": 1794270314005,
+     "major": true,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-10T00:26:02.273Z"
+      }
+     ],
+     "deleted_at": "2026-11-10T00:26:02.273Z",
+     "deleted_index": 1115
+    },
+    "v0_index": 30
+   },
+   {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 1353,
+     "a_col": 468,
+     "b_row": 1353,
+     "b_col": 452,
+     "half": 2,
+     "t": 1794270309104,
+     "major": true,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-10T00:26:02.452Z"
+      }
+     ],
+     "deleted_at": "2026-11-10T00:26:02.452Z",
+     "deleted_index": 1114
+    },
+    "v0_index": 31
+   },
+   {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 1326,
+     "a_col": 488,
+     "b_row": 1326,
+     "b_col": 466,
+     "half": 4,
+     "t": 1794270298931,
+     "major": true,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-10T00:26:05.061Z"
+      }
+     ],
+     "deleted_at": "2026-11-10T00:26:05.061Z",
+     "deleted_index": 1113
+    },
+    "v0_index": 32
+   },
+   {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 1211,
+     "a_col": 387,
+     "b_row": 1204,
+     "b_col": 389,
+     "half": 2,
+     "t": 1794270471223,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-10T00:27:54.975Z"
+      }
+     ],
+     "deleted_at": "2026-11-10T00:27:54.975Z",
+     "deleted_index": 1132
+    },
+    "v0_index": 33
+   },
+   {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 1213,
+     "a_col": 415,
+     "b_row": 1204,
+     "b_col": 417,
+     "half": 2,
+     "t": 1794270468738,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-10T00:27:55.685Z"
+      }
+     ],
+     "deleted_at": "2026-11-10T00:27:55.685Z",
+     "deleted_index": 1131
+    },
+    "v0_index": 34
+   },
+   {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "i",
+     "a_row": 635,
+     "a_col": 311,
+     "b_row": 617,
+     "b_col": 310,
+     "half": 3,
+     "t": 1794270854282,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-10T00:34:20.843Z"
+      }
+     ],
+     "deleted_at": "2026-11-10T00:34:20.843Z",
+     "deleted_index": 1176
+    },
+    "v0_index": 35
+   },
+   {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 556,
+     "a_col": 735,
+     "b_row": 542,
+     "b_col": 689,
+     "half": 3,
+     "t": 1794270902999,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-10T00:35:03.781Z"
+      }
+     ],
+     "deleted_at": "2026-11-10T00:35:03.781Z",
+     "deleted_index": 1186
+    },
+    "v0_index": 36
+   },
+   {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "m",
+     "a_row": 294,
+     "a_col": 164,
+     "b_row": 294,
+     "b_col": 178,
+     "half": 3,
+     "t": 1794270930098,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-10T00:35:33.438Z"
+      }
+     ],
+     "deleted_at": "2026-11-10T00:35:33.438Z",
+     "deleted_index": 1192
+    },
+    "v0_index": 37
+   },
+   {
+    "v0": {
+     "image": "visaria_keval_076",
+     "type": "b",
+     "a_row": 1217,
+     "a_col": 186,
+     "b_row": 1195,
+     "b_col": 191,
+     "half": 3,
+     "t": 1794271049722,
+     "edits": [
+      {
+       "op": "remove",
+       "at": "2026-11-10T00:37:30.815Z"
+      }
+     ],
+     "deleted_at": "2026-11-10T00:37:30.815Z",
+     "deleted_index": 1221
+    },
+    "v0_index": 38
+   }
+  ]
+ }
+}

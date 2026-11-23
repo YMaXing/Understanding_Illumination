@@ -1,0 +1,27 @@
+[project]
+name = "metrics"
+version = "0.1.0"
+description = "Understanding Illumination evaluation metrics v1 (see DESIGN.md)"
+requires-python = "==3.12.*"
+# Pinned to the log_chromaticity env's exact versions (the ℓI hook's own env) for parity; python 3.12 as there.
+# Only packages the repo already uses: numpy / scipy / opencv-python-headless / tifffile / imagecodecs
+# (log_chromaticity), pyyaml (geometry/dedicated), pytest (edges, geometry/dedicated).
+# illumination_edge/common.py (the interim ℓI loader) imports cv2, numpy and log_chromaticity/material_edges (scipy).
+dependencies = [
+    "numpy==2.5.4",
+    "scipy==1.18.1",
+    "opencv-python-headless==5.0.0.93",
+    "tifffile==2026.10.15",
+    "imagecodecs==2026.10.10",
+    "pyyaml==6.0.3",
+]
+
+[dependency-groups]
+dev = ["pytest==9.2.0"]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

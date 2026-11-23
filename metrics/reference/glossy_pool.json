@@ -1,0 +1,207 @@
+{
+ "description": "The glossy image pool (image_data/glossy/*.tif): every draw excludes it; strata use it. Recorded here so a fresh clone does not need the folder. sha256 = the val_set copy (byte-identical to image_data/glossy).",
+ "source": "image_data/glossy/ + glossy_40_audit.csv (untracked)",
+ "n": 40,
+ "images": [
+  {
+   "stem": "acharya_mrudula_036",
+   "sha256": "6e43af7c9215cc7b22fc1bd8ff0f63704453170d0c55a41424ceb8f54a98f1a9",
+   "category": "D"
+  },
+  {
+   "stem": "acharya_mrudula_048",
+   "sha256": "d93a077ac526cfa00a937576ed33ee02436b133d3cc19ba292d207ce943aed15",
+   "category": "A"
+  },
+  {
+   "stem": "acharya_mrudula_071",
+   "sha256": "2c3c6ff0ca406eff37807ff57ab19e71ea80ad3915798852e01ac21a4e8ff424",
+   "category": "A"
+  },
+  {
+   "stem": "acharya_mrudula_072",
+   "sha256": "b9b2606df499b32ab9d4efe47503cdbcca58bf8f874a48b202816b7d7ce81a29",
+   "category": "A"
+  },
+  {
+   "stem": "acharya_mrudula_076",
+   "sha256": "482c9b8f837bee65015c703b0712b463ab14fadb1f488b5b0c4a10cef7af52ff",
+   "category": "A"
+  },
+  {
+   "stem": "acharya_mrudula_111",
+   "sha256": "66ab19994ea7bc329b1bb777964eebff8712cc9c2fa3c951e1e65699c581f92d",
+   "category": "B"
+  },
+  {
+   "stem": "acharya_mrudula_113",
+   "sha256": "01a01cf7370a2e26a81dc4007fcedd3ea33a6e263af18c549401a0acb7812a04",
+   "category": "A"
+  },
+  {
+   "stem": "adke_neel_003",
+   "sha256": "a79c9cef22f020044540b2e87851a59b4aabc4851f4a147f55d9aaf83912750c",
+   "category": "D"
+  },
+  {
+   "stem": "adke_neel_006",
+   "sha256": "f363ecb8435c6da7cf7e6162381d2bf2225aae1f0bd02bc73ada3d8f71f6bf03",
+   "category": "A"
+  },
+  {
+   "stem": "adke_neel_007",
+   "sha256": "e9900a3dd0735c15a1b25f911b78bfb6f60b828667392adf728af40910d40a61",
+   "category": "A"
+  },
+  {
+   "stem": "adke_neel_037",
+   "sha256": "be2fbc3f69a0c1f4609cb446f75e6566b0c54179b70438fe66429bb15dd81147",
+   "category": "A"
+  },
+  {
+   "stem": "adke_neel_043",
+   "sha256": "37d881e9dc14b8ec57696d03ff0d0ba443d82227340f319daef4b67706b1f4b5",
+   "category": "D"
+  },
+  {
+   "stem": "amir_adnan_044",
+   "sha256": "42f092fa3d156dd638faa58ef89f85b581c243eb5db336b17ccfdd5164119ce4",
+   "category": "A"
+  },
+  {
+   "stem": "amir_adnan_055",
+   "sha256": "961da4b5d9ac2bfff1b26ae83cfef36fa39d9ea27c424738a85aa14d97365f5b",
+   "category": "D"
+  },
+  {
+   "stem": "baskar_akilan_005",
+   "sha256": "15a27e6978ad66a2337351a800d3d21002a1d3c29767265eee7ec005566d391f",
+   "category": "A"
+  },
+  {
+   "stem": "baskar_akilan_013",
+   "sha256": "4484d2f1452a0d794d413dfc1d7004f5fc974d5c1dcf12e23bc58044b707a39f",
+   "category": "A"
+  },
+  {
+   "stem": "baskar_akilan_030",
+   "sha256": "0a5891928d7449c8856ddaa2c7a37cbb4ea0e2f0aeacd89bad801e0526dfa248",
+   "category": "A"
+  },
+  {
+   "stem": "baskar_akilan_032",
+   "sha256": "aa6c7ec453d7e2691d4d45fe1dc64204695ed621d817b2b1e462f91125a07b0a",
+   "category": "A"
+  },
+  {
+   "stem": "baskar_akilan_043",
+   "sha256": "69be9ca4389d579b214f71bb9f323df4980c321b01f874a1f0da966d720a441f",
+   "category": "A"
+  },
+  {
+   "stem": "baskar_akilan_045",
+   "sha256": "38fbbf8191466a39270e43f841d7cf84795297d4e5508e6c44ca09b74fac74eb",
+   "category": "B"
+  },
+  {
+   "stem": "baskar_akilan_057",
+   "sha256": "e744198234fcfa7d59afc6e5241272899f8d4b450df54c4ca88baf797def02df",
+   "category": "B"
+  },
+  {
+   "stem": "gade_surabhi_011",
+   "sha256": "48f837d47b48f6c8dbae48415c1b98264ef93472815bbc01de51e1d8006fb298",
+   "category": "A"
+  },
+  {
+   "stem": "gade_surabhi_013",
+   "sha256": "6c7b2c9a8d12c9c1bed4e9373e06452c26b352f9f1614b58fc7dcaa77c998543",
+   "category": "A"
+  },
+  {
+   "stem": "gade_surabhi_014",
+   "sha256": "c0599f5ae822fb5c1d3af6a4dc46c55c614cbc3792b3b8d008e644614f0bf7d3",
+   "category": "A"
+  },
+  {
+   "stem": "taiwei_cui_089",
+   "sha256": "bd8285d8d6bf1e8b66a1356d5c7337cf7b6213d968029835238dd26ee495f4ce",
+   "category": "A"
+  },
+  {
+   "stem": "taiwei_cui_097",
+   "sha256": "978a413b3fc15691852ec2efe351f3f720e30df9f0dccfb010c6e0ddc8717d6e",
+   "category": "A"
+  },
+  {
+   "stem": "taiwei_cui_100",
+   "sha256": "10516af7d5ab4f0afc2cebc2fd24b4071840c6add1af0cef11bc91a3d6749702",
+   "category": "A"
+  },
+  {
+   "stem": "taiwei_cui_101",
+   "sha256": "bce15bb6c2a131b582270767d52511ebe0183d57de7059798f30d3355587b1b0",
+   "category": "A"
+  },
+  {
+   "stem": "taiwei_cui_104",
+   "sha256": "e629b6a328222f6fe755d314ce5ede4f819699186d2f606d29c6ad08d585bb2c",
+   "category": "B"
+  },
+  {
+   "stem": "taiwei_cui_105",
+   "sha256": "6ff202c4a1d5bcaf586f914a01f05f85271f7e0249cd986ed653c3abe4c80af6",
+   "category": "A"
+  },
+  {
+   "stem": "visaria_keval_002",
+   "sha256": "4fdc3e71134f0ae675e664c71c0b7760ccbe0ccf2964d4663ec0e58faa74947f",
+   "category": "C"
+  },
+  {
+   "stem": "visaria_keval_004",
+   "sha256": "b7f1d68915ec398d0feed19affa06602776d43df4a6d96dbc047575654b61fd2",
+   "category": "C"
+  },
+  {
+   "stem": "visaria_keval_007",
+   "sha256": "569179ba672de920ecf9732c2eb49bd3079419d74bf5bd5749fee48e51020211",
+   "category": "C"
+  },
+  {
+   "stem": "visaria_keval_016",
+   "sha256": "051a31f47a59b201d5595d4eaa485fb7b5b5ed30f25fc9dd774f275f62011c06",
+   "category": "B"
+  },
+  {
+   "stem": "visaria_keval_025",
+   "sha256": "e1fd36a11c2b0f2b5d8ee80ee9b16879a21c9e09f16b88f4bb46e6ea02541000",
+   "category": "A"
+  },
+  {
+   "stem": "visaria_keval_036",
+   "sha256": "dd81564c494b97ad2673e15ba856d7074096b46627a2f049caef6780e559d4af",
+   "category": "A"
+  },
+  {
+   "stem": "visaria_keval_042",
+   "sha256": "c462b56c42273eea5ed62daefc852933ea8ff19b58de1aa657709adc4968177c",
+   "category": "A"
+  },
+  {
+   "stem": "visaria_keval_068",
+   "sha256": "af8e1ef3a6856a0008b3c52f24b11fbe2385d651ec1cd8db5a5deb7ec70b8636",
+   "category": "D"
+  },
+  {
+   "stem": "visaria_keval_069",
+   "sha256": "4b684073cfa946c0c182d19d3a994e9899cf6e4ad3cb489c7a6c6f359180091b",
+   "category": "A"
+  },
+  {
+   "stem": "visaria_keval_094",
+   "sha256": "a64ab17f613284d623316038b20829419bc8ba956d1ae6bbf7986939fddd9569",
+   "category": "A"
+  }
+ ]
+}

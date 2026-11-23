@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metrics Run Review</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+<style>
+  #side { width: 460px; }
+  .plots svg { width: 100%; height: 150px; background: #111317; border: 1px solid var(--line); border-radius: 4px; margin: 2px 0 6px; }
+  .crops { display: flex; gap: 8px; } .crops canvas { width: 200px; height: 200px; image-rendering: pixelated; border: 1px solid var(--line); }
+  #nums td { padding: 1px 8px 1px 0; vertical-align: top; } #nums td:first-child { color: var(--dim); }
+  .pass { color: var(--ok); } .fail { color: var(--warn); } .excl { color: var(--dim); }
+  .legend span { margin-right: 10px; }
+</style>
+</head>
+<body>
+<header id="bar">
+  <div class="grp"><label for="runsel">run</label><select id="runsel" autocomplete="off" data-1p-ignore data-lpignore="true"></select>
+    <label for="methsel">method</label><select id="methsel" autocomplete="off" data-1p-ignore data-lpignore="true"></select></div>
+  <div class="grp"><button id="prev">&larr;</button><select id="imgsel" autocomplete="off" data-1p-ignore data-lpignore="true"></select><button id="next">&rarr;</button></div>
+  <div class="grp">
+    <select id="f_type" autocomplete="off" data-1p-ignore data-lpignore="true"><option value="">all types</option><option>i</option><option>m</option><option>b</option><option>s</option><option>d</option></select>
+    <select id="f_status" autocomplete="off" data-1p-ignore data-lpignore="true"><option value="">pass + fail + excluded</option><option value="pass">pass</option><option value="fail">fail</option><option value="excluded">excluded</option></select>
+    <select id="f_bin" autocomplete="off" data-1p-ignore data-lpignore="true"><option value="">any bin</option><option>reversed</option><option>full_leak</option><option>partial</option><option>overshoot</option><option>n/a</option></select>
+    <select id="f_flag" autocomplete="off" data-1p-ignore data-lpignore="true"><option value="">any flag</option><option>low_snr</option><option>invalid</option><option>low_contrast</option><option>input_excursion</option><option>geom_cross</option><option>textured</option><option>length_out_of_range</option></select>
+  </div>
+  <div class="grp"><label for="ev">exposure</label><input id="ev" type="range" min="-4" max="6" step="0.25" value="0" autocomplete="off" data-1p-ignore data-lpignore="true"></div>
+  <div class="grp legend dim"><span class="pass">■ pass</span><span class="fail">■ fail</span><span class="excl">■ excluded</span><span style="color:#d36bff">■ b (diagnostic)</span></div>
+  <div class="grp right"><span id="save" class="dim">review mode (read-only; never used for annotation)</span></div>
+</header>
+<main>
+  <div id="stage"><canvas id="cv"></canvas><div id="hud" class="dim"></div></div>
+  <aside id="side">
+    <section><h2>selected pair</h2><div id="nums" class="dim">click a pair</div></section>
+    <section><h2>patches (A left, B right)</h2><div class="crops"><canvas id="cropA" width="200" height="200"></canvas><canvas id="cropB" width="200" height="200"></canvas></div></section>
+    <section class="plots"><h2>profiles along A → B (R G B channels; dashed: endpoint segment; | marks H)</h2>
+      <div id="plotI"></div><div id="plotR"></div><div id="plotL"></div></section>
+    <section><h2>pairs (filtered)</h2><div id="counts" class="dim"></div><div id="list"></div></section>
+  </aside>
+</main>
+<script src="lib.js"></script>
+<script src="review.js"></script>
+</body>
+</html>
